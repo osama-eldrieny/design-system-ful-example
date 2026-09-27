@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar - Design System</title>
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/navbar-sidebar.css">
+  <link rel="stylesheet" href="../assets/component-layout.css">
+  <style>
+    /* ===== NAVBAR COMPONENT STYLES ===== */
+    .navbar-preview {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--section-padding);
+      gap: 80px;
+      background-color: var(--section-bg-color);
+      border-radius: var(--section-border-radius);
+      box-shadow: var(--section-shadow-x) var(--section-shadow-y) var(--section-shadow-blur) 0 var(--section-shadow-color);
+    }
+
+    /* Logo Section */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: var(--logo-gap);
+    }
+
+    .logo-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 44px;
+      border-radius: var(--logo-icon-border-radius);
+      background-color: var(--logo-icon-bg-color);
+      padding: var(--logo-icon-padding);
+      font-size: var(--logo-icon-font-size);
+      color: var(--logo-icon-color);
+    }
+
+    .logo-name {
+      font-family: var(--logo-name-font-family), sans-serif;
+      font-size: var(--logo-name-font-size);
+      font-weight: var(--logo-name-font-weight);
+      line-height: var(--logo-name-font-line-height);
+      color: var(--logo-name-font-color);
+      white-space: nowrap;
+    }
+
+    /* Nav Items */
+    .navbar-items {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .navbar-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
+      gap: var(--menu-item-gap);
+      background-color: var(--menu-item-default-bg-color);
+      border-radius: var(--menu-item-border-radius);
+      border: none;
+      cursor: pointer;
+      transition: all 200ms ease;
+      text-decoration: none;
+      font-family: var(--menu-item-font-family);
+    }
+
+    .navbar-item:hover {
+      background-color: var(--menu-item-hover-bg-color, rgba(143, 139, 150, 0.05));
+    }
+
+    .navbar-item:focus-visible {
+      outline: none;
+      background-color: var(--menu-item-focus-bg-color, rgba(100, 96, 108, 0.05));
+    }
+
+    .navbar-item-text {
+      font-size: var(--menu-item-font-size);
+      font-weight: var(--menu-item-font-weight);
+      font-family: var(--menu-item-font-family);
+      line-height: var(--menu-item-font-line-height);
+      color: var(--menu-item-default-font-color);
+    }
+
+    .navbar-item-icon {
+      font-size: var(--menu-item-icon-size);
+      line-height: var(--menu-item-icon-line-height);
+      color: var(--menu-item-default-icon-color);
+    }
+
+    /* ===== SECTION BOXES ===== */
+    .section-box {
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 60px;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+    }
+
+    /* ===== VARIANT GALLERY ===== */
+    .variant-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+    }
+
+    .variant-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(79, 70, 229, 0.03);
+    }
+
+    .variant-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 80px;
+    }
+
+    .variant-label {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+      margin-bottom: 60px;
+    }
+
+    thead {
+      background: rgba(79, 70, 229, 0.05);
+      border-bottom: 2px solid rgba(99, 102, 241, 0.15);
+    }
+
+    th {
+      padding: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #4F46E5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+      font-size: 14px;
+      color: #312E81;
+    }
+
+    tbody tr:hover { background: rgba(79, 70, 229, 0.03); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .token-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      background: #F5F5F5;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* ===== CODE BLOCK ===== */
+    .code-block {
+      background: #24202D;
+      color: #E8E8E8;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      overflow-y: auto;
+      height: 500px;
+      max-height: 500px;
+      scrollbar-gutter: stable;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 60px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .code-keyword { color: #C99BFF; }
+    .code-string { color: #73D1A9; }
+    .code-comment { color: #7D8590; }
+    .code-function { color: #95C1FF; }
+    .code-type { color: #A8D8EA; }
+
+    /* Implementations Grid */
+    .implementations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .implementations-grid > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .implementations-grid .code-block {
+      margin-bottom: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .navbar-preview {
+        flex-direction: column;
+        gap: 24px;
+      }
+      .implementations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== DROPDOWN STYLES ===== */
+    .navbar-item-wrapper {
+      position: relative;
+      display: flex;
+    }
+
+    .dropdown-container {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--menu-dropdown-gap);
+      background-color: var(--menu-dropdown-bg-color);
+      border: var(--menu-dropdown-border-width) solid var(--menu-dropdown-border-color);
+      border-radius: var(--menu-dropdown-border-radius);
+      box-shadow: 0px var(--menu-dropdown-shadow-y) var(--menu-dropdown-shadow-blur) var(--menu-dropdown-shadow-color);
+      padding: 0;
+      width: 100%;
+      min-width: 146px;
+      margin-top: 8px;
+      z-index: 1000;
+    }
+
+    .dropdown-container.hidden {
+      display: none;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      gap: var(--menu-item-gap);
+      padding: var(--menu-item-padding-y) var(--menu-item-padding-x);
+      background-color: var(--menu-item-default-bg-color);
+      border-radius: var(--menu-item-border-radius);
+      cursor: pointer;
+      transition: all 200ms ease;
+      font-family: var(--menu-item-font-family);
+      font-size: var(--menu-item-font-size);
+      line-height: var(--menu-item-font-line-height);
+      font-weight: var(--menu-item-font-weight);
+      color: var(--menu-item-default-font-color);
+      white-space: nowrap;
+      border: none;
+    }
+
+    .menu-item:hover {
+      background-color: var(--menu-item-hover-bg-color);
+      color: var(--menu-item-hover-font-color);
+    }
+
+    .menu-divider {
+      height: var(--menu-dropdown-divider-width);
+      background-color: var(--menu-dropdown-divider-color);
+      margin: 0;
+    }
+
+    .navbar-item.dropdown-trigger.open {
+      background-color: var(--menu-item-hover-bg-color);
+    }
+
+    .navbar-item.dropdown-trigger.open .navbar-item-icon {
+      transform: rotate(180deg);
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F5F5; }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #999; }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo">Spectrum</div>
+      <span class="nav-sep">›</span>
+      <span class="nav-title">Navbar</span>
+    </div>
+    <div class="nav-right">
+      <button class="vp-btn active">D</button>
+      <button class="vp-btn">T</button>
+      <button class="vp-btn">M</button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- CANVAS AREA -->
+    <main class="canvas-area">
+      <!-- HEADER -->
+      <div class="story-header">
+        <h1 class="story-title">Navbar</h1>
+        <p class="story-desc">
+          Navigation bar component that serves as the primary navigation element for the application. Contains logo, menu items, and supports nested components (Logo and Menu Item).
+        </p>
+      </div>
+
+      <!-- PREVIEW + CONTROLS SECTION -->
+      <div class="preview-controls-grid">
+        <!-- PREVIEW COLUMN -->
+        <div class="preview-column">
+          <div class="section-heading">Preview</div>
+          <div class="preview-section">
+            <div class="bg-switcher">
+              <button class="active" data-bg="light-grey">Light Grey</button>
+              <button data-bg="light">Light</button>
+              <button data-bg="dark">Dark</button>
+            </div>
+            <div class="preview-box light-grey" id="preview-box">
+              <div class="navbar-preview">
+                <!-- Logo Section -->
+                <div class="logo-container" id="logo-preview">
+                  <div class="logo-icon" id="logo-icon"><i class="fa-solid fa-fire"></i></div>
+                  <div class="logo-name" id="logo-name">My Design System</div>
+                </div>
+
+                <!-- Nav Items -->
+                <div class="navbar-items">
+                  <button class="navbar-item">
+                    <span class="navbar-item-text">Home</span>
+                  </button>
+                  <button class="navbar-item">
+                    <span class="navbar-item-text">Themes</span>
+                  </button>
+                  <div class="navbar-item-wrapper">
+                    <button class="navbar-item dropdown-trigger" id="navbar-dropdown-trigger">
+                      <span class="navbar-item-text">More</span>
+                      <i class="navbar-item-icon fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-container hidden" id="navbar-dropdown-menu">
+                      <div class="menu-item">
+                        <span>About</span>
+                      </div>
+                      <div class="menu-item">
+                        <span>Contact</span>
+                      </div>
+                      <div class="menu-divider"></div>
+                      <div class="menu-item">
+                        <span>Settings</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTROLS COLUMN -->
+        <div class="controls-column">
+          <div class="section-heading">Controls</div>
+          <div class="controls-section">
+            <div class="control-group">
+              <label class="control-label">Logo Variant</label>
+              <select id="logo-variant-select" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px; cursor: pointer;">
+                <option value="with-title">With Title</option>
+                <option value="icon-only">Icon Only</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Show Navbar Items</label>
+              <select id="navbar-items-visibility" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px; cursor: pointer;">
+                <option value="show">Show</option>
+                <option value="hide">Hide</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Menu Item 1 Text</label>
+              <input type="text" id="menu-item-1-text" value="Home" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px;">
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Menu Item 2 Text</label>
+              <input type="text" id="menu-item-2-text" value="Themes" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px;">
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Menu Item 3 Text</label>
+              <input type="text" id="menu-item-3-text" value="More" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- DESIGN SPECIFICATIONS TABLE -->
+      <h2 class="section-title">Design Specifications</h2>
+      <table id="component-specs-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Token Name</th>
+            <th>Value</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Container Padding</strong></td>
+            <td><span class="token-code">--section-padding</span></td>
+            <td>28px</td>
+            <td>FLOAT (Component Density)</td>
+          </tr>
+          <tr>
+            <td><strong>Item Gap</strong></td>
+            <td><span class="token-code">--section-gap-large</span></td>
+            <td>80px</td>
+            <td>FLOAT</td>
+          </tr>
+          <tr>
+            <td><strong>Background Color</strong></td>
+            <td><span class="token-code">--section-bg-color</span></td>
+            <td>#FFFFFF</td>
+            <td>COLOR (Component Brand)</td>
+          </tr>
+          <tr>
+            <td><strong>Border Radius</strong></td>
+            <td><span class="token-code">--section-border-radius</span></td>
+            <td>20px</td>
+            <td>FLOAT (Component Radius)</td>
+          </tr>
+          <tr>
+            <td><strong>Shadow Color</strong></td>
+            <td><span class="token-code">--section-shadow-color</span></td>
+            <td>#CECBDC</td>
+            <td>COLOR (Component Brand)</td>
+          </tr>
+          <tr>
+            <td><strong>Shadow Offset X</strong></td>
+            <td><span class="token-code">--section-shadow-x</span></td>
+            <td>0px</td>
+            <td>FLOAT (Component Shadow)</td>
+          </tr>
+          <tr>
+            <td><strong>Shadow Offset Y</strong></td>
+            <td><span class="token-code">--section-shadow-y</span></td>
+            <td>8px</td>
+            <td>FLOAT (Component Shadow)</td>
+          </tr>
+          <tr>
+            <td><strong>Shadow Blur</strong></td>
+            <td><span class="token-code">--section-shadow-blur</span></td>
+            <td>16px</td>
+            <td>FLOAT (Component Shadow)</td>
+          </tr>
+          <tr>
+            <td colspan="4"><strong>Nested Logo Component Variables:</strong></td>
+          </tr>
+          <tr>
+            <td>Logo Gap</td>
+            <td><span class="token-code">--logo-gap</span></td>
+            <td>16px</td>
+            <td>FLOAT (Component Density)</td>
+          </tr>
+          <tr>
+            <td>Logo Icon Padding</td>
+            <td><span class="token-code">--logo-icon-padding</span></td>
+            <td>12px</td>
+            <td>FLOAT (Component Density)</td>
+          </tr>
+          <tr>
+            <td>Logo Icon Background</td>
+            <td><span class="token-code">--logo-icon-bg-color</span></td>
+            <td>#9166FF</td>
+            <td>COLOR (Component Brand)</td>
+          </tr>
+          <tr>
+            <td>Logo Icon Border Radius</td>
+            <td><span class="token-code">--logo-icon-border-radius</span></td>
+            <td>12px</td>
+            <td>FLOAT (Component Radius)</td>
+          </tr>
+          <tr>
+            <td>Logo Name Font Size</td>
+            <td><span class="token-code">--logo-name-font-size</span></td>
+            <td>16px</td>
+            <td>FLOAT (Component Language)</td>
+          </tr>
+          <tr>
+            <td>Logo Name Font Weight</td>
+            <td><span class="token-code">--logo-name-font-weight</span></td>
+            <td>700</td>
+            <td>FLOAT (Component Language)</td>
+          </tr>
+          <tr>
+            <td>Logo Name Font Color</td>
+            <td><span class="token-code">--logo-name-font-color</span></td>
+            <td>#242436</td>
+            <td>COLOR (Component Brand)</td>
+          </tr>
+          <tr>
+            <td colspan="4"><strong>Menu Item Component Variables:</strong></td>
+          </tr>
+          <tr>
+            <td>Menu Item Padding X</td>
+            <td><span class="token-code">--menu-item-padding-x</span></td>
+            <td>16px</td>
+            <td>FLOAT (Component Density)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Padding Y</td>
+            <td><span class="token-code">--menu-item-padding-y</span></td>
+            <td>12px</td>
+            <td>FLOAT (Component Density)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Gap</td>
+            <td><span class="token-code">--menu-item-gap</span></td>
+            <td>8px</td>
+            <td>FLOAT (Component Density)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Background (Default)</td>
+            <td><span class="token-code">--menu-item-default-bg-color</span></td>
+            <td>#FFFFFF</td>
+            <td>COLOR (Component Brand)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Border Radius</td>
+            <td><span class="token-code">--menu-item-border-radius</span></td>
+            <td>8px</td>
+            <td>FLOAT (Component Radius)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Font Size</td>
+            <td><span class="token-code">--menu-item-font-size</span></td>
+            <td>16px</td>
+            <td>FLOAT (Component Language)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Font Weight</td>
+            <td><span class="token-code">--menu-item-font-weight</span></td>
+            <td>400</td>
+            <td>FLOAT (Component Language)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Font Color (Default)</td>
+            <td><span class="token-code">--menu-item-default-font-color</span></td>
+            <td>#242436</td>
+            <td>COLOR (Component Brand)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Icon Size</td>
+            <td><span class="token-code">--menu-item-icon-size</span></td>
+            <td>12px</td>
+            <td>FLOAT (Component Language)</td>
+          </tr>
+          <tr>
+            <td>Menu Item Icon Color (Default)</td>
+            <td><span class="token-code">--menu-item-default-icon-color</span></td>
+            <td>#242436</td>
+            <td>COLOR (Component Brand)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- REACT IMPLEMENTATION & USAGE EXAMPLES -->
+      <div class="implementations-grid">
+        <div>
+          <h2 class="section-title">React Implementation</h2>
+          <div class="code-block">
+          <span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">'react'</span>;<br>
+          <span class="code-keyword">import</span> <span class="code-string">'./Navbar.css'</span>;<br>
+          <span class="code-keyword">import</span> { Logo } <span class="code-keyword">from</span> <span class="code-string">'./Logo'</span>;<br>
+          <span class="code-keyword">import</span> { MenuItem } <span class="code-keyword">from</span> <span class="code-string">'./MenuItem'</span>;<br>
+          <br>
+          <span class="code-keyword">interface</span> <span class="code-type">NavbarProps</span> <span class="code-keyword">extends</span> React.HTMLAttributes&lt;HTMLElement&gt; {<br>
+          &nbsp;&nbsp;logo?: React.ReactNode;<br>
+          &nbsp;&nbsp;items?: Array&lt;{ label: <span class="code-string">string</span>; icon?: <span class="code-string">string</span>; onClick?: () =&gt; <span class="code-keyword">void</span> }&gt;;<br>
+          }<br>
+          <br>
+          <span class="code-keyword">export const</span> <span class="code-function">Navbar</span> = React.forwardRef&lt;<br>
+          &nbsp;&nbsp;HTMLElement,<br>
+          &nbsp;&nbsp;<span class="code-type">NavbarProps</span><br>
+          &gt;(({ logo, items = [], className, ...props }, ref) =&gt; {<br>
+          &nbsp;&nbsp;<span class="code-keyword">return</span> (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">nav</span> ref={ref} className={`navbar-preview ${className || ''}`} {...props}&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">div</span> className=<span class="code-string">"navbar-logo"</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{logo || &lt;<span class="code-function">Logo</span> /&gt;}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="code-function">div</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">div</span> className=<span class="code-string">"navbar-items"</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{items.map((item) =&gt; (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">MenuItem</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key={item.label}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label={item.label}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon={item.icon}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onClick={item.onClick}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;))}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="code-function">div</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="code-function">nav</span>&gt;<br>
+          &nbsp;&nbsp;);<br>
+          });<br>
+          <br>
+          <span class="code-function">Navbar</span>.displayName = <span class="code-string">'Navbar'</span>;
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Usage Examples</h2>
+          <div class="code-block">
+          <span class="code-comment">// Basic Navbar with default Logo</span><br>
+          &lt;<span class="code-function">Navbar</span><br>
+          &nbsp;&nbsp;items={[<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;{ label: <span class="code-string">"Home"</span>, onClick: () =&gt; {} },<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;{ label: <span class="code-string">"Themes"</span>, onClick: () =&gt; {} },<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;{ label: <span class="code-string">"More"</span>, icon: <span class="code-string">"chevron-down"</span>, onClick: () =&gt; {} }<br>
+          &nbsp;&nbsp;]}<br>
+          /&gt;<br>
+          <br>
+          <span class="code-comment">// Navbar with custom Logo</span><br>
+          &lt;<span class="code-function">Navbar</span><br>
+          &nbsp;&nbsp;logo={&lt;<span class="code-function">CustomLogo</span> /&gt;}<br>
+          &nbsp;&nbsp;items={[...]}<br>
+          /&gt;<br>
+          <br>
+          <span class="code-comment">// With custom className</span><br>
+          &lt;<span class="code-function">Navbar</span><br>
+          &nbsp;&nbsp;className=<span class="code-string">"navbar-custom"</span><br>
+          &nbsp;&nbsp;items={[...]}<br>
+          /&gt;
+          </div>
+        </div>
+      </div>
+
+</main>
+  </div>
+
+  <!-- SIDEBAR LOADER -->
+  <script src="../assets/sidebar-loader.js"></script>
+
+  <!-- NAVBAR-SPECIFIC JAVASCRIPT -->
+  <script>
+    // Background color mapping
+    const bgColorMap = {
+      light: 'white',
+      'light-grey': 'rgba(79, 70, 229, 0.03)',
+      dark: '#1F2937'
+    };
+
+    // Background switcher
+    document.querySelectorAll('.bg-switcher button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.bg-switcher button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const bgColor = bgColorMap[e.target.dataset.bg];
+        const previewBox = document.getElementById('preview-box');
+        previewBox.className = `preview-box ${e.target.dataset.bg}`;
+        previewBox.style.backgroundColor = bgColor;
+      });
+    });
+
+    // Logo Variant Control
+    document.getElementById('logo-variant-select').addEventListener('change', (e) => {
+      const logoName = document.getElementById('logo-name');
+      if (e.target.value === 'icon-only') {
+        logoName.style.display = 'none';
+      } else {
+        logoName.style.display = 'block';
+      }
+    });
+
+    // Navbar Items Visibility Dropdown
+    document.getElementById('navbar-items-visibility').addEventListener('change', (e) => {
+      const navbarItems = document.querySelector('.navbar-items');
+      if (e.target.value === 'show') {
+        navbarItems.style.display = 'flex';
+      } else {
+        navbarItems.style.display = 'none';
+      }
+    });
+
+    // Menu Item Text Controls
+    const menuItems = document.querySelectorAll('.navbar-item');
+
+    document.getElementById('menu-item-1-text').addEventListener('input', (e) => {
+      menuItems[0].querySelector('.navbar-item-text').textContent = e.target.value;
+    });
+
+    document.getElementById('menu-item-2-text').addEventListener('input', (e) => {
+      menuItems[1].querySelector('.navbar-item-text').textContent = e.target.value;
+    });
+
+    document.getElementById('menu-item-3-text').addEventListener('input', (e) => {
+      menuItems[2].querySelector('.navbar-item-text').textContent = e.target.value;
+    });
+
+    // Dropdown Toggle Functionality
+    const dropdownTrigger = document.getElementById('navbar-dropdown-trigger');
+    const dropdownMenu = document.getElementById('navbar-dropdown-menu');
+
+    dropdownTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdownTrigger.classList.toggle('open');
+      dropdownMenu.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!dropdownTrigger.closest('.navbar-item-wrapper').contains(e.target)) {
+        dropdownTrigger.classList.remove('open');
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+
+    // Close dropdown when clicking on menu items
+    dropdownMenu.addEventListener('click', (e) => {
+      if (e.target.closest('.menu-item')) {
+        dropdownTrigger.classList.remove('open');
+        dropdownMenu.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>

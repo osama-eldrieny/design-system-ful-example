@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo - Design System</title>
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/navbar-sidebar.css">
+  <link rel="stylesheet" href="../assets/component-layout.css">
+  <style>
+    
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: var(--logo-gap);
+    }
+
+    .logo-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 44px;
+      border-radius: var(--logo-icon-border-radius);
+      background-color: var(--logo-icon-bg-color);
+      padding: var(--logo-icon-padding);
+      font-size: var(--logo-icon-font-size);
+      color: var(--logo-icon-color);
+    }
+
+    .logo-name {
+      font-family: var(--logo-name-font-family), sans-serif;
+      font-size: var(--logo-name-font-size);
+      font-weight: var(--logo-name-font-weight);
+      line-height: var(--logo-name-font-line-height);
+      color: var(--logo-name-font-color);
+      white-space: nowrap;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+      margin-bottom: 60px;
+    }
+
+    thead {
+      background: rgba(79, 70, 229, 0.05);
+      border-bottom: 2px solid rgba(79, 70, 229, 0.15);
+    }
+
+    th {
+      padding: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #4F46E5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+      font-size: 14px;
+      color: #312E81;
+    }
+
+    tbody tr:hover { background: rgba(79, 70, 229, 0.03); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .token-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      background: #F5F5F5;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* ===== CODE BLOCK ===== */
+    .code-block {
+      background: #24202D;
+      color: #E8E8E8;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      overflow-y: auto;
+      height: 500px;
+      max-height: 500px;
+      scrollbar-gutter: stable;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 60px;
+    }
+
+    .code-keyword { color: #C99BFF; }
+    .code-string { color: #73D1A9; }
+    .code-comment { color: #7D8590; }
+    .code-function { color: #95C1FF; }
+    .code-type { color: #A8D8EA; }
+
+    /* Implementations Grid */
+    .implementations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .implementations-grid > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .implementations-grid .code-block {
+      margin-bottom: 0;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F5F5; }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #999; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .preview-controls-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .implementations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .canvas-area { padding: 40px 24px; }
+      .story-title { font-size: 40px; }
+      .variant-gallery { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+    }
+  
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo">Spectrum</div>
+      <span class="nav-sep">›</span>
+      <span class="nav-title">Logo</span>
+    </div>
+    <div class="nav-right">
+      <button class="vp-btn active">D</button>
+      <button class="vp-btn">T</button>
+      <button class="vp-btn">M</button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- CANVAS AREA -->
+    <main class="canvas-area">
+      <!-- HEADER -->
+      <div class="story-header">
+        <h1 class="story-title">Logo</h1>
+        <p class="story-desc">
+          The Logo component combines a branded icon with customizable text to create consistent application identity across products. Supports multiple brand themes, languages, and density options.
+        </p>
+      </div>
+
+      <!-- PREVIEW + CONTROLS SECTION -->
+      <div class="preview-controls-grid">
+        <!-- PREVIEW COLUMN -->
+        <div class="preview-column">
+          <div class="section-heading">Preview</div>
+          <div class="preview-section">
+            <div class="bg-switcher">
+              <button class="active" data-bg="light-grey">Light Grey</button>
+              <button data-bg="light">Light</button>
+              <button data-bg="dark">Dark</button>
+            </div>
+            <div class="preview-box light-grey" id="preview-box">
+              <div class="logo-container" id="logo-preview">
+                <div class="logo-icon" id="logo-icon"><i class="fa-solid fa-fire"></i></div>
+                <div class="logo-name" id="logo-name">My Design System</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTROLS COLUMN -->
+        <div class="controls-column">
+          <div class="section-heading">Controls</div>
+          <div class="controls-section">
+            <div class="control-group">
+              <label class="control-label">Variant</label>
+              <select class="control-input" id="variant-control">
+                <option value="with-title" selected>With Title</option>
+                <option value="icon-only">Icon Only</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANTS SECTION -->
+      <h2 class="section-title">Variants</h2>
+      <div class="section-box">
+        <div class="variant-gallery" style="grid-template-columns: repeat(2, 1fr); gap: 32px;">
+          <!-- With Title Variant -->
+          <div class="variant-item">
+            <div class="variant-preview">
+              <div class="logo-container">
+                <div class="logo-icon"><i class="fa-solid fa-fire"></i></div>
+                <div class="logo-name">My Design System</div>
+              </div>
+            </div>
+            <div class="variant-label">With Title</div>
+          </div>
+
+          <!-- Icon Only Variant -->
+          <div class="variant-item">
+            <div class="variant-preview">
+              <div class="logo-icon"><i class="fa-solid fa-fire"></i></div>
+            </div>
+            <div class="variant-label">Icon Only</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESIGN SPECIFICATIONS TABLE -->
+      <h2 class="section-title">Design Specifications</h2>
+      <table id="component-specs-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Token</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="component-specs-tbody">
+          <!-- Rendered dynamically by JavaScript -->
+        </tbody>
+      </table>
+
+      <!-- REACT IMPLEMENTATION & USAGE EXAMPLES -->
+      <div class="implementations-grid">
+        <div>
+          <h2 class="section-title">React Implementation</h2>
+          <div class="code-block">
+<span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">'react'</span>;<br>
+<span class="code-keyword">import</span> <span class="code-string">'./Logo.css'</span>;<br>
+<br>
+<span class="code-keyword">interface</span> <span class="code-type">LogoProps</span> <span class="code-keyword">extends</span> React.HTMLAttributes&lt;HTMLDivElement&gt; {<br>
+&nbsp;&nbsp;brand?: <span class="code-string">'diamond'</span> | <span class="code-string">'amber'</span> | <span class="code-string">'opal'</span>;<br>
+&nbsp;&nbsp;radius?: <span class="code-string">'round'</span> | <span class="code-string">'square'</span> | <span class="code-string">'pills'</span>;<br>
+&nbsp;&nbsp;density?: <span class="code-string">'comfortable'</span> | <span class="code-string">'compact'</span>;<br>
+&nbsp;&nbsp;language?: <span class="code-string">'english'</span> | <span class="code-string">'arabic'</span>;<br>
+&nbsp;&nbsp;icon?: string;<br>
+&nbsp;&nbsp;text?: string;<br>
+}<br>
+<br>
+<span class="code-keyword">export const</span> <span class="code-function">Logo</span> = React.forwardRef&lt;<br>
+&nbsp;&nbsp;HTMLDivElement,<br>
+&nbsp;&nbsp;<span class="code-type">LogoProps</span><br>
+&gt;((<br>
+&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;brand = <span class="code-string">'diamond'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;radius = <span class="code-string">'round'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;density = <span class="code-string">'comfortable'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;language = <span class="code-string">'english'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;icon = <span class="code-string">'fas fa-fire'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text = <span class="code-string">'My Design System'</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;className,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...props<br>
+&nbsp;&nbsp;},<br>
+&nbsp;&nbsp;ref<br>
+) =&gt; {<br>
+&nbsp;&nbsp;<span class="code-keyword">const</span> classes = [<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">`logo--${brand}`</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">`logo--${radius}`</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">`logo--${density}`</span>,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;className<br>
+&nbsp;&nbsp;].filter(Boolean).join(<span class="code-string">' '</span>);<br>
+<br>
+&nbsp;&nbsp;<span class="code-keyword">return</span> (<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">div</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref={ref}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className={classes}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{...props}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">div</span> className=<span class="code-string">"logo__icon"</span>&gt;{icon}&lt;/<span class="code-function">div</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">div</span> className=<span class="code-string">"logo__name"</span>&gt;{text}&lt;/<span class="code-function">div</span>&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="code-function">div</span>&gt;<br>
+&nbsp;&nbsp;);<br>
+});<br>
+<br>
+<span class="code-function">Logo</span>.displayName = <span class="code-string">'Logo'</span>;
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Usage Examples</h2>
+          <div class="code-block">
+<span class="code-comment">// Default Logo with Diamond brand</span><br>
+&lt;<span class="code-function">Logo</span> /&gt;<br>
+<br>
+<span class="code-comment">// Custom brand and radius</span><br>
+&lt;<span class="code-function">Logo</span><br>
+&nbsp;&nbsp;brand=<span class="code-string">"amber"</span><br>
+&nbsp;&nbsp;radius=<span class="code-string">"square"</span><br>
+/&gt;<br>
+<br>
+<span class="code-comment">// Compact density with Arabic</span><br>
+&lt;<span class="code-function">Logo</span><br>
+&nbsp;&nbsp;density=<span class="code-string">"compact"</span><br>
+&nbsp;&nbsp;language=<span class="code-string">"arabic"</span><br>
+/&gt;<br>
+<br>
+<span class="code-comment">// Custom icon and text</span><br>
+&lt;<span class="code-function">Logo</span><br>
+&nbsp;&nbsp;brand=<span class="code-string">"opal"</span><br>
+&nbsp;&nbsp;icon=<span class="code-string">"⭐"</span><br>
+&nbsp;&nbsp;text=<span class="code-string">"My App"</span><br>
+/&gt;
+          </div>
+        </div>
+      </div>
+
+      <!-- GUIDELINES SECTION -->
+      <h2 class="section-title">Usage Guidelines</h2>
+      <div class="section-box">
+        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #312E81;">Best Practices</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+          <li style="margin-bottom: 8px;">✓ Use consistent branding across all app instances</li>
+          <li style="margin-bottom: 8px;">✓ Maintain proper spacing around the Logo component</li>
+          <li style="margin-bottom: 8px;">✓ Pair with appropriate typography for context</li>
+          <li style="margin-bottom: 8px;">✓ Test icon visibility on all background colors</li>
+          <li style="margin-bottom: 8px;">✓ Use Font Awesome icons for consistency</li>
+        </ul>
+
+        <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; margin-top: 24px; color: #312E81;">Accessibility</h3>
+        <ul style="list-style: none; padding: 0; line-height: 1.8;">
+          <li style="margin-bottom: 8px;">✓ Maintain minimum 4.5:1 contrast between icon and background</li>
+          <li style="margin-bottom: 8px;">✓ Ensure text remains readable at all densities</li>
+          <li style="margin-bottom: 8px;">✓ Support directional changes for RTL languages</li>
+          <li style="margin-bottom: 8px;">✓ Provide meaningful alt text if used as an image</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+
+  <!-- SIDEBAR LOADER -->
+  <script src="../assets/sidebar-loader.js"></script>
+
+  <!-- LOGO-SPECIFIC JAVASCRIPT -->
+  <script>
+    // Get control elements
+    const previewBox = document.getElementById('preview-box');
+    const logoPreview = document.getElementById('logo-preview');
+    const logoIcon = document.getElementById('logo-icon');
+    const logoName = document.getElementById('logo-name');
+    const variantControl = document.getElementById('variant-control');
+
+    // Background color mapping
+    const bgColorMap = {
+      light: 'white',
+      'light-grey': 'rgba(79, 70, 229, 0.03)',
+      dark: '#1F2937'
+    };
+
+    // Color for With Title variant
+    const defaultColors = { bg: '#9166FF', text: 'white', nameColor: '#242638' };
+
+    function updatePreview() {
+      const variant = variantControl.value;
+
+      if (variant === 'with-title') {
+        // Show both icon and title
+        logoIcon.style.display = 'flex';
+        logoName.style.display = 'block';
+
+        logoPreview.style.setProperty('--logo-icon-bg-color', defaultColors.bg);
+        logoPreview.style.setProperty('--logo-icon-color', defaultColors.text);
+        logoPreview.style.setProperty('--logo-icon-border-radius', '12px');
+        logoPreview.style.setProperty('--logo-icon-padding', '12px');
+        logoPreview.style.setProperty('--logo-gap', '16px');
+        logoPreview.style.setProperty('--logo-name-font-color', defaultColors.nameColor);
+        logoName.textContent = 'My Design System';
+      } else {
+        // Show only icon
+        logoIcon.style.display = 'flex';
+        logoName.style.display = 'none';
+
+        logoPreview.style.setProperty('--logo-icon-bg-color', defaultColors.bg);
+        logoPreview.style.setProperty('--logo-icon-color', defaultColors.text);
+        logoPreview.style.setProperty('--logo-icon-border-radius', '12px');
+        logoPreview.style.setProperty('--logo-icon-padding', '12px');
+      }
+    }
+
+    function updateComponentSpecs() {
+      const variant = variantControl.value;
+      const tbody = document.getElementById('component-specs-tbody');
+
+      let specs_with_values = [];
+
+      if (variant === 'with-title') {
+        specs_with_values = [
+          { property: 'Icon Background Color', token: 'var(--logo-icon-bg-color)', value: defaultColors.bg },
+          { property: 'Icon Color', token: 'var(--logo-icon-color)', value: defaultColors.text },
+          { property: 'Icon Border Radius', token: 'var(--logo-icon-border-radius)', value: '12px' },
+          { property: 'Icon Padding', token: 'var(--logo-icon-padding)', value: '12px' },
+          { property: 'Icon Font Size', token: 'var(--logo-icon-font-size)', value: '20px' },
+          { property: 'Gap', token: 'var(--logo-gap)', value: '16px' },
+          { property: 'Title Color', token: 'var(--logo-name-font-color)', value: defaultColors.nameColor },
+          { property: 'Title Font Size', token: 'var(--logo-name-font-size)', value: '16px' },
+          { property: 'Title Font Weight', token: 'var(--logo-name-font-weight)', value: '700' },
+          { property: 'Title Font Family', token: 'var(--logo-name-font-family)', value: 'Inter' }
+        ];
+      } else {
+        specs_with_values = [
+          { property: 'Icon Background Color', token: 'var(--logo-icon-bg-color)', value: defaultColors.bg },
+          { property: 'Icon Color', token: 'var(--logo-icon-color)', value: defaultColors.text },
+          { property: 'Icon Border Radius', token: 'var(--logo-icon-border-radius)', value: '12px' },
+          { property: 'Icon Padding', token: 'var(--logo-icon-padding)', value: '12px' },
+          { property: 'Icon Font Size', token: 'var(--logo-icon-font-size)', value: '20px' }
+        ];
+      }
+
+      tbody.innerHTML = specs_with_values.map(spec => `
+        <tr>
+          <td>${spec.property}</td>
+          <td><span class="token-code">${spec.token}</span></td>
+          <td>${spec.value}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Event listener
+    variantControl.addEventListener('change', () => {
+      updatePreview();
+      updateComponentSpecs();
+    });
+
+    // Background switcher
+    document.querySelectorAll('.bg-switcher button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.bg-switcher button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const bgColor = bgColorMap[e.target.dataset.bg];
+        previewBox.className = `preview-box ${e.target.dataset.bg}`;
+        previewBox.style.backgroundColor = bgColor;
+      });
+    });
+
+    // Initialize
+    updatePreview();
+    updateComponentSpecs();
+  </script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Button - Design System</title>
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/navbar-sidebar.css">
+  <link rel="stylesheet" href="../assets/component-layout.css">
+  <style>
+    .radio-example {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .radio-example label {
+      font-size: 14px;
+      color: #312E81;
+      cursor: pointer;
+    }
+
+    /* ===== SECTION BOXES ===== */
+    .section-box {
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 60px;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+    }
+
+    /* ===== VARIANT GALLERY ===== */
+    .variant-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 24px;
+    }
+
+    .variant-card {
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+    }
+
+    .variant-label {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+      margin-bottom: 60px;
+    }
+
+    thead {
+      background: rgba(79, 70, 229, 0.05);
+      border-bottom: 2px solid rgba(79, 70, 229, 0.15);
+    }
+
+    th {
+      padding: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #4F46E5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+      font-size: 14px;
+      color: #312E81;
+    }
+
+    tbody tr:hover { background: rgba(79, 70, 229, 0.03); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .token-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      background: #F5F5F5;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* ===== CODE BLOCK ===== */
+    .code-block {
+      background: #24202D;
+      color: #E8E8E8;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      overflow-y: auto;
+      height: 500px;
+      max-height: 500px;
+      scrollbar-gutter: stable;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 60px;
+    }
+
+    .code-keyword { color: #C99BFF; }
+    .code-string { color: #73D1A9; }
+    .code-comment { color: #7D8590; }
+    .code-function { color: #95C1FF; }
+    .code-type { color: #A8D8EA; }
+
+    /* Implementations Grid */
+    .implementations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .implementations-grid > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .implementations-grid .code-block {
+      margin-bottom: 0;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F5F5; }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #999; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .preview-controls-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .canvas-area { padding: 40px 24px; }
+      .story-title { font-size: 40px; }
+      .variant-gallery { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    }
+  
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo">Spectrum</div>
+      <span class="nav-sep">›</span>
+      <span class="nav-title">Radio Button</span>
+    </div>
+    <div class="nav-right">
+      <button class="vp-btn active">D</button>
+      <button class="vp-btn">T</button>
+      <button class="vp-btn">M</button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- CANVAS AREA -->
+    <main class="canvas-area">
+      <!-- HEADER -->
+      <div class="story-header">
+        <h1 class="story-title">Radio Button</h1>
+        <p class="story-desc">
+          A simple and accessible radio button component for selecting a single option from a group. Supports both selected (active) and unselected (default) states with visual feedback.
+        </p>
+      </div>
+
+      <!-- PREVIEW SECTION -->
+      <div class="preview-controls-grid">
+        <div class="preview-column">
+          <div class="section-heading">Preview</div>
+          <div class="preview-section">
+            <div class="bg-switcher">
+              <button class="active" data-bg="light-grey">Light Grey</button>
+              <button data-bg="light">Light</button>
+              <button data-bg="dark">Dark</button>
+            </div>
+            <div class="preview-box light-grey" id="preview-box">
+              <div class="radio-example">
+                <input type="radio" id="preview-radio" style="width: 16px; height: 16px; cursor: pointer; accent-color: var(--radio-off-bg-color);" />
+                <label for="preview-radio" id="preview-label">Select an option</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls-column">
+          <div class="section-heading">Controls</div>
+          <div class="section-box" style="flex: 1; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <label style="display: block; font-size: 12px; font-weight: 600; color: #312E81; margin-bottom: 8px;">State</label>
+              <select id="state-select" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 6px; font-size: 12px; font-family: 'Inter', sans-serif; cursor: pointer;">
+                <option value="default">Default</option>
+                <option value="active">Active</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; font-size: 12px; font-weight: 600; color: #312E81; margin-bottom: 8px;">Label Text</label>
+              <input type="text" id="label-input" value="Select an option" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.2); border-radius: 6px; font-size: 12px; font-family: 'Inter', sans-serif;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANT GALLERY -->
+      <h2 class="section-title">Component States</h2>
+      <div class="section-box">
+        <div class="variant-gallery">
+        <div class="variant-item">
+          <input type="radio" id="variant-default" name="variant-state" style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--radio-off-bg-color);" />
+          <div class="variant-label">Default</div>
+        </div>
+        <div class="variant-item">
+          <input type="radio" id="variant-active" name="variant-state" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: var(--radio-on-bg-color);" />
+          <div class="variant-label">Active</div>
+        </div>
+      </div>
+      </div>
+
+      <!-- DESIGN SPECIFICATIONS TABLE -->
+      <h2 class="section-title">Design Specifications</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Token</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3" style="background: rgba(79, 70, 229, 0.05); font-weight: 600; padding-top: 20px; padding-bottom: 20px;">Default State (Unselected)</td>
+          </tr>
+          <tr>
+            <td>Background Color</td>
+            <td><span class="token-code">var(--radio-off-bg-color)</span></td>
+            <td>#acadb2</td>
+          </tr>
+          <tr>
+            <td>Border Color</td>
+            <td><span class="token-code">var(--radio-off-border-color)</span></td>
+            <td>#acadb2</td>
+          </tr>
+          <tr>
+            <td colspan="3" style="background: rgba(79, 70, 229, 0.05); font-weight: 600; padding-top: 20px; padding-bottom: 20px;">Active State (Selected)</td>
+          </tr>
+          <tr>
+            <td>Background Color</td>
+            <td><span class="token-code">var(--radio-on-bg-color)</span></td>
+            <td>#916dff</td>
+          </tr>
+          <tr>
+            <td>Border Color</td>
+            <td><span class="token-code">var(--radio-on-border-color)</span></td>
+            <td>#916dff</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- REACT IMPLEMENTATION & USAGE EXAMPLES -->
+      <div class="implementations-grid">
+        <div>
+          <h2 class="section-title">React Implementation</h2>
+          <div class="code-block">
+          <span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">'react'</span>;<br>
+          <span class="code-keyword">import</span> <span class="code-string">'./RadioButton.css'</span>;<br>
+          <br>
+          <span class="code-keyword">interface</span> <span class="code-type">RadioButtonProps</span> <span class="code-keyword">extends</span> React.InputHTMLAttributes&lt;HTMLInputElement&gt; {<br>
+          &nbsp;&nbsp;label?: string;<br>
+          &nbsp;&nbsp;disabled?: boolean;<br>
+          }<br>
+          <br>
+          <span class="code-keyword">export const</span> <span class="code-function">RadioButton</span> = React.forwardRef&lt;<br>
+          &nbsp;&nbsp;HTMLInputElement,<br>
+          &nbsp;&nbsp;<span class="code-type">RadioButtonProps</span><br>
+          &gt;(<br>
+          &nbsp;&nbsp;({ label, disabled, ...props }, ref) =&gt; {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">input</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref={ref}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type=<span class="code-string">"radio"</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled={disabled}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className=<span class="code-string">"radio-button"</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{...props}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{label &amp;&amp; &lt;<span class="code-function">label</span>&gt;{label}&lt;/<span class="code-function">label</span>&gt;}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;);<br>
+          &nbsp;&nbsp;}<br>
+          );<br>
+          <br>
+          <span class="code-function">RadioButton</span>.displayName = <span class="code-string">'RadioButton'</span>;
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Usage Examples</h2>
+          <div class="code-block">
+          <span class="code-comment">// Basic Radio Button</span><br>
+          &lt;<span class="code-function">RadioButton</span> name=<span class="code-string">"option"</span> value=<span class="code-string">"a"</span> /&gt;<br>
+          <br>
+          <span class="code-comment">// With Label</span><br>
+          &lt;<span class="code-function">RadioButton</span><br>
+          &nbsp;&nbsp;name=<span class="code-string">"option"</span><br>
+          &nbsp;&nbsp;value=<span class="code-string">"a"</span><br>
+          &nbsp;&nbsp;label=<span class="code-string">"Option A"</span><br>
+          /&gt;<br>
+          <br>
+          <span class="code-comment">// Checked and Disabled</span><br>
+          &lt;<span class="code-function">RadioButton</span><br>
+          &nbsp;&nbsp;name=<span class="code-string">"option"</span><br>
+          &nbsp;&nbsp;value=<span class="code-string">"b"</span><br>
+          &nbsp;&nbsp;label=<span class="code-string">"Option B"</span><br>
+          &nbsp;&nbsp;checked={true}<br>
+          &nbsp;&nbsp;disabled={false}<br>
+          /&gt;
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- SIDEBAR LOADER -->
+  <script src="../assets/sidebar-loader.js"></script>
+
+  <!-- BACKGROUND SWITCHER & CONTROLS SCRIPT -->
+  <script>
+    const previewBox = document.getElementById('preview-box');
+    const bgColorMap = {
+      light: 'white',
+      'light-grey': 'rgba(79, 70, 229, 0.03)',
+      dark: '#1F2937'
+    };
+
+    // Background switcher
+    document.querySelectorAll('.bg-switcher button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.bg-switcher button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const bgColor = bgColorMap[e.target.dataset.bg];
+        previewBox.className = `preview-box ${e.target.dataset.bg}`;
+        previewBox.style.backgroundColor = bgColor;
+      });
+    });
+
+    // Controls
+    const stateSelect = document.getElementById('state-select');
+    const radio = document.getElementById('preview-radio');
+    const labelInput = document.getElementById('label-input');
+    const previewLabel = document.getElementById('preview-label');
+
+    function updateRadioStyle() {
+      // Update accent color based on actual checked state
+      if (radio.checked) {
+        radio.style.accentColor = 'var(--radio-on-bg-color)';
+        stateSelect.value = 'active';
+      } else {
+        radio.style.accentColor = 'var(--radio-off-bg-color)';
+        stateSelect.value = 'default';
+      }
+    }
+
+    function updatePreviewFromSelect() {
+      const isActive = stateSelect.value === 'active';
+      radio.checked = isActive;
+      updateRadioStyle();
+    }
+
+    // Event listeners
+    stateSelect.addEventListener('change', updatePreviewFromSelect);
+    radio.addEventListener('change', updateRadioStyle);
+    labelInput.addEventListener('input', (e) => {
+      previewLabel.textContent = e.target.value;
+    });
+
+    // Component States variant radio buttons
+    const variantDefault = document.getElementById('variant-default');
+    const variantActive = document.getElementById('variant-active');
+
+    function updateVariantRadioStyles() {
+      variantDefault.style.accentColor = variantDefault.checked ? 'var(--radio-on-bg-color)' : 'var(--radio-off-bg-color)';
+      variantActive.style.accentColor = variantActive.checked ? 'var(--radio-on-bg-color)' : 'var(--radio-off-bg-color)';
+    }
+
+    variantDefault.addEventListener('change', updateVariantRadioStyles);
+    variantActive.addEventListener('change', updateVariantRadioStyles);
+  </script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabs - Design System</title>
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/navbar-sidebar.css">
+  <link rel="stylesheet" href="../assets/component-layout.css">
+  <style>
+    /* ===== TABS COMPONENT STYLES ===== */
+    .tabs-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--tap-gap);
+      background-color: var(--tap-bg-color);
+      padding: var(--tap-padding);
+      border-radius: var(--tap-border-radius);
+      width: fit-content;
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: var(--tap-item-padding-gap);
+      padding: var(--tap-item-padding-y) var(--tap-item-padding-x);
+      background-color: var(--tap-item-default-bg-color);
+      border-radius: var(--tap-item-border-radius);
+      border: none;
+      cursor: pointer;
+      transition: all 200ms ease;
+      font-family: var(--tap-item-label-font-family);
+      font-size: var(--tap-item-label-font-size);
+      font-weight: var(--tap-item-label-font-weight);
+      line-height: var(--tap-item-label-font-line-height);
+      color: var(--tap-item-default-font-color);
+      white-space: nowrap;
+    }
+
+    .tab-item:hover {
+      background-color: var(--tap-item-hover-bg-color);
+      color: var(--tap-item-hover-font-color);
+    }
+
+    .tab-item.tab-item--active {
+      background-color: var(--tap-item-active-bg-color);
+      color: var(--tap-item-active-font-color);
+    }
+
+    .tab-item-icon {
+      font-size: var(--tap-item-icon-font-size);
+      line-height: var(--tap-item-icon-font-line-height);
+      color: var(--tap-item-default-icon-color);
+    }
+
+    .tab-item:hover .tab-item-icon {
+      color: var(--tap-item-hover-icon-color);
+    }
+
+    .tab-item.tab-item--active .tab-item-icon {
+      color: var(--tap-item-active-icon-color);
+    }
+
+    /* ===== SECTION BOXES ===== */
+    .section-box {
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 60px;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+    }
+
+    /* ===== VARIANT GALLERY ===== */
+    .variant-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .variant-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(79, 70, 229, 0.03);
+    }
+
+    .variant-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 80px;
+    }
+
+    .variant-label {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* ===== TABLES ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(79, 70, 229, 0.05);
+      margin-bottom: 60px;
+    }
+
+    thead {
+      background: rgba(79, 70, 229, 0.05);
+      border-bottom: 2px solid rgba(99, 102, 241, 0.15);
+    }
+
+    th {
+      padding: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #4F46E5;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+      font-size: 14px;
+      color: #312E81;
+    }
+
+    tbody tr:hover { background: rgba(79, 70, 229, 0.03); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .token-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #666;
+      background: #F5F5F5;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+
+    /* ===== CODE BLOCK ===== */
+    .code-block {
+      background: #24202D;
+      color: #E8E8E8;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      overflow-y: auto;
+      height: 500px;
+      max-height: 500px;
+      scrollbar-gutter: stable;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 60px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .code-keyword { color: #C99BFF; }
+    .code-string { color: #73D1A9; }
+    .code-comment { color: #7D8590; }
+    .code-function { color: #95C1FF; }
+    .code-type { color: #A8D8EA; }
+
+    /* Implementations Grid */
+    .implementations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .implementations-grid > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .implementations-grid .code-block {
+      margin-bottom: 0;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .implementations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F5F5; }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #999; }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo">Spectrum</div>
+      <span class="nav-sep">›</span>
+      <span class="nav-title">Tabs</span>
+    </div>
+    <div class="nav-right">
+      <button class="vp-btn active">D</button>
+      <button class="vp-btn">T</button>
+      <button class="vp-btn">M</button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- CANVAS AREA -->
+    <main class="canvas-area">
+      <!-- HEADER -->
+      <div class="story-header">
+        <h1 class="story-title">Tabs</h1>
+        <p class="story-desc">
+          Tab navigation component for organizing content into separate views. Contains multiple tab items with support for default, hover, and active states. Supports icons and labels for each tab.
+        </p>
+      </div>
+
+      <!-- PREVIEW + CONTROLS SECTION -->
+      <div class="preview-controls-grid">
+        <!-- PREVIEW COLUMN -->
+        <div class="preview-column">
+          <div class="section-heading">Preview</div>
+          <div class="preview-section">
+            <div class="bg-switcher">
+              <button class="active" data-bg="light-grey">Light Grey</button>
+              <button data-bg="light">Light</button>
+              <button data-bg="dark">Dark</button>
+            </div>
+            <div class="preview-box light-grey" id="preview-box">
+              <div class="tabs-container" id="tabs-preview">
+                <button class="tab-item tab-item--active" id="tab-1">
+                  <i class="tab-item-icon fa-solid fa-home"></i>
+                  <span id="tab-1-label">Home</span>
+                </button>
+                <button class="tab-item" id="tab-2">
+                  <i class="tab-item-icon fa-solid fa-user"></i>
+                  <span id="tab-2-label">Profile</span>
+                </button>
+                <button class="tab-item" id="tab-3">
+                  <i class="tab-item-icon fa-solid fa-envelope"></i>
+                  <span id="tab-3-label">Messages</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTROLS COLUMN -->
+        <div class="controls-column">
+          <div class="section-heading">Controls</div>
+          <div class="controls-section">
+            <div class="control-group">
+              <label class="control-label">Active Tab</label>
+              <select id="active-tab-select" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px; cursor: pointer;">
+                <option value="1" selected>Tab 1 (Home)</option>
+                <option value="2">Tab 2 (Profile)</option>
+                <option value="3">Tab 3 (Messages)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Show Icons</label>
+              <select id="show-icons-select" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px; cursor: pointer;">
+                <option value="show" selected>Show</option>
+                <option value="hide">Hide</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Tab 1 Label</label>
+              <input type="text" id="tab-1-label-input" value="Home" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px;">
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Tab 2 Label</label>
+              <input type="text" id="tab-2-label-input" value="Profile" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px;">
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Tab 3 Label</label>
+              <input type="text" id="tab-3-label-input" value="Messages" style="width: 100%; padding: 8px; border: 1px solid rgba(99, 102, 241, 0.15); border-radius: 6px; font-size: 13px;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANTS SECTION -->
+      <h2 class="section-title">Variants</h2>
+      <div class="section-box">
+        <div class="variant-gallery">
+          <!-- Default State -->
+          <div class="variant-item">
+            <div class="variant-preview">
+              <div class="tabs-container">
+                <button class="tab-item">
+                  <i class="tab-item-icon fa-solid fa-home"></i>
+                  <span>Home</span>
+                </button>
+                <button class="tab-item">
+                  <i class="tab-item-icon fa-solid fa-user"></i>
+                  <span>Profile</span>
+                </button>
+                <button class="tab-item">
+                  <i class="tab-item-icon fa-solid fa-envelope"></i>
+                  <span>Messages</span>
+                </button>
+              </div>
+            </div>
+            <div class="variant-label">Default State</div>
+          </div>
+
+          <!-- Active State -->
+          <div class="variant-item">
+            <div class="variant-preview">
+              <div class="tabs-container">
+                <button class="tab-item tab-item--active">
+                  <i class="tab-item-icon fa-solid fa-home"></i>
+                  <span>Home</span>
+                </button>
+                <button class="tab-item">
+                  <i class="tab-item-icon fa-solid fa-user"></i>
+                  <span>Profile</span>
+                </button>
+                <button class="tab-item">
+                  <i class="tab-item-icon fa-solid fa-envelope"></i>
+                  <span>Messages</span>
+                </button>
+              </div>
+            </div>
+            <div class="variant-label">Active Tab</div>
+          </div>
+
+          <!-- Without Icons -->
+          <div class="variant-item">
+            <div class="variant-preview">
+              <div class="tabs-container">
+                <button class="tab-item tab-item--active">
+                  <span>Home</span>
+                </button>
+                <button class="tab-item">
+                  <span>Profile</span>
+                </button>
+                <button class="tab-item">
+                  <span>Messages</span>
+                </button>
+              </div>
+            </div>
+            <div class="variant-label">Without Icons</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESIGN SPECIFICATIONS TABLE -->
+      <h2 class="section-title">Design Specifications</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Token Name</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="3"><strong>Tabs Container:</strong></td>
+          </tr>
+          <tr>
+            <td>Background Color</td>
+            <td><span class="token-code">--tap-bg-color</span></td>
+            <td>#acadb2</td>
+          </tr>
+          <tr>
+            <td>Padding</td>
+            <td><span class="token-code">--tap-padding</span></td>
+            <td>4px</td>
+          </tr>
+          <tr>
+            <td>Gap</td>
+            <td><span class="token-code">--tap-gap</span></td>
+            <td>20px</td>
+          </tr>
+          <tr>
+            <td>Border Radius</td>
+            <td><span class="token-code">--tap-border-radius</span></td>
+            <td>8px</td>
+          </tr>
+          <tr>
+            <td colspan="3"><strong>Tab Item - Default State:</strong></td>
+          </tr>
+          <tr>
+            <td>Background Color</td>
+            <td><span class="token-code">--tap-item-default-bg-color</span></td>
+            <td>#acadb2</td>
+          </tr>
+          <tr>
+            <td>Font Color</td>
+            <td><span class="token-code">--tap-item-default-font-color</span></td>
+            <td>#24242c</td>
+          </tr>
+          <tr>
+            <td>Icon Color</td>
+            <td><span class="token-code">--tap-item-default-icon-color</span></td>
+            <td>#24242c</td>
+          </tr>
+          <tr>
+            <td colspan="3"><strong>Tab Item - Hover State:</strong></td>
+          </tr>
+          <tr>
+            <td>Background Color</td>
+            <td><span class="token-code">--tap-item-hover-bg-color</span></td>
+            <td>#acadb2</td>
+          </tr>
+          <tr>
+            <td>Font Color</td>
+            <td><span class="token-code">--tap-item-hover-font-color</span></td>
+            <td>#794dff</td>
+          </tr>
+          <tr>
+            <td>Icon Color</td>
+            <td><span class="token-code">--tap-item-hover-icon-color</span></td>
+            <td>#794dff</td>
+          </tr>
+          <tr>
+            <td colspan="3"><strong>Tab Item - Active State:</strong></td>
+          </tr>
+          <tr>
+            <td>Background Color</td>
+            <td><span class="token-code">--tap-item-active-bg-color</span></td>
+            <td>#6741d9</td>
+          </tr>
+          <tr>
+            <td>Font Color</td>
+            <td><span class="token-code">--tap-item-active-font-color</span></td>
+            <td>#f2edff</td>
+          </tr>
+          <tr>
+            <td>Icon Color</td>
+            <td><span class="token-code">--tap-item-active-icon-color</span></td>
+            <td>#f2edff</td>
+          </tr>
+          <tr>
+            <td colspan="3"><strong>Tab Item - Styling:</strong></td>
+          </tr>
+          <tr>
+            <td>Padding X</td>
+            <td><span class="token-code">--tap-item-padding-x</span></td>
+            <td>12px</td>
+          </tr>
+          <tr>
+            <td>Padding Y</td>
+            <td><span class="token-code">--tap-item-padding-y</span></td>
+            <td>8px</td>
+          </tr>
+          <tr>
+            <td>Gap (Icon + Label)</td>
+            <td><span class="token-code">--tap-item-padding-gap</span></td>
+            <td>8px</td>
+          </tr>
+          <tr>
+            <td>Border Radius</td>
+            <td><span class="token-code">--tap-item-border-radius</span></td>
+            <td>4px</td>
+          </tr>
+          <tr>
+            <td colspan="3"><strong>Tab Item - Typography:</strong></td>
+          </tr>
+          <tr>
+            <td>Font Family</td>
+            <td><span class="token-code">--tap-item-label-font-family</span></td>
+            <td>Inter</td>
+          </tr>
+          <tr>
+            <td>Font Weight</td>
+            <td><span class="token-code">--tap-item-label-font-weight</span></td>
+            <td>400</td>
+          </tr>
+          <tr>
+            <td>Font Size</td>
+            <td><span class="token-code">--tap-item-label-font-size</span></td>
+            <td>16px</td>
+          </tr>
+          <tr>
+            <td>Line Height</td>
+            <td><span class="token-code">--tap-item-label-font-line-height</span></td>
+            <td>20px</td>
+          </tr>
+          <tr>
+            <td colspan="3"><strong>Tab Item - Icon:</strong></td>
+          </tr>
+          <tr>
+            <td>Icon Font Size</td>
+            <td><span class="token-code">--tap-item-icon-font-size</span></td>
+            <td>12px</td>
+          </tr>
+          <tr>
+            <td>Icon Line Height</td>
+            <td><span class="token-code">--tap-item-icon-font-line-height</span></td>
+            <td>15px</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- REACT IMPLEMENTATION & USAGE EXAMPLES -->
+      <div class="implementations-grid">
+        <div>
+          <h2 class="section-title">React Implementation</h2>
+          <div class="code-block">
+          <span class="code-keyword">import</span> React, { useState } <span class="code-keyword">from</span> <span class="code-string">'react'</span>;<br>
+          <span class="code-keyword">import</span> <span class="code-string">'./Tabs.css'</span>;<br>
+          <br>
+          <span class="code-keyword">interface</span> <span class="code-type">TabItem</span> {<br>
+          &nbsp;&nbsp;id: string;<br>
+          &nbsp;&nbsp;label: string;<br>
+          &nbsp;&nbsp;icon?: string;<br>
+          &nbsp;&nbsp;content?: React.ReactNode;<br>
+          }<br>
+          <br>
+          <span class="code-keyword">interface</span> <span class="code-type">TabsProps</span> {<br>
+          &nbsp;&nbsp;items: <span class="code-type">TabItem</span>[];<br>
+          &nbsp;&nbsp;defaultActiveId?: string;<br>
+          &nbsp;&nbsp;showIcons?: boolean;<br>
+          &nbsp;&nbsp;onTabChange?: (id: string) => <span class="code-keyword">void</span>;<br>
+          }<br>
+          <br>
+          <span class="code-keyword">export const</span> <span class="code-function">Tabs</span> = React.forwardRef&lt;<br>
+          &nbsp;&nbsp;HTMLDivElement,<br>
+          &nbsp;&nbsp;<span class="code-type">TabsProps</span><br>
+          &gt;(({ items, defaultActiveId, showIcons = true, onTabChange }, ref) => {<br>
+          &nbsp;&nbsp;<span class="code-keyword">const</span> [activeId, setActiveId] = useState(defaultActiveId || items[0]?.id);<br>
+          <br>
+          &nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-function">handleTabClick</span> = (id: string) => {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;setActiveId(id);<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;onTabChange?.(id);<br>
+          &nbsp;&nbsp;};<br>
+          <br>
+          &nbsp;&nbsp;<span class="code-keyword">return</span> (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">div</span> ref={ref} className=<span class="code-string">"tabs-container"</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{items.map((item) => (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">button</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key={item.id}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className={`tab-item ${activeId === item.id ? 'tab-item--active' : ''}`}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onClick={() => <span class="code-function">handleTabClick</span>(item.id)}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{showIcons && item.icon && (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">i</span> className={`tab-item-icon ${item.icon}`} /&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-function">span</span>&gt;{item.label}&lt;/<span class="code-function">span</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="code-function">button</span>&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;))}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="code-function">div</span>&gt;<br>
+          &nbsp;&nbsp;);<br>
+          });<br>
+          <br>
+          <span class="code-function">Tabs</span>.displayName = <span class="code-string">'Tabs'</span>;
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Usage Examples</h2>
+          <div class="code-block">
+          <span class="code-comment">// Basic Tabs with 3 items</span><br>
+          <span class="code-keyword">const</span> tabs = [<br>
+          &nbsp;&nbsp;{ id: <span class="code-string">'home'</span>, label: <span class="code-string">'Home'</span>, icon: <span class="code-string">'fa-solid fa-home'</span> },<br>
+          &nbsp;&nbsp;{ id: <span class="code-string">'profile'</span>, label: <span class="code-string">'Profile'</span>, icon: <span class="code-string">'fa-solid fa-user'</span> },<br>
+          &nbsp;&nbsp;{ id: <span class="code-string">'messages'</span>, label: <span class="code-string">'Messages'</span>, icon: <span class="code-string">'fa-solid fa-envelope'</span> }<br>
+          ];<br>
+          <br>
+          &lt;<span class="code-function">Tabs</span> items={tabs} /&gt;<br>
+          <br>
+          <span class="code-comment">// Without icons</span><br>
+          &lt;<span class="code-function">Tabs</span><br>
+          &nbsp;&nbsp;items={tabs}<br>
+          &nbsp;&nbsp;showIcons={false}<br>
+          /&gt;<br>
+          <br>
+          <span class="code-comment">// With default active tab and change handler</span><br>
+          &lt;<span class="code-function">Tabs</span><br>
+          &nbsp;&nbsp;items={tabs}<br>
+          &nbsp;&nbsp;defaultActiveId=<span class="code-string">"profile"</span><br>
+          &nbsp;&nbsp;onTabChange={(id) => console.log(id)}<br>
+          /&gt;
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- SIDEBAR LOADER -->
+  <script src="../assets/sidebar-loader.js"></script>
+
+  <!-- TABS-SPECIFIC JAVASCRIPT -->
+  <script>
+    // Background color mapping
+    const bgColorMap = {
+      light: 'white',
+      'light-grey': 'rgba(79, 70, 229, 0.03)',
+      dark: '#1F2937'
+    };
+
+    // Background switcher
+    document.querySelectorAll('.bg-switcher button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.bg-switcher button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const bgColor = bgColorMap[e.target.dataset.bg];
+        const previewBox = document.getElementById('preview-box');
+        previewBox.className = `preview-box ${e.target.dataset.bg}`;
+        previewBox.style.backgroundColor = bgColor;
+      });
+    });
+
+    // Active Tab Control
+    const activeTabSelect = document.getElementById('active-tab-select');
+    activeTabSelect.addEventListener('change', (e) => {
+      const activeTabId = e.target.value;
+      const tabItems = document.querySelectorAll('#tabs-preview .tab-item');
+      tabItems.forEach((item, index) => {
+        item.classList.remove('tab-item--active');
+        if ((index + 1).toString() === activeTabId) {
+          item.classList.add('tab-item--active');
+        }
+      });
+    });
+
+    // Show Icons Control
+    const showIconsSelect = document.getElementById('show-icons-select');
+    showIconsSelect.addEventListener('change', (e) => {
+      const tabIcons = document.querySelectorAll('#tabs-preview .tab-item-icon');
+      tabIcons.forEach(icon => {
+        icon.style.display = e.target.value === 'show' ? 'inline' : 'none';
+      });
+    });
+
+    // Tab Label Controls
+    const tabLabelInputs = [
+      { inputId: 'tab-1-label-input', labelId: 'tab-1-label' },
+      { inputId: 'tab-2-label-input', labelId: 'tab-2-label' },
+      { inputId: 'tab-3-label-input', labelId: 'tab-3-label' }
+    ];
+
+    tabLabelInputs.forEach(({ inputId, labelId }) => {
+      const input = document.getElementById(inputId);
+      input.addEventListener('input', (e) => {
+        document.getElementById(labelId).textContent = e.target.value;
+      });
+    });
+
+    // Tab Item Click Handlers
+    const tabItems = document.querySelectorAll('#tabs-preview .tab-item');
+    tabItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabItems.forEach(tab => tab.classList.remove('tab-item--active'));
+        // Add active class to clicked tab
+        item.classList.add('tab-item--active');
+        // Update the active tab select dropdown
+        activeTabSelect.value = (index + 1).toString();
+      });
+    });
+  </script>
+</body>
+</html>

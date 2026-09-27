@@ -1,0 +1,31 @@
+.radio-example {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.radio-example label {
+  font-size: 14px;
+  color: var(--radio-default-font-color);
+  cursor: pointer;
+}
+
+.radio-input {
+  cursor: pointer;
+  accent-color: var(--radio-on-bg-color);
+}
+
+.radio-input:hover {
+  opacity: 0.8;
+}
+
+.radio-input:focus-visible {
+  outline: 2px solid var(--radio-on-bg-color);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .radio-example {
+    gap: 8px;
+  }
+}

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[COMPONENT_NAME] - Design System</title>
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/navbar-sidebar.css">
+  <link rel="stylesheet" href="../assets/component-layout.css">
+  <style>
+    /* ===== [COMPONENT_NAME] STYLES ===== */
+    /* Add component-specific styles here */
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo">Spectrum</div>
+      <span class="nav-sep">›</span>
+      <span class="nav-title">[COMPONENT_NAME]</span>
+    </div>
+    <div class="nav-right">
+      <button class="vp-btn active">D</button>
+      <button class="vp-btn">T</button>
+      <button class="vp-btn">M</button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- CANVAS AREA -->
+    <main class="canvas-area">
+      <!-- HEADER -->
+      <div class="story-header">
+        <h1 class="story-title">[COMPONENT_NAME]</h1>
+        <p class="story-desc">
+          [DESCRIPTION: Brief description of what this component is and when to use it.
+          Should be 1-2 sentences explaining the purpose and primary use case.]
+        </p>
+      </div>
+
+      <!-- PREVIEW + CONTROLS SECTION -->
+      <div class="preview-controls-grid">
+        <!-- PREVIEW COLUMN -->
+        <div class="preview-column">
+          <div class="section-heading">Preview</div>
+          <div class="preview-section">
+            <div class="bg-switcher">
+              <button class="active" data-bg="light-grey">Light Grey</button>
+              <button data-bg="light">Light</button>
+              <button data-bg="dark">Dark</button>
+            </div>
+            <div class="preview-box light-grey" id="preview-box">
+              <!-- [CUSTOMIZE] Insert default component preview here -->
+              <!-- Example: <button class="btn btn--primary-filled-medium">[COMPONENT_NAME]</button> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTROLS COLUMN -->
+        <div class="controls-column">
+          <div class="section-heading">Controls</div>
+          <div class="controls-section">
+            <!-- [CUSTOMIZE] Add control groups for each variant/property -->
+            <!-- Example: -->
+            <div class="control-group">
+              <label class="control-label">Variant</label>
+              <select class="control-input" id="variant-control">
+                <option value="primary">Primary</option>
+                <option value="secondary">Secondary</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Size</label>
+              <select class="control-input" id="size-control">
+                <option value="small">Small</option>
+                <option value="medium" selected>Medium</option>
+                <option value="large">Large</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">State</label>
+              <select class="control-input" id="state-control">
+                <option value="default" selected>Default</option>
+                <option value="hover">Hover</option>
+                <option value="focus">Focus</option>
+                <option value="disabled">Disabled</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Label</label>
+              <input type="text" class="control-input" id="label-input" value="Click Me" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VARIANT: PRIMARY SECTION -->
+      <h2 class="section-title">Variant</h2>
+      <div class="section-box">
+        <div class="variant-gallery">
+          <!-- [CUSTOMIZE] Add variant preview items -->
+          <!-- Example: -->
+          <div class="variant-item">
+            <div class="variant-preview">
+              <!-- Component rendering -->
+            </div>
+            <div class="variant-label">Primary</div>
+          </div>
+          <div class="variant-item">
+            <div class="variant-preview">
+              <!-- Component rendering -->
+            </div>
+            <div class="variant-label">Secondary</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIZE SECTION -->
+      <h2 class="section-title">Size</h2>
+      <div class="section-box">
+        <div class="variant-gallery">
+          <!-- [CUSTOMIZE] Add size variant previews -->
+        </div>
+      </div>
+
+      <!-- STATE SECTION -->
+      <h2 class="section-title">State</h2>
+      <div class="section-box">
+        <div class="variant-gallery">
+          <!-- [CUSTOMIZE] Add state variant previews (Default, Hover, Focus, Disabled) -->
+        </div>
+      </div>
+
+      <!-- DESIGN SPECIFICATIONS TABLE -->
+      <h2 class="section-title">Design Specifications</h2>
+      <!-- Table updates automatically based on Controls selections above -->
+
+      <table id="component-specs-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Token</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="component-specs-tbody">
+          <!-- Rendered dynamically by JavaScript based on Control selections -->
+        </tbody>
+      </table>
+
+<!-- REACT IMPLEMENTATION & USAGE EXAMPLES -->
+      <div class="implementations-grid">
+        <div>
+          <h2 class="section-title">React Implementation</h2>
+          <div class="code-block">
+          <span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">'react'</span>;<br>
+          <span class="code-keyword">import</span> <span class="code-string">'./ [Component_Name].css'</span>;<br>
+          <br>
+          <span class="code-keyword">interface</span> <span class="code-type">[Component_Name]Props</span> <span class="code-keyword">extends</span> React.HTMLAttributes&lt;HTMLElement&gt; {<br>
+          &nbsp;&nbsp;variant?: <span class="code-string">'primary'</span> | <span class="code-string">'secondary'</span>;<br>
+          &nbsp;&nbsp;size?: <span class="code-string">'small'</span> | <span class="code-string">'medium'</span> | <span class="code-string">'large'</span>;<br>
+          &nbsp;&nbsp;state?: <span class="code-string">'default'</span> | <span class="code-string">'hover'</span> | <span class="code-string">'focus'</span> | <span class="code-string">'disabled'</span>;<br>
+          &nbsp;&nbsp;children: React.ReactNode;<br>
+          }<br>
+          <br>
+          <span class="code-keyword">export const</span> <span class="code-function">[Component_Name]</span> = React.forwardRef&lt;<br>
+          &nbsp;&nbsp;HTMLElement,<br>
+          &nbsp;&nbsp;<span class="code-type">[Component_Name]Props</span><br>
+          &gt;(<br>
+          &nbsp;&nbsp;(<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;variant = <span class="code-string">'primary'</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size = <span class="code-string">'medium'</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;state = <span class="code-string">'default'</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...props<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;ref<br>
+          &nbsp;&nbsp;) => {<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> baseClass = `[component]--${variant}-${size}`;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> stateClass = state !== <span class="code-string">'default'</span> ? `[component]--${state}` : <span class="code-string">''</span>;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> finalClassName = [baseClass, stateClass, className]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.filter(Boolean)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.join(<span class="code-string">' '</span>);<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> (<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;button<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ref={ref}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className={finalClassName}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;disabled={state === <span class="code-string">'disabled'</span> || props.disabled}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{...props}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{children}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/button&gt;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;);<br>
+          &nbsp;&nbsp;}<br>
+          );<br>
+          <br>
+          <span class="code-function">[Component_Name]</span>.displayName = <span class="code-string">'[Component_Name]'</span>;
+          </div>
+        </div>
+        <div>
+          <h2 class="section-title">Usage Examples</h2>
+          <div class="code-block">
+          <span class="code-comment">// Default [Component_Name]</span><br>
+          &lt;<span class="code-function">[Component_Name]</span>&gt;Click Me&lt;/<span class="code-function">[Component_Name]</span>&gt;<br>
+          <br>
+          <span class="code-comment">// Secondary variant</span><br>
+          &lt;<span class="code-function">[Component_Name]</span> variant=<span class="code-string">"secondary"</span>&gt;Click Me&lt;/<span class="code-function">[Component_Name]</span>&gt;<br>
+          <br>
+          <span class="code-comment">// Small size</span><br>
+          &lt;<span class="code-function">[Component_Name]</span> size=<span class="code-string">"small"</span>&gt;Click Me&lt;/<span class="code-function">[Component_Name]</span>&gt;<br>
+          <br>
+          <span class="code-comment">// Disabled state</span><br>
+          &lt;<span class="code-function">[Component_Name]</span> state=<span class="code-string">"disabled"</span>&gt;Disabled&lt;/<span class="code-function">[Component_Name]</span>&gt;
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- SIDEBAR LOADER -->
+  <script src="../assets/sidebar-loader.js"></script>
+
+  <!-- [CUSTOMIZE] COMPONENT-SPECIFIC JAVASCRIPT -->
+  <script>
+    // Control elements
+    const previewBox = document.getElementById('preview-box');
+    const variantControl = document.getElementById('variant-control');
+    const sizeControl = document.getElementById('size-control');
+    const stateControl = document.getElementById('state-control');
+    const labelInput = document.getElementById('label-input');
+
+    // Background color mapping
+    const bgColorMap = {
+      light: 'white',
+      'light-grey': 'rgba(79, 70, 229, 0.03)',
+      dark: '#1F2937'
+    };
+
+    // [CUSTOMIZE] Define specification data for all variant/size/state combinations
+    // Keys are composite based on your component's axes
+    // Example for multi-axis: "primary-medium" or "primary-medium-default"
+    const componentSpecsData = {
+      'primary-medium': [
+        { property: 'Font Size', token: 'var(--[component]-primary-font-size)', value: '16px' },
+        { property: 'Padding Y', token: 'var(--[component]-primary-padding-y)', value: '8px' },
+        { property: 'Font Family', token: 'var(--[component]-font-family)', value: 'Inter' },
+        { property: 'Border Radius', token: 'var(--[component]-border-radius)', value: '6px' }
+      ],
+      'secondary-medium': [
+        { property: 'Font Size', token: 'var(--[component]-secondary-font-size)', value: '16px' },
+        { property: 'Padding Y', token: 'var(--[component]-secondary-padding-y)', value: '8px' },
+        { property: 'Font Family', token: 'var(--[component]-font-family)', value: 'Inter' },
+        { property: 'Border Radius', token: 'var(--[component]-border-radius)', value: '6px' }
+      ]
+      // [CUSTOMIZE] Add more variant/size combinations as needed
+    };
+
+    function updatePreview() {
+      const variant = variantControl.value;
+      const size = sizeControl.value;
+      const state = stateControl.value;
+      const label = labelInput.value;
+
+      // [CUSTOMIZE] Update the preview component with current selections
+      // Example:
+      // previewBox.innerHTML = `
+      //   <button class="btn btn--${variant}-${size}" ${state === 'disabled' ? 'disabled' : ''}>
+      //     ${label}
+      //   </button>
+      // `;
+    }
+
+    function updateComponentSpecs() {
+      const variant = variantControl.value;
+      const size = sizeControl.value;
+      // const state = stateControl.value; // Include if specs differ by state
+
+      // [CUSTOMIZE] Build composite key based on your component's axes
+      // For single-axis: const specsKey = variant;
+      // For multi-axis: const specsKey = `${variant}-${size}`;
+      const specsKey = `${variant}-${size}`;
+
+      const specs = componentSpecsData[specsKey] || [];
+      const tbody = document.getElementById('component-specs-tbody');
+
+      tbody.innerHTML = specs.map(spec => `
+        <tr>
+          <td>${spec.property}</td>
+          <td><span class="token-code">${spec.token}</span></td>
+          <td>${spec.value}</td>
+        </tr>
+      `).join('');
+    }
+
+    // Event listeners - update both preview and specs table
+    variantControl.addEventListener('change', () => {
+      updatePreview();
+      updateComponentSpecs();
+    });
+    sizeControl.addEventListener('change', () => {
+      updatePreview();
+      updateComponentSpecs();
+    });
+    stateControl.addEventListener('change', () => {
+      updatePreview();
+      updateComponentSpecs();
+    });
+    labelInput.addEventListener('input', updatePreview);
+
+    // Background switcher
+    document.querySelectorAll('.bg-switcher button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.bg-switcher button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const bgColor = bgColorMap[e.target.dataset.bg];
+        previewBox.className = `preview-box ${e.target.dataset.bg}`;
+        previewBox.style.backgroundColor = bgColor;
+      });
+    });
+
+    // Initialize preview and specs table
+    updatePreview();
+    updateComponentSpecs();
+  </script>
+</body>
+</html>

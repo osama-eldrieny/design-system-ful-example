@@ -1,0 +1,40 @@
+.toggle-switch {
+  position: relative;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+  background-color: var(--toggle-off-bg-color);
+  border: 2px solid var(--toggle-off-border-color);
+  border-radius: var(--toggle-border-radius);
+  cursor: pointer;
+  transition: all 200ms ease;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-switch.active {
+  background-color: var(--toggle-on-bg-color);
+  border-color: var(--toggle-on-border-color);
+}
+
+.toggle-circle {
+  width: var(--toggle-circle-width);
+  height: var(--toggle-circle-height);
+  background-color: var(--toggle-off-circle-bg-color);
+  border-radius: var(--toggle-circle-border-radius);
+  transition: all 200ms ease;
+  position: absolute;
+  left: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.toggle-switch.active .toggle-circle {
+  left: calc(var(--toggle-width) - var(--toggle-circle-width) - 5px);
+  background-color: var(--toggle-on-circle-bg-color);
+}
+
+@media (max-width: 768px) {
+  .toggle-switch {
+    cursor: pointer;
+  }
+}

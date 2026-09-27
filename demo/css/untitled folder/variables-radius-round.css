@@ -1,0 +1,49 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --borderRadius0: 0;
+  --borderRadius1: 1;
+  --borderRadius2: 2;
+  --borderRadius3: 3;
+  --borderRadius4: 4;
+  --borderRadius8: 8;
+  --borderRadius12: 12;
+  --borderRadius16: 16;
+  --borderRadius20: 20;
+  --borderRadius40: 40;
+  --borderRadius999: 999;
+  --borderRadiusNone: 0;
+  --borderRadius2xs: 1;
+  --borderRadiusXs: 2;
+  --borderRadiusSm: 3;
+  --borderRadiusMd: 4;
+  --borderRadiusLg: 8;
+  --borderRadiusXl: 12;
+  --borderRadius2xl: 16;
+  --borderRadius3xl: 20;
+  --borderRadius4xl: 40;
+  --borderRadiusFull: 999;
+  --sectionBorderRadius: 20px;
+  --containerBorderRadius: 20px;
+  --avatarSmallBorderRadius: 8px;
+  --avatarLargeBorderRadius: 16px;
+  --meetingCardBorderRadius: 8px;
+  --buttonMediumBorderRadius: 16px;
+  --buttonSmallBorderRadius: 12px;
+  --buttonIconBorderRadius: 12px;
+  --toggleBorderRadius: 999px;
+  --toggleCircleBorderRadius: 999px;
+  --logoIconBorderRadius: 12px;
+  --tapBorderRadius: 8px;
+  --tapItemBorderRadius: 4px;
+  --menuItemBorderRadius: 8px;
+  --inputFieldBorderRadius: 8px;
+  --paginationItemBorderRadius: 8px;
+  --palettesItemBorderRadius: 8px;
+  --alertsBorderRadius: 8px;
+  --cardImageBorderRadius: 4px;
+  --menuDropdownBorderRadius: 12px;
+  --menuDropdownItemBorderRadius: 0px;
+}

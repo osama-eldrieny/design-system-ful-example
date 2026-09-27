@@ -1,0 +1,68 @@
+.tabs-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--tap-gap);
+  background-color: var(--tap-bg-color);
+  padding: var(--tap-padding);
+  border-radius: var(--tap-border-radius);
+  width: fit-content;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.tab-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--tap-item-padding-gap);
+  padding: var(--tap-item-padding-y) var(--tap-item-padding-x);
+  background-color: var(--tap-item-default-bg-color);
+  border-radius: var(--tap-item-border-radius);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  font-family: var(--tap-item-label-font-family);
+  font-size: var(--tap-item-label-font-size);
+  font-weight: var(--tap-item-label-font-weight);
+  line-height: var(--tap-item-label-font-line-height);
+  color: var(--tap-item-default-font-color);
+  white-space: nowrap;
+}
+
+.tab-item:hover {
+  background-color: var(--tap-item-hover-bg-color);
+  color: var(--tap-item-hover-font-color);
+}
+
+.tab-item.tab-item--active {
+  background-color: var(--tap-item-active-bg-color);
+  color: var(--tap-item-active-font-color);
+}
+
+.tab-item-icon {
+  font-size: 16px;
+  line-height: 16px;
+  color: var(--tap-item-default-icon-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-item:hover .tab-item-icon {
+  color: var(--tap-item-hover-icon-color);
+}
+
+.tab-item.tab-item--active .tab-item-icon {
+  color: var(--tap-item-active-icon-color);
+}
+
+@media (max-width: 768px) {
+  .tabs-container {
+    width: 100%;
+  }
+
+  .tab-item {
+    flex: 1;
+  }
+}

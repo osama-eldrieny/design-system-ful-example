@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avatar Component - Design System</title>
+  <link rel="stylesheet" href="../assets/tokens.css">
+  <link rel="stylesheet" href="../assets/navbar-sidebar.css">
+  <link rel="stylesheet" href="../assets/component-layout.css">
+  <style>
+    .avatar {
+      display: inline-block;
+      border: var(--avatar-border-width) solid #ffffff;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #d9d9d9;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar--small {
+      width: var(--avatar-small-size);
+      height: var(--avatar-small-size);
+    }
+
+    .avatar--xlarge {
+      width: var(--avatar-large-size);
+      height: var(--avatar-large-size);
+    }
+
+    /* Border Radius Modes */
+    .avatar--square.avatar--small { border-radius: var(--tap-item-border-radius); }
+    .avatar--square.avatar--xlarge { border-radius: var(--tap-item-border-radius); }
+    .avatar--round.avatar--small { border-radius: var(--avatar-small-border-radius); }
+    .avatar--round.avatar--xlarge { border-radius: var(--avatar-large-border-radius); }
+    .avatar--pills.avatar--small { border-radius: var(--toggle-border-radius); }
+    .avatar--pills.avatar--xlarge { border-radius: var(--toggle-border-radius); }
+
+    /* Avatar Group */
+    .avatar-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar-group .avatar {
+      margin-left: var(--avatar-group-gap);
+    }
+
+    .avatar-group .avatar:first-child {
+      margin-left: 0;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: #24202D;
+      color: #E0DEE8;
+      padding: 24px;
+      border-radius: 8px;
+      overflow-x: auto;
+      overflow-y: auto;
+      height: 500px;
+      max-height: 500px;
+      scrollbar-gutter: stable;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 60px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .code-keyword { color: #C99BFF; }
+    .code-string { color: #73D1A9; }
+    .code-comment { color: #7D8590; }
+    .code-function { color: #95C1FF; }
+    .code-type { color: #A8D8EA; }
+
+    /* Implementations Grid */
+    .implementations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .implementations-grid > div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .implementations-grid .code-block {
+      margin-bottom: 0;
+    }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #F5F5F5; }
+    ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #999; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .preview-controls-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .canvas-area { padding: 40px 24px; }
+      .story-title { font-size: 40px; }
+      .variant-gallery { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+    }
+  
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-logo">Spectrum</div>
+      <span class="nav-sep">&rsaquo;</span>
+      <span class="nav-title">Avatar</span>
+    </div>
+    <div class="nav-right">
+      <button class="vp-btn active">D</button>
+      <button class="vp-btn">T</button>
+      <button class="vp-btn">M</button>
+    </div>
+  </nav>
+
+  <!-- MAIN LAYOUT -->
+  <div class="app-layout">
+    <!-- SIDEBAR -->
+    <div id="sidebar-container"></div>
+
+    <!-- CANVAS AREA -->
+    <main class="canvas-area">
+      <!-- HEADER -->
+      <div class="story-header">
+        <h1 class="story-title">Avatar</h1>
+        <p class="story-desc">
+          A circular or rounded image component used to represent users and profiles. Supports multiple sizes and border radius modes for flexible visual presentation.
+        </p>
+      </div>
+
+      <!-- PREVIEW + CONTROLS SECTION -->
+      <div class="preview-controls-container">
+        <!-- PREVIEW COLUMN -->
+        <div class="preview-controls-column">
+          <div class="section-heading">Preview</div>
+          <div class="preview-section">
+            <div class="bg-switcher">
+              <button class="active" data-bg="light-grey">Light Grey</button>
+              <button data-bg="light">Light</button>
+              <button data-bg="dark">Dark</button>
+            </div>
+            <div class="preview-box light-grey" id="preview-box">
+              <div class="avatar avatar--xlarge avatar--pills" id="avatar-preview">
+                <img src="../assets/avatar-1.png" alt="User avatar">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTROLS COLUMN -->
+        <div class="preview-controls-column">
+          <div class="section-heading">Controls</div>
+          <div class="controls-section">
+            <div class="control-group">
+              <label class="control-label">Size</label>
+              <select class="control-input" id="size-control">
+                <option value="small">Small (24px)</option>
+                <option value="xlarge" selected>XLarge (80px)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label">Image</label>
+              <select class="control-input" id="image-control">
+                <option value="../assets/avatar-1.png" selected>Person 1</option>
+                <option value="../assets/avatar-2.png">Person 2</option>
+                <option value="../assets/avatar-3.png">Person 3</option>
+                <option value="../assets/avatar-4.png">Person 4</option>
+                <option value="../assets/avatar-5.png">Person 5</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIZE SECTION -->
+      <h2 class="section-title">Size</h2>
+      <div class="section-box">
+        <div class="variant-gallery">
+          <div class="variant-item">
+            <div class="variant-preview">
+              <div class="avatar avatar--small avatar--pills">
+                <img src="../assets/avatar-1.png" alt="User avatar">
+              </div>
+            </div>
+            <div class="variant-label">Small (24px)</div>
+          </div>
+          <div class="variant-item">
+            <div class="variant-preview">
+              <div class="avatar avatar--xlarge avatar--pills">
+                <img src="../assets/avatar-1.png" alt="User avatar">
+              </div>
+            </div>
+            <div class="variant-label">XLarge (80px)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AVATAR GROUP SECTION -->
+      <h2 class="section-title">Avatar Group</h2>
+      <div class="section-box">
+        <div class="variant-gallery">
+          <div class="variant-item" style="grid-column: span 3;">
+            <div class="variant-preview">
+              <div class="avatar-group">
+                <div class="avatar avatar--small avatar--pills">
+                  <img src="../assets/avatar-1.png" alt="User 1">
+                </div>
+                <div class="avatar avatar--small avatar--pills">
+                  <img src="../assets/avatar-2.png" alt="User 2">
+                </div>
+                <div class="avatar avatar--small avatar--pills">
+                  <img src="../assets/avatar-3.png" alt="User 3">
+                </div>
+                <div class="avatar avatar--small avatar--pills">
+                  <img src="../assets/avatar-4.png" alt="User 4">
+                </div>
+                <div class="avatar avatar--small avatar--pills">
+                  <img src="../assets/avatar-5.png" alt="User 5">
+                </div>
+              </div>
+            </div>
+            <div class="variant-label">Stacked Group (gap: -4px)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DESIGN SPECIFICATIONS TABLE -->
+      <h2 class="section-title">Design Specifications</h2>
+      <!-- Table updates based on Controls selections above -->
+
+      <table id="avatar-specs-table">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Token</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody id="avatar-specs-body">
+        </tbody>
+      </table>
+
+      <script>
+        const avatarSpecsData = {
+          "small": [
+            { property: "Size (width × height)", token: "var(--avatar-small-size)", value: "24px" },
+            { property: "Border Width", token: "var(--avatar-border-width)", value: "2px" },
+            { property: "Border Color", token: "var(--avatar-border-color)", value: "#FFFFFF" },
+            { property: "Border Radius — Round", token: "var(--avatar-small-border-radius)", value: "8px" },
+            { property: "Border Radius — Square", token: "var(--tap-item-border-radius)", value: "4px" },
+            { property: "Border Radius — Pills", token: "var(--toggle-border-radius)", value: "12px" },
+            { property: "Group Gap", token: "var(--avatar-group-gap)", value: "-4px" },
+            { property: "Fallback Background", token: "var(--avatar-fallback-bgcolor)", value: "#D9D9D9" }
+          ],
+          "xlarge": [
+            { property: "Size (width × height)", token: "var(--avatar-large-size)", value: "80px" },
+            { property: "Border Width", token: "var(--avatar-border-width)", value: "2px" },
+            { property: "Border Color", token: "var(--avatar-border-color)", value: "#FFFFFF" },
+            { property: "Border Radius — Round", token: "var(--avatar-large-border-radius)", value: "16px" },
+            { property: "Border Radius — Square", token: "var(--tap-item-border-radius)", value: "4px" },
+            { property: "Border Radius — Pills", token: "var(--toggle-border-radius)", value: "12px" },
+            { property: "Group Gap", token: "var(--avatar-group-gap)", value: "-4px" },
+            { property: "Fallback Background", token: "var(--avatar-fallback-bgcolor)", value: "#D9D9D9" }
+          ]
+        };
+
+        function updateAvatarSpecs() {
+          const size = document.getElementById('size-control').value;
+          const specs = avatarSpecsData[size] || [];
+          const tbody = document.getElementById('avatar-specs-body');
+
+          tbody.innerHTML = specs.map(spec => `
+            <tr>
+              <td>${spec.property}</td>
+              <td><span class="token-code">${spec.token}</span></td>
+              <td>${spec.value}</td>
+            </tr>
+          `).join('');
+        }
+
+        document.getElementById('size-control').addEventListener('change', updateAvatarSpecs);
+        updateAvatarSpecs();
+      </script>
+
+      <!-- DESIGN TOKENS TABLE -->
+      <!-- REACT IMPLEMENTATION & USAGE EXAMPLES -->
+      <div class="implementations-grid">
+        <div>
+          <h2 class="section-title">React Implementation</h2>
+      <div class="code-block">
+        <span class="code-keyword">import</span> React <span class="code-keyword">from</span> <span class="code-string">'react'</span>;<br>
+        <span class="code-keyword">import</span> <span class="code-string">'../assets/tokens.css'</span>;<br>
+        <br>
+        <span class="code-keyword">interface</span> <span class="code-type">AvatarProps</span> <span class="code-keyword">extends</span> React.ImgHTMLAttributes&lt;HTMLImageElement&gt; {<br>
+        &nbsp;&nbsp;size?: <span class="code-string">'small'</span> | <span class="code-string">'xlarge'</span>;<br>
+        &nbsp;&nbsp;radius?: <span class="code-string">'square'</span> | <span class="code-string">'round'</span> | <span class="code-string">'pills'</span>;<br>
+        &nbsp;&nbsp;src: <span class="code-type">string</span>;<br>
+        &nbsp;&nbsp;alt: <span class="code-type">string</span>;<br>
+        }<br>
+        <br>
+        <span class="code-keyword">export</span> <span class="code-keyword">const</span> <span class="code-function">Avatar</span> = React.<span class="code-function">forwardRef</span>&lt;<br>
+        &nbsp;&nbsp;HTMLDivElement,<br>
+        &nbsp;&nbsp;<span class="code-type">AvatarProps</span><br>
+        &gt;(<br>
+        &nbsp;&nbsp;(<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;{<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size = <span class="code-string">'xlarge'</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;radius = <span class="code-string">'pills'</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...props<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;ref<br>
+        &nbsp;&nbsp;) =&gt; {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> classes = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'avatar'</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">`avatar--${</span>size<span class="code-string">}`</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">`avatar--${</span>radius<span class="code-string">}`</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;className<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;].<span class="code-function">filter</span>(Boolean).<span class="code-function">join</span>(<span class="code-string">' '</span>);<br>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> (<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-keyword">div</span> ref={ref} className={classes}&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="code-keyword">img</span> src={src} alt={alt} {...props} /&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="code-keyword">div</span>&gt;<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;);<br>
+        &nbsp;&nbsp;}<br>
+        );<br>
+        <br>
+        Avatar.displayName = <span class="code-string">'Avatar'</span>;<br>
+      </div>
+        </div>
+        <div>
+          <h2 class="section-title">Usage Examples</h2>
+          <div class="code-block">
+        <span class="code-comment">// Default Avatar (XLarge, Pills)</span><br>
+        &lt;<span class="code-function">Avatar</span> src=<span class="code-string">"/avatar.jpg"</span> alt=<span class="code-string">"User"</span> /&gt;<br>
+        <br>
+        <span class="code-comment">// Small Avatar</span><br>
+        &lt;<span class="code-function">Avatar</span> size=<span class="code-string">"small"</span> src=<span class="code-string">"/avatar.jpg"</span> alt=<span class="code-string">"User"</span> /&gt;<br>
+        <br>
+        <span class="code-comment">// Square border radius</span><br>
+        &lt;<span class="code-function">Avatar</span> radius=<span class="code-string">"square"</span> src=<span class="code-string">"/avatar.jpg"</span> alt=<span class="code-string">"User"</span> /&gt;<br>
+        <br>
+        <span class="code-comment">// Round border radius</span><br>
+        &lt;<span class="code-function">Avatar</span> radius=<span class="code-string">"round"</span> src=<span class="code-string">"/avatar.jpg"</span> alt=<span class="code-string">"User"</span> /&gt;<br>
+        <br>
+        <span class="code-comment">// Avatar Group</span><br>
+        &lt;<span class="code-keyword">div</span> className=<span class="code-string">"avatar-group"</span>&gt;<br>
+        &nbsp;&nbsp;&lt;<span class="code-function">Avatar</span> size=<span class="code-string">"small"</span> src=<span class="code-string">"/user1.jpg"</span> alt=<span class="code-string">"User 1"</span> /&gt;<br>
+        &nbsp;&nbsp;&lt;<span class="code-function">Avatar</span> size=<span class="code-string">"small"</span> src=<span class="code-string">"/user2.jpg"</span> alt=<span class="code-string">"User 2"</span> /&gt;<br>
+        &nbsp;&nbsp;&lt;<span class="code-function">Avatar</span> size=<span class="code-string">"small"</span> src=<span class="code-string">"/user3.jpg"</span> alt=<span class="code-string">"User 3"</span> /&gt;<br>
+        &lt;/<span class="code-keyword">div</span>&gt;<br>
+      </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- SIDEBAR LOADER -->
+  <script src="../assets/sidebar-loader.js"></script>
+
+  <!-- AVATAR-SPECIFIC JAVASCRIPT -->
+  <script>
+    const previewBox = document.getElementById('preview-box');
+    const avatarPreview = document.getElementById('avatar-preview');
+    const sizeControl = document.getElementById('size-control');
+    const imageControl = document.getElementById('image-control');
+
+    const bgColorMap = {
+      light: 'white',
+      'light-grey': 'rgba(79, 70, 229, 0.03)',
+      dark: '#1F2937'
+    };
+
+    function updatePreview() {
+      const size = sizeControl.value;
+      const imageSrc = imageControl.value;
+
+      avatarPreview.className = `avatar avatar--${size} avatar--round`;
+      avatarPreview.querySelector('img').src = imageSrc;
+    }
+
+    sizeControl.addEventListener('change', updatePreview);
+    imageControl.addEventListener('change', updatePreview);
+
+    // Background switcher
+    document.querySelectorAll('.bg-switcher button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.bg-switcher button').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        const bgColor = bgColorMap[e.target.dataset.bg];
+        previewBox.className = `preview-box ${e.target.dataset.bg}`;
+        previewBox.style.backgroundColor = bgColor;
+      });
+    });
+
+    updatePreview();
+  </script>
+</body>
+</html>
