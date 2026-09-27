@@ -14,7 +14,7 @@ const products = [
     oldPrice: '$399',
     reviews: '2,342 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const products = [
     oldPrice: '$249',
     reviews: '1,856 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const products = [
     price: '$79',
     reviews: '942 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const products = [
     oldPrice: '$69',
     reviews: '3,214 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const products = [
     price: '$89',
     reviews: '1,523 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const products = [
     oldPrice: '$79',
     reviews: '876 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ const products = [
     oldPrice: '$69',
     reviews: '1,234 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 8,
@@ -82,7 +82,7 @@ const products = [
     oldPrice: '$199',
     reviews: '2,156 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 9,
@@ -91,7 +91,7 @@ const products = [
     price: '$19',
     reviews: '856 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 10,
@@ -101,7 +101,7 @@ const products = [
     oldPrice: '$179',
     reviews: '1,987 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 11,
@@ -110,7 +110,7 @@ const products = [
     price: '$39',
     reviews: '765 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 12,
@@ -119,7 +119,7 @@ const products = [
     price: '$29',
     reviews: '1,432 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 13,
@@ -128,7 +128,7 @@ const products = [
     price: '$24',
     reviews: '1,098 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 14,
@@ -138,7 +138,7 @@ const products = [
     oldPrice: '$89',
     reviews: '2,345 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
   {
     id: 15,
@@ -147,7 +147,7 @@ const products = [
     price: '$17',
     reviews: '654 reviews',
     brand: 'diamond' as const,
-    image: '/assets/card-image-diamond.png',
+    image: 'assets/card-image-diamond.png',
   },
 ];
 
@@ -157,29 +157,29 @@ const meetings = [
     title: 'Q2 Product Review',
     time: '2:00 PM - 3:00 PM',
     variant: 'primary' as const,
-    avatars: ['/assets/avatar-1.png', '/assets/avatar-2.png'],
+    avatars: ['assets/avatar-1.png', 'assets/avatar-2.png'],
   },
   {
     id: 2,
     title: 'Team Standup',
     time: '10:00 AM - 10:30 AM',
     variant: 'success' as const,
-    avatars: ['/assets/avatar-3.png', '/assets/avatar-4.png'],
+    avatars: ['assets/avatar-3.png', 'assets/avatar-4.png'],
   },
   {
     id: 3,
     title: 'Budget Planning',
     time: '4:00 PM - 5:30 PM',
     variant: 'danger' as const,
-    avatars: ['/assets/avatar-1.png', '/assets/avatar-3.png'],
+    avatars: ['assets/avatar-1.png', 'assets/avatar-3.png'],
   },
 ];
 
 const teamMembers = [
-  { name: 'Osama Eldrieny', role: 'Founder & CEO', avatar: '/assets/avatar-1.png' },
-  { name: 'Sarah Chen', role: 'Head of Products', avatar: '/assets/avatar-2.png' },
-  { name: 'Maria Garcia', role: 'Design Lead', avatar: '/assets/avatar-3.png' },
-  { name: 'James Wilson', role: 'Engineering Director', avatar: '/assets/avatar-4.png' },
+  { name: 'Osama Eldrieny', role: 'Founder & CEO', avatar: 'assets/avatar-1.png' },
+  { name: 'Sarah Chen', role: 'Head of Products', avatar: 'assets/avatar-2.png' },
+  { name: 'Maria Garcia', role: 'Design Lead', avatar: 'assets/avatar-3.png' },
+  { name: 'James Wilson', role: 'Engineering Director', avatar: 'assets/avatar-4.png' },
 ];
 
 interface ProductLandingPageProps {
@@ -221,10 +221,10 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
   ];
 
   const notifications = [
-    { id: 'google', appTitle: 'Google', appIcon: '/assets/google.png' },
-    { id: 'linkedin', appTitle: 'LinkedIn', appIcon: '/assets/linkedin.png' },
-    { id: 'behance', appTitle: 'Behance', appIcon: '/assets/behance.png' },
-    { id: 'twitter', appTitle: 'Twitter', appIcon: '/assets/twitter.png' },
+    { id: 'google', appTitle: 'Google', appIcon: 'assets/google.png' },
+    { id: 'linkedin', appTitle: 'LinkedIn', appIcon: 'assets/linkedin.png' },
+    { id: 'behance', appTitle: 'Behance', appIcon: 'assets/behance.png' },
+    { id: 'twitter', appTitle: 'Twitter', appIcon: 'assets/twitter.png' },
   ];
 
   return (

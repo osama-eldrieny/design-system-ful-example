@@ -36,23 +36,23 @@ const engagementCards = [
 const allDataCards = [...revenueCards, ...usersCards, ...engagementCards];
 
 const systemStatus = [
-  { id: 1, title: 'Database: Healthy', time: 'Uptime: 99.99%', variant: 'success' as const, avatars: ['/assets/avatar-1.png', '/assets/avatar-2.png'] },
-  { id: 2, title: 'API Server: Active', time: 'Latency: 120ms', variant: 'success' as const, avatars: ['/assets/avatar-2.png', '/assets/avatar-3.png'] },
-  { id: 3, title: 'Backup: In Progress', time: 'ETA: 15 min', variant: 'primary' as const, avatars: ['/assets/avatar-3.png', '/assets/avatar-4.png'] },
+  { id: 1, title: 'Database: Healthy', time: 'Uptime: 99.99%', variant: 'success' as const, avatars: ['assets/avatar-1.png', 'assets/avatar-2.png'] },
+  { id: 2, title: 'API Server: Active', time: 'Latency: 120ms', variant: 'success' as const, avatars: ['assets/avatar-2.png', 'assets/avatar-3.png'] },
+  { id: 3, title: 'Backup: In Progress', time: 'ETA: 15 min', variant: 'primary' as const, avatars: ['assets/avatar-3.png', 'assets/avatar-4.png'] },
 ];
 
 const teamMembers = [
-  { name: 'Osama', role: 'Admin', avatar: '/assets/avatar-1.png' },
-  { name: 'Sarah', role: 'Editor', avatar: '/assets/avatar-2.png' },
-  { name: 'Maria', role: 'Viewer', avatar: '/assets/avatar-3.png' },
-  { name: 'James', role: 'Editor', avatar: '/assets/avatar-4.png' },
+  { name: 'Osama', role: 'Admin', avatar: 'assets/avatar-1.png' },
+  { name: 'Sarah', role: 'Editor', avatar: 'assets/avatar-2.png' },
+  { name: 'Maria', role: 'Viewer', avatar: 'assets/avatar-3.png' },
+  { name: 'James', role: 'Editor', avatar: 'assets/avatar-4.png' },
 ];
 
 const integrations = [
-  { id: 'google', appTitle: 'Google', appIcon: '/assets/google.png' },
-  { id: 'mixpanel', appTitle: 'Mixpanel', appIcon: '/assets/linkedin.png' },
-  { id: 'amplitude', appTitle: 'Amplitude', appIcon: '/assets/behance.png' },
-  { id: 'segment', appTitle: 'Segment', appIcon: '/assets/twitter.png' },
+  { id: 'google', appTitle: 'Google', appIcon: 'assets/google.png' },
+  { id: 'mixpanel', appTitle: 'Mixpanel', appIcon: 'assets/linkedin.png' },
+  { id: 'amplitude', appTitle: 'Amplitude', appIcon: 'assets/behance.png' },
+  { id: 'segment', appTitle: 'Segment', appIcon: 'assets/twitter.png' },
 ];
 
 interface DashboardPageProps {
