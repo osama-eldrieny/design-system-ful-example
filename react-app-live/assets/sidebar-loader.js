@@ -8,8 +8,7 @@ function loadSidebarDirect() {
 
   const sidebarHTML = `<aside class="sidebar">
   <a class="sidebar-link" href="index.html">Home</a>
-  <a class="sidebar-link" href="demo/index.html" target="_blank">Demo</a>
-  <a class="sidebar-link" href="react-app-live/index.html" target="_blank">Prototype</a>
+  <a class="sidebar-link" href="dashboard/index.html" target="_blank">Dashboard</a>
   <div class="sidebar-group-label">Foundations</div>
   <a class="sidebar-link" href="pages/tokens-borders.html">Borders</a>
   <a class="sidebar-link" href="pages/tokens-colors.html">Colors</a>

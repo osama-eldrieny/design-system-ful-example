@@ -1,0 +1,83 @@
+/* ===== NAVBAR ===== */
+.navbar {
+  height: 56px;
+  background: #0F172A;
+  border-bottom: 1px solid #1E293B;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  font-size: 14px;
+}
+.nav-left { display: flex; align-items: center; gap: 12px; }
+.nav-logo { font-weight: 700; color: #E2E8F0; }
+.nav-sep { color: #64748B; }
+.nav-title { color: #E2E8F0; }
+.nav-right { display: flex; gap: 8px; }
+.vp-btn {
+  width: 32px;
+  height: 32px;
+  background: #1E293B;
+  border: 1px solid #334155;
+  border-radius: 4px;
+  color: #94A3B8;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.vp-btn:hover { background: #334155; color: #E2E8F0; }
+.vp-btn.active { background: #4f46e5; color: #fff; border-color: #4f46e5; }
+
+/* ===== LAYOUT ===== */
+.app-layout { display: flex; height: calc(100vh - 56px); overflow: hidden; }
+
+/* ===== SIDEBAR CONTAINER ===== */
+#sidebar-container {
+  display: contents;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 220px;
+  background: #0F172A;
+  border-right: 1px solid #1E293B;
+  overflow-y: auto;
+}
+.sidebar-group-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #64748B;
+  font-weight: 600;
+  padding: 12px 20px;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+.sidebar-group-label:first-child { margin-top: 0; }
+.sidebar-link {
+  display: block;
+  padding: 12px 20px;
+  font-size: 14px;
+  color: #94A3B8;
+  text-decoration: none;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: all 0.15s ease;
+}
+.sidebar-link:hover { background: #1E293B; color: #E2E8F0; }
+.sidebar-link.active { border-left-color: #4f46e5; background: #1E293B; color: #E2E8F0; }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #f5f5f5; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #999; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .app-layout { flex-direction: column; }
+  .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #1E293B; height: auto; padding: 12px 0; display: flex; overflow-x: auto; }
+  .sidebar-group-label { display: none; }
+  .sidebar-link { white-space: nowrap; }
+}
