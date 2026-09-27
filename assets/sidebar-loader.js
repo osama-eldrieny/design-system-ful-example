@@ -8,9 +8,6 @@ function loadSidebarDirect() {
 
   const sidebarHTML = `<aside class="sidebar">
   <a class="sidebar-link" href="index.html">Home</a>
-  <a class="sidebar-link" href="demo/index.html" target="_blank">Demo</a>
-  <a class="sidebar-link" href="react-app-live/index.html#/landing" target="_blank">Prototype: Landing Page</a>
-  <a class="sidebar-link" href="react-app-live/index.html#/dashboard" target="_blank">Prototype: Dashboard</a>
   <div class="sidebar-group-label">Foundations</div>
   <a class="sidebar-link" href="pages/tokens-borders.html">Borders</a>
   <a class="sidebar-link" href="pages/tokens-colors.html">Colors</a>
@@ -36,6 +33,10 @@ function loadSidebarDirect() {
   <a class="sidebar-link" href="components/radio-button.html">Radio Button</a>
   <a class="sidebar-link" href="components/tabs.html">Tabs</a>
   <a class="sidebar-link" href="components/toggle.html">Toggle</a>
+  <div class="sidebar-group-label">Examples</div>
+  <a class="sidebar-link" href="demo/index.html" target="_blank">Demo</a>
+  <a class="sidebar-link" href="react-app-live/index.html#/landing" target="_blank">Landing Page</a>
+  <a class="sidebar-link" href="react-app-live/index.html#/dashboard" target="_blank">Dashboard</a>
 </aside>`;
 
   const pathname = window.location.pathname;
