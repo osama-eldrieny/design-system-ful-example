@@ -1,0 +1,4 @@
+legacy/
+site/
+**/dist/
+package-lock.json
