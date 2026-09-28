@@ -1,47 +1,58 @@
-# Design System Documentation
+# Design System
 
-A Storybook-like static documentation site for our Figma design token system.
+A themeable, accessible, AI-ready design system: tokens → React library → Storybook docs → demo and prototypes, all from one repo.
 
-## Quick Links
+The overhaul is in progress. **[docs/ROADMAP.md](docs/ROADMAP.md)** is the approved plan: phases, architecture, and the per-component definition of done. Read it before starting work.
 
-- **[Overview](docs/OVERVIEW.md)** — Project structure and critical rules
-- **[Component Workflow](docs/COMPONENT_WORKFLOW.md)** — How to push Figma changes to documentation
-- **[Layout Specifications](docs/LAYOUT_SPECS.md)** — Page layout and visual guidelines
-- **[Token Guide](docs/TOKEN_GUIDE.md)** — Token structure and usage
-- **[Component Template](docs/component-template.html)** — Template for creating new component pages
+## The one critical rule
 
-## The One Critical Rule
+**Code is the single source of truth** (since 2026-09-29; before that it was Figma).
 
-**Figma is the single source of truth.**
+- Tokens live in the repo and are the origin of every value. CSS/SCSS for developers and the Figma variables import are generated from them.
+- Every component and variant is styled only through its **own component tokens**. Never hardcode colors, sizes, spacing, radii or shadows.
 
-All component styles MUST be 100% driven by Figma variables using CSS variables (`var(--token-name)`). Never hardcode values.
+## Structure
 
-## Quick Start: Create Component Documentation
-
-**Simple Prompt:**
 ```
-Create documentation for [ComponentName] component
+packages/react/     component library (@ds/react): components/, styles/, icons/
+apps/prototypes/    Vite app: #/landing and #/dashboard prototypes, importing @ds/react
+legacy/             the previous static HTML docs + demo, served unchanged until the Storybook launch
+scripts/            build helpers (assemble-site.mjs builds site/)
+docs/ROADMAP.md     the plan
 ```
 
-**Examples:**
-- `Create documentation for Button component`
-- `Create documentation for Card component`
-- `Create documentation for Input Field component`
+`packages/tokens`, `apps/docs` (Storybook), `packages/mcp`, `packages/lint`, `ai/`, `skills/` and `evals/` are added in later phases. See the roadmap.
 
-The workflow will automatically:
-1. Extract all variables and nested components from Figma using Figma Console MCP
-2. Create `components/component-name.html` with Controls, Specifications, and Code sections
-3. Use only CSS variables from `tokens.css` (zero hardcoded values)
-4. Update sidebar navigation in both `includes/sidebar.html` and `assets/sidebar-loader.js`
-5. Test in light/dark/grey backgrounds and all states
+## Commands
 
-See [Component Workflow](docs/COMPONENT_WORKFLOW.md) for detailed process.
+```bash
+npm install          # once
+npm run dev          # prototypes dev server with hot reload
+npm run typecheck    # tsc -b
+npm run lint         # ESLint (+ jsx-a11y) and Stylelint
+npm test             # Vitest + Testing Library
+npm run build        # builds every workspace and assembles site/
+npm run serve        # serves site/ locally
+```
 
-## Pre-Delivery Checklist
+CI (`.github/workflows/ci.yml`) runs typecheck, lint, test and build on every push, and deploys `site/` to GitHub Pages from `main`.
 
-- [ ] All Figma variants represented in galleries
-- [ ] All CSS variables used (no hardcoded values)
-- [ ] All component images exported from Figma
-- [ ] Code examples are copy-paste ready
-- [ ] Sidebar updated in both files
-- [ ] Component tested in all backgrounds and states
+## Rules
+
+- **Component token grammar:** `--{component}-{variant}-{style?}-{state}-{property}`, e.g. `--button-primary-default-bg-color`, `--button-danger-outline-hover-border-color`.
+  - Omit `style` for the default style.
+  - `state` is one of `default|hover|focus|active|disabled|selected|error`.
+  - Property names: `bg-color, text-color, border-color, icon-color, border-width, border-radius, padding-x, padding-y, gap, font-family, font-size, font-weight, font-line-height, shadow-x/y/blur/color, size, opacity`.
+- **Accessibility is required:**
+  - semantic HTML first
+  - full keyboard support and visible focus
+  - WCAG AA contrast in every theme
+- **Real interaction states:** use `:hover` / `:focus-visible` / `:active` / `[disabled]`, not a `state` prop (existing components get migrated in Phase 3).
+- **CSS class names are BEM** (`block__element--modifier`), and Stylelint enforces it. Use logical properties (`padding-inline`, `margin-inline-start`) so Arabic RTL works.
+- **Lint baseline:** `eslint-suppressions.json` records known a11y errors in Toggle, Dropdown, Navbar and AppsNotifications. Don't add to it. Remove entries as components are fixed (`npx eslint . --prune-suppressions`).
+- **Themes:** Diamond / Amber / Opal × Light / Dark, English / Arabic × Serif / Sans-serif, Comfortable / Compact density, Square / Round / Pills radius, Flat / Subtle / Default / Raised shadow. The current full set lives in `legacy/demo/css/` until Phase 1 moves it into the token source.
+- **Deploying:** pushing to GitHub publishes the live site. Only push with the owner's OK.
+
+## UI UX Pro Max
+
+Per the global CLAUDE.md, use the UI UX Pro Max skill for the **docs site chrome** (layout, navigation, docs typography). It must **not** restyle the design system's own components, which follow their tokens only.

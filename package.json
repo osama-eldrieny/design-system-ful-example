@@ -7,7 +7,7 @@
     "apps/*"
   ],
   "scripts": {
-    "dev": "npm run dev -w @ds/prototypes",
+    "dev": "npm run dev -w @ds/prototypes --",
     "build": "npm run build --workspaces --if-present && node scripts/assemble-site.mjs",
     "typecheck": "tsc -b",
     "lint": "eslint . && stylelint \"**/*.css\"",
