@@ -16,11 +16,7 @@ export const ChooseCard = React.forwardRef<HTMLDivElement, ChooseCardProps>(
     };
 
     return (
-      <div
-        ref={ref}
-        className={`choose-card ${className || ''}`}
-        {...props}
-      >
+      <div ref={ref} className={`choose-card ${className || ''}`} {...props}>
         <input
           type="radio"
           className="choose-card-radio"
@@ -36,7 +32,7 @@ export const ChooseCard = React.forwardRef<HTMLDivElement, ChooseCardProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 ChooseCard.displayName = 'ChooseCard';

@@ -10,7 +10,18 @@ interface PaginationProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
-  ({ currentPage, totalPages, onPageChange, showPrevious = true, showNext = true, className, ...props }, ref) => {
+  (
+    {
+      currentPage,
+      totalPages,
+      onPageChange,
+      showPrevious = true,
+      showNext = true,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
     const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     return (
@@ -46,7 +57,7 @@ export const Pagination = React.forwardRef<HTMLDivElement, PaginationProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 Pagination.displayName = 'Pagination';

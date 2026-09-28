@@ -24,12 +24,29 @@
 }
 
 /* Border Radius Modes */
-.avatar--square.avatar--small { border-radius: 0; }
-.avatar--square.avatar--xlarge { border-radius: 0; }
-.avatar--round.avatar--small { border-radius: var(--avatar-small-border-radius); }
-.avatar--round.avatar--xlarge { border-radius: var(--avatar-large-border-radius); }
-.avatar--pills.avatar--small { border-radius: 50%; }
-.avatar--pills.avatar--xlarge { border-radius: 50%; }
+.avatar--square.avatar--small {
+  border-radius: 0;
+}
+
+.avatar--square.avatar--xlarge {
+  border-radius: 0;
+}
+
+.avatar--round.avatar--small {
+  border-radius: var(--avatar-small-border-radius);
+}
+
+.avatar--round.avatar--xlarge {
+  border-radius: var(--avatar-large-border-radius);
+}
+
+.avatar--pills.avatar--small {
+  border-radius: 50%;
+}
+
+.avatar--pills.avatar--xlarge {
+  border-radius: 50%;
+}
 
 /* Avatar Group */
 .avatar-group {

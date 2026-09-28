@@ -22,7 +22,7 @@ export const Toggle = React.forwardRef<HTMLDivElement, ToggleProps>(
         <div className="toggle-circle"></div>
       </div>
     );
-  }
+  },
 );
 
 Toggle.displayName = 'Toggle';

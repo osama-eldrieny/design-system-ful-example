@@ -17,13 +17,13 @@ interface AppsNotificationsProps extends React.HTMLAttributes<HTMLDivElement> {
 export const AppsNotifications = React.forwardRef<HTMLDivElement, AppsNotificationsProps>(
   ({ title = 'Notifications', items, className, ...props }, ref) => {
     const [enabledItems, setEnabledItems] = useState<Record<string, boolean>>(
-      items.reduce((acc, item) => ({ ...acc, [item.id]: item.isEnabled ?? true }), {})
+      items.reduce((acc, item) => ({ ...acc, [item.id]: item.isEnabled ?? true }), {}),
     );
 
     const handleToggle = (itemId: string) => {
-      setEnabledItems(prev => {
+      setEnabledItems((prev) => {
         const newState = { ...prev, [itemId]: !prev[itemId] };
-        items.find(i => i.id === itemId)?.onChange?.(!prev[itemId]);
+        items.find((i) => i.id === itemId)?.onChange?.(!prev[itemId]);
         return newState;
       });
     };
@@ -51,7 +51,7 @@ export const AppsNotifications = React.forwardRef<HTMLDivElement, AppsNotificati
         </div>
       </div>
     );
-  }
+  },
 );
 
 AppsNotifications.displayName = 'AppsNotifications';

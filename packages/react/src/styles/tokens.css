@@ -29,16 +29,14 @@
   --section-shadow-y: 8px;
   --section-shadow-blur: 16px;
 
-    /* Section Title */
+  /* Section Title */
   --section-title-font-size: 16px;
   --section-title-font-family: 'Inter';
   --section-title-font-weight: 700;
   --section-title-font-line-height: 20px;
 
-
   /* //////////////////////// App Notifications Component ///////////////////////// */
-  
-  
+
   /* App Notifications title */
   --app-notifications-title-font-color: #24242c;
   --app-notifications-title-font-family: 'Inter';
@@ -46,10 +44,10 @@
   --app-notifications-title-font-size: 16px;
   --app-notifications-title-font-line-height: 20px;
 
-/* App Notifications list */
+  /* App Notifications list */
   --app-notifications-list-gap: 20px;
   --app-notifications-list-item-gap: 8px;
-  
+
   /* App Notifications apps title content */
   --app-notifications-app1-title-content: 'Google';
   --app-notifications-app2-title-content: 'X (Twitter)';
@@ -60,8 +58,7 @@
   /* App Notifications section title content */
   --section-apps-title-content: 'Apps Notification';
 
-
-/* //////////////////////// Meeting Card Component ///////////////////////// */
+  /* //////////////////////// Meeting Card Component ///////////////////////// */
 
   /* Meeting Cards */
   --meeting-card-padding: 24px;
@@ -78,36 +75,33 @@
   --meeting-card-primary-time-color: #ab8fff;
   --meeting-card-primary-avatar-border-color: #f2edff;
 
-   /* Meeting Cards Success */
+  /* Meeting Cards Success */
   --meeting-card-success-bg-color: #e6faed;
   --meeting-card-success-border-color: #2ed46b;
   --meeting-card-success-title-color: #00ca4b;
   --meeting-card-success-time-color: #5ede8e;
   --meeting-card-success-avatar-border-color: #e6faed;
 
-   /* Meeting Cards Danger */
+  /* Meeting Cards Danger */
   --meeting-card-danger-bg-color: #fee9e9;
   --meeting-card-danger-border-color: #f54e4e;
   --meeting-card-danger-title-color: #f32727;
   --meeting-card-danger-time-color: #f77777;
   --meeting-card-danger-avatar-border-color: #fee9e9;
 
-  
- /* Meeting Cards Title */
+  /* Meeting Cards Title */
   --meeting-card-title-margin-bottom: 12px;
   --meeting-card-title-font-family: 'Inter';
   --meeting-card-title-font-size: 16px;
   --meeting-card-title-font-weight: 500;
   --meeting-card-title-font-line-height: 20px;
 
-   /* Meeting Cards Time */
+  /* Meeting Cards Time */
   --meeting-card-time-font-size: 12px;
   --meeting-card-time-font-family: 'Inter';
   --meeting-card-time-font-weight: 500;
   --meeting-card-time-font-line-height: 15px;
 
-  
-  
   /* Meeting Card 1 Content */
   --meeting1-title-content: 'Design System Meeting';
   --meeting1-time-content: '9 - 10 AM';
@@ -123,9 +117,7 @@
   /* Meeting Cards Section title Content */
   --section-meetings-title-content: 'My Meetings';
 
-
   /* //////////////////////// Button Component ///////////////////////// */
-
 
   /* Buttons */
   --button-content: 'Submit';
@@ -161,7 +153,7 @@
   --button-secondary-hover-bg-color: #76717f;
   --button-secondary-hover-text-color: #f1f1f2;
 
-  /* Button secondary focus */  
+  /* Button secondary focus */
   --button-secondary-focus-bg-color: #64606c;
   --button-secondary-focus-text-color: #f1f1f2;
 
@@ -184,14 +176,14 @@
   --button-medium-font-size: 16px;
   --button-medium-font-line-height: 20px;
 
-   /* Button small */
+  /* Button small */
   --button-small-padding-x: 28px;
   --button-small-padding-y: 12px;
   --button-small-border-radius: 12px;
   --button-small-font-size: 12px;
   --button-small-font-line-height: 15px;
 
-   /* Button icon */
+  /* Button icon */
   --button-icon-padding-x: 16px;
   --button-icon-padding-y: 16px;
   --button-icon-border-radius: 12px;
@@ -201,9 +193,7 @@
   /* Button disabled */
   --button-disabled-opacity: 0.5;
 
-  
   /* //////////////////////// Toogle Component ///////////////////////// */
-
 
   /* Toggle */
   --toggle-border-radius: 999px;
@@ -215,19 +205,17 @@
   --toggle-circle-width: 16px;
   --toggle-circle-height: 16px;
 
-   /* Toggle On */
+  /* Toggle On */
   --toggle-on-bg-color: #916dff;
   --toggle-on-circle-bg-color: #fff;
   --toggle-on-border-color: #916dff;
 
-   /* Toggle Off */
+  /* Toggle Off */
   --toggle-off-circle-bg-color: #fff;
   --toggle-off-bg-color: #8f8b96;
   --toggle-off-border-color: #8f8b96;
 
-  
   /* //////////////////////// Header Component ///////////////////////// */
-
 
   /* Header */
   --header-gap: 16px;
@@ -249,7 +237,7 @@
   --header-title-font-weight: 700;
   --header-title-font-content: 'Multi-Theme Design System';
 
-   /* Header role */
+  /* Header role */
   --header-role-font-color: #62626d;
   --header-role-font-family: 'Inter';
   --header-role-font-size: 16px;
@@ -257,16 +245,10 @@
   --header-role-font-weight: 500;
   --header-role-font-content: 'Design System Designer';
 
-   /* Header avatar */
+  /* Header avatar */
   --header-avatar-margin-bottom: 8px;
 
-  
-  
-  
   /* //////////////////////// Logo Component ///////////////////////// */
-
-  
-
 
   /* Logo */
   --logo-gap: 16px;
@@ -279,7 +261,7 @@
   --logo-icon-font-size: 20px;
   --logo-icon-font-line-height: 20px;
 
-   /* Logo name */
+  /* Logo name */
   --logo-name-font-color: #24242c;
   --logo-name-font-size: 16px;
   --logo-name-font-line-height: 20px;
@@ -287,13 +269,7 @@
   --logo-name-font-family: 'Inter';
   --logo-name-font-content: 'My Design System';
 
-  
-
   /* //////////////////////// Tabs Component ///////////////////////// */
-
-  
-  
-
 
   /* Tabs */
   --tap-bg-color: #acadb2;
@@ -337,13 +313,12 @@
   --tap-item2-label-content: 'Profile';
   --tap-item3-label-content: 'Messages';
 
-
   /* Menu item default */
   --menu-item-default-bg-color: #fff;
   --menu-item-default-font-color: #24242c;
   --menu-item-default-icon-color: #24242c;
 
-   /* Menu item hover */
+  /* Menu item hover */
   --menu-item-hover-bg-color: #f2edff;
   --menu-item-hover-font-color: #24242c;
   --menu-item-hover-icon-color: #24242c;
@@ -355,8 +330,7 @@
 
   /* //////////////////////// Menu Component ///////////////////////// */
 
-  
-/* Menu item */
+  /* Menu item */
   --menu-item-padding-x: 16px;
   --menu-item-padding-y: 12px;
   --menu-item-gap: 8px;
@@ -373,7 +347,7 @@
   --menu-item2-content: 'Themes';
   --menu-item3-content: 'More';
 
-/* Menu dropdown */
+  /* Menu dropdown */
   --menu-dropdown-bg-color: #fff;
   --menu-dropdown-shadow-color: #cecbdc;
   --menu-dropdown-border-color: #f8f7fb;
@@ -388,15 +362,13 @@
   /* Menu dropdown item */
   --menu-dropdown-item-padding-y: 8px;
   --menu-dropdown-item-border-radius: 0px;
-  
+
   /* Menu dropdown items content */
   --menu-dropdown-item1-content: 'About';
   --menu-dropdown-item2-content: 'Contact';
   --menu-dropdown-item3-content: 'Settings';
 
-
   /* //////////////////////// Radio Component ///////////////////////// */
-
 
   /* Radio on */
   --radio-on-bg-color: #916dff;
@@ -406,9 +378,7 @@
   --radio-off-bg-color: #acadb2;
   --radio-off-border-color: #acadb2;
 
-
   /* //////////////////////// Choose card Component ///////////////////////// */
-
 
   /* Choose Cards */
   --choose-card-border-color: #916dff;
@@ -441,14 +411,8 @@
   --choose-card-desc-font-weight: 400;
   --choose-card-desc-font-content: 'Advanced tools for growing professional teams.';
 
-  
-  
-  
-  
   /* //////////////////////// Card Component ///////////////////////// */
 
-
-  
   /* Card */
   --card-padding: 16px;
 
@@ -475,7 +439,7 @@
   --card-desc-font-family: 'Inter';
   --card-desc-font-content: 'Spatial audio. Noise cancelled. All-day comfort.';
 
-   /* Card review */
+  /* Card review */
   --card-review-font-color: #62626d;
   --card-review-font-size: 12px;
   --card-review-font-line-height: 15px;
@@ -491,7 +455,7 @@
   /* Card stars */
   --card-stars-gap: 0px;
 
-   /* Card old price */
+  /* Card old price */
   --card-old-price-font-color: #62626d;
   --card-old-price-font-size: 16px;
   --card-old-price-font-line-height: 20px;
@@ -499,7 +463,7 @@
   --card-old-price-font-family: 'Inter';
   --card-old-price-font-content: '$549';
 
-   /* Card new price */
+  /* Card new price */
   --card-new-price-font-color: #794dff;
   --card-new-price-font-size: 24px;
   --card-new-price-font-line-height: 30px;
@@ -515,12 +479,8 @@
   --card-body-text-gap: 8px;
   --card-body-review-gap: 8px;
   --card-body-prices-gap: 8px;
-  
-  
 
   /* //////////////////////// Input Field Component ///////////////////////// */
-
-
 
   /* Input Fields */
   --input-field-padding-x: 16px;
@@ -538,21 +498,17 @@
   --input-field-default-font-color: #62626d;
   --input-field-default-border-color: #f2edff;
 
-   /* Input Field hover */
+  /* Input Field hover */
   --input-field-hover-bg-color: #fff;
   --input-field-hover-font-color: #62626d;
   --input-field-hover-border-color: #916dff;
 
-   /* Input Field focus */
+  /* Input Field focus */
   --input-field-focus-bg-color: #fff;
   --input-field-focus-font-color: #794dff;
   --input-field-focus-border-color: #916dff;
 
-  
-
   /* //////////////////////// Pagination Component ///////////////////////// */
-
-
 
   /* Pagination */
   --pagination-gap: 4px;
@@ -565,7 +521,7 @@
   --pagination-item-hover-bg-color: #f2edff;
   --pagination-item-hover-font-color: #794dff;
 
-   /* Pagination item active */
+  /* Pagination item active */
   --pagination-item-active-bg-color: #f2edff;
   --pagination-item-active-font-color: #794dff;
 
@@ -585,7 +541,7 @@
   --pagination-arrow-padding-y: 12px;
   --pagination-arrow-font-size: 12px;
   --pagination-arrow-font-line-height: 12.5px;
-  
+
   /* Pagination pages number content */
   --pagination-page1-number-font-content: '1';
   --pagination-page2-number-font-content: '2';
@@ -593,9 +549,7 @@
   --pagination-page4-number-font-content: '4';
   --pagination-page5-number-font-content: '5';
 
-
   /* //////////////////////// Palettes Component ///////////////////////// */
-
 
   /* Palettes item */
   --palettes-item-padding-x: 12px;
@@ -614,7 +568,7 @@
   --palettes-item-700-font-content: '700';
   --palettes-item-800-font-content: '800';
   --palettes-item-900-font-content: '900';
-  
+
   /* Palettes primary */
   --palettes-primary-100-bg-color: #f2edff;
   --palettes-primary-100-font-color: #362373;
@@ -715,11 +669,7 @@
   --palettes-danger-900-bg-color: #8b1616;
   --palettes-danger-900-font-color: #fee9e9;
 
-
-
   /* //////////////////////// Alert Component ///////////////////////// */
-
-
 
   /* Alerts */
   --alerts-padding-x: 20px;
@@ -730,59 +680,56 @@
   --alerts-warning-border-style: dashed;
   --alerts-border-radius: 8px;
 
-   /* Alerts primary */
+  /* Alerts primary */
   --alerts-primary-bg-color: #f2edff;
   --alerts-primary-icon-color: #794dff;
   --alerts-primary-font-color: #794dff;
   --alerts-primary-border-color: #c5b2ff;
 
-   /* Alerts success */
+  /* Alerts success */
   --alerts-success-bg-color: #e6faed;
   --alerts-success-icon-color: #00ca4b;
   --alerts-success-font-color: #00ca4b;
   --alerts-success-border-color: #91e8b2;
 
-   /* Alerts warning */
+  /* Alerts warning */
   --alerts-warning-bg-color: #fdf7e6;
   --alerts-warning-icon-color: #edb000;
   --alerts-warning-font-color: #edb000;
   --alerts-warning-border-color: #f7dd91;
 
-   /* Alerts danger */
+  /* Alerts danger */
   --alerts-danger-bg-color: #fee9e9;
   --alerts-danger-icon-color: #f32727;
   --alerts-danger-font-color: #f32727;
   --alerts-danger-border-color: #faa2a2;
 
-   /* Alerts title */
+  /* Alerts title */
   --alerts-title-font-family: 'Inter';
   --alerts-title-font-size: 12px;
   --alerts-title-font-line-height: 15px;
   --alerts-title-font-weight: 600;
   --alerts-title-font-content: 'Alerts';
 
-   /* Alerts icon */
+  /* Alerts icon */
   --alerts-icon-font-size: 20px;
   --alerts-icon-font-line-height: 20px;
 
-   /* Alerts items content */
+  /* Alerts items content */
   --alerts-item1-title-content: 'There are 9 new messages';
   --alerts-item2-title-content: 'This is a primary alert — check it out!';
   --alerts-item3-title-content: 'Click to verify your email';
   --alerts-item4-title-content: 'Access denied. contact support';
 
-
-
   /* //////////////////////// Avatar Component ///////////////////////// */
-
 
   /* Avatar */
   --avatar-border-width: 2px;
 
-   /* Avatar small */
+  /* Avatar small */
   --avatar-small-border-radius: 8px;
   --avatar-small-size: 24px;
-  
+
   /* Avatar large */
   --avatar-large-border-radius: 16px;
   --avatar-large-size: 80px;
@@ -790,15 +737,12 @@
   /* Avatar group */
   --avatar-group-gap: -4px;
 
+  /* //////////////////////// Footer Component ///////////////////////// */
 
-    /* //////////////////////// Footer Component ///////////////////////// */
-
-  
   /* Footer */
   --footer-gap: 12px;
   --footer-title-content: 'Osama Eldrieny © 2025';
   --footer-link1-content: 'License';
   --footer-link2-content: 'Help';
   --footer-link3-content: 'Policy';
-
 }

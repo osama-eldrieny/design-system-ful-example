@@ -1,7 +1,20 @@
 import { useState } from 'react';
 import {
-  Button, Card, InputField, Avatar, Logo, Navbar, Footer,
-  Dropdown, RadioButton, Toggle, Tabs, Pagination, ChooseCard, MeetingCard, AppsNotifications
+  Button,
+  Card,
+  InputField,
+  Avatar,
+  Logo,
+  Navbar,
+  Footer,
+  Dropdown,
+  RadioButton,
+  Toggle,
+  Tabs,
+  Pagination,
+  ChooseCard,
+  MeetingCard,
+  AppsNotifications,
 } from '@ds/react';
 import './ProductLandingPage.css';
 
@@ -195,8 +208,6 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
   const [gridView, setGridView] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-
-
   const itemsPerPage = 3;
   const totalPages = Math.ceil(products.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
@@ -244,10 +255,11 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
         <div className="hero-content">
           <h2>Premium Tech Products</h2>
           <p>Discover the latest technology with the best quality and prices</p>
-          <Button variant="primary" buttonStyle="filled">Explore Products</Button>
+          <Button variant="primary" buttonStyle="filled">
+            Explore Products
+          </Button>
         </div>
       </section>
-
 
       {/* Main Layout with Left Sidebar */}
       <div className="page-layout">
@@ -268,9 +280,24 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
             <div className="sidebar-subsection">
               <h3 className="sidebar-subsection-title">Price Range</h3>
               <div className="filter-options">
-                <RadioButton id="price-all" label="All Prices" checked={priceRange === 'all'} onChange={() => setPriceRange('all')} />
-                <RadioButton id="price-budget" label="Under $100" checked={priceRange === 'budget'} onChange={() => setPriceRange('budget')} />
-                <RadioButton id="price-mid" label="$100 - $300" checked={priceRange === 'mid'} onChange={() => setPriceRange('mid')} />
+                <RadioButton
+                  id="price-all"
+                  label="All Prices"
+                  checked={priceRange === 'all'}
+                  onChange={() => setPriceRange('all')}
+                />
+                <RadioButton
+                  id="price-budget"
+                  label="Under $100"
+                  checked={priceRange === 'budget'}
+                  onChange={() => setPriceRange('budget')}
+                />
+                <RadioButton
+                  id="price-mid"
+                  label="$100 - $300"
+                  checked={priceRange === 'mid'}
+                  onChange={() => setPriceRange('mid')}
+                />
               </div>
             </div>
 
@@ -305,7 +332,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
             <h3 className="sidebar-section-title">Connected Apps</h3>
             <AppsNotifications
               title="Connected Apps"
-              items={notifications.map(notif => ({
+              items={notifications.map((notif) => ({
                 id: notif.id,
                 appTitle: notif.appTitle,
                 appIcon: notif.appIcon,
@@ -317,7 +344,6 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
 
         {/* Main Content */}
         <main className="page-main">
-
           {/* Products Section */}
           <section className="products-section">
             <div className="section-header">
@@ -327,10 +353,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
 
             <div className="products-controls">
               <div className="sort-controls">
-                <button
-                  className="sort-button"
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                >
+                <button className="sort-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                   <i className="fas fa-sliders"></i> Sort By
                   <i className={`fas fa-chevron-down ${isDropdownOpen ? 'open' : ''}`}></i>
                 </button>
@@ -345,11 +368,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
                 )}
               </div>
 
-              <Tabs
-                items={tabs}
-                activeTabId={activeTab}
-                onTabChange={setActiveTab}
-              />
+              <Tabs items={tabs} activeTabId={activeTab} onTabChange={setActiveTab} />
             </div>
 
             <div className={`products-grid ${gridView ? 'grid' : 'list'}`}>
@@ -408,12 +427,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
                 {teamMembers.map((member, idx) => (
                   <div key={idx} className="team-member">
                     <div className="team-avatar-wrapper">
-                      <Avatar
-                        src={member.avatar}
-                        alt={member.name}
-                        size="xlarge"
-                        radius="round"
-                      />
+                      <Avatar src={member.avatar} alt={member.name} size="xlarge" radius="round" />
                     </div>
                     <h4>{member.name}</h4>
                     <p>{member.role}</p>

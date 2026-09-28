@@ -20,17 +20,7 @@ const getDefaultIcon = (variant: string) => {
 };
 
 export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  (
-    {
-      variant = 'primary',
-      icon,
-      title,
-      children,
-      className,
-      ...props
-    },
-    ref
-  ) => {
+  ({ variant = 'primary', icon, title, children, className, ...props }, ref) => {
     const baseClass = `alert alert--${variant}`;
     const finalClassName = [baseClass, className].filter(Boolean).join(' ');
     const displayIcon = icon ?? getDefaultIcon(variant);
@@ -44,7 +34,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 Alert.displayName = 'Alert';

@@ -5,8 +5,7 @@ import DashboardPage from './DashboardPage';
 type Page = 'landing' | 'dashboard';
 
 // Each prototype has its own URL: #/landing and #/dashboard
-const pageFromHash = (): Page =>
-  window.location.hash === '#/dashboard' ? 'dashboard' : 'landing';
+const pageFromHash = (): Page => (window.location.hash === '#/dashboard' ? 'dashboard' : 'landing');
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>(pageFromHash);
@@ -26,12 +25,8 @@ function App() {
 
   return (
     <div>
-      {currentPage === 'landing' && (
-        <ProductLandingPage onNavigate={() => navigate('dashboard')} />
-      )}
-      {currentPage === 'dashboard' && (
-        <DashboardPage onNavigate={() => navigate('landing')} />
-      )}
+      {currentPage === 'landing' && <ProductLandingPage onNavigate={() => navigate('dashboard')} />}
+      {currentPage === 'dashboard' && <DashboardPage onNavigate={() => navigate('landing')} />}
     </div>
   );
 }

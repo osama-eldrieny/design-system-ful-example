@@ -13,7 +13,7 @@ export const RadioButton = React.forwardRef<HTMLInputElement, RadioButtonProps>(
         {label && <label htmlFor={props.id}>{label}</label>}
       </div>
     );
-  }
+  },
 );
 
 RadioButton.displayName = 'RadioButton';

@@ -34,7 +34,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const brandColorsMap: Record<string, BrandColors> = {
       diamond: {
@@ -72,23 +72,21 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={`card ${className || ''}`.trim()}
-        style={{
-          '--card-image-bgcolor': colors.imageBg,
-          '--card-title-font-color': colors.titleColor,
-          '--card-desc-font-color': colors.descColor,
-          '--card-review-font-color': colors.reviewColor,
-          '--card-new-price-font-color': colors.priceColor,
-          '--card-old-price-font-color': colors.oldPriceColor,
-          '--card-stars-icon-color': colors.starsColor,
-        } as React.CSSProperties}
+        style={
+          {
+            '--card-image-bgcolor': colors.imageBg,
+            '--card-title-font-color': colors.titleColor,
+            '--card-desc-font-color': colors.descColor,
+            '--card-review-font-color': colors.reviewColor,
+            '--card-new-price-font-color': colors.priceColor,
+            '--card-old-price-font-color': colors.oldPriceColor,
+            '--card-stars-icon-color': colors.starsColor,
+          } as React.CSSProperties
+        }
         {...props}
       >
         <div className="card-image">
-          {imageUrl ? (
-            <img src={imageUrl} alt={title} style={{}} />
-          ) : (
-            <span>Product Image</span>
-          )}
+          {imageUrl ? <img src={imageUrl} alt={title} style={{}} /> : <span>Product Image</span>}
         </div>
         <div className="card-body">
           <div className="card-text-group">
@@ -112,7 +110,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 Card.displayName = 'Card';

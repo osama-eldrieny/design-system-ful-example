@@ -9,23 +9,8 @@ interface AvatarProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 }
 
 export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
-  (
-    {
-      size = 'xlarge',
-      radius = 'pills',
-      src,
-      alt,
-      className,
-      ...props
-    },
-    ref
-  ) => {
-    const classes = [
-      'avatar',
-      `avatar--${size}`,
-      `avatar--${radius}`,
-      className,
-    ]
+  ({ size = 'xlarge', radius = 'pills', src, alt, className, ...props }, ref) => {
+    const classes = ['avatar', `avatar--${size}`, `avatar--${radius}`, className]
       .filter(Boolean)
       .join(' ');
 
@@ -34,7 +19,7 @@ export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
         <img src={src} alt={alt} {...props} />
       </div>
     );
-  }
+  },
 );
 
 Avatar.displayName = 'Avatar';

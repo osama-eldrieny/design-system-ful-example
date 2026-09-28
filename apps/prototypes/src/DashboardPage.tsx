@@ -1,7 +1,20 @@
 import { useState } from 'react';
 import {
-  Button, Card, Alert, InputField, Avatar, Logo, Footer,
-  Dropdown, RadioButton, Toggle, Tabs, Pagination, ChooseCard, MeetingCard, AppsNotifications
+  Button,
+  Card,
+  Alert,
+  InputField,
+  Avatar,
+  Logo,
+  Footer,
+  Dropdown,
+  RadioButton,
+  Toggle,
+  Tabs,
+  Pagination,
+  ChooseCard,
+  MeetingCard,
+  AppsNotifications,
 } from '@ds/react';
 import './DashboardPage.css';
 
@@ -14,31 +27,112 @@ const kpiCards = [
 
 // Revenue Category
 const revenueCards = [
-  { id: 1, category: 'revenue', title: 'Total Revenue', description: 'Total income from all sources this month', price: '$124,567', brand: 'diamond' as const },
-  { id: 2, category: 'revenue', title: 'Revenue Growth', description: 'Month-over-month revenue increase', price: '+$12,450', brand: 'diamond' as const },
-  { id: 3, category: 'revenue', title: 'Revenue Per User', description: 'Average spending per user account', price: '$15.80', brand: 'diamond' as const },
+  {
+    id: 1,
+    category: 'revenue',
+    title: 'Total Revenue',
+    description: 'Total income from all sources this month',
+    price: '$124,567',
+    brand: 'diamond' as const,
+  },
+  {
+    id: 2,
+    category: 'revenue',
+    title: 'Revenue Growth',
+    description: 'Month-over-month revenue increase',
+    price: '+$12,450',
+    brand: 'diamond' as const,
+  },
+  {
+    id: 3,
+    category: 'revenue',
+    title: 'Revenue Per User',
+    description: 'Average spending per user account',
+    price: '$15.80',
+    brand: 'diamond' as const,
+  },
 ];
 
 // Users Category
 const usersCards = [
-  { id: 4, category: 'users', title: 'Active Users', description: 'Users currently active on platform', price: '8,432', brand: 'diamond' as const },
-  { id: 5, category: 'users', title: 'New Users', description: 'Newly registered users this month', price: '+1,245', brand: 'diamond' as const },
-  { id: 6, category: 'users', title: 'Geographic Distribution', description: 'Users across different regions worldwide', price: '45 Countries', brand: 'diamond' as const },
+  {
+    id: 4,
+    category: 'users',
+    title: 'Active Users',
+    description: 'Users currently active on platform',
+    price: '8,432',
+    brand: 'diamond' as const,
+  },
+  {
+    id: 5,
+    category: 'users',
+    title: 'New Users',
+    description: 'Newly registered users this month',
+    price: '+1,245',
+    brand: 'diamond' as const,
+  },
+  {
+    id: 6,
+    category: 'users',
+    title: 'Geographic Distribution',
+    description: 'Users across different regions worldwide',
+    price: '45 Countries',
+    brand: 'diamond' as const,
+  },
 ];
 
 // Engagement Category
 const engagementCards = [
-  { id: 7, category: 'engagement', title: 'Session Duration', description: 'Average time spent per user session', price: '4m 32s', brand: 'diamond' as const },
-  { id: 8, category: 'engagement', title: 'Bounce Rate', description: 'Percentage of single-page sessions', price: '32.1%', brand: 'diamond' as const },
-  { id: 9, category: 'engagement', title: 'User Retention', description: 'Percentage of returning users overall', price: '68.5%', brand: 'diamond' as const },
+  {
+    id: 7,
+    category: 'engagement',
+    title: 'Session Duration',
+    description: 'Average time spent per user session',
+    price: '4m 32s',
+    brand: 'diamond' as const,
+  },
+  {
+    id: 8,
+    category: 'engagement',
+    title: 'Bounce Rate',
+    description: 'Percentage of single-page sessions',
+    price: '32.1%',
+    brand: 'diamond' as const,
+  },
+  {
+    id: 9,
+    category: 'engagement',
+    title: 'User Retention',
+    description: 'Percentage of returning users overall',
+    price: '68.5%',
+    brand: 'diamond' as const,
+  },
 ];
 
 const allDataCards = [...revenueCards, ...usersCards, ...engagementCards];
 
 const systemStatus = [
-  { id: 1, title: 'Database: Healthy', time: 'Uptime: 99.99%', variant: 'success' as const, avatars: ['assets/avatar-1.png', 'assets/avatar-2.png'] },
-  { id: 2, title: 'API Server: Active', time: 'Latency: 120ms', variant: 'success' as const, avatars: ['assets/avatar-2.png', 'assets/avatar-3.png'] },
-  { id: 3, title: 'Backup: In Progress', time: 'ETA: 15 min', variant: 'primary' as const, avatars: ['assets/avatar-3.png', 'assets/avatar-4.png'] },
+  {
+    id: 1,
+    title: 'Database: Healthy',
+    time: 'Uptime: 99.99%',
+    variant: 'success' as const,
+    avatars: ['assets/avatar-1.png', 'assets/avatar-2.png'],
+  },
+  {
+    id: 2,
+    title: 'API Server: Active',
+    time: 'Latency: 120ms',
+    variant: 'success' as const,
+    avatars: ['assets/avatar-2.png', 'assets/avatar-3.png'],
+  },
+  {
+    id: 3,
+    title: 'Backup: In Progress',
+    time: 'ETA: 15 min',
+    variant: 'primary' as const,
+    avatars: ['assets/avatar-3.png', 'assets/avatar-4.png'],
+  },
 ];
 
 const teamMembers = [
@@ -69,9 +163,10 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
   const [activeMenuItem, setActiveMenuItem] = useState('Dashboard');
 
   // Filter cards based on active tab
-  const filteredCards = activeMetricTab === 'all'
-    ? allDataCards
-    : allDataCards.filter(card => card.category === activeMetricTab);
+  const filteredCards =
+    activeMetricTab === 'all'
+      ? allDataCards
+      : allDataCards.filter((card) => card.category === activeMetricTab);
 
   const itemsPerPage = 4;
   const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
@@ -107,7 +202,11 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
       {/* Integrated Top Bar with Logo & Menu */}
       <div className="dashboard-top-bar">
         <div className="top-bar-logo">
-          <Logo icon={<i className="fa-solid fa-chart-line"></i>} text="Analytics" brand="diamond" />
+          <Logo
+            icon={<i className="fa-solid fa-chart-line"></i>}
+            text="Analytics"
+            brand="diamond"
+          />
         </div>
 
         <div className="top-bar-menu">
@@ -125,10 +224,7 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
         <div className="top-bar-controls">
           <InputField placeholder="Search..." icon={<i className="fas fa-search"></i>} />
           <div className="sort-controls">
-            <button
-              className="sort-button"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            >
+            <button className="sort-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
               <i className="fas fa-sliders"></i> Filter
               <i className={`fas fa-chevron-down ${isDropdownOpen ? 'open' : ''}`}></i>
             </button>
@@ -155,10 +251,30 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
             <div className="sidebar-subsection">
               <h3 className="sidebar-subsection-title">Time Period</h3>
               <div className="filter-options">
-                <RadioButton id="today" label="Today" checked={timePeriod === 'today'} onChange={() => setTimePeriod('today')} />
-                <RadioButton id="week" label="This Week" checked={timePeriod === 'week'} onChange={() => setTimePeriod('week')} />
-                <RadioButton id="month" label="This Month" checked={timePeriod === 'month'} onChange={() => setTimePeriod('month')} />
-                <RadioButton id="year" label="This Year" checked={timePeriod === 'year'} onChange={() => setTimePeriod('year')} />
+                <RadioButton
+                  id="today"
+                  label="Today"
+                  checked={timePeriod === 'today'}
+                  onChange={() => setTimePeriod('today')}
+                />
+                <RadioButton
+                  id="week"
+                  label="This Week"
+                  checked={timePeriod === 'week'}
+                  onChange={() => setTimePeriod('week')}
+                />
+                <RadioButton
+                  id="month"
+                  label="This Month"
+                  checked={timePeriod === 'month'}
+                  onChange={() => setTimePeriod('month')}
+                />
+                <RadioButton
+                  id="year"
+                  label="This Year"
+                  checked={timePeriod === 'year'}
+                  onChange={() => setTimePeriod('year')}
+                />
               </div>
             </div>
             <div className="sidebar-subsection">
@@ -309,12 +425,7 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
                 {teamMembers.map((member, idx) => (
                   <div key={idx} className="dashboard-team-member">
                     <div className="dashboard-team-avatar">
-                      <Avatar
-                        src={member.avatar}
-                        alt={member.name}
-                        size="small"
-                        radius="round"
-                      />
+                      <Avatar src={member.avatar} alt={member.name} size="small" radius="round" />
                     </div>
                     <div className="dashboard-team-info">
                       <h4>{member.name}</h4>
@@ -331,7 +442,7 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
             <h3 className="sidebar-section-title">Apps</h3>
             <AppsNotifications
               title="Connected"
-              items={integrations.map(int => ({
+              items={integrations.map((int) => ({
                 id: int.id,
                 appTitle: int.appTitle,
                 appIcon: int.appIcon,

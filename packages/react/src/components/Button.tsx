@@ -20,14 +20,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const baseClass = `btn btn--${variant}-${buttonStyle}-${state}`;
     const sizeClass = size !== 'medium' ? ` btn--${size}` : '';
 
-    const finalClassName = [baseClass, sizeClass, className]
-      .filter(Boolean)
-      .join(' ');
+    const finalClassName = [baseClass, sizeClass, className].filter(Boolean).join(' ');
 
     return (
       <button
@@ -39,7 +37,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {size === 'icon' ? '+' : children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

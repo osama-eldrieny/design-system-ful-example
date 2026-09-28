@@ -86,6 +86,14 @@
   color: var(--alerts-warning-icon-color);
 }
 
-.alert--square { border-radius: var(--alerts-border-radius); }
-.alert--round { border-radius: var(--alerts-border-radius); }
-.alert--pills { border-radius: var(--alerts-border-radius); }
+.alert--square {
+  border-radius: var(--alerts-border-radius);
+}
+
+.alert--round {
+  border-radius: var(--alerts-border-radius);
+}
+
+.alert--pills {
+  border-radius: var(--alerts-border-radius);
+}

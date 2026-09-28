@@ -7,7 +7,8 @@
   gap: var(--footer-gap);
   background-color: var(--section-bg-color);
   border-radius: var(--section-border-radius);
-  box-shadow: var(--section-shadow-x) var(--section-shadow-y) var(--section-shadow-blur) 0 var(--section-shadow-color);
+  box-shadow: var(--section-shadow-x) var(--section-shadow-y) var(--section-shadow-blur) 0
+    var(--section-shadow-color);
 }
 
 .footer-text {

@@ -15,11 +15,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   title = 'Osama Eldrieny © 2025',
-  links = [
-    { label: 'License' },
-    { label: 'Help' },
-    { label: 'Policy' },
-  ],
+  links = [{ label: 'License' }, { label: 'Help' }, { label: 'Policy' }],
   className = '',
 }) => {
   return (
@@ -28,11 +24,7 @@ export const Footer: React.FC<FooterProps> = ({
       {links.length > 0 && (
         <div className="footer-links">
           {links.map((link) => (
-            <button
-              key={link.label}
-              onClick={link.onClick}
-              className="footer-button"
-            >
+            <button key={link.label} onClick={link.onClick} className="footer-button">
               {link.label}
             </button>
           ))}

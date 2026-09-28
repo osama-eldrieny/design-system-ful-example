@@ -1,7 +1,4 @@
 {
   "files": [],
-  "references": [
-    { "path": "packages/react" },
-    { "path": "apps/prototypes" }
-  ]
+  "references": [{ "path": "packages/react" }, { "path": "apps/prototypes" }]
 }

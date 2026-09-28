@@ -7,7 +7,8 @@
   gap: var(--header-gap, 24px);
   background-color: var(--section-bg-color);
   border-radius: var(--section-border-radius, 12px);
-  box-shadow: var(--section-shadow-x, 0) var(--section-shadow-y, 8px) var(--section-shadow-blur, 32px) var(--section-shadow-color);
+  box-shadow: var(--section-shadow-x, 0) var(--section-shadow-y, 8px)
+    var(--section-shadow-blur, 32px) var(--section-shadow-color);
 }
 
 .header-personal-info {

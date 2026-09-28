@@ -11,11 +11,7 @@ interface MeetingCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export const MeetingCard = React.forwardRef<HTMLDivElement, MeetingCardProps>(
   ({ title, time, variant = 'primary', avatars = [], className, ...props }, ref) => {
     return (
-      <div
-        ref={ref}
-        className={`meeting-card ${variant} ${className || ''}`}
-        {...props}
-      >
+      <div ref={ref} className={`meeting-card ${variant} ${className || ''}`} {...props}>
         <div className="meeting-card-info">
           <h3 className="meeting-card-title">{title}</h3>
           <p className="meeting-card-time">{time}</p>
@@ -31,7 +27,7 @@ export const MeetingCard = React.forwardRef<HTMLDivElement, MeetingCardProps>(
         )}
       </div>
     );
-  }
+  },
 );
 
 MeetingCard.displayName = 'MeetingCard';

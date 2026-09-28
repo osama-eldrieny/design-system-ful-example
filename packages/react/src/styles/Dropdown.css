@@ -5,7 +5,8 @@
   background-color: var(--menu-dropdown-bg-color);
   border: var(--menu-dropdown-border-width) solid var(--menu-dropdown-border-color);
   border-radius: var(--menu-dropdown-border-radius);
-  box-shadow: 0 var(--menu-dropdown-shadow-y) var(--menu-dropdown-shadow-blur) var(--menu-dropdown-shadow-color);
+  box-shadow: 0 var(--menu-dropdown-shadow-y) var(--menu-dropdown-shadow-blur)
+    var(--menu-dropdown-shadow-color);
   padding: 0;
   width: 100%;
   min-width: 146px;

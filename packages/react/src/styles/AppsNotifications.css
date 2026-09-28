@@ -5,7 +5,8 @@
   padding: var(--section-padding);
   background: var(--section-bg-color);
   border-radius: var(--section-border-radius);
-  box-shadow: var(--section-shadow-x) var(--section-shadow-y) var(--section-shadow-blur) var(--section-shadow-color);
+  box-shadow: var(--section-shadow-x) var(--section-shadow-y) var(--section-shadow-blur)
+    var(--section-shadow-color);
   width: 280px;
 }
 

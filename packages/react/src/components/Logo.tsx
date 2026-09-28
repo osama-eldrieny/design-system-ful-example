@@ -22,14 +22,9 @@ export const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const classes = [
-      `logo--${brand}`,
-      `logo--${radius}`,
-      `logo--${density}`,
-      className,
-    ]
+    const classes = [`logo--${brand}`, `logo--${radius}`, `logo--${density}`, className]
       .filter(Boolean)
       .join(' ');
 
@@ -39,7 +34,7 @@ export const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
         <div className="logo__name">{text}</div>
       </div>
     );
-  }
+  },
 );
 
 Logo.displayName = 'Logo';

@@ -36,7 +36,7 @@ export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
         ))}
       </div>
     );
-  }
+  },
 );
 
 Tabs.displayName = 'Tabs';
