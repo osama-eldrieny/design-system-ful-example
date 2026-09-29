@@ -59,6 +59,8 @@ const rule = (enabled, options = {}) => {
     root.walkDecls((decl) => {
       for (const [, token] of decl.value.matchAll(/var\(\s*(--[a-z0-9_-]+)/g)) {
         if (privates.has(token)) continue;
+        // Runtime values that primitives libraries set on elements (e.g. Radix positioning).
+        if (token.startsWith('--radix-')) continue;
         if (!prefixes.some((p) => token === `--${p}` || token.startsWith(`--${p}-`))) {
           report({
             ruleName,

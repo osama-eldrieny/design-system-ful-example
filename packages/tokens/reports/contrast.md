@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 185 | 185 | 0 |
-| diamond-dark | 185 | 185 | 0 |
-| amber-light | 185 | 185 | 0 |
-| amber-dark | 185 | 185 | 0 |
-| opal-light | 185 | 185 | 0 |
-| opal-dark | 185 | 185 | 0 |
+| diamond-light | 186 | 186 | 0 |
+| diamond-dark | 186 | 186 | 0 |
+| amber-light | 186 | 186 | 0 |
+| amber-dark | 186 | 186 | 0 |
+| opal-light | 186 | 186 | 0 |
+| opal-dark | 186 | 186 | 0 |
 
 ## Failures (0)
 
@@ -156,6 +156,7 @@ None.
 | diamond-light | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #24242c on #f2edff | 13.44:1 | 3:1 |
 | diamond-light | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #24242c on #dfd4ff | 11.00:1 | 4.5:1 |
 | diamond-light | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #24242c on #dfd4ff | 11.00:1 | 3:1 |
+| diamond-light | `--menu-item-danger-hover-font-color` | `--menu-item-danger-hover-bg-color` | #ad1c1c on #fee9e9 | 6.10:1 | 4.5:1 |
 | diamond-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
@@ -341,6 +342,7 @@ None.
 | diamond-dark | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #ececed on #332e3c | 11.14:1 | 3:1 |
 | diamond-dark | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #ececed on #5637b5 | 6.82:1 | 4.5:1 |
 | diamond-dark | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #ececed on #5637b5 | 6.82:1 | 3:1 |
+| diamond-dark | `--menu-item-danger-hover-font-color` | `--menu-item-danger-hover-bg-color` | #faa2a2 on #332e3c | 6.74:1 | 4.5:1 |
 | diamond-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
@@ -526,6 +528,7 @@ None.
 | amber-light | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #6a625a on #f9f4ee | 5.47:1 | 3:1 |
 | amber-light | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #6a625a on #f0e4d7 | 4.79:1 | 4.5:1 |
 | amber-light | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #6a625a on #f0e4d7 | 4.79:1 | 3:1 |
+| amber-light | `--menu-item-danger-hover-font-color` | `--menu-item-danger-hover-bg-color` | #7d4150 on #f4edef | 6.64:1 | 4.5:1 |
 | amber-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
@@ -711,6 +714,7 @@ None.
 | amber-dark | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #fdfbf9 on #574028 | 9.38:1 | 3:1 |
 | amber-dark | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #fdfbf9 on #8a663e | 5.02:1 | 4.5:1 |
 | amber-dark | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #fdfbf9 on #8a663e | 5.02:1 | 3:1 |
+| amber-dark | `--menu-item-danger-hover-font-color` | `--menu-item-danger-hover-bg-color` | #e5d4d8 on #542b36 | 8.30:1 | 4.5:1 |
 | amber-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
@@ -896,6 +900,7 @@ None.
 | opal-light | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #282b3b on #ebf3fe | 12.53:1 | 3:1 |
 | opal-light | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #282b3b on #d0e1fd | 10.59:1 | 4.5:1 |
 | opal-light | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #282b3b on #d0e1fd | 10.59:1 | 3:1 |
+| opal-light | `--menu-item-danger-hover-font-color` | `--menu-item-danger-hover-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
 | opal-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
@@ -1081,6 +1086,7 @@ None.
 | opal-dark | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #ededf0 on #1b3a6f | 9.55:1 | 3:1 |
 | opal-dark | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #ededf0 on #2a5caf | 5.53:1 | 4.5:1 |
 | opal-dark | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #ededf0 on #2a5caf | 5.53:1 | 3:1 |
+| opal-dark | `--menu-item-danger-hover-font-color` | `--menu-item-danger-hover-bg-color` | #faacba on #6e1c2a | 6.27:1 | 4.5:1 |
 | opal-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |

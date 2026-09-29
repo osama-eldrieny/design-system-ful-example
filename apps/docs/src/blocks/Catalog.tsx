@@ -12,7 +12,6 @@ const metas = Object.values(
 const MIGRATING = [
   'Card',
   'Choose Card',
-  'Dropdown',
   'Pagination',
   'Apps Notifications',
   'Footer',

@@ -7,7 +7,10 @@ import {
   Avatar,
   Logo,
   Footer,
-  Dropdown,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
   RadioGroup,
   Radio,
   Switch,
@@ -163,7 +166,6 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
   const [activeMetricTab, setActiveMetricTab] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRefresh, setSelectedRefresh] = useState('realtime');
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState('Dashboard');
 
   // Filter cards based on active tab
@@ -234,19 +236,25 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
             iconStart={<i className="fas fa-search"></i>}
           />
           <div className="sort-controls">
-            <button className="sort-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-              <i className="fas fa-sliders"></i> Filter
-              <i className={`fas fa-chevron-down ${isDropdownOpen ? 'open' : ''}`}></i>
-            </button>
-            {isDropdownOpen && (
-              <Dropdown
-                items={dropdownItems}
-                onItemClick={(id) => {
-                  console.log('Filter:', id);
-                  setIsDropdownOpen(false);
-                }}
-              />
-            )}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="sort-button">
+                  <i className="fas fa-sliders"></i> Filter
+                  <i className="fas fa-chevron-down"></i>
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                {dropdownItems.map((item) => (
+                  <DropdownMenuItem
+                    key={item.id}
+                    icon={<i className={item.icon}></i>}
+                    onSelect={() => console.log('Filter:', item.id)}
+                  >
+                    {item.label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </div>

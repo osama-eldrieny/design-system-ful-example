@@ -96,5 +96,5 @@
   --tabs-gap: var(--space-16);
   --pagination-gap: var(--space-8);
   --card-padding: var(--space-8);
-  --menu-dropdown-item-padding-y: var(--space-negative-4);
+  --menu-dropdown-item-padding-y: var(--space-4);
 }

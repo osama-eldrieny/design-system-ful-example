@@ -7,7 +7,10 @@ import {
   Logo,
   Navbar,
   Footer,
-  Dropdown,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
   RadioGroup,
   Radio,
   Switch,
@@ -210,7 +213,6 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [priceRange, setPriceRange] = useState('all');
   const [gridView, setGridView] = useState(true);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const itemsPerPage = 3;
   const totalPages = Math.ceil(products.length / itemsPerPage);
@@ -351,22 +353,25 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
 
               <div className="products-controls">
                 <div className="sort-controls">
-                  <button
-                    className="sort-button"
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  >
-                    <i className="fas fa-sliders"></i> Sort By
-                    <i className={`fas fa-chevron-down ${isDropdownOpen ? 'open' : ''}`}></i>
-                  </button>
-                  {isDropdownOpen && (
-                    <Dropdown
-                      items={dropdownItems}
-                      onItemClick={(id) => {
-                        console.log('Sort:', id);
-                        setIsDropdownOpen(false);
-                      }}
-                    />
-                  )}
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <button className="sort-button">
+                        <i className="fas fa-sliders"></i> Sort By
+                        <i className="fas fa-chevron-down"></i>
+                      </button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      {dropdownItems.map((item) => (
+                        <DropdownMenuItem
+                          key={item.id}
+                          icon={<i className={item.icon}></i>}
+                          onSelect={() => console.log('Sort:', item.id)}
+                        >
+                          {item.label}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
 
                 <TabList label="Product categories">

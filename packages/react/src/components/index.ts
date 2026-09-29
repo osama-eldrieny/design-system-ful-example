@@ -11,7 +11,7 @@ export { Logo } from './Logo';
 export { Header } from './Header';
 export { Navbar } from './Navbar';
 export { Footer } from './Footer';
-export { Dropdown } from './Dropdown';
+export * from '../DropdownMenu';
 export { RadioGroup, Radio } from '../RadioGroup';
 export type { RadioGroupProps, RadioProps } from '../RadioGroup';
 export { Switch } from '../Switch';

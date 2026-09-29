@@ -2,6 +2,9 @@
  * Component tokens: dropdown
  *
  * Style this component only with these tokens.
+ *
+ * Grammar: --menu-dropdown-{property} for the menu, --menu-item-{variant?}-{state}-{property}
+ * for items (state: default | hover | active), --menu-label-* and --menu-shortcut-*.
  */
 
 :root,
@@ -33,4 +36,25 @@
   --menu-item-active-font-color: var(--color-fg-on-surface-primary);
   --menu-item-active-icon-color: var(--color-fg-on-surface-primary);
   --menu-dropdown-gap: var(--spacing-2xs);
+
+  /* Menu container */
+  --menu-dropdown-padding: var(--spacing-2xs);
+  --menu-dropdown-min-width: var(--sizing-8xl);
+  --menu-dropdown-z-index: var(--z-dropdown);
+  --menu-dropdown-transition-duration: var(--duration-fast);
+  --menu-dropdown-transition-easing: var(--easing-enter);
+
+  /* Danger item (destructive actions) */
+  --menu-item-danger-font-color: var(--color-fg-on-accent-danger-text-default);
+  --menu-item-danger-hover-bg-color: var(--color-bg-danger-1);
+  --menu-item-danger-hover-font-color: var(--color-fg-on-danger-high);
+
+  /* Group label, shortcut hint, check/radio indicator, disabled */
+  --menu-label-font-size: var(--font-size-sm);
+  --menu-label-font-line-height: var(--font-line-height-sm);
+  --menu-label-font-weight: var(--font-weight-medium);
+  --menu-label-font-color: var(--color-fg-on-surface-secondary);
+  --menu-shortcut-font-color: var(--color-fg-on-surface-secondary);
+  --menu-item-indicator-size: var(--sizing-sm);
+  --menu-item-disabled-opacity: var(--opacity-medium);
 }

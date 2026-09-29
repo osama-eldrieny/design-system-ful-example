@@ -1,0 +1,114 @@
+/**
+ * DropdownMenu. Styled only with --menu-* tokens. Radix marks the item under the pointer or
+ * keyboard with data-highlighted, disabled items with data-disabled, and the open menu with
+ * data-state="open".
+ */
+
+.ds-menu {
+  z-index: var(--menu-dropdown-z-index);
+  display: grid;
+  gap: var(--menu-dropdown-gap);
+  min-inline-size: var(--menu-dropdown-min-width);
+  padding: var(--menu-dropdown-padding);
+  border: var(--menu-dropdown-border-width) solid var(--menu-dropdown-border-color);
+  border-radius: var(--menu-dropdown-border-radius);
+  background-color: var(--menu-dropdown-bg-color);
+  box-shadow: var(--menu-dropdown-shadow-x) var(--menu-dropdown-shadow-y)
+    var(--menu-dropdown-shadow-blur) var(--menu-dropdown-shadow-color);
+  font-family: var(--menu-item-font-family);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+  animation: ds-menu-open var(--menu-dropdown-transition-duration)
+    var(--menu-dropdown-transition-easing);
+}
+
+@keyframes ds-menu-open {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.ds-menu__item {
+  --_bg: var(--menu-item-default-bg-color);
+  --_fg: var(--menu-item-default-font-color);
+  --_bg-hover: var(--menu-item-hover-bg-color);
+  --_fg-hover: var(--menu-item-hover-font-color);
+
+  display: flex;
+  align-items: center;
+  gap: var(--menu-item-gap);
+  padding-block: var(--menu-dropdown-item-padding-y);
+  padding-inline: var(--menu-item-padding-x);
+  border-radius: var(--menu-item-border-radius);
+  background-color: var(--_bg);
+  color: var(--_fg);
+  font-size: var(--menu-item-font-size);
+  line-height: var(--menu-item-font-line-height);
+  font-weight: var(--menu-item-font-weight);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.ds-menu__item--danger {
+  --_fg: var(--menu-item-danger-font-color);
+  --_bg-hover: var(--menu-item-danger-hover-bg-color);
+  --_fg-hover: var(--menu-item-danger-hover-font-color);
+}
+
+.ds-menu__item[data-highlighted],
+.ds-menu__item[data-state='open'] {
+  background-color: var(--_bg-hover);
+  color: var(--_fg-hover);
+}
+
+.ds-menu__item[data-disabled] {
+  opacity: var(--menu-item-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-menu__icon,
+.ds-menu__chevron {
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--menu-item-indicator-size);
+  block-size: var(--menu-item-indicator-size);
+}
+
+.ds-menu__icon > svg,
+.ds-menu__icon > span > svg,
+.ds-menu__chevron > svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+/* The submenu arrow points toward where the submenu opens. */
+.ds-menu__chevron:dir(rtl) {
+  transform: scaleX(-1);
+}
+
+.ds-menu__label {
+  flex: 1;
+}
+
+.ds-menu__shortcut {
+  margin-inline-start: auto;
+  color: var(--menu-shortcut-font-color);
+  font-size: var(--menu-label-font-size);
+  line-height: var(--menu-label-font-line-height);
+}
+
+.ds-menu__group-label {
+  padding-block: var(--menu-dropdown-item-padding-y);
+  padding-inline: var(--menu-item-padding-x);
+  color: var(--menu-label-font-color);
+  font-size: var(--menu-label-font-size);
+  line-height: var(--menu-label-font-line-height);
+  font-weight: var(--menu-label-font-weight);
+}
+
+.ds-menu__separator {
+  block-size: var(--menu-dropdown-divider-width);
+  margin-block: var(--menu-dropdown-gap);
+  background-color: var(--menu-dropdown-divider-color);
+}

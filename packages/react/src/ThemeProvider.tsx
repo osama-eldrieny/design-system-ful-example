@@ -1,5 +1,12 @@
-import { forwardRef, type HTMLAttributes } from 'react';
-import { themeAttributes, type Theme } from '@ds/tokens';
+import { createContext, forwardRef, useContext, type HTMLAttributes } from 'react';
+import { defaultTheme, themeAttributes, type Theme } from '@ds/tokens';
+
+/**
+ * The theme of the nearest ThemeProvider, or null when the page theme (applyTheme on <html>)
+ * applies. Components that render in a portal (menus, dialogs, tooltips) use it to keep the
+ * theme of the place they were opened from.
+ */
+const ThemeContext = createContext<Theme | null>(null);
 
 export interface ThemeProviderProps extends HTMLAttributes<HTMLDivElement> {
   /** Theme for this subtree. Axes you leave out use the default theme. */
@@ -13,10 +20,21 @@ export interface ThemeProviderProps extends HTMLAttributes<HTMLDivElement> {
  */
 export const ThemeProvider = forwardRef<HTMLDivElement, ThemeProviderProps>(
   ({ theme, children, ...props }, ref) => (
-    <div ref={ref} {...themeAttributes(theme)} {...props}>
-      {children}
-    </div>
+    <ThemeContext.Provider value={{ ...defaultTheme, ...theme }}>
+      <div ref={ref} {...themeAttributes(theme)} {...props}>
+        {children}
+      </div>
+    </ThemeContext.Provider>
   ),
 );
 
 ThemeProvider.displayName = 'ThemeProvider';
+
+/**
+ * Theme attributes for content rendered outside its ThemeProvider (in a portal), so it keeps
+ * the theme it was opened from. Returns {} when the page theme applies.
+ */
+export function usePortalThemeAttributes(): Record<string, string> {
+  const theme = useContext(ThemeContext);
+  return theme ? themeAttributes(theme) : {};
+}
