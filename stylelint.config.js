@@ -11,7 +11,6 @@ const notYetOnComponentTokens = [
   'Logo',
   'MeetingCard',
   'Navbar',
-  'Pagination',
 ].map((name) => `packages/react/src/styles/${name}.css`);
 
 export default {

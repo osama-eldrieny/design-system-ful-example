@@ -160,7 +160,7 @@ None.
 | diamond-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
-| diamond-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-light | `--palettes-primary100-font-color` | `--palettes-primary100-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-light | `--palettes-primary200-font-color` | `--palettes-primary200-bg-color` | #24202d on #dfd4ff | 11.37:1 | 4.5:1 |
 | diamond-light | `--palettes-primary300-font-color` | `--palettes-primary300-bg-color` | #24202d on #c5b2ff | 8.48:1 | 4.5:1 |
@@ -346,7 +346,7 @@ None.
 | diamond-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
-| diamond-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--palettes-primary100-font-color` | `--palettes-primary100-bg-color` | #fff on #452c91 | 10.38:1 | 4.5:1 |
 | diamond-dark | `--palettes-primary200-font-color` | `--palettes-primary200-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
 | diamond-dark | `--palettes-primary300-font-color` | `--palettes-primary300-bg-color` | #fff on #6741d9 | 6.30:1 | 4.5:1 |
@@ -532,7 +532,7 @@ None.
 | amber-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
-| amber-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--palettes-primary100-font-color` | `--palettes-primary100-bg-color` | #1e140d on #f9f4ee | 16.54:1 | 4.5:1 |
 | amber-light | `--palettes-primary200-font-color` | `--palettes-primary200-bg-color` | #1e140d on #f0e4d7 | 14.46:1 | 4.5:1 |
 | amber-light | `--palettes-primary300-font-color` | `--palettes-primary300-bg-color` | #1e140d on #e5cfb7 | 12.01:1 | 4.5:1 |
@@ -718,7 +718,7 @@ None.
 | amber-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
-| amber-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--palettes-primary100-font-color` | `--palettes-primary100-bg-color` | #fff on #6f5232 | 7.17:1 | 4.5:1 |
 | amber-dark | `--palettes-primary200-font-color` | `--palettes-primary200-bg-color` | #fff on #8a663e | 5.18:1 | 4.5:1 |
 | amber-dark | `--palettes-primary300-font-color` | `--palettes-primary300-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
@@ -904,7 +904,7 @@ None.
 | opal-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
-| opal-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--palettes-primary100-font-color` | `--palettes-primary100-bg-color` | #292d3e on #ebf3fe | 12.20:1 | 4.5:1 |
 | opal-light | `--palettes-primary200-font-color` | `--palettes-primary200-bg-color` | #292d3e on #d0e1fd | 10.31:1 | 4.5:1 |
 | opal-light | `--palettes-primary300-font-color` | `--palettes-primary300-bg-color` | #292d3e on #abc9fb | 8.11:1 | 4.5:1 |
@@ -1090,7 +1090,7 @@ None.
 | opal-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
-| opal-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--palettes-primary100-font-color` | `--palettes-primary100-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
 | opal-dark | `--palettes-primary200-font-color` | `--palettes-primary200-bg-color` | #fff on #2a5caf | 6.46:1 | 4.5:1 |
 | opal-dark | `--palettes-primary300-font-color` | `--palettes-primary300-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
