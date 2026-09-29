@@ -16,7 +16,9 @@
     "serve": "npx --yes serve site -l 8096",
     "tokens:contrast": "node packages/tokens/tools/contrast-report.ts --check",
     "ai": "tsx scripts/build-ai.ts && node scripts/agent-pointers.mjs",
-    "docs": "npm run dev -w @ds/docs"
+    "docs": "npm run dev -w @ds/docs",
+    "build:lib": "node scripts/build-lib.mjs",
+    "size": "node scripts/build-lib.mjs && node scripts/bundle-size.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",

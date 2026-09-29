@@ -34,6 +34,8 @@ jobs:
           npm run ai
           git diff --exit-code -- ai DESIGN.md packages/lint/eslint/components.json .cursor .github/copilot-instructions.md
       - run: npm run build
+      # The publishable packages build, and stay small and tree-shakable.
+      - run: npm run size
       - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main'
         with:
