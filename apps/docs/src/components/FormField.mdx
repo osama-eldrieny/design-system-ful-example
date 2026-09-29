@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FormField, Switch } from '@ds/react';
+import * as FieldStories from '../../../../packages/react/src/FormField/FormField.stories';
+import fieldMeta from '../../../../packages/react/src/FormField/FormField.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={FieldStories} name="Docs" />
+
+# FormField
+
+<ComponentPage
+  meta={fieldMeta}
+  stories={FieldStories}
+  components={[FormField]}
+  anatomy={{
+    targets: [
+      '.ds-form-field__label',
+      '.ds-form-field__required',
+      { selector: '.ds-switch', at: 'end' },
+      '.ds-form-field__description',
+      '.ds-form-field__message',
+    ],
+    example: (
+      <FormField
+        group
+        label="Email me about"
+        required
+        description="You can change this at any time."
+        error="Turn on at least one."
+      >
+        <Switch label="Comments" />
+      </FormField>
+    ),
+  }}
+  extras={[{ title: 'Label any control', story: 'CustomControl' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <FormField group label="Email me about" required error="Turn on at least one.">
+      <Switch label="Comments" />
+    </FormField>
+  }
+/>

@@ -108,6 +108,18 @@
       "contract": "ai/components/footer.json"
     },
     {
+      "id": "form-field",
+      "name": "FormField",
+      "exports": [
+        "FormField",
+        "useFormField"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "FormField puts a label, help text and an error or success message around a form control and wires them together, so screen readers announce the label, hint and error with the control.",
+      "contract": "ai/components/form-field.json"
+    },
+    {
       "id": "header",
       "name": "Header",
       "exports": [
@@ -220,6 +232,17 @@
       "status": "stable",
       "purpose": "Tabs switch between related views of content in the same place, one at a time.",
       "contract": "ai/components/tabs.json"
+    },
+    {
+      "id": "textarea",
+      "name": "Textarea",
+      "exports": [
+        "Textarea"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A multi-line text field for longer answers such as messages, comments or descriptions.",
+      "contract": "ai/components/textarea.json"
     }
   ]
 }
