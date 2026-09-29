@@ -1,0 +1,22 @@
+/**
+ * Component tokens: kbd
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --kbd-{property}
+ */
+
+:root,
+[data-theme] {
+  --kbd-bg-color: var(--color-bg-default);
+  --kbd-text-color: var(--color-fg-on-surface-primary);
+  --kbd-border-color: var(--color-border-primary-strong);
+  --kbd-border-width: var(--border-width-hairline);
+  --kbd-shadow-width: var(--border-width-regular);
+  --kbd-border-radius: var(--radius-xs);
+  --kbd-padding-x: var(--spacing-2xs);
+  --kbd-gap: var(--spacing-2xs);
+  --kbd-font-family: var(--font-family-mono);
+  --kbd-font-size: var(--font-size-sm);
+  --kbd-font-line-height: var(--font-line-height-sm);
+}

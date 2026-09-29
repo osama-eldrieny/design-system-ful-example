@@ -1,0 +1,51 @@
+/** EmptyState. Styled only with --empty-state-* tokens. */
+
+.ds-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--empty-state-gap);
+  max-inline-size: var(--empty-state-max-width);
+  margin-inline: auto;
+  padding: var(--empty-state-padding);
+  font-family: var(--empty-state-font-family);
+  font-size: var(--empty-state-font-size);
+  line-height: var(--empty-state-font-line-height);
+  text-align: center;
+}
+
+.ds-empty-state__icon {
+  display: grid;
+  place-items: center;
+  inline-size: var(--empty-state-icon-box-size);
+  block-size: var(--empty-state-icon-box-size);
+  border-radius: var(--empty-state-icon-border-radius);
+  background-color: var(--empty-state-icon-bg-color);
+  color: var(--empty-state-icon-color);
+}
+
+.ds-empty-state__icon > svg {
+  inline-size: var(--empty-state-icon-size);
+  block-size: var(--empty-state-icon-size);
+}
+
+.ds-empty-state__title {
+  margin: 0;
+  color: var(--empty-state-title-text-color);
+  font-size: var(--empty-state-title-font-size);
+  font-weight: var(--empty-state-title-font-weight);
+  line-height: var(--empty-state-title-font-line-height);
+  text-wrap: balance;
+}
+
+.ds-empty-state__description {
+  margin: 0;
+  color: var(--empty-state-description-text-color);
+}
+
+.ds-empty-state__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--empty-state-actions-gap);
+}

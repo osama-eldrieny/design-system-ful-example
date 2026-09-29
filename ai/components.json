@@ -120,6 +120,17 @@
       "contract": "ai/components/choose-card.json"
     },
     {
+      "id": "code",
+      "name": "Code",
+      "exports": [
+        "Code"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "Code shows code inline in text or as a block with a language label and a copy button.",
+      "contract": "ai/components/code.json"
+    },
+    {
       "id": "combobox",
       "name": "Combobox",
       "exports": [
@@ -129,6 +140,17 @@
       "status": "stable",
       "purpose": "A combobox is a text field with a list of suggestions: people type to filter and pick one option, or several shown as removable chips.",
       "contract": "ai/components/combobox.json"
+    },
+    {
+      "id": "divider",
+      "name": "Divider",
+      "exports": [
+        "Divider"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "A divider is a thin line that separates groups of content, horizontally or vertically, optionally with a short label such as “or”..",
+      "contract": "ai/components/divider.json"
     },
     {
       "id": "drawer",
@@ -166,6 +188,17 @@
       "status": "stable",
       "purpose": "A dropdown menu shows a list of actions or options when people press a button.",
       "contract": "ai/components/dropdown-menu.json"
+    },
+    {
+      "id": "empty-state",
+      "name": "EmptyState",
+      "exports": [
+        "EmptyState"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "An empty state fills a space that has nothing to show yet, like an empty list or no search results, and explains why and what to do next..",
+      "contract": "ai/components/empty-state.json"
     },
     {
       "id": "footer",
@@ -226,6 +259,17 @@
       "contract": "ai/components/input-field.json"
     },
     {
+      "id": "kbd",
+      "name": "Kbd",
+      "exports": [
+        "Kbd"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "Kbd shows a keyboard key or a shortcut, such as Ctrl + K, in text, menus and tooltips..",
+      "contract": "ai/components/kbd.json"
+    },
+    {
       "id": "link",
       "name": "Link",
       "exports": [
@@ -235,6 +279,18 @@
       "status": "stable",
       "purpose": "A link takes people to another page or place.",
       "contract": "ai/components/link.json"
+    },
+    {
+      "id": "list",
+      "name": "List",
+      "exports": [
+        "List",
+        "ListItem"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A list shows related items one per row, with an optional icon or avatar, a second line and trailing meta such as a date.",
+      "contract": "ai/components/list.json"
     },
     {
       "id": "logo",
@@ -411,6 +467,17 @@
       "status": "stable",
       "purpose": "A spinner shows that something is loading when the time it takes is unknown.",
       "contract": "ai/components/spinner.json"
+    },
+    {
+      "id": "stat",
+      "name": "Stat",
+      "exports": [
+        "Stat"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A stat shows one key figure with its label and change, such as revenue up 12.5% vs last month.",
+      "contract": "ai/components/stat.json"
     },
     {
       "id": "stepper",

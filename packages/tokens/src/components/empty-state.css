@@ -1,0 +1,28 @@
+/**
+ * Component tokens: empty-state
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --empty-state-{part}-{property}; part: icon | title | description | actions.
+ */
+
+:root,
+[data-theme] {
+  --empty-state-icon-bg-color: var(--color-bg-primary-1);
+  --empty-state-icon-color: var(--color-fg-on-primary-high);
+  --empty-state-icon-size: var(--sizing-lg);
+  --empty-state-icon-box-size: var(--sizing-2xl);
+  --empty-state-icon-border-radius: var(--radius-full);
+  --empty-state-title-text-color: var(--color-fg-on-surface-primary);
+  --empty-state-title-font-size: var(--font-size-lg);
+  --empty-state-title-font-line-height: var(--font-line-height-lg);
+  --empty-state-title-font-weight: var(--font-weight-bold);
+  --empty-state-description-text-color: var(--color-fg-on-surface-secondary);
+  --empty-state-font-size: var(--font-size-md);
+  --empty-state-font-line-height: var(--font-line-height-md);
+  --empty-state-font-family: var(--font-family-body);
+  --empty-state-gap: var(--spacing-sm);
+  --empty-state-actions-gap: var(--spacing-xs);
+  --empty-state-padding: var(--spacing-2xl);
+  --empty-state-max-width: calc(var(--sizing-8xl) * 2);
+}

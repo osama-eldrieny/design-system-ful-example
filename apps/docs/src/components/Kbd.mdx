@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Kbd } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Kbd/Kbd.stories';
+import meta from '../../../../packages/react/src/Kbd/Kbd.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Kbd
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Kbd]}
+  anatomy={{
+    targets: ['.ds-kbd__key', '.ds-kbd__plus'],
+    example: <Kbd keys={['Ctrl', 'K']} />,
+  }}
+  optionStories={{ keys: 'Combinations' }}
+  behaviorStory="RightToLeft"
+  matrix={<Kbd keys={['Ctrl', 'K']} />}
+/>

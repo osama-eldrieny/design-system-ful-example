@@ -1,0 +1,28 @@
+/**
+ * Component tokens: code
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --code-{variant?}-{property}; variant: block (multi-line).
+ */
+
+:root,
+[data-theme] {
+  --code-bg-color: var(--color-bg-default);
+  --code-text-color: var(--color-fg-on-surface-primary);
+  --code-border-color: var(--color-border-base);
+  --code-border-width: var(--border-width-hairline);
+  --code-border-radius: var(--radius-xs);
+  --code-padding-x: var(--spacing-2xs);
+  --code-block-padding: var(--spacing-md);
+  --code-block-border-radius: var(--radius-md);
+  --code-font-family: var(--font-family-mono);
+  --code-font-size: var(--font-size-sm);
+  --code-font-line-height: var(--font-line-height-md);
+  --code-copy-text-color: var(--color-fg-on-surface-secondary);
+  --code-copy-hover-bg-color: var(--color-bg-secondary-1);
+  --code-icon-size: var(--sizing-sm);
+  --code-focus-ring-width: var(--focus-ring-width);
+  --code-focus-ring-offset: var(--focus-ring-offset);
+  --code-focus-ring-color: var(--focus-ring-color);
+}

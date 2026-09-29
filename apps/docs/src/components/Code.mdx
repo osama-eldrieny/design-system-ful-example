@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Code } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Code/Code.stories';
+import meta from '../../../../packages/react/src/Code/Code.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Code
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Code]}
+  anatomy={{
+    targets: [
+      '.ds-code-block__language',
+      '.ds-code-block__copy',
+      { selector: '.ds-code-block__pre', at: 'center' },
+    ],
+    example: (
+      <div style={{ inlineSize: 360 }}>
+        <Code block language="bash">
+          npm install @ds/react
+        </Code>
+      </div>
+    ),
+  }}
+  optionStories={{ block: 'Block' }}
+  extras={[{ title: 'Inline', story: 'Inline' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ inlineSize: 240 }}>
+      <Code block language="bash">
+        npm install
+      </Code>
+    </div>
+  }
+/>

@@ -1,0 +1,33 @@
+/**
+ * Component tokens: list
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --list-{part}-{state?}-{property}
+ *   part: item | icon | description | meta | divider; state: hover (interactive items).
+ */
+
+:root,
+[data-theme] {
+  --list-item-text-color: var(--color-fg-on-surface-primary);
+  --list-item-hover-bg-color: var(--color-bg-primary-1);
+  --list-description-text-color: var(--color-fg-on-surface-secondary);
+  --list-meta-text-color: var(--color-fg-on-surface-secondary);
+  --list-icon-color: var(--color-fg-on-surface-secondary);
+  --list-icon-size: var(--sizing-sm);
+  --list-divider-color: var(--color-border-base);
+  --list-divider-width: var(--border-width-hairline);
+  --list-item-padding-x: var(--spacing-sm);
+  --list-item-padding-y: var(--spacing-sm);
+  --list-item-gap: var(--spacing-sm);
+  --list-item-border-radius: var(--radius-md);
+  --list-font-family: var(--font-family-body);
+  --list-font-size: var(--font-size-md);
+  --list-font-line-height: var(--font-line-height-md);
+  --list-title-font-weight: var(--font-weight-medium);
+  --list-description-font-size: var(--font-size-sm);
+  --list-description-font-line-height: var(--font-line-height-sm);
+  --list-focus-ring-width: var(--focus-ring-width);
+  --list-focus-ring-offset: var(--focus-ring-offset);
+  --list-focus-ring-color: var(--focus-ring-color);
+}

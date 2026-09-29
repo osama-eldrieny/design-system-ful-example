@@ -23,6 +23,7 @@
  *   --focus-ring-width: Thickness of the keyboard focus ring.
  *   --focus-ring-offset: Gap between an element and its focus ring.
  *   --focus-ring-color: Focus ring color; follows the brand accent.
+ *   --font-family-mono: Code and keyboard keys; the same in every theme.
  *   --color-scrim: Dimmed backdrop behind modals and drawers; the same in every theme.
  */
 
@@ -41,6 +42,9 @@
   --easing-standard: cubic-bezier(0.2, 0, 0, 1);
   --easing-enter: cubic-bezier(0, 0, 0, 1);
   --easing-exit: cubic-bezier(0.3, 0, 1, 1);
+
+  /* Code and keyboard keys. */
+  --font-family-mono: ui-monospace, 'SF Mono', menlo, consolas, monospace;
 
   /* Backdrop behind modals and drawers. */
   --color-scrim: rgb(0 0 0 / 50%);

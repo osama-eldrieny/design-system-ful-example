@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 229 | 229 | 0 |
-| diamond-dark | 229 | 229 | 0 |
-| amber-light | 229 | 229 | 0 |
-| amber-dark | 229 | 229 | 0 |
-| opal-light | 229 | 229 | 0 |
-| opal-dark | 229 | 229 | 0 |
+| diamond-light | 232 | 232 | 0 |
+| diamond-dark | 232 | 232 | 0 |
+| amber-light | 232 | 232 | 0 |
+| amber-dark | 232 | 232 | 0 |
+| opal-light | 232 | 232 | 0 |
+| opal-dark | 232 | 232 | 0 |
 
 ## Failures (0)
 
@@ -174,6 +174,8 @@ None.
 | diamond-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--code-text-color` | `--code-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
+| diamond-light | `--code-copy-text-color` | `--code-bg-color` | #62626d on #f8f7fb | 5.65:1 | 4.5:1 |
 | diamond-light | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #24242c on #f2edff | 13.44:1 | 4.5:1 |
@@ -196,6 +198,7 @@ None.
 | diamond-light | `--header-role-font-color` | `--header-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--hover-card-text-color` | `--hover-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--kbd-text-color` | `--kbd-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--section-title-font-color` | `--section-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--meeting-card-primary-time-text-color` | `--meeting-card-primary-bg-color` | #6741d9 on #f2edff | 5.50:1 | 4.5:1 |
@@ -403,6 +406,8 @@ None.
 | diamond-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--code-text-color` | `--code-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
+| diamond-dark | `--code-copy-text-color` | `--code-bg-color` | #acadb2 on #332e3c | 5.87:1 | 4.5:1 |
 | diamond-dark | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
@@ -425,6 +430,7 @@ None.
 | diamond-dark | `--header-role-font-color` | `--header-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--hover-card-text-color` | `--hover-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--kbd-text-color` | `--kbd-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--section-title-font-color` | `--section-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--meeting-card-primary-time-text-color` | `--meeting-card-primary-bg-color` | #ab8fff on #332e3c | 5.08:1 | 4.5:1 |
@@ -632,6 +638,8 @@ None.
 | amber-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--code-text-color` | `--code-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
+| amber-light | `--code-copy-text-color` | `--code-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #6a625a on #f9f4ee | 5.47:1 | 4.5:1 |
@@ -654,6 +662,7 @@ None.
 | amber-light | `--header-role-font-color` | `--header-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--hover-card-text-color` | `--hover-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--kbd-text-color` | `--kbd-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--section-title-font-color` | `--section-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--meeting-card-primary-time-text-color` | `--meeting-card-primary-bg-color` | #8a663e on #f9f4ee | 4.74:1 | 4.5:1 |
@@ -861,6 +870,8 @@ None.
 | amber-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--code-text-color` | `--code-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
+| amber-dark | `--code-copy-text-color` | `--code-bg-color` | #f7efe7 on #2a1f16 | 14.13:1 | 4.5:1 |
 | amber-dark | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #fdfbf9 on #574028 | 9.38:1 | 4.5:1 |
@@ -883,6 +894,7 @@ None.
 | amber-dark | `--header-role-font-color` | `--header-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--hover-card-text-color` | `--hover-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--kbd-text-color` | `--kbd-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--section-title-font-color` | `--section-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--meeting-card-primary-time-text-color` | `--meeting-card-primary-bg-color` | #d9b896 on #574028 | 5.18:1 | 4.5:1 |
@@ -1090,6 +1102,8 @@ None.
 | opal-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--code-text-color` | `--code-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
+| opal-light | `--code-copy-text-color` | `--code-bg-color` | #676b83 on #f4f6fc | 4.85:1 | 4.5:1 |
 | opal-light | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #282b3b on #ebf3fe | 12.53:1 | 4.5:1 |
@@ -1112,6 +1126,7 @@ None.
 | opal-light | `--header-role-font-color` | `--header-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--hover-card-text-color` | `--hover-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--kbd-text-color` | `--kbd-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--section-title-font-color` | `--section-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--meeting-card-primary-time-text-color` | `--meeting-card-primary-bg-color` | #2a5caf on #ebf3fe | 5.78:1 | 4.5:1 |
@@ -1319,6 +1334,8 @@ None.
 | opal-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--code-text-color` | `--code-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
+| opal-dark | `--code-copy-text-color` | `--code-bg-color` | #afb2be on #3d4460 | 4.53:1 | 4.5:1 |
 | opal-dark | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #ededf0 on #1b3a6f | 9.55:1 | 4.5:1 |
@@ -1341,6 +1358,7 @@ None.
 | opal-dark | `--header-role-font-color` | `--header-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--hover-card-text-color` | `--hover-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--kbd-text-color` | `--kbd-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--section-title-font-color` | `--section-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--meeting-card-primary-time-text-color` | `--meeting-card-primary-bg-color` | #84b0f9 on #1b3a6f | 5.08:1 | 4.5:1 |
