@@ -338,7 +338,12 @@ Each new component: design its component tokens first (aliasing semantic tokens,
 
 ---
 
-## Phase 7 — Quality hardening
+## Phase 7 — Quality hardening ✅
+
+> Done 2026-09-29. Automated: axe on every story (all themes), contrast 0 failures, 106 visual
+> baselines (`npm run test:visual`), responsive check in CI, keyboard tests for every overlay and
+> form control plus a tab walk of both prototypes, bundle-size report. **Still manual:** a
+> VoiceOver/NVDA pass on overlays and forms (needs a person).
 
 1. Accessibility audit: axe on every story × 6 brand/mode combinations in CI; manual keyboard + VoiceOver pass on overlays and forms.
 2. Apply the approved contrast fixes from Phase 1 and re-run the report (target: 0 AA failures).

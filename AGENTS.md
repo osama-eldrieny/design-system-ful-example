@@ -42,6 +42,9 @@ npm test              # unit tests + every story in Chromium with axe
 npm run ai            # regenerate ai/ from component metadata and tokens (commit the result)
 npm run build         # everything, assembled into site/
 npx ds-validate <path> [--json]
+npm run test:visual  # screenshot tests (macOS baselines); --update after intended changes
+npm run size         # build the publishable packages and write docs/bundle-size.md
+npm run check:responsive  # after npm run build: no horizontal scroll at 375–1440 px
 ```
 
 ## Changing the system (this repo)
