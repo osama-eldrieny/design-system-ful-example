@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "design-system": {
+      "command": "node",
+      "args": ["packages/mcp/src/server.js"]
+    },
+    "storybook": {
+      "type": "http",
+      "url": "http://localhost:6006/mcp"
+    }
+  }
+}
