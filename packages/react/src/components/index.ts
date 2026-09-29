@@ -53,3 +53,5 @@ export * from '../Code';
 export * from '../Stat';
 export * from '../EmptyState';
 export * from '../List';
+export * from '../Accordion';
+export * from '../Table';

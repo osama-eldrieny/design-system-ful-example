@@ -43,6 +43,7 @@ export default defineConfig({
             '@radix-ui/react-tooltip',
             '@radix-ui/react-hover-card',
             '@radix-ui/react-toast',
+            '@radix-ui/react-accordion',
           ],
         },
         test: {

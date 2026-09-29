@@ -8,6 +8,7 @@
 
 @import url('./primitives.css');
 @import url('./foundations.css');
+@import url('./components/accordion.css');
 @import url('./components/alert.css');
 @import url('./components/apps-notifications.css');
 @import url('./components/avatar.css');
@@ -50,6 +51,7 @@
 @import url('./components/stat.css');
 @import url('./components/stepper.css');
 @import url('./components/switch.css');
+@import url('./components/table.css');
 @import url('./components/tabs.css');
 @import url('./components/tag.css');
 @import url('./components/textarea.css');

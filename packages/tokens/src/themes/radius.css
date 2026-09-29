@@ -71,6 +71,8 @@
   --drawer-close-border-radius: var(--radius-12);
   --popover-close-border-radius: var(--radius-12);
   --toast-close-border-radius: var(--radius-12);
+  --accordion-border-radius: var(--radius-12);
+  --table-border-radius: var(--radius-12);
   --menu-dropdown-border-radius: var(--radius-12);
 }
 
@@ -132,6 +134,8 @@
   --drawer-close-border-radius: var(--radius-4);
   --popover-close-border-radius: var(--radius-4);
   --toast-close-border-radius: var(--radius-4);
+  --accordion-border-radius: var(--radius-4);
+  --table-border-radius: var(--radius-4);
   --menu-dropdown-border-radius: var(--radius-4);
 }
 
@@ -193,5 +197,7 @@
   --drawer-close-border-radius: var(--radius-999);
   --popover-close-border-radius: var(--radius-999);
   --toast-close-border-radius: var(--radius-999);
+  --accordion-border-radius: var(--radius-16);
+  --table-border-radius: var(--radius-16);
   --menu-dropdown-border-radius: var(--radius-16);
 }

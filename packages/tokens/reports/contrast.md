@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 232 | 232 | 0 |
-| diamond-dark | 232 | 232 | 0 |
-| amber-light | 232 | 232 | 0 |
-| amber-dark | 232 | 232 | 0 |
-| opal-light | 232 | 232 | 0 |
-| opal-dark | 232 | 232 | 0 |
+| diamond-light | 240 | 240 | 0 |
+| diamond-dark | 240 | 240 | 0 |
+| amber-light | 240 | 240 | 0 |
+| amber-dark | 240 | 240 | 0 |
+| opal-light | 240 | 240 | 0 |
+| opal-dark | 240 | 240 | 0 |
 
 ## Failures (0)
 
@@ -98,6 +98,9 @@ None.
 | diamond-light | `--color-fg-on-surface-primary` | `--color-bg-default` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-surface-secondary` | `--color-bg-default` | #62626d on #f8f7fb | 5.65:1 | 4.5:1 |
 | diamond-light | `--focus-ring-color` | `--color-bg-default` | #6741d9 on #f8f7fb | 5.90:1 | 3:1 |
+| diamond-light | `--accordion-trigger-text-color` | `--accordion-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--accordion-content-text-color` | `--accordion-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--accordion-icon-color` | `--accordion-bg-color` | #62626d on #fff | 6.02:1 | 3:1 |
 | diamond-light | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #5637b5 on #f2edff | 7.03:1 | 3:1 |
 | diamond-light | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #005b22 on #e6faed | 7.64:1 | 3:1 |
@@ -234,6 +237,11 @@ None.
 | diamond-light | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #5637b5 on #fff | 8.05:1 | 4.5:1 |
 | diamond-light | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--stepper-error-indicator-text-color` | `--stepper-error-indicator-bg-color` | #fee9e9 on #cf2121 | 4.64:1 | 4.5:1 |
+| diamond-light | `--table-text-color` | `--table-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--table-header-text-color` | `--table-header-bg-color` | #62626d on #f8f7fb | 5.65:1 | 4.5:1 |
+| diamond-light | `--table-caption-text-color` | `--table-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--table-sort-icon-color` | `--table-bg-color` | #62626d on #fff | 6.02:1 | 3:1 |
+| diamond-light | `--table-sort-active-icon-color` | `--table-bg-color` | #5637b5 on #fff | 8.05:1 | 3:1 |
 | diamond-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #acadb2 | 5.57:1 | 4.5:1 |
 | diamond-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
@@ -330,6 +338,9 @@ None.
 | diamond-dark | `--color-fg-on-surface-primary` | `--color-bg-default` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-surface-secondary` | `--color-bg-default` | #acadb2 on #332e3c | 5.87:1 | 4.5:1 |
 | diamond-dark | `--focus-ring-color` | `--color-bg-default` | #c5b2ff on #332e3c | 7.01:1 | 3:1 |
+| diamond-dark | `--accordion-trigger-text-color` | `--accordion-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--accordion-content-text-color` | `--accordion-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--accordion-icon-color` | `--accordion-bg-color` | #acadb2 on #24202d | 7.10:1 | 3:1 |
 | diamond-dark | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 3:1 |
 | diamond-dark | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #91e8b2 on #332e3c | 9.01:1 | 3:1 |
@@ -466,6 +477,11 @@ None.
 | diamond-dark | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #c5b2ff on #24202d | 8.48:1 | 4.5:1 |
 | diamond-dark | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--stepper-error-indicator-text-color` | `--stepper-error-indicator-bg-color` | #8b1616 on #fee9e9 | 8.11:1 | 4.5:1 |
+| diamond-dark | `--table-text-color` | `--table-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--table-header-text-color` | `--table-header-bg-color` | #acadb2 on #332e3c | 5.87:1 | 4.5:1 |
+| diamond-dark | `--table-caption-text-color` | `--table-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--table-sort-icon-color` | `--table-bg-color` | #acadb2 on #24202d | 7.10:1 | 3:1 |
+| diamond-dark | `--table-sort-active-icon-color` | `--table-bg-color` | #c5b2ff on #24202d | 8.48:1 | 3:1 |
 | diamond-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 4.5:1 |
 | diamond-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #24202d on #c5b2ff | 8.48:1 | 4.5:1 |
@@ -562,6 +578,9 @@ None.
 | amber-light | `--color-fg-on-surface-primary` | `--color-bg-default` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--color-fg-on-surface-secondary` | `--color-bg-default` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--focus-ring-color` | `--color-bg-default` | #a57a4b on #f9f5f1 | 3.53:1 | 3:1 |
+| amber-light | `--accordion-trigger-text-color` | `--accordion-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--accordion-content-text-color` | `--accordion-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--accordion-icon-color` | `--accordion-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
 | amber-light | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 3:1 |
 | amber-light | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #3a6360 on #ecf1f1 | 5.88:1 | 3:1 |
@@ -698,6 +717,11 @@ None.
 | amber-light | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #6f5232 on #fff | 7.17:1 | 4.5:1 |
 | amber-light | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--stepper-error-indicator-text-color` | `--stepper-error-indicator-bg-color` | #f4edef on #934c5e | 5.30:1 | 4.5:1 |
+| amber-light | `--table-text-color` | `--table-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--table-header-text-color` | `--table-header-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
+| amber-light | `--table-caption-text-color` | `--table-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--table-sort-icon-color` | `--table-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
+| amber-light | `--table-sort-active-icon-color` | `--table-bg-color` | #6f5232 on #fff | 7.17:1 | 3:1 |
 | amber-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #54505a on #f3e8dc | 6.51:1 | 4.5:1 |
 | amber-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
@@ -794,6 +818,9 @@ None.
 | amber-dark | `--color-fg-on-surface-primary` | `--color-bg-default` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-surface-secondary` | `--color-bg-default` | #f7efe7 on #2a1f16 | 14.13:1 | 4.5:1 |
 | amber-dark | `--focus-ring-color` | `--color-bg-default` | #e5cfb7 on #2a1f16 | 10.67:1 | 3:1 |
+| amber-dark | `--accordion-trigger-text-color` | `--accordion-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--accordion-content-text-color` | `--accordion-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--accordion-icon-color` | `--accordion-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 3:1 |
 | amber-dark | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 3:1 |
 | amber-dark | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #d2dedd on #274340 | 7.76:1 | 3:1 |
@@ -930,6 +957,11 @@ None.
 | amber-dark | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #f0e4d7 on #1e140d | 14.46:1 | 4.5:1 |
 | amber-dark | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--stepper-error-indicator-text-color` | `--stepper-error-indicator-bg-color` | #683643 on #f4edef | 8.29:1 | 4.5:1 |
+| amber-dark | `--table-text-color` | `--table-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--table-header-text-color` | `--table-header-bg-color` | #f7efe7 on #2a1f16 | 14.13:1 | 4.5:1 |
+| amber-dark | `--table-caption-text-color` | `--table-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--table-sort-icon-color` | `--table-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 3:1 |
+| amber-dark | `--table-sort-active-icon-color` | `--table-bg-color` | #f0e4d7 on #1e140d | 14.46:1 | 3:1 |
 | amber-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
 | amber-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #e2d7cc | 12.77:1 | 4.5:1 |
@@ -1026,6 +1058,9 @@ None.
 | opal-light | `--color-fg-on-surface-primary` | `--color-bg-default` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--color-fg-on-surface-secondary` | `--color-bg-default` | #676b83 on #f4f6fc | 4.85:1 | 4.5:1 |
 | opal-light | `--focus-ring-color` | `--color-bg-default` | #326fd1 on #f4f6fc | 4.49:1 | 3:1 |
+| opal-light | `--accordion-trigger-text-color` | `--accordion-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--accordion-content-text-color` | `--accordion-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--accordion-icon-color` | `--accordion-bg-color` | #676b83 on #fff | 5.24:1 | 3:1 |
 | opal-light | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 3:1 |
 | opal-light | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #3b5c0a on #f3fae8 | 7.22:1 | 3:1 |
@@ -1162,6 +1197,11 @@ None.
 | opal-light | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #224a8c on #fff | 8.66:1 | 4.5:1 |
 | opal-light | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--stepper-error-indicator-text-color` | `--stepper-error-indicator-bg-color` | #feecef on #ad2d43 | 5.71:1 | 4.5:1 |
+| opal-light | `--table-text-color` | `--table-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--table-header-text-color` | `--table-header-bg-color` | #676b83 on #f4f6fc | 4.85:1 | 4.5:1 |
+| opal-light | `--table-caption-text-color` | `--table-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--table-sort-icon-color` | `--table-bg-color` | #676b83 on #fff | 5.24:1 | 3:1 |
+| opal-light | `--table-sort-active-icon-color` | `--table-bg-color` | #224a8c on #fff | 8.66:1 | 3:1 |
 | opal-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #afb2be | 5.90:1 | 4.5:1 |
 | opal-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
@@ -1258,6 +1298,9 @@ None.
 | opal-dark | `--color-fg-on-surface-primary` | `--color-bg-default` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-surface-secondary` | `--color-bg-default` | #afb2be on #3d4460 | 4.53:1 | 4.5:1 |
 | opal-dark | `--focus-ring-color` | `--color-bg-default` | #abc9fb on #3d4460 | 5.69:1 | 3:1 |
+| opal-dark | `--accordion-trigger-text-color` | `--accordion-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--accordion-content-text-color` | `--accordion-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--accordion-icon-color` | `--accordion-bg-color` | #afb2be on #292d3e | 6.45:1 | 3:1 |
 | opal-dark | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 3:1 |
 | opal-dark | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #cae99b on #3b5c0a | 5.75:1 | 3:1 |
@@ -1394,6 +1437,11 @@ None.
 | opal-dark | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
 | opal-dark | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--stepper-error-indicator-text-color` | `--stepper-error-indicator-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
+| opal-dark | `--table-text-color` | `--table-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--table-header-text-color` | `--table-header-bg-color` | #afb2be on #3d4460 | 4.53:1 | 4.5:1 |
+| opal-dark | `--table-caption-text-color` | `--table-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--table-sort-icon-color` | `--table-bg-color` | #afb2be on #292d3e | 6.45:1 | 3:1 |
+| opal-dark | `--table-sort-active-icon-color` | `--table-bg-color` | #abc9fb on #292d3e | 8.11:1 | 3:1 |
 | opal-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 4.5:1 |
 | opal-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #292d3e on #dee2f4 | 10.58:1 | 4.5:1 |

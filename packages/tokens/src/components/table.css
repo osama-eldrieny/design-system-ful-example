@@ -1,0 +1,42 @@
+/**
+ * Component tokens: table
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --table-{part}-{state?}-{property}
+ *   part: header | row | cell | caption | sort-icon; state: hover | selected | striped.
+ *   Cell padding follows the density theme through the spacing tokens.
+ */
+
+:root,
+[data-theme] {
+  --table-bg-color: var(--color-bg-base);
+  --table-text-color: var(--color-fg-on-surface-primary);
+  --table-border-color: var(--color-border-base);
+  --table-border-width: var(--border-width-hairline);
+  --table-header-bg-color: var(--color-bg-default);
+  --table-header-text-color: var(--color-fg-on-surface-secondary);
+  --table-header-font-weight: var(--font-weight-medium);
+  --table-header-font-size: var(--font-size-sm);
+  --table-header-font-line-height: var(--font-line-height-sm);
+  --table-row-hover-bg-color: var(--color-bg-primary-1);
+  --table-row-selected-bg-color: var(--color-bg-primary-1);
+  --table-row-striped-bg-color: var(--color-bg-default);
+  --table-cell-padding-x: var(--spacing-md);
+  --table-cell-padding-y: var(--spacing-sm);
+  --table-compact-cell-padding-y: var(--spacing-2xs);
+  --table-font-family: var(--font-family-body);
+  --table-font-size: var(--font-size-md);
+  --table-font-line-height: var(--font-line-height-md);
+  --table-caption-text-color: var(--color-fg-on-surface-primary);
+  --table-caption-font-size: var(--font-size-md);
+  --table-caption-font-weight: var(--font-weight-bold);
+  --table-sort-icon-color: var(--color-fg-on-surface-secondary);
+  --table-sort-active-icon-color: var(--color-fg-on-primary-high);
+  --table-icon-size: var(--sizing-xs);
+  --table-z-index: var(--z-sticky);
+  --table-hidden-size: var(--border-width-hairline);
+  --table-focus-ring-width: var(--focus-ring-width);
+  --table-focus-ring-offset: var(--focus-ring-offset);
+  --table-focus-ring-color: var(--focus-ring-color);
+}
