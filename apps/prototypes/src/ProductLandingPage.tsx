@@ -8,7 +8,8 @@ import {
   Navbar,
   Footer,
   Dropdown,
-  RadioButton,
+  RadioGroup,
+  Radio,
   Switch,
   Tabs,
   Pagination,
@@ -278,27 +279,18 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
 
             {/* Price Filter */}
             <div className="sidebar-subsection">
-              <h3 className="sidebar-subsection-title">Price Range</h3>
-              <div className="filter-options">
-                <RadioButton
-                  id="price-all"
-                  label="All Prices"
-                  checked={priceRange === 'all'}
-                  onChange={() => setPriceRange('all')}
-                />
-                <RadioButton
-                  id="price-budget"
-                  label="Under $100"
-                  checked={priceRange === 'budget'}
-                  onChange={() => setPriceRange('budget')}
-                />
-                <RadioButton
-                  id="price-mid"
-                  label="$100 - $300"
-                  checked={priceRange === 'mid'}
-                  onChange={() => setPriceRange('mid')}
-                />
-              </div>
+              <h3 className="sidebar-subsection-title" id="price-range-label">
+                Price Range
+              </h3>
+              <RadioGroup
+                aria-labelledby="price-range-label"
+                value={priceRange}
+                onValueChange={setPriceRange}
+              >
+                <Radio value="all" label="All Prices" />
+                <Radio value="budget" label="Under $100" />
+                <Radio value="mid" label="$100 - $300" />
+              </RadioGroup>
             </div>
 
             {/* View Mode */}

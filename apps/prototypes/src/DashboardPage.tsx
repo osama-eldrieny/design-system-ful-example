@@ -8,7 +8,8 @@ import {
   Logo,
   Footer,
   Dropdown,
-  RadioButton,
+  RadioGroup,
+  Radio,
   Switch,
   Tabs,
   Pagination,
@@ -249,33 +250,19 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
           <div className="sidebar-filter-section">
             <h3 className="sidebar-section-title">Filters</h3>
             <div className="sidebar-subsection">
-              <h3 className="sidebar-subsection-title">Time Period</h3>
-              <div className="filter-options">
-                <RadioButton
-                  id="today"
-                  label="Today"
-                  checked={timePeriod === 'today'}
-                  onChange={() => setTimePeriod('today')}
-                />
-                <RadioButton
-                  id="week"
-                  label="This Week"
-                  checked={timePeriod === 'week'}
-                  onChange={() => setTimePeriod('week')}
-                />
-                <RadioButton
-                  id="month"
-                  label="This Month"
-                  checked={timePeriod === 'month'}
-                  onChange={() => setTimePeriod('month')}
-                />
-                <RadioButton
-                  id="year"
-                  label="This Year"
-                  checked={timePeriod === 'year'}
-                  onChange={() => setTimePeriod('year')}
-                />
-              </div>
+              <h3 className="sidebar-subsection-title" id="time-period-label">
+                Time Period
+              </h3>
+              <RadioGroup
+                aria-labelledby="time-period-label"
+                value={timePeriod}
+                onValueChange={setTimePeriod}
+              >
+                <Radio value="today" label="Today" />
+                <Radio value="week" label="This Week" />
+                <Radio value="month" label="This Month" />
+                <Radio value="year" label="This Year" />
+              </RadioGroup>
             </div>
             <div className="sidebar-subsection">
               <div className="realtime-toggle">

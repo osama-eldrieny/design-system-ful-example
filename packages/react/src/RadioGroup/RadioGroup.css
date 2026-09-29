@@ -1,0 +1,127 @@
+/**
+ * RadioGroup and Radio. Styled only with --radio-* tokens. Radix sets data-state on the
+ * control ("checked" | "unchecked"); hover, focus and disabled are real states.
+ */
+
+.ds-radio-group {
+  display: grid;
+  gap: var(--radio-gap);
+  font-family: var(--radio-label-font-family);
+}
+
+.ds-radio-group__label {
+  font-size: var(--radio-label-font-size);
+  line-height: var(--radio-label-font-line-height);
+  font-weight: var(--radio-group-label-font-weight);
+  color: var(--radio-group-label-text-color);
+}
+
+.ds-radio-group__description,
+.ds-radio__description {
+  font-size: var(--radio-description-font-size);
+  line-height: var(--radio-description-font-line-height);
+  color: var(--radio-description-text-color);
+}
+
+.ds-radio-group__options {
+  display: flex;
+  gap: var(--radio-group-gap);
+}
+
+.ds-radio-group__options--vertical {
+  flex-direction: column;
+}
+
+.ds-radio-group__options--horizontal {
+  flex-flow: row wrap;
+  gap: var(--radio-group-horizontal-gap);
+}
+
+.ds-radio-group__error {
+  font-size: var(--radio-description-font-size);
+  line-height: var(--radio-description-font-line-height);
+  color: var(--radio-group-error-text-color);
+}
+
+.ds-radio {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--radio-gap);
+}
+
+.ds-radio__control {
+  --_border: var(--radio-off-border-color);
+
+  position: relative;
+  flex: none;
+  display: grid;
+  place-items: center;
+  inline-size: var(--radio-size);
+  block-size: var(--radio-size);
+
+  /* Center the control on the first line of the label. */
+  margin-block-start: calc((var(--radio-label-font-line-height) - var(--radio-size)) / 2);
+  padding: 0;
+  border: var(--radio-border-width) solid var(--_border);
+  border-radius: var(--radio-border-radius);
+  background-color: var(--radio-off-bg-color);
+  cursor: pointer;
+  transition-property: background-color, border-color;
+  transition-duration: var(--radio-transition-duration);
+  transition-timing-function: var(--radio-transition-easing);
+}
+
+.ds-radio-group[data-invalid] .ds-radio__control {
+  --_border: var(--radio-error-border-color);
+}
+
+.ds-radio__control:hover:not(:disabled) {
+  --_border: var(--radio-hover-border-color);
+}
+
+.ds-radio__control[data-state='checked'] {
+  --_border: var(--radio-on-border-color);
+
+  background-color: var(--radio-on-bg-color);
+}
+
+.ds-radio__control[data-state='checked']:hover:not(:disabled) {
+  background-color: var(--radio-on-hover-bg-color);
+}
+
+.ds-radio__control:focus-visible {
+  outline: var(--radio-focus-ring-width) solid var(--radio-focus-ring-color);
+  outline-offset: var(--radio-focus-ring-offset);
+}
+
+.ds-radio__control:disabled {
+  opacity: var(--radio-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-radio__dot {
+  inline-size: calc(var(--radio-size) * 0.4);
+  block-size: calc(var(--radio-size) * 0.4);
+  border-radius: var(--radio-border-radius);
+  background-color: var(--radio-dot-color);
+}
+
+.ds-radio__text {
+  display: grid;
+}
+
+.ds-radio__label {
+  font-size: var(--radio-label-font-size);
+  line-height: var(--radio-label-font-line-height);
+  font-weight: var(--radio-label-font-weight);
+  color: var(--radio-default-font-color);
+  cursor: pointer;
+}
+
+.ds-radio[data-disabled] .ds-radio__text {
+  opacity: var(--radio-disabled-opacity);
+}
+
+.ds-radio[data-disabled] .ds-radio__label {
+  cursor: not-allowed;
+}

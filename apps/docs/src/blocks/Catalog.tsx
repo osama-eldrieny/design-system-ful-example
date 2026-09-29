@@ -17,7 +17,6 @@ const MIGRATING = [
   'Dropdown',
   'Input Field',
   'Pagination',
-  'Radio Button',
   'Tabs',
   'Apps Notifications',
   'Footer',
