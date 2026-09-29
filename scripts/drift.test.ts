@@ -29,6 +29,12 @@ describe('drift guard', () => {
     expect(docsPage(name), `docs page for ${name}`).toBe(true);
   });
 
+  it.each(exported)('%s has AllThemes and RightToLeft stories', (name) => {
+    const stories = readFileSync(join(src, name, `${name}.stories.tsx`), 'utf8');
+    expect(stories).toMatch(/export const AllThemes\b/);
+    expect(stories).toMatch(/export const RightToLeft\b/);
+  });
+
   it('metadata examples follow the design-system rules', async () => {
     const eslint = new ESLint({
       overrideConfigFile: true,
