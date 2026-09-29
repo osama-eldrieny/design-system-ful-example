@@ -1,0 +1,160 @@
+/**
+ * Checkbox. Styled only with --checkbox-* tokens. The native input sits invisibly on top
+ * of the drawn box, so clicks, keyboard, forms and :checked / :indeterminate all stay real.
+ */
+
+.ds-checkbox {
+  --_size: var(--checkbox-size);
+  --_font-size: var(--checkbox-label-font-size);
+  --_line-height: var(--checkbox-label-font-line-height);
+  --_border: var(--checkbox-off-border-color);
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--checkbox-gap);
+  font-family: var(--checkbox-label-font-family);
+}
+
+.ds-checkbox--small {
+  --_size: var(--checkbox-small-size);
+  --_font-size: var(--checkbox-small-label-font-size);
+  --_line-height: var(--checkbox-small-label-font-line-height);
+}
+
+.ds-checkbox--large {
+  --_size: var(--checkbox-large-size);
+  --_font-size: var(--checkbox-large-label-font-size);
+  --_line-height: var(--checkbox-large-label-font-line-height);
+}
+
+.ds-checkbox[data-invalid] {
+  --_border: var(--checkbox-error-border-color);
+}
+
+.ds-checkbox__control {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+
+  /* Centre the box on the label's first line. */
+  margin-block: calc((var(--_line-height) - var(--_size)) / 2);
+}
+
+.ds-checkbox__input {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ds-checkbox__input:disabled {
+  cursor: not-allowed;
+}
+
+.ds-checkbox__box {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  box-sizing: border-box;
+  border: var(--checkbox-border-width) solid var(--_border);
+  border-radius: var(--checkbox-border-radius);
+  background-color: var(--checkbox-off-bg-color);
+  color: var(--checkbox-icon-color);
+  pointer-events: none;
+  transition:
+    background-color var(--checkbox-transition-duration) var(--checkbox-transition-easing),
+    border-color var(--checkbox-transition-duration) var(--checkbox-transition-easing);
+}
+
+.ds-checkbox__box > svg {
+  grid-area: 1 / 1;
+  inline-size: 80%;
+  block-size: 80%;
+  stroke-width: 3;
+  visibility: hidden;
+}
+
+.ds-checkbox__input:hover:not(:disabled) + .ds-checkbox__box {
+  --_border: var(--checkbox-hover-border-color);
+}
+
+.ds-checkbox__input:checked + .ds-checkbox__box,
+.ds-checkbox__input:indeterminate + .ds-checkbox__box {
+  border-color: var(--checkbox-on-bg-color);
+  background-color: var(--checkbox-on-bg-color);
+}
+
+.ds-checkbox__input:checked:hover:not(:disabled) + .ds-checkbox__box,
+.ds-checkbox__input:indeterminate:hover:not(:disabled) + .ds-checkbox__box {
+  border-color: var(--checkbox-on-hover-bg-color);
+  background-color: var(--checkbox-on-hover-bg-color);
+}
+
+.ds-checkbox__input:checked:not(:indeterminate) + .ds-checkbox__box > .ds-checkbox__check,
+.ds-checkbox__input:indeterminate + .ds-checkbox__box > .ds-checkbox__dash {
+  visibility: visible;
+}
+
+.ds-checkbox__input:focus-visible + .ds-checkbox__box {
+  outline: var(--checkbox-focus-ring-width) solid var(--checkbox-focus-ring-color);
+  outline-offset: var(--checkbox-focus-ring-offset);
+}
+
+.ds-checkbox__input:disabled + .ds-checkbox__box {
+  opacity: var(--checkbox-disabled-opacity);
+}
+
+.ds-checkbox__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-checkbox__label {
+  font-size: var(--_font-size);
+  font-weight: var(--checkbox-label-font-weight);
+  line-height: var(--_line-height);
+  color: var(--checkbox-label-text-color);
+  cursor: pointer;
+}
+
+.ds-checkbox[data-disabled] .ds-checkbox__label {
+  opacity: var(--checkbox-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-checkbox__description,
+.ds-checkbox__error {
+  font-size: var(--checkbox-description-font-size);
+  line-height: var(--checkbox-description-font-line-height);
+}
+
+.ds-checkbox__description {
+  color: var(--checkbox-description-text-color);
+}
+
+.ds-checkbox__error {
+  color: var(--checkbox-error-text-color);
+}
+
+.ds-checkbox-group--horizontal .ds-form-field__controls {
+  flex-flow: row wrap;
+  column-gap: var(--checkbox-group-horizontal-gap);
+}
+
+@media (forced-colors: active) {
+  .ds-checkbox__box > svg {
+    color: CanvasText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-checkbox__box {
+    transition: none;
+  }
+}

@@ -63,6 +63,18 @@
       "contract": "ai/components/card.json"
     },
     {
+      "id": "checkbox",
+      "name": "Checkbox",
+      "exports": [
+        "Checkbox",
+        "CheckboxGroup"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A checkbox turns one option on or off, or lets people pick any number of options from a list.",
+      "contract": "ai/components/checkbox.json"
+    },
+    {
       "id": "choose-card",
       "name": "ChooseCard",
       "exports": [

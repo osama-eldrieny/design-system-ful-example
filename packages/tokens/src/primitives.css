@@ -237,6 +237,7 @@
   --border-width-1: 1px;
   --border-width-2: 2px;
   --border-width-5: 5px;
+  --size-14: 14px;
   --size-16: 16px;
   --size-22: 22px;
   --size-24: 24px;
@@ -251,6 +252,7 @@
   --border-width-hairline: var(--border-width-1);
   --border-width-regular: var(--border-width-2);
   --border-width-strong: var(--border-width-5);
+  --sizing-xs: var(--size-14);
   --sizing-sm: var(--size-16);
   --sizing-md: var(--size-22);
   --sizing-lg: var(--size-24);

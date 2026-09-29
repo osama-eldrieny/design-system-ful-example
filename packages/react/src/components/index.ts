@@ -6,6 +6,7 @@ export { Avatar, AvatarGroup } from '../Avatar';
 export type { AvatarProps, AvatarGroupProps } from '../Avatar';
 export * from '../Card';
 export * from '../ProductCard';
+export * from '../Checkbox';
 export * from '../FormField';
 export * from '../Textarea';
 export { InputField } from '../InputField';
