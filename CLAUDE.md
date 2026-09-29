@@ -2,6 +2,8 @@
 
 A themeable, accessible, AI-ready design system: tokens → React library → Storybook docs → demo and prototypes, all from one repo.
 
+**AI agents: read [AGENTS.md](AGENTS.md)** — golden rules, where to find component contracts, commands and trust levels.
+
 The overhaul is in progress. **[docs/ROADMAP.md](docs/ROADMAP.md)** is the approved plan: phases, architecture, and the per-component definition of done. Read it before starting work.
 
 ## The one critical rule

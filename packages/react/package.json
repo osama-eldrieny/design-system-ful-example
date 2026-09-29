@@ -6,7 +6,7 @@
   "description": "React component library for the design system.",
   "exports": {
     ".": "./src/index.ts",
-    "./styles/*": "./src/styles/*"
+    "./ai/*": "./ai/*"
   },
   "sideEffects": [
     "**/*.css"
@@ -35,5 +35,12 @@
     "@radix-ui/react-tooltip": "^1.2.16",
     "downshift": "^9.4.0",
     "lucide-react": "^1.48.0"
+  },
+  "files": [
+    "src",
+    "ai"
+  ],
+  "scripts": {
+    "prepack": "rm -rf ai && cp -R ../../ai ai"
   }
 }

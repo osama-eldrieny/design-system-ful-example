@@ -42,6 +42,7 @@ copy('apps/docs/dist', 'storybook');
 // AI-readable files: /ai/… and /llms.txt at the site root (llms.txt convention).
 copy('ai', 'ai');
 copy('ai/llms.txt', 'llms.txt');
+copy('ai/llms-full.txt', 'llms-full.txt');
 
 // Old prototype URL from before the monorepo; keeps #/landing and #/dashboard links working.
 redirect('react-app-live', '../prototypes/');

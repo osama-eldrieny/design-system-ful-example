@@ -82,6 +82,11 @@ Use library components instead of raw HTML, only documented props, and tokens in
 - [Navbar](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-navbar.md)
 - [ProductCard](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-productcard.md)
 
+## Tools
+- MCP server: `npx ds-mcp` (list_components, get_component, get_tokens, validate_code, …)
+- Validator: `npx ds-validate <files> --json`
+- [Everything in one file](https://osama-eldrieny.github.io/design-system-ful-example/llms-full.txt)
+
 ## Optional
 - [All tokens with values per theme](https://osama-eldrieny.github.io/design-system-ful-example/ai/tokens.json)
 - [Component index](https://osama-eldrieny.github.io/design-system-ful-example/ai/components.json)

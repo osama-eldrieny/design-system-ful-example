@@ -124,7 +124,7 @@ export default defineMeta({
 
 <Popover>
   <PopoverTrigger asChild><Button>Info</Button></PopoverTrigger>
-  <PopoverContent side="right" showClose={false}>More information.</PopoverContent>
+  <PopoverContent side="right" showClose={false} aria-label="More information">More information.</PopoverContent>
 </Popover>`,
     },
   ],

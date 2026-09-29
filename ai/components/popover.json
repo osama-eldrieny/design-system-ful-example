@@ -182,7 +182,7 @@
       "id": "side",
       "title": "Placement",
       "description": "On the right.",
-      "code": "import { Popover, PopoverTrigger, PopoverContent, Button } from '@ds/react';\n\n<Popover>\n  <PopoverTrigger asChild><Button>Info</Button></PopoverTrigger>\n  <PopoverContent side=\"right\" showClose={false}>More information.</PopoverContent>\n</Popover>"
+      "code": "import { Popover, PopoverTrigger, PopoverContent, Button } from '@ds/react';\n\n<Popover>\n  <PopoverTrigger asChild><Button>Info</Button></PopoverTrigger>\n  <PopoverContent side=\"right\" showClose={false} aria-label=\"More information\">More information.</PopoverContent>\n</Popover>"
     }
   ],
   "tokenPrefixes": [

@@ -28,6 +28,11 @@ jobs:
       - run: npm run typecheck
       - run: npm run lint
       - run: npm test
+      # Drift guard: the AI files must be regenerated and committed with the change.
+      - name: AI files are up to date
+        run: |
+          npm run ai
+          git diff --exit-code -- ai DESIGN.md packages/lint/eslint/components.json .cursor .github/copilot-instructions.md
       - run: npm run build
       - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main'
