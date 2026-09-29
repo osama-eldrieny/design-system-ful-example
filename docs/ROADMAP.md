@@ -141,12 +141,12 @@ Distribution: the `ai/` folder, `AGENTS.md` snippet, and MCP server ship **insid
 3. ✅ **Status accents:** success/danger/warning fills and text for every brand × mode, with steps chosen to pass WCAG AA.
 4. ✅ **Theme runtime:** `applyTheme()` / `themeAttributes()` in `@ds/tokens`, and a `ThemeProvider` in `@ds/react`. Default theme: Diamond, light, en, sans, comfortable, round, flat. Arabic sets `dir="rtl"`; component CSS moves to logical properties in Phase 3.
 5. ✅ **Descriptions:** a token-reference legend in every file header (`--token: what it's for`), parsed later into `ai/tokens.json` + `ai/foundations.json`.
-6. **Token tooling** (`packages/tokens/tools`): a small resolver that reads the CSS and resolves any token in any theme. It's shared by:
+6. ✅ **Token tooling** (`packages/tokens/tools`): a small resolver that reads the CSS and resolves any token in any theme. It's shared by:
    - a test that every `var()` resolves in every theme combination (no missing tokens, no cycles)
    - the contrast report
    - the AI export
-7. **Token lint** (Stylelint custom rule): a component's CSS may use only `var(--{its-component}-*)` tokens. No raw hex/px/rgba.
-8. **Contrast report:** every text/background token pair in all 6 brand × mode combinations against WCAG AA.
+7. ✅ **Token lint** (Stylelint rule `ds/component-tokens-only` in `packages/lint`, enforced for every new component; the 17 existing stylesheets are listed in `stylelint.config.js` until Phase 3 migrates them): a component's CSS may use only `var(--{its-component}-*)` tokens. No raw hex/px/rgba.
+8. ✅ **Contrast report** (`npm run tokens:contrast`, report in `packages/tokens/reports/contrast.md`; 251 of 768 pairs fail today and are baselined, so only new failures break the build): every text/background token pair in all 6 brand × mode combinations against WCAG AA.
    - Known failures: button primary 3.14:1, secondary 2.95:1. **Fixing them changes brand colors, so I'll bring you proposed values to approve.**
 
 **Done when:** tokens resolve in every theme (test), the token lint and contrast report run in CI, and the prototypes render in every theme.

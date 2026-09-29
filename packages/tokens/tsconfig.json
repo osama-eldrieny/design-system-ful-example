@@ -2,8 +2,10 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../node_modules/.cache/tsc/tokens",
-    "rootDir": "src",
-    "tsBuildInfoFile": "../../node_modules/.cache/tsc/tokens.tsbuildinfo"
+    "rootDir": ".",
+    "tsBuildInfoFile": "../../node_modules/.cache/tsc/tokens.tsbuildinfo",
+    "allowImportingTsExtensions": true,
+    "types": ["node", "vite/client"]
   },
-  "include": ["src"]
+  "include": ["src", "tools"]
 }

@@ -1,5 +1,30 @@
+import designSystem from './packages/lint/stylelint/index.js';
+
+// Component stylesheets written before the token rule existed. Phase 3 migrates each one to
+// its own component tokens; remove a file from this list once it passes. Don't add to it.
+const notYetOnComponentTokens = [
+  'Alert',
+  'AppsNotifications',
+  'Avatar',
+  'Button',
+  'Card',
+  'ChooseCard',
+  'Dropdown',
+  'Footer',
+  'Header',
+  'InputField',
+  'Logo',
+  'MeetingCard',
+  'Navbar',
+  'Pagination',
+  'RadioButton',
+  'Tabs',
+  'Toggle',
+].map((name) => `packages/react/src/styles/${name}.css`);
+
 export default {
   extends: ['stylelint-config-standard'],
+  plugins: designSystem,
   ignoreFiles: ['legacy/**', 'site/**', '**/dist/**', '**/node_modules/**'],
   rules: {
     // Components use BEM: block, block__element, block--modifier.
@@ -10,4 +35,29 @@ export default {
     // Variant/state selectors are grouped per component, not ordered by specificity.
     'no-descending-specificity': null,
   },
+  overrides: [
+    {
+      // Every component stylesheet uses only its own component tokens.
+      files: ['packages/react/src/**/*.css'],
+      rules: {
+        'ds/component-tokens-only': [
+          true,
+          {
+            // Components whose token prefix differs from the file name.
+            prefixes: {
+              Alert: ['alerts'],
+              AppsNotifications: ['app-notifications'],
+              Dropdown: ['menu'],
+              Tabs: ['tap'],
+              RadioButton: ['radio'],
+            },
+          },
+        ],
+      },
+    },
+    {
+      files: notYetOnComponentTokens,
+      rules: { 'ds/component-tokens-only': null },
+    },
+  ],
 };

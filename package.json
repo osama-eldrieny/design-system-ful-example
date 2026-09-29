@@ -10,16 +10,18 @@
     "dev": "npm run dev -w @ds/prototypes --",
     "build": "npm run build --workspaces --if-present && node scripts/assemble-site.mjs",
     "typecheck": "tsc -b",
-    "lint": "eslint . && stylelint \"**/*.css\"",
+    "lint": "eslint . && stylelint \"**/*.css\" && npm run tokens:contrast",
     "format": "prettier --write .",
     "test": "vitest run",
-    "serve": "npx --yes serve site -l 8096"
+    "serve": "npx --yes serve site -l 8096",
+    "tokens:contrast": "node packages/tokens/tools/contrast-report.ts --check"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
+    "@types/node": "^22.20.4",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.1",

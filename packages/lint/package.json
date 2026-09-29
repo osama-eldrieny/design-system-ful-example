@@ -1,0 +1,13 @@
+{
+  "name": "@ds/lint",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Lint rules that keep code on the design system: tokens only, no raw values.",
+  "exports": {
+    "./stylelint": "./stylelint/index.js"
+  },
+  "peerDependencies": {
+    "stylelint": "^17.0.0"
+  }
+}

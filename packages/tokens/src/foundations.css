@@ -3,6 +3,25 @@
  *
  * Theme-independent tokens for motion, stacking and focus. Components use them through
  * their own component tokens, like every other value.
+ *
+ * Token reference:
+ *   --duration-instant: No animation.
+ *   --duration-fast: Small state changes: hover, press, toggle.
+ *   --duration-normal: Elements changing size or position: accordions, tabs.
+ *   --duration-slow: Elements entering or leaving: modals, drawers, toasts.
+ *   --easing-standard: Moving between two states on screen.
+ *   --easing-enter: Elements appearing (decelerate into place).
+ *   --easing-exit: Elements leaving (accelerate away).
+ *   --z-base: Normal page content.
+ *   --z-dropdown: Menus and select lists.
+ *   --z-sticky: Sticky headers and toolbars.
+ *   --z-overlay: Backdrops behind modals and drawers.
+ *   --z-modal: Modals and drawers.
+ *   --z-toast: Toast notifications, above modals.
+ *   --z-tooltip: Tooltips, above everything.
+ *   --focus-ring-width: Thickness of the keyboard focus ring.
+ *   --focus-ring-offset: Gap between an element and its focus ring.
+ *   --focus-ring-color: Focus ring color; follows the brand accent.
  */
 
 :root,

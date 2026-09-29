@@ -14,14 +14,16 @@ The overhaul is in progress. **[docs/ROADMAP.md](docs/ROADMAP.md)** is the appro
 ## Structure
 
 ```
-packages/react/     component library (@ds/react): components/, styles/, icons/
+packages/tokens/    token CSS (the source of truth): primitives, foundations, themes/, components/; tools/ resolver + contrast report
+packages/react/     component library (@ds/react): components/, styles/, icons/, ThemeProvider
+packages/lint/      Stylelint rule ds/component-tokens-only
 apps/prototypes/    Vite app: #/landing and #/dashboard prototypes, importing @ds/react
 legacy/             the previous static HTML docs + demo, served unchanged until the Storybook launch
 scripts/            build helpers (assemble-site.mjs builds site/)
 docs/ROADMAP.md     the plan
 ```
 
-`packages/tokens`, `apps/docs` (Storybook), `packages/mcp`, `packages/lint`, `ai/`, `skills/` and `evals/` are added in later phases. See the roadmap.
+`apps/docs` (Storybook), `packages/mcp`, `packages/lint`, `ai/`, `skills/` and `evals/` are added in later phases. See the roadmap.
 
 ## Commands
 
@@ -29,8 +31,8 @@ docs/ROADMAP.md     the plan
 npm install          # once
 npm run dev          # prototypes dev server with hot reload
 npm run typecheck    # tsc -b
-npm run lint         # ESLint (+ jsx-a11y) and Stylelint
-npm test             # Vitest + Testing Library
+npm run lint         # ESLint (+ jsx-a11y), Stylelint (+ ds/component-tokens-only), contrast check
+npm test             # Vitest: components, token resolution in all 576 theme combinations, lint rules
 npm run build        # builds every workspace and assembles site/
 npm run serve        # serves site/ locally
 ```
