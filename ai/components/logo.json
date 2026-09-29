@@ -234,11 +234,6 @@
         "brand=opal,mode=dark": "#ededf0"
       }
     },
-    "--logo-icon-padding": {
-      "description": "Gap between related items in a group.",
-      "references": "--spacing-sm",
-      "default": "12px"
-    },
     "--logo-icon-font-size": {
       "description": "Type scale.",
       "references": "--font-size-lg",
@@ -326,5 +321,5 @@
       }
     }
   },
-  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/storybook/?path=/docs/components-patterns-logo--docs"
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/storybook/?path=/docs/patterns-logo--docs"
 }

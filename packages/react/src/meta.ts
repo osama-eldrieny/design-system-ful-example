@@ -73,3 +73,19 @@ export type ComponentMeta = z.infer<typeof componentMetaSchema>;
 
 /** Typed helper for writing a {Component}.meta.ts file. */
 export const defineMeta = <const M extends ComponentMeta>(meta: M): M => meta;
+
+const slug = (s: string) =>
+  s
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+
+/**
+ * Storybook id of a component's docs page, e.g. "components-actions-button--docs" or
+ * "patterns-productcard--docs". Mirrors the story titles: Components/{category}/{name}
+ * and Patterns/{name}.
+ */
+export const docsId = (meta: Pick<ComponentMeta, 'name' | 'category'>) =>
+  meta.category === 'Patterns'
+    ? `patterns-${slug(meta.name)}--docs`
+    : `components-${slug(meta.category)}-${slug(meta.name)}--docs`;

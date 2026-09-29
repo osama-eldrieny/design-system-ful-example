@@ -49,7 +49,6 @@
   --menu-item-border-radius: var(--radius-8);
   --input-field-border-radius: var(--radius-8);
   --pagination-item-border-radius: var(--radius-8);
-  --palettes-item-border-radius: var(--radius-8);
   --alerts-border-radius: var(--radius-8);
   --card-image-border-radius: var(--radius-4);
   --menu-dropdown-border-radius: var(--radius-12);
@@ -91,7 +90,6 @@
   --menu-item-border-radius: var(--radius-4);
   --input-field-border-radius: var(--radius-4);
   --pagination-item-border-radius: var(--radius-4);
-  --palettes-item-border-radius: var(--radius-4);
   --alerts-border-radius: var(--radius-4);
   --card-image-border-radius: var(--radius-3);
   --menu-dropdown-border-radius: var(--radius-4);
@@ -133,7 +131,6 @@
   --menu-item-border-radius: var(--radius-999);
   --input-field-border-radius: var(--radius-999);
   --pagination-item-border-radius: var(--radius-999);
-  --palettes-item-border-radius: var(--radius-999);
   --alerts-border-radius: var(--radius-12);
   --card-image-border-radius: var(--radius-8);
   --menu-dropdown-border-radius: var(--radius-16);

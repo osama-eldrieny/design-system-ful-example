@@ -16,7 +16,7 @@ import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'nod
 import { basename, dirname, join, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import docgen from 'react-docgen-typescript';
-import { componentMetaSchema, type ComponentMeta } from '../packages/react/src/meta';
+import { componentMetaSchema, docsId, type ComponentMeta } from '../packages/react/src/meta';
 import { defaultTheme, themeOptions, type Theme } from '../packages/tokens/src/theme';
 import { loadTokens, resolveTheme } from '../packages/tokens/tools/resolve';
 
@@ -166,7 +166,7 @@ for (const file of metaFiles) {
     ...meta,
     components,
     tokens: Object.fromEntries(componentTokens.map((n) => [n, tokenJson[n]])),
-    docs: `${SITE}/storybook/?path=/docs/components-${meta.category.toLowerCase().replace(/\s+/g, '-')}-${meta.id}--docs`,
+    docs: `${SITE}/storybook/?path=/docs/${docsId(meta)}`,
   };
   writeFileSync(
     join(out, 'components', `${meta.id}.json`),

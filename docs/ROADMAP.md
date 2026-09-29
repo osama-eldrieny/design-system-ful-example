@@ -219,7 +219,7 @@ Distribution: the `ai/` folder, `AGENTS.md` snippet, and MCP server ship **insid
 
 ---
 
-## Phase 3 — Upgrade the 19 existing components
+## Phase 3 — Upgrade the 19 existing components ✅
 
 **Goal:** bring what exists to the new standard before adding more.
 
