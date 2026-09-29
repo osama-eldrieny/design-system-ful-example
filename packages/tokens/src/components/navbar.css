@@ -1,0 +1,51 @@
+/**
+ * Component tokens: navbar
+ *
+ * Style this component only with these tokens. The bar's surface follows the section
+ * layout tokens, so it matches other page sections in every theme.
+ *
+ * Grammar: --navbar-{part?}-{state?}-{property}
+ *   part: item | item-icon; state: default | hover | active (the current page).
+ *   Item corners come from the radius theme (themes/radius.css).
+ */
+
+:root,
+[data-theme] {
+  /* Bar */
+  --navbar-bg-color: var(--section-bg-color);
+  --navbar-padding: var(--section-padding);
+  --navbar-gap: var(--section-gap);
+  --navbar-border-radius: var(--section-border-radius);
+  --navbar-shadow-x: var(--section-shadow-x);
+  --navbar-shadow-y: var(--section-shadow-y);
+  --navbar-shadow-blur: var(--section-shadow-blur);
+  --navbar-shadow-color: var(--section-shadow-color);
+  --navbar-list-gap: var(--spacing-xs);
+
+  /* Items */
+  --navbar-item-default-bg-color: var(--color-bg-base);
+  --navbar-item-default-text-color: var(--color-fg-on-surface-primary);
+  --navbar-item-default-icon-color: var(--color-fg-on-surface-secondary);
+  --navbar-item-hover-bg-color: var(--color-bg-primary-1);
+  --navbar-item-hover-text-color: var(--color-fg-on-surface-primary);
+  --navbar-item-active-bg-color: var(--color-bg-primary-1);
+  --navbar-item-active-text-color: var(--color-fg-on-primary-high);
+  --navbar-item-active-icon-color: var(--color-fg-on-primary-high);
+  --navbar-item-active-indicator-color: var(--color-bg-accent-primary-default);
+  --navbar-item-active-indicator-size: var(--border-width-strong);
+  --navbar-item-padding-x: var(--spacing-md);
+  --navbar-item-padding-y: var(--spacing-xs);
+  --navbar-item-gap: var(--spacing-xs);
+  --navbar-item-font-family: var(--font-family-body);
+  --navbar-item-font-size: var(--font-size-md);
+  --navbar-item-font-line-height: var(--font-line-height-md);
+  --navbar-item-font-weight: var(--font-weight-medium);
+  --navbar-item-icon-size: var(--sizing-sm);
+
+  /* Focus and motion */
+  --navbar-focus-ring-width: var(--focus-ring-width);
+  --navbar-focus-ring-offset: var(--focus-ring-offset);
+  --navbar-focus-ring-color: var(--focus-ring-color);
+  --navbar-transition-duration: var(--duration-fast);
+  --navbar-transition-easing: var(--easing-standard);
+}

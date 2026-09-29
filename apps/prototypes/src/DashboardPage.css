@@ -37,73 +37,19 @@ body {
   position: relative;
 }
 
-/* Top Control Bar - Integrated Logo + Menu + Controls */
+/* Top bar: the Navbar floats below the top edge and stays on screen while scrolling. */
 .dashboard-top-bar {
-  background: white;
-  padding: 16px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
   position: sticky;
   top: 0;
   z-index: 50;
-  margin-top: 0;
-}
-
-.top-bar-logo {
-  flex-shrink: 0;
-}
-
-.top-bar-logo .logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.top-bar-menu {
-  display: flex;
-  gap: 0;
-  align-items: center;
-  flex: 1;
-  margin-left: 40px;
-}
-
-.top-bar-menu-item {
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  color: #312e81;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 200ms ease;
-  border-radius: 6px;
-  white-space: nowrap;
-}
-
-.top-bar-menu-item:hover {
-  background-color: #f2edff;
-  color: #794dff;
-}
-
-.top-bar-menu-item.active {
-  background-color: #ddd6fe;
-  color: #794dff;
-  font-weight: 600;
+  padding: 12px 24px;
 }
 
 .top-bar-controls {
   display: flex;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
-  margin-left: auto;
-  min-width: 350px;
-}
-
-.top-bar-controls .input-field-wrapper {
-  flex: 1;
 }
 
 .sort-controls {
@@ -536,39 +482,9 @@ body {
 }
 
 /* Footer */
-.dashboard-page .dashboard-footer-wrapper {
-  width: 100vw !important;
-  margin-left: calc(-50vw + 50%) !important;
-  margin-bottom: 0 !important;
-  margin-top: 60px !important;
-  max-width: none !important;
-}
-
-.dashboard-page .dashboard-footer-wrapper .footer-preview {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: space-between !important;
-  align-items: center !important;
-  max-width: 100% !important;
-  background: white !important;
-  padding: 24px 40px !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  border-top: 1px solid #f0f0f0 !important;
-  margin: 0 !important;
-  gap: 16px !important;
-}
-
-.dashboard-page .dashboard-footer-wrapper .footer-text {
-  flex-shrink: 0 !important;
-}
-
-.dashboard-page .dashboard-footer-wrapper .footer-links {
-  display: flex !important;
-  flex-direction: row !important;
-  gap: 16px !important;
-  align-items: center !important;
-  margin-left: auto !important;
+.dashboard-footer-wrapper {
+  padding: 0 24px 24px;
+  margin-top: 60px;
 }
 
 /* Responsive */
@@ -599,39 +515,7 @@ body {
   }
 }
 
-@media (width <= 1200px) {
-  .top-bar-menu {
-    margin-left: 20px;
-  }
-
-  .top-bar-menu-item {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-
-  .top-bar-controls {
-    min-width: 280px;
-  }
-}
-
 @media (width <= 1024px) {
-  .dashboard-top-bar {
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .top-bar-menu {
-    order: 3;
-    width: 100%;
-    margin-left: 0;
-  }
-
-  .top-bar-controls {
-    width: 100%;
-    min-width: auto;
-    margin-left: 0;
-  }
-
   .dashboard-sidebar {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -674,12 +558,7 @@ body {
   }
 
   .dashboard-top-bar {
-    padding: 16px;
-    margin-top: 0;
-  }
-
-  .top-bar-left h1 {
-    font-size: 24px;
+    padding: 8px 12px;
   }
 
   .dashboard-sidebar {
@@ -714,10 +593,6 @@ body {
 @media (width <= 480px) {
   .dashboard-container {
     padding: 12px;
-  }
-
-  .top-bar-controls {
-    flex-direction: column;
   }
 
   .layout-cards {

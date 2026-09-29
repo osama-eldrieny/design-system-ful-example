@@ -2,13 +2,6 @@ import designSystem from './packages/lint/stylelint/index.js';
 
 // Component stylesheets written before the token rule existed. Phase 3 migrates each one to
 // its own component tokens; remove a file from this list once it passes. Don't add to it.
-const notYetOnComponentTokens = [
-  'Footer',
-  'Header',
-  'Logo',
-  'Navbar',
-].map((name) => `packages/react/src/styles/${name}.css`);
-
 export default {
   extends: ['stylelint-config-standard'],
   plugins: designSystem,
@@ -48,10 +41,6 @@ export default {
           },
         ],
       },
-    },
-    {
-      files: notYetOnComponentTokens,
-      rules: { 'ds/component-tokens-only': null },
     },
   ],
 };

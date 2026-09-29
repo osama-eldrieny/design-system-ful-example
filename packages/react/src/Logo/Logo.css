@@ -1,0 +1,45 @@
+/**
+ * Logo. Styled only with --logo-* tokens: brand colors, corners and spacing follow the
+ * theme instead of per-brand classes.
+ */
+
+.ds-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  border-radius: var(--logo-icon-border-radius);
+  color: inherit;
+  text-decoration: none;
+}
+
+.ds-logo:focus-visible {
+  outline: var(--logo-focus-ring-width) solid var(--logo-focus-ring-color);
+  outline-offset: var(--logo-focus-ring-offset);
+}
+
+.ds-logo__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--logo-icon-size);
+  block-size: var(--logo-icon-size);
+  border-radius: var(--logo-icon-border-radius);
+  background-color: var(--logo-icon-bg-color);
+  color: var(--logo-icon-color);
+  font-size: var(--logo-icon-font-size);
+  line-height: var(--logo-icon-font-line-height);
+}
+
+.ds-logo__icon > svg {
+  inline-size: var(--logo-icon-font-size);
+  block-size: var(--logo-icon-font-size);
+}
+
+.ds-logo__name {
+  font-family: var(--logo-name-font-family);
+  font-size: var(--logo-name-font-size);
+  font-weight: var(--logo-name-font-weight);
+  line-height: var(--logo-name-font-line-height);
+  color: var(--logo-name-font-color);
+  white-space: nowrap;
+}

@@ -37,6 +37,16 @@ body {
   position: relative;
 }
 
+/* Navbar floats over the top of the hero. */
+.landing-navbar {
+  position: absolute;
+  inset-block-start: 20px;
+  inset-inline: 0;
+  z-index: 50;
+  width: min(1400px, 100% - 40px);
+  margin-inline: auto;
+}
+
 /* Hero Section */
 .hero {
   background: #131f3d;
@@ -640,7 +650,7 @@ button i {
 }
 
 /* Footer */
-.footer-preview {
+.landing-footer {
   max-width: 1500px;
   margin: 60px auto;
   width: 100%;

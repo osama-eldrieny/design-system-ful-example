@@ -10,6 +10,7 @@ import {
   InputField,
   Avatar,
   Logo,
+  Navbar,
   Footer,
   DropdownMenu,
   DropdownMenuTrigger,
@@ -28,6 +29,7 @@ import {
   MeetingCard,
   AppsNotifications,
 } from '@ds/react';
+import { ChartLine } from 'lucide-react';
 import './DashboardPage.css';
 
 const kpiCards = [
@@ -170,17 +172,12 @@ const integrations = [
   { id: 'segment', name: 'Segment', icon: 'assets/twitter.png' },
 ];
 
-interface DashboardPageProps {
-  onNavigate?: () => void;
-}
-
-function DashboardPage({ onNavigate }: DashboardPageProps) {
+function DashboardPage() {
   const [timePeriod, setTimePeriod] = useState('month');
   const [realtimeEnabled, setRealtimeEnabled] = useState(true);
   const [activeMetricTab, setActiveMetricTab] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRefresh, setSelectedRefresh] = useState('realtime');
-  const [activeMenuItem, setActiveMenuItem] = useState('Dashboard');
 
   // Filter cards based on active tab
   const filteredCards =
@@ -213,64 +210,51 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
   ];
 
   const menuItems = [
-    { label: 'Products', onClick: onNavigate },
-    { label: 'Dashboard', onClick: () => setActiveMenuItem('Dashboard') },
+    { label: 'Products', href: '#/landing' },
+    { label: 'Dashboard', href: '#/dashboard' },
   ];
 
   return (
     <div className="dashboard-page">
-      {/* Integrated Top Bar with Logo & Menu */}
+      {/* Top bar: logo, navigation and search */}
       <div className="dashboard-top-bar">
-        <div className="top-bar-logo">
-          <Logo
-            icon={<i className="fa-solid fa-chart-line"></i>}
-            text="Analytics"
-            brand="diamond"
-          />
-        </div>
-
-        <div className="top-bar-menu">
-          {menuItems.map((item) => (
-            <button
-              key={item.label}
-              className={`top-bar-menu-item ${activeMenuItem === item.label ? 'active' : ''}`}
-              onClick={item.onClick}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-
-        <div className="top-bar-controls">
-          <InputField
-            label="Search"
-            hideLabel
-            type="search"
-            placeholder="Search..."
-            iconStart={<i className="fas fa-search"></i>}
-          />
-          <div className="sort-controls">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="sort-button">
-                  <i className="fas fa-sliders"></i> Filter
-                  <i className="fas fa-chevron-down"></i>
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {dropdownItems.map((item) => (
-                  <DropdownMenuItem
-                    key={item.id}
-                    icon={<i className={item.icon}></i>}
-                    onSelect={() => console.log('Filter:', item.id)}
-                  >
-                    {item.label}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
-        </div>
+        <Navbar
+          logo={<Logo icon={<ChartLine />} name="Analytics" href="#/dashboard" />}
+          items={menuItems}
+          currentItem="Dashboard"
+          actions={
+            <div className="top-bar-controls">
+              <InputField
+                label="Search"
+                hideLabel
+                type="search"
+                placeholder="Search..."
+                iconStart={<i className="fas fa-search"></i>}
+              />
+              <div className="sort-controls">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <button className="sort-button">
+                      <i className="fas fa-sliders"></i> Filter
+                      <i className="fas fa-chevron-down"></i>
+                    </button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    {dropdownItems.map((item) => (
+                      <DropdownMenuItem
+                        key={item.id}
+                        icon={<i className={item.icon}></i>}
+                        onSelect={() => console.log('Filter:', item.id)}
+                      >
+                        {item.label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            </div>
+          }
+        />
       </div>
 
       {/* Main Container - 3 Column Layout */}

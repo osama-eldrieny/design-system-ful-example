@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Footer } from '@ds/react';
+import * as FooterStories from '../../../../packages/react/src/Footer/Footer.stories';
+import footerMeta from '../../../../packages/react/src/Footer/Footer.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={FooterStories} name="Docs" />
+
+# Footer
+
+<ComponentPage
+  meta={footerMeta}
+  stories={FooterStories}
+  components={[Footer]}
+  anatomy={{
+    targets: [{ selector: '.ds-footer', at: 'start' }, '.ds-footer__text', '.ds-footer__links'],
+    example: (
+      <Footer
+        title="© 2026 TechHub"
+        linksLabel="Anatomy links"
+        links={[
+          { label: 'Privacy', href: '#privacy' },
+          { label: 'Terms', href: '#terms' },
+        ]}
+      />
+    ),
+  }}
+  extras={[{ title: 'Text only', story: 'TextOnly' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <Footer
+      title="© 2026 TechHub"
+      linksLabel="Theme matrix links"
+      links={[{ label: 'Privacy', href: '#privacy' }]}
+    />
+  }
+/>

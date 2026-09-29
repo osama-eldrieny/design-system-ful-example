@@ -19,14 +19,10 @@ function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  const navigate = (page: Page) => {
-    window.location.hash = `/${page}`;
-  };
-
   return (
     <div>
-      {currentPage === 'landing' && <ProductLandingPage onNavigate={() => navigate('dashboard')} />}
-      {currentPage === 'dashboard' && <DashboardPage onNavigate={() => navigate('landing')} />}
+      {currentPage === 'landing' && <ProductLandingPage />}
+      {currentPage === 'dashboard' && <DashboardPage />}
     </div>
   );
 }

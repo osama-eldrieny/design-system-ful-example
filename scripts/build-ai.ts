@@ -18,7 +18,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import docgen from 'react-docgen-typescript';
 import { componentMetaSchema, type ComponentMeta } from '../packages/react/src/meta';
 import { defaultTheme, themeOptions, type Theme } from '../packages/tokens/src/theme';
-import { allThemes, loadTokens, resolveTheme } from '../packages/tokens/tools/resolve';
+import { loadTokens, resolveTheme } from '../packages/tokens/tools/resolve';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const out = join(root, 'ai');
@@ -40,9 +40,9 @@ mkdirSync(join(out, 'docs'), { recursive: true });
 
 const tokens = loadTokens();
 const defaults = resolveTheme(tokens, defaultTheme);
-const brandModes = [
-  ...allThemes({ ...defaultTheme, brand: themeOptions.brand, mode: themeOptions.mode } as never),
-];
+const brandModes: Theme[] = themeOptions.brand.flatMap((brand) =>
+  themeOptions.mode.map((mode) => ({ ...defaultTheme, brand, mode })),
+);
 const axisThemes = (Object.keys(themeOptions) as (keyof Theme)[])
   .filter((a) => a !== 'brand' && a !== 'mode')
   .flatMap((axis) => themeOptions[axis].map((v) => ({ ...defaultTheme, [axis]: v }) as Theme));

@@ -12,8 +12,12 @@ Use library components instead of raw HTML, only documented props, and tokens in
 - [Card](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/card.md): A card groups content and actions about one subject, such as an article, a product or a person, into a single container. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/card.json
 - [ChooseCard](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/choose-card.md): Choose cards are large radio buttons: each option is a card with a name, a description and an optional price, and people pick exactly one. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/choose-card.json
 - [DropdownMenu](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/dropdown-menu.md): A dropdown menu shows a list of actions or options when people press a button. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/dropdown-menu.json
+- [Footer](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/footer.md): The page footer: a copyright line and secondary links such as Privacy, Terms and Help. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/footer.json
+- [Header](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/header.md): A page header that introduces a person and their page: avatar, name, job title and the page heading. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/header.json
 - [InputField](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/input-field.md): An input field lets people enter a single line of text: a name, an email address, a search term. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/input-field.json
+- [Logo](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/logo.md): The logo shows the product’s mark and name, usually at the start of the navigation bar, linking to the home page. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/logo.json
 - [MeetingCard](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/meeting-card.md): A meeting card shows one event in an agenda or schedule: its name, time and attendees, with a color edge for its status. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/meeting-card.json
+- [Navbar](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/navbar.md): The navigation bar at the top of a site or app: the logo, links to the main sections, and optional actions such as search. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/navbar.json
 - [Pagination](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/pagination.md): Pagination moves between pages of a long list or table. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/pagination.json
 - [ProductCard](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/product-card.md): A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/product-card.json
 - [RadioGroup](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/radio-group.md): A radio group lets people pick exactly one option from a short list, with every option visible at once. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/radio-group.json
@@ -36,7 +40,11 @@ Use library components instead of raw HTML, only documented props, and tokens in
 - [Get started/Using with AI](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/get-started-usingwithai.md)
 - [AppsNotifications](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-appsnotifications.md)
 - [ChooseCard](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-choosecard.md)
+- [Footer](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-footer.md)
+- [Header](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-header.md)
+- [Logo](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-logo.md)
 - [MeetingCard](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-meetingcard.md)
+- [Navbar](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-navbar.md)
 - [ProductCard](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/patterns-productcard.md)
 
 ## Optional

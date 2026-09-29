@@ -9,7 +9,7 @@ const metas = Object.values(
 
 // Components still on the pre-overhaul implementation; each moves to a documented
 // component (with a *.meta.ts) in Phase 3.
-const MIGRATING = ['Footer', 'Header', 'Logo', 'Navbar', 'Palettes'];
+const MIGRATING = ['Palettes'];
 
 const slug = (s: string) => s.toLowerCase().replace(/\s+/g, '-');
 

@@ -52,10 +52,10 @@ CI (`.github/workflows/ci.yml`) runs typecheck, lint, test and build on every pu
   - WCAG AA contrast in every theme
 - **Real interaction states:** use `:hover` / `:focus-visible` / `:active` / `[disabled]`, not a `state` prop (existing components get migrated in Phase 3).
 - **CSS class names are BEM** (`block__element--modifier`), and Stylelint enforces it. Use logical properties (`padding-inline`, `margin-inline-start`) so Arabic RTL works.
-- **Lint baseline:** `eslint-suppressions.json` records known a11y errors in Toggle, Dropdown, Navbar and AppsNotifications. Don't add to it. Remove entries as components are fixed (`npx eslint . --prune-suppressions`).
+- **Lint baseline:** `eslint-suppressions.json` is empty: every component passes jsx-a11y. Don't add to it.
 - **Themes:** Diamond / Amber / Opal × Light / Dark, English / Arabic × Serif / Sans-serif, Comfortable / Compact density, Square / Round / Pills radius, Flat / Subtle / Default / Raised shadow. Apply with `applyTheme()` (`@ds/tokens`) or `<ThemeProvider>` (`@ds/react`).
   - **Default theme:** Diamond, light, English, sans, round, comfortable, flat.
-- **Component token rule:** `ds/component-tokens-only` (Stylelint) allows a component's CSS only its own tokens: no semantic tokens, no other components' tokens, no raw colors or lengths. The existing stylesheets are listed in `stylelint.config.js` until Phase 3 migrates them. Don't add to that list.
+- **Component token rule:** `ds/component-tokens-only` (Stylelint) allows a component's CSS only its own tokens: no semantic tokens, no other components' tokens, no raw colors or lengths. Every component stylesheet follows it; there are no exceptions.
 - **Contrast:** `npm run tokens:contrast` fails on any WCAG AA failure. All 768 text/background pairs pass in every brand × mode; keep it that way (the baseline is empty).
 - **Docs site:** its interface stays neutral (not themed by the design system's themes). Component examples render with the default theme; the docs include a Theming guide for projects.
 - **Deploying:** pushing to GitHub publishes the live site. The owner wants a single push at the end of the overhaul; work stays on the local `overhaul` branch until then.

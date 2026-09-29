@@ -1,0 +1,57 @@
+/**
+ * Header. Styled only with --header-* tokens; the avatar is an Avatar.
+ */
+
+.ds-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--header-gap);
+  padding: var(--header-padding);
+  border-radius: var(--header-border-radius);
+  background-color: var(--header-bg-color);
+  box-shadow: var(--header-shadow-x) var(--header-shadow-y) var(--header-shadow-blur)
+    var(--header-shadow-color);
+  text-align: center;
+}
+
+.ds-header__person {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--header-avatar-margin-bottom);
+}
+
+.ds-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--header-name-margin-bottom);
+}
+
+.ds-header__name {
+  margin: 0;
+  font-family: var(--header-name-font-family);
+  font-size: var(--header-name-font-size);
+  font-weight: var(--header-name-font-weight);
+  line-height: var(--header-name-font-line-height);
+  color: var(--header-name-font-color);
+}
+
+.ds-header__role {
+  margin: 0;
+  font-family: var(--header-role-font-family);
+  font-size: var(--header-role-font-size);
+  font-weight: var(--header-role-font-weight);
+  line-height: var(--header-role-font-line-height);
+  color: var(--header-role-font-color);
+}
+
+.ds-header__title {
+  margin: 0;
+  font-family: var(--header-title-font-family);
+  font-size: var(--header-title-font-size);
+  font-weight: var(--header-title-font-weight);
+  line-height: var(--header-title-font-line-height);
+  color: var(--header-title-font-color);
+  text-wrap: balance;
+}

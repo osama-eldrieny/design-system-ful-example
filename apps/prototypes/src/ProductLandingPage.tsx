@@ -25,6 +25,7 @@ import {
   MeetingCard,
   AppsNotifications,
 } from '@ds/react';
+import { Flame } from 'lucide-react';
 import './ProductLandingPage.css';
 
 const products = [
@@ -213,11 +214,7 @@ const teamMembers = [
   { name: 'James Wilson', role: 'Engineering Director', avatar: 'assets/avatar-4.png' },
 ];
 
-interface ProductLandingPageProps {
-  onNavigate?: () => void;
-}
-
-function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
+function ProductLandingPage() {
   const [email, setEmail] = useState('');
   const [activeTab, setActiveTab] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
@@ -259,12 +256,13 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
     <div className="product-landing-page">
       {/* Navbar */}
       <Navbar
-        logo={<Logo icon={<i className="fa-solid fa-fire"></i>} text="TechHub" brand="diamond" />}
+        className="landing-navbar"
+        logo={<Logo icon={<Flame />} name="TechHub" href="#/landing" />}
         items={[
-          { label: 'Products', onClick: () => {} },
-          { label: 'Dashboard', onClick: onNavigate },
+          { label: 'Products', href: '#/landing' },
+          { label: 'Dashboard', href: '#/dashboard' },
         ]}
-        defaultActiveItem="Products"
+        currentItem="Products"
       />
 
       {/* Hero Section */}
@@ -487,6 +485,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
 
       {/* Footer Component */}
       <Footer
+        className="landing-footer"
         title="© 2024 TechHub. All rights reserved."
         links={[
           { label: 'Privacy Policy', onClick: () => {} },

@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Header } from '@ds/react';
+import * as HeaderStories from '../../../../packages/react/src/Header/Header.stories';
+import headerMeta from '../../../../packages/react/src/Header/Header.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={HeaderStories} name="Docs" />
+
+# Header
+
+<ComponentPage
+  meta={headerMeta}
+  stories={HeaderStories}
+  components={[Header]}
+  anatomy={{
+    targets: ['.ds-avatar', '.ds-header__name', '.ds-header__role', '.ds-header__title'],
+    example: (
+      <Header name="Sarah Chen" jobTitle="Head of Products" heading="Portfolio" headingAs="h3" />
+    ),
+  }}
+  extras={[{ title: 'Without a photo', story: 'WithoutPhoto' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <Header name="Sarah Chen" jobTitle="Head of Products" heading="Portfolio" headingAs="h3" />
+  }
+/>

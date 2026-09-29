@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Logo } from '@ds/react';
+import * as LogoStories from '../../../../packages/react/src/Logo/Logo.stories';
+import logoMeta from '../../../../packages/react/src/Logo/Logo.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={LogoStories} name="Docs" />
+
+# Logo
+
+<ComponentPage
+  meta={logoMeta}
+  stories={LogoStories}
+  components={[Logo]}
+  anatomy={{
+    targets: ['.ds-logo__icon', '.ds-logo__name'],
+    example: <Logo name="TechHub" />,
+  }}
+  optionStories={{ hideName: 'Variants' }}
+  behaviorStory="RightToLeft"
+  matrix={<Logo name="TechHub" />}
+/>
