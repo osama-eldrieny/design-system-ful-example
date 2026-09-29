@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 179 | 179 | 0 |
-| diamond-dark | 179 | 179 | 0 |
-| amber-light | 179 | 179 | 0 |
-| amber-dark | 179 | 179 | 0 |
-| opal-light | 179 | 179 | 0 |
-| opal-dark | 179 | 179 | 0 |
+| diamond-light | 183 | 183 | 0 |
+| diamond-dark | 183 | 183 | 0 |
+| amber-light | 183 | 183 | 0 |
+| amber-dark | 183 | 183 | 0 |
+| opal-light | 183 | 183 | 0 |
+| opal-dark | 183 | 183 | 0 |
 
 ## Failures (0)
 
@@ -164,6 +164,10 @@ None.
 | diamond-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #24242c on #f2edff | 13.44:1 | 4.5:1 |
+| diamond-light | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--menu-item-default-font-color` | `--menu-item-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--menu-item-default-icon-color` | `--menu-item-default-bg-color` | #24242c on #fff | 15.40:1 | 3:1 |
 | diamond-light | `--menu-item-hover-font-color` | `--menu-item-hover-bg-color` | #24242c on #f2edff | 13.44:1 | 4.5:1 |
@@ -343,6 +347,10 @@ None.
 | diamond-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
+| diamond-dark | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--menu-item-default-font-color` | `--menu-item-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--menu-item-default-icon-color` | `--menu-item-default-bg-color` | #ececed on #24202d | 13.48:1 | 3:1 |
 | diamond-dark | `--menu-item-hover-font-color` | `--menu-item-hover-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
@@ -522,6 +530,10 @@ None.
 | amber-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #6a625a on #f9f4ee | 5.47:1 | 4.5:1 |
+| amber-light | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--menu-item-default-font-color` | `--menu-item-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--menu-item-default-icon-color` | `--menu-item-default-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
 | amber-light | `--menu-item-hover-font-color` | `--menu-item-hover-bg-color` | #6a625a on #f9f4ee | 5.47:1 | 4.5:1 |
@@ -701,6 +713,10 @@ None.
 | amber-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #fdfbf9 on #574028 | 9.38:1 | 4.5:1 |
+| amber-dark | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--menu-item-default-font-color` | `--menu-item-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--menu-item-default-icon-color` | `--menu-item-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 3:1 |
 | amber-dark | `--menu-item-hover-font-color` | `--menu-item-hover-bg-color` | #fdfbf9 on #574028 | 9.38:1 | 4.5:1 |
@@ -880,6 +896,10 @@ None.
 | opal-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #282b3b on #ebf3fe | 12.53:1 | 4.5:1 |
+| opal-light | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--menu-item-default-font-color` | `--menu-item-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--menu-item-default-icon-color` | `--menu-item-default-bg-color` | #282b3b on #fff | 14.01:1 | 3:1 |
 | opal-light | `--menu-item-hover-font-color` | `--menu-item-hover-bg-color` | #282b3b on #ebf3fe | 12.53:1 | 4.5:1 |
@@ -1059,6 +1079,10 @@ None.
 | opal-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--combobox-control-default-text-color` | `--combobox-control-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #ededf0 on #1b3a6f | 9.55:1 | 4.5:1 |
+| opal-dark | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--menu-item-default-font-color` | `--menu-item-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--menu-item-default-icon-color` | `--menu-item-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 3:1 |
 | opal-dark | `--menu-item-hover-font-color` | `--menu-item-hover-bg-color` | #ededf0 on #1b3a6f | 9.55:1 | 4.5:1 |

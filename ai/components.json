@@ -98,6 +98,17 @@
       "contract": "ai/components/choose-card.json"
     },
     {
+      "id": "combobox",
+      "name": "Combobox",
+      "exports": [
+        "Combobox"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A combobox is a text field with a list of suggestions: people type to filter and pick one option, or several shown as removable chips.",
+      "contract": "ai/components/combobox.json"
+    },
+    {
       "id": "dropdown-menu",
       "name": "DropdownMenu",
       "exports": [

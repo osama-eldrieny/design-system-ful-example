@@ -261,7 +261,7 @@ Recategorize to **Patterns**: MeetingCard, AppsNotifications, NotificationListIt
 
 ---
 
-## Phase 4 — New components, wave A (forms & actions)
+## Phase 4 — New components, wave A (forms & actions) ✅
 
 Each new component: design its component tokens first (aliasing semantic tokens, all modes), then build, story, document, and test using the same definition of done. For complex widgets, use **Radix UI primitives**, styled 100% by our tokens, so keyboard/ARIA behavior is correct and battle-tested.
 
@@ -276,7 +276,7 @@ Each new component: design its component tokens first (aliasing semantic tokens,
 | Slider | single/range; steps; marks |
 | FormField | label + control + helper/error wiring (`aria-describedby`); required/optional |
 | SearchField | clear button; shortcut hint |
-| DatePicker | *optional, confirm at phase start (large component)* |
+| DatePicker | *deferred (2026-09-29): add later if the prototypes need one* |
 
 ---
 

@@ -30,5 +30,6 @@ export type { TabsProps, TabListProps, TabProps, TabPanelProps } from '../Tabs';
 export { Pagination } from '../Pagination';
 export type { PaginationProps } from '../Pagination';
 export * from '../ChooseCard';
+export * from '../Combobox';
 export * from '../MeetingCard';
 export * from '../AppsNotifications';

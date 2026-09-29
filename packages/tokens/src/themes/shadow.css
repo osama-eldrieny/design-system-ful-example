@@ -31,6 +31,8 @@
   --menu-dropdown-shadow-blur: var(--shadow-0);
   --select-content-shadow-y: var(--shadow-0);
   --select-content-shadow-blur: var(--shadow-0);
+  --combobox-content-shadow-y: var(--shadow-0);
+  --combobox-content-shadow-blur: var(--shadow-0);
 }
 
 /* shadow: subtle */
@@ -51,6 +53,8 @@
   --menu-dropdown-shadow-blur: var(--shadow-8);
   --select-content-shadow-y: var(--shadow-4);
   --select-content-shadow-blur: var(--shadow-8);
+  --combobox-content-shadow-y: var(--shadow-4);
+  --combobox-content-shadow-blur: var(--shadow-8);
 }
 
 /* shadow: default */
@@ -71,6 +75,8 @@
   --menu-dropdown-shadow-blur: var(--shadow-16);
   --select-content-shadow-y: var(--shadow-8);
   --select-content-shadow-blur: var(--shadow-16);
+  --combobox-content-shadow-y: var(--shadow-8);
+  --combobox-content-shadow-blur: var(--shadow-16);
 }
 
 /* shadow: raised */
@@ -91,4 +97,6 @@
   --menu-dropdown-shadow-blur: var(--shadow-28);
   --select-content-shadow-y: var(--shadow-16);
   --select-content-shadow-blur: var(--shadow-28);
+  --combobox-content-shadow-y: var(--shadow-16);
+  --combobox-content-shadow-blur: var(--shadow-28);
 }

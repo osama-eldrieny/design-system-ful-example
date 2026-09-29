@@ -46,6 +46,10 @@
   --tabs-item-border-radius: var(--radius-4);
   --navbar-item-border-radius: var(--radius-8);
   --footer-link-border-radius: var(--radius-12);
+  --combobox-control-border-radius: var(--radius-8);
+  --combobox-content-border-radius: var(--radius-12);
+  --combobox-item-border-radius: var(--radius-8);
+  --combobox-chip-border-radius: var(--radius-4);
   --select-trigger-border-radius: var(--radius-8);
   --select-content-border-radius: var(--radius-12);
   --select-item-border-radius: var(--radius-8);
@@ -92,6 +96,10 @@
   --tabs-item-border-radius: var(--radius-3);
   --navbar-item-border-radius: var(--radius-4);
   --footer-link-border-radius: var(--radius-3);
+  --combobox-control-border-radius: var(--radius-4);
+  --combobox-content-border-radius: var(--radius-4);
+  --combobox-item-border-radius: var(--radius-4);
+  --combobox-chip-border-radius: var(--radius-2);
   --select-trigger-border-radius: var(--radius-4);
   --select-content-border-radius: var(--radius-4);
   --select-item-border-radius: var(--radius-4);
@@ -138,6 +146,10 @@
   --tabs-item-border-radius: var(--radius-999);
   --navbar-item-border-radius: var(--radius-999);
   --footer-link-border-radius: var(--radius-999);
+  --combobox-control-border-radius: var(--radius-999);
+  --combobox-content-border-radius: var(--radius-16);
+  --combobox-item-border-radius: var(--radius-999);
+  --combobox-chip-border-radius: var(--radius-999);
   --select-trigger-border-radius: var(--radius-999);
   --select-content-border-radius: var(--radius-16);
   --select-item-border-radius: var(--radius-999);
