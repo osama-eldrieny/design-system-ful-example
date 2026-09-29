@@ -386,8 +386,7 @@
       "default": "#fdf7e6",
       "byTheme": {
         "brand=diamond,mode=dark": "#332e3c",
-        "brand=amber,mode=light": "#f3eff9",
-        "brand=amber,mode=dark": "#4a3870",
+        "brand=amber,mode=dark": "#2a1f16",
         "brand=opal,mode=dark": "#695103"
       }
     },
@@ -396,8 +395,6 @@
       "references": "--color-border-warning-strong",
       "default": "#a87d00",
       "byTheme": {
-        "brand=amber,mode=light": "#997ecf",
-        "brand=amber,mode=dark": "#997ecf",
         "brand=opal,mode=light": "#a67f04",
         "brand=opal,mode=dark": "#c79805"
       }
@@ -408,8 +405,7 @@
       "default": "#6b4f00",
       "byTheme": {
         "brand=diamond,mode=dark": "#f7dd91",
-        "brand=amber,mode=light": "#5c468c",
-        "brand=amber,mode=dark": "#e1d9f1",
+        "brand=amber,mode=dark": "#f7dd91",
         "brand=opal,mode=light": "#695103",
         "brand=opal,mode=dark": "#f6de94"
       }
@@ -420,8 +416,7 @@
       "default": "#876400",
       "byTheme": {
         "brand=diamond,mode=dark": "#f4cd5e",
-        "brand=amber,mode=light": "#6f53a7",
-        "brand=amber,mode=dark": "#c9bbe6",
+        "brand=amber,mode=dark": "#f4cd5e",
         "brand=opal,mode=light": "#856603",
         "brand=opal,mode=dark": "#f2cf62"
       }
@@ -432,8 +427,7 @@
       "default": "#fdf7e6",
       "byTheme": {
         "brand=diamond,mode=dark": "#332e3c",
-        "brand=amber,mode=light": "#f3eff9",
-        "brand=amber,mode=dark": "#4a3870",
+        "brand=amber,mode=dark": "#2a1f16",
         "brand=opal,mode=dark": "#695103"
       }
     },

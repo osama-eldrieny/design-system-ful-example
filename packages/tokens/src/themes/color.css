@@ -353,7 +353,7 @@
   --color-border-danger-strong: var(--color-amber-danger-500);
   --color-border-danger-medium: var(--color-amber-danger-300);
   --color-border-danger-subtle: var(--color-amber-danger-100);
-  --color-border-warning-strong: var(--color-amber-warning-500);
+  --color-border-warning-strong: var(--color-amber-warning-800);
   --color-border-warning-medium: var(--color-amber-warning-300);
   --color-border-warning-subtle: var(--color-amber-warning-100);
   --image-card: url('./images/card-image-amber.png');
@@ -443,8 +443,8 @@
   --color-fg-on-danger-medium: var(--color-amber-danger-600);
   --color-fg-on-danger-low: var(--color-amber-danger-1000);
   --color-fg-on-danger-strong: var(--color-amber-danger-100);
-  --color-fg-on-warning-high: var(--color-amber-warning-800);
-  --color-fg-on-warning-medium: var(--color-amber-warning-700);
+  --color-fg-on-warning-high: var(--color-amber-warning-1000);
+  --color-fg-on-warning-medium: var(--color-amber-warning-900);
   --color-fg-on-warning-low: var(--color-amber-warning-1000);
   --color-fg-on-warning-strong: var(--color-amber-warning-100);
   --color-fg-on-secondary-high: var(--color-amber-secondary-800);
@@ -474,15 +474,15 @@
   --color-fg-on-accent-danger-text-default: var(--color-amber-danger-600);
   --color-fg-on-accent-danger-text-hover: var(--color-amber-danger-700);
   --color-fg-on-accent-danger-text-focus: var(--color-amber-danger-800);
-  --color-bg-accent-warning-default: var(--color-amber-warning-700);
-  --color-bg-accent-warning-hover: var(--color-amber-warning-800);
-  --color-bg-accent-warning-focus: var(--color-amber-warning-900);
-  --color-fg-on-accent-warning-default: var(--color-amber-warning-100);
-  --color-fg-on-accent-warning-hover: var(--color-amber-warning-100);
-  --color-fg-on-accent-warning-focus: var(--color-amber-warning-100);
-  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-700);
-  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-800);
-  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-900);
+  --color-bg-accent-warning-default: var(--color-amber-warning-500);
+  --color-bg-accent-warning-hover: var(--color-amber-warning-600);
+  --color-bg-accent-warning-focus: var(--color-amber-warning-700);
+  --color-fg-on-accent-warning-default: var(--color-amber-base-900);
+  --color-fg-on-accent-warning-hover: var(--color-amber-base-900);
+  --color-fg-on-accent-warning-focus: var(--color-amber-base-900);
+  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-900);
+  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-1000);
 
   /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
      where neither ink nor white reaches 4.5:1. */
@@ -504,9 +504,9 @@
   --color-border-danger-strong: var(--color-amber-danger-500);
   --color-border-danger-medium: var(--color-amber-danger-700);
   --color-border-danger-subtle: var(--color-amber-danger-900);
-  --color-border-warning-strong: var(--color-amber-warning-500);
-  --color-border-warning-medium: var(--color-amber-warning-700);
-  --color-border-warning-subtle: var(--color-amber-warning-900);
+  --color-border-warning-strong: var(--color-amber-warning-800);
+  --color-border-warning-medium: var(--color-amber-warning-800);
+  --color-border-warning-subtle: var(--color-amber-base-800);
   --image-card: url('./images/card-image-dark.png');
   --color-bg-base: var(--color-amber-base-900);
   --color-bg-default: var(--color-amber-base-800);
@@ -521,7 +521,7 @@
   --color-bg-secondary-1: var(--color-amber-neutral-1000);
   --color-bg-success-1: var(--color-amber-success-900);
   --color-bg-danger-1: var(--color-amber-danger-900);
-  --color-bg-warning-1: var(--color-amber-warning-900);
+  --color-bg-warning-1: var(--color-amber-base-800);
   --color-bg-primary-100: var(--color-amber-primary-900);
   --color-bg-primary-200: var(--color-amber-primary-800);
   --color-bg-primary-300: var(--color-amber-primary-700);
@@ -594,8 +594,8 @@
   --color-fg-on-danger-medium: var(--color-amber-danger-300);
   --color-fg-on-danger-low: var(--color-amber-danger-100);
   --color-fg-on-danger-strong: var(--color-amber-danger-1000);
-  --color-fg-on-warning-high: var(--color-amber-warning-200);
-  --color-fg-on-warning-medium: var(--color-amber-warning-300);
+  --color-fg-on-warning-high: var(--color-amber-warning-300);
+  --color-fg-on-warning-medium: var(--color-amber-warning-400);
   --color-fg-on-warning-low: var(--color-amber-warning-100);
   --color-fg-on-warning-strong: var(--color-amber-warning-1000);
   --color-fg-on-secondary-high: var(--color-amber-base-100);
@@ -628,12 +628,12 @@
   --color-bg-accent-warning-default: var(--color-amber-warning-100);
   --color-bg-accent-warning-hover: var(--color-amber-warning-200);
   --color-bg-accent-warning-focus: var(--color-amber-warning-300);
-  --color-fg-on-accent-warning-default: var(--color-amber-warning-900);
-  --color-fg-on-accent-warning-hover: var(--color-amber-warning-900);
-  --color-fg-on-accent-warning-focus: var(--color-amber-warning-900);
-  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-500);
-  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-400);
-  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-300);
+  --color-fg-on-accent-warning-default: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-hover: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-focus: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-700);
+  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-600);
+  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-500);
 
   /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
      where neither ink nor white reaches 4.5:1. */

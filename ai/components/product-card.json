@@ -355,8 +355,7 @@
       "default": "#6b4f00",
       "byTheme": {
         "brand=diamond,mode=dark": "#f7dd91",
-        "brand=amber,mode=light": "#5c468c",
-        "brand=amber,mode=dark": "#e1d9f1",
+        "brand=amber,mode=dark": "#f7dd91",
         "brand=opal,mode=light": "#695103",
         "brand=opal,mode=dark": "#f6de94"
       }
