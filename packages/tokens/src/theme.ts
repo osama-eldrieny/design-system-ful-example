@@ -25,7 +25,7 @@ export const defaultTheme: Theme = {
   typeface: 'sans',
   density: 'comfortable',
   radius: 'round',
-  shadow: 'default',
+  shadow: 'flat',
 };
 
 /**

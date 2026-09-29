@@ -2,7 +2,36 @@
  * Theme: color
  *
  * Semantic colors per brand × mode. Set data-brand (diamond | amber | opal) and
- * data-mode (light | dark) on a theme scope.
+ * data-mode (light | dark) on a theme scope. Semantic names describe a role, never a hue,
+ * so the same component token works in every brand and mode.
+ *
+ * Tones: primary (brand), secondary (neutral action), success, danger, warning.
+ * States: default, hover, focus (also used while pressed).
+ *
+ * Token reference ({tone}, {state} and {step} stand for the values above):
+ *   --color-bg-base: Outermost page background.
+ *   --color-bg-default: App background behind cards and panels.
+ *   --color-bg-surface: Cards, panels, inputs and menus sitting on --color-bg-default.
+ *   --color-bg-accent-{tone}-{state}: Solid fill for emphasized actions of a tone, e.g. filled buttons.
+ *   --color-fg-on-accent-{tone}-{state}: Text and icons on the matching --color-bg-accent fill.
+ *   --color-fg-on-accent-{tone}-text-{state}: Tone-colored text directly on surfaces, e.g. text buttons and links.
+ *   --color-bg-{tone}-1: Subtle tinted background for a tone, e.g. alerts, selected items, badges.
+ *   --color-bg-{tone}-{step}: Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.
+ *   --color-fg-on-surface-primary: Main text on surfaces.
+ *   --color-fg-on-surface-secondary: Supporting text on surfaces: descriptions, metadata, placeholders.
+ *   --color-fg-on-{tone}-high: Main tone-colored text on light or tinted backgrounds: titles, active items.
+ *   --color-fg-on-{tone}-medium: Secondary tone-colored text: timestamps, captions.
+ *   --color-fg-on-{tone}-low: Darkest tone text, for maximum contrast on tinted backgrounds.
+ *   --color-fg-on-{tone}-strong: Text on strong (solid) tone fills.
+ *   --color-border-base: Default dividers and outlines.
+ *   --color-border-accent: Brand-colored outline; also the focus ring color.
+ *   --color-border-{tone}-strong: Emphasized tone outline, e.g. a selected card.
+ *   --color-border-{tone}-medium: Regular tone outline, e.g. alert borders.
+ *   --color-border-{tone}-subtle: Faint tone outline on tinted backgrounds.
+ *   --color-shadow-surface: Shadow color under raised surfaces.
+ *   --image-card: Default card media image for the brand and mode.
+ *   --image-light: Card media image for light backgrounds.
+ *   --image-dark: Card media image for dark backgrounds.
  */
 
 /* Brand diamond, light mode (default) */
@@ -119,6 +148,36 @@
   --color-border-warning-subtle: var(--color-diamond-warning-100);
   --image-light: url('./images/card-image-diamond.png');
   --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-diamond-success-500);
+  --color-bg-accent-success-hover: var(--color-diamond-success-600);
+  --color-bg-accent-success-focus: var(--color-diamond-success-700);
+  --color-fg-on-accent-success-default: var(--color-diamond-base-900);
+  --color-fg-on-accent-success-hover: var(--color-diamond-base-900);
+  --color-fg-on-accent-success-focus: var(--color-diamond-base-900);
+  --color-fg-on-accent-success-text-default: var(--color-diamond-success-900);
+  --color-fg-on-accent-success-text-hover: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-text-focus: var(--color-diamond-success-1000);
+  --color-bg-accent-danger-default: var(--color-diamond-danger-700);
+  --color-bg-accent-danger-hover: var(--color-diamond-danger-800);
+  --color-bg-accent-danger-focus: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-default: var(--color-diamond-danger-100);
+  --color-fg-on-accent-danger-hover: var(--color-diamond-danger-100);
+  --color-fg-on-accent-danger-focus: var(--color-diamond-danger-100);
+  --color-fg-on-accent-danger-text-default: var(--color-diamond-danger-700);
+  --color-fg-on-accent-danger-text-hover: var(--color-diamond-danger-800);
+  --color-fg-on-accent-danger-text-focus: var(--color-diamond-danger-900);
+  --color-bg-accent-warning-default: var(--color-diamond-warning-500);
+  --color-bg-accent-warning-hover: var(--color-diamond-warning-600);
+  --color-bg-accent-warning-focus: var(--color-diamond-warning-700);
+  --color-fg-on-accent-warning-default: var(--color-diamond-base-900);
+  --color-fg-on-accent-warning-hover: var(--color-diamond-base-900);
+  --color-fg-on-accent-warning-focus: var(--color-diamond-base-900);
+  --color-fg-on-accent-warning-text-default: var(--color-diamond-warning-900);
+  --color-fg-on-accent-warning-text-hover: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-text-focus: var(--color-diamond-warning-1000);
 }
 
 /* Brand diamond, dark mode */
@@ -234,6 +293,36 @@
   --color-border-warning-subtle: var(--color-diamond-base-800);
   --image-light: url('./images/card-image-diamond.png');
   --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-diamond-success-100);
+  --color-bg-accent-success-hover: var(--color-diamond-success-200);
+  --color-bg-accent-success-focus: var(--color-diamond-success-300);
+  --color-fg-on-accent-success-default: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-hover: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-focus: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-text-default: var(--color-diamond-success-700);
+  --color-fg-on-accent-success-text-hover: var(--color-diamond-success-600);
+  --color-fg-on-accent-success-text-focus: var(--color-diamond-success-500);
+  --color-bg-accent-danger-default: var(--color-diamond-danger-100);
+  --color-bg-accent-danger-hover: var(--color-diamond-danger-200);
+  --color-bg-accent-danger-focus: var(--color-diamond-danger-300);
+  --color-fg-on-accent-danger-default: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-hover: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-focus: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-text-default: var(--color-diamond-danger-500);
+  --color-fg-on-accent-danger-text-hover: var(--color-diamond-danger-400);
+  --color-fg-on-accent-danger-text-focus: var(--color-diamond-danger-300);
+  --color-bg-accent-warning-default: var(--color-diamond-warning-100);
+  --color-bg-accent-warning-hover: var(--color-diamond-warning-200);
+  --color-bg-accent-warning-focus: var(--color-diamond-warning-300);
+  --color-fg-on-accent-warning-default: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-hover: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-focus: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-text-default: var(--color-diamond-warning-700);
+  --color-fg-on-accent-warning-text-hover: var(--color-diamond-warning-600);
+  --color-fg-on-accent-warning-text-focus: var(--color-diamond-warning-500);
 }
 
 /* Brand amber, light mode */
@@ -349,6 +438,36 @@
   --color-fg-on-secondary-strong: var(--color-amber-secondary-100);
   --image-light: url('./images/card-image-amber.png');
   --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-amber-success-600);
+  --color-bg-accent-success-hover: var(--color-amber-success-700);
+  --color-bg-accent-success-focus: var(--color-amber-success-800);
+  --color-fg-on-accent-success-default: var(--color-amber-success-100);
+  --color-fg-on-accent-success-hover: var(--color-amber-success-100);
+  --color-fg-on-accent-success-focus: var(--color-amber-success-100);
+  --color-fg-on-accent-success-text-default: var(--color-amber-success-600);
+  --color-fg-on-accent-success-text-hover: var(--color-amber-success-700);
+  --color-fg-on-accent-success-text-focus: var(--color-amber-success-800);
+  --color-bg-accent-danger-default: var(--color-amber-danger-600);
+  --color-bg-accent-danger-hover: var(--color-amber-danger-700);
+  --color-bg-accent-danger-focus: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-default: var(--color-amber-danger-100);
+  --color-fg-on-accent-danger-hover: var(--color-amber-danger-100);
+  --color-fg-on-accent-danger-focus: var(--color-amber-danger-100);
+  --color-fg-on-accent-danger-text-default: var(--color-amber-danger-600);
+  --color-fg-on-accent-danger-text-hover: var(--color-amber-danger-700);
+  --color-fg-on-accent-danger-text-focus: var(--color-amber-danger-800);
+  --color-bg-accent-warning-default: var(--color-amber-warning-700);
+  --color-bg-accent-warning-hover: var(--color-amber-warning-800);
+  --color-bg-accent-warning-focus: var(--color-amber-warning-900);
+  --color-fg-on-accent-warning-default: var(--color-amber-warning-100);
+  --color-fg-on-accent-warning-hover: var(--color-amber-warning-100);
+  --color-fg-on-accent-warning-focus: var(--color-amber-warning-100);
+  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-600);
+  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-700);
+  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-800);
 }
 
 /* Brand amber, dark mode */
@@ -464,6 +583,36 @@
   --color-fg-on-secondary-strong: var(--color-amber-secondary-1000);
   --image-light: url('./images/card-image-amber.png');
   --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-amber-success-100);
+  --color-bg-accent-success-hover: var(--color-amber-success-200);
+  --color-bg-accent-success-focus: var(--color-amber-success-300);
+  --color-fg-on-accent-success-default: var(--color-amber-success-800);
+  --color-fg-on-accent-success-hover: var(--color-amber-success-800);
+  --color-fg-on-accent-success-focus: var(--color-amber-success-800);
+  --color-fg-on-accent-success-text-default: var(--color-amber-success-500);
+  --color-fg-on-accent-success-text-hover: var(--color-amber-success-400);
+  --color-fg-on-accent-success-text-focus: var(--color-amber-success-300);
+  --color-bg-accent-danger-default: var(--color-amber-danger-100);
+  --color-bg-accent-danger-hover: var(--color-amber-danger-200);
+  --color-bg-accent-danger-focus: var(--color-amber-danger-300);
+  --color-fg-on-accent-danger-default: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-hover: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-focus: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-text-default: var(--color-amber-danger-400);
+  --color-fg-on-accent-danger-text-hover: var(--color-amber-danger-300);
+  --color-fg-on-accent-danger-text-focus: var(--color-amber-danger-200);
+  --color-bg-accent-warning-default: var(--color-amber-warning-100);
+  --color-bg-accent-warning-hover: var(--color-amber-warning-200);
+  --color-bg-accent-warning-focus: var(--color-amber-warning-300);
+  --color-fg-on-accent-warning-default: var(--color-amber-warning-900);
+  --color-fg-on-accent-warning-hover: var(--color-amber-warning-900);
+  --color-fg-on-accent-warning-focus: var(--color-amber-warning-900);
+  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-500);
+  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-400);
+  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-300);
 }
 
 /* Brand opal, light mode */
@@ -579,6 +728,36 @@
   --color-fg-on-secondary-strong: var(--color-opal-secondary-100);
   --image-light: url('./images/card-image-opal.png');
   --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-opal-success-500);
+  --color-bg-accent-success-hover: var(--color-opal-success-600);
+  --color-bg-accent-success-focus: var(--color-opal-success-700);
+  --color-fg-on-accent-success-default: var(--color-opal-base-900);
+  --color-fg-on-accent-success-hover: var(--color-opal-base-900);
+  --color-fg-on-accent-success-focus: var(--color-opal-base-900);
+  --color-fg-on-accent-success-text-default: var(--color-opal-success-900);
+  --color-fg-on-accent-success-text-hover: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-text-focus: var(--color-opal-success-1000);
+  --color-bg-accent-danger-default: var(--color-opal-danger-800);
+  --color-bg-accent-danger-hover: var(--color-opal-danger-900);
+  --color-bg-accent-danger-focus: var(--color-opal-danger-1000);
+  --color-fg-on-accent-danger-default: var(--color-opal-danger-100);
+  --color-fg-on-accent-danger-hover: var(--color-opal-danger-100);
+  --color-fg-on-accent-danger-focus: var(--color-opal-danger-100);
+  --color-fg-on-accent-danger-text-default: var(--color-opal-danger-700);
+  --color-fg-on-accent-danger-text-hover: var(--color-opal-danger-800);
+  --color-fg-on-accent-danger-text-focus: var(--color-opal-danger-900);
+  --color-bg-accent-warning-default: var(--color-opal-warning-500);
+  --color-bg-accent-warning-hover: var(--color-opal-warning-600);
+  --color-bg-accent-warning-focus: var(--color-opal-warning-700);
+  --color-fg-on-accent-warning-default: var(--color-opal-base-900);
+  --color-fg-on-accent-warning-hover: var(--color-opal-base-900);
+  --color-fg-on-accent-warning-focus: var(--color-opal-base-900);
+  --color-fg-on-accent-warning-text-default: var(--color-opal-warning-900);
+  --color-fg-on-accent-warning-text-hover: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-text-focus: var(--color-opal-warning-1000);
 }
 
 /* Brand opal, dark mode */
@@ -694,4 +873,34 @@
   --color-fg-on-secondary-strong: var(--color-opal-secondary-1000);
   --image-light: url('./images/card-image-opal.png');
   --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-opal-success-100);
+  --color-bg-accent-success-hover: var(--color-opal-success-200);
+  --color-bg-accent-success-focus: var(--color-opal-success-300);
+  --color-fg-on-accent-success-default: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-hover: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-focus: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-text-default: var(--color-opal-success-700);
+  --color-fg-on-accent-success-text-hover: var(--color-opal-success-600);
+  --color-fg-on-accent-success-text-focus: var(--color-opal-success-500);
+  --color-bg-accent-danger-default: var(--color-opal-danger-100);
+  --color-bg-accent-danger-hover: var(--color-opal-danger-200);
+  --color-bg-accent-danger-focus: var(--color-opal-danger-300);
+  --color-fg-on-accent-danger-default: var(--color-opal-danger-900);
+  --color-fg-on-accent-danger-hover: var(--color-opal-danger-900);
+  --color-fg-on-accent-danger-focus: var(--color-opal-danger-900);
+  --color-fg-on-accent-danger-text-default: var(--color-opal-danger-500);
+  --color-fg-on-accent-danger-text-hover: var(--color-opal-danger-400);
+  --color-fg-on-accent-danger-text-focus: var(--color-opal-danger-300);
+  --color-bg-accent-warning-default: var(--color-opal-warning-100);
+  --color-bg-accent-warning-hover: var(--color-opal-warning-200);
+  --color-bg-accent-warning-focus: var(--color-opal-warning-300);
+  --color-fg-on-accent-warning-default: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-hover: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-focus: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-text-default: var(--color-opal-warning-700);
+  --color-fg-on-accent-warning-text-hover: var(--color-opal-warning-600);
+  --color-fg-on-accent-warning-text-focus: var(--color-opal-warning-500);
 }

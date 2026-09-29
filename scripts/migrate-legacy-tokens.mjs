@@ -8,10 +8,13 @@
 //   themes/*.css          semantic tokens per theme mode, as var() references to primitives
 //   components/*.css      component tokens, as var() references to semantic tokens
 //
+// Status: done (2026-09-29). packages/tokens/src is now edited by hand; this script will not
+// overwrite it without --force.
+//
 // Usage: node scripts/migrate-legacy-tokens.mjs [--check]
 //   --check  only verify that the generated CSS reproduces every legacy value.
 
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -357,7 +360,7 @@ migrateAxis({
 migrateAxis({
   axis: 'shadow',
   modes: ['flat', 'subtle', 'default', 'raised'],
-  defaultMode: 'default',
+  defaultMode: 'flat',
   primRe: /^shadow\d+$/,
   primName: (k) => `--shadow-${k.slice(6)}`,
   semRe: /^shadow(None|2xs|Xs|Sm|Md|Lg|Xl|2xl)$/,
@@ -570,7 +573,7 @@ const resolveAll = (attrs) => {
   };
   return resolve;
 };
-const DEFAULTS = { 'data-theme': '', 'data-brand': 'diamond', 'data-mode': 'light', 'data-language': 'en', 'data-typeface': 'sans', 'data-density': 'comfortable', 'data-radius': 'round', 'data-shadow': 'default' };
+const DEFAULTS = { 'data-theme': '', 'data-brand': 'diamond', 'data-mode': 'light', 'data-language': 'en', 'data-typeface': 'sans', 'data-density': 'comfortable', 'data-radius': 'round', 'data-shadow': 'flat' };
 const failures = [];
 const checkFile = (legacyName, attrs) => {
   const resolve = resolveAll({ ...DEFAULTS, ...attrs });
@@ -598,7 +601,9 @@ console.log(`Parity failures: ${failures.length}`);
 if (failures.length) console.log(failures.slice(0, 40).join('\n'));
 if (process.env.REPORT) console.log(JSON.stringify(report, null, 2));
 
-if (!checkOnly && !failures.length) {
+if (!checkOnly && !failures.length && existsSync(join(outDir, 'tokens.css')) && !process.argv.includes('--force')) {
+  console.log('packages/tokens/src already exists and is now edited by hand. Not overwriting (pass --force to override).');
+} else if (!checkOnly && !failures.length) {
   for (const [file, css] of Object.entries(files)) {
     mkdirSync(dirname(join(outDir, file)), { recursive: true });
     writeFileSync(join(outDir, file), css);

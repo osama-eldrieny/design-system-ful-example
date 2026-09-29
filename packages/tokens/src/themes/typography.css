@@ -1,8 +1,17 @@
 /**
  * Theme: typography
  *
- * Font families and text direction per language × typeface. Set data-language
- * (en | ar) and data-typeface (serif | sans) on a theme scope.
+ * Font families and text direction per language × typeface. Set data-language (en | ar)
+ * and data-typeface (serif | sans) on a theme scope; applyTheme() also sets lang and dir.
+ *
+ * Token reference:
+ *   --font-family-headings: Headings and titles.
+ *   --font-family-body: Body text and most UI text.
+ *   --font-family-action: Buttons, links and other actions.
+ *   --direction-border-width-left: Left border width of edge-accented cards; swaps with right in RTL.
+ *   --direction-border-width-right: Right border width of edge-accented cards; swaps with left in RTL.
+ *   --container-direction: Text direction of containers (ltr or rtl).
+ *   --*-content: Translated demo text. Real components take text from props, not tokens.
  */
 
 /* English, serif */

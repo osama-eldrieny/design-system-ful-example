@@ -1,7 +1,15 @@
 /**
  * Theme: radius
  *
- * Corner radius scale per radius style. Set data-radius (square | round | pills).
+ * Corner rounding per radius style. Set data-radius (square | round | pills). Square
+ * gives sharp corners, round the default soft corners, pills fully rounded controls.
+ *
+ * Token reference:
+ *   --radius-none: Sharp corners.
+ *   --radius-2xs … --radius-sm: Small rounding for tiny elements: checkboxes, tags.
+ *   --radius-md … --radius-xl: Controls and small surfaces: inputs, buttons, menu items.
+ *   --radius-2xl … --radius-4xl: Large surfaces: cards, sections, modals.
+ *   --radius-full: Fully rounded: pills, avatars, toggles.
  */
 
 /* radius: round (default) */

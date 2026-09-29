@@ -1,7 +1,23 @@
 /**
  * Theme: density
  *
- * Spacing scale per density. Set data-density (comfortable | compact).
+ * Spacing per density. Set data-density (comfortable | compact). Compact tightens the
+ * padding of containers and controls for data-heavy screens; the named scale stays the same.
+ *
+ * Token reference:
+ *   --spacing-4xs: Negative space (-4px) for deliberate overlap, e.g. stacked avatars.
+ *   --spacing-none: No space.
+ *   --spacing-3xs: Hairline gap. (Currently 0: the source export had space-2 set to 0; review.)
+ *   --spacing-2xs: Tightest gap between tightly related items, e.g. icon and label.
+ *   --spacing-xs: Small gap inside compact controls.
+ *   --spacing-sm: Gap between related items in a group.
+ *   --spacing-md: Default gap and control padding.
+ *   --spacing-lg: Gap between groups inside a section.
+ *   --spacing-xl: Padding of sections and cards.
+ *   --spacing-2xl: Large section padding.
+ *   --spacing-3xl: Space between major sections.
+ *   --spacing-4xl: Extra-large layout spacing.
+ *   --spacing-5xl: Page-level outer spacing.
  */
 
 /* density: comfortable (default) */

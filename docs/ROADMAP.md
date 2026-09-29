@@ -12,7 +12,8 @@ The current docs site (`/Users/oo/Sandbox/Full design System Documentation`) is 
 - **Thin component coverage and variants.** It's missing the common library components (Checkbox, Select, Modal, Tooltip, Badge, Table…). Button has only primary/secondary × filled/text × small/medium/icon.
 
 **Decisions made with the user:**
-- **Code is the source of truth from now on.** Tokens live in the repo as JSON; CSS/SCSS for developers and a Figma import file are *generated* from it.
+- **Code is the source of truth from now on.** Tokens are authored as **plain CSS custom properties** (the same kind of CSS handed off to developers). There is no JSON source, resolver or token build tool (decided 2026-09-29). JSON for AI is *derived* from the CSS.
+- **Docs interface is neutral**, never themed by the design system's themes. Components inside the docs render with the **default theme: Diamond, light, English, sans, round, comfortable, flat**. The theme toolbar previews others, and a **Theming** guide page explains how projects implement themes.
 - **Storybook** is the docs platform. It renders the real React components (no drift), and gives controls, auto props tables, a11y checks, and an official MCP server for AI agents.
 - **Component-specific tokens are mandatory.** Every existing, new, or extended component/variant is styled only through its own tokens (`--button-danger-default-bg-color`), which alias semantic tokens so all themes flow through automatically.
 - **All themes are implemented** everywhere: docs, demo, prototypes.
@@ -25,13 +26,12 @@ The current docs site (`/Users/oo/Sandbox/Full design System Documentation`) is 
 
 ```
 design-system/                      (npm workspaces monorepo, this repo)
-├── tokens/                         SOURCE OF TRUTH — DTCG JSON
 │   ├── primitives/                 color scales per brand, sizing, radius, shadow, font families
 │   ├── semantic/                   bg / text / border / accent (+ success/danger/warning/info)
 │   ├── component/                  --button-*, --alert-*, … (alias semantic tokens)
 │   └── modes/                      brand×mode, language×typeface, density, radius, shadow
 ├── packages/
-│   ├── tokens/                     Style Dictionary v4 build → css, scss, ts, figma-variables.json
+│   ├── tokens/                     SOURCE OF TRUTH: hand-edited CSS (primitives, themes/, components/) + applyTheme()
 │   ├── react/                      the component library (TS, CSS per component, Radix primitives, *.meta.ts)
 │   ├── mcp/                        @ds/mcp local MCP server (reads generated ai/ files)
 │   └── lint/                       eslint-plugin-ds + stylelint token rule + `ds validate` CLI
@@ -46,7 +46,7 @@ design-system/                      (npm workspaces monorepo, this repo)
 └── .github/workflows/deploy.yml    build everything → GitHub Pages
 ```
 
-**Theme mechanism:** attributes on `<html>`: `data-brand`, `data-mode`, `lang`+`dir`, `data-typeface`, `data-density`, `data-radius`, `data-shadow`. Style Dictionary emits each mode's tokens scoped to its selector, e.g. `[data-brand="amber"][data-mode="dark"] { … }`. This replaces the demo's current `<link>`-swapping (`demo/index.html:585-700`).
+**Theme mechanism:** attributes on `<html>`: `data-brand`, `data-mode`, `lang`+`dir`, `data-typeface`, `data-density`, `data-radius`, `data-shadow`. Each theme file scopes its tokens to a selector, e.g. `[data-brand="amber"][data-mode="dark"] { … }`. This replaces the demo's current `<link>`-swapping (`demo/index.html:585-700`).
 
 **Final public URLs (GitHub Pages):**
 - `/` → Storybook docs
@@ -79,7 +79,7 @@ design-system/                      (npm workspaces monorepo, this repo)
 
 | Layer | File(s) | Format | Content |
 |---|---|---|---|
-| **Source: tokens** | `tokens/**/*.tokens.json` | DTCG 2025.10 JSON | Every token has `$value`, `$type`, **`$description`** (usage intent: "Background of destructive actions"), `$deprecated` (+ replacement). `$extensions.ds` holds category, component, themeable modes, and the related a11y pair (for contrast checks). Theme modes are defined via a resolver file |
+| **Source: tokens** | `packages/tokens/src/**/*.css` | CSS custom properties | Primitives → semantic (per theme, via data-attribute selectors) → component tokens. Each file's header has a **token reference** legend (`--token: what it's for`) that is parsed into the AI files |
 | **Source: components** | `packages/react/src/{C}/{C}.meta.ts` | typed TS object (schema-validated) | Identity (id, name, category, status, since, version), description, whenToUse / whenNotToUse (+ alternative component), anatomy parts, variants/sizes/states **each with meaning**, composition (allowed children/parents, related), a11y (role, keyboard map, ARIA, focus behavior, WCAG criteria), content guidelines, do/don't (**+ why + instead**), examples (id, title, code), component token list |
 | **Source: props** | `{C}.tsx` JSDoc | TS types + JSDoc | Per-prop description, default, allowed values, `@deprecated`. Feeds the props table + manifest |
 | **Always-on rules** | `AGENTS.md` (root + nested per package) | Markdown | Build/test commands, the golden rules (import library components, never recreate; tokens only; follow token grammar; a11y required), trust levels for agent actions, where to fetch details (MCP / llms.txt) |
@@ -88,7 +88,7 @@ design-system/                      (npm workspaces monorepo, this repo)
 | **On-demand detail** | `ai/components/{name}.json` | JSON | The meta + props + resolved tokens per theme, i.e. the machine contract |
 | | `ai/components/{name}.md` | Markdown | Guidance prose (usage, do/don't, a11y) for LLM reading |
 | | `ai/components.json` | JSON index | All components: id, one-line purpose, category, status, import path |
-| | `ai/tokens.json` | DTCG resolved | Every token × every mode with descriptions |
+| | `ai/tokens.json` | JSON (derived from CSS) | Every token × every theme, resolved values + descriptions |
 | | `ai/changes.json` | JSON | Machine-readable changelog: additions, deprecations (+ migration), breaking changes |
 | **Web discoverability** | `/llms.txt` | llms.txt spec | H1 name, summary blockquote, sections Foundations / Components / Patterns / Guides, `Optional` section |
 | | `/llms-full.txt` | Markdown | Everything concatenated for one-shot loading |
@@ -127,25 +127,29 @@ Distribution: the `ai/` folder, `AGENTS.md` snippet, and MCP server ship **insid
 
 ## Phase 1 — Token system & themes (code source of truth)
 
-**Goal:** one token source → every theme, every consumer.
+**Goal:** one CSS token source → every theme, every consumer.
 
-1. **Seed** `tokens/` from the most complete export, `demo/css/variables-*.css`. A script converts camelCase CSS into DTCG JSON per mode and merges docs-only tokens from `assets/tokens.css` (palettes, `alerts-border-style`, `choose-card-border-width`).
-2. **Re-alias:** the exports contain resolved hex/px values. A script matches each component value to the semantic/primitive token with the same value *in the same mode* and turns it into a reference; ambiguous matches go to a review list I resolve by hand. This is what makes new variants theme automatically.
-3. **Fill semantic gaps:** add accent sets for success/danger/warning/info (default/hover/active/subtle/border/text) for all 3 brands × 2 modes, built from existing primitive scales (`--diamondBgDanger100…900` etc.). Add motion (duration/easing), z-index and focus-ring tokens. None exist today.
-4. **Style Dictionary v4 build** (`packages/tokens`), with outputs:
-   - `tokens.css`: all modes, selector-scoped, kebab-case
-   - `tokens.scss`
-   - `tokens.ts`: typed names for autocomplete
-   - `tokens.json`: resolved, for AI
-   - `figma-variables.json`: import back into Figma variables so designers stay in sync
-5. **Theme runtime:** a tiny `setTheme({brand, mode, language, typeface, density, radius, shadow})` helper plus a `ThemeProvider` for React.
-   - Arabic sets `dir="rtl"`, so all component CSS moves to logical properties (`padding-inline`, `margin-inline-start`).
-6. **AI metadata on tokens:** write a `$description` for every semantic token and every component-token group (what it's for, when to use it). Mark replaced tokens `$deprecated`. Add `$extensions.ds` (category, component, contrast pair). Generate `ai/tokens.json` + `ai/foundations.json`. CI fails if a semantic token lacks a description.
-7. **Token lint** (Stylelint custom rule): a component's CSS may use only `var(--{its-component}-*)` tokens. No raw hex/px/rgba. This enforces the component-specific-token rule for every future change.
-8. **Contrast audit script:** checks every text/background token pair in all 6 brand×mode combinations against WCAG AA and writes a report.
+1. ✅ **Migrate** the 21 Figma exports (`legacy/demo/css/variables-*.css`) into `packages/tokens/src` with a one-time script (`scripts/migrate-legacy-tokens.mjs`, kept for provenance).
+   - Re-links each component value to the semantic/primitive token with the same value in every theme, and verifies all 380 component tokens resolve to their original values in every theme.
+   - Fixes export slips: duplicated `--space4` (now `--space-4` and `--space-negative-4`), unquoted font names and text, the `widrh` typo, two undefined tokens.
+2. ✅ **Structure** (plain CSS, edited by hand from now on):
+   - `primitives.css`: palettes and scales
+   - `foundations.css`: motion, z-index, focus ring, reduced-motion
+   - `themes/{color,typography,density,radius,shadow}.css`: semantic tokens per theme, scoped by `data-*` attributes; default theme on `:root`
+   - `components/*.css`: component tokens as `var()` references
+   - `tokens.css`: the one file projects import
+3. ✅ **Status accents:** success/danger/warning fills and text for every brand × mode, with steps chosen to pass WCAG AA.
+4. ✅ **Theme runtime:** `applyTheme()` / `themeAttributes()` in `@ds/tokens`, and a `ThemeProvider` in `@ds/react`. Default theme: Diamond, light, en, sans, comfortable, round, flat. Arabic sets `dir="rtl"`; component CSS moves to logical properties in Phase 3.
+5. ✅ **Descriptions:** a token-reference legend in every file header (`--token: what it's for`), parsed later into `ai/tokens.json` + `ai/foundations.json`.
+6. **Token tooling** (`packages/tokens/tools`): a small resolver that reads the CSS and resolves any token in any theme. It's shared by:
+   - a test that every `var()` resolves in every theme combination (no missing tokens, no cycles)
+   - the contrast report
+   - the AI export
+7. **Token lint** (Stylelint custom rule): a component's CSS may use only `var(--{its-component}-*)` tokens. No raw hex/px/rgba.
+8. **Contrast report:** every text/background token pair in all 6 brand × mode combinations against WCAG AA.
    - Known failures: button primary 3.14:1, secondary 2.95:1. **Fixing them changes brand colors, so I'll bring you proposed values to approve.**
 
-**Done when:** the demo's 7 theme groups reproduce exactly from generated CSS (visual diff vs today), and the token lint + contrast report run in CI.
+**Done when:** tokens resolve in every theme (test), the token lint and contrast report run in CI, and the prototypes render in every theme.
 
 ---
 
@@ -159,7 +163,7 @@ Distribution: the `ai/` folder, `AGENTS.md` snippet, and MCP server ship **insid
    - vitest (interaction + a11y tests)
    - pseudo-states (shows hover/focus/active without fake props)
    - `@storybook/addon-mcp`
-2. **Brand theme** for the Storybook UI: logo, colors, fonts, light/dark docs chrome. The sidebar is organized as:
+2. **Neutral docs interface** for the Storybook UI: logo, colors, fonts, light/dark docs chrome, independent of the design system's themes. Component examples render with the default theme. The sidebar is organized as:
    - **Get started:** Introduction, Installation, Theming, AI usage
    - **Foundations**
    - **Components:** Actions, Forms, Feedback, Overlays, Navigation, Data display, Layout
@@ -205,7 +209,7 @@ Distribution: the `ai/` folder, `AGENTS.md` snippet, and MCP server ship **insid
    - Motion (new)
    - Iconography: standardize on **Lucide** and replace Font Awesome and the `+` glyph
    - Accessibility principles
-   - Theming guide
+   - **Theming guide** (for projects using the system): include `tokens.css`, set attributes or call `applyTheme()`, `ThemeProvider` for React, theming part of a page, RTL for Arabic, adding a new brand or mode
 8. **Introduction page:** what the system is, quick start, theme toolbar explainer, component catalog grid with status.
 
 **Done when:** Button alone is fully documented with the template and works in every theme combination. That page is the reference every other component copies.

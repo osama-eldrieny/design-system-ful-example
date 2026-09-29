@@ -1,9 +1,26 @@
 /**
  * Primitives
  *
- * Raw values: brand palettes, scales and font families.
- * Never use these in components. Components use component tokens, which point at
- * semantic tokens (themes/), which point here.
+ * Raw values: brand palettes and the scales everything else is built from. Components
+ * never use these directly: component tokens point at semantic tokens (themes/), which
+ * point here. Add a primitive only when a semantic token needs a value that does not exist.
+ *
+ * Token reference ({brand}: diamond | amber | opal; {step}: 100 lightest to 1000 darkest):
+ *   --color-{brand}-primary-{step}: Brand color ramp.
+ *   --color-{brand}-secondary-{step}: Secondary (neutral action) ramp.
+ *   --color-{brand}-neutral-{step}: Grays for text and borders.
+ *   --color-{brand}-base-{step}: Backgrounds and surfaces; base-900 is the brand's darkest ink.
+ *   --color-{brand}-success-{step}: Positive states.
+ *   --color-{brand}-danger-{step}: Errors and destructive actions.
+ *   --color-{brand}-warning-{step}: Cautions.
+ *   --border-width-{n}, --border-width-{name}: Stroke widths in px.
+ *   --size-{n}, --sizing-{name}: Fixed element sizes in px.
+ *   --opacity-{n}, --opacity-{name}: Opacity from 0 to 1.
+ *   --space-{n}: Spacing steps in px (see --spacing-* in themes/density.css).
+ *   --radius-{n}: Corner radius steps in px (see --radius-* in themes/radius.css).
+ *   --shadow-{n}: Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).
+ *   --font-size-{name}, --font-line-height-{name}, --font-weight-{name}: Type scale.
+ *   --font-family-{en|ar}-{serif|sans}: Font stacks per language and typeface.
  */
 
 :root {

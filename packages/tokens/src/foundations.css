@@ -1,0 +1,48 @@
+/**
+ * Foundations
+ *
+ * Theme-independent tokens for motion, stacking and focus. Components use them through
+ * their own component tokens, like every other value.
+ */
+
+:root,
+[data-theme] {
+  /* Motion: how long a transition lasts. Short for small state changes (hover, press),
+     longer for elements entering or leaving the screen. */
+  --duration-instant: 0ms;
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+
+  /* Motion: acceleration curves. Standard for moving between states, enter for
+     elements appearing (decelerate), exit for elements leaving (accelerate). */
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-enter: cubic-bezier(0, 0, 0, 1);
+  --easing-exit: cubic-bezier(0.3, 0, 1, 1);
+
+  /* Stacking order for layered UI. Use these instead of raw z-index numbers so layers
+     never fight: a tooltip always sits above the modal that opened it. */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-overlay: 1300;
+  --z-modal: 1400;
+  --z-toast: 1500;
+  --z-tooltip: 1600;
+
+  /* Focus ring for keyboard navigation (:focus-visible). The color follows the brand
+     accent and keeps at least 3:1 against surfaces in every theme. */
+  --focus-ring-width: var(--border-width-2);
+  --focus-ring-offset: var(--border-width-2);
+  --focus-ring-color: var(--color-border-accent);
+}
+
+/* People who ask their system for less motion get instant state changes. */
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-theme] {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+  }
+}

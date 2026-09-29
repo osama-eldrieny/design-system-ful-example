@@ -7,6 +7,7 @@
  */
 
 @import url('./primitives.css');
+@import url('./foundations.css');
 @import url('./components/alert.css');
 @import url('./components/apps-notifications.css');
 @import url('./components/avatar.css');
