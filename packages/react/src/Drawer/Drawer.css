@@ -1,0 +1,171 @@
+/** Drawer. Styled only with --drawer-* tokens. Sides are logical, so they flip in RTL. */
+
+.ds-drawer__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--drawer-scrim-z-index);
+  background-color: var(--drawer-scrim-color);
+  animation: ds-drawer-fade var(--drawer-duration) var(--drawer-easing);
+}
+
+.ds-drawer {
+  position: fixed;
+  z-index: var(--drawer-z-index);
+  display: flex;
+  flex-direction: column;
+  gap: var(--drawer-gap);
+  box-sizing: border-box;
+  padding: var(--drawer-padding);
+  border: var(--drawer-border-width) solid var(--drawer-border-color);
+  background-color: var(--drawer-bg-color);
+  box-shadow: var(--drawer-shadow-x) var(--drawer-shadow-y) var(--drawer-shadow-blur)
+    var(--drawer-shadow-color);
+  color: var(--drawer-text-color);
+  font-family: var(--drawer-font-family);
+  font-size: var(--drawer-font-size);
+  line-height: var(--drawer-font-line-height);
+  animation: var(--drawer-duration) var(--drawer-easing) both;
+}
+
+.ds-drawer:focus-visible {
+  outline: none;
+}
+
+.ds-drawer--start,
+.ds-drawer--end {
+  inset-block: 0;
+  inline-size: min(var(--drawer-width), 100%);
+}
+
+.ds-drawer--start {
+  inset-inline-start: 0;
+  border-start-end-radius: var(--drawer-border-radius);
+  border-end-end-radius: var(--drawer-border-radius);
+  animation-name: ds-drawer-from-start;
+}
+
+.ds-drawer--end {
+  inset-inline-end: 0;
+  border-start-start-radius: var(--drawer-border-radius);
+  border-end-start-radius: var(--drawer-border-radius);
+  animation-name: ds-drawer-from-end;
+}
+
+.ds-drawer--top,
+.ds-drawer--bottom {
+  inset-inline: 0;
+  max-block-size: min(var(--drawer-height), 100%);
+}
+
+.ds-drawer--top {
+  inset-block-start: 0;
+  border-end-start-radius: var(--drawer-border-radius);
+  border-end-end-radius: var(--drawer-border-radius);
+  animation-name: ds-drawer-from-top;
+}
+
+.ds-drawer--bottom {
+  inset-block-end: 0;
+  border-start-start-radius: var(--drawer-border-radius);
+  border-start-end-radius: var(--drawer-border-radius);
+  animation-name: ds-drawer-from-bottom;
+}
+
+.ds-drawer__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--drawer-gap);
+}
+
+.ds-drawer__title {
+  margin: 0;
+  font-size: var(--drawer-title-font-size);
+  font-weight: var(--drawer-title-font-weight);
+  line-height: var(--drawer-title-font-line-height);
+}
+
+.ds-drawer__description {
+  margin: 0;
+  color: var(--drawer-description-text-color);
+}
+
+.ds-drawer__body {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.ds-drawer__close {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--drawer-close-size);
+  block-size: var(--drawer-close-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--drawer-close-border-radius);
+  background: none;
+  color: var(--drawer-close-icon-color);
+  cursor: pointer;
+}
+
+.ds-drawer__close:hover {
+  background-color: var(--drawer-close-hover-bg-color);
+}
+
+.ds-drawer__close:focus-visible {
+  outline: var(--drawer-focus-ring-width) solid var(--drawer-focus-ring-color);
+  outline-offset: var(--drawer-focus-ring-offset);
+}
+
+.ds-drawer__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--drawer-footer-gap);
+}
+
+@keyframes ds-drawer-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ds-drawer-from-end {
+  from {
+    translate: 100% 0;
+  }
+}
+
+@keyframes ds-drawer-from-start {
+  from {
+    translate: -100% 0;
+  }
+}
+
+@keyframes ds-drawer-from-top {
+  from {
+    translate: 0 -100%;
+  }
+}
+
+@keyframes ds-drawer-from-bottom {
+  from {
+    translate: 0 100%;
+  }
+}
+
+.ds-drawer--end:dir(rtl) {
+  animation-name: ds-drawer-from-start;
+}
+
+.ds-drawer--start:dir(rtl) {
+  animation-name: ds-drawer-from-end;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-drawer,
+  .ds-drawer__scrim {
+    animation: none;
+  }
+}

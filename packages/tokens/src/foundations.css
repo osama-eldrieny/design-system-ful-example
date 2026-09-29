@@ -23,6 +23,7 @@
  *   --focus-ring-width: Thickness of the keyboard focus ring.
  *   --focus-ring-offset: Gap between an element and its focus ring.
  *   --focus-ring-color: Focus ring color; follows the brand accent.
+ *   --color-scrim: Dimmed backdrop behind modals and drawers; the same in every theme.
  */
 
 :root,
@@ -40,6 +41,9 @@
   --easing-standard: cubic-bezier(0.2, 0, 0, 1);
   --easing-enter: cubic-bezier(0, 0, 0, 1);
   --easing-exit: cubic-bezier(0.3, 0, 1, 1);
+
+  /* Backdrop behind modals and drawers. */
+  --color-scrim: rgb(0 0 0 / 50%);
 
   /* Stacking order for layered UI. Use these instead of raw z-index numbers so layers
      never fight: a tooltip always sits above the modal that opened it. */

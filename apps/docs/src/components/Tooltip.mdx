@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Tooltip } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Tooltip/Tooltip.stories';
+import meta from '../../../../packages/react/src/Tooltip/Tooltip.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Tooltip
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Tooltip]}
+  optionStories={{ side: 'Open' }}
+  behaviorStory="RightToLeft"
+/>

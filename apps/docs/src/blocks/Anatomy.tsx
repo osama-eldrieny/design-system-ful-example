@@ -21,7 +21,8 @@ export function Anatomy({
 }: {
   meta: ComponentMeta;
   targets: AnatomyTarget[];
-  children: ReactNode;
+  /** The live example to number. Overlays (tooltips, toasts) leave it out: parts table only. */
+  children?: ReactNode;
 }) {
   const [theme] = useDocsTheme();
   const stage = useRef<HTMLDivElement>(null);
@@ -60,24 +61,26 @@ export function Anatomy({
 
   return (
     <div className="docs-block docs-anatomy">
-      <ThemeProvider theme={theme} className="ds-canvas docs-anatomy__stage" ref={stage}>
-        {children}
-        {markers.map((m) => (
-          <span
-            key={m.n}
-            className="docs-anatomy__marker"
-            data-side={m.side}
-            style={{
-              insetInlineStart: m.x,
-              insetBlockStart: m.y,
-              ['--leader' as string]: `${m.leader}px`,
-            }}
-            aria-hidden="true"
-          >
-            {m.n}
-          </span>
-        ))}
-      </ThemeProvider>
+      {children && (
+        <ThemeProvider theme={theme} className="ds-canvas docs-anatomy__stage" ref={stage}>
+          {children}
+          {markers.map((m) => (
+            <span
+              key={m.n}
+              className="docs-anatomy__marker"
+              data-side={m.side}
+              style={{
+                insetInlineStart: m.x,
+                insetBlockStart: m.y,
+                ['--leader' as string]: `${m.leader}px`,
+              }}
+              aria-hidden="true"
+            >
+              {m.n}
+            </span>
+          ))}
+        </ThemeProvider>
+      )}
       <div className="docs-table-wrap">
         <table className="docs-table">
           <tbody>

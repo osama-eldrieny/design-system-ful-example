@@ -28,7 +28,8 @@ export interface ComponentPageProps {
   stories: Record<string, unknown>;
   /** Components whose props are documented in the API reference. */
   components: ComponentType<never>[];
-  anatomy: { targets: AnatomyTarget[]; example: ReactNode };
+  /** Numbered live example. Leave out for overlays that can't render inline: parts table only. */
+  anatomy?: { targets: AnatomyTarget[]; example: ReactNode };
   /** For each option in meta.options, the story that shows its values. */
   optionStories?: Record<string, string>;
   /** Extra examples shown after the options, e.g. "With icons". */
@@ -38,8 +39,11 @@ export interface ComponentPageProps {
   /** Story shown with behavior, e.g. right-to-left. */
   behaviorStory?: string;
   dodont?: Record<number, { do: ReactNode; dont: ReactNode }>;
-  /** Rendered once per brand × mode in the theme matrix. */
-  matrix: ReactNode;
+  /**
+   * Rendered once per brand × mode in the theme matrix. Leave out for overlays that can't
+   * render inline; the page then points to the AllThemes test story.
+   */
+  matrix?: ReactNode;
   statesText?: string;
 }
 
@@ -83,8 +87,8 @@ export function ComponentPage({
       <WhenToUse meta={meta} />
 
       <Heading>Anatomy</Heading>
-      <Anatomy meta={meta} targets={anatomy.targets}>
-        {anatomy.example}
+      <Anatomy meta={meta} targets={anatomy?.targets ?? []}>
+        {anatomy?.example}
       </Anatomy>
 
       {meta.options.map((option) => {
@@ -152,8 +156,17 @@ export function ComponentPage({
       <Examples meta={meta} />
 
       <Heading>Theme matrix</Heading>
-      <p>Every variant in each brand and mode.</p>
-      <ThemeMatrix>{matrix}</ThemeMatrix>
+      {matrix ? (
+        <>
+          <p>Every variant in each brand and mode.</p>
+          <ThemeMatrix>{matrix}</ThemeMatrix>
+        </>
+      ) : (
+        <p>
+          This component opens over the page, so it can’t be shown inline here. Its AllThemes test
+          story renders it in every brand and mode and checks each with axe.
+        </p>
+      )}
 
       <Heading>Related components</Heading>
       <Related meta={meta} />

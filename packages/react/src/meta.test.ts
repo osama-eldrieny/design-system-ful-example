@@ -32,7 +32,7 @@ describe('component metadata', () => {
 
     it(`${file} links to its docs page`, () => {
       const source = stories[file.replace(/\.meta\.ts$/, '.stories.tsx')];
-      const title = source?.match(/title: '([^']+)'/)?.[1];
+      const title = source?.match(/const meta = \{\s*title: '([^']+)'/)?.[1];
       expect(title, 'stories file with a title').toBeDefined();
       expect(docsId(mod.default as ComponentMeta)).toBe(`${storyId(title!)}--docs`);
     });

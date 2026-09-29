@@ -1,0 +1,50 @@
+/**
+ * Component tokens: toast
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --toast-{tone?}-{part?}-{property}
+ *   tone: success | warning | danger (primary is the base); part: title | description | icon | close | action.
+ *   Corners and shadow follow the radius and shadow themes (themes/radius.css, themes/shadow.css).
+ */
+
+:root,
+[data-theme] {
+  /* Surface */
+  --toast-bg-color: var(--color-bg-base);
+  --toast-text-color: var(--color-fg-on-surface-primary);
+  --toast-border-color: var(--color-border-base);
+  --toast-border-width: var(--border-width-regular);
+  --toast-shadow-x: var(--shadow-none);
+  --toast-shadow-color: var(--color-shadow-surface);
+  --toast-z-index: var(--z-toast);
+  --toast-font-family: var(--font-family-body);
+  --toast-font-size: var(--font-size-md);
+  --toast-font-line-height: var(--font-line-height-md);
+  --toast-close-hover-bg-color: var(--color-bg-default);
+  --toast-close-icon-color: var(--color-fg-on-surface-secondary);
+  --toast-close-size: var(--sizing-md);
+  --toast-focus-ring-width: var(--focus-ring-width);
+  --toast-focus-ring-offset: var(--focus-ring-offset);
+  --toast-focus-ring-color: var(--focus-ring-color);
+  --toast-title-font-weight: var(--font-weight-medium);
+  --toast-description-text-color: var(--color-fg-on-surface-secondary);
+  --toast-description-font-size: var(--font-size-sm);
+  --toast-description-font-line-height: var(--font-line-height-sm);
+  --toast-icon-color: var(--color-fg-on-primary-high);
+  --toast-success-icon-color: var(--color-fg-on-success-high);
+  --toast-warning-icon-color: var(--color-fg-on-warning-high);
+  --toast-danger-icon-color: var(--color-fg-on-danger-high);
+  --toast-accent-color: var(--color-bg-accent-primary-default);
+  --toast-success-accent-color: var(--color-bg-accent-success-default);
+  --toast-warning-accent-color: var(--color-bg-accent-warning-default);
+  --toast-danger-accent-color: var(--color-bg-accent-danger-default);
+  --toast-accent-width: var(--border-width-strong);
+  --toast-icon-size: var(--sizing-md);
+  --toast-padding: var(--spacing-md);
+  --toast-gap: var(--spacing-sm);
+  --toast-width: calc(var(--sizing-8xl) * 1.6);
+  --toast-viewport-padding: var(--spacing-lg);
+  --toast-duration: var(--duration-slow);
+  --toast-easing: var(--easing-enter);
+}

@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Drawer, DrawerContent } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Drawer/Drawer.stories';
+import meta from '../../../../packages/react/src/Drawer/Drawer.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Drawer
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Drawer, DrawerContent]}
+  anatomy={{
+    targets: [
+      '.ds-drawer__title',
+      '.ds-drawer__close',
+      '.ds-drawer__description',
+      '.ds-drawer__body',
+    ],
+    example: (
+      <Drawer defaultOpen modal={false}>
+        <DrawerContent
+          title="Filters"
+          description="Narrow down the list."
+          style={{ position: 'static', animation: 'none', inlineSize: 320 }}
+        >
+          Body
+        </DrawerContent>
+      </Drawer>
+    ),
+  }}
+  optionStories={{ side: 'Sides' }}
+  behaviorStory="RightToLeft"
+/>

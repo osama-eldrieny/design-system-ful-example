@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Popover, PopoverTrigger, PopoverContent, Button } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Popover/Popover.stories';
+import meta from '../../../../packages/react/src/Popover/Popover.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Popover
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Popover, PopoverContent]}
+  optionStories={{ side: 'Sides' }}
+  behaviorStory="RightToLeft"
+/>

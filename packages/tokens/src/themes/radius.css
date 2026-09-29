@@ -61,6 +61,15 @@
   --pagination-item-border-radius: var(--radius-8);
   --alerts-border-radius: var(--radius-8);
   --card-image-border-radius: var(--radius-4);
+  --popover-border-radius: var(--radius-12);
+  --hover-card-border-radius: var(--radius-12);
+  --toast-border-radius: var(--radius-12);
+  --modal-border-radius: var(--radius-20);
+  --drawer-border-radius: var(--radius-20);
+  --modal-close-border-radius: var(--radius-12);
+  --drawer-close-border-radius: var(--radius-12);
+  --popover-close-border-radius: var(--radius-12);
+  --toast-close-border-radius: var(--radius-12);
   --menu-dropdown-border-radius: var(--radius-12);
 }
 
@@ -112,6 +121,15 @@
   --pagination-item-border-radius: var(--radius-4);
   --alerts-border-radius: var(--radius-4);
   --card-image-border-radius: var(--radius-3);
+  --popover-border-radius: var(--radius-4);
+  --hover-card-border-radius: var(--radius-4);
+  --toast-border-radius: var(--radius-4);
+  --modal-border-radius: var(--radius-4);
+  --drawer-border-radius: var(--radius-4);
+  --modal-close-border-radius: var(--radius-4);
+  --drawer-close-border-radius: var(--radius-4);
+  --popover-close-border-radius: var(--radius-4);
+  --toast-close-border-radius: var(--radius-4);
   --menu-dropdown-border-radius: var(--radius-4);
 }
 
@@ -163,5 +181,14 @@
   --pagination-item-border-radius: var(--radius-999);
   --alerts-border-radius: var(--radius-12);
   --card-image-border-radius: var(--radius-8);
+  --popover-border-radius: var(--radius-16);
+  --hover-card-border-radius: var(--radius-16);
+  --toast-border-radius: var(--radius-16);
+  --modal-border-radius: var(--radius-40);
+  --drawer-border-radius: var(--radius-40);
+  --modal-close-border-radius: var(--radius-999);
+  --drawer-close-border-radius: var(--radius-999);
+  --popover-close-border-radius: var(--radius-999);
+  --toast-close-border-radius: var(--radius-999);
   --menu-dropdown-border-radius: var(--radius-16);
 }

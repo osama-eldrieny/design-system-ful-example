@@ -1,0 +1,45 @@
+/**
+ * Component tokens: modal
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --modal-{part?}-{size?}-{property}
+ *   part: scrim | title | description | close | footer; size: small | medium | large.
+ *   Corners and shadow follow the radius and shadow themes (themes/radius.css, themes/shadow.css).
+ */
+
+:root,
+[data-theme] {
+  /* Surface */
+  --modal-bg-color: var(--color-bg-base);
+  --modal-text-color: var(--color-fg-on-surface-primary);
+  --modal-border-color: var(--color-border-base);
+  --modal-border-width: var(--border-width-regular);
+  --modal-shadow-x: var(--shadow-none);
+  --modal-shadow-color: var(--color-shadow-surface);
+  --modal-z-index: var(--z-modal);
+  --modal-font-family: var(--font-family-body);
+  --modal-font-size: var(--font-size-md);
+  --modal-font-line-height: var(--font-line-height-md);
+  --modal-title-font-size: var(--font-size-lg);
+  --modal-title-font-line-height: var(--font-line-height-lg);
+  --modal-title-font-weight: var(--font-weight-bold);
+  --modal-description-text-color: var(--color-fg-on-surface-secondary);
+  --modal-close-hover-bg-color: var(--color-bg-default);
+  --modal-close-icon-color: var(--color-fg-on-surface-secondary);
+  --modal-close-size: var(--sizing-md);
+  --modal-focus-ring-width: var(--focus-ring-width);
+  --modal-focus-ring-offset: var(--focus-ring-offset);
+  --modal-focus-ring-color: var(--focus-ring-color);
+  --modal-scrim-color: var(--color-scrim);
+  --modal-scrim-z-index: var(--z-overlay);
+  --modal-padding: var(--spacing-xl);
+  --modal-gap: var(--spacing-md);
+  --modal-footer-gap: var(--spacing-sm);
+  --modal-small-width: var(--sizing-8xl);
+  --modal-medium-width: calc(var(--sizing-8xl) * 2.5);
+  --modal-large-width: calc(var(--sizing-8xl) * 4);
+  --modal-edge-margin: var(--spacing-md);
+  --modal-duration: var(--duration-slow);
+  --modal-easing: var(--easing-enter);
+}

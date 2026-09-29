@@ -120,6 +120,21 @@
       "contract": "ai/components/combobox.json"
     },
     {
+      "id": "drawer",
+      "name": "Drawer",
+      "exports": [
+        "Drawer",
+        "DrawerTrigger",
+        "DrawerContent",
+        "DrawerFooter",
+        "DrawerClose"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A drawer is a panel that slides in from an edge of the screen for secondary tasks such as filters, settings or item details.",
+      "contract": "ai/components/drawer.json"
+    },
+    {
       "id": "dropdown-menu",
       "name": "DropdownMenu",
       "exports": [
@@ -176,6 +191,19 @@
       "contract": "ai/components/header.json"
     },
     {
+      "id": "hover-card",
+      "name": "HoverCard",
+      "exports": [
+        "HoverCard",
+        "HoverCardTrigger",
+        "HoverCardContent"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A hover card previews what a link points to, such as a person’s profile, when a mouse user points at it or a keyboard user focuses it.",
+      "contract": "ai/components/hover-card.json"
+    },
+    {
       "id": "input-field",
       "name": "InputField",
       "exports": [
@@ -220,6 +248,21 @@
       "contract": "ai/components/meeting-card.json"
     },
     {
+      "id": "modal",
+      "name": "Modal",
+      "exports": [
+        "Modal",
+        "ModalTrigger",
+        "ModalContent",
+        "ModalFooter",
+        "ModalClose"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A modal is a dialog over the page that people must deal with before going back: a short form, a confirmation or details.",
+      "contract": "ai/components/modal.json"
+    },
+    {
       "id": "navbar",
       "name": "Navbar",
       "exports": [
@@ -240,6 +283,20 @@
       "status": "stable",
       "purpose": "Pagination moves between pages of a long list or table.",
       "contract": "ai/components/pagination.json"
+    },
+    {
+      "id": "popover",
+      "name": "Popover",
+      "exports": [
+        "Popover",
+        "PopoverTrigger",
+        "PopoverContent",
+        "PopoverClose"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A popover shows interactive content anchored to a button, such as a small form, filters or details.",
+      "contract": "ai/components/popover.json"
     },
     {
       "id": "product-card",
@@ -379,6 +436,29 @@
       "status": "stable",
       "purpose": "A multi-line text field for longer answers such as messages, comments or descriptions.",
       "contract": "ai/components/textarea.json"
+    },
+    {
+      "id": "toast",
+      "name": "Toast",
+      "exports": [
+        "ToastProvider",
+        "useToast"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A toast is a brief message about something that just happened, such as “Changes saved”, shown in a corner and dismissed automatically.",
+      "contract": "ai/components/toast.json"
+    },
+    {
+      "id": "tooltip",
+      "name": "Tooltip",
+      "exports": [
+        "Tooltip"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A tooltip shows a short text hint for a control when it’s hovered or focused, such as the name of an icon button.",
+      "contract": "ai/components/tooltip.json"
     }
   ]
 }

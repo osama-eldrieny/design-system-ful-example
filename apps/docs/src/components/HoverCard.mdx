@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { HoverCard, HoverCardContent } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/HoverCard/HoverCard.stories';
+import meta from '../../../../packages/react/src/HoverCard/HoverCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# HoverCard
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[HoverCard, HoverCardContent]}
+  optionStories={{ side: 'Open' }}
+  behaviorStory="RightToLeft"
+/>

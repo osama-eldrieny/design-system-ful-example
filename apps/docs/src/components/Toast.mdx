@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ToastProvider } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Toast/Toast.stories';
+import meta from '../../../../packages/react/src/Toast/Toast.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Toast
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[ToastProvider]}
+  optionStories={{ tone: 'Tones' }}
+  behaviorStory="RightToLeft"
+/>

@@ -1,0 +1,122 @@
+/** Modal. Styled only with --modal-* tokens. Radix sets data-state="open" | "closed". */
+
+.ds-modal__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--modal-scrim-z-index);
+  background-color: var(--modal-scrim-color);
+  animation: ds-modal-fade var(--modal-duration) var(--modal-easing);
+}
+
+.ds-modal {
+  --_width: var(--modal-medium-width);
+
+  position: fixed;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  z-index: var(--modal-z-index);
+  display: flex;
+  flex-direction: column;
+  gap: var(--modal-gap);
+  box-sizing: border-box;
+  inline-size: min(var(--_width), 100% - 2 * var(--modal-edge-margin));
+  max-block-size: calc(100% - 2 * var(--modal-edge-margin));
+  padding: var(--modal-padding);
+  overflow-y: auto;
+  border: var(--modal-border-width) solid var(--modal-border-color);
+  border-radius: var(--modal-border-radius);
+  background-color: var(--modal-bg-color);
+  box-shadow: var(--modal-shadow-x) var(--modal-shadow-y) var(--modal-shadow-blur)
+    var(--modal-shadow-color);
+  color: var(--modal-text-color);
+  font-family: var(--modal-font-family);
+  font-size: var(--modal-font-size);
+  line-height: var(--modal-font-line-height);
+  translate: -50% -50%;
+  animation: ds-modal-in var(--modal-duration) var(--modal-easing);
+}
+
+.ds-modal:dir(rtl) {
+  translate: 50% -50%;
+}
+
+.ds-modal--small {
+  --_width: var(--modal-small-width);
+}
+
+.ds-modal--large {
+  --_width: var(--modal-large-width);
+}
+
+.ds-modal:focus-visible {
+  outline: none;
+}
+
+.ds-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--modal-gap);
+}
+
+.ds-modal__title {
+  margin: 0;
+  font-size: var(--modal-title-font-size);
+  font-weight: var(--modal-title-font-weight);
+  line-height: var(--modal-title-font-line-height);
+}
+
+.ds-modal__description {
+  margin: 0;
+  color: var(--modal-description-text-color);
+}
+
+.ds-modal__close {
+  display: inline-grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--modal-close-size);
+  block-size: var(--modal-close-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--modal-close-border-radius);
+  background: none;
+  color: var(--modal-close-icon-color);
+  cursor: pointer;
+}
+
+.ds-modal__close:hover {
+  background-color: var(--modal-close-hover-bg-color);
+}
+
+.ds-modal__close:focus-visible {
+  outline: var(--modal-focus-ring-width) solid var(--modal-focus-ring-color);
+  outline-offset: var(--modal-focus-ring-offset);
+}
+
+.ds-modal__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--modal-footer-gap);
+}
+
+@keyframes ds-modal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes ds-modal-in {
+  from {
+    opacity: 0;
+    scale: 0.96;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-modal,
+  .ds-modal__scrim {
+    animation: none;
+  }
+}

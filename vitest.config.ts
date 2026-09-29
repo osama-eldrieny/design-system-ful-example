@@ -38,6 +38,11 @@ export default defineConfig({
             '@radix-ui/react-select',
             '@radix-ui/react-slider',
             'downshift',
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-popover',
+            '@radix-ui/react-tooltip',
+            '@radix-ui/react-hover-card',
+            '@radix-ui/react-toast',
           ],
         },
         test: {
