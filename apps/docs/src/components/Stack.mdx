@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Stack } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Stack/Stack.stories';
+import meta from '../../../../packages/react/src/Stack/Stack.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Stack
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Stack]}
+  optionStories={{ gap: 'Playground', align: 'Playground' }}
+  behaviorStory="RightToLeft"
+/>

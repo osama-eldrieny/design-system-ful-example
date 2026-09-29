@@ -1,0 +1,584 @@
+{
+  "id": "meeting-card",
+  "name": "MeetingCard",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "A meeting card shows one event in an agenda or schedule: its name, time and attendees, with a color edge for its status. It is built from Avatar and AvatarGroup.",
+  "imports": [
+    {
+      "name": "MeetingCard",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "In agendas, schedules and sidebars listing upcoming meetings or events.",
+    "For short status items with people attached, e.g. who is on call for a service."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a full calendar view.",
+      "alternative": "A calendar layout"
+    },
+    {
+      "text": "For a message that needs action.",
+      "alternative": "Alert"
+    },
+    {
+      "text": "For general content.",
+      "alternative": "Card"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Accent edge",
+      "description": "Status color on the inline start (left in LTR, right in RTL)."
+    },
+    {
+      "name": "Title",
+      "description": "Meeting name, a heading."
+    },
+    {
+      "name": "Time",
+      "description": "When it happens; a <time> element when dateTime is set."
+    },
+    {
+      "name": "Attendees",
+      "description": "AvatarGroup with a “+N” count.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "variant",
+      "title": "Variant",
+      "values": [
+        {
+          "value": "primary",
+          "meaning": "A regular meeting. Default."
+        },
+        {
+          "value": "success",
+          "meaning": "Confirmed, done or healthy."
+        },
+        {
+          "value": "warning",
+          "meaning": "Needs attention, e.g. starts soon or has a conflict risk."
+        },
+        {
+          "value": "danger",
+          "meaning": "Cancelled, clashing or failing."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Meeting cards are static; put links or buttons inside for actions.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Attendees",
+      "text": "Up to maxAttendees (default 4) avatars show, then “+N”. Screen readers hear the group label and each name."
+    },
+    {
+      "topic": "Time",
+      "text": "Pass dateTime (ISO) to render a <time> element that software can read."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "The accent edge moves to the right side."
+    }
+  ],
+  "content": [
+    "Title: the meeting’s name, not its type (“Q3 planning”, not “Meeting”).",
+    "Time: the range in the reader’s time format; add the day if it isn’t today.",
+    "If the variant matters, say it in words too, e.g. “Cancelled”."
+  ],
+  "guidelines": [
+    {
+      "do": "Say the status in the title or time, e.g. “Cancelled: Budget review”.",
+      "dont": "Rely on the red edge alone to mean cancelled.",
+      "why": "Color alone isn’t seen by everyone (WCAG 1.4.1)."
+    },
+    {
+      "do": "Give every attendee a real name.",
+      "dont": "Pass only photo URLs.",
+      "why": "Names become initials when photos fail and are what screen readers announce."
+    },
+    {
+      "do": "Pick the heading level that fits the page (titleAs).",
+      "dont": "Leave h3 under an h1 with no h2.",
+      "why": "A logical outline helps people navigate by headings."
+    }
+  ],
+  "accessibility": {
+    "role": "article with a heading.",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "Not focusable itself; any links or buttons inside are."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "role=\"group\" + aria-label on attendees",
+        "when": "Set by AvatarGroup from attendeesLabel."
+      }
+    ],
+    "focus": "None.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Heading, <time> and a labelled attendee group."
+      },
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Status must also be written; the guidelines require it."
+      },
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Title and time pass 4.5:1 on every variant background in every theme."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Meeting",
+      "description": "A meeting with attendees.",
+      "code": "import { MeetingCard } from '@ds/react';\n\n<MeetingCard\n  title=\"Q3 planning\"\n  time=\"10:00 – 11:00\"\n  dateTime=\"2026-09-29T10:00\"\n  attendees={[\n    { name: 'Sarah Chen', src: '/avatars/sarah.png' },\n    { name: 'James Wilson' },\n  ]}\n/>"
+    },
+    {
+      "id": "cancelled",
+      "title": "Cancelled",
+      "description": "The danger variant, with the status in words.",
+      "code": "import { MeetingCard } from '@ds/react';\n\n<MeetingCard variant=\"danger\" title=\"Cancelled: Budget review\" time=\"16:00 – 17:30\" />"
+    },
+    {
+      "id": "agenda",
+      "title": "Agenda list",
+      "description": "A list of meetings under a heading.",
+      "code": "import { MeetingCard } from '@ds/react';\n\n<h2>Today</h2>\n<ul role=\"list\" style={{ display: 'grid', gap: 12, padding: 0, listStyle: 'none' }}>\n  {meetings.map((m) => (\n    <li key={m.id}>\n      <MeetingCard title={m.title} time={m.time} variant={m.variant} attendees={m.people} />\n    </li>\n  ))}\n</ul>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--meeting-card-"
+  ],
+  "related": [
+    {
+      "id": "avatar",
+      "relation": "AvatarGroup shows the attendees."
+    },
+    {
+      "id": "card",
+      "relation": "For general content cards."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "attendees ({ name, src }) replaces avatars (URLs), rendered with AvatarGroup.",
+        "New warning variant; accent edge uses logical properties (flips in RTL).",
+        "Tokens renamed to the grammar: -title-color → -title-text-color, -time-color → -time-text-color; the direction border helpers were removed."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "MeetingCard",
+      "import": "import { MeetingCard } from '@ds/react';",
+      "description": "A meeting or event in an agenda: title, time and attendees, color-coded by status.",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Meeting name."
+        },
+        "time": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "When it happens, formatted for display, e.g. \"10:00 – 11:00\"."
+        },
+        "dateTime": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Machine-readable time for `<time dateTime>`, e.g. \"2026-09-29T10:00\"."
+        },
+        "variant": {
+          "type": "MeetingCardVariant",
+          "values": [
+            "primary",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": "Color of the card. Pick by meaning and say it in the title or time as well:\n`primary` (default) a regular meeting, `success` confirmed or done, `warning` needs\nattention, e.g. it's about to start, `danger` cancelled or clashing."
+        },
+        "attendees": {
+          "type": "MeetingAttendee[]",
+          "required": false,
+          "default": "[]",
+          "description": "People attending, shown as overlapping avatars."
+        },
+        "maxAttendees": {
+          "type": "number",
+          "required": false,
+          "default": 4,
+          "description": "Show at most this many avatars, then a \"+N\" count. Default 4."
+        },
+        "attendeesLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Attendees",
+          "description": "Name of the avatar group for screen readers. Default \"Attendees\"."
+        },
+        "titleAs": {
+          "type": "\"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "values": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "required": false,
+          "default": "h3",
+          "description": "Heading level that fits the page outline. Default h3."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--meeting-card-primary-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--meeting-card-primary-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--meeting-card-primary-title-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--meeting-card-primary-time-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-primary-medium",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ab8fff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#d9b896",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#84b0f9"
+      }
+    },
+    "--meeting-card-primary-avatar-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-primary-subtle",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--meeting-card-success-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--meeting-card-success-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-success-strong",
+      "default": "#008f35",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ac40",
+        "brand=amber,mode=light": "#668e8b",
+        "brand=amber,mode=dark": "#668e8b",
+        "brand=opal,mode=light": "#5e9110",
+        "brand=opal,mode=dark": "#70ad14"
+      }
+    },
+    "--meeting-card-success-title-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-success-high",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--meeting-card-success-time-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-success-medium",
+      "default": "#00732b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5ede8e",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#afc4c2",
+        "brand=opal,mode=light": "#4b740d",
+        "brand=opal,mode=dark": "#b2df6d"
+      }
+    },
+    "--meeting-card-success-avatar-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-success-subtle",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--meeting-card-warning-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-warning-1",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--meeting-card-warning-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-warning-strong",
+      "default": "#a87d00",
+      "byTheme": {
+        "brand=opal,mode=light": "#a67f04",
+        "brand=opal,mode=dark": "#c79805"
+      }
+    },
+    "--meeting-card-warning-title-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--meeting-card-warning-time-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-warning-medium",
+      "default": "#876400",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f4cd5e",
+        "brand=amber,mode=dark": "#f4cd5e",
+        "brand=opal,mode=light": "#856603",
+        "brand=opal,mode=dark": "#f2cf62"
+      }
+    },
+    "--meeting-card-warning-avatar-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-warning-subtle",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--meeting-card-danger-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--meeting-card-danger-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-danger-strong",
+      "default": "#f54e4e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f32727",
+        "brand=amber,mode=light": "#a66c7b",
+        "brand=amber,mode=dark": "#a66c7b",
+        "brand=opal,mode=light": "#f43f5e",
+        "brand=opal,mode=dark": "#f6627b"
+      }
+    },
+    "--meeting-card-danger-title-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--meeting-card-danger-time-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-danger-medium",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#d1b2ba",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#f8869a"
+      }
+    },
+    "--meeting-card-danger-avatar-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-danger-subtle",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--meeting-card-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-5",
+      "default": "5px"
+    },
+    "--meeting-card-padding": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
+    },
+    "--meeting-card-title-margin-bottom": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--meeting-card-time-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--meeting-card-time-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--meeting-card-time-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--meeting-card-time-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--meeting-card-title-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--meeting-card-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--meeting-card-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--meeting-card-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--meeting-card-gap": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-24",
+      "default": "24px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
+    },
+    "--meeting-card-margin-bottom": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--meeting-card-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "20px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-meetingcard--docs"
+}

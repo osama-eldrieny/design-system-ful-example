@@ -1,0 +1,209 @@
+/**
+ * Select. Styled only with --select-* tokens. Radix sets data-placeholder on the trigger
+ * until a value is chosen, data-highlighted on the option under the pointer or keyboard,
+ * data-state="checked" on the selected one and data-disabled on disabled ones.
+ */
+
+.ds-select {
+  --_px: var(--select-padding-x);
+  --_py: var(--select-padding-y);
+  --_height: var(--select-height);
+  --_font-size: var(--select-font-size);
+  --_line-height: var(--select-font-line-height);
+  --_border: var(--select-trigger-default-border-color);
+}
+
+.ds-select--small {
+  --_px: var(--select-small-padding-x);
+  --_py: var(--select-small-padding-y);
+  --_height: var(--select-small-height);
+  --_font-size: var(--select-small-font-size);
+  --_line-height: var(--select-small-font-line-height);
+}
+
+.ds-select--large {
+  --_px: var(--select-large-padding-x);
+  --_py: var(--select-large-padding-y);
+  --_height: var(--select-large-height);
+  --_font-size: var(--select-large-font-size);
+  --_line-height: var(--select-large-font-line-height);
+}
+
+.ds-select[data-success] {
+  --_border: var(--select-trigger-success-border-color);
+}
+
+.ds-select[data-invalid] {
+  --_border: var(--select-trigger-error-border-color);
+}
+
+.ds-select__trigger {
+  box-sizing: border-box;
+  min-block-size: var(--_height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--select-trigger-gap);
+  inline-size: 100%;
+  padding-block: var(--_py);
+  padding-inline: var(--_px);
+  border: var(--select-trigger-border-width) solid var(--_border);
+  border-radius: var(--select-trigger-border-radius);
+  background-color: var(--select-trigger-default-bg-color);
+  color: var(--select-trigger-default-text-color);
+  font-family: var(--select-font-family);
+  font-size: var(--_font-size);
+  font-weight: var(--select-font-weight);
+  line-height: var(--_line-height);
+  text-align: start;
+  cursor: pointer;
+  transition: border-color var(--select-transition-duration) var(--select-transition-easing);
+}
+
+.ds-select__trigger:hover:not(:disabled) {
+  border-color: var(--select-trigger-hover-border-color);
+}
+
+.ds-select[data-invalid] .ds-select__trigger:hover,
+.ds-select[data-success] .ds-select__trigger:hover {
+  border-color: var(--_border);
+}
+
+.ds-select__trigger:focus-visible {
+  border-color: var(--select-trigger-focus-border-color);
+  outline: var(--select-focus-ring-width) solid var(--select-focus-ring-color);
+
+  /* The ring covers the border, so focus reads as one thicker border, not two lines. */
+  outline-offset: calc(-1 * var(--select-trigger-border-width));
+}
+
+.ds-select__trigger:disabled {
+  opacity: var(--select-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-select__trigger[data-placeholder] {
+  color: var(--select-trigger-placeholder-text-color);
+}
+
+.ds-select__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-select__icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--select-icon-color);
+  transition: transform var(--select-transition-duration) var(--select-transition-easing);
+}
+
+.ds-select__icon > svg {
+  inline-size: var(--select-icon-size);
+  block-size: var(--select-icon-size);
+}
+
+.ds-select__trigger[data-state='open'] .ds-select__icon {
+  transform: rotate(180deg);
+}
+
+.ds-select__content {
+  z-index: var(--select-content-z-index);
+  box-sizing: border-box;
+  min-inline-size: var(--radix-select-trigger-width);
+  max-block-size: min(
+    var(--select-content-max-height),
+    var(--radix-select-content-available-height)
+  );
+  overflow: hidden;
+  border: var(--select-content-border-width) solid var(--select-content-border-color);
+  border-radius: var(--select-content-border-radius);
+  background-color: var(--select-content-bg-color);
+  box-shadow: var(--select-content-shadow-x) var(--select-content-shadow-y)
+    var(--select-content-shadow-blur) var(--select-content-shadow-color);
+  font-family: var(--select-font-family);
+  transform-origin: var(--radix-select-content-transform-origin);
+  animation: ds-select-open var(--select-transition-duration) var(--select-transition-easing);
+}
+
+@keyframes ds-select-open {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.ds-select__viewport {
+  padding: var(--select-content-padding);
+}
+
+.ds-select__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--select-item-gap);
+  padding-block: var(--select-item-padding-y);
+  padding-inline: var(--select-item-padding-x);
+  border-radius: var(--select-item-border-radius);
+  background-color: var(--select-item-default-bg-color);
+  color: var(--select-item-default-text-color);
+  font-size: var(--select-item-font-size);
+  line-height: var(--select-item-font-line-height);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.ds-select__item[data-state='checked'] {
+  color: var(--select-item-selected-text-color);
+}
+
+.ds-select__item[data-highlighted] {
+  background-color: var(--select-item-highlighted-bg-color);
+  color: var(--select-item-highlighted-text-color);
+}
+
+.ds-select__item[data-disabled] {
+  opacity: var(--select-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-select__indicator {
+  display: inline-flex;
+  color: var(--select-indicator-color);
+}
+
+.ds-select__indicator > svg {
+  inline-size: var(--select-icon-size);
+  block-size: var(--select-icon-size);
+}
+
+.ds-select__group-label {
+  padding-block: var(--select-item-padding-y);
+  padding-inline: var(--select-item-padding-x);
+  color: var(--select-group-label-text-color);
+  font-size: var(--select-group-label-font-size);
+  font-weight: var(--select-group-label-font-weight);
+  line-height: var(--select-group-label-font-line-height);
+}
+
+.ds-select__separator {
+  block-size: var(--select-separator-width);
+  margin-block: var(--select-content-padding);
+  background-color: var(--select-separator-color);
+}
+
+@media (forced-colors: active) {
+  .ds-select__item[data-highlighted] {
+    outline: var(--select-focus-ring-width) solid Highlight;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-select__content,
+  .ds-select__icon {
+    animation: none;
+    transition: none;
+  }
+}

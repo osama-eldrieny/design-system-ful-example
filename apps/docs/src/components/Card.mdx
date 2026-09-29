@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  Card,
+  CardMedia,
+  CardBody,
+  CardTitle,
+  CardDescription,
+  CardFooter,
+  Button,
+} from '@ds/react';
+import * as CardStories from '../../../../packages/react/src/Card/Card.stories';
+import cardMeta from '../../../../packages/react/src/Card/Card.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={CardStories} name="Docs" />
+
+# Card
+
+<ComponentPage
+  meta={cardMeta}
+  stories={CardStories}
+  components={[Card, CardMedia, CardTitle]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-card', at: 'start' },
+      '.ds-card__media',
+      '.ds-card__title',
+      '.ds-card__description',
+      '.ds-card__footer',
+    ],
+    example: (
+      <Card style={{ inlineSize: 280 }}>
+        <CardMedia alt="" />
+        <CardBody>
+          <CardTitle>Design tokens in practice</CardTitle>
+          <CardDescription>How one CSS file themes three brands.</CardDescription>
+        </CardBody>
+        <CardFooter>
+          <Button size="small">Read</Button>
+        </CardFooter>
+      </Card>
+    ),
+  }}
+  optionStories={{ appearance: 'Appearances', orientation: 'Orientation' }}
+  extras={[{ title: 'Clickable card', story: 'Clickable' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <Card appearance="outlined" style={{ maxInlineSize: 260 }}>
+      <CardBody>
+        <CardTitle>Design tokens in practice</CardTitle>
+        <CardDescription>8 min read</CardDescription>
+      </CardBody>
+    </Card>
+  }
+/>

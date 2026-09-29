@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Avatar, AvatarGroup } from '@ds/react';
+import * as AvatarStories from '../../../../packages/react/src/Avatar/Avatar.stories';
+import avatarMeta from '../../../../packages/react/src/Avatar/Avatar.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={AvatarStories} name="Docs" />
+
+# Avatar
+
+<ComponentPage
+  meta={avatarMeta}
+  stories={AvatarStories}
+  components={[Avatar, AvatarGroup]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-avatar__frame', at: 'start' },
+      '.ds-avatar__image',
+      '.ds-avatar__status',
+    ],
+    example: <Avatar name="Sarah Chen" src="assets/avatar-2.png" size="xlarge" status="online" />,
+  }}
+  optionStories={{ size: 'Sizes', status: 'Status' }}
+  extras={[
+    {
+      title: 'Fallbacks',
+      story: 'Fallbacks',
+      text: 'Photo, initials when there is no photo or it fails to load, and an icon when there are no initials.',
+    },
+    { title: 'Group', story: 'Group' },
+  ]}
+  statesStory="Fallbacks"
+  statesText="The avatar picks what to show from what’s available."
+  behaviorStory="RightToLeft"
+  dodont={{
+    2: {
+      do: (
+        <AvatarGroup label="Attendees" max={3}>
+          {['Ann Lee', 'Bo Kim', 'Cy Do', 'Di Ng', 'Ed Fu', 'Fa Ge'].map((n) => (
+            <Avatar key={n} name={n} />
+          ))}
+        </AvatarGroup>
+      ),
+      dont: (
+        <AvatarGroup label="Attendees">
+          {['Ann Lee', 'Bo Kim', 'Cy Do', 'Di Ng', 'Ed Fu', 'Fa Ge', 'Gi Ho', 'Hu Ip', 'Io Ja'].map(
+            (n) => (
+              <Avatar key={n} name={n} />
+            ),
+          )}
+        </AvatarGroup>
+      ),
+    },
+  }}
+  matrix={
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <Avatar name="Sarah Chen" src="assets/avatar-2.png" status="online" />
+      <Avatar name="Omar Saleh" status="busy" />
+      <AvatarGroup label="Team" max={2}>
+        <Avatar name="Ann Lee" />
+        <Avatar name="Bo Kim" />
+        <Avatar name="Cy Do" />
+      </AvatarGroup>
+    </div>
+  }
+/>

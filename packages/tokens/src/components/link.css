@@ -1,0 +1,47 @@
+/**
+ * Component tokens: link
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --link-{variant?}-{state}-{property} and --link-{size}-{property}
+ *   variant: secondary (neutral links, e.g. in footers); primary is the base
+ *   state: default | hover | visited; size: small | large (medium is the base, standalone only).
+ */
+
+:root,
+[data-theme] {
+  --link-default-text-color: var(--color-fg-on-accent-primary-text-default);
+  --link-hover-text-color: var(--color-fg-on-accent-primary-text-hover);
+  --link-visited-text-color: var(--color-fg-on-accent-primary-text-focus);
+  --link-secondary-default-text-color: var(--color-fg-on-accent-secondary-text-default);
+  --link-secondary-hover-text-color: var(--color-fg-on-accent-secondary-text-hover);
+  --link-underline-width: var(--border-width-hairline);
+  --link-hover-underline-width: var(--border-width-regular);
+  --link-underline-offset: var(--spacing-2xs);
+  --link-inline-icon-size: var(--font-size-sm);
+
+  /* Standalone links */
+  --link-font-family: var(--font-family-body);
+  --link-font-weight: var(--font-weight-medium);
+  --link-gap: var(--spacing-2xs);
+  --link-font-size: var(--font-size-md);
+  --link-font-line-height: var(--font-line-height-md);
+  --link-icon-size: var(--sizing-sm);
+  --link-small-font-size: var(--font-size-sm);
+  --link-small-font-line-height: var(--font-line-height-sm);
+  --link-small-icon-size: var(--sizing-xs);
+  --link-large-font-size: var(--font-size-md);
+  --link-large-font-line-height: var(--font-line-height-lg);
+  --link-large-icon-size: var(--sizing-md);
+
+  /* Focus and motion */
+  --link-focus-ring-width: var(--focus-ring-width);
+  --link-focus-ring-offset: var(--focus-ring-offset);
+  --link-focus-ring-color: var(--focus-ring-color);
+  --link-focus-border-radius: var(--radius-2xs);
+  --link-transition-duration: var(--duration-fast);
+  --link-transition-easing: var(--easing-standard);
+
+  /* Size of the visually hidden "(opens in a new tab)" text */
+  --link-hidden-size: var(--border-width-hairline);
+}

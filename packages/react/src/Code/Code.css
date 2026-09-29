@@ -1,0 +1,75 @@
+/** Code. Styled only with --code-* tokens. */
+
+.ds-code {
+  padding-inline: var(--code-padding-x);
+  border: var(--code-border-width) solid var(--code-border-color);
+  border-radius: var(--code-border-radius);
+  background-color: var(--code-bg-color);
+  color: var(--code-text-color);
+  font-family: var(--code-font-family);
+  font-size: var(--code-font-size);
+}
+
+.ds-code-block {
+  position: relative;
+  border: var(--code-border-width) solid var(--code-border-color);
+  border-radius: var(--code-block-border-radius);
+  background-color: var(--code-bg-color);
+  color: var(--code-text-color);
+  font-family: var(--code-font-family);
+  font-size: var(--code-font-size);
+  line-height: var(--code-font-line-height);
+}
+
+.ds-code-block__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--code-padding-x);
+  padding-inline: var(--code-block-padding) var(--code-padding-x);
+  border-block-end: var(--code-border-width) solid var(--code-border-color);
+  color: var(--code-copy-text-color);
+}
+
+.ds-code-block__copy {
+  display: inline-grid;
+  place-items: center;
+  margin-inline-start: auto;
+  padding: var(--code-padding-x);
+  border: 0;
+  border-radius: var(--code-border-radius);
+  background: none;
+  color: var(--code-copy-text-color);
+  cursor: pointer;
+}
+
+.ds-code-block__copy:hover {
+  background-color: var(--code-copy-hover-bg-color);
+}
+
+.ds-code-block__copy > svg {
+  inline-size: var(--code-icon-size);
+  block-size: var(--code-icon-size);
+}
+
+.ds-code-block__copy:focus-visible,
+.ds-code-block__pre:focus-visible {
+  outline: var(--code-focus-ring-width) solid var(--code-focus-ring-color);
+  outline-offset: var(--code-focus-ring-offset);
+}
+
+.ds-code-block__pre {
+  margin: 0;
+  padding: var(--code-block-padding);
+  overflow-x: auto;
+  border-radius: var(--code-block-border-radius);
+}
+
+.ds-code-block__status {
+  position: absolute;
+  inline-size: var(--code-border-width);
+  block-size: var(--code-border-width);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

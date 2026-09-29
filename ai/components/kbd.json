@@ -1,0 +1,255 @@
+{
+  "id": "kbd",
+  "name": "Kbd",
+  "category": "Data display",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "Kbd shows a keyboard key or a shortcut, such as Ctrl + K, in text, menus and tooltips.",
+  "imports": [
+    {
+      "name": "Kbd",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To show keyboard shortcuts in docs, menus and tooltips."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For code.",
+      "alternative": "Code"
+    },
+    {
+      "text": "For buttons people click.",
+      "alternative": "Button"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Key",
+      "description": "A key cap."
+    },
+    {
+      "name": "Plus",
+      "description": "Joins keys of a combination.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "keys",
+      "title": "Keys",
+      "values": [
+        {
+          "value": "children",
+          "meaning": "One key."
+        },
+        {
+          "value": "keys",
+          "meaning": "A combination, e.g. ['Ctrl', 'K']."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Static",
+      "meaning": "Not interactive.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Semantics",
+      "text": "Rendered as nested <kbd> elements, which screen readers read as text."
+    }
+  ],
+  "content": [
+    "Use the key’s name as printed: Ctrl, Shift, Enter, ⌘ on Mac."
+  ],
+  "guidelines": [
+    {
+      "do": "Show platform keys (⌘ on Mac, Ctrl elsewhere).",
+      "dont": "Show ⌘ to Windows users.",
+      "why": "Wrong keys confuse people."
+    },
+    {
+      "do": "Use Kbd for keys only.",
+      "dont": "Use Kbd for code.",
+      "why": "Code has its own component."
+    },
+    {
+      "do": "Keep shortcuts short.",
+      "dont": "Show four-key chords as the main way to do something.",
+      "why": "Long shortcuts are hard to press and remember."
+    }
+  ],
+  "accessibility": {
+    "role": "text (kbd elements).",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "Not focusable."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "none",
+        "when": "Keys are read as text."
+      }
+    ],
+    "focus": "None.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Uses the kbd element."
+      },
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Key text passes 4.5:1."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "single",
+      "title": "One key",
+      "description": "Escape.",
+      "code": "import { Kbd } from '@ds/react';\n\nPress <Kbd>Esc</Kbd> to close."
+    },
+    {
+      "id": "combo",
+      "title": "Combination",
+      "description": "Command K.",
+      "code": "import { Kbd } from '@ds/react';\n\n<Kbd keys={['Ctrl', 'K']} />"
+    },
+    {
+      "id": "menu",
+      "title": "In a menu",
+      "description": "As a shortcut hint.",
+      "code": "import { DropdownMenuItem, Kbd } from '@ds/react';\n\n<DropdownMenuItem shortcut={<Kbd keys={['Ctrl', 'C']} />}>Copy</DropdownMenuItem>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--kbd-"
+  ],
+  "related": [
+    {
+      "id": "code",
+      "relation": "For code."
+    },
+    {
+      "id": "search-field",
+      "relation": "Shows its shortcut hint."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Kbd",
+      "import": "import { Kbd } from '@ds/react';",
+      "description": "Shows a keyboard key or shortcut, e.g. Ctrl + K.",
+      "props": {
+        "keys": {
+          "type": "string[]",
+          "required": false,
+          "default": null,
+          "description": "Keys of a combination, e.g. ['Ctrl', 'K'], shown joined by “+”."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A single key when not using keys."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--kbd-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--kbd-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--kbd-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--kbd-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--kbd-shadow-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--kbd-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-xs",
+      "default": "2px"
+    },
+    "--kbd-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--kbd-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--kbd-font-family": {
+      "description": "Code and keyboard keys; the same in every theme.",
+      "references": "--font-family-mono",
+      "default": "ui-monospace, 'SF Mono', menlo, consolas, monospace"
+    },
+    "--kbd-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--kbd-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-kbd--docs"
+}

@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "files": 2,
+    "dsUsage": 0.8333333333333333,
+    "rawElements": 1,
+    "hallucinatedProps": 1,
+    "invalidValues": 1,
+    "rawValues": 2,
+    "a11yProblems": 1,
+    "parseErrors": 0
+  },
+  "results": [
+    {
+      "id": "bad",
+      "dsUsage": 0.6666666666666666,
+      "rawElements": 1,
+      "hallucinated": [
+        "Button.rounded"
+      ],
+      "invalidValues": 1,
+      "rawValues": 2,
+      "a11y": 1,
+      "parseError": false
+    },
+    {
+      "id": "good",
+      "dsUsage": 1,
+      "rawElements": 0,
+      "hallucinated": [],
+      "invalidValues": 0,
+      "rawValues": 0,
+      "a11y": 0,
+      "parseError": false
+    }
+  ]
+}

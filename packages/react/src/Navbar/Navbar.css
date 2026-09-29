@@ -1,0 +1,111 @@
+/**
+ * Navbar. Styled only with --navbar-* tokens. The current page is [aria-current='page'];
+ * hover and focus are real states. Items wrap onto another row when there isn't room.
+ */
+
+.ds-navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--navbar-gap);
+  padding: var(--navbar-padding);
+  border-radius: var(--navbar-border-radius);
+  background-color: var(--navbar-bg-color);
+  box-shadow: var(--navbar-shadow-x) var(--navbar-shadow-y) var(--navbar-shadow-blur)
+    var(--navbar-shadow-color);
+}
+
+.ds-navbar__logo,
+.ds-navbar__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--navbar-list-gap);
+}
+
+/* Actions (e.g. a search field) shrink and wrap on narrow screens instead of overflowing. */
+.ds-navbar__actions {
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  min-inline-size: 0;
+}
+
+.ds-navbar__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--navbar-list-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-navbar__item {
+  --_bg: var(--navbar-item-default-bg-color);
+  --_text: var(--navbar-item-default-text-color);
+  --_icon: var(--navbar-item-default-icon-color);
+  --_indicator: 0;
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--navbar-item-gap);
+  padding: var(--navbar-item-padding-y) var(--navbar-item-padding-x);
+  border: 0;
+  border-radius: var(--navbar-item-border-radius);
+
+  /* The current page gets a bar under the label, so it isn't marked by color alone. */
+  box-shadow: inset 0 calc(-1 * var(--_indicator)) 0 var(--navbar-item-active-indicator-color);
+  background-color: var(--_bg);
+  color: var(--_text);
+  font-family: var(--navbar-item-font-family);
+  font-size: var(--navbar-item-font-size);
+  font-weight: var(--navbar-item-font-weight);
+  line-height: var(--navbar-item-font-line-height);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--navbar-transition-duration) var(--navbar-transition-easing),
+    color var(--navbar-transition-duration) var(--navbar-transition-easing);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ds-navbar__item:hover {
+  --_bg: var(--navbar-item-hover-bg-color);
+  --_text: var(--navbar-item-hover-text-color);
+}
+
+.ds-navbar__item[aria-current='page'] {
+  --_bg: var(--navbar-item-active-bg-color);
+  --_text: var(--navbar-item-active-text-color);
+  --_icon: var(--navbar-item-active-icon-color);
+  --_indicator: var(--navbar-item-active-indicator-size);
+}
+
+.ds-navbar__item:focus-visible {
+  outline: var(--navbar-focus-ring-width) solid var(--navbar-focus-ring-color);
+  outline-offset: var(--navbar-focus-ring-offset);
+}
+
+.ds-navbar__icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--_icon);
+}
+
+.ds-navbar__icon > svg {
+  inline-size: var(--navbar-item-icon-size);
+  block-size: var(--navbar-item-icon-size);
+}
+
+@media (forced-colors: active) {
+  .ds-navbar__item[aria-current='page'] {
+    text-decoration: underline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-navbar__item {
+    transition: none;
+  }
+}

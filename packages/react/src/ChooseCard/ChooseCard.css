@@ -1,0 +1,134 @@
+/**
+ * ChooseCard. Styled only with --choose-card-* tokens. Radix sets data-state="checked"
+ * on the selected card; hover, focus and disabled are real states.
+ */
+
+.ds-choose-card-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--choose-card-group-gap);
+}
+
+.ds-choose-card-group--horizontal {
+  flex-flow: row wrap;
+}
+
+/* Cards share the row equally and their text wraps; a card only moves to a new row when
+   it would get narrower than the minimum width. */
+.ds-choose-card-group--horizontal > .ds-choose-card {
+  flex: 1 1 var(--choose-card-group-item-min-width);
+  min-inline-size: 0;
+}
+
+.ds-choose-card {
+  --_border-color: var(--choose-card-border-color);
+  --_selected-width: 0;
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--choose-card-horizontal-gap);
+  inline-size: 100%;
+  padding: var(--choose-card-padding-y) var(--choose-card-padding-x);
+  border: var(--choose-card-border-width) solid var(--_border-color);
+  border-radius: var(--choose-card-border-radius);
+
+  /* The selected border grows inward, so selecting never shifts the layout. */
+  box-shadow: inset 0 0 0 var(--_selected-width) var(--_border-color);
+  background-color: var(--choose-card-bg-color);
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+  transition:
+    border-color var(--choose-card-transition-duration) var(--choose-card-transition-easing),
+    box-shadow var(--choose-card-transition-duration) var(--choose-card-transition-easing);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ds-choose-card:hover:not(:disabled) {
+  --_border-color: var(--choose-card-hover-border-color);
+}
+
+.ds-choose-card[data-state='checked'] {
+  --_border-color: var(--choose-card-selected-border-color);
+  --_selected-width: calc(
+    var(--choose-card-selected-border-width) - var(--choose-card-border-width)
+  );
+}
+
+.ds-choose-card:focus-visible {
+  outline: var(--choose-card-focus-ring-width) solid var(--choose-card-focus-ring-color);
+  outline-offset: var(--choose-card-focus-ring-offset);
+}
+
+.ds-choose-card:disabled {
+  opacity: var(--choose-card-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-choose-card__indicator {
+  display: grid;
+  flex: none;
+  place-items: center;
+  inline-size: var(--choose-card-indicator-size);
+  block-size: var(--choose-card-indicator-size);
+
+  /* Centre the circle on the title's first line. */
+  margin-block-start: calc(
+    (var(--choose-card-title-font-line-height) - var(--choose-card-indicator-size)) / 2
+  );
+  border: var(--choose-card-indicator-border-width) solid
+    var(--choose-card-indicator-off-border-color);
+  border-radius: 50%;
+}
+
+.ds-choose-card[data-state='checked'] .ds-choose-card__indicator {
+  border-color: var(--choose-card-indicator-on-bg-color);
+  background-color: var(--choose-card-indicator-on-bg-color);
+}
+
+.ds-choose-card__dot {
+  inline-size: 40%;
+  block-size: 40%;
+  border-radius: 50%;
+  background-color: var(--choose-card-indicator-dot-color);
+}
+
+.ds-choose-card__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--choose-card-vertical-gap);
+  min-inline-size: 0;
+}
+
+.ds-choose-card__title {
+  font-family: var(--choose-card-title-font-family);
+  font-size: var(--choose-card-title-font-size);
+  font-weight: var(--choose-card-title-font-weight);
+  line-height: var(--choose-card-title-font-line-height);
+  color: var(--choose-card-title-font-color);
+}
+
+.ds-choose-card__description {
+  font-family: var(--choose-card-desc-font-family);
+  font-size: var(--choose-card-desc-font-size);
+  font-weight: var(--choose-card-desc-font-weight);
+  line-height: var(--choose-card-desc-font-line-height);
+  color: var(--choose-card-desc-font-color);
+}
+
+.ds-choose-card__price {
+  font-family: var(--choose-card-price-font-family);
+  font-size: var(--choose-card-price-font-size);
+  font-weight: var(--choose-card-price-font-weight);
+  line-height: var(--choose-card-price-font-line-height);
+  color: var(--choose-card-price-font-color);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-choose-card {
+    transition: none;
+  }
+}

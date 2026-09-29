@@ -1,0 +1,87 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Pencil, Copy, Trash2, Ellipsis } from 'lucide-react';
+import {
+  Button,
+  IconButton,
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuSubTrigger,
+} from '@ds/react';
+import * as MenuStories from '../../../../packages/react/src/DropdownMenu/DropdownMenu.stories';
+import menuMeta from '../../../../packages/react/src/DropdownMenu/DropdownMenu.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={MenuStories} name="Docs" />
+
+# DropdownMenu
+
+<ComponentPage
+  meta={menuMeta}
+  stories={MenuStories}
+  components={[
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuCheckboxItem,
+    DropdownMenuRadioItem,
+    DropdownMenuSubTrigger,
+  ]}
+  anatomy={{
+    targets: [
+      '.ds-button',
+      '.ds-menu',
+      '.ds-menu__group-label',
+      '.ds-menu__item',
+      '.ds-menu__separator',
+    ],
+    example: (
+      <div style={{ minBlockSize: 220, minInlineSize: 280 }}>
+        <DropdownMenu defaultOpen modal={false}>
+          <DropdownMenuTrigger asChild>
+            <Button appearance="outline" variant="secondary">
+              Options
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" side="right" sideOffset={40}>
+            <DropdownMenuLabel>File</DropdownMenuLabel>
+            <DropdownMenuItem icon={<Pencil />}>Rename</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem icon={<Trash2 />} variant="danger">
+              Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
+    ),
+  }}
+  optionStories={{ variant: 'ItemVariants' }}
+  extras={[
+    { title: 'Checkbox and radio items', story: 'CheckboxAndRadioItems' },
+    { title: 'Submenu', story: 'Submenu' },
+  ]}
+  behaviorStory="RightToLeft"
+  statesText="Items are highlighted by the pointer or the keyboard; this example shows each state."
+  dodont={{
+    0: {
+      do: (
+        <IconButton
+          icon={<Ellipsis />}
+          label="More actions"
+          appearance="ghost"
+          variant="secondary"
+        />
+      ),
+      dont: <IconButton icon={<Ellipsis />} label="" appearance="ghost" variant="secondary" />,
+    },
+  }}
+  matrix={
+    <Button appearance="outline" variant="secondary">
+      Options
+    </Button>
+  }
+/>

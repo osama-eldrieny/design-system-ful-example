@@ -1,0 +1,127 @@
+/**
+ * Card. Styled only with --card-* tokens. Corners follow the radius theme and the elevated
+ * shadow follows the shadow theme. In a card with href, the title link's ::after stretches
+ * over the card so the whole card is clickable with a single link.
+ */
+
+.ds-card {
+  /* Sizes include padding and border, so a card set to 100% fits its container. */
+  box-sizing: border-box;
+
+  --_bg: var(--card-bg-color);
+  --_border: transparent;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+  padding: var(--card-padding);
+  border: var(--card-border-width) solid var(--_border);
+  border-radius: var(--card-border-radius);
+  background-color: var(--_bg);
+  overflow: hidden;
+  transition-property: border-color, box-shadow;
+  transition-duration: var(--card-transition-duration);
+  transition-timing-function: var(--card-transition-easing);
+}
+
+.ds-card--elevated {
+  box-shadow: var(--card-shadow-x) var(--card-shadow-y) var(--card-shadow-blur)
+    var(--card-shadow-color);
+}
+
+.ds-card--outlined {
+  --_border: var(--card-outlined-border-color);
+}
+
+.ds-card--filled {
+  --_bg: var(--card-filled-bg-color);
+}
+
+.ds-card--horizontal {
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.ds-card--interactive:hover {
+  --_border: var(--card-hover-border-color);
+}
+
+.ds-card--interactive:focus-within {
+  outline: var(--card-focus-ring-width) solid var(--card-focus-ring-color);
+  outline-offset: var(--card-focus-ring-offset);
+}
+
+.ds-card__media {
+  flex: none;
+  block-size: var(--card-image-height);
+  border-radius: var(--card-image-border-radius);
+  background-color: var(--card-image-bg-color);
+  background-image: var(--card-image-name);
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.ds-card--horizontal .ds-card__media {
+  inline-size: var(--card-horizontal-media-width);
+  block-size: auto;
+}
+
+.ds-card__image {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.ds-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--card-body-text-gap);
+  min-inline-size: 0;
+}
+
+.ds-card__title {
+  margin: 0;
+  color: var(--card-title-font-color);
+  font-family: var(--card-title-font-family);
+  font-size: var(--card-title-font-size);
+  line-height: var(--card-title-font-line-height);
+  font-weight: var(--card-title-font-weight);
+}
+
+.ds-card__link {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.ds-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.ds-card__description {
+  margin: 0;
+  color: var(--card-desc-font-color);
+  font-family: var(--card-desc-font-family);
+  font-size: var(--card-desc-font-size);
+  line-height: var(--card-desc-font-line-height);
+  font-weight: var(--card-desc-font-weight);
+}
+
+.ds-card__footer {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--card-body-prices-gap);
+}
+
+/* Controls in the footer sit above the stretched link. */
+.ds-card__footer > * {
+  position: relative;
+}

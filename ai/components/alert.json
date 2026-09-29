@@ -1,0 +1,1047 @@
+{
+  "id": "alert",
+  "name": "Alert",
+  "category": "Feedback",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "An alert shows a message about the page or the result of an action: information, success, a warning or an error. It stays in place until the situation changes or people dismiss it.",
+  "imports": [
+    {
+      "name": "Alert",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To explain the state of a page or section, e.g. \"Your trial ends in 3 days\".",
+    "To report the result of an action that people need to notice, e.g. a failed payment.",
+    "To show a form-level error summary above the fields."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For brief confirmations that don’t need to stay on screen.",
+      "alternative": "Toast"
+    },
+    {
+      "text": "For an error on a single field.",
+      "alternative": "The field’s error message"
+    },
+    {
+      "text": "For decisions people must make before continuing.",
+      "alternative": "Dialog"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Container",
+      "description": "Background and border in the variant’s color; warning uses a dashed border."
+    },
+    {
+      "name": "Icon",
+      "description": "Reinforces the variant; hidden from screen readers."
+    },
+    {
+      "name": "Title",
+      "description": "The message in one short sentence."
+    },
+    {
+      "name": "Description",
+      "description": "Optional detail or next step.",
+      "optional": true
+    },
+    {
+      "name": "Dismiss button",
+      "description": "Optional; removes the alert.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "variant",
+      "title": "Variant",
+      "values": [
+        {
+          "value": "primary",
+          "meaning": "Neutral information, e.g. a feature announcement or status."
+        },
+        {
+          "value": "success",
+          "meaning": "An action completed, e.g. \"Payment received\"."
+        },
+        {
+          "value": "warning",
+          "meaning": "Something needs attention soon but nothing failed yet."
+        },
+        {
+          "value": "danger",
+          "meaning": "Something failed or is blocked and needs action."
+        }
+      ]
+    },
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "subtle",
+          "meaning": "Tinted background. Default for most messages."
+        },
+        {
+          "value": "solid",
+          "meaning": "Filled with the variant color. For the one message that must not be missed."
+        },
+        {
+          "value": "outline",
+          "meaning": "Surface background with a colored border, for busy or tinted areas."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Shown",
+      "meaning": "The message applies.",
+      "trigger": "Rendered."
+    },
+    {
+      "name": "Dismiss hover/focus",
+      "meaning": "The dismiss button responds to the pointer and keyboard.",
+      "trigger": ":hover / :focus-visible on the button."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Announcements",
+      "text": "Danger and warning alerts use role=\"alert\" and are read out immediately when they appear; primary and success use role=\"status\" and are read politely."
+    },
+    {
+      "topic": "Dismissing",
+      "text": "With onDismiss, a dismiss button appears; remove the alert in the handler and move focus somewhere sensible."
+    },
+    {
+      "topic": "Actions",
+      "text": "Put at most two actions in the actions slot, e.g. \"Retry\" and \"View details\"."
+    },
+    {
+      "topic": "Width",
+      "text": "The alert fills its container; place it at the top of the section it relates to."
+    }
+  ],
+  "content": [
+    "Lead with what happened, then what to do: \"Payment failed. Update your card to keep your plan.\"",
+    "Keep titles to one sentence; put detail in the description.",
+    "Avoid blame and jargon; don’t show raw error codes as the main message."
+  ],
+  "guidelines": [
+    {
+      "do": "Match the variant to what happened.",
+      "dont": "Use danger for a neutral announcement to get attention.",
+      "why": "Colors carry meaning; misusing them trains people to ignore real problems."
+    },
+    {
+      "do": "Say how to fix the problem.",
+      "dont": "Only state that something went wrong.",
+      "why": "A message without a next step leaves people stuck."
+    },
+    {
+      "do": "Show one alert per situation, near what it’s about.",
+      "dont": "Stack several alerts at the top of the page.",
+      "why": "Many alerts compete for attention and get skipped."
+    }
+  ],
+  "accessibility": {
+    "role": "alert (danger, warning) or status (primary, success).",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Reaches actions and the dismiss button in order."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "role=\"alert\"",
+        "when": "Danger and warning: announced immediately."
+      },
+      {
+        "attribute": "role=\"status\"",
+        "when": "Primary and success: announced politely."
+      },
+      {
+        "attribute": "aria-label on dismiss",
+        "when": "From dismissLabel (default \"Dismiss\")."
+      },
+      {
+        "attribute": "aria-hidden on the icon",
+        "when": "The icon is decorative; the text carries the meaning."
+      }
+    ],
+    "focus": "The dismiss button and any actions show the focus ring; the alert itself isn’t focusable.",
+    "wcag": [
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Every variant has its own icon; warning also has a dashed border."
+      },
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Title and description pass 4.5:1 in every appearance and theme."
+      },
+      {
+        "criterion": "4.1.3 Status Messages",
+        "how": "Alerts are announced without moving focus."
+      }
+    ],
+    "notes": [
+      "Only render alerts that change dynamically with role=\"alert\"; a page full of alerts on load is noisy for screen readers."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Information",
+      "description": "A subtle primary alert with a description.",
+      "code": "import { Alert } from '@ds/react';\n\n<Alert title=\"Real-time data enabled.\">Updates every 30 seconds.</Alert>"
+    },
+    {
+      "id": "error-action",
+      "title": "Error with an action",
+      "description": "Say what failed and offer the fix.",
+      "code": "import { Alert, Button } from '@ds/react';\n\n<Alert\n  variant=\"danger\"\n  title=\"Payment failed.\"\n  actions={<Button size=\"small\" variant=\"danger\">Update card</Button>}\n>\n  Your card was declined. Update it to keep your plan.\n</Alert>"
+    },
+    {
+      "id": "dismissible",
+      "title": "Dismissible",
+      "description": "Remove the alert when people dismiss it.",
+      "code": "import { Alert } from '@ds/react';\n\n{visible && (\n  <Alert variant=\"success\" title=\"Profile updated.\" onDismiss={() => setVisible(false)} />\n)}"
+    }
+  ],
+  "tokenPrefixes": [
+    "--alerts-"
+  ],
+  "related": [
+    {
+      "id": "toast",
+      "relation": "Use for short confirmations that disappear on their own."
+    },
+    {
+      "id": "input-field",
+      "relation": "Shows errors for a single field."
+    },
+    {
+      "id": "dialog",
+      "relation": "Use when people must respond before continuing."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New appearances solid and outline; description, actions slot and dismiss button.",
+        "Lucide icons per variant; role=\"alert\"/\"status\" for screen readers; full width."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Alert",
+      "import": "import { Alert } from '@ds/react';",
+      "description": "A message about the page or an action: information, success, a warning or an error.\nDanger and warning alerts are announced to screen readers immediately; the others politely.",
+      "props": {
+        "variant": {
+          "type": "AlertVariant",
+          "values": [
+            "primary",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": "What kind of message it is. `primary` for information, `success` for a completed\naction, `warning` for something that needs attention, `danger` for errors and failures."
+        },
+        "appearance": {
+          "type": "AlertAppearance",
+          "values": [
+            "subtle",
+            "solid",
+            "outline"
+          ],
+          "required": false,
+          "default": "subtle",
+          "description": "Visual weight. `subtle` (default) for most messages, `solid` for the most important one\non the page, `outline` on busy or tinted backgrounds."
+        },
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Short summary of the message."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Longer explanation under the title."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Replaces the variant's default icon. Pass `null` for no icon."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Buttons or links related to the message, e.g. \"Retry\"."
+        },
+        "onDismiss": {
+          "type": "(() => void)",
+          "required": false,
+          "default": null,
+          "description": "Shows a dismiss button that calls this."
+        },
+        "dismissLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Dismiss",
+          "description": "Accessible name of the dismiss button. Default \"Dismiss\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--alerts-primary-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--alerts-primary-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--alerts-primary-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--alerts-primary-border-color": {
+      "description": "Regular tone outline, e.g. alert borders.",
+      "references": "--color-border-primary-medium",
+      "default": "#c5b2ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5637b5",
+        "brand=amber,mode=light": "#e5cfb7",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#abc9fb",
+        "brand=opal,mode=dark": "#2a5caf"
+      }
+    },
+    "--alerts-success-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--alerts-success-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-success-high",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--alerts-success-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-success-high",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--alerts-success-border-color": {
+      "description": "Regular tone outline, e.g. alert borders.",
+      "references": "--color-border-success-medium",
+      "default": "#91e8b2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#008f35",
+        "brand=amber,mode=light": "#afc4c2",
+        "brand=amber,mode=dark": "#3a6360",
+        "brand=opal,mode=light": "#cae99b",
+        "brand=opal,mode=dark": "#5e9110"
+      }
+    },
+    "--alerts-warning-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-warning-1",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--alerts-warning-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--alerts-warning-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--alerts-warning-border-color": {
+      "description": "Regular tone outline, e.g. alert borders.",
+      "references": "--color-border-warning-medium",
+      "default": "#f7dd91",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a87d00",
+        "brand=amber,mode=dark": "#a87d00",
+        "brand=opal,mode=light": "#f6de94",
+        "brand=opal,mode=dark": "#a67f04"
+      }
+    },
+    "--alerts-danger-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--alerts-danger-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--alerts-danger-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--alerts-danger-border-color": {
+      "description": "Regular tone outline, e.g. alert borders.",
+      "references": "--color-border-danger-medium",
+      "default": "#faa2a2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ad1c1c",
+        "brand=amber,mode=light": "#d1b2ba",
+        "brand=amber,mode=dark": "#7d4150",
+        "brand=opal,mode=light": "#faacba",
+        "brand=opal,mode=dark": "#ad2d43"
+      }
+    },
+    "--alerts-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--alerts-padding-x": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--alerts-padding-y": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--alerts-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--alerts-title-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--alerts-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--alerts-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--alerts-title-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--alerts-icon-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--alerts-icon-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--alerts-border-style": {
+      "description": null,
+      "references": null,
+      "default": "solid"
+    },
+    "--alerts-warning-border-style": {
+      "description": null,
+      "references": null,
+      "default": "dashed"
+    },
+    "--alerts-primary-description-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-primary-medium",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ab8fff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#d9b896",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#84b0f9"
+      }
+    },
+    "--alerts-success-description-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-success-medium",
+      "default": "#00732b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5ede8e",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#afc4c2",
+        "brand=opal,mode=light": "#4b740d",
+        "brand=opal,mode=dark": "#b2df6d"
+      }
+    },
+    "--alerts-warning-description-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-warning-medium",
+      "default": "#876400",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f4cd5e",
+        "brand=amber,mode=dark": "#f4cd5e",
+        "brand=opal,mode=light": "#856603",
+        "brand=opal,mode=dark": "#f2cf62"
+      }
+    },
+    "--alerts-danger-description-text-color": {
+      "description": "Secondary tone-colored text: timestamps, captions.",
+      "references": "--color-fg-on-danger-medium",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#d1b2ba",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#f8869a"
+      }
+    },
+    "--alerts-primary-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--alerts-primary-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--alerts-primary-solid-dismiss-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-hover",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dfd4ff",
+        "brand=amber,mode=light": "#c28f58",
+        "brand=amber,mode=dark": "#f9f5f1",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#f4f6fc"
+      }
+    },
+    "--alerts-success-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--alerts-success-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-success-default",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#005b22",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#305350",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--alerts-success-solid-dismiss-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-hover",
+      "default": "#00ca4b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c2f2d4",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#84cc17",
+        "brand=opal,mode=dark": "#e1f3c7"
+      }
+    },
+    "--alerts-warning-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-default",
+      "default": "#f0be2e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#eec133",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--alerts-warning-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-warning-default",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#6b4f00",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#6b4f00",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--alerts-warning-solid-dismiss-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-hover",
+      "default": "#edb000",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fbecc2",
+        "brand=amber,mode=dark": "#fbecc2",
+        "brand=opal,mode=light": "#eab306",
+        "brand=opal,mode=dark": "#faedc3"
+      }
+    },
+    "--alerts-danger-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--alerts-danger-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-danger-default",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#8b1616",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#683643",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#8b2436"
+      }
+    },
+    "--alerts-danger-solid-dismiss-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-hover",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fccbcb",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#fcd1d8"
+      }
+    },
+    "--alerts-primary-outline-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--alerts-primary-outline-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--alerts-primary-outline-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ab8fff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#cda376",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--alerts-success-outline-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--alerts-success-outline-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-success-strong",
+      "default": "#008f35",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ac40",
+        "brand=amber,mode=light": "#668e8b",
+        "brand=amber,mode=dark": "#668e8b",
+        "brand=opal,mode=light": "#5e9110",
+        "brand=opal,mode=dark": "#70ad14"
+      }
+    },
+    "--alerts-success-outline-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-success-text-default",
+      "default": "#00732b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ca4b",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#89a8a6",
+        "brand=opal,mode=light": "#4b740d",
+        "brand=opal,mode=dark": "#84cc17"
+      }
+    },
+    "--alerts-warning-outline-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--alerts-warning-outline-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-warning-strong",
+      "default": "#a87d00",
+      "byTheme": {
+        "brand=opal,mode=light": "#a67f04",
+        "brand=opal,mode=dark": "#c79805"
+      }
+    },
+    "--alerts-warning-outline-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-default",
+      "default": "#876400",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c99600",
+        "brand=amber,mode=dark": "#c99600",
+        "brand=opal,mode=light": "#856603",
+        "brand=opal,mode=dark": "#eab306"
+      }
+    },
+    "--alerts-danger-outline-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--alerts-danger-outline-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-danger-strong",
+      "default": "#f54e4e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f32727",
+        "brand=amber,mode=light": "#a66c7b",
+        "brand=amber,mode=dark": "#a66c7b",
+        "brand=opal,mode=light": "#f43f5e",
+        "brand=opal,mode=dark": "#f6627b"
+      }
+    },
+    "--alerts-danger-outline-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--alerts-primary-dismiss-hover-bg-color": {
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-primary-200",
+      "default": "#dfd4ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5637b5",
+        "brand=amber,mode=light": "#f0e4d7",
+        "brand=amber,mode=dark": "#8a663e",
+        "brand=opal,mode=light": "#d0e1fd",
+        "brand=opal,mode=dark": "#2a5caf"
+      }
+    },
+    "--alerts-success-dismiss-hover-bg-color": {
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-success-200",
+      "default": "#c2f2d4",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#008f35",
+        "brand=amber,mode=light": "#d2dedd",
+        "brand=amber,mode=dark": "#305350",
+        "brand=opal,mode=light": "#e1f3c7",
+        "brand=opal,mode=dark": "#5e9110"
+      }
+    },
+    "--alerts-warning-dismiss-hover-bg-color": {
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-warning-200",
+      "default": "#fbecc2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a87d00",
+        "brand=amber,mode=dark": "#a87d00",
+        "brand=opal,mode=light": "#faedc3",
+        "brand=opal,mode=dark": "#a67f04"
+      }
+    },
+    "--alerts-danger-dismiss-hover-bg-color": {
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-danger-200",
+      "default": "#fccbcb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ad1c1c",
+        "brand=amber,mode=light": "#e5d4d8",
+        "brand=amber,mode=dark": "#683643",
+        "brand=opal,mode=light": "#fcd1d8",
+        "brand=opal,mode=dark": "#ad2d43"
+      }
+    },
+    "--alerts-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--alerts-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--alerts-description-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--alerts-content-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--alerts-actions-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--alerts-dismiss-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-lg",
+      "default": "24px"
+    },
+    "--alerts-dismiss-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--alerts-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--alerts-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--alerts-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--alerts-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--alerts-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--alerts-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "12px"
+      }
+    },
+    "--alerts-title-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Alerts'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'الإشعارات'"
+      }
+    },
+    "--alerts-item1-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'There are 9 new messages'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'هناك 9 رسائل جديدة'"
+      }
+    },
+    "--alerts-item2-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'This is a primary alert — check it out!'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'هذا تنبيه أساسي — تحقق منه!'"
+      }
+    },
+    "--alerts-item3-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Click to verify your email'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'اضغط للتحقق من بريدك الإلكتروني'"
+      }
+    },
+    "--alerts-item4-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Access denied. contact support'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'تم رفض الوصول، تواصل مع الدعم'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-alert--docs"
+}

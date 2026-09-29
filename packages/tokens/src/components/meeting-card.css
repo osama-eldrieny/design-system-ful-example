@@ -1,0 +1,46 @@
+/**
+ * Component tokens: meeting-card
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --meeting-card-{variant}-{part?}-{property}
+ *   variant: primary | success | warning | danger; part: title | time | avatar.
+ *   Corners come from the radius theme, gap from the density theme.
+ */
+
+:root,
+[data-theme] {
+  --meeting-card-primary-bg-color: var(--color-bg-primary-1);
+  --meeting-card-primary-border-color: var(--color-border-primary-strong);
+  --meeting-card-primary-title-text-color: var(--color-fg-on-primary-high);
+  --meeting-card-primary-time-text-color: var(--color-fg-on-primary-medium);
+  --meeting-card-primary-avatar-border-color: var(--color-border-primary-subtle);
+  --meeting-card-success-bg-color: var(--color-bg-success-1);
+  --meeting-card-success-border-color: var(--color-border-success-strong);
+  --meeting-card-success-title-text-color: var(--color-fg-on-success-high);
+  --meeting-card-success-time-text-color: var(--color-fg-on-success-medium);
+  --meeting-card-success-avatar-border-color: var(--color-border-success-subtle);
+  --meeting-card-warning-bg-color: var(--color-bg-warning-1);
+  --meeting-card-warning-border-color: var(--color-border-warning-strong);
+  --meeting-card-warning-title-text-color: var(--color-fg-on-warning-high);
+  --meeting-card-warning-time-text-color: var(--color-fg-on-warning-medium);
+  --meeting-card-warning-avatar-border-color: var(--color-border-warning-subtle);
+  --meeting-card-danger-bg-color: var(--color-bg-danger-1);
+  --meeting-card-danger-border-color: var(--color-border-danger-strong);
+  --meeting-card-danger-title-text-color: var(--color-fg-on-danger-high);
+  --meeting-card-danger-time-text-color: var(--color-fg-on-danger-medium);
+  --meeting-card-danger-avatar-border-color: var(--color-border-danger-subtle);
+
+  /* Accent edge on the inline start (left in LTR, right in RTL) */
+  --meeting-card-border-width: var(--border-width-5);
+  --meeting-card-padding: var(--spacing-xl);
+  --meeting-card-title-margin-bottom: var(--spacing-sm);
+  --meeting-card-time-font-size: var(--font-size-sm);
+  --meeting-card-time-font-family: var(--font-family-body);
+  --meeting-card-time-font-weight: var(--font-weight-medium);
+  --meeting-card-time-font-line-height: var(--font-line-height-sm);
+  --meeting-card-title-font-family: var(--font-family-body);
+  --meeting-card-title-font-size: var(--font-size-md);
+  --meeting-card-title-font-weight: var(--font-weight-medium);
+  --meeting-card-title-font-line-height: var(--font-line-height-md);
+}

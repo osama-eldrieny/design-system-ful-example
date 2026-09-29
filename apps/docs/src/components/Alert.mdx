@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Alert, Button } from '@ds/react';
+import * as AlertStories from '../../../../packages/react/src/Alert/Alert.stories';
+import alertMeta from '../../../../packages/react/src/Alert/Alert.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={AlertStories} name="Docs" />
+
+# Alert
+
+<ComponentPage
+  meta={alertMeta}
+  stories={AlertStories}
+  components={[Alert]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-alert', at: 'start' },
+      '.ds-alert__icon',
+      '.ds-alert__title',
+      '.ds-alert__description',
+      '.ds-alert__dismiss',
+    ],
+    example: (
+      <div style={{ inlineSize: 420 }}>
+        <Alert title="Real-time data enabled." onDismiss={() => {}}>
+          Updates every 30 seconds.
+        </Alert>
+      </div>
+    ),
+  }}
+  optionStories={{ variant: 'Variants', appearance: 'Appearances' }}
+  extras={[
+    { title: 'With actions', story: 'WithActions' },
+    { title: 'Dismissible', story: 'Dismissible' },
+  ]}
+  behaviorStory="RightToLeft"
+  statesText="The dismiss button has real hover and focus states; this example forces hover."
+  dodont={{
+    1: {
+      do: (
+        <div style={{ inlineSize: 300 }}>
+          <Alert variant="danger" title="Payment failed.">
+            Update your card to keep your plan.
+          </Alert>
+        </div>
+      ),
+      dont: (
+        <div style={{ inlineSize: 300 }}>
+          <Alert variant="danger" title="Something went wrong." />
+        </div>
+      ),
+    },
+  }}
+  matrix={
+    <div style={{ display: 'grid', gap: 8 }}>
+      <Alert title="Real-time data enabled." />
+      <Alert variant="danger" appearance="solid" title="Payment failed." />
+      <Alert variant="warning" appearance="outline" title="Your trial ends in 3 days." />
+    </div>
+  }
+/>

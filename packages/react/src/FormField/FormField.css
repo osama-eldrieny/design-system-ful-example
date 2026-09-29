@@ -1,0 +1,81 @@
+/**
+ * FormField. Styled only with --form-field-* tokens. The control inside styles itself.
+ */
+
+.ds-form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--form-field-gap);
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ds-form-field__label {
+  padding: 0;
+  font-family: var(--form-field-label-font-family);
+  font-size: var(--form-field-label-font-size);
+  font-weight: var(--form-field-label-font-weight);
+  line-height: var(--form-field-label-font-line-height);
+  color: var(--form-field-label-text-color);
+}
+
+/* A legend isn't a flex item, so it keeps the gap itself. */
+.ds-form-field--group > .ds-form-field__label {
+  margin-block-end: var(--form-field-gap);
+}
+
+/* Space between the group's legend (and help text) and its controls, so the legend reads as
+   the title of the group. */
+.ds-form-field--group > .ds-form-field__controls {
+  margin-block-start: var(--form-field-group-controls-gap);
+}
+
+.ds-form-field__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--form-field-group-gap);
+}
+
+/* Visually hidden, still announced. */
+.ds-form-field__label--hidden {
+  position: absolute;
+  inline-size: var(--form-field-hidden-label-size);
+  block-size: var(--form-field-hidden-label-size);
+  margin: calc(-1 * var(--form-field-hidden-label-size));
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ds-form-field__required {
+  color: var(--form-field-required-text-color);
+}
+
+.ds-form-field__optional {
+  font-weight: var(--form-field-optional-font-weight);
+  color: var(--form-field-optional-text-color);
+}
+
+.ds-form-field__description,
+.ds-form-field__message {
+  font-family: var(--form-field-message-font-family);
+  font-size: var(--form-field-message-font-size);
+  line-height: var(--form-field-message-font-line-height);
+}
+
+.ds-form-field__description {
+  color: var(--form-field-description-text-color);
+}
+
+.ds-form-field__message--error {
+  color: var(--form-field-error-text-color);
+}
+
+.ds-form-field__message--success {
+  color: var(--form-field-success-text-color);
+}

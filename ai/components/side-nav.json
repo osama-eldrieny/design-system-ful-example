@@ -1,0 +1,470 @@
+{
+  "id": "side-nav",
+  "name": "SideNav",
+  "category": "Navigation",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A side navigation lists the pages of an app or docs site in sections, with icons and nested groups that expand and collapse. The current page is highlighted and announced.",
+  "imports": [
+    {
+      "name": "SideNav",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For apps and docs with many pages or two levels of hierarchy."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For five or fewer top-level pages.",
+      "alternative": "Navbar"
+    },
+    {
+      "text": "For switching views inside a page.",
+      "alternative": "Tabs"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Section title",
+      "description": "Names a group of links.",
+      "optional": true
+    },
+    {
+      "name": "Item",
+      "description": "A link; icon optional."
+    },
+    {
+      "name": "Group",
+      "description": "A button that shows its nested items.",
+      "optional": true
+    },
+    {
+      "name": "Current item",
+      "description": "Tinted with an edge bar."
+    }
+  ],
+  "options": [
+    {
+      "prop": "sections",
+      "title": "Structure",
+      "values": [
+        {
+          "value": "flat",
+          "meaning": "Items only."
+        },
+        {
+          "value": "nested",
+          "meaning": "Items with items: collapsible groups, indented."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Hover",
+      "meaning": "Tinted background.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Current",
+      "meaning": "Tinted with a bar on the inline start; aria-current=\"page\".",
+      "trigger": "currentItem"
+    },
+    {
+      "name": "Expanded",
+      "meaning": "Group shows its items; chevron flips.",
+      "trigger": "aria-expanded"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring.",
+      "trigger": ":focus-visible"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Groups",
+      "text": "Groups containing the current page start expanded."
+    },
+    {
+      "topic": "Keyboard",
+      "text": "Tab through items; Enter or Space toggles groups."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "The current-page bar and indentation move to the right."
+    }
+  ],
+  "content": [
+    "Short, specific labels; group titles in sentence case."
+  ],
+  "guidelines": [
+    {
+      "do": "Keep nesting to two levels.",
+      "dont": "Nest groups three or four deep.",
+      "why": "Deep trees are hard to scan and navigate by keyboard."
+    },
+    {
+      "do": "Set currentItem from the router.",
+      "dont": "Highlight items with custom classes.",
+      "why": "aria-current tells screen reader users where they are."
+    },
+    {
+      "do": "Use icons consistently: all items or none in a section.",
+      "dont": "Mix items with and without icons.",
+      "why": "Mixed icons break the alignment people scan along."
+    }
+  ],
+  "accessibility": {
+    "role": "navigation landmark with lists; groups are disclosure buttons.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves between items."
+      },
+      {
+        "keys": "Enter / Space",
+        "action": "Follows a link or toggles a group."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-current=\"page\"",
+        "when": "The current item."
+      },
+      {
+        "attribute": "aria-expanded / aria-controls",
+        "when": "Group buttons."
+      },
+      {
+        "attribute": "aria-labelledby",
+        "when": "Lists named by their section title."
+      }
+    ],
+    "focus": "Focus ring on each item.",
+    "wcag": [
+      {
+        "criterion": "2.4.8 Location",
+        "how": "Marks the current page."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Disclosure buttons expose expanded state."
+      },
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Current page has an edge bar, not just color."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "app",
+      "title": "App navigation",
+      "description": "Icons and one section.",
+      "code": "import { SideNav } from '@ds/react';\n\n<SideNav currentItem=\"orders\" sections={[{ items: [\n  { id: 'home', label: 'Home', href: '/', icon: <House /> },\n  { id: 'orders', label: 'Orders', href: '/orders', icon: <Package /> },\n] }]} />"
+    },
+    {
+      "id": "docs",
+      "title": "Docs with groups",
+      "description": "Nested pages.",
+      "code": "import { SideNav } from '@ds/react';\n\n<SideNav currentItem=\"colors\" sections={[\n  { title: 'Foundations', items: [{ label: 'Tokens', items: [{ id: 'colors', label: 'Colors', href: '/colors' }] }] },\n]} />"
+    },
+    {
+      "id": "router",
+      "title": "With a router",
+      "description": "Current from the URL.",
+      "code": "import { SideNav } from '@ds/react';\n\n<SideNav sections={sections} currentItem={location.pathname} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--side-nav-"
+  ],
+  "related": [
+    {
+      "id": "navbar",
+      "relation": "For a few top-level pages."
+    },
+    {
+      "id": "breadcrumb",
+      "relation": "Shows location in deep hierarchies."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Removed the bar on the current item; its background and text color mark it."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "SideNav",
+      "import": "import { SideNav } from '@ds/react';",
+      "description": "Vertical navigation for apps and docs with many pages: sections, icons, and nested groups\nthat expand. The current page is marked with aria-current.",
+      "props": {
+        "sections": {
+          "type": "SideNavSection[]",
+          "required": true,
+          "default": null,
+          "description": "Sections of links. Nested items expand and collapse."
+        },
+        "currentItem": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Id of the current page’s item. Its parents start expanded."
+        },
+        "aria-label": {
+          "type": "string",
+          "required": false,
+          "default": "Side",
+          "description": "Names the navigation landmark. Default \"Side\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--side-nav-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--side-nav-padding": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--side-nav-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--side-nav-section-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--side-nav-item-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--side-nav-item-default-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--side-nav-item-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--side-nav-item-hover-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--side-nav-item-active-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--side-nav-item-active-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--side-nav-item-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--side-nav-item-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--side-nav-item-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--side-nav-item-indent": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--side-nav-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--side-nav-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--side-nav-group-label-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--side-nav-group-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--side-nav-group-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--side-nav-group-label-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--side-nav-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--side-nav-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--side-nav-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--side-nav-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--side-nav-active-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--side-nav-duration": {
+      "description": "Elements changing size or position: accordions, tabs.",
+      "references": "--duration-normal",
+      "default": "200ms"
+    },
+    "--side-nav-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--side-nav-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--side-nav-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--side-nav-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--side-nav-item-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-navigation-sidenav--docs"
+}

@@ -1,0 +1,368 @@
+{
+  "id": "apps-notifications",
+  "name": "AppsNotifications",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "A settings panel with one switch per app, to turn each app’s notifications on or off. Changes apply immediately. It is built from Card and Switch.",
+  "imports": [
+    {
+      "name": "AppsNotifications",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "In settings and sidebars, to turn notifications (or any per-app feature) on and off.",
+    "When each change should apply right away, without a Save button."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "When changes are applied with a Save button.",
+      "alternative": "Checkbox in a form"
+    },
+    {
+      "text": "For a list of the notifications themselves.",
+      "alternative": "A list of Alerts or a notification feed"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Panel",
+      "description": "A Card, named by its heading."
+    },
+    {
+      "name": "Heading",
+      "description": "Says what the switches control."
+    },
+    {
+      "name": "App row",
+      "description": "Icon and name; the name labels the switch."
+    },
+    {
+      "name": "Switch",
+      "description": "On or off for that app."
+    }
+  ],
+  "options": [
+    {
+      "prop": "appearance",
+      "title": "Appearance (from Card)",
+      "values": [
+        {
+          "value": "elevated",
+          "meaning": "Default; a standalone panel."
+        },
+        {
+          "value": "outlined",
+          "meaning": "Inside sidebars or other panels."
+        },
+        {
+          "value": "filled",
+          "meaning": "Grouped inside a surface."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "On / off",
+      "meaning": "Each app’s switch.",
+      "trigger": "enabled or defaultEnabled"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "An app’s setting can’t be changed.",
+      "trigger": "disabled on the item"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Immediate",
+      "text": "Each switch applies at once and calls onEnabledChange(id, enabled). Show an Alert if saving fails and switch it back."
+    },
+    {
+      "topic": "Controlled or not",
+      "text": "Pass enabled per item to control it; otherwise defaultEnabled (default on) sets the starting state."
+    },
+    {
+      "topic": "Click target",
+      "text": "Clicking the app name or icon also toggles the switch."
+    }
+  ],
+  "content": [
+    "Heading: what the switches control, e.g. “Email notifications”.",
+    "Use the app’s own name and spelling."
+  ],
+  "guidelines": [
+    {
+      "do": "Apply each change immediately.",
+      "dont": "Add a Save button under the switches.",
+      "why": "Switches promise an instant effect; use checkboxes when changes are saved later."
+    },
+    {
+      "do": "Write a heading that says what is being switched.",
+      "dont": "Use a vague heading like “Apps”.",
+      "why": "The heading names the panel for screen readers and says what “on” means."
+    },
+    {
+      "do": "Handle failures by switching back and explaining.",
+      "dont": "Leave a switch on when the change didn’t save.",
+      "why": "The switch must reflect the real setting."
+    }
+  ],
+  "accessibility": {
+    "role": "region (section named by its heading) containing a list of switches.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves between switches."
+      },
+      {
+        "keys": "Space",
+        "action": "Toggles the focused switch."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-labelledby on the panel",
+        "when": "Set automatically to the heading."
+      },
+      {
+        "attribute": "role=\"switch\" + aria-checked",
+        "when": "From Switch; named by the app name."
+      }
+    ],
+    "focus": "Each switch shows its focus ring.",
+    "wcag": [
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Real switches with the app name as label."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Tab and Space operate every switch."
+      },
+      {
+        "criterion": "1.1.1 Non-text Content",
+        "how": "App icons are decorative (alt=\"\") because the name is next to them."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Notification settings",
+      "description": "Uncontrolled: all apps start on.",
+      "code": "import { AppsNotifications } from '@ds/react';\n\n<AppsNotifications\n  title=\"Notifications\"\n  items={[\n    { id: 'google', name: 'Google', icon: '/icons/google.png' },\n    { id: 'linkedin', name: 'LinkedIn', icon: '/icons/linkedin.png' },\n    { id: 'behance', name: 'Behance', icon: '/icons/behance.png', defaultEnabled: false },\n  ]}\n  onEnabledChange={(id, enabled) => saveSetting(id, enabled)}\n/>"
+    },
+    {
+      "id": "controlled",
+      "title": "Controlled",
+      "description": "Keep the settings in state.",
+      "code": "import { useState } from 'react';\nimport { AppsNotifications } from '@ds/react';\n\nconst [on, setOn] = useState({ slack: true, github: false });\n\n<AppsNotifications\n  title=\"Email notifications\"\n  items={[\n    { id: 'slack', name: 'Slack', enabled: on.slack },\n    { id: 'github', name: 'GitHub', enabled: on.github },\n  ]}\n  onEnabledChange={(id, enabled) => setOn((s) => ({ ...s, [id]: enabled }))}\n/>"
+    },
+    {
+      "id": "sidebar",
+      "title": "In a sidebar",
+      "description": "Outlined, with a heading level that fits the page.",
+      "code": "import { AppsNotifications } from '@ds/react';\n\n<AppsNotifications appearance=\"outlined\" title=\"Connected apps\" titleAs=\"h2\" items={apps} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--app-notifications-"
+  ],
+  "related": [
+    {
+      "id": "switch",
+      "relation": "Each row’s control."
+    },
+    {
+      "id": "card",
+      "relation": "The panel."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Rebuilt from Card and Switch: real switches named by the app, keyboard support, a named panel.",
+        "Items use name/icon/enabled/defaultEnabled; onEnabledChange(id, enabled) replaces per-item onChange.",
+        "NotificationListItem is now the row of this pattern. The --toggle-* tokens were removed (use Switch)."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "AppsNotifications",
+      "import": "import { AppsNotifications } from '@ds/react';",
+      "description": "A panel of per-app notification switches. Built from Card and Switch; each change applies\nimmediately.",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": false,
+          "default": "Notifications",
+          "description": "Heading of the panel. Default \"Notifications\"."
+        },
+        "titleAs": {
+          "type": "\"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "values": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "required": false,
+          "default": null,
+          "description": "Heading level that fits the page outline. Default h3."
+        },
+        "items": {
+          "type": "AppNotificationSetting[]",
+          "required": true,
+          "default": null,
+          "description": "One row per app."
+        },
+        "onEnabledChange": {
+          "type": "((id: string, enabled: boolean) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called when a switch changes, with the app's id and its new state."
+        },
+        "appearance": {
+          "type": "CardAppearance",
+          "values": [
+            "elevated",
+            "outlined",
+            "filled"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for\ndense layouts, `filled` tints it for grouping inside a surface."
+        },
+        "orientation": {
+          "type": "CardOrientation",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`vertical` stacks media above the body; `horizontal` puts media beside it."
+        },
+        "href": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area\ncovers the card, so there's one clear, accessible target."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--app-notifications-title-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--app-notifications-title-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--app-notifications-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--app-notifications-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--app-notifications-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--app-notifications-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--app-notifications-icon-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-xs",
+      "default": "2px"
+    },
+    "--app-notifications-list-gap": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "24px"
+      }
+    },
+    "--app-notifications-list-item-gap": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--app-notifications-app1-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Google'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'جوجل'"
+      }
+    },
+    "--app-notifications-app2-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'X (Twitter)'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'إكس (تويتر)'"
+      }
+    },
+    "--app-notifications-app3-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Linkedin'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'لينكدإن'"
+      }
+    },
+    "--app-notifications-app4-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Dribbble'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'دريبل'"
+      }
+    },
+    "--app-notifications-app5-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Behance'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'بيهانس'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-appsnotifications--docs"
+}

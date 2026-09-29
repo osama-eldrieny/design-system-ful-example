@@ -1,0 +1,50 @@
+/**
+ * Component tokens: footer
+ *
+ * Style this component only with these tokens. The surface follows the section layout
+ * tokens, so it matches other page sections in every theme.
+ *
+ * Grammar: --footer-{part?}-{state?}-{property}
+ *   part: text (the copyright line) | link; state: default | hover.
+ *   Link corners come from the radius theme (themes/radius.css).
+ */
+
+:root,
+[data-theme] {
+  /* Surface */
+  --footer-bg-color: var(--section-bg-color);
+  --footer-padding: var(--section-padding);
+  --footer-gap: var(--spacing-sm);
+  --footer-border-radius: var(--section-border-radius);
+  --footer-shadow-x: var(--section-shadow-x);
+  --footer-shadow-y: var(--section-shadow-y);
+  --footer-shadow-blur: var(--section-shadow-blur);
+  --footer-shadow-color: var(--section-shadow-color);
+
+  /* Copyright line */
+  --footer-text-color: var(--color-fg-on-surface-primary);
+  --footer-text-font-family: var(--font-family-body);
+  --footer-text-font-size: var(--font-size-md);
+  --footer-text-font-weight: var(--font-weight-bold);
+  --footer-text-font-line-height: var(--font-line-height-md);
+
+  /* Links */
+  --footer-link-default-text-color: var(--color-fg-on-accent-secondary-text-default);
+  --footer-link-hover-text-color: var(--color-fg-on-accent-secondary-text-hover);
+  --footer-link-hover-underline-color: var(--color-fg-on-accent-secondary-text-hover);
+  --footer-link-list-gap: var(--spacing-xs);
+  --footer-link-padding-x: var(--spacing-sm);
+  --footer-link-padding-y: var(--spacing-2xs);
+  --footer-link-font-family: var(--font-family-body);
+  --footer-link-font-size: var(--font-size-sm);
+  --footer-link-font-line-height: var(--font-line-height-sm);
+  --footer-link-font-weight: var(--font-weight-regular);
+  --footer-link-underline-width: var(--border-width-regular);
+
+  /* Focus and motion */
+  --footer-focus-ring-width: var(--focus-ring-width);
+  --footer-focus-ring-offset: var(--focus-ring-offset);
+  --footer-focus-ring-color: var(--focus-ring-color);
+  --footer-transition-duration: var(--duration-fast);
+  --footer-transition-easing: var(--easing-standard);
+}

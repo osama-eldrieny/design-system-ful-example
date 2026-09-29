@@ -1,0 +1,26 @@
+/**
+ * Component tokens: logo
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --logo-{part?}-{property}
+ *   part: icon (the mark) | name (the wordmark).
+ *   The mark's corners come from the radius theme, the gap from the density theme.
+ */
+
+:root,
+[data-theme] {
+  --logo-icon-bg-color: var(--color-bg-accent-primary-default);
+  --logo-icon-color: var(--color-fg-on-accent-primary-default);
+  --logo-name-font-color: var(--color-fg-on-surface-primary);
+  --logo-icon-font-size: var(--font-size-lg);
+  --logo-icon-font-line-height: var(--font-line-height-md);
+  --logo-name-font-size: var(--font-size-md);
+  --logo-name-font-line-height: var(--font-line-height-md);
+  --logo-name-font-weight: var(--font-weight-bold);
+  --logo-name-font-family: var(--font-family-body);
+  --logo-icon-size: var(--sizing-xl);
+  --logo-focus-ring-width: var(--focus-ring-width);
+  --logo-focus-ring-offset: var(--focus-ring-offset);
+  --logo-focus-ring-color: var(--focus-ring-color);
+}

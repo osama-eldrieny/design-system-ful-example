@@ -1,0 +1,40 @@
+/**
+ * Component tokens: avatar (Avatar and AvatarGroup)
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --avatar-{size?}-{property} and --avatar-status-{status}-color
+ *   size: small | medium | large | xlarge; corners come from the radius theme
+ */
+
+:root,
+[data-theme] {
+  /* Sizes */
+  --avatar-small-size: var(--sizing-lg);
+  --avatar-medium-size: var(--sizing-xl);
+  --avatar-large-size: var(--sizing-2xl);
+  --avatar-xlarge-size: var(--sizing-3xl);
+  --avatar-small-font-size: var(--font-size-xs);
+  --avatar-medium-font-size: var(--font-size-md);
+  --avatar-large-font-size: var(--font-size-lg);
+  --avatar-xlarge-font-size: var(--font-size-2xl);
+
+  /* Fallback (initials or icon) */
+  --avatar-bg-color: var(--color-bg-primary-1);
+  --avatar-text-color: var(--color-fg-on-primary-high);
+  --avatar-font-family: var(--font-family-body);
+  --avatar-font-weight: var(--font-weight-semi-bold);
+
+  /* Ring separating stacked avatars and the status dot from what's behind them */
+  --avatar-border-width: var(--border-width-regular);
+  --avatar-ring-color: var(--color-bg-surface);
+
+  /* Status dot */
+  --avatar-status-online-color: var(--color-bg-accent-success-default);
+  --avatar-status-away-color: var(--color-bg-accent-warning-default);
+  --avatar-status-busy-color: var(--color-bg-accent-danger-default);
+  --avatar-status-offline-color: var(--color-bg-accent-secondary-default);
+
+  /* Group */
+  --avatar-group-gap: var(--spacing-4xs);
+}

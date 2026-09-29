@@ -1,0 +1,421 @@
+{
+  "id": "progress",
+  "name": "Progress",
+  "category": "Feedback",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A progress bar shows how far a task has got, such as an upload or setup steps. Without a value it becomes an indeterminate, animated bar.",
+  "imports": [
+    {
+      "name": "Progress",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For tasks with measurable progress: uploads, downloads, processing.",
+    "For completion, e.g. a profile 60% complete or storage used."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For unknown, short waits in a small area.",
+      "alternative": "Spinner"
+    },
+    {
+      "text": "For steps people move through.",
+      "alternative": "Stepper"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Label",
+      "description": "Names the bar."
+    },
+    {
+      "name": "Value",
+      "description": "“45%”.",
+      "optional": true
+    },
+    {
+      "name": "Track",
+      "description": "The full length."
+    },
+    {
+      "name": "Bar",
+      "description": "The completed part in the tone color."
+    }
+  ],
+  "options": [
+    {
+      "prop": "tone",
+      "title": "Tone",
+      "values": [
+        {
+          "value": "primary",
+          "meaning": "Default."
+        },
+        {
+          "value": "success",
+          "meaning": "Complete or healthy."
+        },
+        {
+          "value": "warning",
+          "meaning": "Near a limit, e.g. storage 90%."
+        },
+        {
+          "value": "danger",
+          "meaning": "Over a limit or failed."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "small",
+          "meaning": "Thin; cards and tables."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Determinate",
+      "meaning": "Bar length shows value/max.",
+      "trigger": "value"
+    },
+    {
+      "name": "Indeterminate",
+      "meaning": "Animated bar; unknown progress.",
+      "trigger": "no value"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Announcement",
+      "text": "A progressbar with aria-valuenow and aria-valuetext (“45%”). Screen readers read it when focused or navigated to; announce completion separately."
+    },
+    {
+      "topic": "Motion",
+      "text": "The bar eases between values; the indeterminate animation slows for reduced motion."
+    }
+  ],
+  "content": [
+    "Label: what is happening, e.g. “Uploading report.pdf”."
+  ],
+  "guidelines": [
+    {
+      "do": "Always give a label.",
+      "dont": "Show an unlabelled bar.",
+      "why": "The label says what is progressing."
+    },
+    {
+      "do": "Announce completion with an Alert or toast.",
+      "dont": "Rely on the bar reaching 100%.",
+      "why": "Screen reader users don’t hear the bar change."
+    },
+    {
+      "do": "Use a tone with a word for limits (“90% used”).",
+      "dont": "Show danger color without saying why.",
+      "why": "Color alone isn’t enough."
+    }
+  ],
+  "accessibility": {
+    "role": "progressbar.",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "Not focusable."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-labelledby",
+        "when": "The label."
+      },
+      {
+        "attribute": "aria-valuenow / min / max / valuetext",
+        "when": "Determinate; left out when indeterminate."
+      }
+    ],
+    "focus": "None.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Labelled progressbar."
+      },
+      {
+        "criterion": "1.4.11 Non-text Contrast",
+        "how": "Bar meets 3:1 against the track."
+      },
+      {
+        "criterion": "2.3.3 Animation from Interactions",
+        "how": "Slows for reduced motion."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "upload",
+      "title": "Upload",
+      "description": "With the value shown.",
+      "code": "import { Progress } from '@ds/react';\n\n<Progress label=\"Uploading report.pdf\" value={45} showValue />"
+    },
+    {
+      "id": "storage",
+      "title": "Storage",
+      "description": "Custom format and tone.",
+      "code": "import { Progress } from '@ds/react';\n\n<Progress label=\"Storage\" value={9.1} max={10} tone=\"warning\" showValue formatValue={(v, m) => `${v} of ${m} GB`} />"
+    },
+    {
+      "id": "indeterminate",
+      "title": "Indeterminate",
+      "description": "Unknown progress.",
+      "code": "import { Progress } from '@ds/react';\n\n<Progress label=\"Preparing export\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--progress-"
+  ],
+  "related": [
+    {
+      "id": "spinner",
+      "relation": "For unknown waits."
+    },
+    {
+      "id": "stepper",
+      "relation": "For multi-step tasks."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Progress",
+      "import": "import { Progress } from '@ds/react';",
+      "description": "A bar showing how far a task has got, such as an upload. Indeterminate without a value.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "What is progressing, e.g. \"Uploading report.pdf\". Names the bar."
+        },
+        "hideLabel": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Hides the label visually but keeps it for screen readers."
+        },
+        "value": {
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Current value. Leave out for unknown progress (an animated, indeterminate bar)."
+        },
+        "max": {
+          "type": "number",
+          "required": false,
+          "default": 100,
+          "description": "Value when complete. Default 100."
+        },
+        "showValue": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows the value, e.g. \"45%\", next to the label."
+        },
+        "formatValue": {
+          "type": "((value: number, max: number) => string)",
+          "required": false,
+          "default": "(value: number, max: number) => `${Math.round((value / max) * 100)}%`",
+          "description": "Formats the shown and announced value. Default a percentage."
+        },
+        "tone": {
+          "type": "\"primary\" | \"success\" | \"warning\" | \"danger\"",
+          "values": [
+            "primary",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": "Color meaning: primary (default), success, warning, danger."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\"",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for a thin bar in cards and tables, `medium` by default."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--progress-track-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-secondary-1",
+      "default": "#acadb2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#363641",
+        "brand=amber,mode=light": "#f3e8dc",
+        "brand=amber,mode=dark": "#6a625a",
+        "brand=opal,mode=light": "#afb2be",
+        "brand=opal,mode=dark": "#3c4058"
+      }
+    },
+    "--progress-bar-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--progress-success-bar-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--progress-warning-bar-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-default",
+      "default": "#f0be2e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#eec133",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--progress-danger-bar-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--progress-track-size": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--progress-small-track-size": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--progress-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--progress-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--progress-label-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--progress-value-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--progress-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--progress-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--progress-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--progress-label-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--progress-duration": {
+      "description": "Elements changing size or position: accordions, tabs.",
+      "references": "--duration-normal",
+      "default": "200ms"
+    },
+    "--progress-loop-duration": {
+      "description": "One turn of a repeating animation, e.g. a loading spinner.",
+      "references": "--duration-loop",
+      "default": "1000ms"
+    },
+    "--progress-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--progress-hidden-size": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-progress--docs"
+}

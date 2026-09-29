@@ -1,0 +1,41 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Checkbox, CheckboxGroup } from '@ds/react';
+import * as CheckboxStories from '../../../../packages/react/src/Checkbox/Checkbox.stories';
+import checkboxMeta from '../../../../packages/react/src/Checkbox/Checkbox.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={CheckboxStories} name="Docs" />
+
+# Checkbox
+
+<ComponentPage
+  meta={checkboxMeta}
+  stories={CheckboxStories}
+  components={[Checkbox, CheckboxGroup]}
+  anatomy={{
+    targets: [
+      '.ds-checkbox__box',
+      '.ds-checkbox__label',
+      '.ds-checkbox__description',
+      '.ds-checkbox__error',
+    ],
+    example: (
+      <Checkbox
+        label="I accept the terms"
+        description="Required to create an account."
+        error="Accept the terms to continue."
+        defaultChecked
+      />
+    ),
+  }}
+  optionStories={{ size: 'Sizes', orientation: 'Group' }}
+  extras={[{ title: 'Select all', story: 'SelectAll' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ display: 'grid', gap: 8 }}>
+      <Checkbox label="Checked" defaultChecked />
+      <Checkbox label="Mixed" indeterminate />
+      <Checkbox label="Unchecked" />
+    </div>
+  }
+/>

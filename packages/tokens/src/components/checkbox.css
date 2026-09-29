@@ -1,0 +1,56 @@
+/**
+ * Component tokens: checkbox
+ *
+ * Style this component only with these tokens. Colors match Radio; the group's label,
+ * help text and messages come from FormField.
+ *
+ * Grammar: --checkbox-{state?}-{part?}-{property} and --checkbox-{size}-{property}
+ *   state: off | on (checked or indeterminate) | hover | error
+ *   part: box | icon | label | description | group; size: small | large (medium is the base).
+ *   Box corners come from the radius theme (themes/radius.css).
+ */
+
+:root,
+[data-theme] {
+  /* Box */
+  --checkbox-off-bg-color: var(--color-bg-surface);
+  --checkbox-off-border-color: var(--color-bg-accent-secondary-default);
+  --checkbox-hover-border-color: var(--color-bg-accent-primary-default);
+  --checkbox-on-bg-color: var(--color-bg-accent-primary-default);
+  --checkbox-on-hover-bg-color: var(--color-bg-accent-primary-hover);
+  --checkbox-icon-color: var(--color-fg-on-accent-primary-default);
+  --checkbox-error-border-color: var(--color-bg-accent-danger-default);
+  --checkbox-border-width: var(--border-width-regular);
+
+  /* Sizes: box and label */
+  --checkbox-size: var(--sizing-sm);
+  --checkbox-label-font-size: var(--font-size-md);
+  --checkbox-label-font-line-height: var(--font-line-height-md);
+  --checkbox-small-size: var(--sizing-xs);
+  --checkbox-small-label-font-size: var(--font-size-sm);
+  --checkbox-small-label-font-line-height: var(--font-line-height-sm);
+  --checkbox-large-size: var(--sizing-md);
+  --checkbox-large-label-font-size: var(--font-size-md);
+  --checkbox-large-label-font-line-height: var(--font-line-height-lg);
+
+  /* Label and description */
+  --checkbox-gap: var(--spacing-xs);
+  --checkbox-label-font-family: var(--font-family-body);
+  --checkbox-label-font-weight: var(--font-weight-regular);
+  --checkbox-label-text-color: var(--color-fg-on-surface-primary);
+  --checkbox-description-font-size: var(--font-size-sm);
+  --checkbox-description-font-line-height: var(--font-line-height-sm);
+  --checkbox-description-text-color: var(--color-fg-on-surface-secondary);
+  --checkbox-error-text-color: var(--color-fg-on-accent-danger-text-default);
+
+  /* Group */
+  --checkbox-group-horizontal-gap: var(--spacing-lg);
+
+  /* Focus, motion, disabled */
+  --checkbox-focus-ring-width: var(--focus-ring-width);
+  --checkbox-focus-ring-offset: var(--focus-ring-offset);
+  --checkbox-focus-ring-color: var(--focus-ring-color);
+  --checkbox-transition-duration: var(--duration-fast);
+  --checkbox-transition-easing: var(--easing-standard);
+  --checkbox-disabled-opacity: var(--opacity-medium);
+}

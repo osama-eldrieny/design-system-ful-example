@@ -1,0 +1,607 @@
+{
+  "id": "textarea",
+  "name": "Textarea",
+  "category": "Forms",
+  "status": "stable",
+  "since": "0.3.0",
+  "description": "A multi-line text field for longer answers such as messages, comments or descriptions. It has a label, help text, error and success messages, optional auto-resize and a character counter.",
+  "imports": [
+    {
+      "name": "Textarea",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For answers longer than one line: messages, feedback, descriptions, addresses."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For short, single-line answers.",
+      "alternative": "InputField"
+    },
+    {
+      "text": "For formatted text with bold, links or lists.",
+      "alternative": "A rich-text editor"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Label",
+      "description": "From FormField; names the field."
+    },
+    {
+      "name": "Field",
+      "description": "The text area; corners follow the radius theme but never become pills."
+    },
+    {
+      "name": "Description",
+      "description": "Help text.",
+      "optional": true
+    },
+    {
+      "name": "Counter",
+      "description": "“12 / 200”; announced after typing pauses.",
+      "optional": true
+    },
+    {
+      "name": "Message",
+      "description": "Error or success text.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dense forms and tables."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "Prominent, e.g. a feedback form."
+        }
+      ]
+    },
+    {
+      "prop": "autoResize",
+      "title": "Height",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Fixed at rows lines; people can drag it taller. Default."
+        },
+        {
+          "value": "true",
+          "meaning": "Grows with the text up to maxRows, then scrolls."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Empty or filled.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Darker border.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring.",
+      "trigger": ":focus-visible"
+    },
+    {
+      "name": "Error",
+      "meaning": "Red border and message; aria-invalid.",
+      "trigger": "error"
+    },
+    {
+      "name": "Success",
+      "meaning": "Green border and message.",
+      "trigger": "success"
+    },
+    {
+      "name": "Read-only",
+      "meaning": "Tinted; can be selected, not edited.",
+      "trigger": "readOnly"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Dimmed; not focusable.",
+      "trigger": "disabled"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Counter",
+      "text": "showCount with maxLength shows “count / max”. The counter describes the field, and screen readers hear “N characters left” when typing pauses rather than on every key."
+    },
+    {
+      "topic": "Limit",
+      "text": "maxLength stops typing at the limit; the counter turns red when it is reached."
+    },
+    {
+      "topic": "Auto-resize",
+      "text": "Grows from rows to maxRows lines, then scrolls; manual resizing still works without autoResize."
+    }
+  ],
+  "content": [
+    "Label: what to write (“Message”), not an instruction.",
+    "Description: what to include or leave out, e.g. “Don’t include passwords”.",
+    "Set maxLength only when there is a real limit, and say it in the description if it’s short."
+  ],
+  "guidelines": [
+    {
+      "do": "Size the field for the expected answer with rows.",
+      "dont": "Use a two-line box for a long description.",
+      "why": "The size of the field hints how much to write."
+    },
+    {
+      "do": "Show a counter when there is a limit.",
+      "dont": "Cut text silently at a hidden limit.",
+      "why": "People need to know how much room is left."
+    },
+    {
+      "do": "Keep the label visible.",
+      "dont": "Rely on placeholder text to explain the field.",
+      "why": "Placeholders disappear while typing and often fail contrast."
+    }
+  ],
+  "accessibility": {
+    "role": "textbox (multi-line), labelled by FormField.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves into and out of the field."
+      },
+      {
+        "keys": "Enter",
+        "action": "Adds a new line (it doesn’t submit the form)."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-describedby",
+        "when": "Help text, message and counter."
+      },
+      {
+        "attribute": "aria-invalid",
+        "when": "With an error."
+      },
+      {
+        "attribute": "role=\"status\"",
+        "when": "Announces the characters left after typing pauses."
+      }
+    ],
+    "focus": "Focus ring around the field.",
+    "wcag": [
+      {
+        "criterion": "3.3.2 Labels or Instructions",
+        "how": "Always labelled; limits shown by the counter."
+      },
+      {
+        "criterion": "4.1.3 Status Messages",
+        "how": "The remaining count is announced without moving focus."
+      },
+      {
+        "criterion": "1.4.10 Reflow",
+        "how": "Full width of its container; no fixed width."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Message",
+      "description": "Label and help text.",
+      "code": "import { Textarea } from '@ds/react';\n\n<Textarea label=\"Message\" description=\"Tell us how we can help.\" rows={4} />"
+    },
+    {
+      "id": "counter",
+      "title": "With a limit",
+      "description": "Counter and maxLength.",
+      "code": "import { Textarea } from '@ds/react';\n\n<Textarea label=\"Bio\" maxLength={160} showCount />"
+    },
+    {
+      "id": "auto",
+      "title": "Auto-resize",
+      "description": "Grows from 2 to 8 lines.",
+      "code": "import { Textarea } from '@ds/react';\n\n<Textarea label=\"Comment\" rows={2} autoResize maxRows={8} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--textarea-"
+  ],
+  "related": [
+    {
+      "id": "input-field",
+      "relation": "For single-line answers."
+    },
+    {
+      "id": "form-field",
+      "relation": "Provides the label and messages."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Textarea",
+      "import": "import { Textarea } from '@ds/react';",
+      "description": "A multi-line text field with a label, help text, messages and an optional counter.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "What to write, e.g. \"Message\". Always required: it names the field."
+        },
+        "hideLabel": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Hides the label visually but keeps it for screen readers."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Help text under the field, e.g. what to include."
+        },
+        "error": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Error message. Marks the field invalid."
+        },
+        "success": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Confirmation message."
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the field optional with text after the label."
+        },
+        "size": {
+          "type": "TextareaSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for dense UI, `medium` by default, `large` for prominent forms."
+        },
+        "autoResize": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Grows with its content from `rows` lines up to `maxRows`, instead of scrolling."
+        },
+        "maxRows": {
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "With autoResize, the most lines before it scrolls."
+        },
+        "showCount": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows a character counter. Needs maxLength."
+        },
+        "countLabel": {
+          "type": "((count: number, max: number) => string)",
+          "required": false,
+          "default": "(count: number, max: number) => `${count} / ${max}`",
+          "description": "Counter text, for translation. Default \"12 / 200\"."
+        },
+        "remainingLabel": {
+          "type": "((remaining: number) => string)",
+          "required": false,
+          "default": "(remaining: number) =>\n  `${remaining} ${remaining === 1 ? 'character' : 'characters'} left`",
+          "description": "What screen readers hear after typing pauses. Default \"188 characters left\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--textarea-default-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--textarea-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--textarea-placeholder-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--textarea-default-border-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--textarea-hover-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--textarea-focus-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--textarea-error-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-danger-strong",
+      "default": "#f54e4e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f32727",
+        "brand=amber,mode=light": "#a66c7b",
+        "brand=amber,mode=dark": "#a66c7b",
+        "brand=opal,mode=light": "#f43f5e",
+        "brand=opal,mode=dark": "#f6627b"
+      }
+    },
+    "--textarea-success-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-success-strong",
+      "default": "#008f35",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ac40",
+        "brand=amber,mode=light": "#668e8b",
+        "brand=amber,mode=dark": "#668e8b",
+        "brand=opal,mode=light": "#5e9110",
+        "brand=opal,mode=dark": "#70ad14"
+      }
+    },
+    "--textarea-readonly-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--textarea-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--textarea-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--textarea-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--textarea-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--textarea-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--textarea-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--textarea-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--textarea-small-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--textarea-small-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--textarea-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--textarea-small-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--textarea-large-padding-x": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--textarea-large-padding-y": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--textarea-large-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--textarea-large-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--textarea-counter-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--textarea-over-counter-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--textarea-counter-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--textarea-counter-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--textarea-footer-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--textarea-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--textarea-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--textarea-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--textarea-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--textarea-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--textarea-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--textarea-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--textarea-hidden-size": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--textarea-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "16px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-textarea--docs"
+}

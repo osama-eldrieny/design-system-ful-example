@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ThemeBar, LengthScale, ModeComparison } from '../blocks';
+
+<Meta title="Foundations/Radius" />
+
+# Radius
+
+The **radius** theme axis sets how rounded the interface feels: **square** for sharp, technical products, **round** (default) for friendly, soft corners, **pills** for fully rounded controls.
+
+<ThemeBar />
+
+## Radius scale
+
+<LengthScale prefix="--radius-" kind="radius" />
+
+## What changes with the radius theme
+
+<ModeComparison axis="radius" />
+
+## Guidelines
+
+- Nested corners look right when the inner radius is the outer radius minus the padding between them.
+- Keep one radius theme per product; it is part of the brand's character.

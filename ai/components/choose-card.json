@@ -1,0 +1,634 @@
+{
+  "id": "choose-card",
+  "name": "ChooseCard",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "Choose cards are large radio buttons: each option is a card with a name, a description and an optional price, and people pick exactly one. Use them when options need explaining, such as plans.",
+  "imports": [
+    {
+      "name": "ChooseCardGroup",
+      "from": "@ds/react"
+    },
+    {
+      "name": "ChooseCard",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To pick one of two to four options that each need a sentence of explanation, e.g. a plan or a delivery speed.",
+    "When the choice is important enough to deserve visual weight."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For short options that need no explanation.",
+      "alternative": "RadioGroup"
+    },
+    {
+      "text": "For more than about five options.",
+      "alternative": "RadioGroup or Select"
+    },
+    {
+      "text": "When several options can be chosen.",
+      "alternative": "Checkbox"
+    },
+    {
+      "text": "To navigate to another page.",
+      "alternative": "Card with href"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Card",
+      "description": "The whole card is the radio button; its border shows the state."
+    },
+    {
+      "name": "Indicator",
+      "description": "Radio circle, filled when selected."
+    },
+    {
+      "name": "Title",
+      "description": "Option name; names the radio."
+    },
+    {
+      "name": "Description",
+      "description": "What the option includes.",
+      "optional": true
+    },
+    {
+      "name": "Price",
+      "description": "Price or other key figure, at the end.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "orientation",
+      "title": "Orientation (on ChooseCardGroup)",
+      "values": [
+        {
+          "value": "vertical",
+          "meaning": "Cards stacked. Default; best in narrow spaces."
+        },
+        {
+          "value": "horizontal",
+          "meaning": "Cards in a row that wraps when narrow; for side-by-side comparison."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Not selected.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Border takes the brand color.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Selected",
+      "meaning": "Thicker brand border and a filled indicator.",
+      "trigger": "data-state=\"checked\""
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring around the card.",
+      "trigger": ":focus-visible"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Dimmed; can’t be chosen.",
+      "trigger": "disabled"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Keyboard",
+      "text": "The group is one Tab stop. Arrow keys move to and select the next or previous card."
+    },
+    {
+      "topic": "Initial selection",
+      "text": "Nothing is selected until the person chooses, unless you set value or defaultValue. Preselect only a safe, sensible default."
+    },
+    {
+      "topic": "Layout",
+      "text": "Horizontal groups wrap onto more rows when there isn’t room; the selected border grows inward so nothing shifts."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "The indicator moves to the right and the price to the left."
+    }
+  ],
+  "content": [
+    "Title: the option’s name in one or two words.",
+    "Description: one line on what the option gives, focused on the difference from the others.",
+    "Price: include the period, e.g. “$29 / month”."
+  ],
+  "guidelines": [
+    {
+      "do": "Name the group with a visible heading via aria-labelledby.",
+      "dont": "Leave the group unnamed.",
+      "why": "Screen reader users hear the group name before the options."
+    },
+    {
+      "do": "Keep descriptions parallel and about the same length.",
+      "dont": "Write a paragraph on one card and a word on the next.",
+      "why": "Parallel content makes options easy to compare."
+    },
+    {
+      "do": "Use two to four cards.",
+      "dont": "List ten choose cards.",
+      "why": "Large cards for many options push the rest of the page away; use a RadioGroup."
+    }
+  ],
+  "accessibility": {
+    "role": "radiogroup containing radio buttons (each card).",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves into the group, to the selected card (or the first)."
+      },
+      {
+        "keys": "Arrow keys",
+        "action": "Move to and select the next or previous card."
+      },
+      {
+        "keys": "Space",
+        "action": "Selects the focused card."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-labelledby on ChooseCardGroup",
+        "when": "Always: point it at the visible heading (or use aria-label)."
+      },
+      {
+        "attribute": "aria-labelledby / aria-describedby on each card",
+        "when": "Set automatically: the title names it; description and price describe it."
+      }
+    ],
+    "focus": "A focus ring surrounds the focused card.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Radio group semantics expose the single-choice relationship."
+      },
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Selection shows as a filled indicator and a thicker border, not only color."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Tab and arrow keys operate the group."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "plans",
+      "title": "Plan picker",
+      "description": "Three plans side by side, labelled by a heading.",
+      "code": "import { ChooseCardGroup, ChooseCard } from '@ds/react';\n\n<h2 id=\"plan\">Choose your plan</h2>\n<ChooseCardGroup aria-labelledby=\"plan\" orientation=\"horizontal\" defaultValue=\"pro\">\n  <ChooseCard value=\"basic\" title=\"Basic\" description=\"For individuals\" price=\"Free\" />\n  <ChooseCard value=\"pro\" title=\"Pro\" description=\"For professionals\" price=\"$29 / month\" />\n  <ChooseCard value=\"team\" title=\"Team\" description=\"For large teams\" price=\"Custom\" />\n</ChooseCardGroup>"
+    },
+    {
+      "id": "controlled",
+      "title": "Controlled",
+      "description": "Keep the selection in state.",
+      "code": "import { useState } from 'react';\nimport { ChooseCardGroup, ChooseCard } from '@ds/react';\n\nconst [speed, setSpeed] = useState('standard');\n\n<ChooseCardGroup aria-label=\"Delivery speed\" value={speed} onValueChange={setSpeed}>\n  <ChooseCard value=\"standard\" title=\"Standard\" description=\"3–5 working days\" price=\"Free\" />\n  <ChooseCard value=\"express\" title=\"Express\" description=\"Next working day\" price=\"$9\" />\n</ChooseCardGroup>"
+    },
+    {
+      "id": "disabled",
+      "title": "Unavailable option",
+      "description": "Disable an option and say why.",
+      "code": "import { ChooseCardGroup, ChooseCard } from '@ds/react';\n\n<ChooseCardGroup aria-label=\"Data refresh\">\n  <ChooseCard value=\"daily\" title=\"Daily\" description=\"Once a day\" />\n  <ChooseCard value=\"realtime\" title=\"Real-time\" description=\"Available on Pro\" disabled />\n</ChooseCardGroup>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--choose-card-"
+  ],
+  "related": [
+    {
+      "id": "radio-group",
+      "relation": "For short options without descriptions."
+    },
+    {
+      "id": "card",
+      "relation": "For cards that link somewhere instead of selecting."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Rebuilt as ChooseCardGroup + ChooseCard on a real radio group: one Tab stop, arrow keys, named options.",
+        "isSelected/onChange replaced by value/onValueChange on the group.",
+        "New tokens for hover, selected, indicator, focus and per-mode corners."
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Softer borders: a 1 px field-gray border, 2 px accent when selected.",
+        "Horizontal groups share the row equally and wrap text; a card moves to a new row only below its minimum width."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "ChooseCardGroup",
+      "import": "import { ChooseCardGroup } from '@ds/react';",
+      "description": "A set of large, card-style options where exactly one can be chosen, e.g. a plan. Arrow\nkeys move between cards; the group is a single Tab stop.",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Selected value (controlled). Use with onValueChange."
+        },
+        "defaultValue": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Initially selected value when uncontrolled."
+        },
+        "onValueChange": {
+          "type": "((value: string) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the new value when the selection changes."
+        },
+        "orientation": {
+          "type": "\"vertical\" | \"horizontal\"",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "required": false,
+          "default": "vertical",
+          "description": "`vertical` (default) stacks cards; `horizontal` puts them in a row that wraps when narrow."
+        },
+        "aria-labelledby": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Name the group with aria-labelledby (pointing at a visible heading) or aria-label,\ne.g. \"Plan\"."
+        },
+        "aria-label": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Defines a string value that labels the current element."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The ChooseCard options."
+        }
+      }
+    },
+    {
+      "name": "ChooseCard",
+      "import": "import { ChooseCard } from '@ds/react';",
+      "description": "One option inside a ChooseCardGroup. The whole card is the radio button.",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The value this card selects."
+        },
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Option name, e.g. \"Pro plan\". Names the radio."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "What the option includes. Read after the name."
+        },
+        "price": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Price or other key figure, shown at the end, e.g. \"$12 / month\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--choose-card-border-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--choose-card-title-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--choose-card-price-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--choose-card-desc-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--choose-card-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--choose-card-padding-y": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--choose-card-horizontal-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--choose-card-vertical-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--choose-card-title-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--choose-card-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--choose-card-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--choose-card-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--choose-card-desc-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--choose-card-desc-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--choose-card-desc-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--choose-card-desc-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--choose-card-price-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--choose-card-price-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--choose-card-price-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--choose-card-price-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--choose-card-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--choose-card-padding-x": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--choose-card-hover-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--choose-card-selected-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--choose-card-selected-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--choose-card-indicator-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--choose-card-indicator-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--choose-card-indicator-off-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--choose-card-indicator-on-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--choose-card-indicator-dot-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--choose-card-group-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--choose-card-group-item-min-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 0.6)"
+    },
+    "--choose-card-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--choose-card-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--choose-card-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--choose-card-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--choose-card-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--choose-card-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--choose-card-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--choose-card-title-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Pro Plan'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'الخطة الاحترافية'"
+      }
+    },
+    "--choose-card-desc-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Advanced tools for growing professional teams.'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'أدوات متقدمة للفرق المتنامية والمحترفة.'"
+      }
+    },
+    "--choose-card-price-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Free'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'مجانا'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-choosecard--docs"
+}

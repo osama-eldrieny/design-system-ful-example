@@ -1,0 +1,50 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Combobox } from '@ds/react';
+import * as ComboboxStories from '../../../../packages/react/src/Combobox/Combobox.stories';
+import comboboxMeta from '../../../../packages/react/src/Combobox/Combobox.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={ComboboxStories} name="Docs" />
+
+# Combobox
+
+<ComponentPage
+  meta={comboboxMeta}
+  stories={ComboboxStories}
+  components={[Combobox]}
+  anatomy={{
+    targets: [
+      '.ds-form-field__label',
+      '.ds-combobox__chip',
+      { selector: '.ds-combobox__input', at: 'center' },
+      '.ds-combobox__toggle',
+    ],
+    example: (
+      <div style={{ inlineSize: 320 }}>
+        <Combobox
+          multiple
+          label="Skills"
+          placeholder="Add a skill"
+          defaultValue={['react']}
+          options={[
+            { value: 'react', label: 'React' },
+            { value: 'css', label: 'CSS' },
+          ]}
+        />
+      </div>
+    ),
+  }}
+  optionStories={{ multiple: 'Multiple' }}
+  extras={[{ title: 'Async results', story: 'Async' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 240 }}>
+      <Combobox
+        multiple
+        label="Skills"
+        defaultValue={['react']}
+        options={[{ value: 'react', label: 'React' }]}
+      />
+    </div>
+  }
+/>

@@ -1,0 +1,239 @@
+{
+  "id": "divider",
+  "name": "Divider",
+  "category": "Layout",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A divider is a thin line that separates groups of content, horizontally or vertically, optionally with a short label such as “or”.",
+  "imports": [
+    {
+      "name": "Divider",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To separate groups in a list, menu or form.",
+    "Between sign-in options, labelled “or”."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To separate page sections.",
+      "alternative": "Spacing or headings"
+    },
+    {
+      "text": "Between every list item.",
+      "alternative": "List divided"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Line",
+      "description": "A hairline in the border color."
+    },
+    {
+      "name": "Label",
+      "description": "Short centered text.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "orientation",
+      "title": "Orientation",
+      "values": [
+        {
+          "value": "horizontal",
+          "meaning": "Between stacked content. Default."
+        },
+        {
+          "value": "vertical",
+          "meaning": "Between items in a row."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Static",
+      "meaning": "Not interactive.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Semantics",
+      "text": "A horizontal divider is an <hr> (separator); a labelled one is decorative text; a vertical one has role=\"separator\"."
+    }
+  ],
+  "content": [
+    "Labels: one short word."
+  ],
+  "guidelines": [
+    {
+      "do": "Prefer spacing and headings.",
+      "dont": "Put a divider between every block.",
+      "why": "Too many lines add noise."
+    },
+    {
+      "do": "Keep labels to a word.",
+      "dont": "Write a sentence in a divider.",
+      "why": "Long labels are hard to read between lines."
+    },
+    {
+      "do": "Use vertical dividers in toolbars.",
+      "dont": "Use a vertical divider as a page border.",
+      "why": "It’s meant for small groups of items."
+    }
+  ],
+  "accessibility": {
+    "role": "separator (horizontal and vertical); none when labelled.",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "Not focusable."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-orientation",
+        "when": "vertical dividers."
+      }
+    ],
+    "focus": "None.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Separators are exposed as such."
+      },
+      {
+        "criterion": "1.4.11 Non-text Contrast",
+        "how": "Dividers are decorative; groups are also separated by space."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Horizontal",
+      "description": "Between groups.",
+      "code": "import { Divider } from '@ds/react';\n\n<Divider />"
+    },
+    {
+      "id": "label",
+      "title": "With a label",
+      "description": "Between sign-in options.",
+      "code": "import { Divider } from '@ds/react';\n\n<Divider label=\"or\" />"
+    },
+    {
+      "id": "vertical",
+      "title": "Vertical",
+      "description": "In a toolbar.",
+      "code": "import { Divider } from '@ds/react';\n\n<div style={{ display: 'flex' }}>…<Divider orientation=\"vertical\" />…</div>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--divider-"
+  ],
+  "related": [
+    {
+      "id": "list",
+      "relation": "Lists can draw their own dividers."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Divider",
+      "import": "import { Divider } from '@ds/react';",
+      "description": "A thin line that separates groups of content.",
+      "props": {
+        "orientation": {
+          "type": "\"horizontal\" | \"vertical\"",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "required": false,
+          "default": "horizontal",
+          "description": "`horizontal` (default) between stacked content; `vertical` between items in a row."
+        },
+        "label": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Short text in the middle of a horizontal divider, e.g. “or”."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--divider-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--divider-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--divider-spacing": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--divider-label-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--divider-label-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--divider-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--divider-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--divider-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-layout-divider--docs"
+}

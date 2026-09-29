@@ -1,0 +1,42 @@
+/**
+ * Component tokens: switch
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --switch-{state?}-{part?}-{property}
+ *   state: on | off (plus -hover); corners come from the radius theme (themes/radius.css)
+ */
+
+:root,
+[data-theme] {
+  /* Track */
+  --switch-on-bg-color: var(--color-bg-accent-primary-default);
+  --switch-on-hover-bg-color: var(--color-bg-accent-primary-hover);
+  --switch-off-bg-color: var(--color-bg-accent-secondary-default);
+  --switch-off-hover-bg-color: var(--color-bg-accent-secondary-hover);
+  --switch-width: var(--sizing-xl);
+  --switch-height: var(--sizing-md);
+
+  /* Thumb */
+  --switch-thumb-color: var(--color-bg-base);
+  --switch-thumb-size: var(--sizing-sm);
+
+  /* Label and description */
+  --switch-gap: var(--spacing-xs);
+  --switch-label-font-family: var(--font-family-body);
+  --switch-label-font-size: var(--font-size-md);
+  --switch-label-font-line-height: var(--font-line-height-md);
+  --switch-label-font-weight: var(--font-weight-regular);
+  --switch-label-text-color: var(--color-fg-on-surface-primary);
+  --switch-description-font-size: var(--font-size-sm);
+  --switch-description-font-line-height: var(--font-line-height-sm);
+  --switch-description-text-color: var(--color-fg-on-surface-secondary);
+
+  /* Focus, motion, disabled */
+  --switch-focus-ring-width: var(--focus-ring-width);
+  --switch-focus-ring-offset: var(--focus-ring-offset);
+  --switch-focus-ring-color: var(--focus-ring-color);
+  --switch-transition-duration: var(--duration-fast);
+  --switch-transition-easing: var(--easing-standard);
+  --switch-disabled-opacity: var(--opacity-medium);
+}

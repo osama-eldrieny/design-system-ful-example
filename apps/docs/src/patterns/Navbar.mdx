@@ -1,0 +1,51 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Navbar, Logo } from '@ds/react';
+import * as NavbarStories from '../../../../packages/react/src/Navbar/Navbar.stories';
+import navbarMeta from '../../../../packages/react/src/Navbar/Navbar.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={NavbarStories} name="Docs" />
+
+# Navbar
+
+<ComponentPage
+  meta={navbarMeta}
+  stories={NavbarStories}
+  components={[Navbar]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-navbar', at: 'start' },
+      '.ds-navbar__logo',
+      '.ds-navbar__item[aria-current]',
+      '.ds-navbar__actions',
+    ],
+    example: (
+      <Navbar
+        aria-label="Anatomy"
+        logo={<Logo name="TechHub" />}
+        items={[
+          { label: 'Products', href: '#products' },
+          { label: 'Pricing', href: '#pricing' },
+        ]}
+        currentItem="Products"
+        actions={<span>Actions</span>}
+      />
+    ),
+  }}
+  extras={[
+    { title: 'With icons and actions', story: 'WithIconsAndActions' },
+    { title: 'Narrow screens', story: 'Narrow' },
+  ]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <Navbar
+      aria-label="Theme matrix"
+      logo={<Logo name="TechHub" hideName />}
+      items={[
+        { label: 'Products', href: '#products' },
+        { label: 'Pricing', href: '#pricing' },
+      ]}
+      currentItem="Products"
+    />
+  }
+/>

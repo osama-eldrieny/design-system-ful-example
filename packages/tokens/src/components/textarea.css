@@ -1,0 +1,61 @@
+/**
+ * Component tokens: textarea
+ *
+ * Style this component only with these tokens. Values match InputField so single- and
+ * multi-line fields look alike; the label and messages come from FormField.
+ *
+ * Grammar: --textarea-{state?}-{part?}-{property} and --textarea-{size}-{property}
+ *   state: default | hover | focus | error | success | readonly | over (past maxLength)
+ *   part: counter; size: small | large (medium is the base).
+ *   Corners come from the radius theme (themes/radius.css): never pill-shaped.
+ */
+
+:root,
+[data-theme] {
+  /* Control */
+  --textarea-default-bg-color: var(--color-bg-surface);
+  --textarea-default-text-color: var(--color-fg-on-surface-primary);
+  --textarea-placeholder-text-color: var(--color-fg-on-surface-secondary);
+  --textarea-default-border-color: var(--color-border-field);
+  --textarea-hover-border-color: var(--color-border-primary-strong);
+  --textarea-focus-border-color: var(--color-border-primary-strong);
+  --textarea-error-border-color: var(--color-border-danger-strong);
+  --textarea-success-border-color: var(--color-border-success-strong);
+  --textarea-readonly-bg-color: var(--color-bg-default);
+  --textarea-border-width: var(--border-width-hairline);
+  --textarea-font-family: var(--font-family-body);
+  --textarea-font-weight: var(--font-weight-regular);
+
+  /* Sizes */
+  --textarea-padding-x: var(--spacing-md);
+  --textarea-padding-y: var(--spacing-xs);
+  --textarea-font-size: var(--font-size-md);
+  --textarea-font-line-height: var(--font-line-height-md);
+  --textarea-small-padding-x: var(--spacing-sm);
+  --textarea-small-padding-y: var(--spacing-2xs);
+  --textarea-small-font-size: var(--font-size-sm);
+  --textarea-small-font-line-height: var(--font-line-height-md);
+  --textarea-large-padding-x: var(--spacing-lg);
+  --textarea-large-padding-y: var(--spacing-sm);
+  --textarea-large-font-size: var(--font-size-md);
+  --textarea-large-font-line-height: var(--font-line-height-lg);
+
+  /* Character counter */
+  --textarea-counter-text-color: var(--color-fg-on-surface-secondary);
+  --textarea-over-counter-text-color: var(--color-fg-on-accent-danger-text-default);
+  --textarea-counter-font-size: var(--font-size-sm);
+  --textarea-counter-font-line-height: var(--font-line-height-sm);
+  --textarea-footer-gap: var(--spacing-sm);
+  --textarea-gap: var(--spacing-2xs);
+
+  /* Focus, motion, disabled */
+  --textarea-focus-ring-width: var(--focus-ring-width);
+  --textarea-focus-ring-offset: var(--focus-ring-offset);
+  --textarea-focus-ring-color: var(--focus-ring-color);
+  --textarea-transition-duration: var(--duration-fast);
+  --textarea-transition-easing: var(--easing-standard);
+  --textarea-disabled-opacity: var(--opacity-medium);
+
+  /* Size of the visually hidden live region for the counter */
+  --textarea-hidden-size: var(--border-width-hairline);
+}

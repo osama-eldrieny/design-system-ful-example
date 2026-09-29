@@ -1,0 +1,30 @@
+/** HoverCard. Styled only with --hover-card-* tokens. */
+
+.ds-hover-card {
+  z-index: var(--hover-card-z-index);
+  box-sizing: border-box;
+  max-inline-size: var(--hover-card-max-width);
+  padding: var(--hover-card-padding);
+  border: var(--hover-card-border-width) solid var(--hover-card-border-color);
+  border-radius: var(--hover-card-border-radius);
+  background-color: var(--hover-card-bg-color);
+  box-shadow: var(--hover-card-shadow-x) var(--hover-card-shadow-y) var(--hover-card-shadow-blur)
+    var(--hover-card-shadow-color);
+  color: var(--hover-card-text-color);
+  font-family: var(--hover-card-font-family);
+  font-size: var(--hover-card-font-size);
+  line-height: var(--hover-card-font-line-height);
+  animation: ds-hover-card-in var(--hover-card-duration) var(--hover-card-easing);
+}
+
+@keyframes ds-hover-card-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-hover-card {
+    animation: none;
+  }
+}

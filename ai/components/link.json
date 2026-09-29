@@ -1,0 +1,489 @@
+{
+  "id": "link",
+  "name": "Link",
+  "category": "Actions",
+  "status": "stable",
+  "since": "0.3.0",
+  "description": "A link takes people to another page or place. Inline links sit in running text and are always underlined; standalone links stand on their own, like “View all orders”. External links open in a new tab and say so.",
+  "imports": [
+    {
+      "name": "Link",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To go to another page, section or site.",
+    "For a secondary, low-emphasis navigation like “View all”."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To do something (save, delete, open a dialog).",
+      "alternative": "Button"
+    },
+    {
+      "text": "For a prominent call to action that navigates.",
+      "alternative": "Button rendered as a link"
+    },
+    {
+      "text": "For the site’s main navigation.",
+      "alternative": "Navbar"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Text",
+      "description": "Says where the link goes."
+    },
+    {
+      "name": "Underline",
+      "description": "Always on for inline links; on hover for standalone."
+    },
+    {
+      "name": "Icon",
+      "description": "Standalone links; external links get the external icon.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "inline",
+          "meaning": "Inside a sentence; takes the surrounding text size. Default."
+        },
+        {
+          "value": "standalone",
+          "meaning": "On its own line or next to content; has sizes and an icon."
+        }
+      ]
+    },
+    {
+      "prop": "variant",
+      "title": "Variant",
+      "values": [
+        {
+          "value": "primary",
+          "meaning": "Brand color. Default."
+        },
+        {
+          "value": "secondary",
+          "meaning": "Neutral color for footers, metadata and dense UI."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size (standalone)",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Small text."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "Larger line height and icon."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Unvisited.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Darker, thicker underline.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Visited",
+      "meaning": "Darker brand color (primary only).",
+      "trigger": ":visited"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring.",
+      "trigger": ":focus-visible"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "External",
+      "text": "external opens a new tab with rel=\"noopener noreferrer\", shows an icon and adds “(opens in a new tab)” for screen readers."
+    },
+    {
+      "topic": "Routers",
+      "text": "Pass your router’s link component as `as`; it receives href and className."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "Icons like arrows flip to point the reading direction."
+    }
+  ],
+  "content": [
+    "Say where the link goes: “Read the return policy”, not “Click here”.",
+    "Keep link text unique on a page when the destinations differ.",
+    "Open new tabs only for other sites, and say so (external does)."
+  ],
+  "guidelines": [
+    {
+      "do": "Use Link to go somewhere and Button to do something.",
+      "dont": "Use a link with onClick to submit or delete.",
+      "why": "Screen readers announce links and buttons differently; people expect them to behave differently."
+    },
+    {
+      "do": "Write descriptive link text.",
+      "dont": "Write “Click here” or “More”.",
+      "why": "Screen reader users often browse a list of links out of context."
+    },
+    {
+      "do": "Keep inline links underlined.",
+      "dont": "Remove the underline from links in text.",
+      "why": "Color alone doesn’t identify a link for everyone (WCAG 1.4.1)."
+    }
+  ],
+  "accessibility": {
+    "role": "link (native anchor).",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves to the link."
+      },
+      {
+        "keys": "Enter",
+        "action": "Follows it."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-hidden on icons",
+        "when": "Always."
+      },
+      {
+        "attribute": "visually hidden text",
+        "when": "“(opens in a new tab)” on external links."
+      }
+    ],
+    "focus": "Focus ring around the link.",
+    "wcag": [
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Inline links are underlined."
+      },
+      {
+        "criterion": "2.4.4 Link Purpose",
+        "how": "Guidelines require descriptive text."
+      },
+      {
+        "criterion": "3.2.5 Change on Request",
+        "how": "New tabs are announced."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "inline",
+      "title": "Inline",
+      "description": "In a sentence.",
+      "code": "import { Link } from '@ds/react';\n\n<p>\n  Read our <Link href=\"/returns\">return policy</Link> before you send an item back.\n</p>"
+    },
+    {
+      "id": "standalone",
+      "title": "Standalone with an icon",
+      "description": "A “view all” link.",
+      "code": "import { Link } from '@ds/react';\nimport { ArrowRight } from 'lucide-react';\n\n<Link href=\"/orders\" appearance=\"standalone\" icon={<ArrowRight />}>\n  View all orders\n</Link>"
+    },
+    {
+      "id": "router",
+      "title": "Router and external",
+      "description": "Use your router’s link, or open another site in a new tab.",
+      "code": "import { Link } from '@ds/react';\nimport { Link as RouterLink } from 'react-router-dom';\n\n<Link as={RouterLink} to=\"/settings\">Settings</Link>\n<Link href=\"https://www.w3.org/WAI/\" external>WCAG guidelines</Link>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--link-"
+  ],
+  "related": [
+    {
+      "id": "button",
+      "relation": "For actions."
+    },
+    {
+      "id": "navbar",
+      "relation": "For main navigation."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Link",
+      "import": "import { Link } from '@ds/react';",
+      "description": "A link to another page or place. Links go somewhere; for actions, use a Button.",
+      "props": {
+        "href": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Destination."
+        },
+        "appearance": {
+          "type": "\"inline\" | \"standalone\"",
+          "values": [
+            "inline",
+            "standalone"
+          ],
+          "required": false,
+          "default": "inline",
+          "description": "`inline` (default) sits in running text, underlined and in the text's size; `standalone`\nstands on its own, e.g. “View all orders”, and can have an icon and a size."
+        },
+        "variant": {
+          "type": "\"primary\" | \"secondary\"",
+          "values": [
+            "primary",
+            "secondary"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": "`primary` (default) in the brand color; `secondary` neutral, for footers and dense UI."
+        },
+        "size": {
+          "type": "LinkSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "Size of a standalone link."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon after the text of a standalone link, e.g. an arrow. Hidden from screen readers."
+        },
+        "external": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Opens in a new tab with an external-link icon and “(opens in a new tab)” for screen\nreaders. Use for other sites only."
+        },
+        "externalLabel": {
+          "type": "string",
+          "required": false,
+          "default": "(opens in a new tab)",
+          "description": "Text announced for external links, for translation."
+        },
+        "as": {
+          "type": "ElementType",
+          "required": false,
+          "default": "a",
+          "description": "Render another element, e.g. your router's Link. It receives href and className."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--link-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ab8fff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#cda376",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--link-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-hover",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#d9b896",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#d0e1fd"
+      }
+    },
+    "--link-visited-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-focus",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dfd4ff",
+        "brand=amber,mode=light": "#574028",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#1b3a6f",
+        "brand=opal,mode=dark": "#ebf3fe"
+      }
+    },
+    "--link-secondary-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-default",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a9a6ae",
+        "brand=amber,mode=dark": "#8f8b96",
+        "brand=opal,mode=dark": "#c4c2c8"
+      }
+    },
+    "--link-secondary-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-hover",
+      "default": "#54505a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=dark": "#a9a6ae",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--link-underline-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--link-hover-underline-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--link-underline-offset": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--link-inline-icon-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--link-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--link-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--link-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--link-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--link-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--link-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--link-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--link-small-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--link-small-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xs",
+      "default": "14px"
+    },
+    "--link-large-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--link-large-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--link-large-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--link-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--link-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--link-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--link-focus-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-2xs",
+      "default": "1px"
+    },
+    "--link-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--link-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--link-hidden-size": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-actions-link--docs"
+}

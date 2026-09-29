@@ -1,0 +1,71 @@
+/**
+ * Component tokens: card
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --card-image-name: var(--image-card);
+  --card-image-bg-color: var(--color-bg-primary-1);
+  --card-title-font-color: var(--color-fg-on-surface-primary);
+  --card-desc-font-color: var(--color-fg-on-surface-secondary);
+  --card-review-font-color: var(--color-fg-on-surface-secondary);
+  --card-stars-icon-color: var(--color-fg-on-warning-high);
+  --card-old-price-font-color: var(--color-fg-on-surface-secondary);
+  --card-new-price-font-color: var(--color-fg-on-primary-high);
+  --card-image-height: var(--sizing-8xl);
+  --card-body-padding-x: var(--spacing-3xs);
+  --card-body-padding-top: var(--spacing-lg);
+  --card-body-padding-bottom: var(--spacing-sm);
+  --card-body-gap: var(--spacing-xl);
+  --card-body-text-gap: var(--spacing-xs);
+  --card-body-review-gap: var(--spacing-xs);
+  --card-body-prices-gap: var(--spacing-xs);
+  --card-stars-gap: var(--spacing-3xs);
+  --card-title-font-size: var(--font-size-lg);
+  --card-title-font-line-height: var(--font-line-height-lg);
+  --card-title-font-weight: var(--font-weight-medium);
+  --card-title-font-family: var(--font-family-body);
+  --card-desc-font-size: var(--font-size-sm);
+  --card-desc-font-line-height: var(--font-line-height-sm);
+  --card-desc-font-weight: var(--font-weight-regular);
+  --card-desc-font-family: var(--font-family-body);
+  --card-review-font-size: var(--font-size-sm);
+  --card-review-font-line-height: var(--font-line-height-sm);
+  --card-review-font-weight: var(--font-weight-regular);
+  --card-review-font-family: var(--font-family-body);
+  --card-old-price-font-size: var(--font-size-md);
+  --card-old-price-font-line-height: var(--font-line-height-md);
+  --card-old-price-font-weight: var(--font-weight-regular);
+  --card-old-price-font-family: var(--font-family-body);
+  --card-new-price-font-size: var(--font-size-xl);
+  --card-new-price-font-line-height: var(--font-line-height-xl);
+  --card-new-price-font-weight: var(--font-weight-bold);
+  --card-new-price-font-family: var(--font-family-body);
+  --card-stars-icon-size: var(--font-size-sm);
+  --card-stars-icon-line-height: var(--font-line-height-sm);
+
+  /* Container (generic Card): matches page sections */
+  --card-bg-color: var(--color-bg-surface);
+  --card-filled-bg-color: var(--color-bg-primary-1);
+  --card-border-color: var(--color-border-base);
+  --card-outlined-border-color: var(--color-bg-accent-secondary-default);
+  --card-border-width: var(--border-width-hairline);
+  --card-shadow-x: var(--shadow-0);
+  --card-shadow-color: var(--color-shadow-surface);
+  --card-gap: var(--spacing-md);
+  --card-horizontal-media-width: var(--sizing-8xl);
+
+  /* Clickable card */
+  --card-hover-border-color: var(--color-border-primary-strong);
+  --card-focus-ring-width: var(--focus-ring-width);
+  --card-focus-ring-offset: var(--focus-ring-offset);
+  --card-focus-ring-color: var(--focus-ring-color);
+  --card-transition-duration: var(--duration-fast);
+  --card-transition-easing: var(--easing-standard);
+
+  /* Product card: filled stars, empty stars, price */
+  --card-stars-empty-icon-color: var(--color-border-primary-strong);
+  --card-visually-hidden-size: var(--border-width-hairline);
+}

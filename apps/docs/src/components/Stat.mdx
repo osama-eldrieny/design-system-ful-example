@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Stat } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Stat/Stat.stories';
+import meta from '../../../../packages/react/src/Stat/Stat.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Stat
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Stat]}
+  anatomy={{
+    targets: ['.ds-stat__label', '.ds-stat__value', '.ds-stat__change'],
+    example: (
+      <Stat
+        label="Total revenue"
+        value="$124,567"
+        change="+12.5%"
+        trend="up"
+        help="vs last month"
+      />
+    ),
+  }}
+  optionStories={{ trend: 'Trends', positive: 'Trends' }}
+  behaviorStory="RightToLeft"
+  matrix={<Stat label="Revenue" value="$124,567" change="+12.5%" trend="up" />}
+/>

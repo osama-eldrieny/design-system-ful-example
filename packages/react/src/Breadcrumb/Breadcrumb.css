@@ -1,0 +1,63 @@
+/** Breadcrumb. Styled only with --breadcrumb-* tokens. The separator flips in RTL. */
+
+.ds-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--breadcrumb-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--breadcrumb-font-family);
+  font-size: var(--breadcrumb-font-size);
+  line-height: var(--breadcrumb-font-line-height);
+}
+
+.ds-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--breadcrumb-gap);
+}
+
+.ds-breadcrumb__link,
+.ds-breadcrumb__more {
+  border-radius: var(--breadcrumb-border-radius);
+  color: var(--breadcrumb-link-text-color);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--breadcrumb-underline-width);
+}
+
+.ds-breadcrumb__link:hover,
+.ds-breadcrumb__more:hover {
+  color: var(--breadcrumb-link-hover-text-color);
+}
+
+.ds-breadcrumb__more {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ds-breadcrumb__link:focus-visible,
+.ds-breadcrumb__more:focus-visible {
+  outline: var(--breadcrumb-focus-ring-width) solid var(--breadcrumb-focus-ring-color);
+  outline-offset: var(--breadcrumb-focus-ring-offset);
+}
+
+.ds-breadcrumb__current {
+  color: var(--breadcrumb-current-text-color);
+  font-weight: var(--breadcrumb-current-font-weight);
+}
+
+.ds-breadcrumb__separator {
+  flex: none;
+  inline-size: var(--breadcrumb-icon-size);
+  block-size: var(--breadcrumb-icon-size);
+  color: var(--breadcrumb-separator-color);
+}
+
+.ds-breadcrumb__separator:dir(rtl) {
+  transform: scaleX(-1);
+}

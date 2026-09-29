@@ -1,0 +1,109 @@
+/** Accordion. Styled only with --accordion-* tokens. Radix sets data-state and animates height. */
+
+.ds-accordion {
+  overflow: hidden;
+  border: var(--accordion-border-width) solid var(--accordion-border-color);
+  border-radius: var(--accordion-border-radius);
+  background-color: var(--accordion-bg-color);
+  font-family: var(--accordion-font-family);
+  font-size: var(--accordion-font-size);
+  line-height: var(--accordion-font-line-height);
+}
+
+.ds-accordion__item + .ds-accordion__item {
+  border-block-start: var(--accordion-border-width) solid var(--accordion-border-color);
+}
+
+.ds-accordion__header {
+  margin: 0;
+  font: inherit;
+}
+
+.ds-accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--accordion-gap);
+  inline-size: 100%;
+  padding-block: var(--accordion-padding-y);
+  padding-inline: var(--accordion-padding-x);
+  border: 0;
+  background: none;
+  color: var(--accordion-trigger-text-color);
+  font: inherit;
+  font-weight: var(--accordion-trigger-font-weight);
+  text-align: start;
+  cursor: pointer;
+}
+
+.ds-accordion__trigger:hover:not(:disabled) {
+  background-color: var(--accordion-trigger-hover-bg-color);
+}
+
+.ds-accordion__trigger:focus-visible {
+  outline: var(--accordion-focus-ring-width) solid var(--accordion-focus-ring-color);
+  outline-offset: calc(-1 * var(--accordion-focus-ring-width));
+}
+
+.ds-accordion__trigger:disabled {
+  opacity: var(--accordion-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-accordion__icon {
+  flex: none;
+  inline-size: var(--accordion-icon-size);
+  block-size: var(--accordion-icon-size);
+  color: var(--accordion-icon-color);
+  transition: transform var(--accordion-duration) var(--accordion-easing);
+}
+
+.ds-accordion__trigger[data-state='open'] .ds-accordion__icon {
+  transform: rotate(180deg);
+}
+
+.ds-accordion__content {
+  overflow: hidden;
+  color: var(--accordion-content-text-color);
+}
+
+.ds-accordion__content[data-state='open'] {
+  animation: ds-accordion-open var(--accordion-duration) var(--accordion-easing);
+}
+
+.ds-accordion__content[data-state='closed'] {
+  animation: ds-accordion-close var(--accordion-duration) var(--accordion-easing);
+}
+
+.ds-accordion__body {
+  padding-block: 0 var(--accordion-padding-y);
+  padding-inline: var(--accordion-padding-x);
+}
+
+@keyframes ds-accordion-open {
+  from {
+    block-size: 0;
+  }
+
+  to {
+    block-size: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes ds-accordion-close {
+  from {
+    block-size: var(--radix-accordion-content-height);
+  }
+
+  to {
+    block-size: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-accordion__content,
+  .ds-accordion__icon {
+    animation: none;
+    transition: none;
+  }
+}

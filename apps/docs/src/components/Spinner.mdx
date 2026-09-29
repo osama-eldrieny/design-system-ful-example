@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Spinner } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Spinner/Spinner.stories';
+import meta from '../../../../packages/react/src/Spinner/Spinner.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Spinner
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Spinner]}
+  anatomy={{
+    targets: ['.ds-spinner__circle'],
+    example: <Spinner size="large" label="Loading" />,
+  }}
+  optionStories={{ size: 'Sizes' }}
+  behaviorStory="RightToLeft"
+  matrix={<Spinner label="Loading" />}
+/>

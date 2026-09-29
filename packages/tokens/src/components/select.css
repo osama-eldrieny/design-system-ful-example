@@ -1,0 +1,85 @@
+/**
+ * Component tokens: select
+ *
+ * Style this component only with these tokens. The trigger matches InputField and the
+ * list matches DropdownMenu; the label and messages come from FormField.
+ *
+ * Grammar: --select-{part}-{state?}-{property} and --select-{size}-{property}
+ *   part: trigger | icon | content (the list) | item | indicator | group-label | separator
+ *   state: default | hover | focus | error | success | highlighted | selected
+ *   size: small | large (medium is the base). Corners and list shadow follow the radius and
+ *   shadow themes (themes/radius.css, themes/shadow.css).
+ */
+
+:root,
+[data-theme] {
+  /* Trigger */
+  --select-trigger-default-bg-color: var(--color-bg-surface);
+  --select-trigger-default-text-color: var(--color-fg-on-surface-primary);
+  --select-trigger-placeholder-text-color: var(--color-fg-on-surface-secondary);
+  --select-trigger-default-border-color: var(--color-border-field);
+  --select-trigger-hover-border-color: var(--color-border-primary-strong);
+  --select-trigger-focus-border-color: var(--color-border-primary-strong);
+  --select-trigger-error-border-color: var(--color-border-danger-strong);
+  --select-trigger-success-border-color: var(--color-border-success-strong);
+  --select-trigger-border-width: var(--border-width-hairline);
+  --select-trigger-gap: var(--spacing-xs);
+  --select-icon-color: var(--color-fg-on-surface-secondary);
+  --select-icon-size: var(--sizing-sm);
+  --select-font-family: var(--font-family-body);
+  --select-font-weight: var(--font-weight-regular);
+
+  /* Sizes */
+  --select-padding-x: var(--spacing-md);
+  --select-padding-y: var(--spacing-2xs);
+  --select-height: var(--control-height-medium);
+  --select-small-height: var(--control-height-small);
+  --select-large-height: var(--control-height-large);
+  --select-font-size: var(--font-size-md);
+  --select-font-line-height: var(--font-line-height-md);
+  --select-small-padding-x: var(--spacing-sm);
+  --select-small-padding-y: var(--spacing-none);
+  --select-small-font-size: var(--font-size-sm);
+  --select-small-font-line-height: var(--font-line-height-md);
+  --select-large-padding-x: var(--spacing-lg);
+  --select-large-padding-y: var(--spacing-2xs);
+  --select-large-font-size: var(--font-size-md);
+  --select-large-font-line-height: var(--font-line-height-lg);
+
+  /* List */
+  --select-content-bg-color: var(--color-bg-base);
+  --select-content-border-color: var(--color-border-base);
+  --select-content-border-width: var(--border-width-hairline);
+  --select-content-shadow-x: var(--shadow-none);
+  --select-content-shadow-color: var(--color-shadow-surface);
+  --select-content-padding: var(--spacing-2xs);
+  --select-content-max-height: var(--sizing-8xl);
+  --select-content-z-index: var(--z-dropdown);
+
+  /* Items */
+  --select-item-default-bg-color: var(--color-bg-base);
+  --select-item-default-text-color: var(--color-fg-on-surface-primary);
+  --select-item-highlighted-bg-color: var(--color-bg-primary-1);
+  --select-item-highlighted-text-color: var(--color-fg-on-surface-primary);
+  --select-item-selected-text-color: var(--color-fg-on-primary-high);
+  --select-indicator-color: var(--color-fg-on-primary-high);
+  --select-item-padding-x: var(--spacing-md);
+  --select-item-padding-y: var(--spacing-xs);
+  --select-item-gap: var(--spacing-xs);
+  --select-item-font-size: var(--font-size-md);
+  --select-item-font-line-height: var(--font-line-height-md);
+  --select-group-label-text-color: var(--color-fg-on-surface-secondary);
+  --select-group-label-font-size: var(--font-size-sm);
+  --select-group-label-font-line-height: var(--font-line-height-sm);
+  --select-group-label-font-weight: var(--font-weight-medium);
+  --select-separator-color: var(--color-border-base);
+  --select-separator-width: var(--border-width-regular);
+
+  /* Focus, motion, disabled */
+  --select-focus-ring-width: var(--focus-ring-width);
+  --select-focus-ring-offset: var(--focus-ring-offset);
+  --select-focus-ring-color: var(--focus-ring-color);
+  --select-transition-duration: var(--duration-fast);
+  --select-transition-easing: var(--easing-enter);
+  --select-disabled-opacity: var(--opacity-medium);
+}

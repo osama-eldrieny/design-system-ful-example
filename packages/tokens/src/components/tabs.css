@@ -1,0 +1,64 @@
+/**
+ * Component tokens: tabs (Tabs, TabList, Tab, TabPanel)
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --tabs-{appearance?}-{part}-{state?}-{property}
+ *   appearance: enclosed (omitted) | pill | line; vertical: layout of vertical tabs
+ *   state: default | hover | active; corners come from the radius theme
+ */
+
+:root,
+[data-theme] {
+  /* Enclosed (default): tabs sit in a tinted container */
+  --tabs-bg-color: var(--color-bg-secondary-1);
+  --tabs-padding: var(--spacing-2xs);
+  --tabs-list-gap: var(--spacing-2xs);
+  --tabs-item-default-bg-color: var(--color-bg-secondary-1);
+  --tabs-item-default-font-color: var(--color-fg-on-secondary-high);
+  --tabs-item-hover-bg-color: var(--color-bg-primary-1);
+  --tabs-item-hover-font-color: var(--color-fg-on-primary-high);
+  --tabs-item-active-bg-color: var(--color-bg-accent-primary-focus);
+  --tabs-item-active-font-color: var(--color-fg-on-accent-primary-focus);
+
+  /* Pill: no container; the selected tab is a filled pill */
+  --tabs-pill-item-default-font-color: var(--color-fg-on-surface-secondary);
+  --tabs-pill-item-hover-bg-color: var(--color-bg-primary-1);
+  --tabs-pill-item-hover-font-color: var(--color-fg-on-primary-high);
+
+  /* Line: an underline marks the selected tab */
+  --tabs-line-gap: var(--spacing-md);
+  --tabs-line-border-color: var(--color-border-base);
+  --tabs-line-border-width: var(--border-width-hairline);
+  --tabs-line-item-default-font-color: var(--color-fg-on-surface-secondary);
+  --tabs-line-item-hover-font-color: var(--color-fg-on-accent-primary-text-hover);
+  --tabs-line-item-active-font-color: var(--color-fg-on-accent-primary-text-default);
+  --tabs-line-indicator-color: var(--color-bg-accent-primary-default);
+  --tabs-line-indicator-width: var(--border-width-regular);
+
+  /* Tab label and icon */
+  --tabs-item-padding-x: var(--spacing-sm);
+  --tabs-item-padding-y: var(--spacing-xs);
+  --tabs-item-padding-gap: var(--spacing-xs);
+  --tabs-item-label-font-family: var(--font-family-body);
+  --tabs-item-label-font-weight: var(--font-weight-regular);
+  --tabs-item-active-label-font-weight: var(--font-weight-medium);
+  --tabs-item-label-font-size: var(--font-size-md);
+  --tabs-item-label-font-line-height: var(--font-line-height-md);
+  --tabs-item-icon-size: var(--sizing-sm);
+
+  /* Vertical: tabs in a column beside the panel */
+  --tabs-vertical-list-width: var(--sizing-8xl);
+  --tabs-vertical-gap: var(--spacing-xl);
+
+  /* Panel */
+  --tabs-panel-padding-y: var(--spacing-md);
+
+  /* Focus, motion, disabled */
+  --tabs-focus-ring-width: var(--focus-ring-width);
+  --tabs-focus-ring-offset: var(--focus-ring-offset);
+  --tabs-focus-ring-color: var(--focus-ring-color);
+  --tabs-transition-duration: var(--duration-fast);
+  --tabs-transition-easing: var(--easing-standard);
+  --tabs-disabled-opacity: var(--opacity-medium);
+}

@@ -1,0 +1,109 @@
+/**
+ * Theme: density
+ *
+ * Spacing per density. Set data-density (comfortable | compact). Compact tightens the
+ * padding of containers and controls for data-heavy screens; the named scale stays the same.
+ *
+ * Token reference:
+ *   --spacing-4xs: Negative space (-4px) for deliberate overlap, e.g. stacked avatars.
+ *   --spacing-none: No space.
+ *   --spacing-3xs: Hairline gap (2px), e.g. between rating stars.
+ *   --spacing-2xs: Tightest gap between tightly related items, e.g. icon and label.
+ *   --spacing-xs: Small gap inside compact controls.
+ *   --spacing-sm: Gap between related items in a group.
+ *   --spacing-md: Default gap and control padding.
+ *   --spacing-lg: Gap between groups inside a section.
+ *   --spacing-xl: Padding of sections and cards.
+ *   --spacing-2xl: Large section padding.
+ *   --spacing-3xl: Space between major sections.
+ *   --spacing-4xl: Extra-large layout spacing.
+ *   --spacing-5xl: Page-level outer spacing.
+ *   --control-height-small: Height of small buttons, fields and selects, so they line up in a row.
+ *   --control-height-medium: Height of medium (default) buttons, fields and selects.
+ *   --control-height-large: Height of large buttons, fields and selects.
+ */
+
+/* density: comfortable (default) */
+:root,
+[data-density='comfortable'] {
+  --control-height-small: var(--size-32);
+  --control-height-medium: var(--size-40);
+  --control-height-large: var(--size-48);
+  --spacing-4xs: var(--space-negative-4);
+  --spacing-none: var(--space-0);
+  --spacing-3xs: var(--space-2);
+  --spacing-2xs: var(--space-4);
+  --spacing-xs: var(--space-8);
+  --spacing-sm: var(--space-12);
+  --spacing-md: var(--space-16);
+  --spacing-lg: var(--space-20);
+  --spacing-xl: var(--space-24);
+  --spacing-2xl: var(--space-28);
+  --spacing-3xl: var(--space-32);
+  --spacing-4xl: var(--space-36);
+  --spacing-5xl: var(--space-40);
+  --container-padding: var(--space-40);
+  --section-padding: var(--space-28);
+  --section-gap: var(--space-24);
+  --section-margin-x: var(--space-16);
+  --section-margin-bottom: var(--space-32);
+  --meeting-card-gap: var(--space-24);
+  --meeting-card-margin-bottom: var(--space-20);
+  --button-medium-padding-x: var(--space-32);
+  --button-small-padding-x: var(--space-28);
+  --button-large-padding-x: var(--space-40);
+  --button-icon-padding-x: var(--space-16);
+  --button-icon-padding-y: var(--space-16);
+  --app-notifications-list-gap: var(--space-20);
+  --app-notifications-list-item-gap: var(--space-8);
+  --header-avatar-margin-bottom: var(--space-8);
+  --header-name-margin-bottom: var(--space-4);
+  --header-gap: var(--space-16);
+  --logo-gap: var(--space-16);
+  --tabs-gap: var(--space-20);
+  --pagination-gap: var(--space-4);
+  --card-padding: var(--space-16);
+  --menu-dropdown-item-padding-y: var(--space-8);
+}
+
+/* density: compact */
+[data-density='compact'] {
+  --control-height-small: var(--size-28);
+  --control-height-medium: var(--size-36);
+  --control-height-large: var(--size-44);
+  --spacing-4xs: var(--space-negative-4);
+  --spacing-none: var(--space-0);
+  --spacing-3xs: var(--space-2);
+  --spacing-2xs: var(--space-4);
+  --spacing-xs: var(--space-8);
+  --spacing-sm: var(--space-12);
+  --spacing-md: var(--space-16);
+  --spacing-lg: var(--space-20);
+  --spacing-xl: var(--space-24);
+  --spacing-2xl: var(--space-28);
+  --spacing-3xl: var(--space-32);
+  --spacing-4xl: var(--space-36);
+  --spacing-5xl: var(--space-40);
+  --container-padding: var(--space-28);
+  --section-padding: var(--space-24);
+  --section-gap: var(--space-16);
+  --section-margin-x: var(--space-12);
+  --section-margin-bottom: var(--space-24);
+  --meeting-card-gap: var(--space-16);
+  --meeting-card-margin-bottom: var(--space-12);
+  --button-medium-padding-x: var(--space-28);
+  --button-small-padding-x: var(--space-24);
+  --button-large-padding-x: var(--space-36);
+  --button-icon-padding-x: var(--space-12);
+  --button-icon-padding-y: var(--space-12);
+  --app-notifications-list-gap: var(--space-24);
+  --app-notifications-list-item-gap: var(--space-12);
+  --header-avatar-margin-bottom: var(--space-12);
+  --header-name-margin-bottom: var(--space-8);
+  --header-gap: var(--space-20);
+  --logo-gap: var(--space-12);
+  --tabs-gap: var(--space-16);
+  --pagination-gap: var(--space-8);
+  --card-padding: var(--space-8);
+  --menu-dropdown-item-padding-y: var(--space-4);
+}

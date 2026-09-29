@@ -1,0 +1,37 @@
+/**
+ * Component tokens: header
+ *
+ * Style this component only with these tokens. The surface follows the section layout
+ * tokens; gaps come from the density theme (themes/density.css).
+ *
+ * Grammar: --header-{part?}-{property}
+ *   part: name | role | title (the page heading) | avatar.
+ */
+
+:root,
+[data-theme] {
+  --header-name-font-color: var(--color-fg-on-surface-primary);
+  --header-title-font-color: var(--color-fg-on-surface-primary);
+  --header-role-font-color: var(--color-fg-on-surface-secondary);
+  --header-name-font-family: var(--font-family-body);
+  --header-name-font-size: var(--font-size-lg);
+  --header-name-font-line-height: var(--font-line-height-lg);
+  --header-name-font-weight: var(--font-weight-medium);
+  --header-role-font-family: var(--font-family-body);
+  --header-role-font-size: var(--font-size-md);
+  --header-role-font-line-height: var(--font-line-height-md);
+  --header-role-font-weight: var(--font-weight-medium);
+  --header-title-font-family: var(--font-family-body);
+  --header-title-font-size: var(--font-size-xl);
+  --header-title-font-line-height: var(--font-line-height-xl);
+  --header-title-font-weight: var(--font-weight-bold);
+
+  /* Surface */
+  --header-bg-color: var(--section-bg-color);
+  --header-padding: var(--section-padding);
+  --header-border-radius: var(--section-border-radius);
+  --header-shadow-x: var(--section-shadow-x);
+  --header-shadow-y: var(--section-shadow-y);
+  --header-shadow-blur: var(--section-shadow-blur);
+  --header-shadow-color: var(--section-shadow-color);
+}

@@ -1,0 +1,246 @@
+/**
+ * Theme: typography
+ *
+ * Font families and text direction per language × typeface. Set data-language (en | ar)
+ * and data-typeface (serif | sans) on a theme scope; applyTheme() also sets lang and dir.
+ *
+ * Token reference:
+ *   --font-family-headings: Headings and titles.
+ *   --font-family-body: Body text and most UI text.
+ *   --font-family-action: Buttons, links and other actions.
+ *   --container-direction: Text direction of containers (ltr or rtl).
+ *   --*-content: Translated demo text. Real components take text from props, not tokens.
+ */
+
+/* English, serif */
+[data-language='en'][data-typeface='serif'] {
+  --font-family-action: var(--font-family-en-serif);
+  --font-family-headings: var(--font-family-en-serif);
+  --font-family-body: var(--font-family-en-serif);
+  --section-meetings-title-content: 'My Meetings';
+  --section-apps-title-content: 'Apps Notification';
+  --container-direction: ltr;
+  --meeting1-title-content: 'Design System Meeting';
+  --meeting1-time-content: '9 - 10 AM';
+  --meeting2-title-content: 'Team Lunch';
+  --meeting2-time-content: '1 - 2 PM';
+  --meeting3-title-content: 'Design Review';
+  --meeting3-time-content: '3 - 4 PM';
+  --button-content: 'Submit';
+  --app-notifications-app1-title-content: 'Google';
+  --app-notifications-app2-title-content: 'X (Twitter)';
+  --app-notifications-app3-title-content: 'Linkedin';
+  --app-notifications-app4-title-content: 'Dribbble';
+  --app-notifications-app5-title-content: 'Behance';
+  --header-name-font-content: 'Osama Eldrieny';
+  --header-role-font-content: 'Design System Designer';
+  --header-title-font-content: 'Multi-Theme Design System';
+  --logo-name-font-content: 'My Design System';
+  --tabs-item1-label-content: 'Home';
+  --tabs-item2-label-content: 'Profile';
+  --tabs-item3-label-content: 'Messages';
+  --menu-item1-content: 'Home';
+  --menu-item2-content: 'Themes';
+  --menu-item3-content: 'More';
+  --choose-card-title-font-content: 'Pro Plan';
+  --choose-card-desc-font-content: 'Advanced tools for growing professional teams.';
+  --choose-card-price-font-content: 'Free';
+  --input-field-placeholder-content: 'Type here';
+  --pagination-page1-number-font-content: '1';
+  --pagination-page2-number-font-content: '2';
+  --pagination-page3-number-font-content: '3';
+  --pagination-page4-number-font-content: '4';
+  --pagination-page5-number-font-content: '5';
+  --alerts-title-font-content: 'Alerts';
+  --alerts-item1-title-content: 'There are 9 new messages';
+  --alerts-item2-title-content: 'This is a primary alert — check it out!';
+  --alerts-item3-title-content: 'Click to verify your email';
+  --alerts-item4-title-content: 'Access denied. contact support';
+  --card-title-font-content: 'AirPods Max';
+  --card-desc-font-content: 'Spatial audio. Noise cancelled. All-day comfort.';
+  --card-review-font-content: '420 reviews';
+  --card-old-price-font-content: '$549';
+  --card-new-price-font-content: '$500';
+  --footer-title-content: 'Osama Eldrieny © 2025';
+  --footer-link1-content: 'License';
+  --footer-link2-content: 'Help';
+  --footer-link3-content: 'Policy';
+  --menu-dropdown-item1-content: 'About';
+  --menu-dropdown-item2-content: 'Contact';
+  --menu-dropdown-item3-content: 'Settings';
+}
+
+/* English, sans-serif (default) */
+:root,
+[data-language='en'][data-typeface='sans'] {
+  --font-family-action: var(--font-family-en-sans);
+  --font-family-headings: var(--font-family-en-sans);
+  --font-family-body: var(--font-family-en-sans);
+  --section-meetings-title-content: 'My Meetings';
+  --section-apps-title-content: 'Apps Notification';
+  --container-direction: ltr;
+  --meeting1-title-content: 'Design System Meeting';
+  --meeting1-time-content: '9 - 10 AM';
+  --meeting2-title-content: 'Team Lunch';
+  --meeting2-time-content: '1 - 2 PM';
+  --meeting3-title-content: 'Design Review';
+  --meeting3-time-content: '3 - 4 PM';
+  --button-content: 'Submit';
+  --app-notifications-app1-title-content: 'Google';
+  --app-notifications-app2-title-content: 'X (Twitter)';
+  --app-notifications-app3-title-content: 'Linkedin';
+  --app-notifications-app4-title-content: 'Dribbble';
+  --app-notifications-app5-title-content: 'Behance';
+  --header-name-font-content: 'Osama Eldrieny';
+  --header-role-font-content: 'Design System Designer';
+  --header-title-font-content: 'Multi-Theme Design System';
+  --logo-name-font-content: 'My Design System';
+  --tabs-item1-label-content: 'Home';
+  --tabs-item2-label-content: 'Profile';
+  --tabs-item3-label-content: 'Messages';
+  --menu-item1-content: 'Home';
+  --menu-item2-content: 'Themes';
+  --menu-item3-content: 'More';
+  --choose-card-title-font-content: 'Pro Plan';
+  --choose-card-desc-font-content: 'Advanced tools for growing professional teams.';
+  --choose-card-price-font-content: 'Free';
+  --input-field-placeholder-content: 'Type here';
+  --pagination-page1-number-font-content: '1';
+  --pagination-page2-number-font-content: '2';
+  --pagination-page3-number-font-content: '3';
+  --pagination-page4-number-font-content: '4';
+  --pagination-page5-number-font-content: '5';
+  --alerts-title-font-content: 'Alerts';
+  --alerts-item1-title-content: 'There are 9 new messages';
+  --alerts-item2-title-content: 'This is a primary alert — check it out!';
+  --alerts-item3-title-content: 'Click to verify your email';
+  --alerts-item4-title-content: 'Access denied. contact support';
+  --card-title-font-content: 'AirPods Max';
+  --card-desc-font-content: 'Spatial audio. Noise cancelled. All-day comfort.';
+  --card-review-font-content: '420 reviews';
+  --card-old-price-font-content: '$549';
+  --card-new-price-font-content: '$500';
+  --footer-title-content: 'Osama Eldrieny © 2025';
+  --footer-link1-content: 'License';
+  --footer-link2-content: 'Help';
+  --footer-link3-content: 'Policy';
+  --menu-dropdown-item1-content: 'About';
+  --menu-dropdown-item2-content: 'Contact';
+  --menu-dropdown-item3-content: 'Settings';
+}
+
+/* Arabic, serif */
+[data-language='ar'][data-typeface='serif'] {
+  --font-family-action: var(--font-family-ar-serif);
+  --font-family-headings: var(--font-family-ar-serif);
+  --font-family-body: var(--font-family-ar-serif);
+  --section-meetings-title-content: 'الإجتماعات';
+  --section-apps-title-content: 'إشعارات التطبيقات';
+  --container-direction: rtl;
+  --meeting1-title-content: 'إجتماع الديزاين سيستم';
+  --meeting1-time-content: '٩ - ١٠ صباحا';
+  --meeting2-title-content: 'غداء الفريق';
+  --meeting2-time-content: '١ - ٢ ظهرا';
+  --meeting3-title-content: 'مراجعة التصميمات';
+  --meeting3-time-content: '٣ - ٤ ظهرا';
+  --button-content: 'إرسال';
+  --app-notifications-app1-title-content: 'جوجل';
+  --app-notifications-app2-title-content: 'إكس (تويتر)';
+  --app-notifications-app3-title-content: 'لينكدإن';
+  --app-notifications-app4-title-content: 'دريبل';
+  --app-notifications-app5-title-content: 'بيهانس';
+  --header-name-font-content: 'أسامه الدريني';
+  --header-role-font-content: 'مصمم نظام التصميم';
+  --header-title-font-content: 'نظام تصميم متعدد الثيمات';
+  --logo-name-font-content: 'نظامي التصميمي';
+  --tabs-item1-label-content: 'الرئيسية';
+  --tabs-item2-label-content: 'حسابي';
+  --tabs-item3-label-content: 'المراسلات';
+  --menu-item1-content: 'الرئيسية';
+  --menu-item2-content: 'الثيمات';
+  --menu-item3-content: 'المزيد';
+  --choose-card-title-font-content: 'الخطة الاحترافية';
+  --choose-card-desc-font-content: 'أدوات متقدمة للفرق المتنامية والمحترفة.';
+  --choose-card-price-font-content: 'مجانا';
+  --input-field-placeholder-content: 'أكتب هنا';
+  --pagination-page1-number-font-content: '١';
+  --pagination-page2-number-font-content: '٢';
+  --pagination-page3-number-font-content: '٣';
+  --pagination-page4-number-font-content: '٤';
+  --pagination-page5-number-font-content: '٥';
+  --alerts-title-font-content: 'الإشعارات';
+  --alerts-item1-title-content: 'هناك 9 رسائل جديدة';
+  --alerts-item2-title-content: 'هذا تنبيه أساسي — تحقق منه!';
+  --alerts-item3-title-content: 'اضغط للتحقق من بريدك الإلكتروني';
+  --alerts-item4-title-content: 'تم رفض الوصول، تواصل مع الدعم';
+  --card-title-font-content: 'سماعات AirPods Max من آبل';
+  --card-desc-font-content: 'صوت محيطي. عزل ضوضاء. راحة طوال اليوم.';
+  --card-review-font-content: '٤٢٠ تقييم';
+  --card-old-price-font-content: '٢٦٠٠٠£';
+  --card-new-price-font-content: '٢٣٧٠٠£';
+  --footer-title-content: 'أسامة الدرينى © ٢٠٢٥';
+  --footer-link1-content: 'الترخيص';
+  --footer-link2-content: 'المساعدة';
+  --footer-link3-content: 'السياسة';
+  --menu-dropdown-item1-content: 'عن النظام';
+  --menu-dropdown-item2-content: 'تواصل معنا';
+  --menu-dropdown-item3-content: 'الإعدادات';
+}
+
+/* Arabic, sans-serif */
+[data-language='ar'][data-typeface='sans'] {
+  --font-family-action: var(--font-family-ar-sans);
+  --font-family-headings: var(--font-family-ar-sans);
+  --font-family-body: var(--font-family-ar-sans);
+  --section-meetings-title-content: 'الإجتماعات';
+  --section-apps-title-content: 'إشعارات التطبيقات';
+  --container-direction: rtl;
+  --meeting1-title-content: 'إجتماع الديزاين سيستم';
+  --meeting1-time-content: '٩ - ١٠ صباحا';
+  --meeting2-title-content: 'غداء الفريق';
+  --meeting2-time-content: '١ - ٢ ظهرا';
+  --meeting3-title-content: 'مراجعة التصميمات';
+  --meeting3-time-content: '٣ - ٤ ظهرا';
+  --button-content: 'إرسال';
+  --app-notifications-app1-title-content: 'جوجل';
+  --app-notifications-app2-title-content: 'إكس (تويتر)';
+  --app-notifications-app3-title-content: 'لينكدإن';
+  --app-notifications-app4-title-content: 'دريبل';
+  --app-notifications-app5-title-content: 'بيهانس';
+  --header-name-font-content: 'أسامه الدريني';
+  --header-role-font-content: 'مصمم نظام التصميم';
+  --header-title-font-content: 'نظام تصميم متعدد الثيمات';
+  --logo-name-font-content: 'نظامي التصميمي';
+  --tabs-item1-label-content: 'الرئيسية';
+  --tabs-item2-label-content: 'حسابي';
+  --tabs-item3-label-content: 'المراسلات';
+  --menu-item1-content: 'الرئيسية';
+  --menu-item2-content: 'الثيمات';
+  --menu-item3-content: 'المزيد';
+  --choose-card-title-font-content: 'الخطة الاحترافية';
+  --choose-card-desc-font-content: 'أدوات متقدمة للفرق المتنامية والمحترفة.';
+  --choose-card-price-font-content: 'مجانا';
+  --input-field-placeholder-content: 'أكتب هنا';
+  --pagination-page1-number-font-content: '١';
+  --pagination-page2-number-font-content: '٢';
+  --pagination-page3-number-font-content: '٣';
+  --pagination-page4-number-font-content: '٤';
+  --pagination-page5-number-font-content: '٥';
+  --alerts-title-font-content: 'الإشعارات';
+  --alerts-item1-title-content: 'هناك 9 رسائل جديدة';
+  --alerts-item2-title-content: 'هذا تنبيه أساسي — تحقق منه!';
+  --alerts-item3-title-content: 'اضغط للتحقق من بريدك الإلكتروني';
+  --alerts-item4-title-content: 'تم رفض الوصول، تواصل مع الدعم';
+  --card-title-font-content: 'سماعات AirPods Max من آبل';
+  --card-desc-font-content: 'صوت محيطي. عزل ضوضاء. راحة طوال اليوم.';
+  --card-review-font-content: '٤٢٠ تقييم';
+  --card-old-price-font-content: '٢٦٠٠٠£';
+  --card-new-price-font-content: '٢٣٧٠٠£';
+  --footer-title-content: 'أسامة الدرينى © ٢٠٢٥';
+  --footer-link1-content: 'الترخيص';
+  --footer-link2-content: 'المساعدة';
+  --footer-link3-content: 'السياسة';
+  --menu-dropdown-item1-content: 'عن النظام';
+  --menu-dropdown-item2-content: 'تواصل معنا';
+  --menu-dropdown-item3-content: 'الإعدادات';
+}

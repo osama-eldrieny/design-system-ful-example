@@ -1,0 +1,43 @@
+/**
+ * Component tokens: drawer
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --drawer-{part?}-{property}
+ *   part: scrim | title | description | close | footer.
+ *   Corners and shadow follow the radius and shadow themes (themes/radius.css, themes/shadow.css).
+ */
+
+:root,
+[data-theme] {
+  /* Surface */
+  --drawer-bg-color: var(--color-bg-base);
+  --drawer-text-color: var(--color-fg-on-surface-primary);
+  --drawer-border-color: var(--color-border-base);
+  --drawer-border-width: var(--border-width-regular);
+  --drawer-shadow-x: var(--shadow-none);
+  --drawer-shadow-color: var(--color-shadow-surface);
+  --drawer-z-index: var(--z-modal);
+  --drawer-font-family: var(--font-family-body);
+  --drawer-font-size: var(--font-size-md);
+  --drawer-font-line-height: var(--font-line-height-md);
+  --drawer-title-font-size: var(--font-size-lg);
+  --drawer-title-font-line-height: var(--font-line-height-lg);
+  --drawer-title-font-weight: var(--font-weight-bold);
+  --drawer-description-text-color: var(--color-fg-on-surface-secondary);
+  --drawer-close-hover-bg-color: var(--color-bg-default);
+  --drawer-close-icon-color: var(--color-fg-on-surface-secondary);
+  --drawer-close-size: var(--sizing-md);
+  --drawer-focus-ring-width: var(--focus-ring-width);
+  --drawer-focus-ring-offset: var(--focus-ring-offset);
+  --drawer-focus-ring-color: var(--focus-ring-color);
+  --drawer-scrim-color: var(--color-scrim);
+  --drawer-scrim-z-index: var(--z-overlay);
+  --drawer-padding: var(--spacing-xl);
+  --drawer-gap: var(--spacing-md);
+  --drawer-footer-gap: var(--spacing-sm);
+  --drawer-width: calc(var(--sizing-8xl) * 2);
+  --drawer-height: calc(var(--sizing-8xl) * 1.5);
+  --drawer-duration: var(--duration-slow);
+  --drawer-easing: var(--easing-enter);
+}

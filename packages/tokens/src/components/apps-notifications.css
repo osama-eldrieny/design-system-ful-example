@@ -1,0 +1,20 @@
+/**
+ * Component tokens: apps-notifications
+ *
+ * Style this component only with these tokens. The container is a Card and each row's
+ * control is a Switch, so those parts use --card-* and --switch-* tokens.
+ *
+ * Grammar: --app-notifications-{part?}-{property}
+ *   part: list | list-item | title (the app name) | icon.
+ *   List gaps come from the density theme (themes/density.css).
+ */
+:root,
+[data-theme] {
+  --app-notifications-title-font-color: var(--color-fg-on-surface-primary);
+  --app-notifications-title-font-family: var(--font-family-body);
+  --app-notifications-title-font-weight: var(--font-weight-regular);
+  --app-notifications-title-font-size: var(--font-size-md);
+  --app-notifications-title-font-line-height: var(--font-line-height-md);
+  --app-notifications-icon-size: var(--sizing-sm);
+  --app-notifications-icon-border-radius: var(--radius-xs);
+}

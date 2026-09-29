@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ThemeMatrix } from '../blocks';
+import { Button } from '@ds/react';
+
+<Meta title="Get started/Theming" />
+
+# Theming
+
+A theme is seven independent choices. Each one is a `data-*` attribute on a **theme scope**, usually `<html>`, and the token CSS switches values to match. Components never need to know which theme is active.
+
+| Axis     | Attribute                         | Values                                | Default       |
+| -------- | --------------------------------- | ------------------------------------- | ------------- |
+| Brand    | `data-brand`                      | `diamond`, `amber`, `opal`            | `diamond`     |
+| Mode     | `data-mode`                       | `light`, `dark`                       | `light`       |
+| Language | `data-language` (+ `lang`, `dir`) | `en`, `ar`                            | `en`          |
+| Typeface | `data-typeface`                   | `sans`, `serif`                       | `sans`        |
+| Density  | `data-density`                    | `comfortable`, `compact`              | `comfortable` |
+| Radius   | `data-radius`                     | `square`, `round`, `pills`            | `round`       |
+| Shadow   | `data-shadow`                     | `flat`, `subtle`, `default`, `raised` | `flat`        |
+
+## Theme the whole page
+
+Call `applyTheme` once at startup, and again whenever the person changes a setting. Axes you leave out keep their default.
+
+```ts
+import { applyTheme } from '@ds/tokens';
+
+applyTheme({ brand: 'amber', mode: 'dark' });
+```
+
+It sets every attribute on `<html>`, including `lang` and `dir="rtl"` for Arabic:
+
+```html
+<html
+  data-theme
+  data-brand="amber"
+  data-mode="dark"
+  data-language="en"
+  data-typeface="sans"
+  data-density="comfortable"
+  data-radius="round"
+  data-shadow="flat"
+  lang="en"
+  dir="ltr"
+></html>
+```
+
+### Follow the system's dark mode
+
+```ts
+const media = window.matchMedia('(prefers-color-scheme: dark)');
+const sync = () => applyTheme({ mode: media.matches ? 'dark' : 'light' });
+sync();
+media.addEventListener('change', sync);
+```
+
+Remember the person's choice (for example in `localStorage`) and apply it before first paint to avoid a flash of the wrong theme.
+
+## Theme part of a page
+
+Wrap a section in `ThemeProvider`. It renders a `div` that carries every theme attribute, so everything inside resolves against that theme, e.g. a dark promo band on a light page:
+
+```tsx
+import { ThemeProvider, Button } from '@ds/react';
+
+<ThemeProvider theme={{ mode: 'dark' }}>
+  <Button>Start free trial</Button>
+</ThemeProvider>;
+```
+
+<ThemeMatrix>
+  <Button>Start free trial</Button>
+</ThemeMatrix>
+
+Without React, set the same attributes yourself; a scope must carry `data-theme` and all seven axes so it never mixes values with its parent:
+
+```ts
+import { themeAttributes } from '@ds/tokens';
+
+for (const [name, value] of Object.entries(themeAttributes({ brand: 'opal' }))) {
+  section.setAttribute(name, value);
+}
+```
+
+## Arabic and right-to-left
+
+Setting `language: 'ar'` switches the fonts, sets `dir="rtl"` and mirrors layouts: components use logical properties (`padding-inline-start`, not `padding-left`), so start and end swap automatically. In your own CSS do the same, and mirror directional icons such as arrows.
+
+## Where theme values come from
+
+```
+packages/tokens/src/
+  primitives.css         raw palettes and scales
+  foundations.css        motion, layers, focus ring
+  themes/color.css       one block per brand × mode
+  themes/typography.css  one block per language × typeface
+  themes/density.css     one block per density
+  themes/radius.css      one block per radius style
+  themes/shadow.css      one block per shadow level
+  components/*.css       component tokens (var() references)
+```
+
+Each theme block redefines **semantic** tokens (`--color-bg-surface`, `--spacing-md`…) and, where a component differs per mode, its component tokens. Components only read their own tokens, which point at semantic tokens.
+
+## Add a brand or a mode
+
+1. Add the palette to `primitives.css` (`--color-{brand}-{family}-{step}`).
+2. Add one block per mode to `themes/color.css`, e.g. `[data-brand='onyx'][data-mode='light']`, defining **every** semantic color token that the other brands define, pointed at your palette.
+3. Add the value to `themeOptions` in `packages/tokens/src/theme.ts`.
+4. Run `npm test` (every token must resolve in every theme combination) and `npm run tokens:contrast` (every pair must pass WCAG AA). Both must pass before the brand ships.
+
+Adding a density, radius or shadow style works the same way in its theme file.

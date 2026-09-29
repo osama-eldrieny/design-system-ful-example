@@ -1,0 +1,252 @@
+{
+  "id": "skeleton",
+  "name": "Skeleton",
+  "category": "Feedback",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A skeleton is a grey placeholder in the shape of content that is loading: lines of text, image blocks and avatar circles. It keeps the layout steady while data arrives.",
+  "imports": [
+    {
+      "name": "Skeleton",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "When loading content whose layout is known: lists, cards, profiles."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a short action like saving.",
+      "alternative": "Spinner"
+    },
+    {
+      "text": "For measurable tasks.",
+      "alternative": "Progress"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Text lines",
+      "description": "The last line is shorter."
+    },
+    {
+      "name": "Rect",
+      "description": "Images and media."
+    },
+    {
+      "name": "Circle",
+      "description": "Avatars."
+    }
+  ],
+  "options": [
+    {
+      "prop": "variant",
+      "title": "Variant",
+      "values": [
+        {
+          "value": "text",
+          "meaning": "Lines of text. Default."
+        },
+        {
+          "value": "rect",
+          "meaning": "A block; set width and height."
+        },
+        {
+          "value": "circle",
+          "meaning": "A circle; set width."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Shimmering",
+      "meaning": "A light sweep; static for reduced motion.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Screen readers",
+      "text": "Skeletons are hidden. Set aria-busy=\"true\" on the region and announce loading once (e.g. a Spinner or status text)."
+    },
+    {
+      "topic": "Shape",
+      "text": "Match the real content’s size so nothing jumps when it arrives."
+    }
+  ],
+  "content": [
+    "Mirror the real layout; don’t add placeholder text."
+  ],
+  "guidelines": [
+    {
+      "do": "Match the size of the real content.",
+      "dont": "Use one generic block for every layout.",
+      "why": "Matching shapes prevent layout shift when content loads."
+    },
+    {
+      "do": "Mark the region aria-busy.",
+      "dont": "Leave screen reader users with an empty region.",
+      "why": "Skeletons are silent by design."
+    },
+    {
+      "do": "Show skeletons only briefly.",
+      "dont": "Leave skeletons up after an error.",
+      "why": "Replace them with the content or an error message."
+    }
+  ],
+  "accessibility": {
+    "role": "none (aria-hidden).",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "Not focusable."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-hidden",
+        "when": "Always; announce loading elsewhere."
+      }
+    ],
+    "focus": "None.",
+    "wcag": [
+      {
+        "criterion": "2.3.3 Animation from Interactions",
+        "how": "No shimmer for reduced motion."
+      },
+      {
+        "criterion": "1.3.2 Meaningful Sequence",
+        "how": "Hidden placeholders don’t interrupt reading."
+      },
+      {
+        "criterion": "4.1.3 Status Messages",
+        "how": "Guidelines require announcing loading separately."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "text",
+      "title": "Text",
+      "description": "Three lines.",
+      "code": "import { Skeleton } from '@ds/react';\n\n<Skeleton lines={3} />"
+    },
+    {
+      "id": "card",
+      "title": "Card",
+      "description": "Image, title and text.",
+      "code": "import { Skeleton } from '@ds/react';\n\n<div aria-busy=\"true\">\n  <Skeleton variant=\"rect\" height={160} />\n  <Skeleton lines={2} />\n</div>"
+    },
+    {
+      "id": "person",
+      "title": "Person",
+      "description": "Avatar and name.",
+      "code": "import { Skeleton } from '@ds/react';\n\n<Skeleton variant=\"circle\" width={40} />\n<Skeleton width=\"40%\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--skeleton-"
+  ],
+  "related": [
+    {
+      "id": "spinner",
+      "relation": "For unknown layouts or short waits."
+    },
+    {
+      "id": "card",
+      "relation": "A common skeleton shape."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Skeleton",
+      "import": "import { Skeleton } from '@ds/react';",
+      "description": "A placeholder in the shape of content that is loading. Hidden from screen readers: mark the\nloading region with aria-busy and announce loading once (e.g. with a Spinner).",
+      "props": {
+        "variant": {
+          "type": "\"text\" | \"rect\" | \"circle\"",
+          "values": [
+            "text",
+            "rect",
+            "circle"
+          ],
+          "required": false,
+          "default": "text",
+          "description": "`text` lines (default), a `rect` block such as an image, or a `circle` such as an avatar."
+        },
+        "lines": {
+          "type": "number",
+          "required": false,
+          "default": 1,
+          "description": "Number of text lines; the last is shorter."
+        },
+        "width": {
+          "type": "InlineSize<string | number>",
+          "required": false,
+          "default": null,
+          "description": "Width, e.g. \"60%\" or 120 (px). Text defaults to full width."
+        },
+        "height": {
+          "type": "BlockSize<string | number>",
+          "required": false,
+          "default": null,
+          "description": "Height of a rect or circle, e.g. 160 (px)."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--skeleton-bg-color": {
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-secondary-200",
+      "default": "#dedde0",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#54505a",
+        "brand=amber,mode=dark": "#54505a",
+        "brand=opal,mode=dark": "#54505a"
+      }
+    },
+    "--skeleton-highlight-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--skeleton-text-height": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--skeleton-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--skeleton-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-xs",
+      "default": "2px"
+    },
+    "--skeleton-duration": {
+      "description": "One turn of a repeating animation, e.g. a loading spinner.",
+      "references": "--duration-loop",
+      "default": "1000ms"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-skeleton--docs"
+}

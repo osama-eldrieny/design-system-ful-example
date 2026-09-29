@@ -1,0 +1,373 @@
+{
+  "id": "stat",
+  "name": "Stat",
+  "category": "Data display",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A stat shows one key figure with its label and change, such as revenue up 12.5% vs last month. Trends are shown with an arrow, a color and words for screen readers.",
+  "imports": [
+    {
+      "name": "Stat",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For KPI tiles and dashboard summaries."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For tables of figures.",
+      "alternative": "Table"
+    },
+    {
+      "text": "For progress toward a goal.",
+      "alternative": "Progress"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Label",
+      "description": "What is measured."
+    },
+    {
+      "name": "Value",
+      "description": "The figure."
+    },
+    {
+      "name": "Change",
+      "description": "Arrow, change and context.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "trend",
+      "title": "Trend",
+      "values": [
+        {
+          "value": "up",
+          "meaning": "Arrow up; good by default."
+        },
+        {
+          "value": "down",
+          "meaning": "Arrow down; bad by default."
+        },
+        {
+          "value": "neutral",
+          "meaning": "No arrow."
+        }
+      ]
+    },
+    {
+      "prop": "positive",
+      "title": "Meaning",
+      "values": [
+        {
+          "value": "true",
+          "meaning": "The change is good news (green)."
+        },
+        {
+          "value": "false",
+          "meaning": "The change is bad news (red)."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Static",
+      "meaning": "Not interactive.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Semantics",
+      "text": "A description list: label (dt), value and change (dd)."
+    },
+    {
+      "topic": "Trend words",
+      "text": "“increased” or “decreased” is read before the change."
+    }
+  ],
+  "content": [
+    "Format values for the reader: currency, thousands separators, units."
+  ],
+  "guidelines": [
+    {
+      "do": "Set positive for metrics where down is good.",
+      "dont": "Show falling costs in red.",
+      "why": "Color should match whether the change is good."
+    },
+    {
+      "do": "Give context (“vs last month”).",
+      "dont": "Show “+12%” with no period.",
+      "why": "A change means nothing without a baseline."
+    },
+    {
+      "do": "Round figures sensibly.",
+      "dont": "Show $124,567.2381.",
+      "why": "Precision beyond need slows reading."
+    }
+  ],
+  "accessibility": {
+    "role": "description list.",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "Not focusable."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "visually hidden trend word",
+        "when": "Up and down changes."
+      }
+    ],
+    "focus": "None.",
+    "wcag": [
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Arrow and words, not just color."
+      },
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Label and value are paired in a dl."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "KPI",
+      "description": "Revenue up.",
+      "code": "import { Stat } from '@ds/react';\n\n<Stat label=\"Total revenue\" value=\"$124,567\" change=\"+12.5%\" trend=\"up\" help=\"vs last month\" />"
+    },
+    {
+      "id": "down-good",
+      "title": "Down is good",
+      "description": "Costs falling.",
+      "code": "import { Stat } from '@ds/react';\n\n<Stat label=\"Costs\" value=\"$8,210\" change=\"-4%\" trend=\"down\" positive />"
+    },
+    {
+      "id": "plain",
+      "title": "Value only",
+      "description": "No change.",
+      "code": "import { Stat } from '@ds/react';\n\n<Stat label=\"Active users\" value=\"8,432\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--stat-"
+  ],
+  "related": [
+    {
+      "id": "card",
+      "relation": "Put stats in cards for dashboards."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Stat",
+      "import": "import { Stat } from '@ds/react';",
+      "description": "A key figure with its label and change, e.g. for dashboards.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "What is measured, e.g. \"Total revenue\"."
+        },
+        "value": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The figure, formatted, e.g. \"$124,567\"."
+        },
+        "change": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Change since the previous period, e.g. \"+12.5%\"."
+        },
+        "trend": {
+          "type": "\"up\" | \"down\" | \"neutral\"",
+          "values": [
+            "up",
+            "down",
+            "neutral"
+          ],
+          "required": false,
+          "default": "neutral",
+          "description": "Direction of the change: `up` or `down` (colored and announced), `neutral`. Whether up is\ngood depends on the metric: set `positive` accordingly."
+        },
+        "positive": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the trend is good news. Default: up is good. Use false for e.g. costs rising."
+        },
+        "help": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Context for the change, e.g. \"vs last month\"."
+        },
+        "trendLabels": {
+          "type": "{ up?: string; down?: string; } | undefined",
+          "required": false,
+          "default": null,
+          "description": "Words announced for the trend, for translation."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--stat-label-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--stat-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--stat-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--stat-label-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--stat-value-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--stat-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xl",
+      "default": "24px"
+    },
+    "--stat-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xl",
+      "default": "30px"
+    },
+    "--stat-value-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--stat-change-up-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-success-text-default",
+      "default": "#00732b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ca4b",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#89a8a6",
+        "brand=opal,mode=light": "#4b740d",
+        "brand=opal,mode=dark": "#84cc17"
+      }
+    },
+    "--stat-change-down-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--stat-change-neutral-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--stat-change-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--stat-change-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--stat-change-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--stat-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xs",
+      "default": "14px"
+    },
+    "--stat-help-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--stat-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--stat-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-stat--docs"
+}

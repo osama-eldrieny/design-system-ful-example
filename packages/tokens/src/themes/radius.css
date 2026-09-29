@@ -1,0 +1,203 @@
+/**
+ * Theme: radius
+ *
+ * Corner rounding per radius style. Set data-radius (square | round | pills). Square
+ * gives sharp corners, round the default soft corners, pills fully rounded controls.
+ *
+ * Token reference:
+ *   --radius-none: Sharp corners.
+ *   --radius-2xs … --radius-sm: Small rounding for tiny elements: checkboxes, tags.
+ *   --radius-md … --radius-xl: Controls and small surfaces: inputs, buttons, menu items.
+ *   --radius-2xl … --radius-4xl: Large surfaces: cards, sections, modals.
+ *   --radius-full: Fully rounded: pills, avatars, toggles.
+ */
+
+/* radius: round (default) */
+:root,
+[data-radius='round'] {
+  --radius-none: var(--radius-0);
+  --radius-2xs: var(--radius-1);
+  --radius-xs: var(--radius-2);
+  --radius-sm: var(--radius-3);
+  --radius-md: var(--radius-4);
+  --radius-lg: var(--radius-8);
+  --radius-xl: var(--radius-12);
+  --radius-2xl: var(--radius-16);
+  --radius-3xl: var(--radius-20);
+  --radius-4xl: var(--radius-40);
+  --radius-full: var(--radius-999);
+  --section-border-radius: var(--radius-20);
+  --card-border-radius: var(--radius-20);
+  --choose-card-border-radius: var(--radius-20);
+  --container-border-radius: var(--radius-20);
+  --avatar-small-border-radius: var(--radius-8);
+  --avatar-medium-border-radius: var(--radius-8);
+  --avatar-large-border-radius: var(--radius-12);
+  --avatar-xlarge-border-radius: var(--radius-16);
+  --meeting-card-border-radius: var(--radius-8);
+  --button-medium-border-radius: var(--radius-16);
+  --button-small-border-radius: var(--radius-12);
+  --button-large-border-radius: var(--radius-20);
+  --button-icon-border-radius: var(--radius-12);
+  --switch-border-radius: var(--radius-999);
+  --switch-thumb-border-radius: var(--radius-999);
+  --logo-icon-border-radius: var(--radius-12);
+  --tabs-border-radius: var(--radius-8);
+  --tabs-item-border-radius: var(--radius-4);
+  --navbar-item-border-radius: var(--radius-8);
+  --footer-link-border-radius: var(--radius-12);
+  --combobox-control-border-radius: var(--radius-8);
+  --combobox-content-border-radius: var(--radius-12);
+  --combobox-item-border-radius: var(--radius-8);
+  --combobox-chip-border-radius: var(--radius-4);
+  --select-trigger-border-radius: var(--radius-8);
+  --select-content-border-radius: var(--radius-12);
+  --select-item-border-radius: var(--radius-8);
+  --side-nav-item-border-radius: var(--radius-8);
+  --menu-item-border-radius: var(--radius-8);
+  --tag-border-radius: var(--radius-4);
+  --checkbox-border-radius: var(--radius-4);
+  --input-field-border-radius: var(--radius-8);
+  --textarea-border-radius: var(--radius-8);
+  --pagination-item-border-radius: var(--radius-8);
+  --alerts-border-radius: var(--radius-8);
+  --card-image-border-radius: var(--radius-4);
+  --popover-border-radius: var(--radius-12);
+  --hover-card-border-radius: var(--radius-12);
+  --toast-border-radius: var(--radius-12);
+  --modal-border-radius: var(--radius-20);
+  --drawer-border-radius: var(--radius-20);
+  --modal-close-border-radius: var(--radius-12);
+  --drawer-close-border-radius: var(--radius-12);
+  --popover-close-border-radius: var(--radius-12);
+  --toast-close-border-radius: var(--radius-12);
+  --accordion-border-radius: var(--radius-12);
+  --table-border-radius: var(--radius-12);
+  --menu-dropdown-border-radius: var(--radius-12);
+}
+
+/* radius: square */
+[data-radius='square'] {
+  --radius-none: var(--radius-0);
+  --radius-2xs: var(--radius-1);
+  --radius-xs: var(--radius-2);
+  --radius-sm: var(--radius-3);
+  --radius-md: var(--radius-4);
+  --radius-lg: var(--radius-8);
+  --radius-xl: var(--radius-12);
+  --radius-2xl: var(--radius-16);
+  --radius-3xl: var(--radius-20);
+  --radius-4xl: var(--radius-40);
+  --radius-full: var(--radius-999);
+  --section-border-radius: var(--radius-4);
+  --card-border-radius: var(--radius-4);
+  --choose-card-border-radius: var(--radius-4);
+  --container-border-radius: var(--radius-8);
+  --avatar-small-border-radius: var(--radius-4);
+  --avatar-medium-border-radius: var(--radius-4);
+  --avatar-large-border-radius: var(--radius-4);
+  --avatar-xlarge-border-radius: var(--radius-4);
+  --meeting-card-border-radius: var(--radius-4);
+  --button-medium-border-radius: var(--radius-4);
+  --button-small-border-radius: var(--radius-3);
+  --button-large-border-radius: var(--radius-4);
+  --button-icon-border-radius: var(--radius-4);
+  --switch-border-radius: var(--radius-4);
+  --switch-thumb-border-radius: var(--radius-2);
+  --logo-icon-border-radius: var(--radius-4);
+  --tabs-border-radius: var(--radius-4);
+  --tabs-item-border-radius: var(--radius-3);
+  --navbar-item-border-radius: var(--radius-4);
+  --footer-link-border-radius: var(--radius-3);
+  --combobox-control-border-radius: var(--radius-4);
+  --combobox-content-border-radius: var(--radius-4);
+  --combobox-item-border-radius: var(--radius-4);
+  --combobox-chip-border-radius: var(--radius-2);
+  --select-trigger-border-radius: var(--radius-4);
+  --select-content-border-radius: var(--radius-4);
+  --select-item-border-radius: var(--radius-4);
+  --side-nav-item-border-radius: var(--radius-4);
+  --menu-item-border-radius: var(--radius-4);
+  --tag-border-radius: var(--radius-2);
+  --checkbox-border-radius: var(--radius-2);
+  --input-field-border-radius: var(--radius-4);
+  --textarea-border-radius: var(--radius-4);
+  --pagination-item-border-radius: var(--radius-4);
+  --alerts-border-radius: var(--radius-4);
+  --card-image-border-radius: var(--radius-3);
+  --popover-border-radius: var(--radius-4);
+  --hover-card-border-radius: var(--radius-4);
+  --toast-border-radius: var(--radius-4);
+  --modal-border-radius: var(--radius-4);
+  --drawer-border-radius: var(--radius-4);
+  --modal-close-border-radius: var(--radius-4);
+  --drawer-close-border-radius: var(--radius-4);
+  --popover-close-border-radius: var(--radius-4);
+  --toast-close-border-radius: var(--radius-4);
+  --accordion-border-radius: var(--radius-4);
+  --table-border-radius: var(--radius-4);
+  --menu-dropdown-border-radius: var(--radius-4);
+}
+
+/* radius: pills */
+[data-radius='pills'] {
+  --radius-none: var(--radius-0);
+  --radius-2xs: var(--radius-1);
+  --radius-xs: var(--radius-2);
+  --radius-sm: var(--radius-3);
+  --radius-md: var(--radius-4);
+  --radius-lg: var(--radius-8);
+  --radius-xl: var(--radius-12);
+  --radius-2xl: var(--radius-16);
+  --radius-3xl: var(--radius-20);
+  --radius-4xl: var(--radius-40);
+  --radius-full: var(--radius-999);
+  --section-border-radius: var(--radius-40);
+  --card-border-radius: var(--radius-40);
+  --choose-card-border-radius: var(--radius-40);
+  --container-border-radius: var(--radius-40);
+  --avatar-small-border-radius: var(--radius-999);
+  --avatar-medium-border-radius: var(--radius-999);
+  --avatar-large-border-radius: var(--radius-999);
+  --avatar-xlarge-border-radius: var(--radius-999);
+  --meeting-card-border-radius: var(--radius-20);
+  --button-medium-border-radius: var(--radius-999);
+  --button-small-border-radius: var(--radius-999);
+  --button-large-border-radius: var(--radius-999);
+  --button-icon-border-radius: var(--radius-999);
+  --switch-border-radius: var(--radius-999);
+  --switch-thumb-border-radius: var(--radius-999);
+  --logo-icon-border-radius: var(--radius-999);
+  --tabs-border-radius: var(--radius-999);
+  --tabs-item-border-radius: var(--radius-999);
+  --navbar-item-border-radius: var(--radius-999);
+  --footer-link-border-radius: var(--radius-999);
+  --combobox-control-border-radius: var(--radius-999);
+  --combobox-content-border-radius: var(--radius-16);
+  --combobox-item-border-radius: var(--radius-999);
+  --combobox-chip-border-radius: var(--radius-999);
+  --select-trigger-border-radius: var(--radius-999);
+  --select-content-border-radius: var(--radius-16);
+  --select-item-border-radius: var(--radius-999);
+  --side-nav-item-border-radius: var(--radius-999);
+  --menu-item-border-radius: var(--radius-999);
+  --tag-border-radius: var(--radius-999);
+  --checkbox-border-radius: var(--radius-4);
+  --input-field-border-radius: var(--radius-999);
+  --textarea-border-radius: var(--radius-16);
+  --pagination-item-border-radius: var(--radius-999);
+  --alerts-border-radius: var(--radius-12);
+  --card-image-border-radius: var(--radius-8);
+  --popover-border-radius: var(--radius-16);
+  --hover-card-border-radius: var(--radius-16);
+  --toast-border-radius: var(--radius-16);
+  --modal-border-radius: var(--radius-40);
+  --drawer-border-radius: var(--radius-40);
+  --modal-close-border-radius: var(--radius-999);
+  --drawer-close-border-radius: var(--radius-999);
+  --popover-close-border-radius: var(--radius-999);
+  --toast-close-border-radius: var(--radius-999);
+  --accordion-border-radius: var(--radius-16);
+  --table-border-radius: var(--radius-16);
+  --menu-dropdown-border-radius: var(--radius-16);
+}

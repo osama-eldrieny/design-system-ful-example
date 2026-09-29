@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Textarea } from '@ds/react';
+import * as TextareaStories from '../../../../packages/react/src/Textarea/Textarea.stories';
+import textareaMeta from '../../../../packages/react/src/Textarea/Textarea.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={TextareaStories} name="Docs" />
+
+# Textarea
+
+<ComponentPage
+  meta={textareaMeta}
+  stories={TextareaStories}
+  components={[Textarea]}
+  anatomy={{
+    targets: [
+      '.ds-form-field__label',
+      { selector: '.ds-textarea__input', at: 'end' },
+      '.ds-form-field__description',
+      '.ds-textarea__counter',
+    ],
+    example: (
+      <div style={{ inlineSize: 320 }}>
+        <Textarea
+          label="Bio"
+          description="Shown on your profile."
+          defaultValue="Designer and developer."
+          maxLength={160}
+          showCount
+        />
+      </div>
+    ),
+  }}
+  optionStories={{ size: 'Sizes', autoResize: 'AutoResize' }}
+  extras={[{ title: 'Character counter', story: 'Counter' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 260 }}>
+      <Textarea label="Message" rows={2} error="Write at least 20 characters." />
+    </div>
+  }
+/>

@@ -1,0 +1,137 @@
+/**
+ * Textarea. Styled only with --textarea-* tokens; the label and messages are FormField's.
+ * States are real (:hover, :focus-visible, :disabled) plus the field's data-invalid.
+ */
+
+.ds-textarea {
+  --_px: var(--textarea-padding-x);
+  --_py: var(--textarea-padding-y);
+  --_font-size: var(--textarea-font-size);
+  --_line-height: var(--textarea-font-line-height);
+  --_border: var(--textarea-default-border-color);
+  --_bg: var(--textarea-default-bg-color);
+}
+
+.ds-textarea--small {
+  --_px: var(--textarea-small-padding-x);
+  --_py: var(--textarea-small-padding-y);
+  --_font-size: var(--textarea-small-font-size);
+  --_line-height: var(--textarea-small-font-line-height);
+}
+
+.ds-textarea--large {
+  --_px: var(--textarea-large-padding-x);
+  --_py: var(--textarea-large-padding-y);
+  --_font-size: var(--textarea-large-font-size);
+  --_line-height: var(--textarea-large-font-line-height);
+}
+
+.ds-textarea--readonly {
+  --_bg: var(--textarea-readonly-bg-color);
+}
+
+.ds-textarea__input {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-inline-size: 0;
+  padding-block: var(--_py);
+  padding-inline: var(--_px);
+  border: var(--textarea-border-width) solid var(--_border);
+  border-radius: var(--textarea-border-radius);
+  background-color: var(--_bg);
+  color: var(--textarea-default-text-color);
+  font-family: var(--textarea-font-family);
+  font-size: var(--_font-size);
+  font-weight: var(--textarea-font-weight);
+  line-height: var(--_line-height);
+  resize: vertical;
+  transition: border-color var(--textarea-transition-duration) var(--textarea-transition-easing);
+}
+
+.ds-textarea__input::placeholder {
+  color: var(--textarea-placeholder-text-color);
+  opacity: 1;
+}
+
+.ds-textarea__input:hover:not(:disabled, [readonly]) {
+  --_border: var(--textarea-hover-border-color);
+}
+
+.ds-textarea__input:focus-visible {
+  --_border: var(--textarea-focus-border-color);
+
+  outline: var(--textarea-focus-ring-width) solid var(--textarea-focus-ring-color);
+
+  /* The ring covers the border, so focus reads as one thicker border, not two lines. */
+  outline-offset: calc(-1 * var(--textarea-border-width));
+}
+
+.ds-textarea[data-invalid] .ds-textarea__input {
+  --_border: var(--textarea-error-border-color);
+}
+
+.ds-textarea[data-success] .ds-textarea__input {
+  --_border: var(--textarea-success-border-color);
+}
+
+.ds-textarea__input:disabled {
+  opacity: var(--textarea-disabled-opacity);
+  cursor: not-allowed;
+  resize: none;
+}
+
+/* With a counter, help text and counter share one row under the field: help text at the
+   start, counter at the end. Other messages keep their own full-width rows. */
+.ds-textarea:has(.ds-textarea__footer) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-auto-flow: row dense;
+  gap: var(--textarea-gap) var(--textarea-footer-gap);
+}
+
+.ds-textarea:has(.ds-textarea__footer) > * {
+  grid-column: 1 / -1;
+}
+
+.ds-textarea:has(.ds-textarea__footer) > .ds-textarea__footer {
+  grid-column: 2;
+}
+
+.ds-textarea:has(.ds-textarea__footer) > .ds-form-field__description {
+  grid-column: 1;
+}
+
+.ds-textarea__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--textarea-footer-gap);
+}
+
+.ds-textarea__counter {
+  font-family: var(--textarea-font-family);
+  font-size: var(--textarea-counter-font-size);
+  line-height: var(--textarea-counter-font-line-height);
+  color: var(--textarea-counter-text-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-textarea__counter[data-over] {
+  color: var(--textarea-over-counter-text-color);
+}
+
+/* Announces what's left to screen readers; not shown. */
+.ds-textarea__live {
+  position: absolute;
+  inline-size: var(--textarea-hidden-size);
+  block-size: var(--textarea-hidden-size);
+  margin: calc(-1 * var(--textarea-hidden-size));
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-textarea__input {
+    transition: none;
+  }
+}

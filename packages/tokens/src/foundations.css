@@ -1,0 +1,78 @@
+/**
+ * Foundations
+ *
+ * Theme-independent tokens for motion, stacking and focus. Components use them through
+ * their own component tokens, like every other value.
+ *
+ * Token reference:
+ *   --duration-instant: No animation.
+ *   --duration-fast: Small state changes: hover, press, toggle.
+ *   --duration-normal: Elements changing size or position: accordions, tabs.
+ *   --duration-slow: Elements entering or leaving: modals, drawers, toasts.
+ *   --duration-loop: One turn of a repeating animation, e.g. a loading spinner.
+ *   --easing-standard: Moving between two states on screen.
+ *   --easing-enter: Elements appearing (decelerate into place).
+ *   --easing-exit: Elements leaving (accelerate away).
+ *   --z-base: Normal page content.
+ *   --z-dropdown: Menus and select lists.
+ *   --z-sticky: Sticky headers and toolbars.
+ *   --z-overlay: Backdrops behind modals and drawers.
+ *   --z-modal: Modals and drawers.
+ *   --z-toast: Toast notifications, above modals.
+ *   --z-tooltip: Tooltips, above everything.
+ *   --focus-ring-width: Thickness of the keyboard focus ring.
+ *   --focus-ring-offset: Gap between an element and its focus ring.
+ *   --focus-ring-color: Focus ring color; follows the brand accent.
+ *   --font-family-mono: Code and keyboard keys; the same in every theme.
+ *   --color-scrim: Dimmed backdrop behind modals and drawers; the same in every theme.
+ */
+
+:root,
+[data-theme] {
+  /* Motion: how long a transition lasts. Short for small state changes (hover, press),
+     longer for elements entering or leaving the screen. */
+  --duration-instant: 0ms;
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --duration-loop: 1000ms;
+
+  /* Motion: acceleration curves. Standard for moving between states, enter for
+     elements appearing (decelerate), exit for elements leaving (accelerate). */
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-enter: cubic-bezier(0, 0, 0, 1);
+  --easing-exit: cubic-bezier(0.3, 0, 1, 1);
+
+  /* Code and keyboard keys. */
+  --font-family-mono: ui-monospace, 'SF Mono', menlo, consolas, monospace;
+
+  /* Backdrop behind modals and drawers. */
+  --color-scrim: rgb(0 0 0 / 50%);
+
+  /* Stacking order for layered UI. Use these instead of raw z-index numbers so layers
+     never fight: a tooltip always sits above the modal that opened it. */
+  --z-base: 0;
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-overlay: 1300;
+  --z-modal: 1400;
+  --z-toast: 1500;
+  --z-tooltip: 1600;
+
+  /* Focus ring for keyboard navigation (:focus-visible). The color follows the brand
+     accent and keeps at least 3:1 against surfaces in every theme. */
+  --focus-ring-width: var(--border-width-2);
+  --focus-ring-offset: var(--border-width-2);
+  --focus-ring-color: var(--color-border-accent);
+}
+
+/* People who ask their system for less motion get instant state changes. */
+@media (prefers-reduced-motion: reduce) {
+  :root,
+  [data-theme] {
+    --duration-fast: 0ms;
+    --duration-normal: 0ms;
+    --duration-slow: 0ms;
+    --duration-loop: 0ms;
+  }
+}

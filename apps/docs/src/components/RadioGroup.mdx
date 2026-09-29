@@ -1,0 +1,54 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { RadioGroup, Radio } from '@ds/react';
+import * as RadioStories from '../../../../packages/react/src/RadioGroup/RadioGroup.stories';
+import radioMeta from '../../../../packages/react/src/RadioGroup/RadioGroup.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={RadioStories} name="Docs" />
+
+# RadioGroup
+
+<ComponentPage
+  meta={radioMeta}
+  stories={RadioStories}
+  components={[RadioGroup, Radio]}
+  anatomy={{
+    targets: [
+      '.ds-radio-group__label',
+      '.ds-radio__control',
+      '.ds-radio__label',
+      '.ds-radio__description',
+    ],
+    example: (
+      <RadioGroup label="Plan" defaultValue="pro">
+        <Radio value="pro" label="Pro" description="Unlimited projects, email support" />
+      </RadioGroup>
+    ),
+  }}
+  optionStories={{ orientation: 'Orientation' }}
+  extras={[{ title: 'With descriptions', story: 'WithDescriptions' }]}
+  behaviorStory="RightToLeft"
+  dodont={{
+    0: {
+      do: (
+        <RadioGroup label="Delivery" defaultValue="standard">
+          <Radio value="standard" label="Standard" />
+          <Radio value="express" label="Express" />
+        </RadioGroup>
+      ),
+      dont: (
+        <RadioGroup label="Notifications" defaultValue="email">
+          <Radio value="email" label="Email" />
+          <Radio value="sms" label="Text message" />
+        </RadioGroup>
+      ),
+    },
+  }}
+  matrix={
+    <RadioGroup label="Time period" defaultValue="week" orientation="horizontal">
+      <Radio value="today" label="Today" />
+      <Radio value="week" label="This week" />
+      <Radio value="month" label="This month" />
+    </RadioGroup>
+  }
+/>

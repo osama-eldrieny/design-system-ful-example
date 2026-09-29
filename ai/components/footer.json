@@ -1,0 +1,460 @@
+{
+  "id": "footer",
+  "name": "Footer",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "The page footer: a copyright line and secondary links such as Privacy, Terms and Help. It is the page’s content-info landmark.",
+  "imports": [
+    {
+      "name": "Footer",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "Once per page, at the bottom, for legal text and secondary links."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For the main sections of the site.",
+      "alternative": "Navbar"
+    },
+    {
+      "text": "For the end of an article or card.",
+      "alternative": "CardFooter"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Surface",
+      "description": "Follows the section tokens."
+    },
+    {
+      "name": "Text",
+      "description": "The copyright or company line.",
+      "optional": true
+    },
+    {
+      "name": "Links",
+      "description": "A labelled navigation list of secondary links.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "links[].href",
+      "title": "Link type",
+      "values": [
+        {
+          "value": "href set",
+          "meaning": "A link. Use for pages."
+        },
+        {
+          "value": "no href",
+          "meaning": "A button that runs onClick, e.g. “Cookie settings”."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "At rest.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Darker and underlined.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring.",
+      "trigger": ":focus-visible"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Wrapping",
+      "text": "Links wrap onto more rows on narrow screens."
+    },
+    {
+      "topic": "Landmarks",
+      "text": "A top-level footer is the contentinfo landmark; its links are a nav named by linksLabel (default “Footer”)."
+    }
+  ],
+  "content": [
+    "Text: “© 2026 Company”. Use the current year from code, not a hard-coded one.",
+    "Links: short nouns — “Privacy”, “Terms”, “Help”."
+  ],
+  "guidelines": [
+    {
+      "do": "Use real links (href) for pages.",
+      "dont": "Use buttons that change location in JavaScript.",
+      "why": "Links can be opened in new tabs and are announced as links."
+    },
+    {
+      "do": "Keep footer links secondary.",
+      "dont": "Repeat the whole Navbar in the footer.",
+      "why": "Duplicate navigation adds noise for keyboard and screen reader users."
+    },
+    {
+      "do": "Use one Footer per page.",
+      "dont": "Add footers to every section.",
+      "why": "Several contentinfo landmarks confuse landmark navigation."
+    }
+  ],
+  "accessibility": {
+    "role": "contentinfo landmark (footer) with a named navigation list.",
+    "keyboard": [
+      {
+        "keys": "Tab / Enter",
+        "action": "Reach and follow each link."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label on the links’ nav",
+        "when": "From linksLabel; default “Footer”."
+      }
+    ],
+    "focus": "Each link shows the focus ring.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "footer + nav + list semantics."
+      },
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Text and links pass 4.5:1 in every theme."
+      },
+      {
+        "criterion": "2.4.7 Focus Visible",
+        "how": "Links show the focus ring."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Footer",
+      "description": "Copyright and legal links.",
+      "code": "import { Footer } from '@ds/react';\n\n<Footer\n  title={`© ${new Date().getFullYear()} TechHub`}\n  links={[\n    { label: 'Privacy', href: '/privacy' },\n    { label: 'Terms', href: '/terms' },\n    { label: 'Help', href: '/help' },\n  ]}\n/>"
+    },
+    {
+      "id": "action",
+      "title": "With an in-page action",
+      "description": "A link without href becomes a button.",
+      "code": "import { Footer } from '@ds/react';\n\n<Footer\n  title=\"© 2026 TechHub\"\n  links={[\n    { label: 'Privacy', href: '/privacy' },\n    { label: 'Cookie settings', onClick: openCookieSettings },\n  ]}\n/>"
+    },
+    {
+      "id": "text-only",
+      "title": "Text only",
+      "description": "Without links.",
+      "code": "import { Footer } from '@ds/react';\n\n<Footer title=\"© 2026 TechHub\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--footer-"
+  ],
+  "related": [
+    {
+      "id": "navbar",
+      "relation": "The main navigation at the top."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Links are real links (href) in a labelled nav list; items without href are buttons.",
+        "Own --footer-* tokens instead of button and section tokens; hover underlines instead of a raw-color background.",
+        "No default title or links."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Footer",
+      "import": "import { Footer } from '@ds/react';",
+      "description": "The page footer: a copyright line and secondary links.",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "The footer line, usually the copyright, e.g. \"© 2026 TechHub\"."
+        },
+        "links": {
+          "type": "FooterLink[]",
+          "required": false,
+          "default": "[]",
+          "description": "Secondary links such as Privacy or Terms."
+        },
+        "linksLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Footer",
+          "description": "Names the links' navigation landmark. Default \"Footer\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--footer-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--section-bg-color",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--footer-padding": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--section-padding",
+      "default": "28px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "24px"
+      }
+    },
+    "--footer-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--footer-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--section-border-radius",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--footer-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-x",
+      "default": "0"
+    },
+    "--footer-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-y",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--footer-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-blur",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    },
+    "--footer-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--section-shadow-color",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--footer-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--footer-text-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--footer-text-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--footer-text-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--footer-text-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--footer-link-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-default",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a9a6ae",
+        "brand=amber,mode=dark": "#8f8b96",
+        "brand=opal,mode=dark": "#c4c2c8"
+      }
+    },
+    "--footer-link-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-hover",
+      "default": "#54505a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=dark": "#a9a6ae",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--footer-link-hover-underline-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-hover",
+      "default": "#54505a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=dark": "#a9a6ae",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--footer-link-list-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--footer-link-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--footer-link-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--footer-link-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--footer-link-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--footer-link-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--footer-link-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--footer-link-underline-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--footer-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--footer-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--footer-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--footer-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--footer-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--footer-link-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--footer-title-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Osama Eldrieny © 2025'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'أسامة الدرينى © ٢٠٢٥'"
+      }
+    },
+    "--footer-link1-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'License'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'الترخيص'"
+      }
+    },
+    "--footer-link2-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Help'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'المساعدة'"
+      }
+    },
+    "--footer-link3-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Policy'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'السياسة'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-footer--docs"
+}

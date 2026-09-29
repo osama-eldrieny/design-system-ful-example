@@ -1,0 +1,48 @@
+/**
+ * Component tokens: tag
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --tag-{tone}-{appearance}-{property} and --tag-{state?}-{property}
+ *   tone: primary | secondary | success | warning | danger; appearance: solid | subtle.
+ *   Corners come from the radius theme (themes/radius.css).
+ */
+
+:root,
+[data-theme] {
+  --tag-primary-solid-bg-color: var(--color-bg-accent-primary-default);
+  --tag-primary-solid-text-color: var(--color-fg-on-accent-primary-default);
+  --tag-primary-subtle-bg-color: var(--color-bg-primary-1);
+  --tag-primary-subtle-text-color: var(--color-fg-on-primary-high);
+  --tag-secondary-solid-bg-color: var(--color-bg-accent-secondary-default);
+  --tag-secondary-solid-text-color: var(--color-fg-on-accent-secondary-default);
+  --tag-secondary-subtle-bg-color: var(--color-bg-secondary-1);
+  --tag-secondary-subtle-text-color: var(--color-fg-on-secondary-high);
+  --tag-success-solid-bg-color: var(--color-bg-accent-success-default);
+  --tag-success-solid-text-color: var(--color-fg-on-accent-success-default);
+  --tag-success-subtle-bg-color: var(--color-bg-success-1);
+  --tag-success-subtle-text-color: var(--color-fg-on-success-high);
+  --tag-warning-solid-bg-color: var(--color-bg-accent-warning-default);
+  --tag-warning-solid-text-color: var(--color-fg-on-accent-warning-default);
+  --tag-warning-subtle-bg-color: var(--color-bg-warning-1);
+  --tag-warning-subtle-text-color: var(--color-fg-on-warning-high);
+  --tag-danger-solid-bg-color: var(--color-bg-accent-danger-default);
+  --tag-danger-solid-text-color: var(--color-fg-on-accent-danger-default);
+  --tag-danger-subtle-bg-color: var(--color-bg-danger-1);
+  --tag-danger-subtle-text-color: var(--color-fg-on-danger-high);
+  --tag-selected-border-color: var(--color-border-primary-strong);
+  --tag-border-width: var(--border-width-regular);
+  --tag-padding-x: var(--spacing-xs);
+  --tag-padding-y: var(--spacing-2xs);
+  --tag-gap: var(--spacing-2xs);
+  --tag-font-family: var(--font-family-body);
+  --tag-font-size: var(--font-size-sm);
+  --tag-font-line-height: var(--font-line-height-sm);
+  --tag-font-weight: var(--font-weight-medium);
+  --tag-icon-size: var(--sizing-xs);
+  --tag-remove-hover-opacity: var(--opacity-medium);
+  --tag-focus-ring-width: var(--focus-ring-width);
+  --tag-focus-ring-offset: var(--focus-ring-offset);
+  --tag-focus-ring-color: var(--focus-ring-color);
+  --tag-disabled-opacity: var(--opacity-medium);
+}

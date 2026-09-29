@@ -1,0 +1,67 @@
+/*
+ * Docs canvas: the area an example renders in. It shows the selected theme's page
+ * background so dark mode and brands read correctly; the docs page around it stays neutral.
+ */
+.ds-canvas {
+  background: var(--color-bg-default);
+  color: var(--color-fg-on-surface-primary);
+  font-family: var(--font-family-body);
+  padding: 24px;
+  border-radius: 6px;
+  min-height: 100%;
+}
+
+.ds-canvas[data-layout='fullscreen'] {
+  padding: 0;
+  border-radius: 0;
+}
+
+.ds-canvas[data-layout='centered'] {
+  display: grid;
+  place-items: center;
+}
+
+/* Single-story view (not docs pages): fill the frame with the theme background. */
+.sb-show-main.sb-main-padded,
+.sb-show-main.sb-main-centered {
+  padding: 0;
+}
+
+#storybook-root > .ds-canvas {
+  min-height: 100vh;
+  border-radius: 0;
+}
+
+/* Docs pages reflow on phones (WCAG 1.4.10): wide tables, code samples and the props table
+   scroll inside their own frame instead of making the page scroll sideways. */
+.sbdocs-content,
+.sbdocs-content > *,
+.docs-block {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.docs-table-wrap,
+.sbdocs .docblock-source,
+.sbdocs pre,
+.sbdocs .docblock-argstable {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.sbdocs .docblock-argstable {
+  display: block;
+}
+
+.sbdocs-content table,
+.sbdocs table.docs-table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Long inline code (file paths, token names) wraps instead of widening the page. */
+.sbdocs-content :not(pre) > code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,149 @@
+/** Stepper. Styled only with --stepper-* tokens; each status sets the helpers. */
+
+.ds-stepper {
+  display: flex;
+  gap: var(--stepper-step-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--stepper-font-family);
+  font-size: var(--stepper-font-size);
+  line-height: var(--stepper-font-line-height);
+}
+
+.ds-stepper--vertical {
+  flex-direction: column;
+}
+
+.ds-stepper__step {
+  --_bg: var(--stepper-upcoming-indicator-bg-color);
+  --_fg: var(--stepper-upcoming-indicator-text-color);
+  --_border: var(--stepper-upcoming-indicator-border-color);
+  --_label: var(--stepper-upcoming-label-text-color);
+  --_connector: var(--stepper-connector-color);
+
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.ds-stepper__step--complete {
+  --_bg: var(--stepper-complete-indicator-bg-color);
+  --_fg: var(--stepper-complete-indicator-text-color);
+  --_border: var(--stepper-complete-indicator-bg-color);
+  --_label: var(--stepper-label-text-color);
+  --_connector: var(--stepper-complete-connector-color);
+}
+
+.ds-stepper__step--current {
+  --_bg: var(--stepper-current-indicator-bg-color);
+  --_fg: var(--stepper-current-indicator-text-color);
+  --_border: var(--stepper-current-indicator-border-color);
+  --_label: var(--stepper-label-text-color);
+}
+
+.ds-stepper__step--error {
+  --_bg: var(--stepper-error-indicator-bg-color);
+  --_fg: var(--stepper-error-indicator-text-color);
+  --_border: var(--stepper-error-indicator-bg-color);
+  --_label: var(--stepper-label-text-color);
+}
+
+/* Line to the next step. */
+.ds-stepper--horizontal .ds-stepper__step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  inset-block-start: calc(var(--stepper-indicator-size) / 2);
+  inset-inline: calc(var(--stepper-indicator-size) + var(--stepper-gap)) 0;
+  block-size: var(--stepper-connector-width);
+  margin-inline-end: calc(-1 * var(--stepper-step-gap) + var(--stepper-gap));
+  background-color: var(--_connector);
+  translate: 0 -50%;
+}
+
+.ds-stepper--vertical .ds-stepper__step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: calc(var(--stepper-indicator-size) / 2);
+  inset-block: calc(var(--stepper-indicator-size) + var(--stepper-gap)) 0;
+  inline-size: var(--stepper-connector-width);
+  margin-block-end: calc(-1 * var(--stepper-step-gap) + var(--stepper-gap));
+  background-color: var(--_connector);
+  translate: -50% 0;
+}
+
+.ds-stepper__button {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--stepper-gap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+}
+
+button.ds-stepper__button {
+  cursor: pointer;
+}
+
+button.ds-stepper__button:focus-visible {
+  outline: var(--stepper-focus-ring-width) solid var(--stepper-focus-ring-color);
+  outline-offset: var(--stepper-focus-ring-offset);
+}
+
+.ds-stepper--horizontal .ds-stepper__button {
+  flex-direction: column;
+}
+
+.ds-stepper__indicator {
+  display: grid;
+  flex: none;
+  place-items: center;
+  box-sizing: border-box;
+  inline-size: var(--stepper-indicator-size);
+  block-size: var(--stepper-indicator-size);
+  border: var(--stepper-indicator-border-width) solid var(--_border);
+  border-radius: 50%;
+  background-color: var(--_bg);
+  color: var(--_fg);
+  font-size: var(--stepper-description-font-size);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-stepper__indicator > svg {
+  inline-size: var(--stepper-icon-size);
+  block-size: var(--stepper-icon-size);
+}
+
+.ds-stepper__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-stepper__label {
+  color: var(--_label);
+  font-weight: var(--stepper-label-font-weight);
+}
+
+.ds-stepper__step--current .ds-stepper__label {
+  font-weight: var(--stepper-current-label-font-weight);
+}
+
+.ds-stepper__description {
+  color: var(--stepper-description-text-color);
+  font-size: var(--stepper-description-font-size);
+  line-height: var(--stepper-description-font-line-height);
+}
+
+/* Announced, not shown. */
+.ds-stepper__status {
+  position: absolute;
+  inline-size: var(--stepper-connector-width);
+  block-size: var(--stepper-connector-width);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

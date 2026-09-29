@@ -1,0 +1,46 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ProductCard } from '@ds/react';
+import * as ProductStories from '../../../../packages/react/src/ProductCard/ProductCard.stories';
+import productMeta from '../../../../packages/react/src/ProductCard/ProductCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={ProductStories} name="Docs" />
+
+# ProductCard
+
+<ComponentPage
+  meta={productMeta}
+  stories={ProductStories}
+  components={[ProductCard]}
+  anatomy={{
+    targets: [
+      '.ds-card__media',
+      '.ds-card__title',
+      '.ds-product-card__stars',
+      '.ds-product-card__price',
+      '.ds-product-card__old-price',
+    ],
+    example: (
+      <ProductCard
+        style={{ inlineSize: 260 }}
+        title="Wireless headphones"
+        price="$299"
+        oldPrice="$399"
+        rating={4.5}
+        reviews="2,342 reviews"
+      />
+    ),
+  }}
+  optionStories={{ appearance: 'Appearances' }}
+  extras={[{ title: 'With an action', story: 'WithAction' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <ProductCard
+      style={{ maxInlineSize: 240 }}
+      title="Wireless headphones"
+      price="$299"
+      rating={4}
+      reviews="942 reviews"
+    />
+  }
+/>

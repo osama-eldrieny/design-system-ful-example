@@ -1,0 +1,23 @@
+{
+  "name": "@ds/mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Local MCP server that gives AI agents the design system's components, tokens, docs and validation.",
+  "bin": {
+    "ds-mcp": "./src/server.js"
+  },
+  "exports": {
+    ".": "./src/tools.js"
+  },
+  "files": [
+    "src",
+    "ai"
+  ],
+  "scripts": {
+    "prepack": "rm -rf ai && cp -R ../../ai ai"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0"
+  }
+}

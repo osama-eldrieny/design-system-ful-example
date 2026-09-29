@@ -1,0 +1,116 @@
+/** Tag. Styled only with --tag-* tokens; each tone × appearance sets the helpers. */
+
+.ds-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tag-gap);
+  padding-block: var(--tag-padding-y);
+  padding-inline: var(--tag-padding-x);
+  border: var(--tag-border-width) solid var(--_border, var(--_bg));
+  border-radius: var(--tag-border-radius);
+  background-color: var(--_bg);
+  color: var(--_text);
+  font-family: var(--tag-font-family);
+  font-size: var(--tag-font-size);
+  font-weight: var(--tag-font-weight);
+  line-height: var(--tag-font-line-height);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.ds-tag--primary-solid {
+  --_bg: var(--tag-primary-solid-bg-color);
+  --_text: var(--tag-primary-solid-text-color);
+}
+
+.ds-tag--primary-subtle {
+  --_bg: var(--tag-primary-subtle-bg-color);
+  --_text: var(--tag-primary-subtle-text-color);
+}
+
+.ds-tag--secondary-solid {
+  --_bg: var(--tag-secondary-solid-bg-color);
+  --_text: var(--tag-secondary-solid-text-color);
+}
+
+.ds-tag--secondary-subtle {
+  --_bg: var(--tag-secondary-subtle-bg-color);
+  --_text: var(--tag-secondary-subtle-text-color);
+}
+
+.ds-tag--success-solid {
+  --_bg: var(--tag-success-solid-bg-color);
+  --_text: var(--tag-success-solid-text-color);
+}
+
+.ds-tag--success-subtle {
+  --_bg: var(--tag-success-subtle-bg-color);
+  --_text: var(--tag-success-subtle-text-color);
+}
+
+.ds-tag--warning-solid {
+  --_bg: var(--tag-warning-solid-bg-color);
+  --_text: var(--tag-warning-solid-text-color);
+}
+
+.ds-tag--warning-subtle {
+  --_bg: var(--tag-warning-subtle-bg-color);
+  --_text: var(--tag-warning-subtle-text-color);
+}
+
+.ds-tag--danger-solid {
+  --_bg: var(--tag-danger-solid-bg-color);
+  --_text: var(--tag-danger-solid-text-color);
+}
+
+.ds-tag--danger-subtle {
+  --_bg: var(--tag-danger-subtle-bg-color);
+  --_text: var(--tag-danger-subtle-text-color);
+}
+
+.ds-tag--selectable:has([aria-pressed='true']) {
+  --_border: var(--tag-selected-border-color);
+}
+
+.ds-tag[data-disabled] {
+  opacity: var(--tag-disabled-opacity);
+}
+
+.ds-tag__icon {
+  display: inline-flex;
+}
+
+.ds-tag__icon > svg,
+.ds-tag__remove > svg {
+  inline-size: var(--tag-icon-size);
+  block-size: var(--tag-icon-size);
+}
+
+.ds-tag__toggle,
+.ds-tag__remove {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tag-gap);
+  padding: 0;
+  border: 0;
+  border-radius: var(--tag-border-radius);
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ds-tag__remove:hover:not(:disabled) {
+  opacity: var(--tag-remove-hover-opacity);
+}
+
+.ds-tag__toggle:focus-visible,
+.ds-tag__remove:focus-visible {
+  outline: var(--tag-focus-ring-width) solid var(--tag-focus-ring-color);
+  outline-offset: var(--tag-focus-ring-offset);
+}
+
+.ds-tag__toggle:disabled,
+.ds-tag__remove:disabled {
+  cursor: not-allowed;
+}

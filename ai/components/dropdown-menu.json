@@ -1,0 +1,919 @@
+{
+  "id": "dropdown-menu",
+  "name": "DropdownMenu",
+  "category": "Overlays",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "A dropdown menu shows a list of actions or options when people press a button. It keeps secondary actions out of the way until needed and closes after a choice.",
+  "imports": [
+    {
+      "name": "DropdownMenu",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuTrigger",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuContent",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuItem",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuCheckboxItem",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuRadioGroup",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuRadioItem",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuLabel",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuSeparator",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuSub",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuSubTrigger",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DropdownMenuSubContent",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For a set of actions that don’t all fit on screen, e.g. a “More” menu on a card.",
+    "For view options such as sort order or visible columns."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To choose a value in a form.",
+      "alternative": "Select or RadioGroup"
+    },
+    {
+      "text": "For navigation between pages.",
+      "alternative": "Navbar or links"
+    },
+    {
+      "text": "When there are only one or two actions.",
+      "alternative": "Buttons"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Trigger",
+      "description": "The button that opens the menu."
+    },
+    {
+      "name": "Menu",
+      "description": "The panel with the items; it stays inside the viewport."
+    },
+    {
+      "name": "Group label",
+      "description": "Optional heading for a group of items.",
+      "optional": true
+    },
+    {
+      "name": "Item",
+      "description": "An action or option, with optional icon and shortcut hint."
+    },
+    {
+      "name": "Separator",
+      "description": "Optional line between groups.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "variant",
+      "title": "Item variant",
+      "values": [
+        {
+          "value": "default",
+          "meaning": "Ordinary actions."
+        },
+        {
+          "value": "danger",
+          "meaning": "Destructive actions such as Delete; place them last, after a separator."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Closed",
+      "meaning": "Only the trigger shows.",
+      "trigger": "Default."
+    },
+    {
+      "name": "Open",
+      "meaning": "The menu shows below the trigger.",
+      "trigger": "Trigger pressed, or Enter / Space / Arrow Down on it."
+    },
+    {
+      "name": "Highlighted",
+      "meaning": "The item under the pointer or keyboard.",
+      "trigger": "Hover or arrow keys."
+    },
+    {
+      "name": "Checked",
+      "meaning": "A checkbox or radio item is on.",
+      "trigger": "checked / value."
+    },
+    {
+      "name": "Disabled",
+      "meaning": "The item can’t be used right now.",
+      "trigger": "disabled on the item."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Keyboard",
+      "text": "Arrow keys move between items, typing a letter jumps to a matching item, Enter or Space chooses it, Escape closes the menu and returns focus to the trigger."
+    },
+    {
+      "topic": "Closing",
+      "text": "The menu closes after an item is chosen, on Escape, or when clicking outside."
+    },
+    {
+      "topic": "Position",
+      "text": "Opens below the trigger and flips or shifts to stay in the viewport; set align to \"end\" to align with the trigger’s end edge."
+    },
+    {
+      "topic": "Themes",
+      "text": "The menu renders at the end of the page but keeps the theme of the ThemeProvider it opened from."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "Alignment, submenus and arrow keys follow the reading direction."
+    }
+  ],
+  "content": [
+    "Start item labels with a verb: “Duplicate”, “Move to…”, “Delete”.",
+    "Use an ellipsis (…) when an item needs more input before it happens.",
+    "Group related items and put destructive ones last."
+  ],
+  "guidelines": [
+    {
+      "do": "Give the trigger a clear label or an icon with an accessible name.",
+      "dont": "Use an unlabelled “…” icon with no name.",
+      "why": "People and screen readers need to know what the menu holds before opening it."
+    },
+    {
+      "do": "Put destructive items last, after a separator, in the danger variant.",
+      "dont": "Mix Delete in among everyday actions.",
+      "why": "Separating risky actions prevents accidental clicks."
+    },
+    {
+      "do": "Keep menus short: about seven items or fewer.",
+      "dont": "Put long lists or forms inside a menu.",
+      "why": "Long menus are hard to scan; use a dialog or page for complex choices."
+    }
+  ],
+  "accessibility": {
+    "role": "button (trigger) with aria-haspopup=\"menu\", and a menu with menuitem, menuitemcheckbox and menuitemradio items (Radix).",
+    "keyboard": [
+      {
+        "keys": "Enter / Space / Arrow Down",
+        "action": "Opens the menu from the trigger and focuses the first item."
+      },
+      {
+        "keys": "Arrow Up / Down",
+        "action": "Moves between items."
+      },
+      {
+        "keys": "Letters",
+        "action": "Jumps to the next item starting with that letter."
+      },
+      {
+        "keys": "Enter / Space",
+        "action": "Chooses the focused item."
+      },
+      {
+        "keys": "Arrow Right / Left",
+        "action": "Opens or closes a submenu."
+      },
+      {
+        "keys": "Escape",
+        "action": "Closes the menu and returns focus to the trigger."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-haspopup, aria-expanded",
+        "when": "Set on the trigger automatically."
+      },
+      {
+        "attribute": "aria-checked",
+        "when": "Set on checkbox and radio items."
+      },
+      {
+        "attribute": "aria-hidden on icons and shortcuts",
+        "when": "They’re visual hints; labels carry the meaning."
+      }
+    ],
+    "focus": "Focus moves into the menu when it opens and back to the trigger when it closes.",
+    "wcag": [
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Everything works from the keyboard, per the WAI-ARIA menu button pattern."
+      },
+      {
+        "criterion": "2.4.3 Focus Order",
+        "how": "Focus returns to the trigger after closing."
+      },
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Items pass 4.5:1 at rest and highlighted, in every theme."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Menu, items and checked states are exposed."
+      }
+    ],
+    "notes": [
+      "Shortcut hints are shown only; wire the actual keyboard shortcuts in your app."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Actions menu",
+      "description": "A button that opens actions.",
+      "code": "import { Button, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator } from '@ds/react';\n\n<DropdownMenu>\n  <DropdownMenuTrigger asChild>\n    <Button appearance=\"outline\" variant=\"secondary\">Options</Button>\n  </DropdownMenuTrigger>\n  <DropdownMenuContent align=\"end\">\n    <DropdownMenuItem onSelect={duplicate}>Duplicate</DropdownMenuItem>\n    <DropdownMenuItem onSelect={archive}>Archive</DropdownMenuItem>\n    <DropdownMenuSeparator />\n    <DropdownMenuItem variant=\"danger\" onSelect={remove}>Delete</DropdownMenuItem>\n  </DropdownMenuContent>\n</DropdownMenu>"
+    },
+    {
+      "id": "sort",
+      "title": "Sort order",
+      "description": "Radio items for one exclusive choice.",
+      "code": "import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuRadioGroup, DropdownMenuRadioItem, Button } from '@ds/react';\n\n<DropdownMenu>\n  <DropdownMenuTrigger asChild><Button appearance=\"outline\">Sort</Button></DropdownMenuTrigger>\n  <DropdownMenuContent>\n    <DropdownMenuLabel>Sort by</DropdownMenuLabel>\n    <DropdownMenuRadioGroup value={sort} onValueChange={setSort}>\n      <DropdownMenuRadioItem value=\"newest\">Newest</DropdownMenuRadioItem>\n      <DropdownMenuRadioItem value=\"price\">Price</DropdownMenuRadioItem>\n    </DropdownMenuRadioGroup>\n  </DropdownMenuContent>\n</DropdownMenu>"
+    },
+    {
+      "id": "icon-trigger",
+      "title": "Icon trigger",
+      "description": "An IconButton trigger with an accessible name.",
+      "code": "import { IconButton, DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from '@ds/react';\nimport { Ellipsis } from 'lucide-react';\n\n<DropdownMenu>\n  <DropdownMenuTrigger asChild>\n    <IconButton icon={<Ellipsis />} label=\"More actions\" appearance=\"ghost\" variant=\"secondary\" />\n  </DropdownMenuTrigger>\n  <DropdownMenuContent align=\"end\">\n    <DropdownMenuItem>Rename</DropdownMenuItem>\n  </DropdownMenuContent>\n</DropdownMenu>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--menu-"
+  ],
+  "related": [
+    {
+      "id": "button",
+      "relation": "Use as the trigger (with asChild)."
+    },
+    {
+      "id": "select",
+      "relation": "Use to choose a form value."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Replaces Dropdown: a Radix menu with trigger, keyboard navigation, typeahead and focus return.",
+        "Labels, separators, checkbox and radio items, submenus, shortcuts, danger items.",
+        "Portaled menus keep the theme of their ThemeProvider; compact density padding fixed (was -4px)."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "DropdownMenu",
+      "import": "import { DropdownMenu } from '@ds/react';",
+      "description": "A menu of actions or options that opens from a button. Arrow keys move through items,\ntyping jumps to an item, Escape closes it and focus returns to the trigger.",
+      "props": {}
+    },
+    {
+      "name": "DropdownMenuTrigger",
+      "import": "import { DropdownMenuTrigger } from '@ds/react';",
+      "description": "The element that opens the menu. Use asChild with a Button so the trigger keeps its\nstyling: `<DropdownMenuTrigger asChild><Button>Options</Button></DropdownMenuTrigger>`.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuContent",
+      "import": "import { DropdownMenuContent } from '@ds/react';",
+      "description": "The menu panel. Positions itself next to the trigger and stays inside the viewport.",
+      "props": {
+        "sideOffset": {
+          "type": "number",
+          "required": false,
+          "default": 4,
+          "description": "Distance from the trigger in px."
+        },
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuItem",
+      "import": "import { DropdownMenuItem } from '@ds/react';",
+      "description": "An action. Use onSelect to run it; the menu closes afterwards.",
+      "props": {
+        "variant": {
+          "type": "\"default\" | \"danger\"",
+          "values": [
+            "default",
+            "danger"
+          ],
+          "required": false,
+          "default": "default",
+          "description": "`danger` for destructive actions such as Delete."
+        },
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon before the label. Hidden from screen readers."
+        },
+        "shortcut": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Keyboard shortcut hint shown at the end, e.g. \"⌘D\". Only a hint; wire the shortcut yourself."
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuCheckboxItem",
+      "import": "import { DropdownMenuCheckboxItem } from '@ds/react';",
+      "description": "An option that can be turned on or off independently.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "shortcut": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Keyboard shortcut hint shown at the end, e.g. \"⌘D\". Only a hint; wire the shortcut yourself."
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuRadioGroup",
+      "import": "import { DropdownMenuRadioGroup } from '@ds/react';",
+      "description": "Groups radio items so only one can be selected.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuRadioItem",
+      "import": "import { DropdownMenuRadioItem } from '@ds/react';",
+      "description": "One exclusive option inside a DropdownMenuRadioGroup, e.g. a sort order.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "shortcut": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Keyboard shortcut hint shown at the end, e.g. \"⌘D\". Only a hint; wire the shortcut yourself."
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuLabel",
+      "import": "import { DropdownMenuLabel } from '@ds/react';",
+      "description": "A heading for a group of items. Not interactive.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuSeparator",
+      "import": "import { DropdownMenuSeparator } from '@ds/react';",
+      "description": "A line between groups of items.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuSub",
+      "import": "import { DropdownMenuSub } from '@ds/react';",
+      "description": "A nested menu. Contains a DropdownMenuSubTrigger and a DropdownMenuSubContent.",
+      "props": {}
+    },
+    {
+      "name": "DropdownMenuSubTrigger",
+      "import": "import { DropdownMenuSubTrigger } from '@ds/react';",
+      "description": "The item that opens a nested menu (with the right arrow key, hover or click).",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon before the label. Hidden from screen readers."
+        }
+      }
+    },
+    {
+      "name": "DropdownMenuSubContent",
+      "import": "import { DropdownMenuSubContent } from '@ds/react';",
+      "description": "The nested menu panel.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--menu-item-default-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--menu-item-default-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--menu-item-default-icon-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--menu-item-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--menu-item-hover-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--menu-item-hover-icon-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--menu-dropdown-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--menu-dropdown-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--menu-dropdown-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--menu-dropdown-divider-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--menu-dropdown-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--menu-dropdown-divider-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--menu-item-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--menu-item-padding-y": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--menu-item-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--menu-dropdown-item-border-radius": {
+      "description": "Sharp corners.",
+      "references": "--radius-none",
+      "default": "0"
+    },
+    "--menu-dropdown-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-none",
+      "default": "0"
+    },
+    "--menu-item-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--menu-item-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--menu-item-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--menu-item-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--menu-item-icon-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--menu-item-icon-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--menu-item-active-bg-color": {
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-primary-200",
+      "default": "#dfd4ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5637b5",
+        "brand=amber,mode=light": "#f0e4d7",
+        "brand=amber,mode=dark": "#8a663e",
+        "brand=opal,mode=light": "#d0e1fd",
+        "brand=opal,mode=dark": "#2a5caf"
+      }
+    },
+    "--menu-item-active-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--menu-item-active-icon-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--menu-dropdown-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--menu-dropdown-padding": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--menu-dropdown-min-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--menu-dropdown-z-index": {
+      "description": "Menus and select lists.",
+      "references": "--z-dropdown",
+      "default": "1000"
+    },
+    "--menu-dropdown-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--menu-dropdown-transition-easing": {
+      "description": "Elements appearing (decelerate into place).",
+      "references": "--easing-enter",
+      "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--menu-item-danger-font-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--menu-item-danger-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--menu-item-danger-hover-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--menu-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--menu-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--menu-label-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--menu-label-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--menu-shortcut-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--menu-item-indicator-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--menu-item-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--menu-dropdown-item-padding-y": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "4px"
+      }
+    },
+    "--menu-item-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--menu-dropdown-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "16px"
+      }
+    },
+    "--menu-dropdown-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--menu-dropdown-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    },
+    "--menu-item1-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Home'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'الرئيسية'"
+      }
+    },
+    "--menu-item2-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Themes'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'الثيمات'"
+      }
+    },
+    "--menu-item3-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'More'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'المزيد'"
+      }
+    },
+    "--menu-dropdown-item1-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'About'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'عن النظام'"
+      }
+    },
+    "--menu-dropdown-item2-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Contact'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'تواصل معنا'"
+      }
+    },
+    "--menu-dropdown-item3-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Settings'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'الإعدادات'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-overlays-dropdownmenu--docs"
+}

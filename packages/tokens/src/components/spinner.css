@@ -1,0 +1,18 @@
+/**
+ * Component tokens: spinner
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --spinner-{size?}-{property}; size: small | large (medium is the base).
+ */
+
+:root,
+[data-theme] {
+  --spinner-color: var(--color-bg-accent-primary-default);
+  --spinner-track-color: var(--color-bg-secondary-1);
+  --spinner-size: var(--sizing-md);
+  --spinner-small-size: var(--sizing-sm);
+  --spinner-large-size: var(--sizing-xl);
+  --spinner-duration: var(--duration-loop);
+  --spinner-hidden-size: var(--border-width-hairline);
+}

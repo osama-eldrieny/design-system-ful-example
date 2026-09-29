@@ -1,0 +1,102 @@
+/** Progress. Styled only with --progress-* tokens. */
+
+.ds-progress {
+  --_bar: var(--progress-bar-bg-color);
+  --_size: var(--progress-track-size);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--progress-gap);
+  font-family: var(--progress-font-family);
+  font-size: var(--progress-font-size);
+  line-height: var(--progress-font-line-height);
+}
+
+.ds-progress--success {
+  --_bar: var(--progress-success-bar-bg-color);
+}
+
+.ds-progress--warning {
+  --_bar: var(--progress-warning-bar-bg-color);
+}
+
+.ds-progress--danger {
+  --_bar: var(--progress-danger-bar-bg-color);
+}
+
+.ds-progress--small {
+  --_size: var(--progress-small-track-size);
+}
+
+.ds-progress__header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--progress-gap);
+}
+
+.ds-progress__label {
+  color: var(--progress-label-text-color);
+  font-weight: var(--progress-label-font-weight);
+}
+
+.ds-progress__value {
+  color: var(--progress-value-text-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-progress__track {
+  position: relative;
+  block-size: var(--_size);
+  overflow: hidden;
+  border-radius: var(--progress-border-radius);
+  background-color: var(--progress-track-bg-color);
+}
+
+.ds-progress__bar {
+  block-size: 100%;
+  border-radius: var(--progress-border-radius);
+  background-color: var(--_bar);
+  transition: inline-size var(--progress-duration) var(--progress-easing);
+}
+
+.ds-progress--indeterminate .ds-progress__bar {
+  position: absolute;
+  inline-size: 40%;
+  animation: ds-progress-slide var(--progress-loop-duration) var(--progress-easing) infinite;
+}
+
+@keyframes ds-progress-slide {
+  from {
+    inset-inline-start: -40%;
+  }
+
+  to {
+    inset-inline-start: 100%;
+  }
+}
+
+.ds-progress__hidden {
+  position: absolute;
+  inline-size: var(--progress-hidden-size);
+  block-size: var(--progress-hidden-size);
+  margin: calc(-1 * var(--progress-hidden-size));
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-progress__bar {
+    transition: none;
+  }
+
+  .ds-progress--indeterminate .ds-progress__bar {
+    animation-duration: calc(var(--progress-loop-duration) * 3);
+  }
+}
+
+@media (forced-colors: active) {
+  .ds-progress__bar {
+    background-color: Highlight;
+  }
+}

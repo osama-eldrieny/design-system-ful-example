@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { MeetingCard } from '@ds/react';
+import * as MeetingStories from '../../../../packages/react/src/MeetingCard/MeetingCard.stories';
+import meetingMeta from '../../../../packages/react/src/MeetingCard/MeetingCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={MeetingStories} name="Docs" />
+
+# MeetingCard
+
+<ComponentPage
+  meta={meetingMeta}
+  stories={MeetingStories}
+  components={[MeetingCard]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-meeting-card', at: 'start' },
+      '.ds-meeting-card__title',
+      '.ds-meeting-card__time',
+      '.ds-avatar-group',
+    ],
+    example: (
+      <MeetingCard
+        style={{ inlineSize: 280 }}
+        title="Q3 planning"
+        time="10:00 – 11:00"
+        attendees={[{ name: 'Sarah Chen' }, { name: 'James Wilson' }]}
+      />
+    ),
+  }}
+  optionStories={{ variant: 'Variants' }}
+  extras={[{ title: 'Many attendees', story: 'ManyAttendees' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <MeetingCard
+      style={{ maxInlineSize: 240 }}
+      title="Q3 planning"
+      time="10:00 – 11:00"
+      attendees={[{ name: 'Sarah Chen' }, { name: 'James Wilson' }]}
+    />
+  }
+/>

@@ -1,0 +1,58 @@
+/** Stack. Styled only with --stack-* tokens. */
+
+.ds-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.ds-stack--gap-none {
+  gap: var(--stack-gap-none);
+}
+
+.ds-stack--gap-2xs {
+  gap: var(--stack-gap-2xs);
+}
+
+.ds-stack--gap-xs {
+  gap: var(--stack-gap-xs);
+}
+
+.ds-stack--gap-sm {
+  gap: var(--stack-gap-sm);
+}
+
+.ds-stack--gap-md {
+  gap: var(--stack-gap-md);
+}
+
+.ds-stack--gap-lg {
+  gap: var(--stack-gap-lg);
+}
+
+.ds-stack--gap-xl {
+  gap: var(--stack-gap-xl);
+}
+
+.ds-stack--gap-2xl {
+  gap: var(--stack-gap-2xl);
+}
+
+.ds-stack--gap-3xl {
+  gap: var(--stack-gap-3xl);
+}
+
+.ds-stack--align-start {
+  align-items: flex-start;
+}
+
+.ds-stack--align-center {
+  align-items: center;
+}
+
+.ds-stack--align-end {
+  align-items: flex-end;
+}
+
+.ds-stack--align-stretch {
+  align-items: stretch;
+}

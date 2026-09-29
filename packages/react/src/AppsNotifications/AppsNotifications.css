@@ -1,0 +1,43 @@
+/**
+ * AppsNotifications. The panel is a Card and each row a Switch; this file only lays out
+ * the list with --app-notifications-* tokens.
+ */
+
+.ds-apps-notifications__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-notifications-list-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The app name at the start, the switch at the end of the row. */
+.ds-apps-notifications__switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  inline-size: 100%;
+}
+
+.ds-apps-notifications__app {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--app-notifications-list-item-gap);
+}
+
+.ds-apps-notifications__icon {
+  flex: none;
+  inline-size: var(--app-notifications-icon-size);
+  block-size: var(--app-notifications-icon-size);
+  border-radius: var(--app-notifications-icon-border-radius);
+  object-fit: cover;
+}
+
+.ds-apps-notifications__name {
+  font-family: var(--app-notifications-title-font-family);
+  font-size: var(--app-notifications-title-font-size);
+  font-weight: var(--app-notifications-title-font-weight);
+  line-height: var(--app-notifications-title-font-line-height);
+  color: var(--app-notifications-title-font-color);
+}

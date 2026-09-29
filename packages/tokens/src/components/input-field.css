@@ -1,0 +1,75 @@
+/**
+ * Component tokens: input-field
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --input-field-{state?}-{part?}-{property} and --input-field-{size}-{property}
+ *   state: default | hover | focus | error | success | readonly
+ *   size: small | medium | large; corners come from the radius theme (themes/radius.css)
+ */
+
+:root,
+[data-theme] {
+  /* Control */
+  --input-field-default-bg-color: var(--color-bg-surface);
+  --input-field-default-text-color: var(--color-fg-on-surface-primary);
+  --input-field-placeholder-text-color: var(--color-fg-on-surface-secondary);
+  --input-field-default-border-color: var(--color-border-field);
+  --input-field-hover-border-color: var(--color-border-primary-strong);
+  --input-field-focus-border-color: var(--color-border-primary-strong);
+  --input-field-error-border-color: var(--color-border-danger-strong);
+  --input-field-success-border-color: var(--color-border-success-strong);
+  --input-field-readonly-bg-color: var(--color-bg-default);
+  --input-field-border-width: var(--border-width-hairline);
+  --input-field-font-family: var(--font-family-body);
+  --input-field-font-weight: var(--font-weight-regular);
+
+  /* Sizes (medium keeps the original padding) */
+  --input-field-padding-x: var(--spacing-md);
+  --input-field-padding-y: var(--spacing-2xs);
+  --input-field-height: var(--control-height-medium);
+  --input-field-small-height: var(--control-height-small);
+  --input-field-large-height: var(--control-height-large);
+  --input-field-font-size: var(--font-size-md);
+  --input-field-font-line-height: var(--font-line-height-md);
+  --input-field-small-padding-x: var(--spacing-sm);
+  --input-field-small-padding-y: var(--spacing-none);
+  --input-field-small-font-size: var(--font-size-sm);
+  --input-field-small-font-line-height: var(--font-line-height-md);
+  --input-field-large-padding-x: var(--spacing-lg);
+  --input-field-large-padding-y: var(--spacing-2xs);
+  --input-field-large-font-size: var(--font-size-md);
+  --input-field-large-font-line-height: var(--font-line-height-lg);
+
+  /* Icons and clear button */
+  --input-field-icon-color: var(--color-fg-on-surface-secondary);
+  --input-field-icon-size: var(--sizing-sm);
+  --input-field-control-gap: var(--spacing-xs);
+  --input-field-clear-hover-bg-color: var(--color-bg-default);
+
+  /* Label, description and messages */
+  --input-field-gap: var(--spacing-2xs);
+  --input-field-label-font-size: var(--font-size-md);
+  --input-field-label-font-line-height: var(--font-line-height-md);
+  --input-field-label-font-weight: var(--font-weight-medium);
+  --input-field-label-text-color: var(--color-fg-on-surface-primary);
+  --input-field-required-text-color: var(--color-fg-on-accent-danger-text-default);
+  --input-field-optional-text-color: var(--color-fg-on-surface-secondary);
+  --input-field-optional-font-weight: var(--font-weight-regular);
+  --input-field-message-font-size: var(--font-size-sm);
+  --input-field-message-font-line-height: var(--font-line-height-sm);
+  --input-field-description-text-color: var(--color-fg-on-surface-secondary);
+  --input-field-error-text-color: var(--color-fg-on-accent-danger-text-default);
+  --input-field-success-text-color: var(--color-fg-on-accent-success-text-default);
+
+  /* Size of a visually hidden label (still announced by screen readers) */
+  --input-field-hidden-label-size: var(--border-width-hairline);
+
+  /* Focus, motion, disabled */
+  --input-field-focus-ring-width: var(--focus-ring-width);
+  --input-field-focus-ring-offset: var(--focus-ring-offset);
+  --input-field-focus-ring-color: var(--focus-ring-color);
+  --input-field-transition-duration: var(--duration-fast);
+  --input-field-transition-easing: var(--easing-standard);
+  --input-field-disabled-opacity: var(--opacity-medium);
+}

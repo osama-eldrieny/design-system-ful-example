@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../node_modules/.cache/tsc/prototypes",
+    "rootDir": ".",
+    "tsBuildInfoFile": "../../node_modules/.cache/tsc/prototypes.tsbuildinfo"
+  },
+  "include": ["src", "vite.config.ts"],
+  "references": [
+    {
+      "path": "../../packages/react"
+    }
+  ]
+}

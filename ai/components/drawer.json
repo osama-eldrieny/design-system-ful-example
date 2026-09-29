@@ -1,0 +1,546 @@
+{
+  "id": "drawer",
+  "name": "Drawer",
+  "category": "Overlays",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A drawer is a panel that slides in from an edge of the screen for secondary tasks such as filters, settings or item details. Like a modal, it traps focus until it closes.",
+  "imports": [
+    {
+      "name": "Drawer",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DrawerTrigger",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DrawerContent",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DrawerFooter",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DrawerClose",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For filters or settings that relate to the page behind.",
+    "For details of a list item without leaving the list.",
+    "As a bottom sheet on phones."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a short confirmation.",
+      "alternative": "Modal"
+    },
+    {
+      "text": "For the site’s main navigation on desktop.",
+      "alternative": "SideNav or Navbar"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Scrim",
+      "description": "Dims the page."
+    },
+    {
+      "name": "Panel",
+      "description": "Slides from its side; the inner corners are rounded."
+    },
+    {
+      "name": "Header",
+      "description": "Title and close button."
+    },
+    {
+      "name": "Body",
+      "description": "Scrolls when long."
+    },
+    {
+      "name": "Footer",
+      "description": "Actions.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "side",
+      "title": "Side",
+      "values": [
+        {
+          "value": "end",
+          "meaning": "Right in LTR, left in RTL. Default; details and settings."
+        },
+        {
+          "value": "start",
+          "meaning": "Left in LTR; navigation on small screens."
+        },
+        {
+          "value": "top",
+          "meaning": "Announcements or search."
+        },
+        {
+          "value": "bottom",
+          "meaning": "Bottom sheet, common on phones."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Open",
+      "meaning": "Slides in; focus inside.",
+      "trigger": "open"
+    },
+    {
+      "name": "Closed",
+      "meaning": "Focus returns to the trigger.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Focus",
+      "text": "Trapped while open and returned to the trigger; Escape and clicking outside close it."
+    },
+    {
+      "topic": "Direction",
+      "text": "start and end follow the reading direction, so drawers flip in Arabic."
+    },
+    {
+      "topic": "Motion",
+      "text": "Slides in; appears without motion for reduced motion."
+    }
+  ],
+  "content": [
+    "Title: what the panel is for (“Filters”, “Order #1024”)."
+  ],
+  "guidelines": [
+    {
+      "do": "Use start/end sides.",
+      "dont": "Hard-code left or right.",
+      "why": "Logical sides flip correctly for right-to-left languages."
+    },
+    {
+      "do": "Keep the page context visible behind.",
+      "dont": "Make a drawer full-screen on desktop.",
+      "why": "Drawers are for tasks related to the page behind them."
+    },
+    {
+      "do": "Put apply/reset actions in the footer.",
+      "dont": "Apply every filter change silently with no way back.",
+      "why": "People expect to confirm or reset filters."
+    }
+  ],
+  "accessibility": {
+    "role": "dialog, named by the title.",
+    "keyboard": [
+      {
+        "keys": "Tab / Shift+Tab",
+        "action": "Moves within the drawer."
+      },
+      {
+        "keys": "Escape",
+        "action": "Closes it."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-modal, aria-labelledby",
+        "when": "Set by Radix from the title."
+      },
+      {
+        "attribute": "aria-label on the close button",
+        "when": "closeLabel."
+      }
+    ],
+    "focus": "Trapped inside; returned to the trigger.",
+    "wcag": [
+      {
+        "criterion": "2.4.3 Focus Order",
+        "how": "Focus moves in and back logically."
+      },
+      {
+        "criterion": "2.1.2 No Keyboard Trap",
+        "how": "Escape closes it."
+      },
+      {
+        "criterion": "1.4.10 Reflow",
+        "how": "Never wider or taller than the screen."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "filters",
+      "title": "Filters",
+      "description": "From the end, with actions.",
+      "code": "import { Drawer, DrawerTrigger, DrawerContent, DrawerFooter, DrawerClose, Button } from '@ds/react';\n\n<Drawer>\n  <DrawerTrigger asChild><Button appearance=\"outline\">Filters</Button></DrawerTrigger>\n  <DrawerContent title=\"Filters\">\n    {filterFields}\n    <DrawerFooter>\n      <Button appearance=\"outline\" variant=\"secondary\" onClick={reset}>Reset</Button>\n      <DrawerClose asChild><Button>Show results</Button></DrawerClose>\n    </DrawerFooter>\n  </DrawerContent>\n</Drawer>"
+    },
+    {
+      "id": "bottom",
+      "title": "Bottom sheet",
+      "description": "On phones.",
+      "code": "import { Drawer, DrawerContent } from '@ds/react';\n\n<Drawer open={open} onOpenChange={setOpen}>\n  <DrawerContent side=\"bottom\" title=\"Share\">{shareOptions}</DrawerContent>\n</Drawer>"
+    },
+    {
+      "id": "details",
+      "title": "Item details",
+      "description": "Opened from a table row.",
+      "code": "import { Drawer, DrawerContent } from '@ds/react';\n\n<Drawer open={!!order} onOpenChange={(o) => !o && setOrder(null)}>\n  <DrawerContent title={`Order ${order?.id}`} description={order?.status}>{details}</DrawerContent>\n</Drawer>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--drawer-"
+  ],
+  "related": [
+    {
+      "id": "modal",
+      "relation": "For focused tasks and confirmations."
+    },
+    {
+      "id": "popover",
+      "relation": "For small, non-blocking content."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Drawer",
+      "import": "import { Drawer } from '@ds/react';",
+      "description": "A panel that slides in from an edge, for secondary tasks like filters or details.",
+      "props": {}
+    },
+    {
+      "name": "DrawerTrigger",
+      "import": "import { DrawerTrigger } from '@ds/react';",
+      "description": "",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DrawerContent",
+      "import": "import { DrawerContent } from '@ds/react';",
+      "description": "",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Heading; names the drawer."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Short explanation under the title."
+        },
+        "side": {
+          "type": "\"start\" | \"end\" | \"top\" | \"bottom\"",
+          "values": [
+            "start",
+            "end",
+            "top",
+            "bottom"
+          ],
+          "required": false,
+          "default": "end",
+          "description": "Edge it slides from: `end` (default; right in LTR, left in RTL), `start`, `top` or\n`bottom` (common on phones)."
+        },
+        "closeLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Close",
+          "description": "Accessible name of the close button. Default \"Close\"."
+        },
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DrawerFooter",
+      "import": "import { DrawerFooter } from '@ds/react';",
+      "description": "Actions pinned to the bottom of the drawer.",
+      "props": {}
+    },
+    {
+      "name": "DrawerClose",
+      "import": "import { DrawerClose } from '@ds/react';",
+      "description": "",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--drawer-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--drawer-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--drawer-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--drawer-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--drawer-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-none",
+      "default": "0"
+    },
+    "--drawer-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--drawer-z-index": {
+      "description": "Modals and drawers.",
+      "references": "--z-modal",
+      "default": "1400"
+    },
+    "--drawer-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--drawer-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--drawer-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--drawer-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--drawer-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--drawer-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--drawer-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--drawer-close-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--drawer-close-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--drawer-close-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--drawer-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--drawer-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--drawer-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--drawer-scrim-color": {
+      "description": "Dimmed backdrop behind modals and drawers; the same in every theme.",
+      "references": "--color-scrim",
+      "default": "rgb(0 0 0 / 50%)"
+    },
+    "--drawer-scrim-z-index": {
+      "description": "Backdrops behind modals and drawers.",
+      "references": "--z-overlay",
+      "default": "1300"
+    },
+    "--drawer-padding": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
+    },
+    "--drawer-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--drawer-footer-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--drawer-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 2)"
+    },
+    "--drawer-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 1.5)"
+    },
+    "--drawer-duration": {
+      "description": "Elements entering or leaving: modals, drawers, toasts.",
+      "references": "--duration-slow",
+      "default": "300ms"
+    },
+    "--drawer-easing": {
+      "description": "Elements appearing (decelerate into place).",
+      "references": "--easing-enter",
+      "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--drawer-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--drawer-close-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--drawer-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--drawer-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-overlays-drawer--docs"
+}

@@ -1,0 +1,467 @@
+{
+  "id": "switch",
+  "name": "Switch",
+  "category": "Forms",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "A switch turns a single setting on or off and applies the change immediately, like a light switch. It replaces the earlier Toggle with a real, labelled switch control.",
+  "imports": [
+    {
+      "name": "Switch",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To turn a setting on or off that takes effect right away, e.g. \"Email notifications\".",
+    "In settings lists where each row controls one independent option."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "When the change only applies after pressing Save or Submit.",
+      "alternative": "Checkbox"
+    },
+    {
+      "text": "To choose one option from several.",
+      "alternative": "RadioGroup"
+    },
+    {
+      "text": "To trigger an action such as \"Refresh\".",
+      "alternative": "Button"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Track",
+      "description": "The pill-shaped control; its color shows on (brand) or off (neutral)."
+    },
+    {
+      "name": "Thumb",
+      "description": "Slides to the end when on, to the start when off."
+    },
+    {
+      "name": "Label",
+      "description": "Says what the switch controls; clicking it toggles the switch."
+    },
+    {
+      "name": "Description",
+      "description": "Optional detail under the label.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "labelPosition",
+      "title": "Label position",
+      "values": [
+        {
+          "value": "end",
+          "meaning": "Label after the switch. Default for standalone switches."
+        },
+        {
+          "value": "start",
+          "meaning": "Label before the switch, aligned edge to edge in settings lists."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Off",
+      "meaning": "The setting is off.",
+      "trigger": "checked is false."
+    },
+    {
+      "name": "On",
+      "meaning": "The setting is on.",
+      "trigger": "checked is true."
+    },
+    {
+      "name": "Hover",
+      "meaning": "Shows the switch responds to the pointer.",
+      "trigger": ":hover."
+    },
+    {
+      "name": "Focus",
+      "meaning": "Shows keyboard focus.",
+      "trigger": ":focus-visible; adds the focus ring."
+    },
+    {
+      "name": "Disabled",
+      "meaning": "The setting cannot be changed right now.",
+      "trigger": "disabled prop."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Immediate effect",
+      "text": "Changing a switch applies the setting at once; don’t pair switches with a Save button."
+    },
+    {
+      "topic": "Controlled or not",
+      "text": "Pass checked and onCheckedChange to control it, or defaultChecked to let it manage its own state."
+    },
+    {
+      "topic": "Forms",
+      "text": "With a name, it submits its value in native forms like a checkbox."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "The thumb slides toward the start in Arabic, so \"on\" is always toward the end of the reading direction."
+    }
+  ],
+  "content": [
+    "Label the setting, not the action: \"Email notifications\", not \"Turn on email notifications\".",
+    "Keep labels short and in sentence case.",
+    "Don’t put on/off state words in the label; the switch shows the state."
+  ],
+  "guidelines": [
+    {
+      "do": "Use a switch for settings that apply immediately.",
+      "dont": "Use a switch inside a form that is applied with a Save button.",
+      "why": "People expect a switch to take effect at once; a delayed change is surprising."
+    },
+    {
+      "do": "Give every switch a visible label.",
+      "dont": "Rely on surrounding text without connecting it to the switch.",
+      "why": "The label is the accessible name, and clicking it should toggle the switch."
+    },
+    {
+      "do": "Label the setting positively, e.g. \"Show preview\".",
+      "dont": "Use negative labels such as \"Hide preview\".",
+      "why": "On should mean the thing is on; double negatives are hard to read."
+    }
+  ],
+  "accessibility": {
+    "role": "switch (a <button role=\"switch\"> with aria-checked).",
+    "keyboard": [
+      {
+        "keys": "Tab / Shift+Tab",
+        "action": "Moves focus to and from the switch."
+      },
+      {
+        "keys": "Space",
+        "action": "Toggles the switch."
+      },
+      {
+        "keys": "Enter",
+        "action": "Toggles the switch."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-checked",
+        "when": "Set automatically from the on/off state."
+      },
+      {
+        "attribute": "aria-describedby",
+        "when": "Points at the description when there is one."
+      },
+      {
+        "attribute": "aria-label",
+        "when": "Required when there is no visible label."
+      }
+    ],
+    "focus": "A focus ring appears on the track when reached with the keyboard.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "The label is a real <label> tied to the switch; the description is linked with aria-describedby."
+      },
+      {
+        "criterion": "1.4.11 Non-text Contrast",
+        "how": "Track and thumb colors keep 3:1 against their surroundings."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Focusable and toggled with Space or Enter."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Exposed as a switch with its label as the name and on/off as its value."
+      }
+    ],
+    "notes": [
+      "State is shown by position and color, never by color alone."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Setting switch",
+      "description": "A controlled switch with a label.",
+      "code": "import { Switch } from '@ds/react';\n\n<Switch label=\"Email notifications\" checked={enabled} onCheckedChange={setEnabled} />"
+    },
+    {
+      "id": "description",
+      "title": "With a description",
+      "description": "Extra detail is announced as the switch’s description.",
+      "code": "import { Switch } from '@ds/react';\n\n<Switch\n  label=\"Real-time updates\"\n  description=\"Refreshes the dashboard every 30 seconds.\"\n  defaultChecked\n/>"
+    },
+    {
+      "id": "settings-list",
+      "title": "Settings list",
+      "description": "Labels at the start, switches aligned at the end.",
+      "code": "import { Switch } from '@ds/react';\n\n<div style={{ display: 'grid', gap: 12 }}>\n  <Switch label=\"KPI cards\" labelPosition=\"start\" defaultChecked />\n  <Switch label=\"Data charts\" labelPosition=\"start\" defaultChecked />\n</div>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--switch-"
+  ],
+  "related": [
+    {
+      "id": "checkbox",
+      "relation": "Use when the choice is applied with a Save button."
+    },
+    {
+      "id": "radio-group",
+      "relation": "Use to pick one option from several."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Replaces Toggle: a real switch (role=\"switch\") with a label, description and keyboard support.",
+        "isActive/onChange became checked/onCheckedChange; RTL support."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Switch",
+      "import": "import { Switch } from '@ds/react';",
+      "description": "Turns a setting on or off immediately, like a light switch. For choices that are only\napplied after pressing Save, use a Checkbox instead.",
+      "props": {
+        "checked": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Whether the switch is on (controlled). Use with onCheckedChange."
+        },
+        "defaultChecked": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Initial state when uncontrolled."
+        },
+        "onCheckedChange": {
+          "type": "((checked: boolean) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the new state when the switch is toggled."
+        },
+        "label": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Visible label saying what the switch controls, e.g. \"Email notifications\". Clicking it\ntoggles the switch. Without a label, pass aria-label."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Extra detail under the label; announced as the switch's description."
+        },
+        "labelPosition": {
+          "type": "\"start\" | \"end\"",
+          "values": [
+            "start",
+            "end"
+          ],
+          "required": false,
+          "default": "end",
+          "description": "Side of the switch the label sits on. `end` (default) or `start` for settings lists."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--switch-on-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--switch-on-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-hover",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dfd4ff",
+        "brand=amber,mode=light": "#c28f58",
+        "brand=amber,mode=dark": "#f9f5f1",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#f4f6fc"
+      }
+    },
+    "--switch-off-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--switch-off-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-hover",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dedde0",
+        "brand=amber,mode=dark": "#dedde0",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--switch-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xl",
+      "default": "38px"
+    },
+    "--switch-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--switch-thumb-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--switch-thumb-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--switch-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--switch-label-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--switch-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--switch-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--switch-label-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--switch-label-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--switch-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--switch-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--switch-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--switch-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--switch-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--switch-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--switch-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--switch-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--switch-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--switch-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-999",
+      "default": "999px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px"
+      }
+    },
+    "--switch-thumb-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-999",
+      "default": "999px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-switch--docs"
+}

@@ -1,0 +1,54 @@
+/** Spinner. Styled only with --spinner-* tokens. Slows down (not stops) for reduced motion. */
+
+.ds-spinner {
+  --_size: var(--spinner-size);
+
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.ds-spinner--small {
+  --_size: var(--spinner-small-size);
+}
+
+.ds-spinner--large {
+  --_size: var(--spinner-large-size);
+}
+
+.ds-spinner__circle {
+  box-sizing: border-box;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  border: calc(var(--_size) / 8) solid var(--spinner-track-color);
+  border-block-start-color: var(--spinner-color);
+  border-radius: 50%;
+  animation: ds-spinner-turn var(--spinner-duration) linear infinite;
+}
+
+@keyframes ds-spinner-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.ds-spinner__label {
+  position: absolute;
+  inline-size: var(--spinner-hidden-size);
+  block-size: var(--spinner-hidden-size);
+  margin: calc(-1 * var(--spinner-hidden-size));
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-spinner__circle {
+    animation-duration: calc(var(--spinner-duration) * 3);
+  }
+}
+
+@media (forced-colors: active) {
+  .ds-spinner__circle {
+    border-block-start-color: Highlight;
+  }
+}

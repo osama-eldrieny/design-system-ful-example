@@ -1,0 +1,932 @@
+{
+  "id": "select",
+  "name": "Select",
+  "category": "Forms",
+  "status": "stable",
+  "since": "0.3.0",
+  "description": "A select lets people pick one option from a list that opens below the field. It has a label, help text, error and success messages, option groups and disabled options, and matches InputField.",
+  "imports": [
+    {
+      "name": "Select",
+      "from": "@ds/react"
+    },
+    {
+      "name": "SelectItem",
+      "from": "@ds/react"
+    },
+    {
+      "name": "SelectGroup",
+      "from": "@ds/react"
+    },
+    {
+      "name": "SelectSeparator",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To pick one option from about 5–15 known options, e.g. a country region or a sort order.",
+    "When space is tight and the options don’t need to be visible all the time."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For two to four options.",
+      "alternative": "RadioGroup (all options visible)"
+    },
+    {
+      "text": "For long lists people will search.",
+      "alternative": "Combobox"
+    },
+    {
+      "text": "To pick several options.",
+      "alternative": "CheckboxGroup"
+    },
+    {
+      "text": "For actions such as Edit or Delete.",
+      "alternative": "DropdownMenu"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Label",
+      "description": "From FormField; names the field."
+    },
+    {
+      "name": "Trigger",
+      "description": "Shows the chosen option or the placeholder, and a chevron."
+    },
+    {
+      "name": "List",
+      "description": "Opens below (or above if there’s no room); scrolls when long."
+    },
+    {
+      "name": "Option",
+      "description": "The chosen option shows a tick."
+    },
+    {
+      "name": "Group label",
+      "description": "Heads a set of options.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dense UI, filters and tables."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default; matches InputField."
+        },
+        {
+          "value": "large",
+          "meaning": "Prominent forms."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Placeholder",
+      "meaning": "Nothing chosen yet; secondary text color.",
+      "trigger": "no value"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Darker border.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring.",
+      "trigger": ":focus-visible"
+    },
+    {
+      "name": "Open",
+      "meaning": "List shown; chevron flips.",
+      "trigger": "data-state=\"open\""
+    },
+    {
+      "name": "Error",
+      "meaning": "Red border and message; aria-invalid.",
+      "trigger": "error"
+    },
+    {
+      "name": "Success",
+      "meaning": "Green border and message.",
+      "trigger": "success"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Dimmed; can’t open. Options can be disabled on their own.",
+      "trigger": "disabled"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Keyboard",
+      "text": "Space, Enter or arrows open the list; arrows move, Enter selects, Escape closes, typing jumps to matching options."
+    },
+    {
+      "topic": "Forms",
+      "text": "With name, a hidden native select submits the value with the form; required is enforced."
+    },
+    {
+      "topic": "Themes",
+      "text": "The list opens in a portal but keeps the theme of the field it opened from."
+    },
+    {
+      "topic": "Long lists",
+      "text": "The list scrolls within the space available on screen."
+    }
+  ],
+  "content": [
+    "Label: what’s being chosen (“Country”).",
+    "Placeholder: “Choose a …”, or preselect a sensible default instead.",
+    "Options: short, parallel, and in a logical order (alphabetical, by size, by frequency)."
+  ],
+  "guidelines": [
+    {
+      "do": "Use RadioGroup for two to four options.",
+      "dont": "Hide two options inside a Select.",
+      "why": "Visible options are faster to compare and choose."
+    },
+    {
+      "do": "Group long lists with SelectGroup.",
+      "dont": "Show 40 ungrouped options.",
+      "why": "Groups make long lists scannable; for very long lists use Combobox."
+    },
+    {
+      "do": "Keep the label visible.",
+      "dont": "Use the placeholder as the only label.",
+      "why": "The placeholder disappears once something is chosen."
+    }
+  ],
+  "accessibility": {
+    "role": "combobox trigger with a listbox of options.",
+    "keyboard": [
+      {
+        "keys": "Space / Enter / ↓",
+        "action": "Opens the list."
+      },
+      {
+        "keys": "↑ / ↓",
+        "action": "Moves between options."
+      },
+      {
+        "keys": "Enter",
+        "action": "Selects the highlighted option."
+      },
+      {
+        "keys": "Escape",
+        "action": "Closes without changing."
+      },
+      {
+        "keys": "Type characters",
+        "action": "Jumps to the matching option."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-expanded / aria-controls",
+        "when": "From Radix on the trigger."
+      },
+      {
+        "attribute": "aria-describedby",
+        "when": "Help text and message."
+      },
+      {
+        "attribute": "aria-invalid",
+        "when": "With an error."
+      },
+      {
+        "attribute": "aria-selected",
+        "when": "On the chosen option."
+      }
+    ],
+    "focus": "Focus ring on the trigger; focus returns to it when the list closes.",
+    "wcag": [
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Opens, navigates and selects from the keyboard."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Labelled combobox exposing its value."
+      },
+      {
+        "criterion": "1.4.11 Non-text Contrast",
+        "how": "Trigger border meets 3:1 in every theme."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Select",
+      "description": "Label, placeholder and options.",
+      "code": "import { Select, SelectItem } from '@ds/react';\n\n<Select label=\"Sort by\" placeholder=\"Choose an order\" name=\"sort\">\n  <SelectItem value=\"newest\">Newest first</SelectItem>\n  <SelectItem value=\"price-asc\">Price: low to high</SelectItem>\n  <SelectItem value=\"price-desc\">Price: high to low</SelectItem>\n</Select>"
+    },
+    {
+      "id": "groups",
+      "title": "Groups",
+      "description": "Labelled groups and a separator.",
+      "code": "import { Select, SelectGroup, SelectItem, SelectSeparator } from '@ds/react';\n\n<Select label=\"Time zone\" defaultValue=\"cet\">\n  <SelectGroup label=\"Europe\">\n    <SelectItem value=\"gmt\">London (GMT)</SelectItem>\n    <SelectItem value=\"cet\">Berlin (CET)</SelectItem>\n  </SelectGroup>\n  <SelectSeparator />\n  <SelectGroup label=\"Middle East\">\n    <SelectItem value=\"gst\">Dubai (GST)</SelectItem>\n  </SelectGroup>\n</Select>"
+    },
+    {
+      "id": "controlled",
+      "title": "Controlled with an error",
+      "description": "Keep the value in state and validate it.",
+      "code": "import { useState } from 'react';\nimport { Select, SelectItem } from '@ds/react';\n\nconst [plan, setPlan] = useState<string>();\n\n<Select\n  label=\"Plan\"\n  value={plan}\n  onValueChange={setPlan}\n  required\n  error={submitted && !plan ? 'Choose a plan.' : undefined}\n>\n  <SelectItem value=\"free\">Free</SelectItem>\n  <SelectItem value=\"pro\">Pro</SelectItem>\n  <SelectItem value=\"team\" disabled>Team (contact sales)</SelectItem>\n</Select>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--select-"
+  ],
+  "related": [
+    {
+      "id": "radio-group",
+      "relation": "For two to four visible options."
+    },
+    {
+      "id": "dropdown-menu",
+      "relation": "For actions, not values."
+    },
+    {
+      "id": "form-field",
+      "relation": "Provides the label and messages."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Select",
+      "import": "import { Select } from '@ds/react';",
+      "description": "Picks one option from a list that opens below the field. Type to jump to an option;\narrow keys move, Enter selects.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "What to choose, e.g. \"Country\". Always required: it names the field."
+        },
+        "hideLabel": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Hides the label visually but keeps it for screen readers."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Help text under the field."
+        },
+        "error": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Error message. Marks the field invalid."
+        },
+        "success": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Confirmation message."
+        },
+        "required": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the field required."
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the field optional with text after the label."
+        },
+        "placeholder": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Text shown until something is chosen, e.g. \"Choose a country\"."
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Selected value (controlled). Use with onValueChange."
+        },
+        "defaultValue": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Initially selected value when uncontrolled."
+        },
+        "onValueChange": {
+          "type": "((value: string) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the new value."
+        },
+        "size": {
+          "type": "SelectSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for dense UI, `medium` by default, `large` for prominent forms."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Disables the field."
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Form field name; the value is submitted with the form."
+        },
+        "id": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Id of the trigger."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "SelectItem, SelectGroup and SelectSeparator elements."
+        }
+      }
+    },
+    {
+      "name": "SelectItem",
+      "import": "import { SelectItem } from '@ds/react';",
+      "description": "One option. The selected option shows a tick.",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The value this option selects."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Option text; also used for typeahead."
+        }
+      }
+    },
+    {
+      "name": "SelectGroup",
+      "import": "import { SelectGroup } from '@ds/react';",
+      "description": "A labelled set of options inside a Select.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Heading shown above the group's options."
+        }
+      }
+    },
+    {
+      "name": "SelectSeparator",
+      "import": "import { SelectSeparator } from '@ds/react';",
+      "description": "A line between groups of options.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--select-trigger-default-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--select-trigger-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--select-trigger-placeholder-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--select-trigger-default-border-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--select-trigger-hover-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--select-trigger-focus-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--select-trigger-error-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-danger-strong",
+      "default": "#f54e4e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f32727",
+        "brand=amber,mode=light": "#a66c7b",
+        "brand=amber,mode=dark": "#a66c7b",
+        "brand=opal,mode=light": "#f43f5e",
+        "brand=opal,mode=dark": "#f6627b"
+      }
+    },
+    "--select-trigger-success-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-success-strong",
+      "default": "#008f35",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ac40",
+        "brand=amber,mode=light": "#668e8b",
+        "brand=amber,mode=dark": "#668e8b",
+        "brand=opal,mode=light": "#5e9110",
+        "brand=opal,mode=dark": "#70ad14"
+      }
+    },
+    "--select-trigger-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--select-trigger-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--select-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--select-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--select-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--select-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--select-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--select-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--select-height": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--select-small-height": {
+      "description": "Height of small buttons, fields and selects, so they line up in a row.",
+      "references": "--control-height-small",
+      "default": "32px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "28px"
+      }
+    },
+    "--select-large-height": {
+      "description": "Height of large buttons, fields and selects.",
+      "references": "--control-height-large",
+      "default": "48px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "44px"
+      }
+    },
+    "--select-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--select-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--select-small-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--select-small-padding-y": {
+      "description": "No space.",
+      "references": "--spacing-none",
+      "default": "0"
+    },
+    "--select-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--select-small-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--select-large-padding-x": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--select-large-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--select-large-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--select-large-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--select-content-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--select-content-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--select-content-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--select-content-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-none",
+      "default": "0"
+    },
+    "--select-content-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--select-content-padding": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--select-content-max-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--select-content-z-index": {
+      "description": "Menus and select lists.",
+      "references": "--z-dropdown",
+      "default": "1000"
+    },
+    "--select-item-default-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--select-item-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--select-item-highlighted-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--select-item-highlighted-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--select-item-selected-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--select-indicator-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--select-item-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--select-item-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--select-item-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--select-item-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--select-item-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--select-group-label-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--select-group-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--select-group-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--select-group-label-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--select-separator-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--select-separator-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--select-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--select-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--select-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--select-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--select-transition-easing": {
+      "description": "Elements appearing (decelerate into place).",
+      "references": "--easing-enter",
+      "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--select-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--select-trigger-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--select-content-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "16px"
+      }
+    },
+    "--select-item-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--select-content-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--select-content-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-select--docs"
+}

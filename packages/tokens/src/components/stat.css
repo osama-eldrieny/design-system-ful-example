@@ -1,0 +1,30 @@
+/**
+ * Component tokens: stat
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --stat-{part}-{trend?}-{property}
+ *   part: label | value | change | help; trend: up | down.
+ */
+
+:root,
+[data-theme] {
+  --stat-label-text-color: var(--color-fg-on-surface-secondary);
+  --stat-label-font-size: var(--font-size-sm);
+  --stat-label-font-line-height: var(--font-line-height-sm);
+  --stat-label-font-weight: var(--font-weight-medium);
+  --stat-value-text-color: var(--color-fg-on-surface-primary);
+  --stat-value-font-size: var(--font-size-xl);
+  --stat-value-font-line-height: var(--font-line-height-xl);
+  --stat-value-font-weight: var(--font-weight-bold);
+  --stat-change-up-text-color: var(--color-fg-on-accent-success-text-default);
+  --stat-change-down-text-color: var(--color-fg-on-accent-danger-text-default);
+  --stat-change-neutral-text-color: var(--color-fg-on-surface-secondary);
+  --stat-change-font-size: var(--font-size-sm);
+  --stat-change-font-line-height: var(--font-line-height-sm);
+  --stat-change-font-weight: var(--font-weight-medium);
+  --stat-icon-size: var(--sizing-xs);
+  --stat-help-text-color: var(--color-fg-on-surface-secondary);
+  --stat-gap: var(--spacing-2xs);
+  --stat-font-family: var(--font-family-body);
+}

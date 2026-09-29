@@ -1,0 +1,264 @@
+/**
+ * Page styles for the prototypes. Tokens only (checked by ds-validate): components style
+ * themselves; this file only paints page backgrounds and page-level type.
+ */
+
+html,
+body {
+  margin: 0;
+}
+
+/* <html> carries the theme too (App applies it), so the whole viewport matches. */
+html {
+  background-color: var(--color-bg-default);
+}
+
+.proto {
+  background-color: var(--color-bg-default);
+  color: var(--color-fg-on-surface-primary);
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-md);
+  line-height: var(--font-line-height-md);
+}
+
+.proto-top {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
+  padding-block: var(--spacing-sm);
+  background-color: var(--color-bg-default);
+}
+
+.proto-hero {
+  padding-block: var(--spacing-5xl);
+  background-color: var(--color-bg-accent-primary-default);
+  color: var(--color-fg-on-accent-primary-default);
+  text-align: center;
+}
+
+.proto-hero-title {
+  margin: 0;
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-xl);
+  line-height: var(--font-line-height-xl);
+  font-weight: var(--font-weight-bold);
+  text-wrap: balance;
+}
+
+.proto-main {
+  padding-block: var(--spacing-3xl);
+}
+
+.proto-title {
+  margin: 0;
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-lg);
+  line-height: var(--font-line-height-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+.proto-subtitle {
+  margin: 0;
+  font-size: var(--font-size-md);
+  line-height: var(--font-line-height-md);
+  font-weight: var(--font-weight-bold);
+}
+
+.proto-muted {
+  margin: 0;
+  color: var(--color-fg-on-surface-secondary);
+}
+
+/* Sidebar next to the content on wide screens; stacked on small ones. */
+
+.proto-playground > * {
+  min-inline-size: 0;
+}
+
+@media (width >= 64rem) {
+  .proto-layout--three {
+    grid-template-columns: calc(var(--sizing-8xl) * 1.2) minmax(0, 1fr) calc(
+        var(--sizing-8xl) * 1.3
+      );
+  }
+}
+
+/* Theme playground */
+.proto-playground {
+  display: grid;
+  gap: var(--spacing-xl);
+}
+
+@media (width >= 64rem) {
+  .proto-playground {
+    grid-template-columns: calc(var(--sizing-8xl) * 1.4) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.proto-preview {
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg-default);
+  color: var(--color-fg-on-surface-primary);
+  font-family: var(--font-family-body);
+}
+
+.proto-plain-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proto-grow {
+  flex: 1 1 calc(var(--sizing-8xl) * 1.2);
+}
+
+.proto-sort {
+  min-inline-size: calc(var(--sizing-8xl) * 0.8);
+}
+
+.proto-visually-hidden {
+  position: absolute;
+  inline-size: var(--border-width-hairline);
+  block-size: var(--border-width-hairline);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* A count badge pinned to the corner of an icon button. */
+.proto-badge-anchor {
+  position: relative;
+  display: inline-flex;
+}
+
+.proto-badge-anchor__badge {
+  position: absolute;
+  inset-block-start: calc(-1 * var(--spacing-2xs));
+  inset-inline-end: calc(-1 * var(--spacing-2xs));
+  pointer-events: none;
+}
+
+/* Product page: media beside the details on wide screens. */
+
+.proto-totals {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--spacing-xs);
+  margin: 0;
+}
+
+.proto-totals dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+
+.proto-totals__total {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Admin: side navigation beside the page on wide screens. */
+.proto-admin {
+  display: grid;
+}
+
+.proto-admin__side {
+  padding: var(--spacing-lg);
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-base);
+}
+
+.proto-admin__main {
+  min-inline-size: 0;
+}
+
+@media (width >= 64rem) {
+  .proto-admin__main {
+    grid-column: 2;
+  }
+}
+
+.proto-admin__bar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-base);
+}
+
+.proto-admin__content {
+  padding: var(--spacing-xl);
+}
+
+@media (width >= 64rem) {
+  .proto-admin {
+    grid-template-columns: calc(var(--sizing-8xl) * 1.2) minmax(0, 1fr);
+    min-block-size: 100dvh;
+  }
+
+  /* The side menu stays fixed while the page scrolls; the grid keeps its column free. */
+  .proto-admin__side {
+    position: fixed;
+    inset-block: 0;
+    inset-inline-start: 0;
+    z-index: var(--z-sticky);
+    box-sizing: border-box;
+    inline-size: calc(var(--sizing-8xl) * 1.2);
+    overflow-y: auto;
+    border-block-end: 0;
+    border-inline-end: var(--border-width-hairline) solid var(--color-border-base);
+  }
+}
+
+.proto-bulk {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+  background-color: var(--color-bg-primary-1);
+  color: var(--color-fg-on-primary-high);
+}
+
+.proto-danger-zone {
+  border-color: var(--color-border-danger-medium);
+  background-color: var(--color-bg-danger-1);
+}
+
+/* Overview: a main column beside a narrower side column on wide screens. */
+.proto-dash {
+  display: grid;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.proto-dash > * {
+  min-inline-size: 0;
+}
+
+@media (width >= 72rem) {
+  .proto-dash {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+}
+
+.proto-target {
+  flex: 0 1 calc(var(--sizing-8xl) * 1.2);
+}
+
+.proto-team {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+/* A switch row that spans its container: label at the start, toggle at the end. */
+.proto-switch-row {
+  inline-size: 100%;
+  justify-content: space-between;
+}

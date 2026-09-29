@@ -1,0 +1,193 @@
+/**
+ * InputField. Styled only with --input-field-* tokens. The control wrapper draws the
+ * border so icons and the clear button sit inside it; states are real (:hover,
+ * :focus-within, :disabled) plus data-invalid / data-success / data-readonly.
+ */
+
+.ds-input-field {
+  --_px: var(--input-field-padding-x);
+  --_py: var(--input-field-padding-y);
+  --_height: var(--input-field-height);
+  --_font-size: var(--input-field-font-size);
+  --_line-height: var(--input-field-font-line-height);
+  --_border: var(--input-field-default-border-color);
+
+  display: grid;
+
+  /* Keep label, control and messages at their own height when a grid row makes the
+     field taller (e.g. beside a field with help text), so inputs line up. */
+  align-content: start;
+  gap: var(--input-field-gap);
+  font-family: var(--input-field-font-family);
+}
+
+.ds-input-field--small {
+  --_px: var(--input-field-small-padding-x);
+  --_py: var(--input-field-small-padding-y);
+  --_height: var(--input-field-small-height);
+  --_font-size: var(--input-field-small-font-size);
+  --_line-height: var(--input-field-small-font-line-height);
+}
+
+.ds-input-field--large {
+  --_px: var(--input-field-large-padding-x);
+  --_py: var(--input-field-large-padding-y);
+  --_height: var(--input-field-large-height);
+  --_font-size: var(--input-field-large-font-size);
+  --_line-height: var(--input-field-large-font-line-height);
+}
+
+.ds-input-field[data-success] {
+  --_border: var(--input-field-success-border-color);
+}
+
+.ds-input-field[data-invalid] {
+  --_border: var(--input-field-error-border-color);
+}
+
+.ds-input-field__label {
+  font-size: var(--input-field-label-font-size);
+  line-height: var(--input-field-label-font-line-height);
+  font-weight: var(--input-field-label-font-weight);
+  color: var(--input-field-label-text-color);
+}
+
+/* Visually hidden, still announced. */
+.ds-input-field__label--hidden {
+  position: absolute;
+  inline-size: var(--input-field-hidden-label-size);
+  block-size: var(--input-field-hidden-label-size);
+  margin: calc(-1 * var(--input-field-hidden-label-size));
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ds-input-field__optional {
+  font-weight: var(--input-field-optional-font-weight);
+  color: var(--input-field-optional-text-color);
+}
+
+.ds-input-field__required {
+  color: var(--input-field-required-text-color);
+}
+
+.ds-input-field__control {
+  box-sizing: border-box;
+  min-block-size: var(--_height);
+  display: flex;
+  align-items: center;
+  gap: var(--input-field-control-gap);
+  padding-block: var(--_py);
+  padding-inline: var(--_px);
+  border: var(--input-field-border-width) solid var(--_border);
+  border-radius: var(--input-field-border-radius);
+  background-color: var(--input-field-default-bg-color);
+  transition: border-color var(--input-field-transition-duration)
+    var(--input-field-transition-easing);
+}
+
+.ds-input-field__control:hover {
+  border-color: var(--input-field-hover-border-color);
+}
+
+.ds-input-field[data-invalid] .ds-input-field__control:hover,
+.ds-input-field[data-success] .ds-input-field__control:hover {
+  border-color: var(--_border);
+}
+
+.ds-input-field__control:focus-within {
+  border-color: var(--input-field-focus-border-color);
+  outline: var(--input-field-focus-ring-width) solid var(--input-field-focus-ring-color);
+
+  /* The ring covers the border, so focus reads as one thicker border, not two lines. */
+  outline-offset: calc(-1 * var(--input-field-border-width));
+}
+
+.ds-input-field[data-readonly] .ds-input-field__control {
+  background-color: var(--input-field-readonly-bg-color);
+}
+
+.ds-input-field[data-disabled] .ds-input-field__control {
+  opacity: var(--input-field-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-input-field__input {
+  flex: 1;
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+  font-weight: var(--input-field-font-weight);
+  color: var(--input-field-default-text-color);
+}
+
+.ds-input-field__input::placeholder {
+  color: var(--input-field-placeholder-text-color);
+  opacity: 1;
+}
+
+.ds-input-field__input:disabled {
+  cursor: not-allowed;
+}
+
+.ds-input-field__icon {
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--input-field-icon-size);
+  block-size: var(--input-field-icon-size);
+  color: var(--input-field-icon-color);
+}
+
+.ds-input-field__icon > svg,
+.ds-input-field__clear > svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ds-input-field__clear {
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--input-field-icon-size);
+  block-size: var(--input-field-icon-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--input-field-border-radius);
+  background: transparent;
+  color: var(--input-field-icon-color);
+  cursor: pointer;
+}
+
+.ds-input-field__clear:hover {
+  background-color: var(--input-field-clear-hover-bg-color);
+}
+
+.ds-input-field__clear:focus-visible {
+  outline: var(--input-field-focus-ring-width) solid var(--input-field-focus-ring-color);
+  outline-offset: var(--input-field-focus-ring-offset);
+}
+
+.ds-input-field__description,
+.ds-input-field__message {
+  font-size: var(--input-field-message-font-size);
+  line-height: var(--input-field-message-font-line-height);
+}
+
+.ds-input-field__description {
+  color: var(--input-field-description-text-color);
+}
+
+.ds-input-field__message--error {
+  color: var(--input-field-error-text-color);
+}
+
+.ds-input-field__message--success {
+  color: var(--input-field-success-text-color);
+}

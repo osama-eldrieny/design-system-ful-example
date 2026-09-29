@@ -1,0 +1,59 @@
+/**
+ * Component tokens: choose-card
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --choose-card-{state?}-{part?}-{property}
+ *   state: hover | selected; part: title | desc | price | indicator | group.
+ *   Corners come from the radius theme (themes/radius.css).
+ */
+
+:root,
+[data-theme] {
+  --choose-card-border-color: var(--color-border-field);
+  --choose-card-title-font-color: var(--color-fg-on-surface-primary);
+  --choose-card-price-font-color: var(--color-fg-on-surface-primary);
+  --choose-card-desc-font-color: var(--color-fg-on-surface-secondary);
+  --choose-card-border-width: var(--border-width-hairline);
+  --choose-card-padding-y: var(--spacing-lg);
+  --choose-card-horizontal-gap: var(--spacing-md);
+  --choose-card-vertical-gap: var(--spacing-sm);
+  --choose-card-title-font-family: var(--font-family-body);
+  --choose-card-title-font-size: var(--font-size-md);
+  --choose-card-title-font-line-height: var(--font-line-height-md);
+  --choose-card-title-font-weight: var(--font-weight-medium);
+  --choose-card-desc-font-family: var(--font-family-body);
+  --choose-card-desc-font-size: var(--font-size-sm);
+  --choose-card-desc-font-line-height: var(--font-line-height-sm);
+  --choose-card-desc-font-weight: var(--font-weight-regular);
+  --choose-card-price-font-family: var(--font-family-body);
+  --choose-card-price-font-size: var(--font-size-md);
+  --choose-card-price-font-line-height: var(--font-line-height-md);
+  --choose-card-price-font-weight: var(--font-weight-regular);
+
+  /* Container and states */
+  --choose-card-bg-color: var(--color-bg-surface);
+  --choose-card-padding-x: var(--spacing-lg);
+  --choose-card-hover-border-color: var(--color-bg-accent-primary-default);
+  --choose-card-selected-border-color: var(--color-bg-accent-primary-default);
+  --choose-card-selected-border-width: var(--border-width-regular);
+
+  /* Radio indicator */
+  --choose-card-indicator-size: var(--sizing-sm);
+  --choose-card-indicator-border-width: var(--border-width-regular);
+  --choose-card-indicator-off-border-color: var(--color-bg-accent-secondary-default);
+  --choose-card-indicator-on-bg-color: var(--color-bg-accent-primary-default);
+  --choose-card-indicator-dot-color: var(--color-fg-on-accent-primary-default);
+
+  /* Group */
+  --choose-card-group-gap: var(--spacing-md);
+  --choose-card-group-item-min-width: calc(var(--sizing-8xl) * 0.6);
+
+  /* Focus, motion, disabled */
+  --choose-card-focus-ring-width: var(--focus-ring-width);
+  --choose-card-focus-ring-offset: var(--focus-ring-offset);
+  --choose-card-focus-ring-color: var(--focus-ring-color);
+  --choose-card-transition-duration: var(--duration-fast);
+  --choose-card-transition-easing: var(--easing-standard);
+  --choose-card-disabled-opacity: var(--opacity-medium);
+}

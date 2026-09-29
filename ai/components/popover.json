@@ -1,0 +1,481 @@
+{
+  "id": "popover",
+  "name": "Popover",
+  "category": "Overlays",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A popover shows interactive content anchored to a button, such as a small form, filters or details. It doesn’t block the page: clicking outside or Escape closes it and focus returns to the trigger.",
+  "imports": [
+    {
+      "name": "Popover",
+      "from": "@ds/react"
+    },
+    {
+      "name": "PopoverTrigger",
+      "from": "@ds/react"
+    },
+    {
+      "name": "PopoverContent",
+      "from": "@ds/react"
+    },
+    {
+      "name": "PopoverClose",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For small, related content or controls next to what opened them: a quick filter, a color picker, details."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a list of actions.",
+      "alternative": "DropdownMenu"
+    },
+    {
+      "text": "For a short hint.",
+      "alternative": "Tooltip"
+    },
+    {
+      "text": "For tasks that need full attention.",
+      "alternative": "Modal"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Trigger",
+      "description": "A button (aria-expanded)."
+    },
+    {
+      "name": "Panel",
+      "description": "Positioned next to the trigger, kept on screen."
+    },
+    {
+      "name": "Title",
+      "description": "Optional heading.",
+      "optional": true
+    },
+    {
+      "name": "Close button",
+      "description": "Shown by default.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "side",
+      "title": "Side",
+      "values": [
+        {
+          "value": "bottom",
+          "meaning": "Default."
+        },
+        {
+          "value": "top",
+          "meaning": "Above."
+        },
+        {
+          "value": "right / left",
+          "meaning": "Beside; flips when there isn’t room."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Open",
+      "meaning": "Shown; focus moves inside.",
+      "trigger": "trigger click"
+    },
+    {
+      "name": "Closed",
+      "meaning": "Focus returns to the trigger.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Focus",
+      "text": "Moves into the popover on open and back to the trigger on close; it isn’t trapped."
+    },
+    {
+      "topic": "Closing",
+      "text": "Escape, clicking outside, the close button or a PopoverClose."
+    },
+    {
+      "topic": "Themes",
+      "text": "Keeps the theme of where it opened."
+    }
+  ],
+  "content": [
+    "Keep it short; if it needs scrolling, use a Drawer or Modal."
+  ],
+  "guidelines": [
+    {
+      "do": "Open popovers from a button.",
+      "dont": "Open them on hover.",
+      "why": "Hover isn’t available to keyboard and touch users; use HoverCard only for previews."
+    },
+    {
+      "do": "Keep content small.",
+      "dont": "Put a long form in a popover.",
+      "why": "Long popovers get cut off and are hard to navigate."
+    },
+    {
+      "do": "Use DropdownMenu for action lists.",
+      "dont": "Build a menu out of buttons in a popover.",
+      "why": "Menus have their own keyboard pattern and semantics."
+    }
+  ],
+  "accessibility": {
+    "role": "dialog (non-modal), controlled by the trigger button.",
+    "keyboard": [
+      {
+        "keys": "Enter / Space",
+        "action": "Opens from the trigger."
+      },
+      {
+        "keys": "Escape",
+        "action": "Closes and returns focus."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-expanded / aria-controls",
+        "when": "On the trigger (Radix)."
+      },
+      {
+        "attribute": "aria-label on the close button",
+        "when": "closeLabel."
+      }
+    ],
+    "focus": "Moves in on open, back to the trigger on close.",
+    "wcag": [
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Opens, closes and works by keyboard."
+      },
+      {
+        "criterion": "1.4.13 Content on Hover or Focus",
+        "how": "Dismissible with Escape; stays open until dismissed."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Expanded state on the trigger."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Details",
+      "description": "A titled popover.",
+      "code": "import { Popover, PopoverTrigger, PopoverContent, Button } from '@ds/react';\n\n<Popover>\n  <PopoverTrigger asChild><Button appearance=\"outline\">Shipping</Button></PopoverTrigger>\n  <PopoverContent title=\"Shipping\">Free delivery on orders over $50.</PopoverContent>\n</Popover>"
+    },
+    {
+      "id": "form",
+      "title": "Quick filter",
+      "description": "Controls inside.",
+      "code": "import { Popover, PopoverTrigger, PopoverContent, PopoverClose, Slider, Button } from '@ds/react';\n\n<Popover>\n  <PopoverTrigger asChild><Button appearance=\"outline\">Price</Button></PopoverTrigger>\n  <PopoverContent title=\"Price\">\n    <Slider label=\"Price\" hideLabel defaultValue={[0, 300]} max={500} />\n    <PopoverClose asChild><Button size=\"small\">Apply</Button></PopoverClose>\n  </PopoverContent>\n</Popover>"
+    },
+    {
+      "id": "side",
+      "title": "Placement",
+      "description": "On the right.",
+      "code": "import { Popover, PopoverTrigger, PopoverContent, Button } from '@ds/react';\n\n<Popover>\n  <PopoverTrigger asChild><Button>Info</Button></PopoverTrigger>\n  <PopoverContent side=\"right\" showClose={false} aria-label=\"More information\">More information.</PopoverContent>\n</Popover>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--popover-"
+  ],
+  "related": [
+    {
+      "id": "tooltip",
+      "relation": "For short hints."
+    },
+    {
+      "id": "dropdown-menu",
+      "relation": "For actions."
+    },
+    {
+      "id": "modal",
+      "relation": "For blocking tasks."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Popover",
+      "import": "import { Popover } from '@ds/react';",
+      "description": "Interactive content anchored to a trigger, e.g. a filter form or details. Not modal.",
+      "props": {}
+    },
+    {
+      "name": "PopoverTrigger",
+      "import": "import { PopoverTrigger } from '@ds/react';",
+      "description": "The element that toggles the popover; usually a Button via asChild.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "PopoverContent",
+      "import": "import { PopoverContent } from '@ds/react';",
+      "description": "",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Heading; names the popover. Without it, pass aria-label."
+        },
+        "showClose": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows a close button. Default true. Escape and clicking outside also close it."
+        },
+        "closeLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Close",
+          "description": "Accessible name of the close button. Default \"Close\"."
+        },
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "PopoverClose",
+      "import": "import { PopoverClose } from '@ds/react';",
+      "description": "",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--popover-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--popover-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--popover-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--popover-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--popover-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-none",
+      "default": "0"
+    },
+    "--popover-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--popover-z-index": {
+      "description": "Menus and select lists.",
+      "references": "--z-dropdown",
+      "default": "1000"
+    },
+    "--popover-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--popover-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--popover-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--popover-close-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--popover-close-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--popover-close-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--popover-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--popover-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--popover-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--popover-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--popover-padding": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--popover-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--popover-max-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 1.5)"
+    },
+    "--popover-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--popover-easing": {
+      "description": "Elements appearing (decelerate into place).",
+      "references": "--easing-enter",
+      "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--popover-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "16px"
+      }
+    },
+    "--popover-close-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--popover-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--popover-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-overlays-popover--docs"
+}

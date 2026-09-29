@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Progress } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Progress/Progress.stories';
+import meta from '../../../../packages/react/src/Progress/Progress.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Progress
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Progress]}
+  anatomy={{
+    targets: [
+      '.ds-progress__label',
+      '.ds-progress__value',
+      { selector: '.ds-progress__track', at: 'end' },
+      '.ds-progress__bar',
+    ],
+    example: (
+      <div style={{ inlineSize: 300 }}>
+        <Progress label="Uploading report.pdf" value={45} showValue />
+      </div>
+    ),
+  }}
+  optionStories={{ tone: 'Tones', size: 'Sizes' }}
+  extras={[{ title: 'Indeterminate', story: 'Indeterminate' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 240 }}>
+      <Progress label="Upload" value={60} showValue />
+    </div>
+  }
+/>

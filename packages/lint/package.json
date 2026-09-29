@@ -1,0 +1,23 @@
+{
+  "name": "@ds/lint",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Lint rules that keep code on the design system: components over raw HTML, documented props, accessible names, tokens only.",
+  "exports": {
+    "./stylelint": "./stylelint/index.js",
+    "./eslint": "./eslint/index.js"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "stylelint": "^17.0.0"
+  },
+  "bin": {
+    "ds-validate": "./bin/ds-validate.js"
+  },
+  "files": [
+    "eslint",
+    "stylelint",
+    "bin"
+  ]
+}

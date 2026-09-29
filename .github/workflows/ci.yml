@@ -1,0 +1,58 @@
+name: CI & Deploy
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      # Stories run as tests in a real browser.
+      - run: npx playwright install --with-deps chromium
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      # Drift guard: the AI files must be regenerated and committed with the change.
+      - name: AI files are up to date
+        run: |
+          npm run ai
+          git diff --exit-code -- ai DESIGN.md packages/lint/eslint/components.json .cursor .github/copilot-instructions.md
+      - run: npm run build
+      # The publishable packages build, and stay small and tree-shakable.
+      - run: npm run size
+      # No page scrolls sideways at 375, 768, 1024 or 1440 px (WCAG 1.4.10).
+      - run: npm run check:responsive
+      - uses: actions/upload-pages-artifact@v5
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: site
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

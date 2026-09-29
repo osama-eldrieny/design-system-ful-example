@@ -1,0 +1,42 @@
+/**
+ * Component tokens: pagination
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --pagination-{part}-{state?}-{property}
+ *   part: item | number | arrow | ellipsis | summary; state: default | hover | active (current page)
+ */
+
+:root,
+[data-theme] {
+  --pagination-item-default-bg-color: var(--color-bg-default);
+  --pagination-item-default-font-color: var(--color-fg-on-surface-primary);
+  --pagination-item-hover-bg-color: var(--color-bg-primary-1);
+  --pagination-item-hover-font-color: var(--color-fg-on-primary-high);
+  --pagination-item-active-bg-color: var(--color-bg-accent-primary-default);
+  --pagination-item-active-font-color: var(--color-fg-on-accent-primary-default);
+  --pagination-number-padding-x: var(--spacing-md);
+  --pagination-number-padding-y: var(--spacing-sm);
+  --pagination-arrow-padding-x: var(--spacing-sm);
+  --pagination-arrow-padding-y: var(--spacing-sm);
+  --pagination-number-font-size: var(--font-size-md);
+  --pagination-number-font-line-height: var(--font-line-height-sm);
+  --pagination-number-font-weight: var(--font-weight-medium);
+  --pagination-number-font-family: var(--font-family-body);
+  --pagination-arrow-font-size: var(--font-size-sm);
+  --pagination-arrow-font-line-height: var(--font-line-height-xs);
+
+  /* Item size, arrows, ellipsis and the "Page 2 of 10" summary */
+  --pagination-item-min-size: var(--sizing-xl);
+  --pagination-icon-size: var(--sizing-sm);
+  --pagination-ellipsis-font-color: var(--color-fg-on-surface-secondary);
+  --pagination-summary-font-color: var(--color-fg-on-surface-primary);
+
+  /* Focus, motion, disabled */
+  --pagination-focus-ring-width: var(--focus-ring-width);
+  --pagination-focus-ring-offset: var(--focus-ring-offset);
+  --pagination-focus-ring-color: var(--focus-ring-color);
+  --pagination-transition-duration: var(--duration-fast);
+  --pagination-transition-easing: var(--easing-standard);
+  --pagination-disabled-opacity: var(--opacity-medium);
+}

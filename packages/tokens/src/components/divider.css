@@ -1,0 +1,19 @@
+/**
+ * Component tokens: divider
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --divider-{property}
+ */
+
+:root,
+[data-theme] {
+  --divider-color: var(--color-border-base);
+  --divider-width: var(--border-width-hairline);
+  --divider-spacing: var(--spacing-md);
+  --divider-label-text-color: var(--color-fg-on-surface-secondary);
+  --divider-label-gap: var(--spacing-sm);
+  --divider-font-family: var(--font-family-body);
+  --divider-font-size: var(--font-size-sm);
+  --divider-font-line-height: var(--font-line-height-sm);
+}

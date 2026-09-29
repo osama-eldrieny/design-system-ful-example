@@ -1,0 +1,112 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ArrowRight, Download, Trash2 } from 'lucide-react';
+import { Button, IconButton } from '@ds/react';
+import * as ButtonStories from '../../../../packages/react/src/Button/Button.stories';
+import buttonMeta from '../../../../packages/react/src/Button/Button.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={ButtonStories} name="Docs" />
+
+# Button
+
+<ComponentPage
+  meta={buttonMeta}
+  stories={ButtonStories}
+  components={[Button, IconButton]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-button', at: 'start' },
+      '.ds-button__icon:first-child',
+      '.ds-button__label',
+      '.ds-button__icon:last-child',
+      { selector: '.ds-button', at: 'end' },
+    ],
+    example: (
+      <Button
+        iconStart={<Download />}
+        iconEnd={<ArrowRight />}
+        style={{
+          outline: 'var(--button-focus-ring-width) solid var(--button-focus-ring-color)',
+          outlineOffset: 'var(--button-focus-ring-offset)',
+        }}
+      >
+        Download report
+      </Button>
+    ),
+  }}
+  optionStories={{ variant: 'Variants', appearance: 'Appearances', size: 'Sizes' }}
+  extras={[
+    { title: 'With icons', story: 'WithIcons' },
+    {
+      title: 'Icon buttons',
+      story: 'IconButtons',
+      text: 'Icon-only buttons need a label: it is the accessible name and the tooltip.',
+    },
+    { title: 'Loading', story: 'Loading' },
+    { title: 'Full width', story: 'FullWidth' },
+  ]}
+  behaviorStory="RightToLeft"
+  dodont={{
+    0: {
+      do: [
+        <Button key="c" variant="secondary" appearance="outline">
+          Cancel
+        </Button>,
+        <Button key="s">Save changes</Button>,
+      ],
+      dont: [
+        <Button key="a">Save draft</Button>,
+        <Button key="b">Publish</Button>,
+        <Button key="c">Share</Button>,
+      ],
+    },
+    1: {
+      do: [
+        <Button key="c" variant="secondary" appearance="outline">
+          Cancel
+        </Button>,
+        <Button key="n">Continue</Button>,
+      ],
+      dont: [
+        <Button key="c">Cancel</Button>,
+        <Button key="n" variant="secondary" appearance="text">
+          Continue
+        </Button>,
+      ],
+    },
+    2: {
+      do: (
+        <Button variant="danger" iconStart={<Trash2 />}>
+          Delete project
+        </Button>
+      ),
+      dont: <Button variant="danger">Learn more</Button>,
+    },
+    3: {
+      do: (
+        <IconButton
+          icon={<Trash2 />}
+          label="Delete message"
+          variant="secondary"
+          appearance="ghost"
+        />
+      ),
+      dont: (
+        <Button variant="secondary" appearance="ghost" iconStart={<ArrowRight />} aria-label="" />
+      ),
+    },
+  }}
+  matrix={
+    <div style={{ display: 'grid', gap: 10 }}>
+      {['filled', 'outline', 'ghost', 'text'].map((appearance) => (
+        <div key={appearance} style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {['primary', 'secondary', 'success', 'danger', 'warning'].map((variant) => (
+            <Button key={variant} size="small" variant={variant} appearance={appearance}>
+              {variant}
+            </Button>
+          ))}
+        </div>
+      ))}
+    </div>
+  }
+/>

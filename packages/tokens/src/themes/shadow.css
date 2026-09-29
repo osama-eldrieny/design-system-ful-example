@@ -1,0 +1,142 @@
+/**
+ * Theme: shadow
+ *
+ * Shadow offsets and blur per elevation style. Set data-shadow (flat | subtle | default |
+ * raised). Flat removes shadows; raised makes surfaces float more. Shadow color comes from
+ * --color-shadow-surface.
+ *
+ * Token reference:
+ *   --shadow-none: No shadow.
+ *   --shadow-2xs … --shadow-sm: Small offsets/blur for low elevation: cards resting on a page.
+ *   --shadow-md … --shadow-lg: Medium elevation: dropdowns, popovers.
+ *   --shadow-xl … --shadow-2xl: High elevation: modals, toasts.
+ */
+
+/* shadow: flat (default) */
+:root,
+[data-shadow='flat'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-0);
+  --section-shadow-blur: var(--shadow-0);
+  --card-shadow-y: var(--shadow-0);
+  --card-shadow-blur: var(--shadow-0);
+  --menu-dropdown-shadow-y: var(--shadow-0);
+  --menu-dropdown-shadow-blur: var(--shadow-0);
+  --modal-shadow-y: var(--shadow-0);
+  --modal-shadow-blur: var(--shadow-0);
+  --drawer-shadow-y: var(--shadow-0);
+  --drawer-shadow-blur: var(--shadow-0);
+  --popover-shadow-y: var(--shadow-0);
+  --popover-shadow-blur: var(--shadow-0);
+  --hover-card-shadow-y: var(--shadow-0);
+  --hover-card-shadow-blur: var(--shadow-0);
+  --toast-shadow-y: var(--shadow-0);
+  --toast-shadow-blur: var(--shadow-0);
+  --select-content-shadow-y: var(--shadow-0);
+  --select-content-shadow-blur: var(--shadow-0);
+  --combobox-content-shadow-y: var(--shadow-0);
+  --combobox-content-shadow-blur: var(--shadow-0);
+}
+
+/* shadow: subtle */
+[data-shadow='subtle'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-4);
+  --section-shadow-blur: var(--shadow-8);
+  --card-shadow-y: var(--shadow-4);
+  --card-shadow-blur: var(--shadow-8);
+  --menu-dropdown-shadow-y: var(--shadow-4);
+  --menu-dropdown-shadow-blur: var(--shadow-8);
+  --modal-shadow-y: var(--shadow-4);
+  --modal-shadow-blur: var(--shadow-8);
+  --drawer-shadow-y: var(--shadow-4);
+  --drawer-shadow-blur: var(--shadow-8);
+  --popover-shadow-y: var(--shadow-4);
+  --popover-shadow-blur: var(--shadow-8);
+  --hover-card-shadow-y: var(--shadow-4);
+  --hover-card-shadow-blur: var(--shadow-8);
+  --toast-shadow-y: var(--shadow-4);
+  --toast-shadow-blur: var(--shadow-8);
+  --select-content-shadow-y: var(--shadow-4);
+  --select-content-shadow-blur: var(--shadow-8);
+  --combobox-content-shadow-y: var(--shadow-4);
+  --combobox-content-shadow-blur: var(--shadow-8);
+}
+
+/* shadow: default */
+[data-shadow='default'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-8);
+  --section-shadow-blur: var(--shadow-16);
+  --card-shadow-y: var(--shadow-8);
+  --card-shadow-blur: var(--shadow-16);
+  --menu-dropdown-shadow-y: var(--shadow-8);
+  --menu-dropdown-shadow-blur: var(--shadow-16);
+  --modal-shadow-y: var(--shadow-8);
+  --modal-shadow-blur: var(--shadow-16);
+  --drawer-shadow-y: var(--shadow-8);
+  --drawer-shadow-blur: var(--shadow-16);
+  --popover-shadow-y: var(--shadow-8);
+  --popover-shadow-blur: var(--shadow-16);
+  --hover-card-shadow-y: var(--shadow-8);
+  --hover-card-shadow-blur: var(--shadow-16);
+  --toast-shadow-y: var(--shadow-8);
+  --toast-shadow-blur: var(--shadow-16);
+  --select-content-shadow-y: var(--shadow-8);
+  --select-content-shadow-blur: var(--shadow-16);
+  --combobox-content-shadow-y: var(--shadow-8);
+  --combobox-content-shadow-blur: var(--shadow-16);
+}
+
+/* shadow: raised */
+[data-shadow='raised'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-16);
+  --section-shadow-blur: var(--shadow-28);
+  --card-shadow-y: var(--shadow-16);
+  --card-shadow-blur: var(--shadow-28);
+  --menu-dropdown-shadow-y: var(--shadow-16);
+  --menu-dropdown-shadow-blur: var(--shadow-28);
+  --modal-shadow-y: var(--shadow-16);
+  --modal-shadow-blur: var(--shadow-28);
+  --drawer-shadow-y: var(--shadow-16);
+  --drawer-shadow-blur: var(--shadow-28);
+  --popover-shadow-y: var(--shadow-16);
+  --popover-shadow-blur: var(--shadow-28);
+  --hover-card-shadow-y: var(--shadow-16);
+  --hover-card-shadow-blur: var(--shadow-28);
+  --toast-shadow-y: var(--shadow-16);
+  --toast-shadow-blur: var(--shadow-28);
+  --select-content-shadow-y: var(--shadow-16);
+  --select-content-shadow-blur: var(--shadow-28);
+  --combobox-content-shadow-y: var(--shadow-16);
+  --combobox-content-shadow-blur: var(--shadow-28);
+}

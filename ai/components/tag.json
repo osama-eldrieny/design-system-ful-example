@@ -1,0 +1,628 @@
+{
+  "id": "tag",
+  "name": "Tag",
+  "category": "Feedback",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A tag labels an item with a keyword or category. Tags can be removable (e.g. applied filters) or selectable toggle chips (e.g. quick filters).",
+  "imports": [
+    {
+      "name": "Tag",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To show keywords or categories on an item.",
+    "To show applied filters people can remove.",
+    "For quick filter chips people toggle on and off."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a status or count.",
+      "alternative": "Badge"
+    },
+    {
+      "text": "To pick values inside a form field.",
+      "alternative": "Combobox with multiple"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Container",
+      "description": "Rounded by the radius theme."
+    },
+    {
+      "name": "Icon",
+      "description": "Decorative.",
+      "optional": true
+    },
+    {
+      "name": "Text",
+      "description": "The keyword."
+    },
+    {
+      "name": "Remove button",
+      "description": "“Remove {text}”.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "tone",
+      "title": "Tone",
+      "values": [
+        {
+          "value": "secondary",
+          "meaning": "Neutral. Default."
+        },
+        {
+          "value": "primary",
+          "meaning": "Brand emphasis."
+        },
+        {
+          "value": "success",
+          "meaning": "Positive category."
+        },
+        {
+          "value": "warning",
+          "meaning": "Caution category."
+        },
+        {
+          "value": "danger",
+          "meaning": "Negative category."
+        }
+      ]
+    },
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "subtle",
+          "meaning": "Tinted. Default."
+        },
+        {
+          "value": "solid",
+          "meaning": "Filled."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Pressed",
+      "meaning": "Selectable tag turned on: solid with a border.",
+      "trigger": "selected"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring on the toggle or remove button.",
+      "trigger": ":focus-visible"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Dimmed; buttons inactive.",
+      "trigger": "disabled"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Removable",
+      "text": "onRemove adds a button named “Remove {text}”. Move focus somewhere sensible after removal."
+    },
+    {
+      "topic": "Selectable",
+      "text": "selected/onSelectedChange make the tag a toggle button (aria-pressed)."
+    }
+  ],
+  "content": [
+    "One to three words.",
+    "Use the same case and wording across a set."
+  ],
+  "guidelines": [
+    {
+      "do": "Name remove buttons with the tag (default).",
+      "dont": "Give every remove button the same name “Remove”.",
+      "why": "Screen reader users need to know which tag they’re removing."
+    },
+    {
+      "do": "Show pressed state with the solid style (default).",
+      "dont": "Show selection by color alone.",
+      "why": "The border and fill change are visible without color perception."
+    },
+    {
+      "do": "Use Badge for statuses.",
+      "dont": "Use removable tags for a status.",
+      "why": "Statuses aren’t something people remove."
+    }
+  ],
+  "accessibility": {
+    "role": "text; with actions, contains buttons (toggle: aria-pressed).",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Reaches the toggle and remove buttons."
+      },
+      {
+        "keys": "Enter / Space",
+        "action": "Toggles or removes."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-pressed",
+        "when": "Selectable tags."
+      },
+      {
+        "attribute": "aria-label",
+        "when": "Remove button: “Remove {text}”."
+      }
+    ],
+    "focus": "Focus ring on each button.",
+    "wcag": [
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Text passes on every tone in every theme."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Named buttons with pressed state."
+      },
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Pressed adds a border and fill."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Keywords",
+      "description": "Static tags.",
+      "code": "import { Tag } from '@ds/react';\n\n<Tag>Design</Tag>\n<Tag tone=\"primary\">React</Tag>"
+    },
+    {
+      "id": "remove",
+      "title": "Applied filters",
+      "description": "Removable.",
+      "code": "import { Tag } from '@ds/react';\n\n{filters.map((f) => (\n  <Tag key={f} onRemove={() => removeFilter(f)}>{f}</Tag>\n))}"
+    },
+    {
+      "id": "select",
+      "title": "Filter chips",
+      "description": "Toggle on and off.",
+      "code": "import { Tag } from '@ds/react';\n\n<Tag selected={onSale} onSelectedChange={setOnSale}>On sale</Tag>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--tag-"
+  ],
+  "related": [
+    {
+      "id": "badge",
+      "relation": "For statuses and counts."
+    },
+    {
+      "id": "combobox",
+      "relation": "For choosing several values in a form."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Tag",
+      "import": "import { Tag } from '@ds/react';",
+      "description": "A compact label for a keyword or category, optionally removable or selectable.",
+      "props": {
+        "children": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Text of the tag; also names its remove button."
+        },
+        "tone": {
+          "type": "TagTone",
+          "values": [
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "required": false,
+          "default": "secondary",
+          "description": "Color meaning. Default secondary (neutral)."
+        },
+        "appearance": {
+          "type": "\"solid\" | \"subtle\"",
+          "values": [
+            "solid",
+            "subtle"
+          ],
+          "required": false,
+          "default": "subtle",
+          "description": "`subtle` (default) or `solid`."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Decorative icon before the text."
+        },
+        "onRemove": {
+          "type": "(() => void)",
+          "required": false,
+          "default": null,
+          "description": "Shows a remove button that calls this."
+        },
+        "removeLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Accessible name of the remove button, for translation. Default \"Remove {text}\"."
+        },
+        "selected": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Makes the tag a toggle button, e.g. a filter chip. Pressed tags are solid with a border.\nUse with onSelectedChange."
+        },
+        "onSelectedChange": {
+          "type": "((selected: boolean) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the new pressed state of a selectable tag."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--tag-primary-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--tag-primary-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--tag-primary-subtle-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--tag-primary-subtle-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--tag-secondary-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--tag-secondary-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-secondary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--tag-secondary-subtle-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-secondary-1",
+      "default": "#acadb2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#363641",
+        "brand=amber,mode=light": "#f3e8dc",
+        "brand=amber,mode=dark": "#6a625a",
+        "brand=opal,mode=light": "#afb2be",
+        "brand=opal,mode=dark": "#3c4058"
+      }
+    },
+    "--tag-secondary-subtle-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-secondary-high",
+      "default": "#353339",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=light": "#54505a",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--tag-success-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--tag-success-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-success-default",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#005b22",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#305350",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--tag-success-subtle-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--tag-success-subtle-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-success-high",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--tag-warning-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-default",
+      "default": "#f0be2e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#eec133",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--tag-warning-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-warning-default",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#6b4f00",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#6b4f00",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--tag-warning-subtle-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-warning-1",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--tag-warning-subtle-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--tag-danger-solid-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--tag-danger-solid-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-danger-default",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#8b1616",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#683643",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#8b2436"
+      }
+    },
+    "--tag-danger-subtle-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--tag-danger-subtle-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--tag-selected-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--tag-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--tag-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--tag-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tag-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tag-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--tag-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--tag-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--tag-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--tag-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xs",
+      "default": "14px"
+    },
+    "--tag-remove-hover-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--tag-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--tag-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--tag-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--tag-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--tag-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-4",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-tag--docs"
+}

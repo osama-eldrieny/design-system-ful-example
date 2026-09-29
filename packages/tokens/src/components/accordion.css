@@ -1,0 +1,34 @@
+/**
+ * Component tokens: accordion
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --accordion-{part}-{state?}-{property}
+ *   part: item | trigger | icon | content; state: hover.
+ *   Corners come from the radius theme (themes/radius.css).
+ */
+
+:root,
+[data-theme] {
+  --accordion-bg-color: var(--color-bg-base);
+  --accordion-border-color: var(--color-border-base);
+  --accordion-border-width: var(--border-width-hairline);
+  --accordion-trigger-text-color: var(--color-fg-on-surface-primary);
+  --accordion-trigger-hover-bg-color: var(--color-bg-primary-1);
+  --accordion-trigger-font-weight: var(--font-weight-medium);
+  --accordion-content-text-color: var(--color-fg-on-surface-secondary);
+  --accordion-icon-color: var(--color-fg-on-surface-secondary);
+  --accordion-icon-size: var(--sizing-sm);
+  --accordion-padding-x: var(--spacing-md);
+  --accordion-padding-y: var(--spacing-sm);
+  --accordion-gap: var(--spacing-sm);
+  --accordion-font-family: var(--font-family-body);
+  --accordion-font-size: var(--font-size-md);
+  --accordion-font-line-height: var(--font-line-height-md);
+  --accordion-duration: var(--duration-normal);
+  --accordion-easing: var(--easing-standard);
+  --accordion-disabled-opacity: var(--opacity-medium);
+  --accordion-focus-ring-width: var(--focus-ring-width);
+  --accordion-focus-ring-offset: var(--focus-ring-offset);
+  --accordion-focus-ring-color: var(--focus-ring-color);
+}

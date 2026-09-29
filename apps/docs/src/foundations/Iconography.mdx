@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import {
+  Bell,
+  Check,
+  ChevronDown,
+  Download,
+  Pencil,
+  Plus,
+  Search,
+  Settings,
+  Trash2,
+  TriangleAlert,
+  User,
+  X,
+} from 'lucide-react';
+import { Gallery } from '../blocks';
+
+<Meta title="Foundations/Iconography" />
+
+# Iconography
+
+The system uses **[Lucide](https://lucide.dev)** icons: one consistent, open-source set with over 1,500 icons drawn on a 24 × 24 grid with 2 px strokes.
+
+```tsx
+import { Download } from 'lucide-react';
+import { Button } from '@ds/react';
+
+<Button iconStart={<Download />}>Download report</Button>;
+```
+
+<Gallery
+  items={[
+    { label: 'Plus', node: <Plus /> },
+    { label: 'Pencil', node: <Pencil /> },
+    { label: 'Trash2', node: <Trash2 /> },
+    { label: 'X', node: <X /> },
+    { label: 'Check', node: <Check /> },
+    { label: 'Search', node: <Search /> },
+    { label: 'Download', node: <Download /> },
+    { label: 'Settings', node: <Settings /> },
+    { label: 'Bell', node: <Bell /> },
+    { label: 'User', node: <User /> },
+    { label: 'ChevronDown', node: <ChevronDown /> },
+    { label: 'TriangleAlert', node: <TriangleAlert /> },
+  ]}
+/>
+
+## Guidelines
+
+- Icons inherit the text color (`currentColor`) and take their size from the component, e.g. `--button-medium-icon-size`.
+- Pair icons with a text label. An icon on its own needs an accessible name, which `IconButton` requires through its `label` prop.
+- Decorative icons are hidden from screen readers; components do this for you.
+- Don't use emoji as icons.
+- Mirror directional icons (arrows, chevrons) in right-to-left layouts; symbols like a check or a trash can stay as they are.
+
+The older docs and prototypes use Font Awesome. They move to Lucide as each component is migrated.

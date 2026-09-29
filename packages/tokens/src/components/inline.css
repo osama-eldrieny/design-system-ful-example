@@ -1,0 +1,21 @@
+/**
+ * Component tokens: inline
+ *
+ * Style this component only with these tokens. Gaps follow the spacing scale, which
+ * follows the density theme.
+ *
+ * Grammar: --inline-gap-{step}; step: none | 2xs … 3xl.
+ */
+
+:root,
+[data-theme] {
+  --inline-gap-none: var(--spacing-none);
+  --inline-gap-2xs: var(--spacing-2xs);
+  --inline-gap-xs: var(--spacing-xs);
+  --inline-gap-sm: var(--spacing-sm);
+  --inline-gap-md: var(--spacing-md);
+  --inline-gap-lg: var(--spacing-lg);
+  --inline-gap-xl: var(--spacing-xl);
+  --inline-gap-2xl: var(--spacing-2xl);
+  --inline-gap-3xl: var(--spacing-3xl);
+}

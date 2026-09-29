@@ -1,0 +1,100 @@
+/**
+ * Component tokens: combobox
+ *
+ * Style this component only with these tokens. Values match Select (the control matches
+ * InputField, the list matches DropdownMenu); the label and messages come from FormField.
+ *
+ * Grammar: --combobox-{part}-{state?}-{property} and --combobox-{size}-{property}
+ *   part: control | icon | content (the list) | item | indicator | chip | message
+ *   state: default | hover | focus | error | success | highlighted | selected
+ *   size: small | large (medium is the base). Corners and list shadow follow the radius and
+ *   shadow themes (themes/radius.css, themes/shadow.css).
+ */
+
+:root,
+[data-theme] {
+  /* Trigger */
+  --combobox-control-default-bg-color: var(--color-bg-surface);
+  --combobox-control-default-text-color: var(--color-fg-on-surface-primary);
+  --combobox-control-placeholder-text-color: var(--color-fg-on-surface-secondary);
+  --combobox-control-default-border-color: var(--color-border-field);
+  --combobox-control-hover-border-color: var(--color-border-primary-strong);
+  --combobox-control-focus-border-color: var(--color-border-primary-strong);
+  --combobox-control-error-border-color: var(--color-border-danger-strong);
+  --combobox-control-success-border-color: var(--color-border-success-strong);
+  --combobox-control-border-width: var(--border-width-hairline);
+  --combobox-control-gap: var(--spacing-xs);
+  --combobox-icon-color: var(--color-fg-on-surface-secondary);
+  --combobox-icon-size: var(--sizing-sm);
+  --combobox-font-family: var(--font-family-body);
+  --combobox-font-weight: var(--font-weight-regular);
+
+  /* Sizes */
+  --combobox-padding-x: var(--spacing-md);
+  --combobox-padding-y: var(--spacing-2xs);
+  --combobox-height: var(--control-height-medium);
+  --combobox-small-height: var(--control-height-small);
+  --combobox-large-height: var(--control-height-large);
+  --combobox-font-size: var(--font-size-md);
+  --combobox-font-line-height: var(--font-line-height-md);
+  --combobox-small-padding-x: var(--spacing-sm);
+  --combobox-small-padding-y: var(--spacing-none);
+  --combobox-small-font-size: var(--font-size-sm);
+  --combobox-small-font-line-height: var(--font-line-height-md);
+  --combobox-large-padding-x: var(--spacing-lg);
+  --combobox-large-padding-y: var(--spacing-2xs);
+  --combobox-large-font-size: var(--font-size-md);
+  --combobox-large-font-line-height: var(--font-line-height-lg);
+
+  /* List */
+  --combobox-content-bg-color: var(--color-bg-base);
+  --combobox-content-border-color: var(--color-border-base);
+  --combobox-content-border-width: var(--border-width-hairline);
+  --combobox-content-shadow-x: var(--shadow-none);
+  --combobox-content-shadow-color: var(--color-shadow-surface);
+  --combobox-content-padding: var(--spacing-2xs);
+  --combobox-content-max-height: var(--sizing-8xl);
+  --combobox-content-z-index: var(--z-dropdown);
+
+  /* Items */
+  --combobox-item-default-bg-color: var(--color-bg-base);
+  --combobox-item-default-text-color: var(--color-fg-on-surface-primary);
+  --combobox-item-highlighted-bg-color: var(--color-bg-primary-1);
+  --combobox-item-highlighted-text-color: var(--color-fg-on-surface-primary);
+  --combobox-item-selected-text-color: var(--color-fg-on-primary-high);
+  --combobox-indicator-color: var(--color-fg-on-primary-high);
+  --combobox-item-padding-x: var(--spacing-md);
+  --combobox-item-padding-y: var(--spacing-xs);
+  --combobox-item-gap: var(--spacing-xs);
+  --combobox-item-font-size: var(--font-size-md);
+  --combobox-item-font-line-height: var(--font-line-height-md);
+  --combobox-group-label-text-color: var(--color-fg-on-surface-secondary);
+  --combobox-group-label-font-size: var(--font-size-sm);
+  --combobox-group-label-font-line-height: var(--font-line-height-sm);
+  --combobox-group-label-font-weight: var(--font-weight-medium);
+  --combobox-separator-color: var(--color-border-base);
+  --combobox-separator-width: var(--border-width-regular);
+
+  /* Focus, motion, disabled */
+  --combobox-focus-ring-width: var(--focus-ring-width);
+  --combobox-focus-ring-offset: var(--focus-ring-offset);
+  --combobox-focus-ring-color: var(--focus-ring-color);
+  --combobox-transition-duration: var(--duration-fast);
+  --combobox-transition-easing: var(--easing-enter);
+  --combobox-disabled-opacity: var(--opacity-medium);
+
+  /* Chips (multiple selection) */
+  --combobox-chip-bg-color: var(--color-bg-primary-1);
+  --combobox-chip-text-color: var(--color-fg-on-primary-high);
+  --combobox-chip-padding-x: var(--spacing-xs);
+  --combobox-chip-gap: var(--spacing-2xs);
+  --combobox-chip-font-size: var(--font-size-sm);
+  --combobox-chip-font-line-height: var(--font-line-height-sm);
+  --combobox-chip-remove-hover-bg-color: var(--color-bg-primary-200);
+
+  /* Empty and loading messages */
+  --combobox-message-text-color: var(--color-fg-on-surface-secondary);
+
+  /* Size of the visually hidden result count */
+  --combobox-hidden-size: var(--border-width-hairline);
+}

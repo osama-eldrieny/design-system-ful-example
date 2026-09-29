@@ -1,0 +1,115 @@
+/** SideNav. Styled only with --side-nav-* tokens; nesting indents by --_depth. */
+
+.ds-side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--side-nav-section-gap);
+  padding: var(--side-nav-padding);
+  background-color: var(--side-nav-bg-color);
+  font-family: var(--side-nav-font-family);
+  font-size: var(--side-nav-font-size);
+  line-height: var(--side-nav-font-line-height);
+}
+
+.ds-side-nav__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--side-nav-gap);
+}
+
+.ds-side-nav__group-label {
+  padding-inline: var(--side-nav-item-padding-x);
+  color: var(--side-nav-group-label-text-color);
+  font-size: var(--side-nav-group-label-font-size);
+  font-weight: var(--side-nav-group-label-font-weight);
+  line-height: var(--side-nav-group-label-font-line-height);
+}
+
+.ds-side-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--side-nav-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-side-nav__list[hidden] {
+  display: none;
+}
+
+.ds-side-nav__item {
+  /* Nesting level; set inline per item. */
+  --_depth: 0;
+
+  display: flex;
+  align-items: center;
+  gap: var(--side-nav-item-gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  padding-block: var(--side-nav-item-padding-y);
+  padding-inline: calc(var(--side-nav-item-padding-x) + var(--_depth) * var(--side-nav-item-indent))
+    var(--side-nav-item-padding-x);
+  border: 0;
+  border-radius: var(--side-nav-item-border-radius);
+  background-color: var(--side-nav-item-default-bg-color);
+  color: var(--side-nav-item-default-text-color);
+  font: inherit;
+  font-weight: var(--side-nav-font-weight);
+  text-align: start;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ds-side-nav__item:hover {
+  background-color: var(--side-nav-item-hover-bg-color);
+  color: var(--side-nav-item-hover-text-color);
+}
+
+.ds-side-nav__item[aria-current='page'] {
+  background-color: var(--side-nav-item-active-bg-color);
+  color: var(--side-nav-item-active-text-color);
+  font-weight: var(--side-nav-active-font-weight);
+}
+
+.ds-side-nav__item:focus-visible {
+  outline: var(--side-nav-focus-ring-width) solid var(--side-nav-focus-ring-color);
+  outline-offset: var(--side-nav-focus-ring-offset);
+}
+
+.ds-side-nav__icon {
+  display: inline-flex;
+  color: var(--side-nav-icon-color);
+}
+
+.ds-side-nav__icon > svg,
+.ds-side-nav__chevron {
+  flex: none;
+  inline-size: var(--side-nav-icon-size);
+  block-size: var(--side-nav-icon-size);
+}
+
+.ds-side-nav__label {
+  flex: 1;
+}
+
+.ds-side-nav__chevron {
+  color: var(--side-nav-icon-color);
+  transition: transform var(--side-nav-duration) var(--side-nav-easing);
+}
+
+.ds-side-nav__item[aria-expanded='true'] .ds-side-nav__chevron {
+  transform: rotate(180deg);
+}
+
+@media (forced-colors: active) {
+  .ds-side-nav__item[aria-current='page'] {
+    text-decoration: underline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-side-nav__chevron {
+    transition: none;
+  }
+}

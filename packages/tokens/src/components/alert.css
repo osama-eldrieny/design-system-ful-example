@@ -1,0 +1,95 @@
+/**
+ * Component tokens: alert
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --alerts-{variant}-{appearance?}-{property}
+ *   variant: primary | success | warning | danger
+ *   appearance: subtle (omitted) | solid | outline
+ */
+
+:root,
+[data-theme] {
+  --alerts-primary-bg-color: var(--color-bg-primary-1);
+  --alerts-primary-icon-color: var(--color-fg-on-primary-high);
+  --alerts-primary-font-color: var(--color-fg-on-primary-high);
+  --alerts-primary-border-color: var(--color-border-primary-medium);
+  --alerts-success-bg-color: var(--color-bg-success-1);
+  --alerts-success-icon-color: var(--color-fg-on-success-high);
+  --alerts-success-font-color: var(--color-fg-on-success-high);
+  --alerts-success-border-color: var(--color-border-success-medium);
+  --alerts-warning-bg-color: var(--color-bg-warning-1);
+  --alerts-warning-icon-color: var(--color-fg-on-warning-high);
+  --alerts-warning-font-color: var(--color-fg-on-warning-high);
+  --alerts-warning-border-color: var(--color-border-warning-medium);
+  --alerts-danger-bg-color: var(--color-bg-danger-1);
+  --alerts-danger-icon-color: var(--color-fg-on-danger-high);
+  --alerts-danger-font-color: var(--color-fg-on-danger-high);
+  --alerts-danger-border-color: var(--color-border-danger-medium);
+  --alerts-border-width: var(--border-width-regular);
+  --alerts-padding-x: var(--spacing-lg);
+  --alerts-padding-y: var(--spacing-lg);
+  --alerts-gap: var(--spacing-md);
+  --alerts-title-font-family: var(--font-family-body);
+  --alerts-title-font-size: var(--font-size-sm);
+  --alerts-title-font-line-height: var(--font-line-height-sm);
+  --alerts-title-font-weight: var(--font-weight-semi-bold);
+  --alerts-icon-font-size: var(--font-size-lg);
+  --alerts-icon-font-line-height: var(--font-line-height-md);
+  --alerts-border-style: solid;
+  --alerts-warning-border-style: dashed;
+
+  /* Description text (subtle appearance) */
+  --alerts-primary-description-text-color: var(--color-fg-on-primary-medium);
+  --alerts-success-description-text-color: var(--color-fg-on-success-medium);
+  --alerts-warning-description-text-color: var(--color-fg-on-warning-medium);
+  --alerts-danger-description-text-color: var(--color-fg-on-danger-medium);
+
+  /* Solid appearance: filled with the tone, highest emphasis */
+  --alerts-primary-solid-bg-color: var(--color-bg-accent-primary-default);
+  --alerts-primary-solid-text-color: var(--color-fg-on-accent-primary-default);
+  --alerts-primary-solid-dismiss-hover-bg-color: var(--color-bg-accent-primary-hover);
+  --alerts-success-solid-bg-color: var(--color-bg-accent-success-default);
+  --alerts-success-solid-text-color: var(--color-fg-on-accent-success-default);
+  --alerts-success-solid-dismiss-hover-bg-color: var(--color-bg-accent-success-hover);
+  --alerts-warning-solid-bg-color: var(--color-bg-accent-warning-default);
+  --alerts-warning-solid-text-color: var(--color-fg-on-accent-warning-default);
+  --alerts-warning-solid-dismiss-hover-bg-color: var(--color-bg-accent-warning-hover);
+  --alerts-danger-solid-bg-color: var(--color-bg-accent-danger-default);
+  --alerts-danger-solid-text-color: var(--color-fg-on-accent-danger-default);
+  --alerts-danger-solid-dismiss-hover-bg-color: var(--color-bg-accent-danger-hover);
+
+  /* Outline appearance: surface background, tone border and text */
+  --alerts-primary-outline-bg-color: var(--color-bg-surface);
+  --alerts-primary-outline-border-color: var(--color-border-primary-strong);
+  --alerts-primary-outline-text-color: var(--color-fg-on-accent-primary-text-default);
+  --alerts-success-outline-bg-color: var(--color-bg-surface);
+  --alerts-success-outline-border-color: var(--color-border-success-strong);
+  --alerts-success-outline-text-color: var(--color-fg-on-accent-success-text-default);
+  --alerts-warning-outline-bg-color: var(--color-bg-surface);
+  --alerts-warning-outline-border-color: var(--color-border-warning-strong);
+  --alerts-warning-outline-text-color: var(--color-fg-on-accent-warning-text-default);
+  --alerts-danger-outline-bg-color: var(--color-bg-surface);
+  --alerts-danger-outline-border-color: var(--color-border-danger-strong);
+  --alerts-danger-outline-text-color: var(--color-fg-on-accent-danger-text-default);
+
+  /* Dismiss button hover (subtle and outline) */
+  --alerts-primary-dismiss-hover-bg-color: var(--color-bg-primary-200);
+  --alerts-success-dismiss-hover-bg-color: var(--color-bg-success-200);
+  --alerts-warning-dismiss-hover-bg-color: var(--color-bg-warning-200);
+  --alerts-danger-dismiss-hover-bg-color: var(--color-bg-danger-200);
+
+  /* Description, actions, dismiss button, focus, motion */
+  --alerts-description-font-size: var(--font-size-sm);
+  --alerts-description-font-line-height: var(--font-line-height-sm);
+  --alerts-description-font-weight: var(--font-weight-regular);
+  --alerts-content-gap: var(--spacing-2xs);
+  --alerts-actions-gap: var(--spacing-xs);
+  --alerts-dismiss-size: var(--sizing-lg);
+  --alerts-dismiss-icon-size: var(--sizing-sm);
+  --alerts-focus-ring-width: var(--focus-ring-width);
+  --alerts-focus-ring-offset: var(--focus-ring-offset);
+  --alerts-focus-ring-color: var(--focus-ring-color);
+  --alerts-transition-duration: var(--duration-fast);
+  --alerts-transition-easing: var(--easing-standard);
+}

@@ -1,0 +1,631 @@
+{
+  "components": [
+    {
+      "id": "accordion",
+      "name": "Accordion",
+      "exports": [
+        "Accordion",
+        "AccordionItem"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "An accordion stacks sections whose content shows and hides when their heading is pressed, such as an FAQ.",
+      "contract": "ai/components/accordion.json"
+    },
+    {
+      "id": "alert",
+      "name": "Alert",
+      "exports": [
+        "Alert"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "An alert shows a message about the page or the result of an action: information, success, a warning or an error.",
+      "contract": "ai/components/alert.json"
+    },
+    {
+      "id": "apps-notifications",
+      "name": "AppsNotifications",
+      "exports": [
+        "AppsNotifications"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "A settings panel with one switch per app, to turn each app’s notifications on or off.",
+      "contract": "ai/components/apps-notifications.json"
+    },
+    {
+      "id": "avatar",
+      "name": "Avatar",
+      "exports": [
+        "Avatar",
+        "AvatarGroup"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "An avatar represents a person or team with their photo, or their initials when there’s no photo.",
+      "contract": "ai/components/avatar.json"
+    },
+    {
+      "id": "badge",
+      "name": "Badge",
+      "exports": [
+        "Badge"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A badge is a small, non-interactive label for a status (“Paid”, “New”) or a count (3 unread).",
+      "contract": "ai/components/badge.json"
+    },
+    {
+      "id": "breadcrumb",
+      "name": "Breadcrumb",
+      "exports": [
+        "Breadcrumb"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "A breadcrumb shows where the current page sits in the site’s hierarchy, with links back up each level.",
+      "contract": "ai/components/breadcrumb.json"
+    },
+    {
+      "id": "button",
+      "name": "Button",
+      "exports": [
+        "Button",
+        "IconButton"
+      ],
+      "category": "Actions",
+      "status": "stable",
+      "purpose": "A button triggers an action in place: saving a form, opening a dialog, deleting an item.",
+      "contract": "ai/components/button.json"
+    },
+    {
+      "id": "button-group",
+      "name": "ButtonGroup",
+      "exports": [
+        "ButtonGroup"
+      ],
+      "category": "Actions",
+      "status": "stable",
+      "purpose": "A button group shows related buttons together, spaced or attached into one control.",
+      "contract": "ai/components/button-group.json"
+    },
+    {
+      "id": "card",
+      "name": "Card",
+      "exports": [
+        "Card",
+        "CardMedia",
+        "CardBody",
+        "CardTitle",
+        "CardDescription",
+        "CardFooter"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A card groups content and actions about one subject, such as an article, a product or a person, into a single container.",
+      "contract": "ai/components/card.json"
+    },
+    {
+      "id": "checkbox",
+      "name": "Checkbox",
+      "exports": [
+        "Checkbox",
+        "CheckboxGroup"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A checkbox turns one option on or off, or lets people pick any number of options from a list.",
+      "contract": "ai/components/checkbox.json"
+    },
+    {
+      "id": "choose-card",
+      "name": "ChooseCard",
+      "exports": [
+        "ChooseCardGroup",
+        "ChooseCard"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "Choose cards are large radio buttons: each option is a card with a name, a description and an optional price, and people pick exactly one.",
+      "contract": "ai/components/choose-card.json"
+    },
+    {
+      "id": "code",
+      "name": "Code",
+      "exports": [
+        "Code"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "Code shows code inline in text or as a block with a language label and a copy button.",
+      "contract": "ai/components/code.json"
+    },
+    {
+      "id": "combobox",
+      "name": "Combobox",
+      "exports": [
+        "Combobox"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A combobox is a text field with a list of suggestions: people type to filter and pick one option, or several shown as removable chips.",
+      "contract": "ai/components/combobox.json"
+    },
+    {
+      "id": "container",
+      "name": "Container",
+      "exports": [
+        "Container"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Container centers page content with a maximum width and page gutters that follow density, with smaller gutters on phones..",
+      "contract": "ai/components/container.json"
+    },
+    {
+      "id": "divider",
+      "name": "Divider",
+      "exports": [
+        "Divider"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "A divider is a thin line that separates groups of content, horizontally or vertically, optionally with a short label such as “or”..",
+      "contract": "ai/components/divider.json"
+    },
+    {
+      "id": "drawer",
+      "name": "Drawer",
+      "exports": [
+        "Drawer",
+        "DrawerTrigger",
+        "DrawerContent",
+        "DrawerFooter",
+        "DrawerClose"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A drawer is a panel that slides in from an edge of the screen for secondary tasks such as filters, settings or item details.",
+      "contract": "ai/components/drawer.json"
+    },
+    {
+      "id": "dropdown-menu",
+      "name": "DropdownMenu",
+      "exports": [
+        "DropdownMenu",
+        "DropdownMenuTrigger",
+        "DropdownMenuContent",
+        "DropdownMenuItem",
+        "DropdownMenuCheckboxItem",
+        "DropdownMenuRadioGroup",
+        "DropdownMenuRadioItem",
+        "DropdownMenuLabel",
+        "DropdownMenuSeparator",
+        "DropdownMenuSub",
+        "DropdownMenuSubTrigger",
+        "DropdownMenuSubContent"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A dropdown menu shows a list of actions or options when people press a button.",
+      "contract": "ai/components/dropdown-menu.json"
+    },
+    {
+      "id": "empty-state",
+      "name": "EmptyState",
+      "exports": [
+        "EmptyState"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "An empty state fills a space that has nothing to show yet, like an empty list or no search results, and explains why and what to do next..",
+      "contract": "ai/components/empty-state.json"
+    },
+    {
+      "id": "footer",
+      "name": "Footer",
+      "exports": [
+        "Footer"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "The page footer: a copyright line and secondary links such as Privacy, Terms and Help.",
+      "contract": "ai/components/footer.json"
+    },
+    {
+      "id": "form-field",
+      "name": "FormField",
+      "exports": [
+        "FormField",
+        "useFormField"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "FormField puts a label, help text and an error or success message around a form control and wires them together, so screen readers announce the label, hint and error with the control.",
+      "contract": "ai/components/form-field.json"
+    },
+    {
+      "id": "grid",
+      "name": "Grid",
+      "exports": [
+        "Grid"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Grid lays children out in equal columns: a fixed number, or as many as fit (auto), so it reflows on small screens..",
+      "contract": "ai/components/grid.json"
+    },
+    {
+      "id": "header",
+      "name": "Header",
+      "exports": [
+        "Header"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "A page header that introduces a person and their page: avatar, name, job title and the page heading.",
+      "contract": "ai/components/header.json"
+    },
+    {
+      "id": "hover-card",
+      "name": "HoverCard",
+      "exports": [
+        "HoverCard",
+        "HoverCardTrigger",
+        "HoverCardContent"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A hover card previews what a link points to, such as a person’s profile, when a mouse user points at it or a keyboard user focuses it.",
+      "contract": "ai/components/hover-card.json"
+    },
+    {
+      "id": "inline",
+      "name": "Inline",
+      "exports": [
+        "Inline"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Inline lays its children out in a row that wraps onto more lines, e.g.",
+      "contract": "ai/components/inline.json"
+    },
+    {
+      "id": "input-field",
+      "name": "InputField",
+      "exports": [
+        "InputField"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "An input field lets people enter a single line of text: a name, an email address, a search term.",
+      "contract": "ai/components/input-field.json"
+    },
+    {
+      "id": "kbd",
+      "name": "Kbd",
+      "exports": [
+        "Kbd"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "Kbd shows a keyboard key or a shortcut, such as Ctrl + K, in text, menus and tooltips..",
+      "contract": "ai/components/kbd.json"
+    },
+    {
+      "id": "link",
+      "name": "Link",
+      "exports": [
+        "Link"
+      ],
+      "category": "Actions",
+      "status": "stable",
+      "purpose": "A link takes people to another page or place.",
+      "contract": "ai/components/link.json"
+    },
+    {
+      "id": "list",
+      "name": "List",
+      "exports": [
+        "List",
+        "ListItem"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A list shows related items one per row, with an optional icon or avatar, a second line and trailing meta such as a date.",
+      "contract": "ai/components/list.json"
+    },
+    {
+      "id": "logo",
+      "name": "Logo",
+      "exports": [
+        "Logo"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "The logo shows the product’s mark and name, usually at the start of the navigation bar, linking to the home page.",
+      "contract": "ai/components/logo.json"
+    },
+    {
+      "id": "meeting-card",
+      "name": "MeetingCard",
+      "exports": [
+        "MeetingCard"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "A meeting card shows one event in an agenda or schedule: its name, time and attendees, with a color edge for its status.",
+      "contract": "ai/components/meeting-card.json"
+    },
+    {
+      "id": "modal",
+      "name": "Modal",
+      "exports": [
+        "Modal",
+        "ModalTrigger",
+        "ModalContent",
+        "ModalFooter",
+        "ModalClose"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A modal is a dialog over the page that people must deal with before going back: a short form, a confirmation or details.",
+      "contract": "ai/components/modal.json"
+    },
+    {
+      "id": "navbar",
+      "name": "Navbar",
+      "exports": [
+        "Navbar"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "The navigation bar at the top of a site or app: the logo, links to the main sections, and optional actions such as search.",
+      "contract": "ai/components/navbar.json"
+    },
+    {
+      "id": "pagination",
+      "name": "Pagination",
+      "exports": [
+        "Pagination"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "Pagination moves between pages of a long list or table.",
+      "contract": "ai/components/pagination.json"
+    },
+    {
+      "id": "popover",
+      "name": "Popover",
+      "exports": [
+        "Popover",
+        "PopoverTrigger",
+        "PopoverContent",
+        "PopoverClose"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A popover shows interactive content anchored to a button, such as a small form, filters or details.",
+      "contract": "ai/components/popover.json"
+    },
+    {
+      "id": "product-card",
+      "name": "ProductCard",
+      "exports": [
+        "ProductCard"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions.",
+      "contract": "ai/components/product-card.json"
+    },
+    {
+      "id": "progress",
+      "name": "Progress",
+      "exports": [
+        "Progress"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A progress bar shows how far a task has got, such as an upload or setup steps.",
+      "contract": "ai/components/progress.json"
+    },
+    {
+      "id": "radio-group",
+      "name": "RadioGroup",
+      "exports": [
+        "RadioGroup",
+        "Radio"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A radio group lets people pick exactly one option from a short list, with every option visible at once.",
+      "contract": "ai/components/radio-group.json"
+    },
+    {
+      "id": "search-field",
+      "name": "SearchField",
+      "exports": [
+        "SearchField"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A search field has a search icon, a clear button and an optional keyboard shortcut that focuses it from anywhere on the page.",
+      "contract": "ai/components/search-field.json"
+    },
+    {
+      "id": "select",
+      "name": "Select",
+      "exports": [
+        "Select",
+        "SelectItem",
+        "SelectGroup",
+        "SelectSeparator"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A select lets people pick one option from a list that opens below the field.",
+      "contract": "ai/components/select.json"
+    },
+    {
+      "id": "side-nav",
+      "name": "SideNav",
+      "exports": [
+        "SideNav"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "A side navigation lists the pages of an app or docs site in sections, with icons and nested groups that expand and collapse.",
+      "contract": "ai/components/side-nav.json"
+    },
+    {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "exports": [
+        "Skeleton"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A skeleton is a grey placeholder in the shape of content that is loading: lines of text, image blocks and avatar circles.",
+      "contract": "ai/components/skeleton.json"
+    },
+    {
+      "id": "slider",
+      "name": "Slider",
+      "exports": [
+        "Slider"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A slider sets a number, or a range with two thumbs, by dragging along a track or with the arrow keys.",
+      "contract": "ai/components/slider.json"
+    },
+    {
+      "id": "spinner",
+      "name": "Spinner",
+      "exports": [
+        "Spinner"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A spinner shows that something is loading when the time it takes is unknown.",
+      "contract": "ai/components/spinner.json"
+    },
+    {
+      "id": "stack",
+      "name": "Stack",
+      "exports": [
+        "Stack"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Stack lays its children out vertically with even spacing from the density-aware spacing scale..",
+      "contract": "ai/components/stack.json"
+    },
+    {
+      "id": "stat",
+      "name": "Stat",
+      "exports": [
+        "Stat"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A stat shows one key figure with its label and change, such as revenue up 12.5% vs last month.",
+      "contract": "ai/components/stat.json"
+    },
+    {
+      "id": "stepper",
+      "name": "Stepper",
+      "exports": [
+        "Stepper"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "A stepper shows progress through a task with several steps, such as checkout: which steps are done, which is current and what’s left.",
+      "contract": "ai/components/stepper.json"
+    },
+    {
+      "id": "switch",
+      "name": "Switch",
+      "exports": [
+        "Switch"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A switch turns a single setting on or off and applies the change immediately, like a light switch.",
+      "contract": "ai/components/switch.json"
+    },
+    {
+      "id": "table",
+      "name": "Table",
+      "exports": [
+        "Table"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A table shows rows and columns of data people compare: sortable columns, selectable rows with select-all, a sticky header, striped or compact rows, and loading and empty states.",
+      "contract": "ai/components/table.json"
+    },
+    {
+      "id": "tabs",
+      "name": "Tabs",
+      "exports": [
+        "Tabs",
+        "TabList",
+        "Tab",
+        "TabPanel"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "Tabs switch between related views of content in the same place, one at a time.",
+      "contract": "ai/components/tabs.json"
+    },
+    {
+      "id": "tag",
+      "name": "Tag",
+      "exports": [
+        "Tag"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A tag labels an item with a keyword or category.",
+      "contract": "ai/components/tag.json"
+    },
+    {
+      "id": "textarea",
+      "name": "Textarea",
+      "exports": [
+        "Textarea"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A multi-line text field for longer answers such as messages, comments or descriptions.",
+      "contract": "ai/components/textarea.json"
+    },
+    {
+      "id": "toast",
+      "name": "Toast",
+      "exports": [
+        "ToastProvider",
+        "useToast"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A toast is a brief message about something that just happened, such as “Changes saved”, shown in a corner and dismissed automatically.",
+      "contract": "ai/components/toast.json"
+    },
+    {
+      "id": "tooltip",
+      "name": "Tooltip",
+      "exports": [
+        "Tooltip"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A tooltip shows a short text hint for a control when it’s hovered or focused, such as the name of an icon button.",
+      "contract": "ai/components/tooltip.json"
+    }
+  ]
+}

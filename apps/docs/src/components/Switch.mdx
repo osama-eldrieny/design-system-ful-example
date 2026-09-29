@@ -1,0 +1,48 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Switch } from '@ds/react';
+import * as SwitchStories from '../../../../packages/react/src/Switch/Switch.stories';
+import switchMeta from '../../../../packages/react/src/Switch/Switch.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={SwitchStories} name="Docs" />
+
+# Switch
+
+<ComponentPage
+  meta={switchMeta}
+  stories={SwitchStories}
+  components={[Switch]}
+  anatomy={{
+    targets: [
+      '.ds-switch__track',
+      '.ds-switch__thumb',
+      '.ds-switch__label',
+      '.ds-switch__description',
+    ],
+    example: (
+      <Switch label="Real-time updates" description="Refreshes every 30 seconds." defaultChecked />
+    ),
+  }}
+  optionStories={{ labelPosition: 'LabelPosition' }}
+  extras={[
+    { title: 'With a description', story: 'WithDescription' },
+    { title: 'Settings list', story: 'SettingsList' },
+  ]}
+  behaviorStory="RightToLeft"
+  dodont={{
+    1: {
+      do: <Switch label="Email notifications" defaultChecked />,
+      dont: <Switch aria-label="Toggle" defaultChecked />,
+    },
+    2: {
+      do: <Switch label="Show preview" defaultChecked />,
+      dont: <Switch label="Hide preview" />,
+    },
+  }}
+  matrix={
+    <div style={{ display: 'flex', gap: 20 }}>
+      <Switch label="On" defaultChecked />
+      <Switch label="Off" />
+    </div>
+  }
+/>

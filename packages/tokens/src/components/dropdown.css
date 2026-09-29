@@ -1,0 +1,60 @@
+/**
+ * Component tokens: dropdown
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --menu-dropdown-{property} for the menu, --menu-item-{variant?}-{state}-{property}
+ * for items (state: default | hover | active), --menu-label-* and --menu-shortcut-*.
+ */
+
+:root,
+[data-theme] {
+  --menu-item-default-bg-color: var(--color-bg-base);
+  --menu-item-default-font-color: var(--color-fg-on-surface-primary);
+  --menu-item-default-icon-color: var(--color-fg-on-surface-primary);
+  --menu-item-hover-bg-color: var(--color-bg-primary-1);
+  --menu-item-hover-font-color: var(--color-fg-on-surface-primary);
+  --menu-item-hover-icon-color: var(--color-fg-on-surface-primary);
+  --menu-dropdown-bg-color: var(--color-bg-base);
+  --menu-dropdown-shadow-color: var(--color-shadow-surface);
+  --menu-dropdown-border-color: var(--color-border-base);
+  --menu-dropdown-divider-color: var(--color-bg-default);
+  --menu-dropdown-border-width: var(--border-width-regular);
+  --menu-dropdown-divider-width: var(--border-width-regular);
+  --menu-item-padding-x: var(--spacing-md);
+  --menu-item-padding-y: var(--spacing-sm);
+  --menu-item-gap: var(--spacing-xs);
+  --menu-dropdown-item-border-radius: var(--radius-none);
+  --menu-dropdown-shadow-x: var(--shadow-none);
+  --menu-item-font-family: var(--font-family-body);
+  --menu-item-font-size: var(--font-size-md);
+  --menu-item-font-line-height: var(--font-line-height-md);
+  --menu-item-font-weight: var(--font-weight-regular);
+  --menu-item-icon-size: var(--font-size-sm);
+  --menu-item-icon-line-height: var(--font-line-height-sm);
+  --menu-item-active-bg-color: var(--color-bg-primary-200);
+  --menu-item-active-font-color: var(--color-fg-on-surface-primary);
+  --menu-item-active-icon-color: var(--color-fg-on-surface-primary);
+  --menu-dropdown-gap: var(--spacing-2xs);
+
+  /* Menu container */
+  --menu-dropdown-padding: var(--spacing-2xs);
+  --menu-dropdown-min-width: var(--sizing-8xl);
+  --menu-dropdown-z-index: var(--z-dropdown);
+  --menu-dropdown-transition-duration: var(--duration-fast);
+  --menu-dropdown-transition-easing: var(--easing-enter);
+
+  /* Danger item (destructive actions) */
+  --menu-item-danger-font-color: var(--color-fg-on-accent-danger-text-default);
+  --menu-item-danger-hover-bg-color: var(--color-bg-danger-1);
+  --menu-item-danger-hover-font-color: var(--color-fg-on-danger-high);
+
+  /* Group label, shortcut hint, check/radio indicator, disabled */
+  --menu-label-font-size: var(--font-size-sm);
+  --menu-label-font-line-height: var(--font-line-height-sm);
+  --menu-label-font-weight: var(--font-weight-medium);
+  --menu-label-font-color: var(--color-fg-on-surface-secondary);
+  --menu-shortcut-font-color: var(--color-fg-on-surface-secondary);
+  --menu-item-indicator-size: var(--sizing-sm);
+  --menu-item-disabled-opacity: var(--opacity-medium);
+}

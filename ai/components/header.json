@@ -1,0 +1,447 @@
+{
+  "id": "header",
+  "name": "Header",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "A page header that introduces a person and their page: avatar, name, job title and the page heading. Use it at the top of portfolio, profile or “about” pages.",
+  "imports": [
+    {
+      "name": "Header",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "At the top of a portfolio, profile or personal page."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For the site’s navigation.",
+      "alternative": "Navbar"
+    },
+    {
+      "text": "For a person in a list or card.",
+      "alternative": "Avatar with text"
+    },
+    {
+      "text": "For a page not about a person.",
+      "alternative": "A plain h1"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Avatar",
+      "description": "Extra-large Avatar; decorative, since the name is next to it."
+    },
+    {
+      "name": "Name",
+      "description": "The person’s name."
+    },
+    {
+      "name": "Job title",
+      "description": "Their role.",
+      "optional": true
+    },
+    {
+      "name": "Heading",
+      "description": "The page heading (h1 by default).",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "headingAs",
+      "title": "Heading level",
+      "values": [
+        {
+          "value": "h1",
+          "meaning": "Default: the header opens the page."
+        },
+        {
+          "value": "h2",
+          "meaning": "When the page already has an h1."
+        },
+        {
+          "value": "h3",
+          "meaning": "Inside a nested section."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Static content.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Landmark",
+      "text": "At the top level it is the page’s banner landmark; use it once per page."
+    },
+    {
+      "topic": "Photo",
+      "text": "Without avatar, the Avatar shows initials from name."
+    },
+    {
+      "topic": "Density",
+      "text": "Gaps follow the density theme."
+    }
+  ],
+  "content": [
+    "Name: as the person writes it.",
+    "Heading: what the page is about, e.g. the project name, in a few words."
+  ],
+  "guidelines": [
+    {
+      "do": "Keep one h1 per page: the Header’s heading or the page’s own, not both.",
+      "dont": "Leave headingAs at h1 when the page already has one.",
+      "why": "One h1 gives screen reader users a clear starting point."
+    },
+    {
+      "do": "Pass the real name, even with a photo.",
+      "dont": "Pass a placeholder name.",
+      "why": "The name gives the fallback initials and is the visible identity."
+    },
+    {
+      "do": "Use it once at the top.",
+      "dont": "Repeat it in each section.",
+      "why": "It is the page’s banner landmark."
+    }
+  ],
+  "accessibility": {
+    "role": "banner landmark (header) at the top level, with a heading.",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "Not interactive."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-hidden avatar",
+        "when": "Always: the name follows it."
+      }
+    ],
+    "focus": "None.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "header landmark and a real heading."
+      },
+      {
+        "criterion": "2.4.6 Headings and Labels",
+        "how": "The page heading describes the page."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Profile header",
+      "description": "Photo, name, job title and page heading.",
+      "code": "import { Header } from '@ds/react';\n\n<Header\n  avatar=\"/me.png\"\n  name=\"Osama Eldrieny\"\n  jobTitle=\"Design System Designer\"\n  heading=\"Multi-theme design system\"\n/>"
+    },
+    {
+      "id": "initials",
+      "title": "Without a photo",
+      "description": "Initials from the name.",
+      "code": "import { Header } from '@ds/react';\n\n<Header name=\"Sarah Chen\" jobTitle=\"Head of Products\" heading=\"Portfolio\" />"
+    },
+    {
+      "id": "nested",
+      "title": "Below an existing h1",
+      "description": "Lower the heading level.",
+      "code": "import { Header } from '@ds/react';\n\n<Header name=\"Sarah Chen\" heading=\"About me\" headingAs=\"h2\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--header-"
+  ],
+  "related": [
+    {
+      "id": "avatar",
+      "relation": "Shows the photo or initials."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "role → jobTitle (role is an HTML attribute), title → heading, rendered as a real heading (headingAs, default h1).",
+        "name is required; no placeholder defaults.",
+        "Surface tokens (--header-bg-color, padding, radius, shadow) replace section tokens."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Header",
+      "import": "import { Header } from '@ds/react';",
+      "description": "A page header introducing a person and their page: avatar, name, job title and the\npage heading. Use it once, at the top of a portfolio or profile page.",
+      "props": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The person's full name. Also gives the avatar its initials."
+        },
+        "jobTitle": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Their role or job title, e.g. \"Design System Designer\"."
+        },
+        "heading": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "The page heading under the person, e.g. the project's name."
+        },
+        "avatar": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Photo URL. Without it, initials show."
+        },
+        "headingAs": {
+          "type": "\"h1\" | \"h2\" | \"h3\"",
+          "values": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "required": false,
+          "default": "h1",
+          "description": "Heading level. Default h1, since this usually opens the page."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--header-name-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--header-title-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--header-role-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--header-name-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--header-name-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--header-name-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--header-name-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--header-role-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--header-role-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--header-role-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--header-role-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--header-title-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--header-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xl",
+      "default": "24px"
+    },
+    "--header-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xl",
+      "default": "30px"
+    },
+    "--header-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--header-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--section-bg-color",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--header-padding": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--section-padding",
+      "default": "28px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "24px"
+      }
+    },
+    "--header-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--section-border-radius",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--header-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-x",
+      "default": "0"
+    },
+    "--header-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-y",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--header-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-blur",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    },
+    "--header-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--section-shadow-color",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--header-avatar-margin-bottom": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--header-name-margin-bottom": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-4",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--header-gap": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-16",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "20px"
+      }
+    },
+    "--header-name-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Osama Eldrieny'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'أسامه الدريني'"
+      }
+    },
+    "--header-role-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Design System Designer'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'مصمم نظام التصميم'"
+      }
+    },
+    "--header-title-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Multi-Theme Design System'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'نظام تصميم متعدد الثيمات'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-header--docs"
+}

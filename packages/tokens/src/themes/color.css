@@ -1,0 +1,952 @@
+/**
+ * Theme: color
+ *
+ * Semantic colors per brand × mode. Set data-brand (diamond | amber | opal) and
+ * data-mode (light | dark) on a theme scope. Semantic names describe a role, never a hue,
+ * so the same component token works in every brand and mode.
+ *
+ * Tones: primary (brand), secondary (neutral action), success, danger, warning.
+ * States: default, hover, focus (also used while pressed).
+ *
+ * Token reference ({tone}, {state} and {step} stand for the values above):
+ *   --color-bg-base: Outermost page background.
+ *   --color-bg-default: App background behind cards and panels.
+ *   --color-bg-surface: Cards, panels, inputs and menus sitting on --color-bg-default.
+ *   --color-bg-accent-{tone}-{state}: Solid fill for emphasized actions of a tone, e.g. filled buttons.
+ *   --color-fg-on-accent-{tone}-{state}: Text and icons on the matching --color-bg-accent fill.
+ *   --color-fg-on-accent-{tone}-text-{state}: Tone-colored text directly on surfaces, e.g. text buttons and links.
+ *   --color-bg-{tone}-1: Subtle tinted background for a tone, e.g. alerts, selected items, badges.
+ *   --color-bg-{tone}-{step}: Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.
+ *   --color-fg-on-surface-primary: Main text on surfaces.
+ *   --color-fg-on-surface-secondary: Supporting text on surfaces: descriptions, metadata, placeholders.
+ *   --color-fg-on-{tone}-high: Main tone-colored text on light or tinted backgrounds: titles, active items.
+ *   --color-fg-on-{tone}-medium: Secondary tone-colored text: timestamps, captions.
+ *   --color-fg-on-{tone}-low: Darkest tone text, for maximum contrast on tinted backgrounds.
+ *   --color-fg-on-{tone}-strong: Text on strong (solid) tone fills.
+ *   --color-border-base: Default dividers and outlines.
+ *   --color-border-accent: Brand-colored outline; also the focus ring color.
+ *   --color-border-field: Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.
+ *   --color-border-{tone}-strong: Emphasized tone outline, e.g. a selected card.
+ *   --color-border-{tone}-medium: Regular tone outline, e.g. alert borders.
+ *   --color-border-{tone}-subtle: Faint tone outline on tinted backgrounds.
+ *   --color-fg-ink: The brand's darkest ink, for text on light colored fills.
+ *   --color-fg-inverse: White, for text on dark colored fills.
+ *   --color-fg-max-contrast: Pure black, for text on mid-tone fills where ink and white both fall short.
+ *   --color-shadow-surface: Shadow color under raised surfaces.
+ *   --image-card: Default card media image for the brand and mode.
+ *   --image-light: Card media image for light backgrounds.
+ *   --image-dark: Card media image for dark backgrounds.
+ */
+
+/* Brand diamond, light mode (default) */
+:root,
+[data-brand='diamond'][data-mode='light'] {
+  --color-bg-base: var(--color-diamond-base-100);
+  --color-bg-default: var(--color-diamond-base-200);
+  --color-bg-surface: var(--color-diamond-base-100);
+  --color-bg-accent-primary-default: var(--color-diamond-primary-600);
+  --color-bg-accent-primary-hover: var(--color-diamond-primary-700);
+  --color-bg-accent-primary-focus: var(--color-diamond-primary-800);
+  --color-bg-accent-secondary-default: var(--color-diamond-secondary-600);
+  --color-bg-accent-secondary-hover: var(--color-diamond-secondary-700);
+  --color-bg-accent-secondary-focus: var(--color-diamond-secondary-800);
+  --color-bg-primary-1: var(--color-diamond-primary-100);
+  --color-bg-secondary-1: var(--color-diamond-neutral-300);
+  --color-bg-success-1: var(--color-diamond-success-100);
+  --color-bg-danger-1: var(--color-diamond-danger-100);
+  --color-bg-warning-1: var(--color-diamond-warning-100);
+  --image-card: url('./images/card-image-diamond.png');
+  --color-bg-primary-100: var(--color-diamond-primary-100);
+  --color-bg-primary-200: var(--color-diamond-primary-200);
+  --color-bg-primary-300: var(--color-diamond-primary-300);
+  --color-bg-primary-400: var(--color-diamond-primary-400);
+  --color-bg-primary-500: var(--color-diamond-primary-500);
+  --color-bg-primary-600: var(--color-diamond-primary-600);
+  --color-bg-primary-700: var(--color-diamond-primary-700);
+  --color-bg-primary-800: var(--color-diamond-primary-800);
+  --color-bg-primary-900: var(--color-diamond-primary-900);
+  --color-bg-secondary-100: var(--color-diamond-secondary-100);
+  --color-bg-secondary-200: var(--color-diamond-secondary-200);
+  --color-bg-secondary-300: var(--color-diamond-secondary-300);
+  --color-bg-secondary-400: var(--color-diamond-secondary-400);
+  --color-bg-secondary-500: var(--color-diamond-secondary-500);
+  --color-bg-secondary-600: var(--color-diamond-secondary-600);
+  --color-bg-secondary-700: var(--color-diamond-secondary-700);
+  --color-bg-secondary-800: var(--color-diamond-secondary-800);
+  --color-bg-secondary-900: var(--color-diamond-secondary-900);
+  --color-bg-success-100: var(--color-diamond-success-100);
+  --color-bg-success-200: var(--color-diamond-success-200);
+  --color-bg-success-300: var(--color-diamond-success-300);
+  --color-bg-success-400: var(--color-diamond-success-400);
+  --color-bg-success-500: var(--color-diamond-success-500);
+  --color-bg-success-600: var(--color-diamond-success-600);
+  --color-bg-success-700: var(--color-diamond-success-700);
+  --color-bg-success-800: var(--color-diamond-success-800);
+  --color-bg-success-900: var(--color-diamond-success-900);
+  --color-bg-warning-100: var(--color-diamond-warning-100);
+  --color-bg-warning-200: var(--color-diamond-warning-200);
+  --color-bg-warning-300: var(--color-diamond-warning-300);
+  --color-bg-warning-400: var(--color-diamond-warning-400);
+  --color-bg-warning-500: var(--color-diamond-warning-500);
+  --color-bg-warning-600: var(--color-diamond-warning-600);
+  --color-bg-warning-700: var(--color-diamond-warning-700);
+  --color-bg-warning-800: var(--color-diamond-warning-800);
+  --color-bg-warning-900: var(--color-diamond-warning-900);
+  --color-bg-danger-100: var(--color-diamond-danger-100);
+  --color-bg-danger-200: var(--color-diamond-danger-200);
+  --color-bg-danger-300: var(--color-diamond-danger-300);
+  --color-bg-danger-400: var(--color-diamond-danger-400);
+  --color-bg-danger-500: var(--color-diamond-danger-500);
+  --color-bg-danger-600: var(--color-diamond-danger-600);
+  --color-bg-danger-700: var(--color-diamond-danger-700);
+  --color-bg-danger-800: var(--color-diamond-danger-800);
+  --color-bg-danger-900: var(--color-diamond-danger-900);
+  --color-shadow-surface: var(--color-diamond-base-400);
+  --color-fg-on-accent-primary-default: var(--color-diamond-base-100);
+  --color-fg-on-accent-primary-hover: var(--color-diamond-base-100);
+  --color-fg-on-accent-primary-focus: var(--color-diamond-base-100);
+  --color-fg-on-accent-primary-text-default: var(--color-diamond-primary-600);
+  --color-fg-on-accent-primary-text-hover: var(--color-diamond-primary-700);
+  --color-fg-on-accent-primary-text-focus: var(--color-diamond-primary-800);
+  --color-fg-on-accent-secondary-default: var(--color-diamond-base-100);
+  --color-fg-on-accent-secondary-hover: var(--color-diamond-base-100);
+  --color-fg-on-accent-secondary-focus: var(--color-diamond-base-100);
+  --color-fg-on-accent-secondary-text-default: var(--color-diamond-secondary-700);
+  --color-fg-on-accent-secondary-text-hover: var(--color-diamond-secondary-800);
+  --color-fg-on-accent-secondary-text-focus: var(--color-diamond-secondary-900);
+  --color-fg-on-surface-primary: var(--color-diamond-neutral-900);
+  --color-fg-on-surface-secondary: var(--color-diamond-neutral-500);
+  --color-fg-on-primary-high: var(--color-diamond-primary-800);
+  --color-fg-on-primary-medium: var(--color-diamond-primary-700);
+  --color-fg-on-primary-low: var(--color-diamond-primary-1000);
+  --color-fg-on-primary-strong: var(--color-diamond-primary-100);
+  --color-fg-on-success-high: var(--color-diamond-success-1000);
+  --color-fg-on-success-medium: var(--color-diamond-success-900);
+  --color-fg-on-success-low: var(--color-diamond-success-1000);
+  --color-fg-on-success-strong: var(--color-diamond-success-100);
+  --color-fg-on-danger-high: var(--color-diamond-danger-800);
+  --color-fg-on-danger-medium: var(--color-diamond-danger-700);
+  --color-fg-on-danger-low: var(--color-diamond-danger-1000);
+  --color-fg-on-danger-strong: var(--color-diamond-danger-100);
+  --color-fg-on-warning-high: var(--color-diamond-warning-1000);
+  --color-fg-on-warning-medium: var(--color-diamond-warning-900);
+  --color-fg-on-warning-low: var(--color-diamond-warning-1000);
+  --color-fg-on-warning-strong: var(--color-diamond-warning-100);
+  --color-fg-on-secondary-high: var(--color-diamond-secondary-1000);
+  --color-fg-on-secondary-medium: var(--color-diamond-secondary-900);
+  --color-fg-on-secondary-low: var(--color-diamond-secondary-1000);
+  --color-fg-on-secondary-strong: var(--color-diamond-secondary-100);
+  --color-border-accent: var(--color-diamond-primary-700);
+  --color-border-field: var(--color-diamond-secondary-500);
+  --color-border-base: var(--color-diamond-base-200);
+  --color-border-primary-strong: var(--color-diamond-primary-500);
+  --color-border-primary-subtle: var(--color-diamond-primary-100);
+  --color-border-primary-medium: var(--color-diamond-primary-300);
+  --color-border-success-strong: var(--color-diamond-success-800);
+  --color-border-success-medium: var(--color-diamond-success-300);
+  --color-border-success-subtle: var(--color-diamond-success-100);
+  --color-border-danger-strong: var(--color-diamond-danger-500);
+  --color-border-danger-medium: var(--color-diamond-danger-300);
+  --color-border-danger-subtle: var(--color-diamond-danger-100);
+  --color-border-warning-strong: var(--color-diamond-warning-800);
+  --color-border-warning-medium: var(--color-diamond-warning-300);
+  --color-border-warning-subtle: var(--color-diamond-warning-100);
+  --image-light: url('./images/card-image-diamond.png');
+  --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-diamond-success-500);
+  --color-bg-accent-success-hover: var(--color-diamond-success-600);
+  --color-bg-accent-success-focus: var(--color-diamond-success-700);
+  --color-fg-on-accent-success-default: var(--color-diamond-base-900);
+  --color-fg-on-accent-success-hover: var(--color-diamond-base-900);
+  --color-fg-on-accent-success-focus: var(--color-diamond-base-900);
+  --color-fg-on-accent-success-text-default: var(--color-diamond-success-900);
+  --color-fg-on-accent-success-text-hover: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-text-focus: var(--color-diamond-success-1000);
+  --color-bg-accent-danger-default: var(--color-diamond-danger-700);
+  --color-bg-accent-danger-hover: var(--color-diamond-danger-800);
+  --color-bg-accent-danger-focus: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-default: var(--color-diamond-danger-100);
+  --color-fg-on-accent-danger-hover: var(--color-diamond-danger-100);
+  --color-fg-on-accent-danger-focus: var(--color-diamond-danger-100);
+  --color-fg-on-accent-danger-text-default: var(--color-diamond-danger-700);
+  --color-fg-on-accent-danger-text-hover: var(--color-diamond-danger-800);
+  --color-fg-on-accent-danger-text-focus: var(--color-diamond-danger-900);
+  --color-bg-accent-warning-default: var(--color-diamond-warning-500);
+  --color-bg-accent-warning-hover: var(--color-diamond-warning-600);
+  --color-bg-accent-warning-focus: var(--color-diamond-warning-700);
+  --color-fg-on-accent-warning-default: var(--color-diamond-base-900);
+  --color-fg-on-accent-warning-hover: var(--color-diamond-base-900);
+  --color-fg-on-accent-warning-focus: var(--color-diamond-base-900);
+  --color-fg-on-accent-warning-text-default: var(--color-diamond-warning-900);
+  --color-fg-on-accent-warning-text-hover: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-text-focus: var(--color-diamond-warning-1000);
+
+  /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
+     where neither ink nor white reaches 4.5:1. */
+  --color-fg-ink: var(--color-diamond-base-900);
+  --color-fg-inverse: var(--color-diamond-base-100);
+  --color-fg-max-contrast: var(--color-black);
+}
+
+/* Brand diamond, dark mode */
+[data-brand='diamond'][data-mode='dark'] {
+  --color-bg-base: var(--color-diamond-base-900);
+  --color-bg-default: var(--color-diamond-base-800);
+  --color-bg-surface: var(--color-diamond-base-900);
+  --color-bg-accent-primary-default: var(--color-diamond-primary-100);
+  --color-bg-accent-primary-hover: var(--color-diamond-primary-200);
+  --color-bg-accent-primary-focus: var(--color-diamond-primary-300);
+  --color-bg-accent-secondary-default: var(--color-diamond-secondary-100);
+  --color-bg-accent-secondary-hover: var(--color-diamond-secondary-200);
+  --color-bg-accent-secondary-focus: var(--color-diamond-secondary-300);
+  --color-bg-primary-1: var(--color-diamond-base-800);
+  --color-bg-secondary-1: var(--color-diamond-neutral-700);
+  --color-bg-success-1: var(--color-diamond-base-800);
+  --color-bg-danger-1: var(--color-diamond-base-800);
+  --color-bg-warning-1: var(--color-diamond-base-800);
+  --image-card: url('./images/card-image-dark.png');
+  --color-bg-primary-100: var(--color-diamond-primary-900);
+  --color-bg-primary-200: var(--color-diamond-primary-800);
+  --color-bg-primary-300: var(--color-diamond-primary-700);
+  --color-bg-primary-400: var(--color-diamond-primary-600);
+  --color-bg-primary-500: var(--color-diamond-primary-500);
+  --color-bg-primary-600: var(--color-diamond-primary-400);
+  --color-bg-primary-700: var(--color-diamond-primary-300);
+  --color-bg-primary-800: var(--color-diamond-primary-200);
+  --color-bg-primary-900: var(--color-diamond-primary-100);
+  --color-bg-secondary-100: var(--color-diamond-secondary-900);
+  --color-bg-secondary-200: var(--color-diamond-secondary-800);
+  --color-bg-secondary-300: var(--color-diamond-secondary-700);
+  --color-bg-secondary-400: var(--color-diamond-secondary-600);
+  --color-bg-secondary-500: var(--color-diamond-secondary-500);
+  --color-bg-secondary-600: var(--color-diamond-secondary-400);
+  --color-bg-secondary-700: var(--color-diamond-secondary-300);
+  --color-bg-secondary-800: var(--color-diamond-secondary-200);
+  --color-bg-secondary-900: var(--color-diamond-secondary-100);
+  --color-bg-success-100: var(--color-diamond-success-900);
+  --color-bg-success-200: var(--color-diamond-success-800);
+  --color-bg-success-300: var(--color-diamond-success-700);
+  --color-bg-success-400: var(--color-diamond-success-600);
+  --color-bg-success-500: var(--color-diamond-success-500);
+  --color-bg-success-600: var(--color-diamond-success-400);
+  --color-bg-success-700: var(--color-diamond-success-300);
+  --color-bg-success-800: var(--color-diamond-success-200);
+  --color-bg-success-900: var(--color-diamond-success-100);
+  --color-bg-warning-100: var(--color-diamond-warning-900);
+  --color-bg-warning-200: var(--color-diamond-warning-800);
+  --color-bg-warning-300: var(--color-diamond-warning-700);
+  --color-bg-warning-400: var(--color-diamond-warning-600);
+  --color-bg-warning-500: var(--color-diamond-warning-500);
+  --color-bg-warning-600: var(--color-diamond-warning-400);
+  --color-bg-warning-700: var(--color-diamond-warning-300);
+  --color-bg-warning-800: var(--color-diamond-warning-200);
+  --color-bg-warning-900: var(--color-diamond-warning-100);
+  --color-bg-danger-100: var(--color-diamond-danger-900);
+  --color-bg-danger-200: var(--color-diamond-danger-800);
+  --color-bg-danger-300: var(--color-diamond-danger-700);
+  --color-bg-danger-400: var(--color-diamond-danger-600);
+  --color-bg-danger-500: var(--color-diamond-danger-500);
+  --color-bg-danger-600: var(--color-diamond-danger-400);
+  --color-bg-danger-700: var(--color-diamond-danger-300);
+  --color-bg-danger-800: var(--color-diamond-danger-200);
+  --color-bg-danger-900: var(--color-diamond-danger-100);
+  --color-shadow-surface: var(--color-diamond-base-900);
+  --color-fg-on-accent-primary-default: var(--color-diamond-base-900);
+  --color-fg-on-accent-primary-hover: var(--color-diamond-base-900);
+  --color-fg-on-accent-primary-focus: var(--color-diamond-base-900);
+  --color-fg-on-accent-primary-text-default: var(--color-diamond-primary-400);
+  --color-fg-on-accent-primary-text-hover: var(--color-diamond-primary-300);
+  --color-fg-on-accent-primary-text-focus: var(--color-diamond-primary-200);
+  --color-fg-on-accent-secondary-default: var(--color-diamond-base-900);
+  --color-fg-on-accent-secondary-hover: var(--color-diamond-base-900);
+  --color-fg-on-accent-secondary-focus: var(--color-diamond-base-900);
+  --color-fg-on-accent-secondary-text-default: var(--color-diamond-secondary-400);
+  --color-fg-on-accent-secondary-text-hover: var(--color-diamond-secondary-300);
+  --color-fg-on-accent-secondary-text-focus: var(--color-diamond-secondary-200);
+  --color-fg-on-surface-primary: var(--color-diamond-neutral-100);
+  --color-fg-on-surface-secondary: var(--color-diamond-neutral-300);
+  --color-fg-on-primary-high: var(--color-diamond-primary-300);
+  --color-fg-on-primary-medium: var(--color-diamond-primary-400);
+  --color-fg-on-primary-low: var(--color-diamond-primary-100);
+  --color-fg-on-primary-strong: var(--color-diamond-primary-1000);
+  --color-fg-on-success-high: var(--color-diamond-success-300);
+  --color-fg-on-success-medium: var(--color-diamond-success-400);
+  --color-fg-on-success-low: var(--color-diamond-success-100);
+  --color-fg-on-success-strong: var(--color-diamond-success-1000);
+  --color-fg-on-danger-high: var(--color-diamond-danger-300);
+  --color-fg-on-danger-medium: var(--color-diamond-danger-400);
+  --color-fg-on-danger-low: var(--color-diamond-danger-100);
+  --color-fg-on-danger-strong: var(--color-diamond-danger-1000);
+  --color-fg-on-warning-high: var(--color-diamond-warning-300);
+  --color-fg-on-warning-medium: var(--color-diamond-warning-400);
+  --color-fg-on-warning-low: var(--color-diamond-warning-100);
+  --color-fg-on-warning-strong: var(--color-diamond-warning-1000);
+  --color-fg-on-secondary-high: var(--color-diamond-secondary-300);
+  --color-fg-on-secondary-medium: var(--color-diamond-secondary-400);
+  --color-fg-on-secondary-low: var(--color-diamond-secondary-100);
+  --color-fg-on-secondary-strong: var(--color-diamond-secondary-1000);
+  --color-border-accent: var(--color-diamond-primary-300);
+  --color-border-field: var(--color-diamond-secondary-500);
+  --color-border-base: var(--color-diamond-base-800);
+  --color-border-primary-strong: var(--color-diamond-primary-500);
+  --color-border-primary-subtle: var(--color-diamond-base-800);
+  --color-border-primary-medium: var(--color-diamond-primary-800);
+  --color-border-success-strong: var(--color-diamond-success-700);
+  --color-border-success-medium: var(--color-diamond-success-800);
+  --color-border-success-subtle: var(--color-diamond-base-800);
+  --color-border-danger-strong: var(--color-diamond-danger-600);
+  --color-border-danger-medium: var(--color-diamond-danger-800);
+  --color-border-danger-subtle: var(--color-diamond-base-800);
+  --color-border-warning-strong: var(--color-diamond-warning-800);
+  --color-border-warning-medium: var(--color-diamond-warning-800);
+  --color-border-warning-subtle: var(--color-diamond-base-800);
+  --image-light: url('./images/card-image-diamond.png');
+  --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-diamond-success-100);
+  --color-bg-accent-success-hover: var(--color-diamond-success-200);
+  --color-bg-accent-success-focus: var(--color-diamond-success-300);
+  --color-fg-on-accent-success-default: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-hover: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-focus: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-text-default: var(--color-diamond-success-600);
+  --color-fg-on-accent-success-text-hover: var(--color-diamond-success-500);
+  --color-fg-on-accent-success-text-focus: var(--color-diamond-success-400);
+  --color-bg-accent-danger-default: var(--color-diamond-danger-100);
+  --color-bg-accent-danger-hover: var(--color-diamond-danger-200);
+  --color-bg-accent-danger-focus: var(--color-diamond-danger-300);
+  --color-fg-on-accent-danger-default: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-hover: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-focus: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-text-default: var(--color-diamond-danger-400);
+  --color-fg-on-accent-danger-text-hover: var(--color-diamond-danger-300);
+  --color-fg-on-accent-danger-text-focus: var(--color-diamond-danger-200);
+  --color-bg-accent-warning-default: var(--color-diamond-warning-100);
+  --color-bg-accent-warning-hover: var(--color-diamond-warning-200);
+  --color-bg-accent-warning-focus: var(--color-diamond-warning-300);
+  --color-fg-on-accent-warning-default: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-hover: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-focus: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-text-default: var(--color-diamond-warning-700);
+  --color-fg-on-accent-warning-text-hover: var(--color-diamond-warning-600);
+  --color-fg-on-accent-warning-text-focus: var(--color-diamond-warning-500);
+
+  /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
+     where neither ink nor white reaches 4.5:1. */
+  --color-fg-ink: var(--color-diamond-base-900);
+  --color-fg-inverse: var(--color-diamond-base-100);
+  --color-fg-max-contrast: var(--color-black);
+}
+
+/* Brand amber, light mode */
+[data-brand='amber'][data-mode='light'] {
+  --color-border-base: var(--color-amber-base-200);
+  --color-border-accent: var(--color-amber-primary-700);
+  --color-border-field: var(--color-amber-secondary-500);
+  --color-border-primary-strong: var(--color-amber-primary-700);
+  --color-border-primary-medium: var(--color-amber-primary-300);
+  --color-border-primary-subtle: var(--color-amber-primary-100);
+  --color-border-success-strong: var(--color-amber-success-500);
+  --color-border-success-medium: var(--color-amber-success-300);
+  --color-border-success-subtle: var(--color-amber-success-100);
+  --color-border-danger-strong: var(--color-amber-danger-500);
+  --color-border-danger-medium: var(--color-amber-danger-300);
+  --color-border-danger-subtle: var(--color-amber-danger-100);
+  --color-border-warning-strong: var(--color-amber-warning-800);
+  --color-border-warning-medium: var(--color-amber-warning-300);
+  --color-border-warning-subtle: var(--color-amber-warning-100);
+  --image-card: url('./images/card-image-amber.png');
+  --color-bg-base: var(--color-amber-base-100);
+  --color-bg-default: var(--color-amber-base-200);
+  --color-bg-surface: var(--color-amber-base-100);
+  --color-bg-accent-primary-default: var(--color-amber-primary-500);
+  --color-bg-accent-primary-hover: var(--color-amber-primary-600);
+  --color-bg-accent-primary-focus: var(--color-amber-primary-700);
+  --color-bg-accent-secondary-default: var(--color-amber-secondary-600);
+  --color-bg-accent-secondary-hover: var(--color-amber-secondary-700);
+  --color-bg-accent-secondary-focus: var(--color-amber-secondary-800);
+  --color-bg-primary-1: var(--color-amber-primary-100);
+  --color-bg-secondary-1: var(--color-amber-neutral-400);
+  --color-bg-success-1: var(--color-amber-success-100);
+  --color-bg-danger-1: var(--color-amber-danger-100);
+  --color-bg-warning-1: var(--color-amber-warning-100);
+  --color-bg-primary-100: var(--color-amber-primary-100);
+  --color-bg-primary-200: var(--color-amber-primary-200);
+  --color-bg-primary-300: var(--color-amber-primary-300);
+  --color-bg-primary-400: var(--color-amber-primary-400);
+  --color-bg-primary-500: var(--color-amber-primary-500);
+  --color-bg-primary-600: var(--color-amber-primary-600);
+  --color-bg-primary-700: var(--color-amber-primary-700);
+  --color-bg-primary-800: var(--color-amber-primary-800);
+  --color-bg-primary-900: var(--color-amber-primary-900);
+  --color-bg-secondary-100: var(--color-amber-secondary-100);
+  --color-bg-secondary-200: var(--color-amber-secondary-200);
+  --color-bg-secondary-300: var(--color-amber-secondary-300);
+  --color-bg-secondary-400: var(--color-amber-secondary-400);
+  --color-bg-secondary-500: var(--color-amber-secondary-500);
+  --color-bg-secondary-600: var(--color-amber-secondary-600);
+  --color-bg-secondary-700: var(--color-amber-secondary-700);
+  --color-bg-secondary-800: var(--color-amber-secondary-800);
+  --color-bg-secondary-900: var(--color-amber-secondary-900);
+  --color-bg-success-100: var(--color-amber-success-100);
+  --color-bg-success-200: var(--color-amber-success-200);
+  --color-bg-success-300: var(--color-amber-success-300);
+  --color-bg-success-400: var(--color-amber-success-400);
+  --color-bg-success-500: var(--color-amber-success-500);
+  --color-bg-success-600: var(--color-amber-success-600);
+  --color-bg-success-700: var(--color-amber-success-700);
+  --color-bg-success-800: var(--color-amber-success-800);
+  --color-bg-success-900: var(--color-amber-success-900);
+  --color-bg-warning-100: var(--color-amber-warning-100);
+  --color-bg-warning-200: var(--color-amber-warning-200);
+  --color-bg-warning-300: var(--color-amber-warning-300);
+  --color-bg-warning-400: var(--color-amber-warning-400);
+  --color-bg-warning-500: var(--color-amber-warning-500);
+  --color-bg-warning-600: var(--color-amber-warning-600);
+  --color-bg-warning-700: var(--color-amber-warning-700);
+  --color-bg-warning-800: var(--color-amber-warning-800);
+  --color-bg-warning-900: var(--color-amber-warning-900);
+  --color-bg-danger-100: var(--color-amber-danger-100);
+  --color-bg-danger-200: var(--color-amber-danger-200);
+  --color-bg-danger-300: var(--color-amber-danger-300);
+  --color-bg-danger-400: var(--color-amber-danger-400);
+  --color-bg-danger-500: var(--color-amber-danger-500);
+  --color-bg-danger-600: var(--color-amber-danger-600);
+  --color-bg-danger-700: var(--color-amber-danger-700);
+  --color-bg-danger-800: var(--color-amber-danger-800);
+  --color-bg-danger-900: var(--color-amber-danger-900);
+  --color-shadow-surface: var(--color-amber-base-400);
+  --color-fg-on-accent-primary-default: var(--color-amber-base-900);
+  --color-fg-on-accent-primary-hover: var(--color-amber-base-900);
+  --color-fg-on-accent-primary-focus: var(--color-amber-base-900);
+  --color-fg-on-accent-primary-text-default: var(--color-amber-primary-800);
+  --color-fg-on-accent-primary-text-hover: var(--color-amber-primary-900);
+  --color-fg-on-accent-primary-text-focus: var(--color-amber-primary-1000);
+  --color-fg-on-accent-secondary-default: var(--color-amber-base-100);
+  --color-fg-on-accent-secondary-hover: var(--color-amber-base-100);
+  --color-fg-on-accent-secondary-focus: var(--color-amber-base-100);
+  --color-fg-on-accent-secondary-text-default: var(--color-amber-secondary-700);
+  --color-fg-on-accent-secondary-text-hover: var(--color-amber-secondary-800);
+  --color-fg-on-accent-secondary-text-focus: var(--color-amber-secondary-900);
+  --color-fg-on-surface-primary: var(--color-amber-neutral-1000);
+  --color-fg-on-surface-secondary: var(--color-amber-neutral-1000);
+  --color-fg-on-primary-high: var(--color-amber-primary-900);
+  --color-fg-on-primary-medium: var(--color-amber-primary-800);
+  --color-fg-on-primary-low: var(--color-amber-primary-1000);
+  --color-fg-on-primary-strong: var(--color-amber-primary-100);
+  --color-fg-on-success-high: var(--color-amber-success-700);
+  --color-fg-on-success-medium: var(--color-amber-success-600);
+  --color-fg-on-success-low: var(--color-amber-success-1000);
+  --color-fg-on-success-strong: var(--color-amber-success-100);
+  --color-fg-on-danger-high: var(--color-amber-danger-700);
+  --color-fg-on-danger-medium: var(--color-amber-danger-600);
+  --color-fg-on-danger-low: var(--color-amber-danger-1000);
+  --color-fg-on-danger-strong: var(--color-amber-danger-100);
+  --color-fg-on-warning-high: var(--color-amber-warning-1000);
+  --color-fg-on-warning-medium: var(--color-amber-warning-900);
+  --color-fg-on-warning-low: var(--color-amber-warning-1000);
+  --color-fg-on-warning-strong: var(--color-amber-warning-100);
+  --color-fg-on-secondary-high: var(--color-amber-secondary-800);
+  --color-fg-on-secondary-medium: var(--color-amber-secondary-700);
+  --color-fg-on-secondary-low: var(--color-amber-secondary-1000);
+  --color-fg-on-secondary-strong: var(--color-amber-secondary-100);
+  --image-light: url('./images/card-image-amber.png');
+  --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-amber-success-600);
+  --color-bg-accent-success-hover: var(--color-amber-success-700);
+  --color-bg-accent-success-focus: var(--color-amber-success-800);
+  --color-fg-on-accent-success-default: var(--color-amber-success-100);
+  --color-fg-on-accent-success-hover: var(--color-amber-success-100);
+  --color-fg-on-accent-success-focus: var(--color-amber-success-100);
+  --color-fg-on-accent-success-text-default: var(--color-amber-success-600);
+  --color-fg-on-accent-success-text-hover: var(--color-amber-success-700);
+  --color-fg-on-accent-success-text-focus: var(--color-amber-success-800);
+  --color-bg-accent-danger-default: var(--color-amber-danger-600);
+  --color-bg-accent-danger-hover: var(--color-amber-danger-700);
+  --color-bg-accent-danger-focus: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-default: var(--color-amber-danger-100);
+  --color-fg-on-accent-danger-hover: var(--color-amber-danger-100);
+  --color-fg-on-accent-danger-focus: var(--color-amber-danger-100);
+  --color-fg-on-accent-danger-text-default: var(--color-amber-danger-600);
+  --color-fg-on-accent-danger-text-hover: var(--color-amber-danger-700);
+  --color-fg-on-accent-danger-text-focus: var(--color-amber-danger-800);
+  --color-bg-accent-warning-default: var(--color-amber-warning-500);
+  --color-bg-accent-warning-hover: var(--color-amber-warning-600);
+  --color-bg-accent-warning-focus: var(--color-amber-warning-700);
+  --color-fg-on-accent-warning-default: var(--color-amber-base-900);
+  --color-fg-on-accent-warning-hover: var(--color-amber-base-900);
+  --color-fg-on-accent-warning-focus: var(--color-amber-base-900);
+  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-900);
+  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-1000);
+
+  /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
+     where neither ink nor white reaches 4.5:1. */
+  --color-fg-ink: var(--color-amber-base-900);
+  --color-fg-inverse: var(--color-amber-base-100);
+  --color-fg-max-contrast: var(--color-black);
+}
+
+/* Brand amber, dark mode */
+[data-brand='amber'][data-mode='dark'] {
+  --color-border-base: var(--color-amber-base-800);
+  --color-border-accent: var(--color-amber-primary-300);
+  --color-border-field: var(--color-amber-secondary-500);
+  --color-border-primary-strong: var(--color-amber-primary-700);
+  --color-border-primary-medium: var(--color-amber-primary-700);
+  --color-border-primary-subtle: var(--color-amber-primary-1000);
+  --color-border-success-strong: var(--color-amber-success-500);
+  --color-border-success-medium: var(--color-amber-success-700);
+  --color-border-success-subtle: var(--color-amber-success-900);
+  --color-border-danger-strong: var(--color-amber-danger-500);
+  --color-border-danger-medium: var(--color-amber-danger-700);
+  --color-border-danger-subtle: var(--color-amber-danger-900);
+  --color-border-warning-strong: var(--color-amber-warning-800);
+  --color-border-warning-medium: var(--color-amber-warning-800);
+  --color-border-warning-subtle: var(--color-amber-base-800);
+  --image-card: url('./images/card-image-dark.png');
+  --color-bg-base: var(--color-amber-base-900);
+  --color-bg-default: var(--color-amber-base-800);
+  --color-bg-surface: var(--color-amber-base-900);
+  --color-bg-accent-primary-default: var(--color-amber-base-100);
+  --color-bg-accent-primary-hover: var(--color-amber-base-200);
+  --color-bg-accent-primary-focus: var(--color-amber-base-400);
+  --color-bg-accent-secondary-default: var(--color-amber-secondary-100);
+  --color-bg-accent-secondary-hover: var(--color-amber-secondary-200);
+  --color-bg-accent-secondary-focus: var(--color-amber-secondary-400);
+  --color-bg-primary-1: var(--color-amber-primary-1000);
+  --color-bg-secondary-1: var(--color-amber-neutral-1000);
+  --color-bg-success-1: var(--color-amber-success-900);
+  --color-bg-danger-1: var(--color-amber-danger-900);
+  --color-bg-warning-1: var(--color-amber-base-800);
+  --color-bg-primary-100: var(--color-amber-primary-900);
+  --color-bg-primary-200: var(--color-amber-primary-800);
+  --color-bg-primary-300: var(--color-amber-primary-700);
+  --color-bg-primary-400: var(--color-amber-primary-600);
+  --color-bg-primary-500: var(--color-amber-primary-500);
+  --color-bg-primary-600: var(--color-amber-primary-400);
+  --color-bg-primary-700: var(--color-amber-primary-300);
+  --color-bg-primary-800: var(--color-amber-primary-200);
+  --color-bg-primary-900: var(--color-amber-primary-100);
+  --color-bg-secondary-100: var(--color-amber-secondary-900);
+  --color-bg-secondary-200: var(--color-amber-secondary-800);
+  --color-bg-secondary-300: var(--color-amber-secondary-700);
+  --color-bg-secondary-400: var(--color-amber-secondary-600);
+  --color-bg-secondary-500: var(--color-amber-secondary-500);
+  --color-bg-secondary-600: var(--color-amber-secondary-400);
+  --color-bg-secondary-700: var(--color-amber-secondary-300);
+  --color-bg-secondary-800: var(--color-amber-secondary-200);
+  --color-bg-secondary-900: var(--color-amber-secondary-100);
+  --color-bg-success-100: var(--color-amber-success-900);
+  --color-bg-success-200: var(--color-amber-success-800);
+  --color-bg-success-300: var(--color-amber-success-700);
+  --color-bg-success-400: var(--color-amber-success-600);
+  --color-bg-success-500: var(--color-amber-success-500);
+  --color-bg-success-600: var(--color-amber-success-400);
+  --color-bg-success-700: var(--color-amber-success-300);
+  --color-bg-success-800: var(--color-amber-success-200);
+  --color-bg-success-900: var(--color-amber-success-100);
+  --color-bg-warning-100: var(--color-amber-warning-900);
+  --color-bg-warning-200: var(--color-amber-warning-800);
+  --color-bg-warning-300: var(--color-amber-warning-700);
+  --color-bg-warning-400: var(--color-amber-warning-600);
+  --color-bg-warning-500: var(--color-amber-warning-500);
+  --color-bg-warning-600: var(--color-amber-warning-400);
+  --color-bg-warning-700: var(--color-amber-warning-300);
+  --color-bg-warning-800: var(--color-amber-warning-200);
+  --color-bg-warning-900: var(--color-amber-warning-100);
+  --color-bg-danger-100: var(--color-amber-danger-900);
+  --color-bg-danger-200: var(--color-amber-danger-800);
+  --color-bg-danger-300: var(--color-amber-danger-700);
+  --color-bg-danger-400: var(--color-amber-danger-600);
+  --color-bg-danger-500: var(--color-amber-danger-500);
+  --color-bg-danger-600: var(--color-amber-danger-400);
+  --color-bg-danger-700: var(--color-amber-danger-300);
+  --color-bg-danger-800: var(--color-amber-danger-200);
+  --color-bg-danger-900: var(--color-amber-danger-100);
+  --color-shadow-surface: var(--color-amber-base-900);
+  --color-fg-on-accent-primary-default: var(--color-amber-base-900);
+  --color-fg-on-accent-primary-hover: var(--color-amber-base-900);
+  --color-fg-on-accent-primary-focus: var(--color-amber-base-900);
+  --color-fg-on-accent-primary-text-default: var(--color-amber-primary-500);
+  --color-fg-on-accent-primary-text-hover: var(--color-amber-primary-400);
+  --color-fg-on-accent-primary-text-focus: var(--color-amber-primary-300);
+  --color-fg-on-accent-secondary-default: var(--color-amber-base-900);
+  --color-fg-on-accent-secondary-hover: var(--color-amber-base-900);
+  --color-fg-on-accent-secondary-focus: var(--color-amber-base-900);
+  --color-fg-on-accent-secondary-text-default: var(--color-amber-secondary-500);
+  --color-fg-on-accent-secondary-text-hover: var(--color-amber-secondary-400);
+  --color-fg-on-accent-secondary-text-focus: var(--color-amber-secondary-300);
+  --color-fg-on-surface-primary: var(--color-amber-neutral-100);
+  --color-fg-on-surface-secondary: var(--color-amber-neutral-300);
+  --color-fg-on-primary-high: var(--color-amber-primary-200);
+  --color-fg-on-primary-medium: var(--color-amber-primary-400);
+  --color-fg-on-primary-low: var(--color-amber-primary-100);
+  --color-fg-on-primary-strong: var(--color-amber-primary-1000);
+  --color-fg-on-success-high: var(--color-amber-success-200);
+  --color-fg-on-success-medium: var(--color-amber-success-300);
+  --color-fg-on-success-low: var(--color-amber-success-100);
+  --color-fg-on-success-strong: var(--color-amber-success-1000);
+  --color-fg-on-danger-high: var(--color-amber-danger-200);
+  --color-fg-on-danger-medium: var(--color-amber-danger-300);
+  --color-fg-on-danger-low: var(--color-amber-danger-100);
+  --color-fg-on-danger-strong: var(--color-amber-danger-1000);
+  --color-fg-on-warning-high: var(--color-amber-warning-300);
+  --color-fg-on-warning-medium: var(--color-amber-warning-400);
+  --color-fg-on-warning-low: var(--color-amber-warning-100);
+  --color-fg-on-warning-strong: var(--color-amber-warning-1000);
+  --color-fg-on-secondary-high: var(--color-amber-base-100);
+  --color-fg-on-secondary-medium: var(--color-amber-secondary-100);
+  --color-fg-on-secondary-low: var(--color-amber-secondary-100);
+  --color-fg-on-secondary-strong: var(--color-amber-secondary-1000);
+  --image-light: url('./images/card-image-amber.png');
+  --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-amber-success-100);
+  --color-bg-accent-success-hover: var(--color-amber-success-200);
+  --color-bg-accent-success-focus: var(--color-amber-success-300);
+  --color-fg-on-accent-success-default: var(--color-amber-success-800);
+  --color-fg-on-accent-success-hover: var(--color-amber-success-800);
+  --color-fg-on-accent-success-focus: var(--color-amber-success-800);
+  --color-fg-on-accent-success-text-default: var(--color-amber-success-400);
+  --color-fg-on-accent-success-text-hover: var(--color-amber-success-300);
+  --color-fg-on-accent-success-text-focus: var(--color-amber-success-200);
+  --color-bg-accent-danger-default: var(--color-amber-danger-100);
+  --color-bg-accent-danger-hover: var(--color-amber-danger-200);
+  --color-bg-accent-danger-focus: var(--color-amber-danger-300);
+  --color-fg-on-accent-danger-default: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-hover: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-focus: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-text-default: var(--color-amber-danger-400);
+  --color-fg-on-accent-danger-text-hover: var(--color-amber-danger-300);
+  --color-fg-on-accent-danger-text-focus: var(--color-amber-danger-200);
+  --color-bg-accent-warning-default: var(--color-amber-warning-100);
+  --color-bg-accent-warning-hover: var(--color-amber-warning-200);
+  --color-bg-accent-warning-focus: var(--color-amber-warning-300);
+  --color-fg-on-accent-warning-default: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-hover: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-focus: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-text-default: var(--color-amber-warning-700);
+  --color-fg-on-accent-warning-text-hover: var(--color-amber-warning-600);
+  --color-fg-on-accent-warning-text-focus: var(--color-amber-warning-500);
+
+  /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
+     where neither ink nor white reaches 4.5:1. */
+  --color-fg-ink: var(--color-amber-base-900);
+  --color-fg-inverse: var(--color-amber-base-100);
+  --color-fg-max-contrast: var(--color-black);
+}
+
+/* Brand opal, light mode */
+[data-brand='opal'][data-mode='light'] {
+  --color-border-base: var(--color-opal-base-200);
+  --color-border-accent: var(--color-opal-primary-700);
+  --color-border-field: var(--color-opal-secondary-500);
+  --color-border-primary-strong: var(--color-opal-primary-600);
+  --color-border-primary-medium: var(--color-opal-primary-300);
+  --color-border-primary-subtle: var(--color-opal-primary-100);
+  --color-border-success-strong: var(--color-opal-success-800);
+  --color-border-success-medium: var(--color-opal-success-300);
+  --color-border-success-subtle: var(--color-opal-success-100);
+  --color-border-danger-strong: var(--color-opal-danger-600);
+  --color-border-danger-medium: var(--color-opal-danger-300);
+  --color-border-danger-subtle: var(--color-opal-danger-100);
+  --color-border-warning-strong: var(--color-opal-warning-800);
+  --color-border-warning-medium: var(--color-opal-warning-300);
+  --color-border-warning-subtle: var(--color-opal-warning-100);
+  --image-card: url('./images/card-image-opal.png');
+  --color-bg-base: var(--color-opal-base-100);
+  --color-bg-default: var(--color-opal-base-200);
+  --color-bg-surface: var(--color-opal-base-100);
+  --color-bg-accent-primary-default: var(--color-opal-primary-700);
+  --color-bg-accent-primary-hover: var(--color-opal-primary-800);
+  --color-bg-accent-primary-focus: var(--color-opal-primary-900);
+  --color-bg-accent-secondary-default: var(--color-opal-secondary-600);
+  --color-bg-accent-secondary-hover: var(--color-opal-secondary-700);
+  --color-bg-accent-secondary-focus: var(--color-opal-secondary-800);
+  --color-bg-primary-1: var(--color-opal-primary-100);
+  --color-bg-secondary-1: var(--color-opal-neutral-300);
+  --color-bg-success-1: var(--color-opal-success-100);
+  --color-bg-danger-1: var(--color-opal-danger-100);
+  --color-bg-warning-1: var(--color-opal-warning-100);
+  --color-bg-primary-100: var(--color-opal-primary-100);
+  --color-bg-primary-200: var(--color-opal-primary-200);
+  --color-bg-primary-300: var(--color-opal-primary-300);
+  --color-bg-primary-400: var(--color-opal-primary-400);
+  --color-bg-primary-500: var(--color-opal-primary-500);
+  --color-bg-primary-600: var(--color-opal-primary-600);
+  --color-bg-primary-700: var(--color-opal-primary-700);
+  --color-bg-primary-800: var(--color-opal-primary-800);
+  --color-bg-primary-900: var(--color-opal-primary-900);
+  --color-bg-secondary-100: var(--color-opal-secondary-100);
+  --color-bg-secondary-200: var(--color-opal-secondary-200);
+  --color-bg-secondary-300: var(--color-opal-secondary-300);
+  --color-bg-secondary-400: var(--color-opal-secondary-400);
+  --color-bg-secondary-500: var(--color-opal-secondary-500);
+  --color-bg-secondary-600: var(--color-opal-secondary-600);
+  --color-bg-secondary-700: var(--color-opal-secondary-700);
+  --color-bg-secondary-800: var(--color-opal-secondary-800);
+  --color-bg-secondary-900: var(--color-opal-secondary-900);
+  --color-bg-success-100: var(--color-opal-success-100);
+  --color-bg-success-200: var(--color-opal-success-200);
+  --color-bg-success-300: var(--color-opal-success-300);
+  --color-bg-success-400: var(--color-opal-success-400);
+  --color-bg-success-500: var(--color-opal-success-500);
+  --color-bg-success-600: var(--color-opal-success-600);
+  --color-bg-success-700: var(--color-opal-success-700);
+  --color-bg-success-800: var(--color-opal-success-800);
+  --color-bg-success-900: var(--color-opal-success-900);
+  --color-bg-warning-100: var(--color-opal-warning-100);
+  --color-bg-warning-200: var(--color-opal-warning-200);
+  --color-bg-warning-300: var(--color-opal-warning-300);
+  --color-bg-warning-400: var(--color-opal-warning-400);
+  --color-bg-warning-500: var(--color-opal-warning-500);
+  --color-bg-warning-600: var(--color-opal-warning-600);
+  --color-bg-warning-700: var(--color-opal-warning-700);
+  --color-bg-warning-800: var(--color-opal-warning-800);
+  --color-bg-warning-900: var(--color-opal-warning-900);
+  --color-bg-danger-100: var(--color-opal-danger-100);
+  --color-bg-danger-200: var(--color-opal-danger-200);
+  --color-bg-danger-300: var(--color-opal-danger-300);
+  --color-bg-danger-400: var(--color-opal-danger-400);
+  --color-bg-danger-500: var(--color-opal-danger-500);
+  --color-bg-danger-600: var(--color-opal-danger-600);
+  --color-bg-danger-700: var(--color-opal-danger-700);
+  --color-bg-danger-800: var(--color-opal-danger-800);
+  --color-bg-danger-900: var(--color-opal-danger-900);
+  --color-shadow-surface: var(--color-opal-base-400);
+  --color-fg-on-accent-primary-default: var(--color-opal-base-100);
+  --color-fg-on-accent-primary-hover: var(--color-opal-base-100);
+  --color-fg-on-accent-primary-focus: var(--color-opal-base-100);
+  --color-fg-on-accent-primary-text-default: var(--color-opal-primary-800);
+  --color-fg-on-accent-primary-text-hover: var(--color-opal-primary-900);
+  --color-fg-on-accent-primary-text-focus: var(--color-opal-primary-1000);
+  --color-fg-on-accent-secondary-default: var(--color-opal-base-100);
+  --color-fg-on-accent-secondary-hover: var(--color-opal-base-100);
+  --color-fg-on-accent-secondary-focus: var(--color-opal-base-100);
+  --color-fg-on-accent-secondary-text-default: var(--color-opal-secondary-700);
+  --color-fg-on-accent-secondary-text-hover: var(--color-opal-secondary-800);
+  --color-fg-on-accent-secondary-text-focus: var(--color-opal-secondary-900);
+  --color-fg-on-surface-primary: var(--color-opal-neutral-900);
+  --color-fg-on-surface-secondary: var(--color-opal-neutral-500);
+  --color-fg-on-primary-high: var(--color-opal-primary-900);
+  --color-fg-on-primary-medium: var(--color-opal-primary-800);
+  --color-fg-on-primary-low: var(--color-opal-primary-1000);
+  --color-fg-on-primary-strong: var(--color-opal-primary-100);
+  --color-fg-on-success-high: var(--color-opal-success-1000);
+  --color-fg-on-success-medium: var(--color-opal-success-900);
+  --color-fg-on-success-low: var(--color-opal-success-1000);
+  --color-fg-on-success-strong: var(--color-opal-success-100);
+  --color-fg-on-danger-high: var(--color-opal-danger-900);
+  --color-fg-on-danger-medium: var(--color-opal-danger-800);
+  --color-fg-on-danger-low: var(--color-opal-danger-1000);
+  --color-fg-on-danger-strong: var(--color-opal-danger-100);
+  --color-fg-on-warning-high: var(--color-opal-warning-1000);
+  --color-fg-on-warning-medium: var(--color-opal-warning-900);
+  --color-fg-on-warning-low: var(--color-opal-warning-1000);
+  --color-fg-on-warning-strong: var(--color-opal-warning-100);
+  --color-fg-on-secondary-high: var(--color-opal-secondary-1000);
+  --color-fg-on-secondary-medium: var(--color-opal-secondary-900);
+  --color-fg-on-secondary-low: var(--color-opal-secondary-1000);
+  --color-fg-on-secondary-strong: var(--color-opal-secondary-100);
+  --image-light: url('./images/card-image-opal.png');
+  --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-opal-success-500);
+  --color-bg-accent-success-hover: var(--color-opal-success-600);
+  --color-bg-accent-success-focus: var(--color-opal-success-700);
+  --color-fg-on-accent-success-default: var(--color-opal-base-900);
+  --color-fg-on-accent-success-hover: var(--color-opal-base-900);
+  --color-fg-on-accent-success-focus: var(--color-opal-base-900);
+  --color-fg-on-accent-success-text-default: var(--color-opal-success-900);
+  --color-fg-on-accent-success-text-hover: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-text-focus: var(--color-opal-success-1000);
+  --color-bg-accent-danger-default: var(--color-opal-danger-800);
+  --color-bg-accent-danger-hover: var(--color-opal-danger-900);
+  --color-bg-accent-danger-focus: var(--color-opal-danger-1000);
+  --color-fg-on-accent-danger-default: var(--color-opal-danger-100);
+  --color-fg-on-accent-danger-hover: var(--color-opal-danger-100);
+  --color-fg-on-accent-danger-focus: var(--color-opal-danger-100);
+  --color-fg-on-accent-danger-text-default: var(--color-opal-danger-700);
+  --color-fg-on-accent-danger-text-hover: var(--color-opal-danger-800);
+  --color-fg-on-accent-danger-text-focus: var(--color-opal-danger-900);
+  --color-bg-accent-warning-default: var(--color-opal-warning-500);
+  --color-bg-accent-warning-hover: var(--color-opal-warning-600);
+  --color-bg-accent-warning-focus: var(--color-opal-warning-700);
+  --color-fg-on-accent-warning-default: var(--color-opal-base-900);
+  --color-fg-on-accent-warning-hover: var(--color-opal-base-900);
+  --color-fg-on-accent-warning-focus: var(--color-opal-base-900);
+  --color-fg-on-accent-warning-text-default: var(--color-opal-warning-900);
+  --color-fg-on-accent-warning-text-hover: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-text-focus: var(--color-opal-warning-1000);
+
+  /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
+     where neither ink nor white reaches 4.5:1. */
+  --color-fg-ink: var(--color-opal-base-900);
+  --color-fg-inverse: var(--color-opal-base-100);
+  --color-fg-max-contrast: var(--color-black);
+}
+
+/* Brand opal, dark mode */
+[data-brand='opal'][data-mode='dark'] {
+  --color-border-base: var(--color-opal-base-800);
+  --color-border-accent: var(--color-opal-primary-300);
+  --color-border-field: var(--color-opal-secondary-400);
+  --color-border-primary-strong: var(--color-opal-primary-500);
+  --color-border-primary-medium: var(--color-opal-primary-800);
+  --color-border-primary-subtle: var(--color-opal-primary-1000);
+  --color-border-success-strong: var(--color-opal-success-700);
+  --color-border-success-medium: var(--color-opal-success-800);
+  --color-border-success-subtle: var(--color-opal-success-1000);
+  --color-border-danger-strong: var(--color-opal-danger-500);
+  --color-border-danger-medium: var(--color-opal-danger-800);
+  --color-border-danger-subtle: var(--color-opal-danger-1000);
+  --color-border-warning-strong: var(--color-opal-warning-700);
+  --color-border-warning-medium: var(--color-opal-warning-800);
+  --color-border-warning-subtle: var(--color-opal-warning-1000);
+  --image-card: url('./images/card-image-dark.png');
+  --color-bg-base: var(--color-opal-base-900);
+  --color-bg-default: var(--color-opal-base-800);
+  --color-bg-surface: var(--color-opal-base-900);
+  --color-bg-accent-primary-default: var(--color-opal-base-100);
+  --color-bg-accent-primary-hover: var(--color-opal-base-200);
+  --color-bg-accent-primary-focus: var(--color-opal-base-400);
+  --color-bg-accent-secondary-default: var(--color-opal-secondary-100);
+  --color-bg-accent-secondary-hover: var(--color-opal-secondary-200);
+  --color-bg-accent-secondary-focus: var(--color-opal-secondary-400);
+  --color-bg-primary-1: var(--color-opal-primary-1000);
+  --color-bg-secondary-1: var(--color-opal-neutral-700);
+  --color-bg-success-1: var(--color-opal-success-1000);
+  --color-bg-danger-1: var(--color-opal-danger-1000);
+  --color-bg-warning-1: var(--color-opal-warning-1000);
+  --color-bg-primary-100: var(--color-opal-primary-900);
+  --color-bg-primary-200: var(--color-opal-primary-800);
+  --color-bg-primary-300: var(--color-opal-primary-700);
+  --color-bg-primary-400: var(--color-opal-primary-600);
+  --color-bg-primary-500: var(--color-opal-primary-500);
+  --color-bg-primary-600: var(--color-opal-primary-400);
+  --color-bg-primary-700: var(--color-opal-primary-300);
+  --color-bg-primary-800: var(--color-opal-primary-200);
+  --color-bg-primary-900: var(--color-opal-primary-100);
+  --color-bg-secondary-100: var(--color-opal-secondary-900);
+  --color-bg-secondary-200: var(--color-opal-secondary-800);
+  --color-bg-secondary-300: var(--color-opal-secondary-700);
+  --color-bg-secondary-400: var(--color-opal-secondary-600);
+  --color-bg-secondary-500: var(--color-opal-secondary-500);
+  --color-bg-secondary-600: var(--color-opal-secondary-400);
+  --color-bg-secondary-700: var(--color-opal-secondary-300);
+  --color-bg-secondary-800: var(--color-opal-secondary-200);
+  --color-bg-secondary-900: var(--color-opal-secondary-100);
+  --color-bg-success-100: var(--color-opal-success-900);
+  --color-bg-success-200: var(--color-opal-success-800);
+  --color-bg-success-300: var(--color-opal-success-700);
+  --color-bg-success-400: var(--color-opal-success-600);
+  --color-bg-success-500: var(--color-opal-success-500);
+  --color-bg-success-600: var(--color-opal-success-400);
+  --color-bg-success-700: var(--color-opal-success-300);
+  --color-bg-success-800: var(--color-opal-success-200);
+  --color-bg-success-900: var(--color-opal-success-100);
+  --color-bg-warning-100: var(--color-opal-warning-900);
+  --color-bg-warning-200: var(--color-opal-warning-800);
+  --color-bg-warning-300: var(--color-opal-warning-700);
+  --color-bg-warning-400: var(--color-opal-warning-600);
+  --color-bg-warning-500: var(--color-opal-warning-500);
+  --color-bg-warning-600: var(--color-opal-warning-400);
+  --color-bg-warning-700: var(--color-opal-warning-300);
+  --color-bg-warning-800: var(--color-opal-warning-200);
+  --color-bg-warning-900: var(--color-opal-warning-100);
+  --color-bg-danger-100: var(--color-opal-danger-900);
+  --color-bg-danger-200: var(--color-opal-danger-800);
+  --color-bg-danger-300: var(--color-opal-danger-700);
+  --color-bg-danger-400: var(--color-opal-danger-600);
+  --color-bg-danger-500: var(--color-opal-danger-500);
+  --color-bg-danger-600: var(--color-opal-danger-400);
+  --color-bg-danger-700: var(--color-opal-danger-300);
+  --color-bg-danger-800: var(--color-opal-danger-200);
+  --color-bg-danger-900: var(--color-opal-danger-100);
+  --color-shadow-surface: var(--color-opal-base-900);
+  --color-fg-on-accent-primary-default: var(--color-opal-base-900);
+  --color-fg-on-accent-primary-hover: var(--color-opal-base-900);
+  --color-fg-on-accent-primary-focus: var(--color-opal-base-900);
+  --color-fg-on-accent-primary-text-default: var(--color-opal-primary-300);
+  --color-fg-on-accent-primary-text-hover: var(--color-opal-primary-200);
+  --color-fg-on-accent-primary-text-focus: var(--color-opal-primary-100);
+  --color-fg-on-accent-secondary-default: var(--color-opal-base-900);
+  --color-fg-on-accent-secondary-hover: var(--color-opal-base-900);
+  --color-fg-on-accent-secondary-focus: var(--color-opal-base-900);
+  --color-fg-on-accent-secondary-text-default: var(--color-opal-secondary-300);
+  --color-fg-on-accent-secondary-text-hover: var(--color-opal-secondary-200);
+  --color-fg-on-accent-secondary-text-focus: var(--color-opal-secondary-100);
+  --color-fg-on-surface-primary: var(--color-opal-neutral-100);
+  --color-fg-on-surface-secondary: var(--color-opal-neutral-300);
+  --color-fg-on-primary-high: var(--color-opal-primary-300);
+  --color-fg-on-primary-medium: var(--color-opal-primary-400);
+  --color-fg-on-primary-low: var(--color-opal-primary-100);
+  --color-fg-on-primary-strong: var(--color-opal-primary-1000);
+  --color-fg-on-success-high: var(--color-opal-success-300);
+  --color-fg-on-success-medium: var(--color-opal-success-400);
+  --color-fg-on-success-low: var(--color-opal-success-100);
+  --color-fg-on-success-strong: var(--color-opal-success-1000);
+  --color-fg-on-danger-high: var(--color-opal-danger-300);
+  --color-fg-on-danger-medium: var(--color-opal-danger-400);
+  --color-fg-on-danger-low: var(--color-opal-danger-100);
+  --color-fg-on-danger-strong: var(--color-opal-danger-1000);
+  --color-fg-on-warning-high: var(--color-opal-warning-300);
+  --color-fg-on-warning-medium: var(--color-opal-warning-400);
+  --color-fg-on-warning-low: var(--color-opal-warning-100);
+  --color-fg-on-warning-strong: var(--color-opal-warning-1000);
+  --color-fg-on-secondary-high: var(--color-opal-secondary-200);
+  --color-fg-on-secondary-medium: var(--color-opal-secondary-300);
+  --color-fg-on-secondary-low: var(--color-opal-secondary-100);
+  --color-fg-on-secondary-strong: var(--color-opal-secondary-1000);
+  --image-light: url('./images/card-image-opal.png');
+  --image-dark: url('./images/card-image-dark.png');
+
+  /* Status accents: solid fills for success, danger and warning actions.
+     Steps chosen so text meets WCAG AA (4.5:1) on every state. */
+  --color-bg-accent-success-default: var(--color-opal-success-100);
+  --color-bg-accent-success-hover: var(--color-opal-success-200);
+  --color-bg-accent-success-focus: var(--color-opal-success-300);
+  --color-fg-on-accent-success-default: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-hover: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-focus: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-text-default: var(--color-opal-success-600);
+  --color-fg-on-accent-success-text-hover: var(--color-opal-success-500);
+  --color-fg-on-accent-success-text-focus: var(--color-opal-success-400);
+  --color-bg-accent-danger-default: var(--color-opal-danger-100);
+  --color-bg-accent-danger-hover: var(--color-opal-danger-200);
+  --color-bg-accent-danger-focus: var(--color-opal-danger-300);
+  --color-fg-on-accent-danger-default: var(--color-opal-danger-900);
+  --color-fg-on-accent-danger-hover: var(--color-opal-danger-900);
+  --color-fg-on-accent-danger-focus: var(--color-opal-danger-900);
+  --color-fg-on-accent-danger-text-default: var(--color-opal-danger-300);
+  --color-fg-on-accent-danger-text-hover: var(--color-opal-danger-200);
+  --color-fg-on-accent-danger-text-focus: var(--color-opal-danger-100);
+  --color-bg-accent-warning-default: var(--color-opal-warning-100);
+  --color-bg-accent-warning-hover: var(--color-opal-warning-200);
+  --color-bg-accent-warning-focus: var(--color-opal-warning-300);
+  --color-fg-on-accent-warning-default: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-hover: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-focus: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-text-default: var(--color-opal-warning-600);
+  --color-fg-on-accent-warning-text-hover: var(--color-opal-warning-500);
+  --color-fg-on-accent-warning-text-focus: var(--color-opal-warning-400);
+
+  /* Label text on colored swatches: the brand's ink, white, or pure black for mid-tones
+     where neither ink nor white reaches 4.5:1. */
+  --color-fg-ink: var(--color-opal-base-900);
+  --color-fg-inverse: var(--color-opal-base-100);
+  --color-fg-max-contrast: var(--color-black);
+}

@@ -1,0 +1,785 @@
+{
+  "id": "product-card",
+  "name": "ProductCard",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions. It is built from Card.",
+  "imports": [
+    {
+      "name": "ProductCard",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "In product grids and lists: catalogs, search results, recommendations."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For the full product page.",
+      "alternative": "A page layout with the product details"
+    },
+    {
+      "text": "For non-product content.",
+      "alternative": "Card"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Photo",
+      "description": "Product image; the theme’s placeholder shows without one."
+    },
+    {
+      "name": "Name",
+      "description": "The product name; the link in a clickable card."
+    },
+    {
+      "name": "Rating",
+      "description": "Stars plus review count, announced in words.",
+      "optional": true
+    },
+    {
+      "name": "Price",
+      "description": "Current price in the brand color."
+    },
+    {
+      "name": "Old price",
+      "description": "Crossed out and announced as “was”.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "elevated",
+          "meaning": "Default, as Card."
+        },
+        {
+          "value": "outlined",
+          "meaning": "As Card."
+        },
+        {
+          "value": "filled",
+          "meaning": "As Card."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "At rest.",
+      "trigger": "—"
+    },
+    {
+      "name": "On sale",
+      "meaning": "Has a lower current price.",
+      "trigger": "oldPrice is set."
+    },
+    {
+      "name": "Hover / focus",
+      "meaning": "Clickable product cards highlight.",
+      "trigger": "href is set."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Rating",
+      "text": "rating (0–5) is rounded to whole stars visually and announced exactly: “Rated 4.5 out of 5, 2,342 reviews”."
+    },
+    {
+      "topic": "Prices",
+      "text": "Prices are strings, formatted by your app for its currency and locale."
+    },
+    {
+      "topic": "Brands",
+      "text": "Wrap a card in ThemeProvider to show it in another brand."
+    }
+  ],
+  "content": [
+    "Use the product’s real name; keep descriptions to one line in grids."
+  ],
+  "guidelines": [
+    {
+      "do": "Show the old price only for real discounts.",
+      "dont": "Cross out a made-up “original” price.",
+      "why": "Fake discounts erode trust and may break consumer law."
+    },
+    {
+      "do": "Show ratings with their review count.",
+      "dont": "Show stars without saying how many reviews they’re based on.",
+      "why": "Five stars from two reviews means little."
+    },
+    {
+      "do": "Link the whole card to the product page with href.",
+      "dont": "Add separate “View” links next to the title.",
+      "why": "One link per card keeps keyboard and screen reader navigation short."
+    }
+  ],
+  "accessibility": {
+    "role": "article with a heading (Card).",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Reaches the card link and actions."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "role=\"img\" + aria-label on the stars",
+        "when": "Announces the rating and review count."
+      },
+      {
+        "attribute": "<del> with hidden “Was”",
+        "when": "Announces the old price as “Was $399”."
+      }
+    ],
+    "focus": "As Card.",
+    "wcag": [
+      {
+        "criterion": "1.1.1 Non-text Content",
+        "how": "The rating has a text alternative; the photo is decorative next to the name."
+      },
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "The old price is struck through, not only colored."
+      },
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "All text passes 4.5:1 in every theme."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Product",
+      "description": "A product on sale with a rating.",
+      "code": "import { ProductCard } from '@ds/react';\n\n<ProductCard\n  title=\"Wireless headphones\"\n  description=\"Noise cancelling, 30-hour battery\"\n  imageUrl=\"/products/headphones.png\"\n  price=\"$299\"\n  oldPrice=\"$399\"\n  rating={4.5}\n  reviews=\"2,342 reviews\"\n  href=\"/products/headphones\"\n/>"
+    },
+    {
+      "id": "actions",
+      "title": "With an action",
+      "description": "An add-to-cart button in the footer.",
+      "code": "import { ProductCard, Button } from '@ds/react';\n\n<ProductCard title=\"Smart watch\" price=\"$199\" actions={<Button size=\"small\">Add to cart</Button>} />"
+    },
+    {
+      "id": "brand",
+      "title": "In another brand",
+      "description": "Scope a theme to one card.",
+      "code": "import { ProductCard, ThemeProvider } from '@ds/react';\n\n<ThemeProvider theme={{ brand: 'amber' }}>\n  <ProductCard title=\"Leather bag\" price=\"$149\" />\n</ThemeProvider>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--card-"
+  ],
+  "related": [
+    {
+      "id": "card",
+      "relation": "The container ProductCard is built from."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Split from the old Card: rating in words, old price announced as “was”, themed via ThemeProvider instead of hard-coded brand colors."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "ProductCard",
+      "import": "import { ProductCard } from '@ds/react';",
+      "description": "A product in a grid or list: photo, name, rating and price. Built from Card.",
+      "props": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Product name."
+        },
+        "description": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "One or two lines about the product."
+        },
+        "imageUrl": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Product photo. Without it, the theme's placeholder shows."
+        },
+        "price": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Current price, formatted for display, e.g. \"$299\"."
+        },
+        "oldPrice": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Previous price, shown crossed out and announced as “was”."
+        },
+        "rating": {
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Average rating from 0 to 5. Shown as stars and announced in words."
+        },
+        "reviews": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Review count label, e.g. \"2,342 reviews\"."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Buttons such as “Add to cart”. They stay clickable in a card with href."
+        },
+        "labels": {
+          "type": "{ rating?: ((rating: number) => string); was?: string; } | undefined",
+          "required": false,
+          "default": "{}",
+          "description": "Wording for translation."
+        },
+        "appearance": {
+          "type": "CardAppearance",
+          "values": [
+            "elevated",
+            "outlined",
+            "filled"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for\ndense layouts, `filled` tints it for grouping inside a surface."
+        },
+        "orientation": {
+          "type": "CardOrientation",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`vertical` stacks media above the body; `horizontal` puts media beside it."
+        },
+        "href": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area\ncovers the card, so there's one clear, accessible target."
+        },
+        "as": {
+          "type": "ElementType",
+          "required": false,
+          "default": null,
+          "description": "Element to render: `article` (default) for standalone content, `div` or `li` otherwise."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--card-image-name": {
+      "description": "Default card media image for the brand and mode.",
+      "references": "--image-card",
+      "default": "url('./images/card-image-diamond.png')",
+      "byTheme": {
+        "brand=diamond,mode=dark": "url('./images/card-image-dark.png')",
+        "brand=amber,mode=light": "url('./images/card-image-amber.png')",
+        "brand=amber,mode=dark": "url('./images/card-image-dark.png')",
+        "brand=opal,mode=light": "url('./images/card-image-opal.png')",
+        "brand=opal,mode=dark": "url('./images/card-image-dark.png')"
+      }
+    },
+    "--card-image-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--card-title-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--card-desc-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--card-review-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--card-stars-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--card-old-price-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--card-new-price-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--card-image-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--card-body-padding-x": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--card-body-padding-top": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--card-body-padding-bottom": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--card-body-gap": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
+    },
+    "--card-body-text-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--card-body-review-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--card-body-prices-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--card-stars-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--card-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--card-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--card-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--card-title-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-desc-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--card-desc-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--card-desc-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--card-desc-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-review-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--card-review-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--card-review-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--card-review-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-old-price-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--card-old-price-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--card-old-price-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--card-old-price-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-new-price-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xl",
+      "default": "24px"
+    },
+    "--card-new-price-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xl",
+      "default": "30px"
+    },
+    "--card-new-price-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--card-new-price-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-stars-icon-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--card-stars-icon-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--card-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--card-filled-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--card-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--card-outlined-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--card-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--card-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0"
+    },
+    "--card-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--card-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--card-horizontal-media-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--card-hover-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--card-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--card-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--card-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--card-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--card-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--card-stars-empty-icon-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--card-visually-hidden-size": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--card-padding": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-16",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--card-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--card-image-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-4",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "8px"
+      }
+    },
+    "--card-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--card-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    },
+    "--card-title-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'AirPods Max'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'سماعات AirPods Max من آبل'"
+      }
+    },
+    "--card-desc-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Spatial audio. Noise cancelled. All-day comfort.'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'صوت محيطي. عزل ضوضاء. راحة طوال اليوم.'"
+      }
+    },
+    "--card-review-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'420 reviews'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'٤٢٠ تقييم'"
+      }
+    },
+    "--card-old-price-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'$549'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'٢٦٠٠٠£'"
+      }
+    },
+    "--card-new-price-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'$500'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'٢٣٧٠٠£'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-productcard--docs"
+}

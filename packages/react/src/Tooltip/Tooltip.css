@@ -1,0 +1,33 @@
+/** Tooltip. Styled only with --tooltip-* tokens; inverted against the surface. */
+
+.ds-tooltip {
+  z-index: var(--tooltip-z-index);
+  max-inline-size: var(--tooltip-max-width);
+  padding-block: var(--tooltip-padding-y);
+  padding-inline: var(--tooltip-padding-x);
+  border-radius: var(--tooltip-border-radius);
+  background-color: var(--tooltip-bg-color);
+  color: var(--tooltip-text-color);
+  font-family: var(--tooltip-font-family);
+  font-size: var(--tooltip-font-size);
+  line-height: var(--tooltip-font-line-height);
+  animation: ds-tooltip-in var(--tooltip-duration) var(--tooltip-easing);
+}
+
+@keyframes ds-tooltip-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-tooltip {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .ds-tooltip {
+    outline: var(--tooltip-padding-y) solid CanvasText;
+  }
+}

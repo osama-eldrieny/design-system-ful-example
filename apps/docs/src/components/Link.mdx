@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ArrowRight } from 'lucide-react';
+import { Link } from '@ds/react';
+import * as LinkStories from '../../../../packages/react/src/Link/Link.stories';
+import linkMeta from '../../../../packages/react/src/Link/Link.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={LinkStories} name="Docs" />
+
+# Link
+
+<ComponentPage
+  meta={linkMeta}
+  stories={LinkStories}
+  components={[Link]}
+  anatomy={{
+    targets: [{ selector: '.ds-link', at: 'start' }, '.ds-link__icon'],
+    example: (
+      <Link href="#orders" appearance="standalone" icon={<ArrowRight />}>
+        View all orders
+      </Link>
+    ),
+  }}
+  optionStories={{ appearance: 'Appearances', variant: 'Appearances', size: 'Sizes' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <Link href="#orders" appearance="standalone" icon={<ArrowRight />}>
+      View all orders
+    </Link>
+  }
+/>

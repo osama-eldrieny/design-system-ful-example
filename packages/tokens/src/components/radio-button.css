@@ -1,0 +1,50 @@
+/**
+ * Component tokens: radio (RadioGroup and Radio)
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --radio-{state?}-{part?}-{property}
+ *   state: on | off | hover | error
+ */
+
+:root,
+[data-theme] {
+  /* Control: unchecked has a visible boundary (≥ 3:1), checked fills with the brand accent */
+  --radio-off-bg-color: var(--color-bg-surface);
+  --radio-off-border-color: var(--color-bg-accent-secondary-default);
+  --radio-hover-border-color: var(--color-bg-accent-primary-default);
+  --radio-on-bg-color: var(--color-bg-accent-primary-default);
+  --radio-on-border-color: var(--color-bg-accent-primary-default);
+  --radio-on-hover-bg-color: var(--color-bg-accent-primary-hover);
+  --radio-dot-color: var(--color-fg-on-accent-primary-default);
+  --radio-error-border-color: var(--color-bg-accent-danger-default);
+  --radio-size: var(--sizing-sm);
+  --radio-border-width: var(--border-width-regular);
+  --radio-border-radius: var(--radius-full);
+
+  /* Option label and description */
+  --radio-gap: var(--spacing-xs);
+  --radio-default-font-color: var(--color-fg-on-surface-primary);
+  --radio-label-font-family: var(--font-family-body);
+  --radio-label-font-size: var(--font-size-md);
+  --radio-label-font-line-height: var(--font-line-height-md);
+  --radio-label-font-weight: var(--font-weight-regular);
+  --radio-description-font-size: var(--font-size-sm);
+  --radio-description-font-line-height: var(--font-line-height-sm);
+  --radio-description-text-color: var(--color-fg-on-surface-secondary);
+
+  /* Group: label, spacing between options, error message */
+  --radio-group-label-font-weight: var(--font-weight-medium);
+  --radio-group-label-text-color: var(--color-fg-on-surface-primary);
+  --radio-group-gap: var(--spacing-sm);
+  --radio-group-horizontal-gap: var(--spacing-lg);
+  --radio-group-error-text-color: var(--color-fg-on-accent-danger-text-default);
+
+  /* Focus, motion, disabled */
+  --radio-focus-ring-width: var(--focus-ring-width);
+  --radio-focus-ring-offset: var(--focus-ring-offset);
+  --radio-focus-ring-color: var(--focus-ring-color);
+  --radio-transition-duration: var(--duration-fast);
+  --radio-transition-easing: var(--easing-standard);
+  --radio-disabled-opacity: var(--opacity-medium);
+}

@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../../node_modules/.cache/tsc/tokens",
+    "rootDir": ".",
+    "tsBuildInfoFile": "../../node_modules/.cache/tsc/tokens.tsbuildinfo",
+    "allowImportingTsExtensions": true,
+    "types": ["node", "vite/client"]
+  },
+  "include": ["src", "tools"]
+}

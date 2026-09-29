@@ -1,0 +1,43 @@
+/**
+ * Component tokens: stepper
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --stepper-{state}-{part}-{property}
+ *   state: complete | current | upcoming | error; part: indicator | label | connector.
+ */
+
+:root,
+[data-theme] {
+  --stepper-complete-indicator-bg-color: var(--color-bg-accent-primary-default);
+  --stepper-complete-indicator-text-color: var(--color-fg-on-accent-primary-default);
+  --stepper-current-indicator-bg-color: var(--color-bg-base);
+  --stepper-current-indicator-text-color: var(--color-fg-on-primary-high);
+  --stepper-current-indicator-border-color: var(--color-bg-accent-primary-default);
+  --stepper-upcoming-indicator-bg-color: var(--color-bg-base);
+  --stepper-upcoming-indicator-text-color: var(--color-fg-on-surface-secondary);
+  --stepper-upcoming-indicator-border-color: var(--color-bg-accent-secondary-default);
+  --stepper-error-indicator-bg-color: var(--color-bg-accent-danger-default);
+  --stepper-error-indicator-text-color: var(--color-fg-on-accent-danger-default);
+  --stepper-label-text-color: var(--color-fg-on-surface-primary);
+  --stepper-upcoming-label-text-color: var(--color-fg-on-surface-secondary);
+  --stepper-current-label-font-weight: var(--font-weight-bold);
+  --stepper-label-font-weight: var(--font-weight-medium);
+  --stepper-description-text-color: var(--color-fg-on-surface-secondary);
+  --stepper-connector-color: var(--color-bg-accent-secondary-default);
+  --stepper-complete-connector-color: var(--color-bg-accent-primary-default);
+  --stepper-connector-width: var(--border-width-regular);
+  --stepper-indicator-size: var(--sizing-lg);
+  --stepper-indicator-border-width: var(--border-width-regular);
+  --stepper-icon-size: var(--sizing-xs);
+  --stepper-gap: var(--spacing-xs);
+  --stepper-step-gap: var(--spacing-md);
+  --stepper-font-family: var(--font-family-body);
+  --stepper-font-size: var(--font-size-md);
+  --stepper-font-line-height: var(--font-line-height-md);
+  --stepper-description-font-size: var(--font-size-sm);
+  --stepper-description-font-line-height: var(--font-line-height-sm);
+  --stepper-focus-ring-width: var(--focus-ring-width);
+  --stepper-focus-ring-offset: var(--focus-ring-offset);
+  --stepper-focus-ring-color: var(--focus-ring-color);
+}

@@ -1,0 +1,56 @@
+/** Grid. Styled only with --grid-* tokens. */
+
+.ds-grid {
+  --_min: var(--grid-min-column-width);
+  --_columns: 1;
+
+  display: grid;
+}
+
+.ds-grid--auto {
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--_min), 100%), 1fr));
+}
+
+.ds-grid--auto.ds-grid--stretch {
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--_min), 100%), 1fr));
+}
+
+.ds-grid--fixed {
+  grid-template-columns: repeat(var(--_columns), minmax(0, 1fr));
+}
+
+.ds-grid--gap-none {
+  gap: var(--grid-gap-none);
+}
+
+.ds-grid--gap-2xs {
+  gap: var(--grid-gap-2xs);
+}
+
+.ds-grid--gap-xs {
+  gap: var(--grid-gap-xs);
+}
+
+.ds-grid--gap-sm {
+  gap: var(--grid-gap-sm);
+}
+
+.ds-grid--gap-md {
+  gap: var(--grid-gap-md);
+}
+
+.ds-grid--gap-lg {
+  gap: var(--grid-gap-lg);
+}
+
+.ds-grid--gap-xl {
+  gap: var(--grid-gap-xl);
+}
+
+.ds-grid--gap-2xl {
+  gap: var(--grid-gap-2xl);
+}
+
+.ds-grid--gap-3xl {
+  gap: var(--grid-gap-3xl);
+}

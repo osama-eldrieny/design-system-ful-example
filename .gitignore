@@ -1,5 +1,13 @@
 .DS_Store
 node_modules/
-react-app/build/
 .claude/settings.local.json
 .env*
+site/
+dist/
+storybook-static/
+coverage/
+*.tsbuildinfo
+
+# Local tooling output
+.vitest-attachments/
+.claude/

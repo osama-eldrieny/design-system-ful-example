@@ -1,0 +1,551 @@
+{
+  "id": "navbar",
+  "name": "Navbar",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "The navigation bar at the top of a site or app: the logo, links to the main sections, and optional actions such as search. It marks the current page and wraps onto more rows on small screens.",
+  "imports": [
+    {
+      "name": "Navbar",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "Once per page, at the top, for the site’s or app’s main sections.",
+    "With up to about five top-level destinations."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To switch views within one page.",
+      "alternative": "Tabs"
+    },
+    {
+      "text": "For many or nested destinations.",
+      "alternative": "A side navigation"
+    },
+    {
+      "text": "For secondary links such as Privacy.",
+      "alternative": "Footer"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Bar",
+      "description": "The navigation landmark; surface follows the section tokens."
+    },
+    {
+      "name": "Logo",
+      "description": "Usually a Logo linking home.",
+      "optional": true
+    },
+    {
+      "name": "Items",
+      "description": "Links to the main sections; the current one is highlighted and underlined."
+    },
+    {
+      "name": "Actions",
+      "description": "Search, buttons or an avatar at the end.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "items[].href",
+      "title": "Item type",
+      "values": [
+        {
+          "value": "href set",
+          "meaning": "A link to another page. Use for navigation."
+        },
+        {
+          "value": "no href",
+          "meaning": "A button that runs onClick, for app views without URLs."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Another page.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Tinted background.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Current",
+      "meaning": "Tinted, brand-colored and underlined; announced as “current page”.",
+      "trigger": "aria-current=\"page\""
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring.",
+      "trigger": ":focus-visible"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Current page",
+      "text": "Set currentItem from your router. Uncontrolled, clicking an item makes it current."
+    },
+    {
+      "topic": "Small screens",
+      "text": "Items and actions wrap onto more rows instead of scrolling or hiding."
+    },
+    {
+      "topic": "Positioning",
+      "text": "The Navbar doesn’t position itself; make it sticky or absolute in page CSS."
+    },
+    {
+      "topic": "Several navs",
+      "text": "Give each navigation landmark a different aria-label (default “Main”)."
+    }
+  ],
+  "content": [
+    "Use short, familiar labels: one or two words (“Products”, “Pricing”).",
+    "Order items by importance or by the user’s journey."
+  ],
+  "guidelines": [
+    {
+      "do": "Mark the current page with currentItem.",
+      "dont": "Style the current item with a custom class.",
+      "why": "aria-current tells screen reader users where they are; a class only changes the look."
+    },
+    {
+      "do": "Use real links (href) for pages.",
+      "dont": "Use onClick-only buttons for navigation between URLs.",
+      "why": "Links can be opened in a new tab, bookmarked and shared."
+    },
+    {
+      "do": "Keep it to about five items.",
+      "dont": "Squeeze every page into the top bar.",
+      "why": "Too many items wrap into a crowded bar and are hard to scan."
+    }
+  ],
+  "accessibility": {
+    "role": "navigation landmark (nav) with a list of links.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves through the logo, items and actions in order."
+      },
+      {
+        "keys": "Enter",
+        "action": "Follows a link or activates a button item."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label",
+        "when": "Names the landmark; default “Main”."
+      },
+      {
+        "attribute": "aria-current=\"page\"",
+        "when": "Set on the current item."
+      },
+      {
+        "attribute": "aria-hidden on item icons",
+        "when": "Always: the label names the item."
+      }
+    ],
+    "focus": "Each item shows the focus ring.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "A nav landmark containing a list."
+      },
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "The current item is also underlined (and underlined text in forced colors)."
+      },
+      {
+        "criterion": "2.4.8 Location",
+        "how": "aria-current announces the current page."
+      },
+      {
+        "criterion": "1.4.10 Reflow",
+        "how": "Items wrap at narrow widths without horizontal scrolling."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Site navigation",
+      "description": "Logo, links and the current page.",
+      "code": "import { Navbar, Logo } from '@ds/react';\n\n<Navbar\n  logo={<Logo name=\"TechHub\" href=\"/\" />}\n  items={[\n    { label: 'Products', href: '/products' },\n    { label: 'Pricing', href: '/pricing' },\n    { label: 'Docs', href: '/docs' },\n  ]}\n  currentItem=\"Products\"\n/>"
+    },
+    {
+      "id": "actions",
+      "title": "With actions",
+      "description": "A sign-in button at the end.",
+      "code": "import { Navbar, Logo, Button } from '@ds/react';\n\n<Navbar\n  logo={<Logo name=\"TechHub\" href=\"/\" />}\n  items={items}\n  currentItem={pathname}\n  actions={<Button size=\"small\">Sign in</Button>}\n/>"
+    },
+    {
+      "id": "router",
+      "title": "With a router",
+      "description": "Drive the current item from the URL.",
+      "code": "import { Navbar } from '@ds/react';\n\nconst items = [\n  { id: '/', label: 'Home', href: '/' },\n  { id: '/pricing', label: 'Pricing', href: '/pricing' },\n];\n\n<Navbar items={items} currentItem={location.pathname} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--navbar-"
+  ],
+  "related": [
+    {
+      "id": "logo",
+      "relation": "Starts the bar."
+    },
+    {
+      "id": "footer",
+      "relation": "For secondary links."
+    },
+    {
+      "id": "tabs",
+      "relation": "For switching views within a page."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Real links (or buttons) in a labelled nav list, replacing clickable divs; aria-current marks the current page.",
+        "currentItem / defaultCurrentItem / onCurrentItemChange replace defaultActiveItem; items take href and a ReactNode icon; new actions slot.",
+        "Own --navbar-* tokens instead of --menu-item-*; no fixed width or absolute positioning."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Navbar",
+      "import": "import { Navbar } from '@ds/react';",
+      "description": "The site's main navigation bar: logo, links to the top-level pages, and optional\nactions. The current page is marked with aria-current.",
+      "props": {
+        "logo": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Usually a Logo linking home."
+        },
+        "items": {
+          "type": "NavbarItem[]",
+          "required": true,
+          "default": null,
+          "description": "The main destinations; keep to about five."
+        },
+        "currentItem": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Id of the current page's item (controlled)."
+        },
+        "defaultCurrentItem": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Initially current item when uncontrolled; clicking an item makes it current."
+        },
+        "onCurrentItemChange": {
+          "type": "((id: string) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the item id when an item is clicked."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Content at the end of the bar, e.g. a Button or an Avatar."
+        },
+        "aria-label": {
+          "type": "string",
+          "required": false,
+          "default": "Main",
+          "description": "Names the navigation landmark. Default \"Main\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--navbar-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--section-bg-color",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--navbar-padding": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--section-padding",
+      "default": "28px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "24px"
+      }
+    },
+    "--navbar-gap": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--section-gap",
+      "default": "24px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
+    },
+    "--navbar-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--section-border-radius",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--navbar-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-x",
+      "default": "0"
+    },
+    "--navbar-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-y",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--navbar-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--section-shadow-blur",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    },
+    "--navbar-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--section-shadow-color",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--navbar-list-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--navbar-item-default-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--navbar-item-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--navbar-item-default-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--navbar-item-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--navbar-item-hover-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--navbar-item-active-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--navbar-item-active-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--navbar-item-active-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--navbar-item-active-indicator-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--navbar-item-active-indicator-size": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-strong",
+      "default": "5px"
+    },
+    "--navbar-item-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--navbar-item-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--navbar-item-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--navbar-item-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--navbar-item-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--navbar-item-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--navbar-item-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--navbar-item-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--navbar-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--navbar-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--navbar-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--navbar-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--navbar-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--navbar-item-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-navbar--docs"
+}

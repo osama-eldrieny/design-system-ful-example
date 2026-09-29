@@ -1,0 +1,878 @@
+{
+  "Accordion": {
+    "status": "stable",
+    "component": "accordion",
+    "props": {}
+  },
+  "AccordionItem": {
+    "status": "stable",
+    "component": "accordion",
+    "props": {
+      "headingLevel": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  },
+  "Alert": {
+    "status": "stable",
+    "component": "alert",
+    "props": {
+      "variant": [
+        "primary",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "appearance": [
+        "subtle",
+        "solid",
+        "outline"
+      ]
+    }
+  },
+  "AppsNotifications": {
+    "status": "stable",
+    "component": "apps-notifications",
+    "props": {
+      "titleAs": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ],
+      "appearance": [
+        "elevated",
+        "outlined",
+        "filled"
+      ],
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ]
+    }
+  },
+  "Avatar": {
+    "status": "stable",
+    "component": "avatar",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ],
+      "status": [
+        "online",
+        "away",
+        "busy",
+        "offline"
+      ]
+    }
+  },
+  "AvatarGroup": {
+    "status": "stable",
+    "component": "avatar",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ]
+    }
+  },
+  "Badge": {
+    "status": "stable",
+    "component": "badge",
+    "props": {
+      "tone": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "appearance": [
+        "solid",
+        "subtle"
+      ]
+    }
+  },
+  "Breadcrumb": {
+    "status": "stable",
+    "component": "breadcrumb",
+    "props": {}
+  },
+  "Button": {
+    "status": "stable",
+    "component": "button",
+    "props": {
+      "variant": [
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning"
+      ],
+      "appearance": [
+        "filled",
+        "outline",
+        "ghost",
+        "text"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "IconButton": {
+    "status": "stable",
+    "component": "button",
+    "props": {
+      "variant": [
+        "primary",
+        "secondary",
+        "success",
+        "danger",
+        "warning"
+      ],
+      "appearance": [
+        "filled",
+        "outline",
+        "ghost",
+        "text"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "ButtonGroup": {
+    "status": "stable",
+    "component": "button-group",
+    "props": {
+      "orientation": [
+        "horizontal",
+        "vertical"
+      ]
+    }
+  },
+  "Card": {
+    "status": "stable",
+    "component": "card",
+    "props": {
+      "appearance": [
+        "elevated",
+        "outlined",
+        "filled"
+      ],
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ]
+    }
+  },
+  "CardMedia": {
+    "status": "stable",
+    "component": "card",
+    "props": {}
+  },
+  "CardBody": {
+    "status": "stable",
+    "component": "card",
+    "props": {}
+  },
+  "CardTitle": {
+    "status": "stable",
+    "component": "card",
+    "props": {
+      "as": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ]
+    }
+  },
+  "CardDescription": {
+    "status": "stable",
+    "component": "card",
+    "props": {}
+  },
+  "CardFooter": {
+    "status": "stable",
+    "component": "card",
+    "props": {}
+  },
+  "Checkbox": {
+    "status": "stable",
+    "component": "checkbox",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "CheckboxGroup": {
+    "status": "stable",
+    "component": "checkbox",
+    "props": {
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "ChooseCardGroup": {
+    "status": "stable",
+    "component": "choose-card",
+    "props": {
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ]
+    }
+  },
+  "ChooseCard": {
+    "status": "stable",
+    "component": "choose-card",
+    "props": {}
+  },
+  "Code": {
+    "status": "stable",
+    "component": "code",
+    "props": {}
+  },
+  "Combobox": {
+    "status": "stable",
+    "component": "combobox",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "Container": {
+    "status": "stable",
+    "component": "container",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "full"
+      ]
+    }
+  },
+  "Divider": {
+    "status": "stable",
+    "component": "divider",
+    "props": {
+      "orientation": [
+        "horizontal",
+        "vertical"
+      ]
+    }
+  },
+  "Drawer": {
+    "status": "stable",
+    "component": "drawer",
+    "props": {}
+  },
+  "DrawerTrigger": {
+    "status": "stable",
+    "component": "drawer",
+    "props": {}
+  },
+  "DrawerContent": {
+    "status": "stable",
+    "component": "drawer",
+    "props": {
+      "side": [
+        "start",
+        "end",
+        "top",
+        "bottom"
+      ]
+    }
+  },
+  "DrawerFooter": {
+    "status": "stable",
+    "component": "drawer",
+    "props": {}
+  },
+  "DrawerClose": {
+    "status": "stable",
+    "component": "drawer",
+    "props": {}
+  },
+  "DropdownMenu": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuTrigger": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuContent": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuItem": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {
+      "variant": [
+        "default",
+        "danger"
+      ]
+    }
+  },
+  "DropdownMenuCheckboxItem": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuRadioGroup": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuRadioItem": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuLabel": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuSeparator": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuSub": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuSubTrigger": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "DropdownMenuSubContent": {
+    "status": "stable",
+    "component": "dropdown-menu",
+    "props": {}
+  },
+  "EmptyState": {
+    "status": "stable",
+    "component": "empty-state",
+    "props": {
+      "titleAs": [
+        "h2",
+        "h3",
+        "h4"
+      ]
+    }
+  },
+  "Footer": {
+    "status": "stable",
+    "component": "footer",
+    "props": {}
+  },
+  "FormField": {
+    "status": "stable",
+    "component": "form-field",
+    "props": {}
+  },
+  "useFormField": {
+    "status": "stable",
+    "component": "form-field",
+    "props": {}
+  },
+  "Grid": {
+    "status": "stable",
+    "component": "grid",
+    "props": {
+      "gap": [
+        "none",
+        "2xs",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl",
+        "3xl"
+      ]
+    }
+  },
+  "Header": {
+    "status": "stable",
+    "component": "header",
+    "props": {
+      "headingAs": [
+        "h1",
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "HoverCard": {
+    "status": "stable",
+    "component": "hover-card",
+    "props": {}
+  },
+  "HoverCardTrigger": {
+    "status": "stable",
+    "component": "hover-card",
+    "props": {}
+  },
+  "HoverCardContent": {
+    "status": "stable",
+    "component": "hover-card",
+    "props": {}
+  },
+  "Inline": {
+    "status": "stable",
+    "component": "inline",
+    "props": {
+      "gap": [
+        "none",
+        "2xs",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl",
+        "3xl"
+      ],
+      "align": [
+        "start",
+        "center",
+        "end",
+        "baseline",
+        "stretch"
+      ],
+      "justify": [
+        "start",
+        "center",
+        "end",
+        "between"
+      ]
+    }
+  },
+  "InputField": {
+    "status": "stable",
+    "component": "input-field",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "Kbd": {
+    "status": "stable",
+    "component": "kbd",
+    "props": {}
+  },
+  "Link": {
+    "status": "stable",
+    "component": "link",
+    "props": {
+      "appearance": [
+        "inline",
+        "standalone"
+      ],
+      "variant": [
+        "primary",
+        "secondary"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "List": {
+    "status": "stable",
+    "component": "list",
+    "props": {}
+  },
+  "ListItem": {
+    "status": "stable",
+    "component": "list",
+    "props": {}
+  },
+  "Logo": {
+    "status": "stable",
+    "component": "logo",
+    "props": {}
+  },
+  "MeetingCard": {
+    "status": "stable",
+    "component": "meeting-card",
+    "props": {
+      "variant": [
+        "primary",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "titleAs": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ]
+    }
+  },
+  "Modal": {
+    "status": "stable",
+    "component": "modal",
+    "props": {}
+  },
+  "ModalTrigger": {
+    "status": "stable",
+    "component": "modal",
+    "props": {}
+  },
+  "ModalContent": {
+    "status": "stable",
+    "component": "modal",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "role": [
+        "dialog",
+        "alertdialog"
+      ]
+    }
+  },
+  "ModalFooter": {
+    "status": "stable",
+    "component": "modal",
+    "props": {}
+  },
+  "ModalClose": {
+    "status": "stable",
+    "component": "modal",
+    "props": {}
+  },
+  "Navbar": {
+    "status": "stable",
+    "component": "navbar",
+    "props": {}
+  },
+  "Pagination": {
+    "status": "stable",
+    "component": "pagination",
+    "props": {
+      "appearance": [
+        "full",
+        "simple"
+      ]
+    }
+  },
+  "Popover": {
+    "status": "stable",
+    "component": "popover",
+    "props": {}
+  },
+  "PopoverTrigger": {
+    "status": "stable",
+    "component": "popover",
+    "props": {}
+  },
+  "PopoverContent": {
+    "status": "stable",
+    "component": "popover",
+    "props": {}
+  },
+  "PopoverClose": {
+    "status": "stable",
+    "component": "popover",
+    "props": {}
+  },
+  "ProductCard": {
+    "status": "stable",
+    "component": "product-card",
+    "props": {
+      "appearance": [
+        "elevated",
+        "outlined",
+        "filled"
+      ],
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ]
+    }
+  },
+  "Progress": {
+    "status": "stable",
+    "component": "progress",
+    "props": {
+      "tone": [
+        "primary",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "size": [
+        "small",
+        "medium"
+      ]
+    }
+  },
+  "RadioGroup": {
+    "status": "stable",
+    "component": "radio-group",
+    "props": {
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ]
+    }
+  },
+  "Radio": {
+    "status": "stable",
+    "component": "radio-group",
+    "props": {}
+  },
+  "SearchField": {
+    "status": "stable",
+    "component": "search-field",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "Select": {
+    "status": "stable",
+    "component": "select",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "SelectItem": {
+    "status": "stable",
+    "component": "select",
+    "props": {}
+  },
+  "SelectGroup": {
+    "status": "stable",
+    "component": "select",
+    "props": {}
+  },
+  "SelectSeparator": {
+    "status": "stable",
+    "component": "select",
+    "props": {}
+  },
+  "SideNav": {
+    "status": "stable",
+    "component": "side-nav",
+    "props": {}
+  },
+  "Skeleton": {
+    "status": "stable",
+    "component": "skeleton",
+    "props": {
+      "variant": [
+        "text",
+        "rect",
+        "circle"
+      ]
+    }
+  },
+  "Slider": {
+    "status": "stable",
+    "component": "slider",
+    "props": {}
+  },
+  "Spinner": {
+    "status": "stable",
+    "component": "spinner",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "Stack": {
+    "status": "stable",
+    "component": "stack",
+    "props": {
+      "gap": [
+        "none",
+        "2xs",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl",
+        "3xl"
+      ],
+      "align": [
+        "start",
+        "center",
+        "end",
+        "stretch"
+      ]
+    }
+  },
+  "Stat": {
+    "status": "stable",
+    "component": "stat",
+    "props": {
+      "trend": [
+        "up",
+        "down",
+        "neutral"
+      ]
+    }
+  },
+  "Stepper": {
+    "status": "stable",
+    "component": "stepper",
+    "props": {
+      "orientation": [
+        "horizontal",
+        "vertical"
+      ]
+    }
+  },
+  "Switch": {
+    "status": "stable",
+    "component": "switch",
+    "props": {
+      "labelPosition": [
+        "start",
+        "end"
+      ]
+    }
+  },
+  "Table": {
+    "status": "stable",
+    "component": "table",
+    "props": {}
+  },
+  "Tabs": {
+    "status": "stable",
+    "component": "tabs",
+    "props": {
+      "appearance": [
+        "line",
+        "enclosed",
+        "pill"
+      ],
+      "orientation": [
+        "horizontal",
+        "vertical"
+      ]
+    }
+  },
+  "TabList": {
+    "status": "stable",
+    "component": "tabs",
+    "props": {}
+  },
+  "Tab": {
+    "status": "stable",
+    "component": "tabs",
+    "props": {}
+  },
+  "TabPanel": {
+    "status": "stable",
+    "component": "tabs",
+    "props": {}
+  },
+  "Tag": {
+    "status": "stable",
+    "component": "tag",
+    "props": {
+      "tone": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger"
+      ],
+      "appearance": [
+        "solid",
+        "subtle"
+      ]
+    }
+  },
+  "Textarea": {
+    "status": "stable",
+    "component": "textarea",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "ToastProvider": {
+    "status": "stable",
+    "component": "toast",
+    "props": {}
+  },
+  "useToast": {
+    "status": "stable",
+    "component": "toast",
+    "props": {}
+  },
+  "Tooltip": {
+    "status": "stable",
+    "component": "tooltip",
+    "props": {}
+  }
+}

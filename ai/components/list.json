@@ -1,0 +1,419 @@
+{
+  "id": "list",
+  "name": "List",
+  "category": "Data display",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A list shows related items one per row, with an optional icon or avatar, a second line and trailing meta such as a date. Rows can be links or buttons.",
+  "imports": [
+    {
+      "name": "List",
+      "from": "@ds/react"
+    },
+    {
+      "name": "ListItem",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For files, people, notifications or settings.",
+    "For navigation-like lists of records."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For data people compare across columns.",
+      "alternative": "Table"
+    },
+    {
+      "text": "For site navigation.",
+      "alternative": "SideNav"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Icon",
+      "description": "Or an Avatar.",
+      "optional": true
+    },
+    {
+      "name": "Title",
+      "description": "Main text."
+    },
+    {
+      "name": "Description",
+      "description": "Second line.",
+      "optional": true
+    },
+    {
+      "name": "Meta",
+      "description": "Trailing detail.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "divided",
+      "title": "Dividers",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Spaced items. Default."
+        },
+        {
+          "value": "true",
+          "meaning": "Lines between items."
+        }
+      ]
+    },
+    {
+      "prop": "ordered",
+      "title": "Order",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Bulleted meaning (ul). Default."
+        },
+        {
+          "value": "true",
+          "meaning": "Numbered meaning (ol)."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Hover",
+      "meaning": "Interactive rows are tinted.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring on the row.",
+      "trigger": ":focus-visible"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Interactive rows",
+      "text": "With href the row is a link; with onClick a button. Meta sits outside so controls in it stay separate."
+    }
+  ],
+  "content": [
+    "Titles: short and scannable; put details in the description."
+  ],
+  "guidelines": [
+    {
+      "do": "Make the whole row the target.",
+      "dont": "Add a separate “Open” link per row.",
+      "why": "One target per row is simpler to use."
+    },
+    {
+      "do": "Use Table for multiple attributes.",
+      "dont": "Squeeze five columns into a list.",
+      "why": "Tables align values for comparison."
+    },
+    {
+      "do": "Keep meta short.",
+      "dont": "Put paragraphs in meta.",
+      "why": "It’s for dates, counts and badges."
+    }
+  ],
+  "accessibility": {
+    "role": "list of list items; interactive rows are links or buttons.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves between interactive rows and meta controls."
+      },
+      {
+        "keys": "Enter",
+        "action": "Opens the row."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "none",
+        "when": "Native list semantics."
+      }
+    ],
+    "focus": "Focus ring on rows.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Real list markup."
+      },
+      {
+        "criterion": "2.4.4 Link Purpose",
+        "how": "Row links are named by their text."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Files",
+      "description": "With icons and dates.",
+      "code": "import { List, ListItem } from '@ds/react';\nimport { FileText } from 'lucide-react';\n\n<List divided>\n  <ListItem icon={<FileText />} title=\"Report.pdf\" description=\"2.4 MB\" meta=\"Today\" href=\"/files/1\" />\n</List>"
+    },
+    {
+      "id": "people",
+      "title": "People",
+      "description": "With avatars.",
+      "code": "import { List, ListItem, Avatar } from '@ds/react';\n\n<List>\n  <ListItem icon={<Avatar name=\"Sarah Chen\" decorative />} title=\"Sarah Chen\" description=\"Head of Products\" />\n</List>"
+    },
+    {
+      "id": "settings",
+      "title": "Settings",
+      "description": "With switches in meta.",
+      "code": "import { List, ListItem, Switch } from '@ds/react';\n\n<ListItem title=\"Email updates\" meta={<Switch aria-label=\"Email updates\" />} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--list-"
+  ],
+  "related": [
+    {
+      "id": "table",
+      "relation": "For comparing attributes."
+    },
+    {
+      "id": "apps-notifications",
+      "relation": "A pattern built on the same idea."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "List",
+      "import": "import { List } from '@ds/react';",
+      "description": "A vertical list of related items, e.g. files, people or settings.",
+      "props": {
+        "divided": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Lines between items."
+        },
+        "ordered": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Numbered list (ol) when order matters."
+        }
+      }
+    },
+    {
+      "name": "ListItem",
+      "import": "import { ListItem } from '@ds/react';",
+      "description": "One item of a List. With href or onClick, the whole row is the target.",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Main text."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Second line."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Leading icon or Avatar. Icons are decorative."
+        },
+        "meta": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Trailing content, e.g. a date, Badge or Switch."
+        },
+        "href": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Makes the item a link."
+        },
+        "onClick": {
+          "type": "((event: MouseEvent<HTMLElement, MouseEvent>) => void)",
+          "required": false,
+          "default": null,
+          "description": "Makes the item a button (when there is no href)."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--list-item-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--list-item-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--list-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--list-meta-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--list-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--list-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--list-divider-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--list-divider-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--list-item-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--list-item-padding-y": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--list-item-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--list-item-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-md",
+      "default": "4px"
+    },
+    "--list-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--list-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--list-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--list-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--list-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--list-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--list-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--list-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--list-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-list--docs"
+}

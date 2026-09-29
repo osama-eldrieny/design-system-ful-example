@@ -1,0 +1,24 @@
+/**
+ * Component tokens: tooltip
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --tooltip-{property}. Tooltips invert the surface: dark on light pages, light on dark.
+ *   Corners and shadow follow the radius and shadow themes (themes/radius.css, themes/shadow.css).
+ */
+
+:root,
+[data-theme] {
+  --tooltip-bg-color: var(--color-fg-on-surface-primary);
+  --tooltip-text-color: var(--color-bg-base);
+  --tooltip-z-index: var(--z-tooltip);
+  --tooltip-padding-x: var(--spacing-xs);
+  --tooltip-padding-y: var(--spacing-2xs);
+  --tooltip-max-width: var(--sizing-8xl);
+  --tooltip-font-family: var(--font-family-body);
+  --tooltip-font-size: var(--font-size-sm);
+  --tooltip-font-line-height: var(--font-line-height-sm);
+  --tooltip-border-radius: var(--radius-xs);
+  --tooltip-duration: var(--duration-fast);
+  --tooltip-easing: var(--easing-enter);
+}

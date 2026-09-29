@@ -1,0 +1,2029 @@
+{
+  "id": "button",
+  "name": "Button",
+  "category": "Actions",
+  "status": "stable",
+  "since": "0.1.0",
+  "description": "A button triggers an action in place: saving a form, opening a dialog, deleting an item. Variants signal what kind of action it is, appearances set how much attention it draws, and sizes fit it to the density of the surrounding UI. IconButton is the icon-only form for compact, well-known actions.",
+  "imports": [
+    {
+      "name": "Button",
+      "from": "@ds/react"
+    },
+    {
+      "name": "IconButton",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To trigger an action on the current page: submit, save, confirm, open, delete.",
+    "To let people commit to a decision in a dialog or form.",
+    "IconButton: for compact, widely recognized actions (close, edit, more) in toolbars, cards and table rows."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To navigate to another page or URL.",
+      "alternative": "Link"
+    },
+    {
+      "text": "To switch a setting on or off.",
+      "alternative": "Switch"
+    },
+    {
+      "text": "To pick one option from a small set of views.",
+      "alternative": "Tabs or ButtonGroup"
+    },
+    {
+      "text": "For an icon whose meaning is not obvious without text.",
+      "alternative": "Button with iconStart and a label"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Container",
+      "description": "The clickable area. Its fill, outline and corner radius come from the variant, appearance and radius theme."
+    },
+    {
+      "name": "Start icon",
+      "description": "Optional icon before the label; replaced by the spinner while loading.",
+      "optional": true
+    },
+    {
+      "name": "Label",
+      "description": "Short verb or verb phrase that says what happens."
+    },
+    {
+      "name": "End icon",
+      "description": "Optional icon after the label, often a chevron or external-link arrow.",
+      "optional": true
+    },
+    {
+      "name": "Focus ring",
+      "description": "Outline shown when the button is reached with the keyboard."
+    }
+  ],
+  "options": [
+    {
+      "prop": "variant",
+      "title": "Variant",
+      "values": [
+        {
+          "value": "primary",
+          "meaning": "The main action on a screen or in a dialog. Use one per view."
+        },
+        {
+          "value": "secondary",
+          "meaning": "Supporting actions next to a primary one, e.g. Cancel beside Save."
+        },
+        {
+          "value": "success",
+          "meaning": "Confirms a positive, completing action, e.g. Approve or Publish."
+        },
+        {
+          "value": "danger",
+          "meaning": "Destructive or irreversible actions, e.g. Delete account."
+        },
+        {
+          "value": "warning",
+          "meaning": "Actions that need caution but are not destructive, e.g. Override."
+        }
+      ]
+    },
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "filled",
+          "meaning": "Highest emphasis. Solid fill in the variant color."
+        },
+        {
+          "value": "outline",
+          "meaning": "Medium emphasis. Variant-colored outline and text, tinted on hover."
+        },
+        {
+          "value": "ghost",
+          "meaning": "Low emphasis for toolbars and dense UI. No outline until hovered."
+        },
+        {
+          "value": "text",
+          "meaning": "Lowest emphasis, link-like. Underlined text for inline actions."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dense UI: tables, toolbars, cards."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default for forms and dialogs."
+        },
+        {
+          "value": "large",
+          "meaning": "Prominent calls to action, e.g. on a landing page hero."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Ready to use.",
+      "trigger": "At rest."
+    },
+    {
+      "name": "Hover",
+      "meaning": "Shows the button responds to the pointer.",
+      "trigger": "Pointer over the button (:hover)."
+    },
+    {
+      "name": "Focus",
+      "meaning": "Shows where keyboard focus is.",
+      "trigger": "Reached with Tab (:focus-visible); adds the focus ring."
+    },
+    {
+      "name": "Pressed",
+      "meaning": "Confirms the press.",
+      "trigger": "While pressed with pointer or keyboard (:active)."
+    },
+    {
+      "name": "Disabled",
+      "meaning": "The action is not available right now.",
+      "trigger": "disabled prop."
+    },
+    {
+      "name": "Loading",
+      "meaning": "The action is running; clicks are ignored until it finishes.",
+      "trigger": "loading prop."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Type",
+      "text": "Defaults to type=\"button\" so it never submits a form by accident. Pass type=\"submit\" for a form’s submit button."
+    },
+    {
+      "topic": "Loading",
+      "text": "The spinner replaces the start icon and the label stays, so the width does not jump. The button keeps focus and is announced as busy."
+    },
+    {
+      "topic": "Long labels",
+      "text": "Labels do not wrap. Keep them short; in narrow layouts use fullWidth so the button fills its container."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "Padding and icons use logical positions, so the start icon sits on the right in Arabic."
+    },
+    {
+      "topic": "Themes",
+      "text": "Colors follow brand and mode, padding follows density, corners follow the radius theme."
+    }
+  ],
+  "content": [
+    "Start with a verb that says what happens: \"Save changes\", \"Delete file\", \"Send invite\".",
+    "Keep labels to one to three words; use sentence case.",
+    "Be specific: \"Publish post\" beats \"OK\" or \"Submit\".",
+    "Match the words people saw earlier in the flow, e.g. \"Delete\" in the button of a \"Delete project?\" dialog."
+  ],
+  "guidelines": [
+    {
+      "do": "Use one filled primary button per view for the main action.",
+      "dont": "Place several filled primary buttons side by side.",
+      "why": "Competing primary actions make it unclear what to do next."
+    },
+    {
+      "do": "Pair a primary action with secondary or outline buttons for alternatives.",
+      "dont": "Style Cancel as a filled primary button.",
+      "why": "Visual weight should follow importance; the safe path should not look like the main action."
+    },
+    {
+      "do": "Use the danger variant for destructive actions and confirm them in a dialog.",
+      "dont": "Use danger just to make a button stand out.",
+      "why": "Red signals risk; overusing it teaches people to ignore it."
+    },
+    {
+      "do": "Give every IconButton a label that says what it does.",
+      "dont": "Rely on an unfamiliar icon alone.",
+      "why": "Screen readers announce the label, and sighted users see it as a tooltip."
+    },
+    {
+      "do": "Use a Link for navigation to another page.",
+      "dont": "Use a Button to change the URL.",
+      "why": "Links and buttons behave differently for keyboard, screen readers and \"open in new tab\"."
+    }
+  ],
+  "accessibility": {
+    "role": "button (native <button> element).",
+    "keyboard": [
+      {
+        "keys": "Tab / Shift+Tab",
+        "action": "Moves focus to and from the button."
+      },
+      {
+        "keys": "Enter",
+        "action": "Activates the button."
+      },
+      {
+        "keys": "Space",
+        "action": "Activates the button."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-busy=\"true\"",
+        "when": "Set automatically while loading."
+      },
+      {
+        "attribute": "aria-disabled=\"true\"",
+        "when": "Set automatically while loading, so the button stays focusable."
+      },
+      {
+        "attribute": "aria-label",
+        "when": "Set automatically on IconButton from its label prop."
+      },
+      {
+        "attribute": "aria-hidden on icons",
+        "when": "Icons are decorative; the label carries the meaning."
+      }
+    ],
+    "focus": "A visible focus ring (brand accent, at least 3:1 against the background) appears when the button is reached with the keyboard. Disabled buttons are skipped by Tab; loading buttons keep focus.",
+    "wcag": [
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Label text meets 4.5:1 in every variant, appearance, state, brand and mode (checked in CI)."
+      },
+      {
+        "criterion": "1.4.11 Non-text Contrast",
+        "how": "Focus ring and outline strokes meet 3:1."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Native button: reachable with Tab, activated with Enter and Space."
+      },
+      {
+        "criterion": "2.4.7 Focus Visible",
+        "how": "Focus ring on :focus-visible."
+      },
+      {
+        "criterion": "2.5.8 Target Size (Minimum)",
+        "how": "Every size is at least 24×24 px."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Label or aria-label names the button; busy and disabled states are exposed."
+      }
+    ],
+    "notes": [
+      "Do not put interactive elements inside a button.",
+      "If a button opens a menu or dialog, the menu/dialog component sets aria-haspopup and aria-expanded."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Primary action",
+      "description": "The default button: filled, primary, medium.",
+      "code": "import { Button } from '@ds/react';\n\n<Button onClick={save}>Save changes</Button>"
+    },
+    {
+      "id": "dialog-actions",
+      "title": "Dialog actions",
+      "description": "A destructive primary action with a secondary way out.",
+      "code": "import { Button } from '@ds/react';\n\n<div style={{ display: 'flex', gap: 8 }}>\n  <Button variant=\"secondary\" appearance=\"outline\" onClick={close}>Cancel</Button>\n  <Button variant=\"danger\" onClick={remove}>Delete project</Button>\n</div>"
+    },
+    {
+      "id": "with-icon",
+      "title": "With an icon",
+      "description": "Icons support the label; they are hidden from screen readers.",
+      "code": "import { Button } from '@ds/react';\nimport { Download } from 'lucide-react';\n\n<Button appearance=\"outline\" iconStart={<Download />}>Download report</Button>"
+    },
+    {
+      "id": "loading",
+      "title": "Loading",
+      "description": "While saving, the button shows a spinner and ignores clicks.",
+      "code": "import { Button } from '@ds/react';\n\n<Button loading={isSaving} onClick={save}>Save changes</Button>"
+    },
+    {
+      "id": "icon-button",
+      "title": "Icon button",
+      "description": "Icon-only; the label is its accessible name and tooltip.",
+      "code": "import { IconButton } from '@ds/react';\nimport { X } from 'lucide-react';\n\n<IconButton icon={<X />} label=\"Close dialog\" variant=\"secondary\" appearance=\"ghost\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--button-"
+  ],
+  "related": [
+    {
+      "id": "icon-button",
+      "relation": "Icon-only form of Button, exported alongside it."
+    },
+    {
+      "id": "link",
+      "relation": "Use for navigation instead of a button."
+    },
+    {
+      "id": "button-group",
+      "relation": "Groups related buttons."
+    },
+    {
+      "id": "switch",
+      "relation": "Use for on/off settings."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New variants success, danger and warning; new appearances outline and ghost; new size large.",
+        "Renamed buttonStyle to appearance; removed the state prop in favor of real hover, focus and pressed states.",
+        "Added iconStart, iconEnd, loading, fullWidth and the IconButton component.",
+        "Defaults to type=\"button\"; keyboard focus ring; WCAG AA contrast in every theme."
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "date": "2025",
+      "changes": [
+        "First version: primary and secondary, filled and text, small and medium."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Button",
+      "import": "import { Button } from '@ds/react';",
+      "description": "Triggers an action. Use a link instead when it navigates to another page.",
+      "props": {
+        "variant": {
+          "type": "ButtonVariant",
+          "values": [
+            "primary",
+            "secondary",
+            "success",
+            "danger",
+            "warning"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": "What kind of action this is. `primary` for the main action on a screen, `secondary`\nfor supporting actions, `success` to confirm a positive outcome, `danger` for\ndestructive actions, `warning` for actions that need caution."
+        },
+        "appearance": {
+          "type": "ButtonAppearance",
+          "values": [
+            "filled",
+            "outline",
+            "ghost",
+            "text"
+          ],
+          "required": false,
+          "default": "filled",
+          "description": "Visual weight. `filled` for the most important action, `outline` for secondary\nemphasis, `ghost` for low emphasis in toolbars and dense UI, `text` for inline,\nlink-like actions."
+        },
+        "size": {
+          "type": "ButtonSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for dense UI, `medium` by default, `large` for prominent calls to action."
+        },
+        "iconStart": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon before the label (after it in right-to-left languages). Hidden from screen readers."
+        },
+        "iconEnd": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon after the label (before it in right-to-left languages). Hidden from screen readers."
+        },
+        "loading": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows a spinner and ignores clicks while an action runs. The button stays focusable\nand is announced as busy."
+        },
+        "fullWidth": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Stretches the button to the full width of its container."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Button label."
+        }
+      }
+    },
+    {
+      "name": "IconButton",
+      "import": "import { IconButton } from '@ds/react';",
+      "description": "A button that shows only an icon. Use it for compact, well-known actions (close, edit,\ndelete) where an icon is understood without text.",
+      "props": {
+        "icon": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The icon to show."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "What the button does, e.g. \"Delete message\". Required: it is the accessible name\nscreen readers announce and the tooltip sighted users see, since there is no\nvisible text."
+        },
+        "variant": {
+          "type": "ButtonVariant",
+          "values": [
+            "primary",
+            "secondary",
+            "success",
+            "danger",
+            "warning"
+          ],
+          "required": false,
+          "default": null,
+          "description": "What kind of action this is. `primary` for the main action on a screen, `secondary`\nfor supporting actions, `success` to confirm a positive outcome, `danger` for\ndestructive actions, `warning` for actions that need caution."
+        },
+        "appearance": {
+          "type": "ButtonAppearance",
+          "values": [
+            "filled",
+            "outline",
+            "ghost",
+            "text"
+          ],
+          "required": false,
+          "default": null,
+          "description": "Visual weight. `filled` for the most important action, `outline` for secondary\nemphasis, `ghost` for low emphasis in toolbars and dense UI, `text` for inline,\nlink-like actions."
+        },
+        "size": {
+          "type": "ButtonSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`small` for dense UI, `medium` by default, `large` for prominent calls to action."
+        },
+        "loading": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Shows a spinner and ignores clicks while an action runs. The button stays focusable\nand is announced as busy."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--button-group-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--button-group-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--button-primary-default-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--button-primary-default-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--button-primary-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-hover",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dfd4ff",
+        "brand=amber,mode=light": "#c28f58",
+        "brand=amber,mode=dark": "#f9f5f1",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#f4f6fc"
+      }
+    },
+    "--button-primary-hover-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-hover",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--button-primary-focus-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-focus",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e2d7cc",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#dee2f4"
+      }
+    },
+    "--button-primary-focus-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-focus",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--button-primary-text-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ab8fff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#cda376",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--button-primary-text-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-hover",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#d9b896",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#d0e1fd"
+      }
+    },
+    "--button-primary-text-focus-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-focus",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dfd4ff",
+        "brand=amber,mode=light": "#574028",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#1b3a6f",
+        "brand=opal,mode=dark": "#ebf3fe"
+      }
+    },
+    "--button-secondary-default-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--button-secondary-default-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-secondary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--button-secondary-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-hover",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dedde0",
+        "brand=amber,mode=dark": "#dedde0",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--button-secondary-hover-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-secondary-hover",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--button-secondary-focus-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-focus",
+      "default": "#54505a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=dark": "#a9a6ae",
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--button-secondary-focus-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-secondary-focus",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--button-secondary-text-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-default",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a9a6ae",
+        "brand=amber,mode=dark": "#8f8b96",
+        "brand=opal,mode=dark": "#c4c2c8"
+      }
+    },
+    "--button-secondary-text-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-hover",
+      "default": "#54505a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=dark": "#a9a6ae",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--button-secondary-text-focus-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-focus",
+      "default": "#434048",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dedde0",
+        "brand=amber,mode=dark": "#c4c2c8",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--button-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--button-medium-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--button-small-padding-y": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--button-small-height": {
+      "description": "Height of small buttons, fields and selects, so they line up in a row.",
+      "references": "--control-height-small",
+      "default": "32px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "28px"
+      }
+    },
+    "--button-medium-height": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--button-large-height": {
+      "description": "Height of large buttons, fields and selects.",
+      "references": "--control-height-large",
+      "default": "48px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "44px"
+      }
+    },
+    "--button-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--button-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--button-text-decoration": {
+      "description": null,
+      "references": null,
+      "default": "underline"
+    },
+    "--button-medium-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--button-medium-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--button-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--button-small-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--button-icon-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--button-icon-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xs",
+      "default": "12.5px"
+    },
+    "--button-success-default-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--button-success-default-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-success-default",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#005b22",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#305350",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--button-success-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-hover",
+      "default": "#00ca4b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c2f2d4",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#84cc17",
+        "brand=opal,mode=dark": "#e1f3c7"
+      }
+    },
+    "--button-success-hover-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-success-hover",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#005b22",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#305350",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--button-success-focus-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-focus",
+      "default": "#00ac40",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#305350",
+        "brand=amber,mode=dark": "#afc4c2",
+        "brand=opal,mode=light": "#70ad14",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--button-success-focus-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-success-focus",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#005b22",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#305350",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--button-danger-default-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--button-danger-default-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-danger-default",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#8b1616",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#683643",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#8b2436"
+      }
+    },
+    "--button-danger-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-hover",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fccbcb",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#fcd1d8"
+      }
+    },
+    "--button-danger-hover-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-danger-hover",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#8b1616",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#683643",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#8b2436"
+      }
+    },
+    "--button-danger-focus-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-focus",
+      "default": "#8b1616",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#683643",
+        "brand=amber,mode=dark": "#d1b2ba",
+        "brand=opal,mode=light": "#6e1c2a",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--button-danger-focus-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-danger-focus",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#8b1616",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#683643",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#8b2436"
+      }
+    },
+    "--button-warning-default-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-default",
+      "default": "#f0be2e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#eec133",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--button-warning-default-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-warning-default",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#6b4f00",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#6b4f00",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--button-warning-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-hover",
+      "default": "#edb000",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fbecc2",
+        "brand=amber,mode=dark": "#fbecc2",
+        "brand=opal,mode=light": "#eab306",
+        "brand=opal,mode=dark": "#faedc3"
+      }
+    },
+    "--button-warning-hover-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-warning-hover",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#6b4f00",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#6b4f00",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--button-warning-focus-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-focus",
+      "default": "#c99600",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#c79805",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--button-warning-focus-text-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-warning-focus",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#6b4f00",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#6b4f00",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--button-success-text-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-success-text-default",
+      "default": "#00732b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ca4b",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#89a8a6",
+        "brand=opal,mode=light": "#4b740d",
+        "brand=opal,mode=dark": "#84cc17"
+      }
+    },
+    "--button-success-text-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-success-text-hover",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#2ed46b",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#afc4c2",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#9ad541"
+      }
+    },
+    "--button-success-text-focus-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-success-text-focus",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5ede8e",
+        "brand=amber,mode=light": "#305350",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#b2df6d"
+      }
+    },
+    "--button-danger-text-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--button-danger-text-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-hover",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#d1b2ba",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#fcd1d8"
+      }
+    },
+    "--button-danger-text-focus-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-focus",
+      "default": "#8b1616",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fccbcb",
+        "brand=amber,mode=light": "#683643",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--button-warning-text-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-default",
+      "default": "#876400",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c99600",
+        "brand=amber,mode=dark": "#c99600",
+        "brand=opal,mode=light": "#856603",
+        "brand=opal,mode=dark": "#eab306"
+      }
+    },
+    "--button-warning-text-hover-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-hover",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#edb000",
+        "brand=amber,mode=dark": "#edb000",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#eec133"
+      }
+    },
+    "--button-warning-text-focus-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-focus",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f0be2e",
+        "brand=amber,mode=dark": "#f0be2e",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f2cf62"
+      }
+    },
+    "--button-primary-outline-default-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--button-primary-outline-hover-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-hover",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dfd4ff",
+        "brand=amber,mode=light": "#c28f58",
+        "brand=amber,mode=dark": "#f9f5f1",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#f4f6fc"
+      }
+    },
+    "--button-primary-outline-focus-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-focus",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e2d7cc",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#dee2f4"
+      }
+    },
+    "--button-primary-outline-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ab8fff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#cda376",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--button-primary-outline-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--button-primary-outline-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--button-primary-outline-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--button-primary-outline-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-primary-low",
+      "default": "#362373",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#574028",
+        "brand=amber,mode=dark": "#f9f4ee",
+        "brand=opal,mode=light": "#1b3a6f",
+        "brand=opal,mode=dark": "#ebf3fe"
+      }
+    },
+    "--button-secondary-outline-default-border-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--button-secondary-outline-hover-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-hover",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dedde0",
+        "brand=amber,mode=dark": "#dedde0",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--button-secondary-outline-focus-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-focus",
+      "default": "#54505a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=dark": "#a9a6ae",
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--button-secondary-outline-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-default",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a9a6ae",
+        "brand=amber,mode=dark": "#8f8b96",
+        "brand=opal,mode=dark": "#c4c2c8"
+      }
+    },
+    "--button-secondary-outline-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-secondary-1",
+      "default": "#acadb2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#363641",
+        "brand=amber,mode=light": "#f3e8dc",
+        "brand=amber,mode=dark": "#6a625a",
+        "brand=opal,mode=light": "#afb2be",
+        "brand=opal,mode=dark": "#3c4058"
+      }
+    },
+    "--button-secondary-outline-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-secondary-high",
+      "default": "#353339",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=light": "#54505a",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--button-secondary-outline-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-secondary-1",
+      "default": "#acadb2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#363641",
+        "brand=amber,mode=light": "#f3e8dc",
+        "brand=amber,mode=dark": "#6a625a",
+        "brand=opal,mode=light": "#afb2be",
+        "brand=opal,mode=dark": "#3c4058"
+      }
+    },
+    "--button-secondary-outline-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-secondary-low",
+      "default": "#353339",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--button-success-outline-default-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--button-success-outline-hover-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-hover",
+      "default": "#00ca4b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c2f2d4",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#84cc17",
+        "brand=opal,mode=dark": "#e1f3c7"
+      }
+    },
+    "--button-success-outline-focus-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-focus",
+      "default": "#00ac40",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#305350",
+        "brand=amber,mode=dark": "#afc4c2",
+        "brand=opal,mode=light": "#70ad14",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--button-success-outline-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-success-text-default",
+      "default": "#00732b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ca4b",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#89a8a6",
+        "brand=opal,mode=light": "#4b740d",
+        "brand=opal,mode=dark": "#84cc17"
+      }
+    },
+    "--button-success-outline-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--button-success-outline-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-success-high",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--button-success-outline-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--button-success-outline-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-success-low",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#1f3533",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--button-danger-outline-default-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--button-danger-outline-hover-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-hover",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fccbcb",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#fcd1d8"
+      }
+    },
+    "--button-danger-outline-focus-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-focus",
+      "default": "#8b1616",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#683643",
+        "brand=amber,mode=dark": "#d1b2ba",
+        "brand=opal,mode=light": "#6e1c2a",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--button-danger-outline-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--button-danger-outline-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--button-danger-outline-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--button-danger-outline-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--button-danger-outline-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-danger-low",
+      "default": "#6d1212",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#42222a",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#6e1c2a",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--button-warning-outline-default-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-default",
+      "default": "#f0be2e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#eec133",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--button-warning-outline-hover-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-hover",
+      "default": "#edb000",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fbecc2",
+        "brand=amber,mode=dark": "#fbecc2",
+        "brand=opal,mode=light": "#eab306",
+        "brand=opal,mode=dark": "#faedc3"
+      }
+    },
+    "--button-warning-outline-focus-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-focus",
+      "default": "#c99600",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#c79805",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--button-warning-outline-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-default",
+      "default": "#876400",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c99600",
+        "brand=amber,mode=dark": "#c99600",
+        "brand=opal,mode=light": "#856603",
+        "brand=opal,mode=dark": "#eab306"
+      }
+    },
+    "--button-warning-outline-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-warning-1",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--button-warning-outline-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--button-warning-outline-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-warning-1",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--button-warning-outline-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-warning-low",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--button-primary-ghost-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-primary-text-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ab8fff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#cda376",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--button-primary-ghost-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--button-primary-ghost-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--button-primary-ghost-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--button-primary-ghost-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-primary-low",
+      "default": "#362373",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#574028",
+        "brand=amber,mode=dark": "#f9f4ee",
+        "brand=opal,mode=light": "#1b3a6f",
+        "brand=opal,mode=dark": "#ebf3fe"
+      }
+    },
+    "--button-secondary-ghost-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-secondary-text-default",
+      "default": "#64606c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a9a6ae",
+        "brand=amber,mode=dark": "#8f8b96",
+        "brand=opal,mode=dark": "#c4c2c8"
+      }
+    },
+    "--button-secondary-ghost-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-secondary-1",
+      "default": "#acadb2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#363641",
+        "brand=amber,mode=light": "#f3e8dc",
+        "brand=amber,mode=dark": "#6a625a",
+        "brand=opal,mode=light": "#afb2be",
+        "brand=opal,mode=dark": "#3c4058"
+      }
+    },
+    "--button-secondary-ghost-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-secondary-high",
+      "default": "#353339",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c4c2c8",
+        "brand=amber,mode=light": "#54505a",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--button-secondary-ghost-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-secondary-1",
+      "default": "#acadb2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#363641",
+        "brand=amber,mode=light": "#f3e8dc",
+        "brand=amber,mode=dark": "#6a625a",
+        "brand=opal,mode=light": "#afb2be",
+        "brand=opal,mode=dark": "#3c4058"
+      }
+    },
+    "--button-secondary-ghost-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-secondary-low",
+      "default": "#353339",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--button-success-ghost-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-success-text-default",
+      "default": "#00732b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00ca4b",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#89a8a6",
+        "brand=opal,mode=light": "#4b740d",
+        "brand=opal,mode=dark": "#84cc17"
+      }
+    },
+    "--button-success-ghost-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--button-success-ghost-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-success-high",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--button-success-ghost-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--button-success-ghost-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-success-low",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#1f3533",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--button-danger-ghost-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--button-danger-ghost-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--button-danger-ghost-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--button-danger-ghost-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--button-danger-ghost-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-danger-low",
+      "default": "#6d1212",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#42222a",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#6e1c2a",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--button-warning-ghost-default-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-default",
+      "default": "#876400",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c99600",
+        "brand=amber,mode=dark": "#c99600",
+        "brand=opal,mode=light": "#856603",
+        "brand=opal,mode=dark": "#eab306"
+      }
+    },
+    "--button-warning-ghost-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-warning-1",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--button-warning-ghost-hover-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--button-warning-ghost-focus-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-warning-1",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--button-warning-ghost-focus-text-color": {
+      "description": "Darkest tone text, for maximum contrast on tinted backgrounds.",
+      "references": "--color-fg-on-warning-low",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--button-large-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--button-large-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--button-large-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--button-small-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--button-medium-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--button-large-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--button-small-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--button-medium-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--button-large-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--button-outline-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--button-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--button-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--button-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--button-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--button-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--button-spinner-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--button-spinner-duration": {
+      "description": "One turn of a repeating animation, e.g. a loading spinner.",
+      "references": "--duration-loop",
+      "default": "1000ms"
+    },
+    "--button-medium-padding-x": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-32",
+      "default": "32px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "28px"
+      }
+    },
+    "--button-small-padding-x": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-28",
+      "default": "28px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "24px"
+      }
+    },
+    "--button-large-padding-x": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-40",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--button-icon-padding-x": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-16",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--button-icon-padding-y": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-16",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--button-medium-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-16",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--button-small-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--button-large-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--button-icon-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--button-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Submit'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'إرسال'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-actions-button--docs"
+}

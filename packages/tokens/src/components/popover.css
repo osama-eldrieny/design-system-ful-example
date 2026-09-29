@@ -1,0 +1,36 @@
+/**
+ * Component tokens: popover
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --popover-{part?}-{property}
+ *   part: title | close | arrow.
+ *   Corners and shadow follow the radius and shadow themes (themes/radius.css, themes/shadow.css).
+ */
+
+:root,
+[data-theme] {
+  /* Surface */
+  --popover-bg-color: var(--color-bg-base);
+  --popover-text-color: var(--color-fg-on-surface-primary);
+  --popover-border-color: var(--color-border-base);
+  --popover-border-width: var(--border-width-regular);
+  --popover-shadow-x: var(--shadow-none);
+  --popover-shadow-color: var(--color-shadow-surface);
+  --popover-z-index: var(--z-dropdown);
+  --popover-font-family: var(--font-family-body);
+  --popover-font-size: var(--font-size-md);
+  --popover-font-line-height: var(--font-line-height-md);
+  --popover-close-hover-bg-color: var(--color-bg-default);
+  --popover-close-icon-color: var(--color-fg-on-surface-secondary);
+  --popover-close-size: var(--sizing-md);
+  --popover-focus-ring-width: var(--focus-ring-width);
+  --popover-focus-ring-offset: var(--focus-ring-offset);
+  --popover-focus-ring-color: var(--focus-ring-color);
+  --popover-title-font-weight: var(--font-weight-bold);
+  --popover-padding: var(--spacing-md);
+  --popover-gap: var(--spacing-xs);
+  --popover-max-width: calc(var(--sizing-8xl) * 1.5);
+  --popover-duration: var(--duration-fast);
+  --popover-easing: var(--easing-enter);
+}

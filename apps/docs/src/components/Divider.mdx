@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Divider } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Divider/Divider.stories';
+import meta from '../../../../packages/react/src/Divider/Divider.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Divider
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Divider]}
+  anatomy={{
+    targets: ['.ds-divider--label'],
+    example: (
+      <div style={{ inlineSize: 280 }}>
+        <Divider label="or" />
+      </div>
+    ),
+  }}
+  optionStories={{ orientation: 'Variants' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ inlineSize: 200 }}>
+      <Divider label="or" />
+    </div>
+  }
+/>

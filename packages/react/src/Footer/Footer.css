@@ -1,0 +1,70 @@
+/**
+ * Footer. Styled only with --footer-* tokens. Links underline on hover; focus is a ring.
+ */
+
+.ds-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--footer-gap);
+  padding: var(--footer-padding);
+  border-radius: var(--footer-border-radius);
+  background-color: var(--footer-bg-color);
+  box-shadow: var(--footer-shadow-x) var(--footer-shadow-y) var(--footer-shadow-blur)
+    var(--footer-shadow-color);
+  text-align: center;
+}
+
+.ds-footer__text {
+  margin: 0;
+  font-family: var(--footer-text-font-family);
+  font-size: var(--footer-text-font-size);
+  font-weight: var(--footer-text-font-weight);
+  line-height: var(--footer-text-font-line-height);
+  color: var(--footer-text-color);
+}
+
+.ds-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--footer-link-list-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-footer__link {
+  display: inline-block;
+  padding: var(--footer-link-padding-y) var(--footer-link-padding-x);
+  border: 0;
+  border-radius: var(--footer-link-border-radius);
+  background: none;
+  color: var(--footer-link-default-text-color);
+  font-family: var(--footer-link-font-family);
+  font-size: var(--footer-link-font-size);
+  font-weight: var(--footer-link-font-weight);
+  line-height: var(--footer-link-font-line-height);
+  text-decoration: none;
+  text-decoration-thickness: var(--footer-link-underline-width);
+  text-underline-offset: var(--footer-link-padding-y);
+  cursor: pointer;
+  transition: color var(--footer-transition-duration) var(--footer-transition-easing);
+}
+
+.ds-footer__link:hover {
+  color: var(--footer-link-hover-text-color);
+  text-decoration-line: underline;
+  text-decoration-color: var(--footer-link-hover-underline-color);
+}
+
+.ds-footer__link:focus-visible {
+  outline: var(--footer-focus-ring-width) solid var(--footer-focus-ring-color);
+  outline-offset: var(--footer-focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-footer__link {
+    transition: none;
+  }
+}

@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ChooseCard, ChooseCardGroup } from '@ds/react';
+import * as ChooseStories from '../../../../packages/react/src/ChooseCard/ChooseCard.stories';
+import chooseMeta from '../../../../packages/react/src/ChooseCard/ChooseCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={ChooseStories} name="Docs" />
+
+# ChooseCard
+
+<ComponentPage
+  meta={chooseMeta}
+  stories={ChooseStories}
+  components={[ChooseCardGroup, ChooseCard]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-choose-card', at: 'start' },
+      '.ds-choose-card__indicator',
+      '.ds-choose-card__title',
+      '.ds-choose-card__description',
+      '.ds-choose-card__price',
+    ],
+    example: (
+      <ChooseCardGroup aria-label="Plan" defaultValue="pro" style={{ inlineSize: 320 }}>
+        <ChooseCard value="pro" title="Pro" description="For professionals" price="$29 / month" />
+      </ChooseCardGroup>
+    ),
+  }}
+  optionStories={{ orientation: 'Orientation' }}
+  extras={[{ title: 'Without a price', story: 'WithoutPrice' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <ChooseCardGroup aria-label="Plan" defaultValue="pro" style={{ maxInlineSize: 260 }}>
+      <ChooseCard value="basic" title="Basic" price="Free" />
+      <ChooseCard value="pro" title="Pro" price="$29" />
+    </ChooseCardGroup>
+  }
+/>

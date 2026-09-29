@@ -1,0 +1,81 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Mail } from 'lucide-react';
+import { InputField } from '@ds/react';
+import * as InputStories from '../../../../packages/react/src/InputField/InputField.stories';
+import inputMeta from '../../../../packages/react/src/InputField/InputField.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={InputStories} name="Docs" />
+
+# InputField
+
+<ComponentPage
+  meta={inputMeta}
+  stories={InputStories}
+  components={[InputField]}
+  anatomy={{
+    targets: [
+      '.ds-input-field__label',
+      { selector: '.ds-input-field__control', at: 'end' },
+      '.ds-input-field__icon',
+      '.ds-input-field__input',
+      '.ds-input-field__description',
+    ],
+    example: (
+      <div style={{ inlineSize: 320 }}>
+        <InputField
+          label="Email address"
+          iconStart={<Mail />}
+          defaultValue="osama@example.com"
+          description="We’ll send the receipt here."
+        />
+      </div>
+    ),
+  }}
+  optionStories={{ size: 'Sizes' }}
+  extras={[
+    { title: 'With icons', story: 'WithIcons' },
+    { title: 'Clearable', story: 'Clearable' },
+  ]}
+  behaviorStory="RightToLeft"
+  dodont={{
+    0: {
+      do: (
+        <div style={{ inlineSize: 260 }}>
+          <InputField label="Email address" placeholder="name@company.com" />
+        </div>
+      ),
+      dont: (
+        <div style={{ inlineSize: 260 }}>
+          <InputField label="Email address" hideLabel placeholder="Enter your email address" />
+        </div>
+      ),
+    },
+    1: {
+      do: (
+        <div style={{ inlineSize: 260 }}>
+          <InputField
+            label="Email address"
+            defaultValue="name@"
+            error="Enter an email address like name@company.com."
+          />
+        </div>
+      ),
+      dont: (
+        <div style={{ inlineSize: 260 }}>
+          <InputField
+            label="Email address"
+            defaultValue="name@"
+            style={{ ['--_border']: 'var(--input-field-error-border-color)' }}
+          />
+        </div>
+      ),
+    },
+  }}
+  matrix={
+    <div style={{ display: 'grid', gap: 10, maxInlineSize: 280 }}>
+      <InputField label="Email address" defaultValue="osama@example.com" />
+      <InputField label="Email address" error="Enter an email address." />
+    </div>
+  }
+/>

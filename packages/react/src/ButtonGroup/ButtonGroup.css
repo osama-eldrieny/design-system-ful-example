@@ -1,0 +1,55 @@
+/**
+ * ButtonGroup. Styled only with --button-group-* tokens; it spaces or joins its buttons
+ * and leaves their colors, sizes and states to Button.
+ */
+
+.ds-button-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--button-group-gap);
+}
+
+.ds-button-group--vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ds-button-group--attached {
+  flex-wrap: nowrap;
+  gap: 0;
+}
+
+/* Joined buttons: square inner corners, borders overlap. */
+.ds-button-group--attached.ds-button-group--horizontal > * + * {
+  margin-inline-start: calc(-1 * var(--button-group-border-width));
+}
+
+.ds-button-group--attached.ds-button-group--horizontal > :not(:last-child) {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.ds-button-group--attached.ds-button-group--horizontal > :not(:first-child) {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+.ds-button-group--attached.ds-button-group--vertical > * + * {
+  margin-block-start: calc(-1 * var(--button-group-border-width));
+}
+
+.ds-button-group--attached.ds-button-group--vertical > :not(:last-child) {
+  border-end-start-radius: 0;
+  border-end-end-radius: 0;
+}
+
+.ds-button-group--attached.ds-button-group--vertical > :not(:first-child) {
+  border-start-start-radius: 0;
+  border-start-end-radius: 0;
+}
+
+/* Keep the focused button's ring above its neighbours. */
+.ds-button-group--attached > :focus-visible {
+  position: relative;
+  z-index: 1;
+}

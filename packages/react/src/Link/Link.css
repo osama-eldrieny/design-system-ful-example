@@ -1,0 +1,105 @@
+/**
+ * Link. Styled only with --link-* tokens. Inline links are always underlined, so they
+ * aren't identified by color alone; standalone links underline on hover.
+ */
+
+.ds-link {
+  --_text: var(--link-default-text-color);
+  --_hover: var(--link-hover-text-color);
+  --_icon-size: var(--link-inline-icon-size);
+
+  border-radius: var(--link-focus-border-radius);
+  color: var(--_text);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--link-underline-width);
+  text-underline-offset: var(--link-underline-offset);
+  cursor: pointer;
+  transition: color var(--link-transition-duration) var(--link-transition-easing);
+}
+
+.ds-link--secondary {
+  --_text: var(--link-secondary-default-text-color);
+  --_hover: var(--link-secondary-hover-text-color);
+}
+
+.ds-link:visited {
+  --_text: var(--link-visited-text-color);
+}
+
+.ds-link--secondary:visited {
+  --_text: var(--link-secondary-default-text-color);
+}
+
+.ds-link:hover {
+  color: var(--_hover);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--link-hover-underline-width);
+}
+
+.ds-link:focus-visible {
+  outline: var(--link-focus-ring-width) solid var(--link-focus-ring-color);
+  outline-offset: var(--link-focus-ring-offset);
+}
+
+.ds-link--standalone {
+  --_icon-size: var(--link-icon-size);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--link-gap);
+  font-family: var(--link-font-family);
+  font-size: var(--link-font-size);
+  font-weight: var(--link-font-weight);
+  line-height: var(--link-font-line-height);
+  text-decoration-line: none;
+}
+
+.ds-link--small {
+  --_icon-size: var(--link-small-icon-size);
+
+  font-size: var(--link-small-font-size);
+  line-height: var(--link-small-font-line-height);
+}
+
+.ds-link--large {
+  --_icon-size: var(--link-large-icon-size);
+
+  font-size: var(--link-large-font-size);
+  line-height: var(--link-large-font-line-height);
+}
+
+.ds-link__icon {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-inline-start: var(--link-gap);
+}
+
+.ds-link--standalone .ds-link__icon {
+  margin-inline-start: 0;
+}
+
+.ds-link__icon > svg {
+  inline-size: var(--_icon-size);
+  block-size: var(--_icon-size);
+}
+
+/* Arrows and similar icons point the other way in right-to-left text. */
+.ds-link__icon:dir(rtl) > svg {
+  transform: scaleX(-1);
+}
+
+.ds-link__hidden {
+  position: absolute;
+  inline-size: var(--link-hidden-size);
+  block-size: var(--link-hidden-size);
+  margin: calc(-1 * var(--link-hidden-size));
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-link {
+    transition: none;
+  }
+}

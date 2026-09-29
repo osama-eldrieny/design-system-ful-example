@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Pagination } from '@ds/react';
+import * as PaginationStories from '../../../../packages/react/src/Pagination/Pagination.stories';
+import paginationMeta from '../../../../packages/react/src/Pagination/Pagination.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={PaginationStories} name="Docs" />
+
+# Pagination
+
+<ComponentPage
+  meta={paginationMeta}
+  stories={PaginationStories}
+  components={[Pagination]}
+  anatomy={{
+    targets: [
+      'li:first-child .ds-pagination__item',
+      'li:nth-child(2) .ds-pagination__item',
+      '[aria-current="page"]',
+      '.ds-pagination__ellipsis',
+      'li:last-child .ds-pagination__item',
+    ],
+    example: <Pagination currentPage={3} totalPages={12} />,
+  }}
+  optionStories={{ appearance: 'Appearances' }}
+  extras={[
+    {
+      title: 'Long ranges',
+      story: 'Ranges',
+      text: 'The first and last pages always show; “…” replaces skipped pages.',
+    },
+  ]}
+  behaviorStory="RightToLeft"
+  dodont={{
+    2: {
+      do: (
+        <div style={{ inlineSize: 220 }}>
+          <Pagination appearance="simple" currentPage={4} totalPages={30} />
+        </div>
+      ),
+      dont: (
+        <div style={{ inlineSize: 220 }}>
+          <Pagination currentPage={4} totalPages={30} siblingCount={4} />
+        </div>
+      ),
+    },
+  }}
+  matrix={<Pagination currentPage={4} totalPages={12} />}
+/>

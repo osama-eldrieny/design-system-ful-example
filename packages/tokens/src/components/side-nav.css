@@ -1,0 +1,43 @@
+/**
+ * Component tokens: side-nav
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --side-nav-{part}-{state?}-{property}
+ *   part: item | group-label | icon; state: default | hover | active (the current page).
+ *   Item corners come from the radius theme (themes/radius.css).
+ */
+
+:root,
+[data-theme] {
+  --side-nav-bg-color: var(--color-bg-base);
+  --side-nav-padding: var(--spacing-sm);
+  --side-nav-gap: var(--spacing-2xs);
+  --side-nav-section-gap: var(--spacing-md);
+  --side-nav-item-default-text-color: var(--color-fg-on-surface-primary);
+  --side-nav-item-default-bg-color: var(--color-bg-base);
+  --side-nav-item-hover-bg-color: var(--color-bg-primary-1);
+  --side-nav-item-hover-text-color: var(--color-fg-on-surface-primary);
+  --side-nav-item-active-bg-color: var(--color-bg-primary-1);
+  --side-nav-item-active-text-color: var(--color-fg-on-primary-high);
+  --side-nav-item-padding-x: var(--spacing-sm);
+  --side-nav-item-padding-y: var(--spacing-xs);
+  --side-nav-item-gap: var(--spacing-xs);
+  --side-nav-item-indent: var(--spacing-lg);
+  --side-nav-icon-color: var(--color-fg-on-surface-secondary);
+  --side-nav-icon-size: var(--sizing-sm);
+  --side-nav-group-label-text-color: var(--color-fg-on-surface-secondary);
+  --side-nav-group-label-font-size: var(--font-size-sm);
+  --side-nav-group-label-font-line-height: var(--font-line-height-sm);
+  --side-nav-group-label-font-weight: var(--font-weight-medium);
+  --side-nav-font-family: var(--font-family-body);
+  --side-nav-font-size: var(--font-size-md);
+  --side-nav-font-line-height: var(--font-line-height-md);
+  --side-nav-font-weight: var(--font-weight-regular);
+  --side-nav-active-font-weight: var(--font-weight-medium);
+  --side-nav-duration: var(--duration-normal);
+  --side-nav-easing: var(--easing-standard);
+  --side-nav-focus-ring-width: var(--focus-ring-width);
+  --side-nav-focus-ring-offset: var(--focus-ring-offset);
+  --side-nav-focus-ring-color: var(--focus-ring-color);
+}

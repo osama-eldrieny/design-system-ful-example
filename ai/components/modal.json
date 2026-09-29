@@ -1,0 +1,593 @@
+{
+  "id": "modal",
+  "name": "Modal",
+  "category": "Overlays",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "A modal is a dialog over the page that people must deal with before going back: a short form, a confirmation or details. Focus is trapped inside, Escape closes it, and focus returns to the trigger.",
+  "imports": [
+    {
+      "name": "Modal",
+      "from": "@ds/react"
+    },
+    {
+      "name": "ModalTrigger",
+      "from": "@ds/react"
+    },
+    {
+      "name": "ModalContent",
+      "from": "@ds/react"
+    },
+    {
+      "name": "ModalFooter",
+      "from": "@ds/react"
+    },
+    {
+      "name": "ModalClose",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To confirm a destructive or important action (role=\"alertdialog\").",
+    "For a short, focused task such as editing one item."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For content people want next to the page.",
+      "alternative": "Drawer or Popover"
+    },
+    {
+      "text": "For long, multi-step flows.",
+      "alternative": "A full page"
+    },
+    {
+      "text": "To confirm that something succeeded.",
+      "alternative": "Toast"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Scrim",
+      "description": "Dims the page behind."
+    },
+    {
+      "name": "Title",
+      "description": "Names the dialog."
+    },
+    {
+      "name": "Description",
+      "description": "Describes it.",
+      "optional": true
+    },
+    {
+      "name": "Close button",
+      "description": "Not shown on alert dialogs.",
+      "optional": true
+    },
+    {
+      "name": "Footer",
+      "description": "Actions; the primary one last.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Confirmations."
+        },
+        {
+          "value": "medium",
+          "meaning": "Forms. Default."
+        },
+        {
+          "value": "large",
+          "meaning": "Rich or long content."
+        }
+      ]
+    },
+    {
+      "prop": "role",
+      "title": "Role",
+      "values": [
+        {
+          "value": "dialog",
+          "meaning": "Default; clicking outside closes it."
+        },
+        {
+          "value": "alertdialog",
+          "meaning": "Urgent; no outside-click close and no close icon."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Open",
+      "meaning": "Shown over a scrim; focus inside.",
+      "trigger": "open"
+    },
+    {
+      "name": "Closed",
+      "meaning": "Focus back on the trigger.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Focus",
+      "text": "Moves to the first focusable element, is trapped inside, and returns to the trigger on close."
+    },
+    {
+      "topic": "Closing",
+      "text": "Escape, the close button, a ModalClose action or, for dialogs (not alert dialogs), clicking outside."
+    },
+    {
+      "topic": "Scrolling",
+      "text": "The page behind doesn’t scroll; long content scrolls inside the modal."
+    },
+    {
+      "topic": "Themes",
+      "text": "Rendered in a portal but keeps the theme of where it was opened."
+    }
+  ],
+  "content": [
+    "Title: the task or the question (“Delete project?”).",
+    "Buttons: specific verbs (“Delete project”), not “OK”."
+  ],
+  "guidelines": [
+    {
+      "do": "Label the primary action with a specific verb.",
+      "dont": "Use “Yes” and “No”.",
+      "why": "Specific labels make the outcome clear without rereading the question."
+    },
+    {
+      "do": "Use role=\"alertdialog\" for destructive confirmations.",
+      "dont": "Let a stray click outside dismiss a delete confirmation.",
+      "why": "The question must be answered on purpose."
+    },
+    {
+      "do": "Keep modals short and focused.",
+      "dont": "Put a whole settings page in a modal.",
+      "why": "Long content is hard to use inside a trapped dialog, especially on phones."
+    }
+  ],
+  "accessibility": {
+    "role": "dialog or alertdialog, named by the title and described by the description.",
+    "keyboard": [
+      {
+        "keys": "Tab / Shift+Tab",
+        "action": "Moves within the dialog only."
+      },
+      {
+        "keys": "Escape",
+        "action": "Closes it."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-modal",
+        "when": "Set by Radix."
+      },
+      {
+        "attribute": "aria-labelledby / aria-describedby",
+        "when": "Title and description."
+      },
+      {
+        "attribute": "aria-label on the close button",
+        "when": "closeLabel (“Close”)."
+      }
+    ],
+    "focus": "Trapped inside while open; returned to the trigger afterwards.",
+    "wcag": [
+      {
+        "criterion": "2.4.3 Focus Order",
+        "how": "Focus moves in and back logically."
+      },
+      {
+        "criterion": "2.1.2 No Keyboard Trap",
+        "how": "Escape always closes it."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "A named dialog."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "confirm",
+      "title": "Confirm a delete",
+      "description": "An alert dialog with Cancel and Delete.",
+      "code": "import { Modal, ModalTrigger, ModalContent, ModalFooter, ModalClose, Button } from '@ds/react';\n\n<Modal>\n  <ModalTrigger asChild>\n    <Button variant=\"danger\">Delete</Button>\n  </ModalTrigger>\n  <ModalContent role=\"alertdialog\" size=\"small\" title=\"Delete project?\" description=\"This can’t be undone.\">\n    <ModalFooter>\n      <ModalClose asChild>\n        <Button appearance=\"outline\" variant=\"secondary\">Cancel</Button>\n      </ModalClose>\n      <Button variant=\"danger\" onClick={remove}>Delete project</Button>\n    </ModalFooter>\n  </ModalContent>\n</Modal>"
+    },
+    {
+      "id": "form",
+      "title": "Edit form",
+      "description": "Controlled, closing after save.",
+      "code": "import { Modal, ModalContent, ModalFooter, InputField, Button } from '@ds/react';\n\n<Modal open={open} onOpenChange={setOpen}>\n  <ModalContent title=\"Rename file\">\n    <InputField label=\"Name\" defaultValue={file.name} />\n    <ModalFooter>\n      <Button onClick={() => { save(); setOpen(false); }}>Save</Button>\n    </ModalFooter>\n  </ModalContent>\n</Modal>"
+    },
+    {
+      "id": "large",
+      "title": "Long content",
+      "description": "Scrolls inside.",
+      "code": "import { Modal, ModalTrigger, ModalContent, Button } from '@ds/react';\n\n<Modal>\n  <ModalTrigger asChild><Button appearance=\"text\">View terms</Button></ModalTrigger>\n  <ModalContent size=\"large\" title=\"Terms of service\">{terms}</ModalContent>\n</Modal>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--modal-"
+  ],
+  "related": [
+    {
+      "id": "drawer",
+      "relation": "For side panels."
+    },
+    {
+      "id": "popover",
+      "relation": "For non-blocking content."
+    },
+    {
+      "id": "toast",
+      "relation": "For brief confirmations."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Modal",
+      "import": "import { Modal } from '@ds/react';",
+      "description": "A dialog over the page that people must deal with before going back to it. Focus moves in\nand is trapped until it closes; Escape closes it.",
+      "props": {}
+    },
+    {
+      "name": "ModalTrigger",
+      "import": "import { ModalTrigger } from '@ds/react';",
+      "description": "The element that opens the modal; usually a Button via asChild.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "ModalContent",
+      "import": "import { ModalContent } from '@ds/react';",
+      "description": "",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Heading of the dialog; names it for screen readers."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Short explanation under the title; describes the dialog."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\" | \"large\"",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for confirmations, `medium` (default) for forms, `large` for rich content."
+        },
+        "role": {
+          "type": "\"dialog\" | \"alertdialog\"",
+          "values": [
+            "dialog",
+            "alertdialog"
+          ],
+          "required": false,
+          "default": "dialog",
+          "description": "`alertdialog` for urgent confirmations (e.g. delete): clicking outside doesn't close it\nand there's no close icon, so people choose an action."
+        },
+        "closeLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Close",
+          "description": "Accessible name of the close button. Default \"Close\"."
+        },
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "ModalFooter",
+      "import": "import { ModalFooter } from '@ds/react';",
+      "description": "Actions at the bottom, e.g. Cancel and Save. The primary action goes last.",
+      "props": {}
+    },
+    {
+      "name": "ModalClose",
+      "import": "import { ModalClose } from '@ds/react';",
+      "description": "Closes the modal; use asChild with a Button for footer actions like Cancel.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--modal-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--modal-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--modal-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--modal-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--modal-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-none",
+      "default": "0"
+    },
+    "--modal-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--modal-z-index": {
+      "description": "Modals and drawers.",
+      "references": "--z-modal",
+      "default": "1400"
+    },
+    "--modal-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--modal-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--modal-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--modal-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--modal-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--modal-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--modal-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--modal-close-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--modal-close-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--modal-close-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--modal-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--modal-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--modal-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--modal-scrim-color": {
+      "description": "Dimmed backdrop behind modals and drawers; the same in every theme.",
+      "references": "--color-scrim",
+      "default": "rgb(0 0 0 / 50%)"
+    },
+    "--modal-scrim-z-index": {
+      "description": "Backdrops behind modals and drawers.",
+      "references": "--z-overlay",
+      "default": "1300"
+    },
+    "--modal-padding": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
+    },
+    "--modal-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--modal-footer-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--modal-small-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--modal-medium-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 2.5)"
+    },
+    "--modal-large-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 4)"
+    },
+    "--modal-edge-margin": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--modal-duration": {
+      "description": "Elements entering or leaving: modals, drawers, toasts.",
+      "references": "--duration-slow",
+      "default": "300ms"
+    },
+    "--modal-easing": {
+      "description": "Elements appearing (decelerate into place).",
+      "references": "--easing-enter",
+      "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--modal-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--modal-close-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--modal-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--modal-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-overlays-modal--docs"
+}

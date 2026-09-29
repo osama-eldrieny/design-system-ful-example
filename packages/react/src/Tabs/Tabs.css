@@ -1,0 +1,178 @@
+/**
+ * Tabs. Styled only with --tabs-* tokens. Radix sets data-state="active|inactive" and
+ * data-disabled on tabs; hover and focus are real states.
+ */
+
+.ds-tabs__list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tabs-list-gap);
+}
+
+.ds-tabs__list--enclosed {
+  padding: var(--tabs-padding);
+  border-radius: var(--tabs-border-radius);
+  background-color: var(--tabs-bg-color);
+}
+
+.ds-tabs__list--line {
+  display: flex;
+  gap: var(--tabs-line-gap);
+  box-shadow: inset 0 calc(-1 * var(--tabs-line-border-width)) 0 var(--tabs-line-border-color);
+}
+
+.ds-tabs__tab {
+  --_bg: var(--tabs-item-default-bg-color);
+  --_fg: var(--tabs-item-default-font-color);
+  --_bg-hover: var(--tabs-item-hover-bg-color);
+  --_fg-hover: var(--tabs-item-hover-font-color);
+  --_bg-active: var(--tabs-item-active-bg-color);
+  --_fg-active: var(--tabs-item-active-font-color);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--tabs-item-padding-gap);
+  padding-block: var(--tabs-item-padding-y);
+  padding-inline: var(--tabs-item-padding-x);
+  border: 0;
+  border-radius: var(--tabs-item-border-radius);
+  background-color: var(--_bg);
+  color: var(--_fg);
+  font-family: var(--tabs-item-label-font-family);
+  font-size: var(--tabs-item-label-font-size);
+  line-height: var(--tabs-item-label-font-line-height);
+  font-weight: var(--tabs-item-label-font-weight);
+  white-space: nowrap;
+  cursor: pointer;
+  transition-property: background-color, color, box-shadow;
+  transition-duration: var(--tabs-transition-duration);
+  transition-timing-function: var(--tabs-transition-easing);
+}
+
+.ds-tabs--pill .ds-tabs__tab {
+  --_bg: transparent;
+  --_fg: var(--tabs-pill-item-default-font-color);
+  --_bg-hover: var(--tabs-pill-item-hover-bg-color);
+  --_fg-hover: var(--tabs-pill-item-hover-font-color);
+}
+
+.ds-tabs--line .ds-tabs__tab {
+  --_bg: transparent;
+  --_fg: var(--tabs-line-item-default-font-color);
+  --_bg-hover: transparent;
+  --_fg-hover: var(--tabs-line-item-hover-font-color);
+  --_bg-active: transparent;
+  --_fg-active: var(--tabs-line-item-active-font-color);
+
+  padding-inline: 0;
+  border-radius: 0;
+}
+
+.ds-tabs__tab:hover:not([data-disabled], [data-state='active']) {
+  background-color: var(--_bg-hover);
+  color: var(--_fg-hover);
+}
+
+.ds-tabs__tab[data-state='active'] {
+  background-color: var(--_bg-active);
+  color: var(--_fg-active);
+  font-weight: var(--tabs-item-active-label-font-weight);
+}
+
+.ds-tabs--line .ds-tabs__tab[data-state='active'] {
+  box-shadow: inset 0 calc(-1 * var(--tabs-line-indicator-width)) 0 var(--tabs-line-indicator-color);
+}
+
+.ds-tabs__tab:focus-visible,
+.ds-tabs__panel:focus-visible {
+  outline: var(--tabs-focus-ring-width) solid var(--tabs-focus-ring-color);
+  outline-offset: var(--tabs-focus-ring-offset);
+}
+
+.ds-tabs__tab[data-disabled] {
+  opacity: var(--tabs-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-tabs__icon {
+  display: inline-flex;
+  inline-size: var(--tabs-item-icon-size);
+  block-size: var(--tabs-item-icon-size);
+}
+
+.ds-tabs__icon > svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ds-tabs__panel {
+  padding-block: var(--tabs-panel-padding-y);
+}
+
+/* Vertical: tabs stacked in a column beside the panel. */
+.ds-tabs--vertical {
+  display: grid;
+  grid-template-columns: var(--tabs-vertical-list-width) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--tabs-vertical-gap);
+}
+
+.ds-tabs--vertical .ds-tabs__list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ds-tabs--vertical .ds-tabs__tab {
+  justify-content: flex-start;
+  text-align: start;
+}
+
+.ds-tabs--vertical .ds-tabs__panel {
+  padding-block: 0;
+}
+
+/* Line: the baseline and the indicator run down the inline-start edge. */
+.ds-tabs--vertical .ds-tabs__list--line {
+  gap: 0;
+  box-shadow: none;
+  border-inline-start: var(--tabs-line-border-width) solid var(--tabs-line-border-color);
+}
+
+.ds-tabs--vertical.ds-tabs--line .ds-tabs__tab {
+  padding-inline: var(--tabs-item-padding-x);
+  margin-inline-start: calc(-1 * var(--tabs-line-border-width));
+  border-inline-start: var(--tabs-line-indicator-width) solid transparent;
+}
+
+.ds-tabs--vertical.ds-tabs--line .ds-tabs__tab[data-state='active'] {
+  box-shadow: none;
+  border-inline-start-color: var(--tabs-line-indicator-color);
+}
+
+/* Narrow screens: tabs go back to a row above the panel. */
+@media (width < 40rem) {
+  .ds-tabs--vertical {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ds-tabs--vertical .ds-tabs__list {
+    flex-flow: row wrap;
+  }
+
+  .ds-tabs--vertical .ds-tabs__list--line {
+    border-inline-start: 0;
+    box-shadow: inset 0 calc(-1 * var(--tabs-line-border-width)) 0 var(--tabs-line-border-color);
+  }
+
+  .ds-tabs--vertical.ds-tabs--line .ds-tabs__tab {
+    margin-inline-start: 0;
+    border-inline-start: 0;
+  }
+
+  .ds-tabs--vertical.ds-tabs--line .ds-tabs__tab[data-state='active'] {
+    box-shadow: inset 0 calc(-1 * var(--tabs-line-indicator-width)) 0
+      var(--tabs-line-indicator-color);
+  }
+}

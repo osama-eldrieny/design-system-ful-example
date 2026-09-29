@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Inline } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Inline/Inline.stories';
+import meta from '../../../../packages/react/src/Inline/Inline.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Inline
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Inline]}
+  optionStories={{ gap: 'Playground', justify: 'Playground' }}
+  behaviorStory="RightToLeft"
+/>

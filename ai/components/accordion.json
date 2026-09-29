@@ -1,0 +1,416 @@
+{
+  "id": "accordion",
+  "name": "Accordion",
+  "category": "Data display",
+  "status": "stable",
+  "since": "0.4.0",
+  "description": "An accordion stacks sections whose content shows and hides when their heading is pressed, such as an FAQ. One or several sections can be open.",
+  "imports": [
+    {
+      "name": "Accordion",
+      "from": "@ds/react"
+    },
+    {
+      "name": "AccordionItem",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For FAQs and long pages people scan for one answer.",
+    "For optional detail that would crowd the page."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "When people need to compare sections side by side.",
+      "alternative": "Tabs or a plain page"
+    },
+    {
+      "text": "For content most people need.",
+      "alternative": "Show it directly"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Heading button",
+      "description": "A real heading containing the toggle button."
+    },
+    {
+      "name": "Chevron",
+      "description": "Flips when open."
+    },
+    {
+      "name": "Content",
+      "description": "Shown when open."
+    }
+  ],
+  "options": [
+    {
+      "prop": "type",
+      "title": "Type",
+      "values": [
+        {
+          "value": "single",
+          "meaning": "One section open at a time; add collapsible to allow none."
+        },
+        {
+          "value": "multiple",
+          "meaning": "Any number open."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Open",
+      "meaning": "Content shown; chevron up.",
+      "trigger": "aria-expanded=\"true\""
+    },
+    {
+      "name": "Hover",
+      "meaning": "Tinted heading.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring inside the heading.",
+      "trigger": ":focus-visible"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Can’t open.",
+      "trigger": "disabled"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Keyboard",
+      "text": "Tab moves between headings; Enter or Space toggles; ↑ ↓ Home End move between headings."
+    },
+    {
+      "topic": "Headings",
+      "text": "Choose headingLevel to fit the page outline (default h3)."
+    },
+    {
+      "topic": "Motion",
+      "text": "Height animates; no animation for reduced motion."
+    }
+  ],
+  "content": [
+    "Headings: the question or topic, specific enough to scan."
+  ],
+  "guidelines": [
+    {
+      "do": "Write headings people can scan.",
+      "dont": "Use vague headings like “More”.",
+      "why": "People decide what to open from the heading alone."
+    },
+    {
+      "do": "Pick the heading level that fits the page.",
+      "dont": "Leave every accordion at h3 regardless of context.",
+      "why": "Screen reader users navigate by heading level."
+    },
+    {
+      "do": "Show essential content directly.",
+      "dont": "Hide required information in closed sections.",
+      "why": "Many people never open accordions."
+    }
+  ],
+  "accessibility": {
+    "role": "headings containing buttons that control regions.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves between headings."
+      },
+      {
+        "keys": "Enter / Space",
+        "action": "Toggles a section."
+      },
+      {
+        "keys": "↑ ↓ Home End",
+        "action": "Move between headings."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-expanded / aria-controls",
+        "when": "On each heading button (Radix)."
+      }
+    ],
+    "focus": "Focus ring inside the heading.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Real headings and button semantics."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Expanded state exposed."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Fully keyboard operable."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "faq",
+      "title": "FAQ",
+      "description": "One at a time.",
+      "code": "import { Accordion, AccordionItem } from '@ds/react';\n\n<Accordion type=\"single\" collapsible>\n  <AccordionItem value=\"shipping\" title=\"How long does shipping take?\">3–5 working days.</AccordionItem>\n  <AccordionItem value=\"returns\" title=\"Can I return an item?\">Yes, within 30 days.</AccordionItem>\n</Accordion>"
+    },
+    {
+      "id": "multiple",
+      "title": "Several open",
+      "description": "Settings sections.",
+      "code": "import { Accordion, AccordionItem } from '@ds/react';\n\n<Accordion type=\"multiple\" defaultValue={['profile']}>\n  <AccordionItem value=\"profile\" title=\"Profile\">…</AccordionItem>\n  <AccordionItem value=\"security\" title=\"Security\">…</AccordionItem>\n</Accordion>"
+    },
+    {
+      "id": "level",
+      "title": "Heading level",
+      "description": "Under an h2.",
+      "code": "import { Accordion, AccordionItem } from '@ds/react';\n\n<h2>Help</h2>\n<Accordion type=\"single\" collapsible>\n  <AccordionItem value=\"a\" title=\"Question\" headingLevel={3}>Answer.</AccordionItem>\n</Accordion>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--accordion-"
+  ],
+  "related": [
+    {
+      "id": "tabs",
+      "relation": "For switching between views."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.4.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Accordion",
+      "import": "import { Accordion } from '@ds/react';",
+      "description": "Stacked sections that show and hide their content, e.g. FAQs. `type=\"single\"` opens one at a\ntime (add `collapsible` to allow closing it); `type=\"multiple\"` opens any number.",
+      "props": {
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "AccordionItem",
+      "import": "import { AccordionItem } from '@ds/react';",
+      "description": "One section: a heading with a button, and its content.",
+      "props": {
+        "value": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Id of this section within the accordion."
+        },
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The heading text of the button that opens the section."
+        },
+        "headingLevel": {
+          "type": "2 | 3 | 4 | 5 | 6",
+          "values": [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "required": false,
+          "default": 3,
+          "description": "Heading level of the title, to fit the page outline. Default h3."
+        },
+        "asChild": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--accordion-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--accordion-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--accordion-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--accordion-trigger-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--accordion-trigger-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--accordion-trigger-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--accordion-content-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--accordion-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--accordion-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--accordion-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--accordion-padding-y": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--accordion-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--accordion-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--accordion-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--accordion-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--accordion-duration": {
+      "description": "Elements changing size or position: accordions, tabs.",
+      "references": "--duration-normal",
+      "default": "200ms"
+    },
+    "--accordion-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--accordion-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--accordion-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--accordion-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--accordion-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--accordion-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "16px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-accordion--docs"
+}

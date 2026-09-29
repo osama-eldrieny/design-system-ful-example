@@ -1,0 +1,325 @@
+{
+  "id": "logo",
+  "name": "Logo",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "The logo shows the product’s mark and name, usually at the start of the navigation bar, linking to the home page. Its colors, corners and spacing follow the theme.",
+  "imports": [
+    {
+      "name": "Logo",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "At the start of the Navbar, linking home.",
+    "In sign-in screens, footers and empty states that name the product."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a person or team.",
+      "alternative": "Avatar"
+    },
+    {
+      "text": "For decorative icons in content.",
+      "alternative": "An icon from lucide-react"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Mark",
+      "description": "Icon on a brand-colored tile; corners follow the radius theme."
+    },
+    {
+      "name": "Name",
+      "description": "The wordmark; also the accessible name.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "hideName",
+      "title": "Name",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Mark and name. Default."
+        },
+        {
+          "value": "true",
+          "meaning": "Mark only, for tight spaces; the name is still announced."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "At rest.",
+      "trigger": "—"
+    },
+    {
+      "name": "Focus",
+      "meaning": "A linked logo shows the focus ring.",
+      "trigger": ":focus-visible with href"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Link",
+      "text": "With href the logo is a single link named by the product name."
+    },
+    {
+      "topic": "Themes",
+      "text": "Brand, mode, radius and density come from the theme; there are no brand props. Wrap in ThemeProvider to show another brand."
+    }
+  ],
+  "content": [
+    "Use the product name exactly as it is written in the brand."
+  ],
+  "guidelines": [
+    {
+      "do": "Link the logo to the home page.",
+      "dont": "Add a separate “Home” link next to it that does the same.",
+      "why": "People expect the logo to go home; a duplicate link adds noise."
+    },
+    {
+      "do": "Keep the name visible where there’s room.",
+      "dont": "Hide the name everywhere to look minimal.",
+      "why": "The name tells new visitors where they are."
+    },
+    {
+      "do": "Let the theme color the logo.",
+      "dont": "Override its colors per brand in page CSS.",
+      "why": "Theme tokens keep contrast right in every brand and mode."
+    }
+  ],
+  "accessibility": {
+    "role": "link (with href), img (name hidden) or plain text.",
+    "keyboard": [
+      {
+        "keys": "Tab / Enter",
+        "action": "Reach and follow a linked logo."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-hidden on the mark",
+        "when": "Always: the mark is decorative."
+      },
+      {
+        "attribute": "aria-label",
+        "when": "Set to the name when hideName is on."
+      }
+    ],
+    "focus": "A linked logo shows the focus ring.",
+    "wcag": [
+      {
+        "criterion": "1.1.1 Non-text Content",
+        "how": "The name is always the text alternative."
+      },
+      {
+        "criterion": "2.4.4 Link Purpose",
+        "how": "The link is named by the product name."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "link",
+      "title": "Home link",
+      "description": "The usual case, at the start of the Navbar.",
+      "code": "import { Logo } from '@ds/react';\nimport { Flame } from 'lucide-react';\n\n<Logo name=\"TechHub\" icon={<Flame />} href=\"/\" />"
+    },
+    {
+      "id": "mark",
+      "title": "Mark only",
+      "description": "For narrow layouts; still named for screen readers.",
+      "code": "import { Logo } from '@ds/react';\n\n<Logo name=\"TechHub\" hideName href=\"/\" />"
+    },
+    {
+      "id": "brand",
+      "title": "In another brand",
+      "description": "The theme sets the colors.",
+      "code": "import { Logo, ThemeProvider } from '@ds/react';\n\n<ThemeProvider theme={{ brand: 'amber' }}>\n  <Logo name=\"TechHub\" />\n</ThemeProvider>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--logo-"
+  ],
+  "related": [
+    {
+      "id": "navbar",
+      "relation": "The logo usually starts the navigation bar."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "name replaces text; href makes it a link; hideName shows the mark only.",
+        "brand, radius, density and language props removed: the theme sets them. Hard-coded colors removed.",
+        "Default mark is a Lucide icon instead of a Font Awesome class."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Logo",
+      "import": "import { Logo } from '@ds/react';",
+      "description": "The product's mark and name. Colors, corners and spacing follow the theme.",
+      "props": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Product or company name. Shown as the wordmark and used as the accessible name."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": "<Hexagon />",
+          "description": "The mark, usually an icon. Decorative: the name already says what it is."
+        },
+        "href": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Makes the logo a link, usually to the home page."
+        },
+        "hideName": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows only the mark, e.g. in tight spaces. The name is still announced."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--logo-icon-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--logo-icon-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--logo-name-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--logo-icon-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--logo-icon-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--logo-name-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--logo-name-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--logo-name-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--logo-name-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--logo-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xl",
+      "default": "38px"
+    },
+    "--logo-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--logo-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--logo-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--logo-gap": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-16",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--logo-icon-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-12",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    },
+    "--logo-name-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'My Design System'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'نظامي التصميمي'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-logo--docs"
+}

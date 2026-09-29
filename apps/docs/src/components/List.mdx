@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FileText } from 'lucide-react';
+import { List, ListItem } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/List/List.stories';
+import meta from '../../../../packages/react/src/List/List.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# List
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[List, ListItem]}
+  anatomy={{
+    targets: ['.ds-list__icon', '.ds-list__title', '.ds-list__description', '.ds-list__meta'],
+    example: (
+      <List style={{ inlineSize: 320 }}>
+        <ListItem icon={<FileText />} title="Report.pdf" description="2.4 MB" meta="Today" />
+      </List>
+    ),
+  }}
+  optionStories={{ divided: 'Divided', ordered: 'Divided' }}
+  extras={[{ title: 'People', story: 'People' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <List divided style={{ inlineSize: 240 }}>
+      <ListItem title="Report.pdf" meta="Today" />
+      <ListItem title="Notes.txt" meta="Sep 12" />
+    </List>
+  }
+/>

@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Breadcrumb } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Breadcrumb/Breadcrumb.stories';
+import meta from '../../../../packages/react/src/Breadcrumb/Breadcrumb.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Breadcrumb
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Breadcrumb]}
+  anatomy={{
+    targets: ['.ds-breadcrumb__link', '.ds-breadcrumb__separator', '.ds-breadcrumb__current'],
+    example: (
+      <Breadcrumb
+        aria-label="Anatomy"
+        items={[
+          { label: 'Home', href: '#h' },
+          { label: 'Audio', href: '#a' },
+          { label: 'Headphones' },
+        ]}
+      />
+    ),
+  }}
+  optionStories={{ maxItems: 'Collapsed' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <Breadcrumb
+      aria-label="Matrix"
+      items={[{ label: 'Home', href: '#h' }, { label: 'Headphones' }]}
+    />
+  }
+/>

@@ -1,0 +1,690 @@
+{
+  "id": "checkbox",
+  "name": "Checkbox",
+  "category": "Forms",
+  "status": "stable",
+  "since": "0.3.0",
+  "description": "A checkbox turns one option on or off, or lets people pick any number of options from a list. The choice applies when the form is submitted. CheckboxGroup puts several under one question with a single legend and error.",
+  "imports": [
+    {
+      "name": "Checkbox",
+      "from": "@ds/react"
+    },
+    {
+      "name": "CheckboxGroup",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To pick any number of options, including none, from a short list.",
+    "For a single yes/no in a form, e.g. “I accept the terms”.",
+    "For a select-all box over a list (indeterminate when some are selected)."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "When exactly one option must be chosen.",
+      "alternative": "RadioGroup"
+    },
+    {
+      "text": "For a setting that applies immediately.",
+      "alternative": "Switch"
+    },
+    {
+      "text": "For a long list of options.",
+      "alternative": "Select or Combobox with multiple selection"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Box",
+      "description": "Ticked, empty or showing a dash (indeterminate)."
+    },
+    {
+      "name": "Label",
+      "description": "Clicking it toggles the box."
+    },
+    {
+      "name": "Description",
+      "description": "Extra detail.",
+      "optional": true
+    },
+    {
+      "name": "Error",
+      "description": "For a single checkbox; groups show one error for all.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "14px box, small label; dense lists and tables."
+        },
+        {
+          "value": "medium",
+          "meaning": "16px box. Default."
+        },
+        {
+          "value": "large",
+          "meaning": "22px box; touch-first forms."
+        }
+      ]
+    },
+    {
+      "prop": "orientation",
+      "title": "Orientation (on CheckboxGroup)",
+      "values": [
+        {
+          "value": "vertical",
+          "meaning": "Options stacked. Default; easiest to scan."
+        },
+        {
+          "value": "horizontal",
+          "meaning": "Two or three short options in a row; wraps when narrow."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Unchecked",
+      "meaning": "Off.",
+      "trigger": "—"
+    },
+    {
+      "name": "Checked",
+      "meaning": "On: filled box with a tick.",
+      "trigger": ":checked"
+    },
+    {
+      "name": "Indeterminate",
+      "meaning": "Some, not all: a dash; announced as “mixed”.",
+      "trigger": "indeterminate"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Brand-colored border.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring around the box.",
+      "trigger": ":focus-visible"
+    },
+    {
+      "name": "Error",
+      "meaning": "Red border and message.",
+      "trigger": "error"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Dimmed; can’t be changed.",
+      "trigger": "disabled"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Native input",
+      "text": "A real <input type=\"checkbox\"> sits on top of the drawn box, so forms, autofill, Space to toggle and screen readers work as usual."
+    },
+    {
+      "topic": "Groups",
+      "text": "Inside CheckboxGroup, each Checkbox’s value is added to or removed from the group’s value array."
+    },
+    {
+      "topic": "Select all",
+      "text": "Set indeterminate when some items are checked; clicking it then checks all (your handler decides)."
+    }
+  ],
+  "content": [
+    "Labels: positive statements (“Email me updates”), not negatives (“Don’t email me”).",
+    "Group legend: the question (“Which topics interest you?”).",
+    "Order options logically: by frequency, alphabetically, or in a natural sequence."
+  ],
+  "guidelines": [
+    {
+      "do": "Use a CheckboxGroup with a legend for related options.",
+      "dont": "Stack loose checkboxes under a paragraph.",
+      "why": "The legend is announced with each option, so people know what they’re choosing."
+    },
+    {
+      "do": "Use a Switch for settings that apply at once.",
+      "dont": "Save a checkbox immediately when it’s clicked.",
+      "why": "People expect checkboxes to wait for Submit."
+    },
+    {
+      "do": "Make the label clickable (it is by default).",
+      "dont": "Put the label in a separate element that doesn’t toggle.",
+      "why": "The label is a much larger, easier target than the box."
+    }
+  ],
+  "accessibility": {
+    "role": "checkbox (native input); group is a fieldset with a legend.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves to the next checkbox."
+      },
+      {
+        "keys": "Space",
+        "action": "Toggles the focused checkbox."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-checked=\"mixed\"",
+        "when": "Implied by the native indeterminate property."
+      },
+      {
+        "attribute": "aria-describedby",
+        "when": "Description and error of a single checkbox."
+      },
+      {
+        "attribute": "aria-invalid",
+        "when": "A single checkbox with an error."
+      }
+    ],
+    "focus": "Focus ring around the box.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Native checkbox, label and fieldset/legend."
+      },
+      {
+        "criterion": "1.4.11 Non-text Contrast",
+        "how": "Box borders meet 3:1 in every theme."
+      },
+      {
+        "criterion": "2.5.8 Target Size",
+        "how": "The label extends the click target."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Checked and mixed states come from the native input."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "single",
+      "title": "Single checkbox",
+      "description": "A yes/no in a form, with an error.",
+      "code": "import { Checkbox } from '@ds/react';\n\n<Checkbox\n  name=\"terms\"\n  label=\"I accept the terms and conditions\"\n  error={errors.terms && 'Accept the terms to continue.'}\n  required\n/>"
+    },
+    {
+      "id": "group",
+      "title": "Group",
+      "description": "Several choices under one legend.",
+      "code": "import { CheckboxGroup, Checkbox } from '@ds/react';\n\n<CheckboxGroup label=\"Topics\" name=\"topics\" defaultValue={['design']}>\n  <Checkbox value=\"design\" label=\"Design\" />\n  <Checkbox value=\"engineering\" label=\"Engineering\" />\n  <Checkbox value=\"research\" label=\"Research\" description=\"Studies and interviews\" />\n</CheckboxGroup>"
+    },
+    {
+      "id": "select-all",
+      "title": "Select all",
+      "description": "Indeterminate while some rows are selected.",
+      "code": "import { Checkbox } from '@ds/react';\n\nconst all = selected.length === rows.length;\n<Checkbox\n  label=\"Select all\"\n  checked={all}\n  indeterminate={selected.length > 0 && !all}\n  onCheckedChange={(on) => setSelected(on ? rows.map((r) => r.id) : [])}\n/>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--checkbox-"
+  ],
+  "related": [
+    {
+      "id": "radio-group",
+      "relation": "When exactly one option must be chosen."
+    },
+    {
+      "id": "switch",
+      "relation": "For settings that apply immediately."
+    },
+    {
+      "id": "form-field",
+      "relation": "Provides the group’s legend and messages."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Checkbox",
+      "import": "import { Checkbox } from '@ds/react';",
+      "description": "A box people tick to turn one option on or off, or to pick several options from a list.\nThe change applies when the form is submitted; for immediate effect, use a Switch.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Visible label; clicking it toggles the box. Without it, pass aria-label."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Extra detail under the label."
+        },
+        "error": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Error for a single checkbox, e.g. “Accept the terms to continue”. Marks it invalid."
+        },
+        "checked": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Checked (controlled). Use with onCheckedChange."
+        },
+        "defaultChecked": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Initially checked when uncontrolled."
+        },
+        "onCheckedChange": {
+          "type": "((checked: boolean) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the new checked state."
+        },
+        "indeterminate": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows a dash for “some but not all”, e.g. a select-all box. Announced as “mixed”."
+        },
+        "size": {
+          "type": "CheckboxSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for dense lists, `medium` by default, `large` for touch-first forms."
+        },
+        "value": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Value submitted with the form, and the id of this option inside a CheckboxGroup."
+        }
+      }
+    },
+    {
+      "name": "CheckboxGroup",
+      "import": "import { CheckboxGroup } from '@ds/react';",
+      "description": "A set of checkboxes answering one question, e.g. “Which topics interest you?”. A fieldset\nwith a legend, help text and one error for the whole group.",
+      "props": {
+        "value": {
+          "type": "string[]",
+          "required": false,
+          "default": null,
+          "description": "Checked values (controlled). Use with onValueChange."
+        },
+        "defaultValue": {
+          "type": "string[]",
+          "required": false,
+          "default": "[]",
+          "description": "Initially checked values when uncontrolled."
+        },
+        "onValueChange": {
+          "type": "((value: string[]) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the new list of checked values."
+        },
+        "orientation": {
+          "type": "\"vertical\" | \"horizontal\"",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "required": false,
+          "default": "vertical",
+          "description": "`vertical` (default) stacks options; `horizontal` puts short options in a row."
+        },
+        "size": {
+          "type": "CheckboxSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "Size of every checkbox in the group."
+        },
+        "name": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Form field name shared by the checkboxes."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The Checkbox options, each with a value."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Disables the control (and every control in a group)."
+        },
+        "required": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the field required: an asterisk after the label and `required` on the control."
+        },
+        "id": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Id of the control. Generated when not given."
+        },
+        "label": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "What the control is for, e.g. \"Message\". Always required: it names the control."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Help text, e.g. a format hint. Announced with the control."
+        },
+        "error": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Error message. Marks the control invalid and replaces the success message."
+        },
+        "hideLabel": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Hides the label visually but keeps it for screen readers. Only when context makes it obvious."
+        },
+        "success": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Confirmation message, e.g. \"Username is available\"."
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the field optional with text after the label. Use when most fields are required."
+        },
+        "optionalLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Text shown for optional fields. Default \"(optional)\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--checkbox-off-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--checkbox-off-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--checkbox-hover-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--checkbox-on-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--checkbox-on-hover-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-hover",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#dfd4ff",
+        "brand=amber,mode=light": "#c28f58",
+        "brand=amber,mode=dark": "#f9f5f1",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#f4f6fc"
+      }
+    },
+    "--checkbox-icon-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--checkbox-error-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--checkbox-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--checkbox-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--checkbox-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--checkbox-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--checkbox-small-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xs",
+      "default": "14px"
+    },
+    "--checkbox-small-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--checkbox-small-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--checkbox-large-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--checkbox-large-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--checkbox-large-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--checkbox-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--checkbox-label-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--checkbox-label-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--checkbox-label-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--checkbox-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--checkbox-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--checkbox-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--checkbox-error-text-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-danger-text-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f77777",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#bb8e9a",
+        "brand=opal,mode=light": "#cf3650",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--checkbox-group-horizontal-gap": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--checkbox-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--checkbox-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--checkbox-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--checkbox-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--checkbox-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--checkbox-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--checkbox-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-4",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-checkbox--docs"
+}

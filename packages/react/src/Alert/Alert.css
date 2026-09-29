@@ -1,0 +1,200 @@
+/**
+ * Alert. Styled only with --alerts-* tokens. Each variant × appearance sets private helpers
+ * (--_bg, --_border, --_title, --_text, --_icon, --_dismiss-hover) that the base rules read.
+ */
+
+.ds-alert {
+  --_border-style: var(--alerts-border-style);
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--alerts-gap);
+  padding-block: var(--alerts-padding-y);
+  padding-inline: var(--alerts-padding-x);
+  border: var(--alerts-border-width) var(--_border-style) var(--_border);
+  border-radius: var(--alerts-border-radius);
+  background-color: var(--_bg);
+  font-family: var(--alerts-title-font-family);
+}
+
+.ds-alert--warning {
+  --_border-style: var(--alerts-warning-border-style);
+}
+
+.ds-alert__icon {
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--alerts-icon-font-size);
+  block-size: var(--alerts-icon-font-size);
+  color: var(--_icon);
+}
+
+.ds-alert__icon > svg,
+.ds-alert__dismiss > svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ds-alert__content {
+  display: grid;
+  flex: 1;
+  gap: var(--alerts-content-gap);
+  min-inline-size: 0;
+}
+
+.ds-alert__title {
+  font-size: var(--alerts-title-font-size);
+  line-height: var(--alerts-title-font-line-height);
+  font-weight: var(--alerts-title-font-weight);
+  color: var(--_title);
+}
+
+.ds-alert__description {
+  font-size: var(--alerts-description-font-size);
+  line-height: var(--alerts-description-font-line-height);
+  font-weight: var(--alerts-description-font-weight);
+  color: var(--_text);
+}
+
+.ds-alert__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--alerts-actions-gap);
+  margin-block-start: var(--alerts-content-gap);
+}
+
+.ds-alert__dismiss {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  inline-size: var(--alerts-dismiss-size);
+  block-size: var(--alerts-dismiss-size);
+  padding: calc((var(--alerts-dismiss-size) - var(--alerts-dismiss-icon-size)) / 2);
+  border: 0;
+  border-radius: var(--alerts-border-radius);
+  background: transparent;
+  color: var(--_icon);
+  cursor: pointer;
+  transition: background-color var(--alerts-transition-duration) var(--alerts-transition-easing);
+}
+
+.ds-alert__dismiss:hover {
+  background-color: var(--_dismiss-hover);
+}
+
+.ds-alert__dismiss:focus-visible {
+  outline: var(--alerts-focus-ring-width) solid var(--alerts-focus-ring-color);
+  outline-offset: var(--alerts-focus-ring-offset);
+}
+
+/* primary */
+.ds-alert--primary.ds-alert--subtle {
+  --_bg: var(--alerts-primary-bg-color);
+  --_border: var(--alerts-primary-border-color);
+  --_title: var(--alerts-primary-font-color);
+  --_text: var(--alerts-primary-description-text-color);
+  --_icon: var(--alerts-primary-icon-color);
+  --_dismiss-hover: var(--alerts-primary-dismiss-hover-bg-color);
+}
+
+.ds-alert--primary.ds-alert--solid {
+  --_bg: var(--alerts-primary-solid-bg-color);
+  --_border: var(--alerts-primary-solid-bg-color);
+  --_title: var(--alerts-primary-solid-text-color);
+  --_text: var(--alerts-primary-solid-text-color);
+  --_icon: var(--alerts-primary-solid-text-color);
+  --_dismiss-hover: var(--alerts-primary-solid-dismiss-hover-bg-color);
+}
+
+.ds-alert--primary.ds-alert--outline {
+  --_bg: var(--alerts-primary-outline-bg-color);
+  --_border: var(--alerts-primary-outline-border-color);
+  --_title: var(--alerts-primary-outline-text-color);
+  --_text: var(--alerts-primary-outline-text-color);
+  --_icon: var(--alerts-primary-outline-text-color);
+  --_dismiss-hover: var(--alerts-primary-dismiss-hover-bg-color);
+}
+
+/* success */
+.ds-alert--success.ds-alert--subtle {
+  --_bg: var(--alerts-success-bg-color);
+  --_border: var(--alerts-success-border-color);
+  --_title: var(--alerts-success-font-color);
+  --_text: var(--alerts-success-description-text-color);
+  --_icon: var(--alerts-success-icon-color);
+  --_dismiss-hover: var(--alerts-success-dismiss-hover-bg-color);
+}
+
+.ds-alert--success.ds-alert--solid {
+  --_bg: var(--alerts-success-solid-bg-color);
+  --_border: var(--alerts-success-solid-bg-color);
+  --_title: var(--alerts-success-solid-text-color);
+  --_text: var(--alerts-success-solid-text-color);
+  --_icon: var(--alerts-success-solid-text-color);
+  --_dismiss-hover: var(--alerts-success-solid-dismiss-hover-bg-color);
+}
+
+.ds-alert--success.ds-alert--outline {
+  --_bg: var(--alerts-success-outline-bg-color);
+  --_border: var(--alerts-success-outline-border-color);
+  --_title: var(--alerts-success-outline-text-color);
+  --_text: var(--alerts-success-outline-text-color);
+  --_icon: var(--alerts-success-outline-text-color);
+  --_dismiss-hover: var(--alerts-success-dismiss-hover-bg-color);
+}
+
+/* warning */
+.ds-alert--warning.ds-alert--subtle {
+  --_bg: var(--alerts-warning-bg-color);
+  --_border: var(--alerts-warning-border-color);
+  --_title: var(--alerts-warning-font-color);
+  --_text: var(--alerts-warning-description-text-color);
+  --_icon: var(--alerts-warning-icon-color);
+  --_dismiss-hover: var(--alerts-warning-dismiss-hover-bg-color);
+}
+
+.ds-alert--warning.ds-alert--solid {
+  --_bg: var(--alerts-warning-solid-bg-color);
+  --_border: var(--alerts-warning-solid-bg-color);
+  --_title: var(--alerts-warning-solid-text-color);
+  --_text: var(--alerts-warning-solid-text-color);
+  --_icon: var(--alerts-warning-solid-text-color);
+  --_dismiss-hover: var(--alerts-warning-solid-dismiss-hover-bg-color);
+}
+
+.ds-alert--warning.ds-alert--outline {
+  --_bg: var(--alerts-warning-outline-bg-color);
+  --_border: var(--alerts-warning-outline-border-color);
+  --_title: var(--alerts-warning-outline-text-color);
+  --_text: var(--alerts-warning-outline-text-color);
+  --_icon: var(--alerts-warning-outline-text-color);
+  --_dismiss-hover: var(--alerts-warning-dismiss-hover-bg-color);
+}
+
+/* danger */
+.ds-alert--danger.ds-alert--subtle {
+  --_bg: var(--alerts-danger-bg-color);
+  --_border: var(--alerts-danger-border-color);
+  --_title: var(--alerts-danger-font-color);
+  --_text: var(--alerts-danger-description-text-color);
+  --_icon: var(--alerts-danger-icon-color);
+  --_dismiss-hover: var(--alerts-danger-dismiss-hover-bg-color);
+}
+
+.ds-alert--danger.ds-alert--solid {
+  --_bg: var(--alerts-danger-solid-bg-color);
+  --_border: var(--alerts-danger-solid-bg-color);
+  --_title: var(--alerts-danger-solid-text-color);
+  --_text: var(--alerts-danger-solid-text-color);
+  --_icon: var(--alerts-danger-solid-text-color);
+  --_dismiss-hover: var(--alerts-danger-solid-dismiss-hover-bg-color);
+}
+
+.ds-alert--danger.ds-alert--outline {
+  --_bg: var(--alerts-danger-outline-bg-color);
+  --_border: var(--alerts-danger-outline-border-color);
+  --_title: var(--alerts-danger-outline-text-color);
+  --_text: var(--alerts-danger-outline-text-color);
+  --_icon: var(--alerts-danger-outline-text-color);
+  --_dismiss-hover: var(--alerts-danger-dismiss-hover-bg-color);
+}

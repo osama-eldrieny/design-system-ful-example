@@ -1,0 +1,36 @@
+/**
+ * Component tokens: form-field
+ *
+ * Style this component only with these tokens. FormField is the label, help text and
+ * message around any form control; its values match InputField so all fields look alike.
+ *
+ * Grammar: --form-field-{part?}-{property}
+ *   part: label | required | optional | group (the controls of a group) | description |
+ *         error | success | message.
+ */
+
+:root,
+[data-theme] {
+  --form-field-gap: var(--spacing-2xs);
+
+  /* Space between the controls of a group */
+  --form-field-group-gap: var(--spacing-sm);
+  --form-field-group-controls-gap: var(--spacing-xs);
+  --form-field-label-font-family: var(--font-family-body);
+  --form-field-label-font-size: var(--font-size-md);
+  --form-field-label-font-line-height: var(--font-line-height-md);
+  --form-field-label-font-weight: var(--font-weight-medium);
+  --form-field-label-text-color: var(--color-fg-on-surface-primary);
+  --form-field-required-text-color: var(--color-fg-on-accent-danger-text-default);
+  --form-field-optional-text-color: var(--color-fg-on-surface-secondary);
+  --form-field-optional-font-weight: var(--font-weight-regular);
+  --form-field-message-font-family: var(--font-family-body);
+  --form-field-message-font-size: var(--font-size-sm);
+  --form-field-message-font-line-height: var(--font-line-height-sm);
+  --form-field-description-text-color: var(--color-fg-on-surface-secondary);
+  --form-field-error-text-color: var(--color-fg-on-accent-danger-text-default);
+  --form-field-success-text-color: var(--color-fg-on-accent-success-text-default);
+
+  /* Size of a visually hidden label (still announced by screen readers) */
+  --form-field-hidden-label-size: var(--border-width-hairline);
+}

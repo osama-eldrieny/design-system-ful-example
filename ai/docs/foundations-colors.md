@@ -1,0 +1,23 @@
+# Colors
+
+Color comes in three tiers. **Palettes** hold the raw colors of each brand. **Semantic roles** name what a color is for (a page background, text on a filled button) and point at a palette step for each brand and mode. **Component tokens** point at roles. Components only ever use their own tokens, so switching brand or mode changes every component at once.
+
+## How to choose a color
+
+- Styling a component: use its component token, e.g. `--button-primary-default-bg-color`.
+- Adding a variant or component: create component tokens that point at a **role** below, never at a palette step or a hex value.
+- Need a role that doesn't exist? Add it to `themes/color.css` for all six brand × mode blocks, with a line in the file's token reference.
+
+## Backgrounds
+
+## Text and icons
+
+## Borders
+
+## Contrast
+
+Every text/background pairing the system promises is checked against WCAG 2.2 AA in every brand and mode on each build: 4.5:1 for text, 3:1 for icons and focus rings. A new failure breaks the build.
+
+## Palettes
+
+Raw colors per brand, from 100 (lightest) to 1000 (darkest). Reference them only from semantic roles.

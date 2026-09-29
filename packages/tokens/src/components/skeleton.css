@@ -1,0 +1,17 @@
+/**
+ * Component tokens: skeleton
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --skeleton-{property}. Corners of blocks come from the radius theme.
+ */
+
+:root,
+[data-theme] {
+  --skeleton-bg-color: var(--color-bg-secondary-200);
+  --skeleton-highlight-color: var(--color-bg-base);
+  --skeleton-text-height: var(--font-size-md);
+  --skeleton-gap: var(--spacing-xs);
+  --skeleton-border-radius: var(--radius-xs);
+  --skeleton-duration: var(--duration-loop);
+}

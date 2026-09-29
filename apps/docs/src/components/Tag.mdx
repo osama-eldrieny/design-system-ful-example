@@ -1,0 +1,31 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Hash } from 'lucide-react';
+import { Tag } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Tag/Tag.stories';
+import meta from '../../../../packages/react/src/Tag/Tag.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Tag
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Tag]}
+  anatomy={{
+    targets: ['.ds-tag__icon', { selector: '.ds-tag', at: 'center' }, '.ds-tag__remove'],
+    example: (
+      <Tag icon={<Hash />} onRemove={() => {}}>
+        Design
+      </Tag>
+    ),
+  }}
+  optionStories={{ tone: 'Tones', appearance: 'Tones' }}
+  extras={[
+    { title: 'Removable', story: 'Removable' },
+    { title: 'Selectable', story: 'Selectable' },
+  ]}
+  behaviorStory="RightToLeft"
+  matrix={<Tag onRemove={() => {}}>Design</Tag>}
+/>

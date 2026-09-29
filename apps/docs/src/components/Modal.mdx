@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Modal, ModalContent, ModalFooter, Button } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Modal/Modal.stories';
+import meta from '../../../../packages/react/src/Modal/Modal.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Modal
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Modal, ModalContent]}
+  anatomy={{
+    targets: [
+      '.ds-modal__title',
+      '.ds-modal__close',
+      '.ds-modal__description',
+      '.ds-modal__footer',
+    ],
+    example: (
+      <Modal defaultOpen modal={false}>
+        <ModalContent
+          title="Rename file"
+          description="Names must be unique."
+          style={{ position: 'static', translate: 'none', inlineSize: 360 }}
+        >
+          <ModalFooter>
+            <Button>Save</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    ),
+  }}
+  optionStories={{ size: 'Sizes', role: 'ConfirmDelete' }}
+  behaviorStory="RightToLeft"
+/>

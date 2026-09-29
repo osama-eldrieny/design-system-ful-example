@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SideNav } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/SideNav/SideNav.stories';
+import meta from '../../../../packages/react/src/SideNav/SideNav.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# SideNav
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[SideNav]}
+  anatomy={{
+    targets: [
+      '.ds-side-nav__group-label',
+      '.ds-side-nav__item[aria-current]',
+      '.ds-side-nav__item--group',
+    ],
+    example: (
+      <div style={{ inlineSize: 240 }}>
+        <SideNav
+          aria-label="Anatomy"
+          currentItem="b"
+          sections={[
+            {
+              title: 'Workspace',
+              items: [
+                { id: 'b', label: 'Orders', href: '#b' },
+                { label: 'Reports', items: [{ id: 'c', label: 'Sales', href: '#c' }] },
+              ],
+            },
+          ]}
+        />
+      </div>
+    ),
+  }}
+  optionStories={{ sections: 'Flat' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ inlineSize: 200 }}>
+      <SideNav
+        aria-label="Matrix"
+        currentItem="b"
+        sections={[
+          {
+            items: [
+              { id: 'a', label: 'Home', href: '#a' },
+              { id: 'b', label: 'Orders', href: '#b' },
+            ],
+          },
+        ]}
+      />
+    </div>
+  }
+/>

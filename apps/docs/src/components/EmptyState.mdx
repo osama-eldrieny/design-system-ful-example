@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { EmptyState, Button } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/EmptyState/EmptyState.stories';
+import meta from '../../../../packages/react/src/EmptyState/EmptyState.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# EmptyState
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[EmptyState]}
+  anatomy={{
+    targets: [
+      '.ds-empty-state__icon',
+      '.ds-empty-state__title',
+      '.ds-empty-state__description',
+      '.ds-empty-state__actions',
+    ],
+    example: (
+      <EmptyState
+        titleAs="h3"
+        title="No orders yet"
+        description="Orders appear here once customers buy."
+        actions={<Button>Create order</Button>}
+      />
+    ),
+  }}
+  optionStories={{ titleAs: 'NoResults' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <EmptyState titleAs="h3" title="No orders" actions={<Button size="small">Create</Button>} />
+  }
+/>

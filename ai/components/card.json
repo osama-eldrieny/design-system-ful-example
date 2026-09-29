@@ -1,0 +1,831 @@
+{
+  "id": "card",
+  "name": "Card",
+  "category": "Data display",
+  "status": "stable",
+  "since": "0.2.0",
+  "description": "A card groups content and actions about one subject, such as an article, a product or a person, into a single container. It can hold media, a title, text and actions, and can link to a detail page.",
+  "imports": [
+    {
+      "name": "Card",
+      "from": "@ds/react"
+    },
+    {
+      "name": "CardMedia",
+      "from": "@ds/react"
+    },
+    {
+      "name": "CardBody",
+      "from": "@ds/react"
+    },
+    {
+      "name": "CardTitle",
+      "from": "@ds/react"
+    },
+    {
+      "name": "CardDescription",
+      "from": "@ds/react"
+    },
+    {
+      "name": "CardFooter",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To show a collection of similar items people scan and compare, e.g. products or articles in a grid.",
+    "To group a summary and its actions, linking to a detail page."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To lay out a whole page section.",
+      "alternative": "A section or Stack"
+    },
+    {
+      "text": "For rows of data people compare column by column.",
+      "alternative": "Table"
+    },
+    {
+      "text": "For a single message or status.",
+      "alternative": "Alert"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Container",
+      "description": "Background, corners (radius theme) and shadow (shadow theme)."
+    },
+    {
+      "name": "Media",
+      "description": "Optional image; the theme’s placeholder shows without one.",
+      "optional": true
+    },
+    {
+      "name": "Title",
+      "description": "Names the subject; becomes the link in a clickable card."
+    },
+    {
+      "name": "Description",
+      "description": "Optional supporting text.",
+      "optional": true
+    },
+    {
+      "name": "Footer",
+      "description": "Optional actions or metadata.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "elevated",
+          "meaning": "Shadow from the shadow theme. Default on page backgrounds."
+        },
+        {
+          "value": "outlined",
+          "meaning": "Border instead of shadow, for dense layouts and flat themes."
+        },
+        {
+          "value": "filled",
+          "meaning": "Tinted background, for grouping inside another surface."
+        }
+      ]
+    },
+    {
+      "prop": "orientation",
+      "title": "Orientation",
+      "values": [
+        {
+          "value": "vertical",
+          "meaning": "Media above the body. Default for grids."
+        },
+        {
+          "value": "horizontal",
+          "meaning": "Media beside the body, for lists."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "At rest.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "A clickable card highlights its border.",
+      "trigger": ":hover on a card with href."
+    },
+    {
+      "name": "Focus",
+      "meaning": "The whole card shows the focus ring when its link has focus.",
+      "trigger": ":focus-within."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Clickable cards",
+      "text": "With href, the title becomes the link and its hit area stretches over the card: one link, one Tab stop, a sensible screen reader name."
+    },
+    {
+      "topic": "Actions in cards",
+      "text": "Buttons in CardFooter stay clickable and separate from the card link."
+    },
+    {
+      "topic": "Headings",
+      "text": "Pick the CardTitle level (as) that fits the page outline; default h3."
+    },
+    {
+      "topic": "Themes",
+      "text": "Corners follow the radius theme, the elevated shadow the shadow theme, colors brand and mode."
+    }
+  ],
+  "content": [
+    "Keep titles short and front-load the important words.",
+    "Keep descriptions to one or two lines in grids so cards stay the same height."
+  ],
+  "guidelines": [
+    {
+      "do": "Make the whole card clickable with href when it leads to one place.",
+      "dont": "Nest several links that all go to the same page.",
+      "why": "Repeated links add Tab stops and noise for screen readers."
+    },
+    {
+      "do": "Keep cards in a grid consistent: same parts, same order.",
+      "dont": "Mix cards with and without media in one row.",
+      "why": "Consistent cards are easier to scan and compare."
+    },
+    {
+      "do": "Use outlined cards when the shadow theme is flat.",
+      "dont": "Place flat, borderless cards on a background of the same color.",
+      "why": "Without a shadow or border the card’s edges disappear."
+    }
+  ],
+  "accessibility": {
+    "role": "article by default (or the element you choose with as).",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Reaches the card link (with href) and any footer actions."
+      },
+      {
+        "keys": "Enter",
+        "action": "Follows the card link."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "none needed",
+        "when": "The heading and link give the card its name."
+      }
+    ],
+    "focus": "In a clickable card, the focus ring surrounds the whole card.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Cards use real headings and an article element."
+      },
+      {
+        "criterion": "2.4.4 Link Purpose",
+        "how": "The card link is named by its title."
+      },
+      {
+        "criterion": "1.1.1 Non-text Content",
+        "how": "CardMedia requires alt (empty when decorative)."
+      }
+    ],
+    "notes": [
+      "Avoid making a card clickable and also putting other links in its body."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Article card",
+      "description": "Media, title and description.",
+      "code": "import { Card, CardMedia, CardBody, CardTitle, CardDescription } from '@ds/react';\n\n<Card>\n  <CardMedia src=\"/covers/tokens.png\" alt=\"\" />\n  <CardBody>\n    <CardTitle>Design tokens in practice</CardTitle>\n    <CardDescription>How one CSS file themes three brands.</CardDescription>\n  </CardBody>\n</Card>"
+    },
+    {
+      "id": "link",
+      "title": "Clickable card",
+      "description": "The whole card links to the article.",
+      "code": "import { Card, CardBody, CardTitle, CardDescription } from '@ds/react';\n\n<Card href=\"/articles/tokens\" appearance=\"outlined\">\n  <CardBody>\n    <CardTitle>Design tokens in practice</CardTitle>\n    <CardDescription>8 min read</CardDescription>\n  </CardBody>\n</Card>"
+    },
+    {
+      "id": "actions",
+      "title": "With actions",
+      "description": "Footer actions stay separate from the card.",
+      "code": "import { Card, CardBody, CardTitle, CardFooter, Button } from '@ds/react';\n\n<Card>\n  <CardBody>\n    <CardTitle>Pro plan</CardTitle>\n  </CardBody>\n  <CardFooter>\n    <Button size=\"small\">Upgrade</Button>\n  </CardFooter>\n</Card>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--card-"
+  ],
+  "related": [
+    {
+      "id": "product-card",
+      "relation": "Pattern for products, built from Card."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.2.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Card is now a generic container (media, body, title, description, footer) with appearances and orientations.",
+        "The product layout moved to ProductCard; the brand prop and its hard-coded colors were removed (use ThemeProvider).",
+        "Accessible clickable cards via href."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Card",
+      "import": "import { Card } from '@ds/react';",
+      "description": "A container that groups related content and actions about one subject, such as a product,\nan article or a person.",
+      "props": {
+        "appearance": {
+          "type": "CardAppearance",
+          "values": [
+            "elevated",
+            "outlined",
+            "filled"
+          ],
+          "required": false,
+          "default": "elevated",
+          "description": "`elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for\ndense layouts, `filled` tints it for grouping inside a surface."
+        },
+        "orientation": {
+          "type": "CardOrientation",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "required": false,
+          "default": "vertical",
+          "description": "`vertical` stacks media above the body; `horizontal` puts media beside it."
+        },
+        "href": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area\ncovers the card, so there's one clear, accessible target."
+        },
+        "as": {
+          "type": "ElementType",
+          "required": false,
+          "default": "h3",
+          "description": "Element to render: `article` (default) for standalone content, `div` or `li` otherwise."
+        }
+      }
+    },
+    {
+      "name": "CardMedia",
+      "import": "import { CardMedia } from '@ds/react';",
+      "description": "An image at the top (or side) of the card. Without src, the theme's placeholder shows.",
+      "props": {
+        "alt": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Describes the image. Use an empty string when the image is decorative, e.g. when the\ntitle already says what it shows."
+        }
+      }
+    },
+    {
+      "name": "CardBody",
+      "import": "import { CardBody } from '@ds/react';",
+      "description": "The card's text and content.",
+      "props": {}
+    },
+    {
+      "name": "CardTitle",
+      "import": "import { CardTitle } from '@ds/react';",
+      "description": "The card's heading. In a card with href, it is the link.",
+      "props": {
+        "as": {
+          "type": "\"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\"",
+          "values": [
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6"
+          ],
+          "required": false,
+          "default": "h3",
+          "description": "Heading level that fits the page outline. Default h3."
+        }
+      }
+    },
+    {
+      "name": "CardDescription",
+      "import": "import { CardDescription } from '@ds/react';",
+      "description": "Supporting text under the title.",
+      "props": {}
+    },
+    {
+      "name": "CardFooter",
+      "import": "import { CardFooter } from '@ds/react';",
+      "description": "Actions or metadata at the bottom of the card. Buttons here stay clickable in link cards.",
+      "props": {}
+    }
+  ],
+  "tokens": {
+    "--card-image-name": {
+      "description": "Default card media image for the brand and mode.",
+      "references": "--image-card",
+      "default": "url('./images/card-image-diamond.png')",
+      "byTheme": {
+        "brand=diamond,mode=dark": "url('./images/card-image-dark.png')",
+        "brand=amber,mode=light": "url('./images/card-image-amber.png')",
+        "brand=amber,mode=dark": "url('./images/card-image-dark.png')",
+        "brand=opal,mode=light": "url('./images/card-image-opal.png')",
+        "brand=opal,mode=dark": "url('./images/card-image-dark.png')"
+      }
+    },
+    "--card-image-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--card-title-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--card-desc-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--card-review-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--card-stars-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-warning-high",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f7dd91",
+        "brand=amber,mode=dark": "#f7dd91",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--card-old-price-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--card-new-price-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--card-image-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--card-body-padding-x": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--card-body-padding-top": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--card-body-padding-bottom": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--card-body-gap": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
+    },
+    "--card-body-text-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--card-body-review-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--card-body-prices-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--card-stars-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--card-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--card-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--card-title-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--card-title-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-desc-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--card-desc-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--card-desc-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--card-desc-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-review-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--card-review-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--card-review-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--card-review-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-old-price-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--card-old-price-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--card-old-price-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--card-old-price-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-new-price-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xl",
+      "default": "24px"
+    },
+    "--card-new-price-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xl",
+      "default": "30px"
+    },
+    "--card-new-price-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--card-new-price-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--card-stars-icon-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--card-stars-icon-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--card-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--card-filled-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--card-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--card-outlined-border-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--card-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--card-shadow-x": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0"
+    },
+    "--card-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--card-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--card-horizontal-media-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--card-hover-border-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--card-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--card-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--card-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--card-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--card-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--card-stars-empty-icon-color": {
+      "description": "Emphasized tone outline, e.g. a selected card.",
+      "references": "--color-border-primary-strong",
+      "default": "#916dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#3b82f6",
+        "brand=opal,mode=dark": "#5e99f8"
+      }
+    },
+    "--card-visually-hidden-size": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--card-padding": {
+      "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
+      "references": "--space-16",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--card-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-20",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "40px"
+      }
+    },
+    "--card-image-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-4",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "8px"
+      }
+    },
+    "--card-shadow-y": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "4px",
+        "brand=diamond,mode=light,shadow=default": "8px",
+        "brand=diamond,mode=light,shadow=raised": "16px"
+      }
+    },
+    "--card-shadow-blur": {
+      "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
+      "references": "--shadow-0",
+      "default": "0",
+      "byTheme": {
+        "brand=diamond,mode=light,shadow=subtle": "8px",
+        "brand=diamond,mode=light,shadow=default": "16px",
+        "brand=diamond,mode=light,shadow=raised": "28px"
+      }
+    },
+    "--card-title-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'AirPods Max'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'سماعات AirPods Max من آبل'"
+      }
+    },
+    "--card-desc-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'Spatial audio. Noise cancelled. All-day comfort.'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'صوت محيطي. عزل ضوضاء. راحة طوال اليوم.'"
+      }
+    },
+    "--card-review-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'420 reviews'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'٤٢٠ تقييم'"
+      }
+    },
+    "--card-old-price-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'$549'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'٢٦٠٠٠£'"
+      }
+    },
+    "--card-new-price-font-content": {
+      "description": "Translated demo text. Real components take text from props, not tokens.",
+      "references": null,
+      "default": "'$500'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'٢٣٧٠٠£'"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-card--docs"
+}

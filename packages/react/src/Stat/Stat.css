@@ -1,0 +1,68 @@
+/** Stat. Styled only with --stat-* tokens. */
+
+.ds-stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stat-gap);
+  margin: 0;
+  font-family: var(--stat-font-family);
+}
+
+.ds-stat__label {
+  color: var(--stat-label-text-color);
+  font-size: var(--stat-label-font-size);
+  font-weight: var(--stat-label-font-weight);
+  line-height: var(--stat-label-font-line-height);
+}
+
+.ds-stat__value {
+  margin: 0;
+  color: var(--stat-value-text-color);
+  font-size: var(--stat-value-font-size);
+  font-weight: var(--stat-value-font-weight);
+  line-height: var(--stat-value-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-stat__change {
+  display: flex;
+  align-items: center;
+  gap: var(--stat-gap);
+  margin: 0;
+  font-size: var(--stat-change-font-size);
+  font-weight: var(--stat-change-font-weight);
+  line-height: var(--stat-change-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-stat__change > svg {
+  flex: none;
+  inline-size: var(--stat-icon-size);
+  block-size: var(--stat-icon-size);
+}
+
+.ds-stat__change--up {
+  color: var(--stat-change-up-text-color);
+}
+
+.ds-stat__change--down {
+  color: var(--stat-change-down-text-color);
+}
+
+.ds-stat__change--neutral {
+  color: var(--stat-change-neutral-text-color);
+}
+
+.ds-stat__help {
+  color: var(--stat-help-text-color);
+  font-weight: normal;
+}
+
+.ds-stat__hidden {
+  position: absolute;
+  inline-size: var(--stat-gap);
+  block-size: var(--stat-gap);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

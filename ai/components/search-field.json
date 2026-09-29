@@ -1,0 +1,369 @@
+{
+  "id": "search-field",
+  "name": "SearchField",
+  "category": "Forms",
+  "status": "stable",
+  "since": "0.3.0",
+  "description": "A search field has a search icon, a clear button and an optional keyboard shortcut that focuses it from anywhere on the page. Enter searches and Escape clears. It is built on InputField.",
+  "imports": [
+    {
+      "name": "SearchField",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To search or filter content on a page or across the site.",
+    "In toolbars and headers, often with a shortcut such as / or ⌘K."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To pick a value from a known list.",
+      "alternative": "Combobox or Select"
+    },
+    {
+      "text": "For other single-line text.",
+      "alternative": "InputField"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Search icon",
+      "description": "Decorative; signals the field’s purpose."
+    },
+    {
+      "name": "Field",
+      "description": "An InputField of type search."
+    },
+    {
+      "name": "Shortcut hint",
+      "description": "Shown while empty.",
+      "optional": true
+    },
+    {
+      "name": "Clear button",
+      "description": "Shown once there is text."
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size (from InputField)",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Toolbars and dense UI."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "Hero or page-level search."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Empty",
+      "meaning": "Placeholder and shortcut hint.",
+      "trigger": "—"
+    },
+    {
+      "name": "Filled",
+      "meaning": "Clear button instead of the hint.",
+      "trigger": "a query"
+    },
+    {
+      "name": "Focus, hover, disabled",
+      "meaning": "From InputField.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Keyboard",
+      "text": "Enter calls onSearch; Escape clears; the shortcut focuses the field (a single-key shortcut like / is ignored while typing in another field)."
+    },
+    {
+      "topic": "Label",
+      "text": "The label is visually hidden by default (“Search”) but always announced; set showLabel to show it."
+    },
+    {
+      "topic": "Shortcut",
+      "text": "“mod+k” means ⌘K on Mac and Ctrl+K elsewhere; exposed as aria-keyshortcuts."
+    }
+  ],
+  "content": [
+    "Placeholder: what can be searched, e.g. “Search products”.",
+    "Wrap page-level search in a <search> element or role=\"search\" landmark."
+  ],
+  "guidelines": [
+    {
+      "do": "Say what is searched in the placeholder or label.",
+      "dont": "Write just “Type here”.",
+      "why": "People need to know the scope of the search."
+    },
+    {
+      "do": "Use a familiar shortcut like / or ⌘K.",
+      "dont": "Bind letters people type everywhere, like s.",
+      "why": "Single-letter shortcuts clash with typing and assistive tech."
+    },
+    {
+      "do": "Show results as people type only when it’s fast.",
+      "dont": "Run a slow search on every keystroke.",
+      "why": "Laggy results are worse than pressing Enter."
+    }
+  ],
+  "accessibility": {
+    "role": "searchbox (input type=\"search\").",
+    "keyboard": [
+      {
+        "keys": "Shortcut",
+        "action": "Focuses the field."
+      },
+      {
+        "keys": "Enter",
+        "action": "Searches."
+      },
+      {
+        "keys": "Escape",
+        "action": "Clears the query."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-keyshortcuts",
+        "when": "With shortcut."
+      },
+      {
+        "attribute": "aria-label on the clear button",
+        "when": "From InputField (“Clear”)."
+      }
+    ],
+    "focus": "Clearing returns focus to the field.",
+    "wcag": [
+      {
+        "criterion": "2.1.4 Character Key Shortcuts",
+        "how": "Single-key shortcuts only fire when not typing elsewhere."
+      },
+      {
+        "criterion": "3.3.2 Labels or Instructions",
+        "how": "Always has an accessible label."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Native search input."
+      }
+    ],
+    "notes": []
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Search",
+      "description": "Searches on Enter.",
+      "code": "import { SearchField } from '@ds/react';\n\n<SearchField placeholder=\"Search products\" onSearch={(q) => navigate(`/search?q=${q}`)} />"
+    },
+    {
+      "id": "shortcut",
+      "title": "With a shortcut",
+      "description": "⌘K / Ctrl+K focuses it.",
+      "code": "import { SearchField } from '@ds/react';\n\n<search>\n  <SearchField placeholder=\"Search docs\" shortcut=\"mod+k\" />\n</search>"
+    },
+    {
+      "id": "filter",
+      "title": "Live filter",
+      "description": "Controlled; filters as people type.",
+      "code": "import { SearchField } from '@ds/react';\n\n<SearchField label=\"Filter orders\" placeholder=\"Filter orders\" value={q} onValueChange={setQ} size=\"small\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--search-field-"
+  ],
+  "related": [
+    {
+      "id": "input-field",
+      "relation": "The field it is built on."
+    },
+    {
+      "id": "combobox",
+      "relation": "To pick from suggestions."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "0.3.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "SearchField",
+      "import": "import { SearchField } from '@ds/react';",
+      "description": "A field for searching: search icon, clear button and an optional keyboard shortcut.\nBuilt on InputField.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": false,
+          "default": "Search",
+          "description": "Names the field. Default \"Search\"; hidden unless showLabel is set."
+        },
+        "showLabel": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows the label above the field. By default the search icon and placeholder carry it."
+        },
+        "shortcut": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Key that focuses the field from anywhere on the page, e.g. \"/\" or \"mod+k\" (⌘K on Mac,\nCtrl+K elsewhere). Shown as a hint and exposed with aria-keyshortcuts."
+        },
+        "onSearch": {
+          "type": "((query: string) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the query when Enter is pressed."
+        },
+        "onValueChange": {
+          "type": "((query: string) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the new query as people type or clear."
+        },
+        "size": {
+          "type": "InputFieldSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`small` for dense UI, `medium` by default, `large` for prominent forms."
+        },
+        "hideLabel": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Hides the label visually but keeps it for screen readers. Only for fields whose purpose\nis obvious from context, such as a search box with a search icon."
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the field optional with text after the label. Use when most fields are required."
+        },
+        "optionalLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Text shown for optional fields. Default \"(optional)\"."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Help text under the field, e.g. format hints."
+        },
+        "error": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Error message. Marks the field invalid and replaces the success message."
+        },
+        "success": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Confirmation message, e.g. \"Username is available\"."
+        },
+        "clearLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Accessible name of the clear button. Default \"Clear\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--search-field-shortcut-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--search-field-shortcut-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--search-field-shortcut-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--search-field-shortcut-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--search-field-shortcut-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-xs",
+      "default": "2px"
+    },
+    "--search-field-shortcut-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--search-field-shortcut-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--search-field-shortcut-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--search-field-shortcut-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-searchfield--docs"
+}

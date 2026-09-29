@@ -1,0 +1,104 @@
+/**
+ * Avatar and AvatarGroup. Styled only with --avatar-* tokens.
+ */
+
+.ds-avatar {
+  --_size: var(--avatar-medium-size);
+  --_radius: var(--avatar-medium-border-radius);
+  --_font-size: var(--avatar-medium-font-size);
+
+  position: relative;
+  display: inline-block;
+  flex: none;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  vertical-align: middle;
+}
+
+.ds-avatar--small {
+  --_size: var(--avatar-small-size);
+  --_radius: var(--avatar-small-border-radius);
+  --_font-size: var(--avatar-small-font-size);
+}
+
+.ds-avatar--large {
+  --_size: var(--avatar-large-size);
+  --_radius: var(--avatar-large-border-radius);
+  --_font-size: var(--avatar-large-font-size);
+}
+
+.ds-avatar--xlarge {
+  --_size: var(--avatar-xlarge-size);
+  --_radius: var(--avatar-xlarge-border-radius);
+  --_font-size: var(--avatar-xlarge-font-size);
+}
+
+.ds-avatar__frame {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+  border-radius: var(--_radius);
+  background-color: var(--avatar-bg-color);
+  color: var(--avatar-text-color);
+}
+
+.ds-avatar__image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+.ds-avatar__initials {
+  font-family: var(--avatar-font-family);
+  font-size: var(--_font-size);
+  font-weight: var(--avatar-font-weight);
+  line-height: 1;
+  user-select: none;
+}
+
+.ds-avatar__icon {
+  inline-size: 60%;
+  block-size: 60%;
+}
+
+.ds-avatar__status {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  inline-size: calc(var(--_size) * 0.3);
+  block-size: calc(var(--_size) * 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 0 var(--avatar-border-width) var(--avatar-ring-color);
+}
+
+.ds-avatar__status--online {
+  background-color: var(--avatar-status-online-color);
+}
+
+.ds-avatar__status--away {
+  background-color: var(--avatar-status-away-color);
+}
+
+.ds-avatar__status--busy {
+  background-color: var(--avatar-status-busy-color);
+}
+
+.ds-avatar__status--offline {
+  background-color: var(--avatar-status-offline-color);
+}
+
+.ds-avatar-group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.ds-avatar-group > .ds-avatar {
+  border-radius: var(--_radius);
+  box-shadow: 0 0 0 var(--avatar-border-width) var(--avatar-ring-color);
+}
+
+.ds-avatar-group > .ds-avatar + .ds-avatar {
+  margin-inline-start: var(--avatar-group-gap);
+}
