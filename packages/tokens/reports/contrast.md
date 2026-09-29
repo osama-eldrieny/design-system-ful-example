@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 187 | 187 | 0 |
-| diamond-dark | 187 | 187 | 0 |
-| amber-light | 187 | 187 | 0 |
-| amber-dark | 187 | 187 | 0 |
-| opal-light | 187 | 187 | 0 |
-| opal-dark | 187 | 187 | 0 |
+| diamond-light | 185 | 185 | 0 |
+| diamond-dark | 185 | 185 | 0 |
+| amber-light | 185 | 185 | 0 |
+| amber-dark | 185 | 185 | 0 |
+| opal-light | 185 | 185 | 0 |
+| opal-dark | 185 | 185 | 0 |
 
 ## Failures (0)
 
@@ -205,12 +205,10 @@ None.
 | diamond-light | `--palettes-danger700-font-color` | `--palettes-danger700-bg-color` | #fff on #cf2121 | 5.39:1 | 4.5:1 |
 | diamond-light | `--palettes-danger800-font-color` | `--palettes-danger800-bg-color` | #fff on #ad1c1c | 7.10:1 | 4.5:1 |
 | diamond-light | `--palettes-danger900-font-color` | `--palettes-danger900-bg-color` | #fff on #8b1616 | 9.44:1 | 4.5:1 |
-| diamond-light | `--tap-item-default-font-color` | `--tap-item-default-bg-color` | #353339 on #acadb2 | 5.57:1 | 4.5:1 |
-| diamond-light | `--tap-item-default-icon-color` | `--tap-item-default-bg-color` | #353339 on #acadb2 | 5.57:1 | 3:1 |
-| diamond-light | `--tap-item-hover-font-color` | `--tap-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
-| diamond-light | `--tap-item-hover-icon-color` | `--tap-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 3:1 |
-| diamond-light | `--tap-item-active-font-color` | `--tap-item-active-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
-| diamond-light | `--tap-item-active-icon-color` | `--tap-item-active-bg-color` | #fff on #5637b5 | 8.05:1 | 3:1 |
+| diamond-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #acadb2 | 5.57:1 | 4.5:1 |
+| diamond-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
+| diamond-light | `--tabs-pill-item-hover-font-color` | `--tabs-pill-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #ab8fff on #24202d | 6.14:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-default` | #ab8fff on #332e3c | 5.08:1 | 4.5:1 |
@@ -392,12 +390,10 @@ None.
 | diamond-dark | `--palettes-danger700-font-color` | `--palettes-danger700-bg-color` | #24202d on #faa2a2 | 8.15:1 | 4.5:1 |
 | diamond-dark | `--palettes-danger800-font-color` | `--palettes-danger800-bg-color` | #24202d on #fccbcb | 11.02:1 | 4.5:1 |
 | diamond-dark | `--palettes-danger900-font-color` | `--palettes-danger900-bg-color` | #24202d on #fee9e9 | 13.68:1 | 4.5:1 |
-| diamond-dark | `--tap-item-default-font-color` | `--tap-item-default-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 4.5:1 |
-| diamond-dark | `--tap-item-default-icon-color` | `--tap-item-default-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 3:1 |
-| diamond-dark | `--tap-item-hover-font-color` | `--tap-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
-| diamond-dark | `--tap-item-hover-icon-color` | `--tap-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 3:1 |
-| diamond-dark | `--tap-item-active-font-color` | `--tap-item-active-bg-color` | #24202d on #c5b2ff | 8.48:1 | 4.5:1 |
-| diamond-dark | `--tap-item-active-icon-color` | `--tap-item-active-bg-color` | #24202d on #c5b2ff | 8.48:1 | 3:1 |
+| diamond-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 4.5:1 |
+| diamond-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #24202d on #c5b2ff | 8.48:1 | 4.5:1 |
+| diamond-dark | `--tabs-pill-item-hover-font-color` | `--tabs-pill-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #8a663e on #fff | 5.18:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-default` | #8a663e on #f9f5f1 | 4.78:1 | 4.5:1 |
@@ -579,12 +575,10 @@ None.
 | amber-light | `--palettes-danger700-font-color` | `--palettes-danger700-bg-color` | #fff on #7d4150 | 7.65:1 | 4.5:1 |
 | amber-light | `--palettes-danger800-font-color` | `--palettes-danger800-bg-color` | #fff on #683643 | 9.56:1 | 4.5:1 |
 | amber-light | `--palettes-danger900-font-color` | `--palettes-danger900-bg-color` | #fff on #542b36 | 11.83:1 | 4.5:1 |
-| amber-light | `--tap-item-default-font-color` | `--tap-item-default-bg-color` | #54505a on #f3e8dc | 6.51:1 | 4.5:1 |
-| amber-light | `--tap-item-default-icon-color` | `--tap-item-default-bg-color` | #54505a on #f3e8dc | 6.51:1 | 3:1 |
-| amber-light | `--tap-item-hover-font-color` | `--tap-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
-| amber-light | `--tap-item-hover-icon-color` | `--tap-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 3:1 |
-| amber-light | `--tap-item-active-font-color` | `--tap-item-active-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
-| amber-light | `--tap-item-active-icon-color` | `--tap-item-active-bg-color` | #1e140d on #a57a4b | 4.72:1 | 3:1 |
+| amber-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #54505a on #f3e8dc | 6.51:1 | 4.5:1 |
+| amber-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
+| amber-light | `--tabs-pill-item-hover-font-color` | `--tabs-pill-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #cda376 on #1e140d | 7.83:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-default` | #cda376 on #2a1f16 | 6.96:1 | 4.5:1 |
@@ -766,12 +760,10 @@ None.
 | amber-dark | `--palettes-danger700-font-color` | `--palettes-danger700-bg-color` | #1e140d on #d1b2ba | 9.29:1 | 4.5:1 |
 | amber-dark | `--palettes-danger800-font-color` | `--palettes-danger800-bg-color` | #1e140d on #e5d4d8 | 12.70:1 | 4.5:1 |
 | amber-dark | `--palettes-danger900-font-color` | `--palettes-danger900-bg-color` | #1e140d on #f4edef | 15.68:1 | 4.5:1 |
-| amber-dark | `--tap-item-default-font-color` | `--tap-item-default-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
-| amber-dark | `--tap-item-default-icon-color` | `--tap-item-default-bg-color` | #fff on #6a625a | 5.99:1 | 3:1 |
-| amber-dark | `--tap-item-hover-font-color` | `--tap-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
-| amber-dark | `--tap-item-hover-icon-color` | `--tap-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 3:1 |
-| amber-dark | `--tap-item-active-font-color` | `--tap-item-active-bg-color` | #1e140d on #e2d7cc | 12.77:1 | 4.5:1 |
-| amber-dark | `--tap-item-active-icon-color` | `--tap-item-active-bg-color` | #1e140d on #e2d7cc | 12.77:1 | 3:1 |
+| amber-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
+| amber-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #e2d7cc | 12.77:1 | 4.5:1 |
+| amber-dark | `--tabs-pill-item-hover-font-color` | `--tabs-pill-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #2a5caf on #fff | 6.46:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-default` | #2a5caf on #f4f6fc | 5.98:1 | 4.5:1 |
@@ -953,12 +945,10 @@ None.
 | opal-light | `--palettes-danger700-font-color` | `--palettes-danger700-bg-color` | #fff on #cf3650 | 4.89:1 | 4.5:1 |
 | opal-light | `--palettes-danger800-font-color` | `--palettes-danger800-bg-color` | #fff on #ad2d43 | 6.50:1 | 4.5:1 |
 | opal-light | `--palettes-danger900-font-color` | `--palettes-danger900-bg-color` | #fff on #8b2436 | 8.74:1 | 4.5:1 |
-| opal-light | `--tap-item-default-font-color` | `--tap-item-default-bg-color` | #353339 on #afb2be | 5.90:1 | 4.5:1 |
-| opal-light | `--tap-item-default-icon-color` | `--tap-item-default-bg-color` | #353339 on #afb2be | 5.90:1 | 3:1 |
-| opal-light | `--tap-item-hover-font-color` | `--tap-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
-| opal-light | `--tap-item-hover-icon-color` | `--tap-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 3:1 |
-| opal-light | `--tap-item-active-font-color` | `--tap-item-active-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
-| opal-light | `--tap-item-active-icon-color` | `--tap-item-active-bg-color` | #fff on #224a8c | 8.66:1 | 3:1 |
+| opal-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #afb2be | 5.90:1 | 4.5:1 |
+| opal-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
+| opal-light | `--tabs-pill-item-hover-font-color` | `--tabs-pill-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-default` | #abc9fb on #3d4460 | 5.69:1 | 4.5:1 |
@@ -1140,9 +1130,7 @@ None.
 | opal-dark | `--palettes-danger700-font-color` | `--palettes-danger700-bg-color` | #292d3e on #faacba | 7.59:1 | 4.5:1 |
 | opal-dark | `--palettes-danger800-font-color` | `--palettes-danger800-bg-color` | #292d3e on #fcd1d8 | 9.91:1 | 4.5:1 |
 | opal-dark | `--palettes-danger900-font-color` | `--palettes-danger900-bg-color` | #292d3e on #feecef | 11.99:1 | 4.5:1 |
-| opal-dark | `--tap-item-default-font-color` | `--tap-item-default-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 4.5:1 |
-| opal-dark | `--tap-item-default-icon-color` | `--tap-item-default-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 3:1 |
-| opal-dark | `--tap-item-hover-font-color` | `--tap-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
-| opal-dark | `--tap-item-hover-icon-color` | `--tap-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 3:1 |
-| opal-dark | `--tap-item-active-font-color` | `--tap-item-active-bg-color` | #292d3e on #dee2f4 | 10.58:1 | 4.5:1 |
-| opal-dark | `--tap-item-active-icon-color` | `--tap-item-active-bg-color` | #292d3e on #dee2f4 | 10.58:1 | 3:1 |
+| opal-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 4.5:1 |
+| opal-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #292d3e on #dee2f4 | 10.58:1 | 4.5:1 |
+| opal-dark | `--tabs-pill-item-hover-font-color` | `--tabs-pill-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |

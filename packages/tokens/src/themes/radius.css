@@ -42,8 +42,8 @@
   --switch-border-radius: var(--radius-999);
   --switch-thumb-border-radius: var(--radius-999);
   --logo-icon-border-radius: var(--radius-12);
-  --tap-border-radius: var(--radius-8);
-  --tap-item-border-radius: var(--radius-4);
+  --tabs-border-radius: var(--radius-8);
+  --tabs-item-border-radius: var(--radius-4);
   --menu-item-border-radius: var(--radius-8);
   --input-field-border-radius: var(--radius-8);
   --pagination-item-border-radius: var(--radius-8);
@@ -82,8 +82,8 @@
   --switch-border-radius: var(--radius-4);
   --switch-thumb-border-radius: var(--radius-2);
   --logo-icon-border-radius: var(--radius-4);
-  --tap-border-radius: var(--radius-4);
-  --tap-item-border-radius: var(--radius-3);
+  --tabs-border-radius: var(--radius-4);
+  --tabs-item-border-radius: var(--radius-3);
   --menu-item-border-radius: var(--radius-4);
   --input-field-border-radius: var(--radius-4);
   --pagination-item-border-radius: var(--radius-4);
@@ -122,8 +122,8 @@
   --switch-border-radius: var(--radius-999);
   --switch-thumb-border-radius: var(--radius-999);
   --logo-icon-border-radius: var(--radius-999);
-  --tap-border-radius: var(--radius-999);
-  --tap-item-border-radius: var(--radius-999);
+  --tabs-border-radius: var(--radius-999);
+  --tabs-item-border-radius: var(--radius-999);
   --menu-item-border-radius: var(--radius-999);
   --input-field-border-radius: var(--radius-999);
   --pagination-item-border-radius: var(--radius-999);

@@ -13,7 +13,6 @@ const notYetOnComponentTokens = [
   'MeetingCard',
   'Navbar',
   'Pagination',
-  'Tabs',
 ].map((name) => `packages/react/src/styles/${name}.css`);
 
 export default {
@@ -47,7 +46,6 @@ export default {
               Alert: ['alerts'],
               AppsNotifications: ['app-notifications'],
               Dropdown: ['menu'],
-              Tabs: ['tap'],
               RadioButton: ['radio'],
               RadioGroup: ['radio'],
             },

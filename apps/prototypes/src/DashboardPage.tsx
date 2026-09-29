@@ -12,6 +12,9 @@ import {
   Radio,
   Switch,
   Tabs,
+  TabList,
+  Tab,
+  TabPanel,
   Pagination,
   ChooseCard,
   MeetingCard,
@@ -325,38 +328,47 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
 
           {/* Analytics Data Section */}
           <section className="metrics-section">
-            <div className="section-header">
-              <h2>Analytics Data</h2>
-              <Tabs
-                items={metricTabs}
-                activeTabId={activeMetricTab}
-                onTabChange={(id) => {
-                  setActiveMetricTab(id);
-                  setCurrentPage(1);
-                }}
-              />
-            </div>
+            <Tabs
+              value={activeMetricTab}
+              onValueChange={(id) => {
+                setActiveMetricTab(id);
+                setCurrentPage(1);
+              }}
+            >
+              <div className="section-header">
+                <h2>Analytics Data</h2>
+                <TabList label="Metric categories">
+                  {metricTabs.map((t) => (
+                    <Tab key={t.id} value={t.id} icon={<i className={t.icon}></i>}>
+                      {t.label}
+                    </Tab>
+                  ))}
+                </TabList>
+              </div>
 
-            <div className="data-grid">
-              {paginatedCards.map((card) => (
-                <div key={card.id} className="data-card-wrapper">
-                  <Card
-                    title={card.title}
-                    description={card.description}
-                    newPrice={card.price}
-                    brand={card.brand}
+              <TabPanel value={activeMetricTab}>
+                <div className="data-grid">
+                  {paginatedCards.map((card) => (
+                    <div key={card.id} className="data-card-wrapper">
+                      <Card
+                        title={card.title}
+                        description={card.description}
+                        newPrice={card.price}
+                        brand={card.brand}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <div className="pagination-container">
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
                   />
                 </div>
-              ))}
-            </div>
-
-            <div className="pagination-container">
-              <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={setCurrentPage}
-              />
-            </div>
+              </TabPanel>
+            </Tabs>
           </section>
 
           {/* Settings Section */}

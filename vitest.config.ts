@@ -23,6 +23,20 @@ export default defineConfig({
       {
         // Every story runs in a real browser: render, play function and axe checks.
         plugins: [storybookTest({ configDir: docsDir })],
+        // Pre-bundle the library's runtime dependencies so a newly imported one can't make
+        // Vite re-optimize and reload mid-run (which fails every story file at once).
+        optimizeDeps: {
+          include: [
+            'react',
+            'react-dom',
+            'react/jsx-runtime',
+            'lucide-react',
+            '@radix-ui/react-switch',
+            '@radix-ui/react-radio-group',
+            '@radix-ui/react-tabs',
+            '@radix-ui/react-dropdown-menu',
+          ],
+        },
         test: {
           name: 'stories',
           browser: {

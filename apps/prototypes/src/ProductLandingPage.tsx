@@ -12,6 +12,9 @@ import {
   Radio,
   Switch,
   Tabs,
+  TabList,
+  Tab,
+  TabPanel,
   Pagination,
   ChooseCard,
   MeetingCard,
@@ -340,52 +343,65 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
         <main className="page-main">
           {/* Products Section */}
           <section className="products-section">
-            <div className="section-header">
-              <h2>Featured Products</h2>
-              <p>Browse our curated selection of premium tech products</p>
-            </div>
-
-            <div className="products-controls">
-              <div className="sort-controls">
-                <button className="sort-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-                  <i className="fas fa-sliders"></i> Sort By
-                  <i className={`fas fa-chevron-down ${isDropdownOpen ? 'open' : ''}`}></i>
-                </button>
-                {isDropdownOpen && (
-                  <Dropdown
-                    items={dropdownItems}
-                    onItemClick={(id) => {
-                      console.log('Sort:', id);
-                      setIsDropdownOpen(false);
-                    }}
-                  />
-                )}
+            <Tabs value={activeTab} onValueChange={setActiveTab}>
+              <div className="section-header">
+                <h2>Featured Products</h2>
+                <p>Browse our curated selection of premium tech products</p>
               </div>
 
-              <Tabs items={tabs} activeTabId={activeTab} onTabChange={setActiveTab} />
-            </div>
-
-            <div className={`products-grid ${gridView ? 'grid' : 'list'}`}>
-              {paginatedProducts.map((product) => (
-                <div key={product.id} className="product-wrapper">
-                  <Card
-                    title={product.title}
-                    description={product.description}
-                    imageUrl={product.image}
-                    newPrice={product.price}
-                    oldPrice={product.oldPrice}
-                    reviews={product.reviews}
-                    brand={product.brand}
-                  />
+              <div className="products-controls">
+                <div className="sort-controls">
+                  <button
+                    className="sort-button"
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                  >
+                    <i className="fas fa-sliders"></i> Sort By
+                    <i className={`fas fa-chevron-down ${isDropdownOpen ? 'open' : ''}`}></i>
+                  </button>
+                  {isDropdownOpen && (
+                    <Dropdown
+                      items={dropdownItems}
+                      onItemClick={(id) => {
+                        console.log('Sort:', id);
+                        setIsDropdownOpen(false);
+                      }}
+                    />
+                  )}
                 </div>
-              ))}
-            </div>
 
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
+                <TabList label="Product categories">
+                  {tabs.map((t) => (
+                    <Tab key={t.id} value={t.id} icon={<i className={t.icon}></i>}>
+                      {t.label}
+                    </Tab>
+                  ))}
+                </TabList>
+              </div>
+
+              <TabPanel value={activeTab}>
+                <div className={`products-grid ${gridView ? 'grid' : 'list'}`}>
+                  {paginatedProducts.map((product) => (
+                    <div key={product.id} className="product-wrapper">
+                      <Card
+                        title={product.title}
+                        description={product.description}
+                        imageUrl={product.image}
+                        newPrice={product.price}
+                        oldPrice={product.oldPrice}
+                        reviews={product.reviews}
+                        brand={product.brand}
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
+              </TabPanel>
+            </Tabs>
           </section>
 
           {/* Pricing Plans - Feature Comparison */}

@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Tabs, TabList, Tab, TabPanel } from '@ds/react';
+import * as TabsStories from '../../../../packages/react/src/Tabs/Tabs.stories';
+import tabsMeta from '../../../../packages/react/src/Tabs/Tabs.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={TabsStories} name="Docs" />
+
+# Tabs
+
+<ComponentPage
+  meta={tabsMeta}
+  stories={TabsStories}
+  components={[Tabs, TabList, Tab, TabPanel]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-tabs__list', at: 'start' },
+      '.ds-tabs__tab[data-state="active"]',
+      '.ds-tabs__tab[data-state="inactive"]',
+      '.ds-tabs__panel',
+    ],
+    example: (
+      <Tabs defaultValue="overview">
+        <TabList label="Project">
+          <Tab value="overview">Overview</Tab>
+          <Tab value="activity">Activity</Tab>
+        </TabList>
+        <TabPanel value="overview">Project summary, goals and status.</TabPanel>
+      </Tabs>
+    ),
+  }}
+  optionStories={{ appearance: 'Appearances' }}
+  extras={[{ title: 'With icons', story: 'WithIcons' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ display: 'grid', gap: 10 }}>
+      {['enclosed', 'pill', 'line'].map((appearance) => (
+        <Tabs key={appearance} defaultValue="a" appearance={appearance}>
+          <TabList label={appearance}>
+            <Tab value="a">Overview</Tab>
+            <Tab value="b">Activity</Tab>
+          </TabList>
+        </Tabs>
+      ))}
+    </div>
+  }
+/>
