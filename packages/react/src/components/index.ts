@@ -8,6 +8,7 @@ export * from '../Card';
 export * from '../ProductCard';
 export * from '../Checkbox';
 export * from '../FormField';
+export * from '../Select';
 export * from '../Textarea';
 export { InputField } from '../InputField';
 export type { InputFieldProps } from '../InputField';

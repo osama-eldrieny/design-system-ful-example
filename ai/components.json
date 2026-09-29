@@ -221,6 +221,20 @@
       "contract": "ai/components/radio-group.json"
     },
     {
+      "id": "select",
+      "name": "Select",
+      "exports": [
+        "Select",
+        "SelectItem",
+        "SelectGroup",
+        "SelectSeparator"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A select lets people pick one option from a list that opens below the field.",
+      "contract": "ai/components/select.json"
+    },
+    {
       "id": "switch",
       "name": "Switch",
       "exports": [

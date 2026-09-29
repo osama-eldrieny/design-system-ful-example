@@ -46,6 +46,9 @@
   --tabs-item-border-radius: var(--radius-4);
   --navbar-item-border-radius: var(--radius-8);
   --footer-link-border-radius: var(--radius-12);
+  --select-trigger-border-radius: var(--radius-8);
+  --select-content-border-radius: var(--radius-12);
+  --select-item-border-radius: var(--radius-8);
   --menu-item-border-radius: var(--radius-8);
   --checkbox-border-radius: var(--radius-4);
   --input-field-border-radius: var(--radius-8);
@@ -89,6 +92,9 @@
   --tabs-item-border-radius: var(--radius-3);
   --navbar-item-border-radius: var(--radius-4);
   --footer-link-border-radius: var(--radius-3);
+  --select-trigger-border-radius: var(--radius-4);
+  --select-content-border-radius: var(--radius-4);
+  --select-item-border-radius: var(--radius-4);
   --menu-item-border-radius: var(--radius-4);
   --checkbox-border-radius: var(--radius-2);
   --input-field-border-radius: var(--radius-4);
@@ -132,6 +138,9 @@
   --tabs-item-border-radius: var(--radius-999);
   --navbar-item-border-radius: var(--radius-999);
   --footer-link-border-radius: var(--radius-999);
+  --select-trigger-border-radius: var(--radius-999);
+  --select-content-border-radius: var(--radius-16);
+  --select-item-border-radius: var(--radius-999);
   --menu-item-border-radius: var(--radius-999);
   --checkbox-border-radius: var(--radius-4);
   --input-field-border-radius: var(--radius-999);

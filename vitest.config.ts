@@ -35,6 +35,7 @@ export default defineConfig({
             '@radix-ui/react-radio-group',
             '@radix-ui/react-tabs',
             '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-select',
           ],
         },
         test: {
