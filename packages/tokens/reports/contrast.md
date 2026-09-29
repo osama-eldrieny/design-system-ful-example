@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 183 | 183 | 0 |
-| diamond-dark | 183 | 183 | 0 |
-| amber-light | 183 | 183 | 0 |
-| amber-dark | 183 | 183 | 0 |
-| opal-light | 183 | 183 | 0 |
-| opal-dark | 183 | 183 | 0 |
+| diamond-light | 203 | 203 | 0 |
+| diamond-dark | 203 | 203 | 0 |
+| amber-light | 203 | 203 | 0 |
+| amber-dark | 203 | 203 | 0 |
+| opal-light | 203 | 203 | 0 |
+| opal-dark | 203 | 203 | 0 |
 
 ## Failures (0)
 
@@ -119,6 +119,16 @@ None.
 | diamond-light | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #876400 on #fff | 5.45:1 | 4.5:1 |
 | diamond-light | `--alerts-danger-outline-text-color` | `--alerts-danger-outline-bg-color` | #cf2121 on #fff | 5.39:1 | 4.5:1 |
 | diamond-light | `--avatar-text-color` | `--avatar-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--badge-primary-solid-text-color` | `--badge-primary-solid-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
+| diamond-light | `--badge-primary-subtle-text-color` | `--badge-primary-subtle-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--badge-secondary-solid-text-color` | `--badge-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
+| diamond-light | `--badge-secondary-subtle-text-color` | `--badge-secondary-subtle-bg-color` | #353339 on #acadb2 | 5.57:1 | 4.5:1 |
+| diamond-light | `--badge-success-solid-text-color` | `--badge-success-solid-bg-color` | #24202d on #2ed46b | 8.14:1 | 4.5:1 |
+| diamond-light | `--badge-success-subtle-text-color` | `--badge-success-subtle-bg-color` | #005b22 on #e6faed | 7.64:1 | 4.5:1 |
+| diamond-light | `--badge-warning-solid-text-color` | `--badge-warning-solid-bg-color` | #24202d on #f0be2e | 9.18:1 | 4.5:1 |
+| diamond-light | `--badge-warning-subtle-text-color` | `--badge-warning-subtle-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
+| diamond-light | `--badge-danger-solid-text-color` | `--badge-danger-solid-bg-color` | #fee9e9 on #cf2121 | 4.64:1 | 4.5:1 |
+| diamond-light | `--badge-danger-subtle-text-color` | `--badge-danger-subtle-bg-color` | #ad1c1c on #fee9e9 | 6.10:1 | 4.5:1 |
 | diamond-light | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-light | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #fff on #6741d9 | 6.30:1 | 4.5:1 |
 | diamond-light | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
@@ -206,6 +216,16 @@ None.
 | diamond-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #acadb2 | 5.57:1 | 4.5:1 |
 | diamond-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
+| diamond-light | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
+| diamond-light | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
+| diamond-light | `--tag-secondary-subtle-text-color` | `--tag-secondary-subtle-bg-color` | #353339 on #acadb2 | 5.57:1 | 4.5:1 |
+| diamond-light | `--tag-success-solid-text-color` | `--tag-success-solid-bg-color` | #24202d on #2ed46b | 8.14:1 | 4.5:1 |
+| diamond-light | `--tag-success-subtle-text-color` | `--tag-success-subtle-bg-color` | #005b22 on #e6faed | 7.64:1 | 4.5:1 |
+| diamond-light | `--tag-warning-solid-text-color` | `--tag-warning-solid-bg-color` | #24202d on #f0be2e | 9.18:1 | 4.5:1 |
+| diamond-light | `--tag-warning-subtle-text-color` | `--tag-warning-subtle-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
+| diamond-light | `--tag-danger-solid-text-color` | `--tag-danger-solid-bg-color` | #fee9e9 on #cf2121 | 4.64:1 | 4.5:1 |
+| diamond-light | `--tag-danger-subtle-text-color` | `--tag-danger-subtle-bg-color` | #ad1c1c on #fee9e9 | 6.10:1 | 4.5:1 |
 | diamond-light | `--textarea-default-text-color` | `--textarea-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #ab8fff on #24202d | 6.14:1 | 4.5:1 |
@@ -302,6 +322,16 @@ None.
 | diamond-dark | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #c99600 on #24202d | 5.95:1 | 4.5:1 |
 | diamond-dark | `--alerts-danger-outline-text-color` | `--alerts-danger-outline-bg-color` | #f77777 on #24202d | 5.96:1 | 4.5:1 |
 | diamond-dark | `--avatar-text-color` | `--avatar-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--badge-primary-solid-text-color` | `--badge-primary-solid-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
+| diamond-dark | `--badge-primary-subtle-text-color` | `--badge-primary-subtle-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--badge-secondary-solid-text-color` | `--badge-secondary-solid-bg-color` | #24202d on #f1f1f2 | 14.10:1 | 4.5:1 |
+| diamond-dark | `--badge-secondary-subtle-text-color` | `--badge-secondary-subtle-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 4.5:1 |
+| diamond-dark | `--badge-success-solid-text-color` | `--badge-success-solid-bg-color` | #005b22 on #e6faed | 7.64:1 | 4.5:1 |
+| diamond-dark | `--badge-success-subtle-text-color` | `--badge-success-subtle-bg-color` | #91e8b2 on #332e3c | 9.01:1 | 4.5:1 |
+| diamond-dark | `--badge-warning-solid-text-color` | `--badge-warning-solid-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
+| diamond-dark | `--badge-warning-subtle-text-color` | `--badge-warning-subtle-bg-color` | #f7dd91 on #332e3c | 9.84:1 | 4.5:1 |
+| diamond-dark | `--badge-danger-solid-text-color` | `--badge-danger-solid-bg-color` | #8b1616 on #fee9e9 | 8.11:1 | 4.5:1 |
+| diamond-dark | `--badge-danger-subtle-text-color` | `--badge-danger-subtle-bg-color` | #faa2a2 on #332e3c | 6.74:1 | 4.5:1 |
 | diamond-dark | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #24202d on #dfd4ff | 11.37:1 | 4.5:1 |
 | diamond-dark | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #24202d on #c5b2ff | 8.48:1 | 4.5:1 |
@@ -389,6 +419,16 @@ None.
 | diamond-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 4.5:1 |
 | diamond-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #24202d on #c5b2ff | 8.48:1 | 4.5:1 |
+| diamond-dark | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
+| diamond-dark | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #24202d on #f1f1f2 | 14.10:1 | 4.5:1 |
+| diamond-dark | `--tag-secondary-subtle-text-color` | `--tag-secondary-subtle-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 4.5:1 |
+| diamond-dark | `--tag-success-solid-text-color` | `--tag-success-solid-bg-color` | #005b22 on #e6faed | 7.64:1 | 4.5:1 |
+| diamond-dark | `--tag-success-subtle-text-color` | `--tag-success-subtle-bg-color` | #91e8b2 on #332e3c | 9.01:1 | 4.5:1 |
+| diamond-dark | `--tag-warning-solid-text-color` | `--tag-warning-solid-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
+| diamond-dark | `--tag-warning-subtle-text-color` | `--tag-warning-subtle-bg-color` | #f7dd91 on #332e3c | 9.84:1 | 4.5:1 |
+| diamond-dark | `--tag-danger-solid-text-color` | `--tag-danger-solid-bg-color` | #8b1616 on #fee9e9 | 8.11:1 | 4.5:1 |
+| diamond-dark | `--tag-danger-subtle-text-color` | `--tag-danger-subtle-bg-color` | #faa2a2 on #332e3c | 6.74:1 | 4.5:1 |
 | diamond-dark | `--textarea-default-text-color` | `--textarea-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #8a663e on #fff | 5.18:1 | 4.5:1 |
@@ -485,6 +525,16 @@ None.
 | amber-light | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #6f53a7 on #fff | 6.05:1 | 4.5:1 |
 | amber-light | `--alerts-danger-outline-text-color` | `--alerts-danger-outline-bg-color` | #934c5e on #fff | 6.11:1 | 4.5:1 |
 | amber-light | `--avatar-text-color` | `--avatar-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--badge-primary-solid-text-color` | `--badge-primary-solid-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
+| amber-light | `--badge-primary-subtle-text-color` | `--badge-primary-subtle-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--badge-secondary-solid-text-color` | `--badge-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
+| amber-light | `--badge-secondary-subtle-text-color` | `--badge-secondary-subtle-bg-color` | #54505a on #f3e8dc | 6.51:1 | 4.5:1 |
+| amber-light | `--badge-success-solid-text-color` | `--badge-success-solid-bg-color` | #ecf1f1 on #447571 | 4.57:1 | 4.5:1 |
+| amber-light | `--badge-success-subtle-text-color` | `--badge-success-subtle-bg-color` | #3a6360 on #ecf1f1 | 5.88:1 | 4.5:1 |
+| amber-light | `--badge-warning-solid-text-color` | `--badge-warning-solid-bg-color` | #f3eff9 on #6f53a7 | 5.34:1 | 4.5:1 |
+| amber-light | `--badge-warning-subtle-text-color` | `--badge-warning-subtle-bg-color` | #5c468c on #f3eff9 | 6.84:1 | 4.5:1 |
+| amber-light | `--badge-danger-solid-text-color` | `--badge-danger-solid-bg-color` | #f4edef on #934c5e | 5.30:1 | 4.5:1 |
+| amber-light | `--badge-danger-subtle-text-color` | `--badge-danger-subtle-bg-color` | #7d4150 on #f4edef | 6.64:1 | 4.5:1 |
 | amber-light | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #1e140d on #c28f58 | 6.34:1 | 4.5:1 |
 | amber-light | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
@@ -572,6 +622,16 @@ None.
 | amber-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #54505a on #f3e8dc | 6.51:1 | 4.5:1 |
 | amber-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
+| amber-light | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
+| amber-light | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
+| amber-light | `--tag-secondary-subtle-text-color` | `--tag-secondary-subtle-bg-color` | #54505a on #f3e8dc | 6.51:1 | 4.5:1 |
+| amber-light | `--tag-success-solid-text-color` | `--tag-success-solid-bg-color` | #ecf1f1 on #447571 | 4.57:1 | 4.5:1 |
+| amber-light | `--tag-success-subtle-text-color` | `--tag-success-subtle-bg-color` | #3a6360 on #ecf1f1 | 5.88:1 | 4.5:1 |
+| amber-light | `--tag-warning-solid-text-color` | `--tag-warning-solid-bg-color` | #f3eff9 on #6f53a7 | 5.34:1 | 4.5:1 |
+| amber-light | `--tag-warning-subtle-text-color` | `--tag-warning-subtle-bg-color` | #5c468c on #f3eff9 | 6.84:1 | 4.5:1 |
+| amber-light | `--tag-danger-solid-text-color` | `--tag-danger-solid-bg-color` | #f4edef on #934c5e | 5.30:1 | 4.5:1 |
+| amber-light | `--tag-danger-subtle-text-color` | `--tag-danger-subtle-bg-color` | #7d4150 on #f4edef | 6.64:1 | 4.5:1 |
 | amber-light | `--textarea-default-text-color` | `--textarea-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #cda376 on #1e140d | 7.83:1 | 4.5:1 |
@@ -668,6 +728,16 @@ None.
 | amber-dark | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #997ecf on #1e140d | 5.37:1 | 4.5:1 |
 | amber-dark | `--alerts-danger-outline-text-color` | `--alerts-danger-outline-bg-color` | #bb8e9a on #1e140d | 6.42:1 | 4.5:1 |
 | amber-dark | `--avatar-text-color` | `--avatar-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--badge-primary-solid-text-color` | `--badge-primary-solid-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
+| amber-dark | `--badge-primary-subtle-text-color` | `--badge-primary-subtle-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--badge-secondary-solid-text-color` | `--badge-secondary-solid-bg-color` | #1e140d on #f1f1f2 | 16.02:1 | 4.5:1 |
+| amber-dark | `--badge-secondary-subtle-text-color` | `--badge-secondary-subtle-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
+| amber-dark | `--badge-success-solid-text-color` | `--badge-success-solid-bg-color` | #305350 on #ecf1f1 | 7.43:1 | 4.5:1 |
+| amber-dark | `--badge-success-subtle-text-color` | `--badge-success-subtle-bg-color` | #d2dedd on #274340 | 7.76:1 | 4.5:1 |
+| amber-dark | `--badge-warning-solid-text-color` | `--badge-warning-solid-bg-color` | #4a3870 on #f3eff9 | 8.86:1 | 4.5:1 |
+| amber-dark | `--badge-warning-subtle-text-color` | `--badge-warning-subtle-bg-color` | #e1d9f1 on #4a3870 | 7.36:1 | 4.5:1 |
+| amber-dark | `--badge-danger-solid-text-color` | `--badge-danger-solid-bg-color` | #683643 on #f4edef | 8.29:1 | 4.5:1 |
+| amber-dark | `--badge-danger-subtle-text-color` | `--badge-danger-subtle-bg-color` | #e5d4d8 on #542b36 | 8.30:1 | 4.5:1 |
 | amber-dark | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #1e140d on #f9f5f1 | 16.67:1 | 4.5:1 |
 | amber-dark | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #1e140d on #e2d7cc | 12.77:1 | 4.5:1 |
@@ -755,6 +825,16 @@ None.
 | amber-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
 | amber-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #e2d7cc | 12.77:1 | 4.5:1 |
+| amber-dark | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
+| amber-dark | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #1e140d on #f1f1f2 | 16.02:1 | 4.5:1 |
+| amber-dark | `--tag-secondary-subtle-text-color` | `--tag-secondary-subtle-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
+| amber-dark | `--tag-success-solid-text-color` | `--tag-success-solid-bg-color` | #305350 on #ecf1f1 | 7.43:1 | 4.5:1 |
+| amber-dark | `--tag-success-subtle-text-color` | `--tag-success-subtle-bg-color` | #d2dedd on #274340 | 7.76:1 | 4.5:1 |
+| amber-dark | `--tag-warning-solid-text-color` | `--tag-warning-solid-bg-color` | #4a3870 on #f3eff9 | 8.86:1 | 4.5:1 |
+| amber-dark | `--tag-warning-subtle-text-color` | `--tag-warning-subtle-bg-color` | #e1d9f1 on #4a3870 | 7.36:1 | 4.5:1 |
+| amber-dark | `--tag-danger-solid-text-color` | `--tag-danger-solid-bg-color` | #683643 on #f4edef | 8.29:1 | 4.5:1 |
+| amber-dark | `--tag-danger-subtle-text-color` | `--tag-danger-subtle-bg-color` | #e5d4d8 on #542b36 | 8.30:1 | 4.5:1 |
 | amber-dark | `--textarea-default-text-color` | `--textarea-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #2a5caf on #fff | 6.46:1 | 4.5:1 |
@@ -851,6 +931,16 @@ None.
 | opal-light | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #856603 on #fff | 5.39:1 | 4.5:1 |
 | opal-light | `--alerts-danger-outline-text-color` | `--alerts-danger-outline-bg-color` | #cf3650 on #fff | 4.89:1 | 4.5:1 |
 | opal-light | `--avatar-text-color` | `--avatar-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--badge-primary-solid-text-color` | `--badge-primary-solid-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
+| opal-light | `--badge-primary-subtle-text-color` | `--badge-primary-subtle-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--badge-secondary-solid-text-color` | `--badge-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
+| opal-light | `--badge-secondary-subtle-text-color` | `--badge-secondary-subtle-bg-color` | #353339 on #afb2be | 5.90:1 | 4.5:1 |
+| opal-light | `--badge-success-solid-text-color` | `--badge-success-solid-bg-color` | #292d3e on #9ad541 | 7.78:1 | 4.5:1 |
+| opal-light | `--badge-success-subtle-text-color` | `--badge-success-subtle-bg-color` | #3b5c0a on #f3fae8 | 7.22:1 | 4.5:1 |
+| opal-light | `--badge-warning-solid-text-color` | `--badge-warning-solid-bg-color` | #292d3e on #eec133 | 8.00:1 | 4.5:1 |
+| opal-light | `--badge-warning-subtle-text-color` | `--badge-warning-subtle-bg-color` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
+| opal-light | `--badge-danger-solid-text-color` | `--badge-danger-solid-bg-color` | #feecef on #ad2d43 | 5.71:1 | 4.5:1 |
+| opal-light | `--badge-danger-subtle-text-color` | `--badge-danger-subtle-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
 | opal-light | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #fff on #2a5caf | 6.46:1 | 4.5:1 |
 | opal-light | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
@@ -938,6 +1028,16 @@ None.
 | opal-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #afb2be | 5.90:1 | 4.5:1 |
 | opal-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
+| opal-light | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
+| opal-light | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
+| opal-light | `--tag-secondary-subtle-text-color` | `--tag-secondary-subtle-bg-color` | #353339 on #afb2be | 5.90:1 | 4.5:1 |
+| opal-light | `--tag-success-solid-text-color` | `--tag-success-solid-bg-color` | #292d3e on #9ad541 | 7.78:1 | 4.5:1 |
+| opal-light | `--tag-success-subtle-text-color` | `--tag-success-subtle-bg-color` | #3b5c0a on #f3fae8 | 7.22:1 | 4.5:1 |
+| opal-light | `--tag-warning-solid-text-color` | `--tag-warning-solid-bg-color` | #292d3e on #eec133 | 8.00:1 | 4.5:1 |
+| opal-light | `--tag-warning-subtle-text-color` | `--tag-warning-subtle-bg-color` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
+| opal-light | `--tag-danger-solid-text-color` | `--tag-danger-solid-bg-color` | #feecef on #ad2d43 | 5.71:1 | 4.5:1 |
+| opal-light | `--tag-danger-subtle-text-color` | `--tag-danger-subtle-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
 | opal-light | `--textarea-default-text-color` | `--textarea-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
@@ -1034,6 +1134,16 @@ None.
 | opal-dark | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #eab306 on #292d3e | 7.11:1 | 4.5:1 |
 | opal-dark | `--alerts-danger-outline-text-color` | `--alerts-danger-outline-bg-color` | #faacba on #292d3e | 7.59:1 | 4.5:1 |
 | opal-dark | `--avatar-text-color` | `--avatar-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--badge-primary-solid-text-color` | `--badge-primary-solid-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
+| opal-dark | `--badge-primary-subtle-text-color` | `--badge-primary-subtle-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--badge-secondary-solid-text-color` | `--badge-secondary-solid-bg-color` | #292d3e on #f1f1f2 | 12.09:1 | 4.5:1 |
+| opal-dark | `--badge-secondary-subtle-text-color` | `--badge-secondary-subtle-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 4.5:1 |
+| opal-dark | `--badge-success-solid-text-color` | `--badge-success-solid-bg-color` | #3b5c0a on #f3fae8 | 7.22:1 | 4.5:1 |
+| opal-dark | `--badge-success-subtle-text-color` | `--badge-success-subtle-bg-color` | #cae99b on #3b5c0a | 5.75:1 | 4.5:1 |
+| opal-dark | `--badge-warning-solid-text-color` | `--badge-warning-solid-bg-color` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
+| opal-dark | `--badge-warning-subtle-text-color` | `--badge-warning-subtle-bg-color` | #f6de94 on #695103 | 5.68:1 | 4.5:1 |
+| opal-dark | `--badge-danger-solid-text-color` | `--badge-danger-solid-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
+| opal-dark | `--badge-danger-subtle-text-color` | `--badge-danger-subtle-bg-color` | #faacba on #6e1c2a | 6.27:1 | 4.5:1 |
 | opal-dark | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #292d3e on #f4f6fc | 12.63:1 | 4.5:1 |
 | opal-dark | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #292d3e on #dee2f4 | 10.58:1 | 4.5:1 |
@@ -1121,4 +1231,14 @@ None.
 | opal-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 4.5:1 |
 | opal-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #292d3e on #dee2f4 | 10.58:1 | 4.5:1 |
+| opal-dark | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
+| opal-dark | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #292d3e on #f1f1f2 | 12.09:1 | 4.5:1 |
+| opal-dark | `--tag-secondary-subtle-text-color` | `--tag-secondary-subtle-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 4.5:1 |
+| opal-dark | `--tag-success-solid-text-color` | `--tag-success-solid-bg-color` | #3b5c0a on #f3fae8 | 7.22:1 | 4.5:1 |
+| opal-dark | `--tag-success-subtle-text-color` | `--tag-success-subtle-bg-color` | #cae99b on #3b5c0a | 5.75:1 | 4.5:1 |
+| opal-dark | `--tag-warning-solid-text-color` | `--tag-warning-solid-bg-color` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
+| opal-dark | `--tag-warning-subtle-text-color` | `--tag-warning-subtle-bg-color` | #f6de94 on #695103 | 5.68:1 | 4.5:1 |
+| opal-dark | `--tag-danger-solid-text-color` | `--tag-danger-solid-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
+| opal-dark | `--tag-danger-subtle-text-color` | `--tag-danger-subtle-bg-color` | #faacba on #6e1c2a | 6.27:1 | 4.5:1 |
 | opal-dark | `--textarea-default-text-color` | `--textarea-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |

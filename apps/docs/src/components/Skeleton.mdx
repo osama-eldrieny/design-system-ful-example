@@ -1,0 +1,32 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Skeleton } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Skeleton/Skeleton.stories';
+import meta from '../../../../packages/react/src/Skeleton/Skeleton.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Skeleton
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Skeleton]}
+  anatomy={{
+    targets: ['.ds-skeleton--rect', '.ds-skeleton--circle', '.ds-skeleton__line'],
+    example: (
+      <div style={{ inlineSize: 240, display: 'grid', gap: 8 }}>
+        <Skeleton variant="rect" height={80} />
+        <Skeleton variant="circle" width={32} />
+        <Skeleton lines={2} />
+      </div>
+    ),
+  }}
+  optionStories={{ variant: 'Variants' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 200 }}>
+      <Skeleton lines={2} />
+    </div>
+  }
+/>

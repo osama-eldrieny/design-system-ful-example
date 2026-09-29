@@ -1,0 +1,43 @@
+/**
+ * Component tokens: badge
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --badge-{tone}-{appearance}-{property} and --badge-{property}
+ *   tone: primary | secondary | success | warning | danger; appearance: solid | subtle.
+ */
+
+:root,
+[data-theme] {
+  --badge-primary-solid-bg-color: var(--color-bg-accent-primary-default);
+  --badge-primary-solid-text-color: var(--color-fg-on-accent-primary-default);
+  --badge-primary-subtle-bg-color: var(--color-bg-primary-1);
+  --badge-primary-subtle-text-color: var(--color-fg-on-primary-high);
+  --badge-secondary-solid-bg-color: var(--color-bg-accent-secondary-default);
+  --badge-secondary-solid-text-color: var(--color-fg-on-accent-secondary-default);
+  --badge-secondary-subtle-bg-color: var(--color-bg-secondary-1);
+  --badge-secondary-subtle-text-color: var(--color-fg-on-secondary-high);
+  --badge-success-solid-bg-color: var(--color-bg-accent-success-default);
+  --badge-success-solid-text-color: var(--color-fg-on-accent-success-default);
+  --badge-success-subtle-bg-color: var(--color-bg-success-1);
+  --badge-success-subtle-text-color: var(--color-fg-on-success-high);
+  --badge-warning-solid-bg-color: var(--color-bg-accent-warning-default);
+  --badge-warning-solid-text-color: var(--color-fg-on-accent-warning-default);
+  --badge-warning-subtle-bg-color: var(--color-bg-warning-1);
+  --badge-warning-subtle-text-color: var(--color-fg-on-warning-high);
+  --badge-danger-solid-bg-color: var(--color-bg-accent-danger-default);
+  --badge-danger-solid-text-color: var(--color-fg-on-accent-danger-default);
+  --badge-danger-subtle-bg-color: var(--color-bg-danger-1);
+  --badge-danger-subtle-text-color: var(--color-fg-on-danger-high);
+  --badge-padding-x: var(--spacing-xs);
+  --badge-height: var(--sizing-md);
+  --badge-dot-size: var(--spacing-xs);
+  --badge-font-family: var(--font-family-body);
+  --badge-font-size: var(--font-size-sm);
+  --badge-font-line-height: var(--font-line-height-sm);
+  --badge-font-weight: var(--font-weight-medium);
+  --badge-border-radius: var(--radius-full);
+  --badge-ring-color: var(--color-bg-base);
+  --badge-ring-width: var(--border-width-regular);
+  --badge-hidden-size: var(--border-width-hairline);
+}

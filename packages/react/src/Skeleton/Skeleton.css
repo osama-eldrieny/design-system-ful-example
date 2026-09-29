@@ -1,0 +1,63 @@
+/** Skeleton. Styled only with --skeleton-* tokens; the shimmer stops for reduced motion. */
+
+.ds-skeleton {
+  display: block;
+}
+
+.ds-skeleton--text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--skeleton-gap);
+}
+
+.ds-skeleton__line,
+.ds-skeleton--rect,
+.ds-skeleton--circle {
+  background-color: var(--skeleton-bg-color);
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    var(--skeleton-highlight-color),
+    transparent
+  );
+  background-repeat: no-repeat;
+  background-size: 50% 100%;
+  animation: ds-skeleton-shimmer var(--skeleton-duration) ease-in-out infinite;
+}
+
+.ds-skeleton__line {
+  display: block;
+  block-size: var(--skeleton-text-height);
+  border-radius: var(--skeleton-border-radius);
+}
+
+.ds-skeleton__line:last-child:not(:first-child) {
+  inline-size: 60%;
+}
+
+.ds-skeleton--rect {
+  border-radius: var(--skeleton-border-radius);
+}
+
+.ds-skeleton--circle {
+  border-radius: 50%;
+}
+
+@keyframes ds-skeleton-shimmer {
+  from {
+    background-position: -100% 0;
+  }
+
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-skeleton__line,
+  .ds-skeleton--rect,
+  .ds-skeleton--circle {
+    animation: none;
+    background-image: none;
+  }
+}

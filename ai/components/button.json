@@ -492,6 +492,16 @@
     }
   ],
   "tokens": {
+    "--button-group-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--button-group-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
     "--button-primary-default-bg-color": {
       "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
       "references": "--color-bg-accent-primary-default",
@@ -1926,16 +1936,6 @@
       "description": "One turn of a repeating animation, e.g. a loading spinner.",
       "references": "--duration-loop",
       "default": "1000ms"
-    },
-    "--button-group-gap": {
-      "description": "Small gap inside compact controls.",
-      "references": "--spacing-xs",
-      "default": "8px"
-    },
-    "--button-group-border-width": {
-      "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
     },
     "--button-medium-padding-x": {
       "description": "Spacing steps in px (see --spacing-* in themes/density.css).",

@@ -35,6 +35,17 @@
       "contract": "ai/components/avatar.json"
     },
     {
+      "id": "badge",
+      "name": "Badge",
+      "exports": [
+        "Badge"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A badge is a small, non-interactive label for a status (“Paid”, “New”) or a count (3 unread).",
+      "contract": "ai/components/badge.json"
+    },
+    {
       "id": "button",
       "name": "Button",
       "exports": [
@@ -242,6 +253,17 @@
       "contract": "ai/components/product-card.json"
     },
     {
+      "id": "progress",
+      "name": "Progress",
+      "exports": [
+        "Progress"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A progress bar shows how far a task has got, such as an upload or setup steps.",
+      "contract": "ai/components/progress.json"
+    },
+    {
       "id": "radio-group",
       "name": "RadioGroup",
       "exports": [
@@ -279,6 +301,17 @@
       "contract": "ai/components/select.json"
     },
     {
+      "id": "skeleton",
+      "name": "Skeleton",
+      "exports": [
+        "Skeleton"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A skeleton is a grey placeholder in the shape of content that is loading: lines of text, image blocks and avatar circles.",
+      "contract": "ai/components/skeleton.json"
+    },
+    {
       "id": "slider",
       "name": "Slider",
       "exports": [
@@ -288,6 +321,17 @@
       "status": "stable",
       "purpose": "A slider sets a number, or a range with two thumbs, by dragging along a track or with the arrow keys.",
       "contract": "ai/components/slider.json"
+    },
+    {
+      "id": "spinner",
+      "name": "Spinner",
+      "exports": [
+        "Spinner"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A spinner shows that something is loading when the time it takes is unknown.",
+      "contract": "ai/components/spinner.json"
     },
     {
       "id": "switch",
@@ -313,6 +357,17 @@
       "status": "stable",
       "purpose": "Tabs switch between related views of content in the same place, one at a time.",
       "contract": "ai/components/tabs.json"
+    },
+    {
+      "id": "tag",
+      "name": "Tag",
+      "exports": [
+        "Tag"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A tag labels an item with a keyword or category.",
+      "contract": "ai/components/tag.json"
     },
     {
       "id": "textarea",

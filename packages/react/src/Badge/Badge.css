@@ -1,0 +1,116 @@
+/** Badge. Styled only with --badge-* tokens; each tone × appearance sets the helpers. */
+
+.ds-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-inline-size: var(--badge-height);
+  block-size: var(--badge-height);
+  padding-inline: var(--badge-padding-x);
+  border-radius: var(--badge-border-radius);
+  background-color: var(--_bg);
+  color: var(--_text);
+  font-family: var(--badge-font-family);
+  font-size: var(--badge-font-size);
+  font-weight: var(--badge-font-weight);
+  line-height: var(--badge-font-line-height);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+.ds-badge--dot {
+  min-inline-size: 0;
+  inline-size: var(--badge-dot-size);
+  block-size: var(--badge-dot-size);
+  padding: 0;
+  box-shadow: 0 0 0 var(--badge-ring-width) var(--badge-ring-color);
+}
+
+.ds-badge--primary-solid {
+  --_bg: var(--badge-primary-solid-bg-color);
+  --_text: var(--badge-primary-solid-text-color);
+}
+
+.ds-badge--primary-subtle {
+  --_bg: var(--badge-primary-subtle-bg-color);
+  --_text: var(--badge-primary-subtle-text-color);
+}
+
+.ds-badge--secondary-solid {
+  --_bg: var(--badge-secondary-solid-bg-color);
+  --_text: var(--badge-secondary-solid-text-color);
+}
+
+.ds-badge--secondary-subtle {
+  --_bg: var(--badge-secondary-subtle-bg-color);
+  --_text: var(--badge-secondary-subtle-text-color);
+}
+
+.ds-badge--success-solid {
+  --_bg: var(--badge-success-solid-bg-color);
+  --_text: var(--badge-success-solid-text-color);
+}
+
+.ds-badge--success-subtle {
+  --_bg: var(--badge-success-subtle-bg-color);
+  --_text: var(--badge-success-subtle-text-color);
+}
+
+.ds-badge--warning-solid {
+  --_bg: var(--badge-warning-solid-bg-color);
+  --_text: var(--badge-warning-solid-text-color);
+}
+
+.ds-badge--warning-subtle {
+  --_bg: var(--badge-warning-subtle-bg-color);
+  --_text: var(--badge-warning-subtle-text-color);
+}
+
+.ds-badge--danger-solid {
+  --_bg: var(--badge-danger-solid-bg-color);
+  --_text: var(--badge-danger-solid-text-color);
+}
+
+.ds-badge--danger-subtle {
+  --_bg: var(--badge-danger-subtle-bg-color);
+  --_text: var(--badge-danger-subtle-text-color);
+}
+
+/* Dots take the solid color. */
+.ds-badge--dot.ds-badge--primary-subtle {
+  --_bg: var(--badge-primary-solid-bg-color);
+}
+
+.ds-badge--dot.ds-badge--secondary-subtle {
+  --_bg: var(--badge-secondary-solid-bg-color);
+}
+
+.ds-badge--dot.ds-badge--success-subtle {
+  --_bg: var(--badge-success-solid-bg-color);
+}
+
+.ds-badge--dot.ds-badge--warning-subtle {
+  --_bg: var(--badge-warning-solid-bg-color);
+}
+
+.ds-badge--dot.ds-badge--danger-subtle {
+  --_bg: var(--badge-danger-solid-bg-color);
+}
+
+.ds-badge__label {
+  position: absolute;
+  inline-size: var(--badge-hidden-size);
+  block-size: var(--badge-hidden-size);
+  margin: calc(-1 * var(--badge-hidden-size));
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (forced-colors: active) {
+  .ds-badge {
+    border: var(--badge-ring-width) solid CanvasText;
+  }
+}

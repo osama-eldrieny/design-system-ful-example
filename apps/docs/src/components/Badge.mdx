@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Badge } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Badge/Badge.stories';
+import meta from '../../../../packages/react/src/Badge/Badge.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Badge
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Badge]}
+  anatomy={{
+    targets: ['.ds-badge'],
+    example: <Badge tone="success">Paid</Badge>,
+  }}
+  optionStories={{ tone: 'Tones', appearance: 'Tones', dot: 'CountsAndDots' }}
+  behaviorStory="RightToLeft"
+  matrix={<Badge tone="success">Paid</Badge>}
+/>
