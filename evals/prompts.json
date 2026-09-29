@@ -1,0 +1,152 @@
+[
+  {
+    "id": "signup-form",
+    "area": "Forms",
+    "prompt": "A sign-up form with name, email, password, a terms checkbox and a submit button. Show a validation error on the email field."
+  },
+  {
+    "id": "settings-notifications",
+    "area": "Forms",
+    "prompt": "A notification settings panel: four switches for email, push, SMS and weekly digest, grouped under one heading."
+  },
+  {
+    "id": "contact-form",
+    "area": "Forms",
+    "prompt": "A contact form with a subject select (Sales, Support, Billing), a message textarea with a 500 character counter, and a send button."
+  },
+  {
+    "id": "address-form",
+    "area": "Forms",
+    "prompt": "A shipping address form with country (select), city, street, postal code and a 'save as default' checkbox, in two columns on wide screens."
+  },
+  {
+    "id": "plan-picker",
+    "area": "Forms",
+    "prompt": "A plan picker with three plans (Free, Pro $29/month, Team) as large selectable cards, and a Continue button."
+  },
+  {
+    "id": "search-filters",
+    "area": "Forms",
+    "prompt": "A product search bar with a search field, a price range slider and category checkboxes."
+  },
+  {
+    "id": "assign-user",
+    "area": "Forms",
+    "prompt": "A field to assign a task to one or more teammates by typing their names, with suggestions."
+  },
+  {
+    "id": "login-dark",
+    "area": "Theming",
+    "prompt": "A login card (email, password, 'remember me', sign in, forgot password link) that renders in the dark mode of the Opal brand."
+  },
+  {
+    "id": "profile-rtl",
+    "area": "Theming",
+    "prompt": "A user profile card in Arabic (right-to-left): avatar, name, job title and an edit button."
+  },
+  {
+    "id": "kpi-dashboard",
+    "area": "Dashboard",
+    "prompt": "A dashboard header with four KPI stats (revenue, users, orders, conversion) with trends against last month."
+  },
+  {
+    "id": "orders-table",
+    "area": "Dashboard",
+    "prompt": "A recent orders table with order id, customer, status badge and right-aligned total; sortable by total; rows selectable."
+  },
+  {
+    "id": "empty-orders",
+    "area": "Dashboard",
+    "prompt": "The orders page when there are no orders yet: explain it and offer a 'Create order' action."
+  },
+  {
+    "id": "loading-list",
+    "area": "Feedback",
+    "prompt": "A list of team members that shows skeleton placeholders while loading, then the list."
+  },
+  {
+    "id": "upload-progress",
+    "area": "Feedback",
+    "prompt": "An upload panel that shows each file's progress and a success message when all are done."
+  },
+  {
+    "id": "save-toast",
+    "area": "Feedback",
+    "prompt": "A Save button that shows a 'Changes saved' toast with an Undo action."
+  },
+  {
+    "id": "error-alert",
+    "area": "Feedback",
+    "prompt": "A page-level error message that the payment failed, with a Retry action, above a checkout form."
+  },
+  {
+    "id": "status-badges",
+    "area": "Feedback",
+    "prompt": "A list of invoices each showing a status: Paid, Overdue, Draft."
+  },
+  {
+    "id": "delete-confirm",
+    "area": "Overlays",
+    "prompt": "A Delete project button that asks for confirmation in a dialog before deleting."
+  },
+  {
+    "id": "edit-modal",
+    "area": "Overlays",
+    "prompt": "An Edit button that opens a dialog with a form to rename a file and Save / Cancel buttons."
+  },
+  {
+    "id": "filter-drawer",
+    "area": "Overlays",
+    "prompt": "A Filters button that opens a side panel with filter options and 'Show results'."
+  },
+  {
+    "id": "icon-toolbar",
+    "area": "Overlays",
+    "prompt": "A text-formatting toolbar with icon-only buttons for bold, italic and underline, each with a tooltip."
+  },
+  {
+    "id": "more-menu",
+    "area": "Overlays",
+    "prompt": "A 'more actions' menu on a table row with Edit, Duplicate and Delete (destructive)."
+  },
+  {
+    "id": "share-popover",
+    "area": "Overlays",
+    "prompt": "A Share button that opens a small panel with a copy-link field and a copy button."
+  },
+  {
+    "id": "app-nav",
+    "area": "Navigation",
+    "prompt": "An app header with the product logo, links to Dashboard, Orders and Settings (Orders is the current page) and a user avatar."
+  },
+  {
+    "id": "sidebar-nav",
+    "area": "Navigation",
+    "prompt": "A sidebar for an admin app with sections and a collapsible 'Reports' group containing Sales and Traffic."
+  },
+  {
+    "id": "breadcrumbs",
+    "area": "Navigation",
+    "prompt": "A breadcrumb trail for Home › Electronics › Audio › Wireless Headphones."
+  },
+  {
+    "id": "checkout-steps",
+    "area": "Navigation",
+    "prompt": "A checkout page showing progress through Cart, Shipping, Payment, Review (currently Payment)."
+  },
+  {
+    "id": "tabs-product",
+    "area": "Navigation",
+    "prompt": "A product page section with tabs for Description, Specifications and Reviews."
+  },
+  {
+    "id": "pagination-list",
+    "area": "Navigation",
+    "prompt": "A list of articles with pagination below it (page 3 of 12)."
+  },
+  {
+    "id": "faq",
+    "area": "Content",
+    "prompt": "An FAQ section with five questions that expand to show answers."
+  }
+]
