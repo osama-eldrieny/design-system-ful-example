@@ -36,6 +36,8 @@ jobs:
       - run: npm run build
       # The publishable packages build, and stay small and tree-shakable.
       - run: npm run size
+      # No page scrolls sideways at 375, 768, 1024 or 1440 px (WCAG 1.4.10).
+      - run: npm run check:responsive
       - uses: actions/upload-pages-artifact@v5
         if: github.ref == 'refs/heads/main'
         with:

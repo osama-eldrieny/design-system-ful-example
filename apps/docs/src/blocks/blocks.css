@@ -205,6 +205,8 @@
 }
 
 .docs-dodont__visual {
+  min-width: 0;
+  overflow-x: auto;
   border-radius: 8px;
   padding: 18px;
   display: flex;
@@ -287,6 +289,8 @@
 }
 
 .docs-anatomy__stage {
+  max-width: 100%;
+  overflow-x: auto;
   position: relative;
   padding: 56px 24px;
   border-radius: 10px;

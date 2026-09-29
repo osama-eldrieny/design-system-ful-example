@@ -48,43 +48,13 @@ body {
 .top-bar-controls {
   display: flex;
   flex-wrap: wrap;
+  min-inline-size: 0;
   gap: 12px;
   align-items: center;
 }
 
 .sort-controls {
   position: relative;
-}
-
-.sort-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: var(--button-small-padding-y) var(--button-small-padding-x);
-  background-color: var(--button-primary-default-bg-color);
-  color: var(--button-primary-default-text-color);
-  border: none;
-  border-radius: var(--button-small-border-radius);
-  cursor: pointer;
-  font-family: var(--button-font-family);
-  font-size: var(--button-medium-font-size);
-  font-weight: var(--button-font-weight);
-  transition: all 200ms ease;
-  white-space: nowrap;
-}
-
-.sort-button:hover {
-  background-color: var(--button-primary-hover-bg-color);
-  color: var(--button-primary-hover-text-color);
-}
-
-.sort-button i:last-child {
-  transition: transform 200ms ease;
-  font-size: 14px;
-}
-
-.sort-button i.open {
-  transform: rotate(180deg);
 }
 
 .sort-controls .dropdown {

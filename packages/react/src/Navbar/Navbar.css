@@ -24,6 +24,13 @@
   gap: var(--navbar-list-gap);
 }
 
+/* Actions (e.g. a search field) shrink and wrap on narrow screens instead of overflowing. */
+.ds-navbar__actions {
+  flex: 0 1 auto;
+  flex-wrap: wrap;
+  min-inline-size: 0;
+}
+
 .ds-navbar__list {
   display: flex;
   flex-wrap: wrap;

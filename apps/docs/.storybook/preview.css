@@ -31,3 +31,37 @@
   min-height: 100vh;
   border-radius: 0;
 }
+
+/* Docs pages reflow on phones (WCAG 1.4.10): wide tables, code samples and the props table
+   scroll inside their own frame instead of making the page scroll sideways. */
+.sbdocs-content,
+.sbdocs-content > *,
+.docs-block {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.docs-table-wrap,
+.sbdocs .docblock-source,
+.sbdocs pre,
+.sbdocs .docblock-argstable {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.sbdocs .docblock-argstable {
+  display: block;
+}
+
+.sbdocs-content table,
+.sbdocs table.docs-table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Long inline code (file paths, token names) wraps instead of widening the page. */
+.sbdocs-content :not(pre) > code {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}

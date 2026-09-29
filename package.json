@@ -19,7 +19,8 @@
     "docs": "npm run dev -w @ds/docs",
     "build:lib": "node scripts/build-lib.mjs",
     "size": "node scripts/build-lib.mjs && node scripts/bundle-size.mjs",
-    "test:visual": "vitest run --config vitest.visual.config.ts"
+    "test:visual": "vitest run --config vitest.visual.config.ts",
+    "check:responsive": "node scripts/responsive-check.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
