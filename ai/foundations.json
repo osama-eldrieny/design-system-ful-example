@@ -151,7 +151,7 @@
   "spacing": {
     "--spacing-4xs": "-4px",
     "--spacing-none": "0",
-    "--spacing-3xs": "0",
+    "--spacing-3xs": "2px",
     "--spacing-2xs": "4px",
     "--spacing-xs": "8px",
     "--spacing-sm": "12px",

@@ -7,7 +7,7 @@
  * Token reference:
  *   --spacing-4xs: Negative space (-4px) for deliberate overlap, e.g. stacked avatars.
  *   --spacing-none: No space.
- *   --spacing-3xs: Hairline gap. (Currently 0: the source export had space-2 set to 0; review.)
+ *   --spacing-3xs: Hairline gap (2px), e.g. between rating stars.
  *   --spacing-2xs: Tightest gap between tightly related items, e.g. icon and label.
  *   --spacing-xs: Small gap inside compact controls.
  *   --spacing-sm: Gap between related items in a group.
@@ -25,7 +25,7 @@
 [data-density='comfortable'] {
   --spacing-4xs: var(--space-negative-4);
   --spacing-none: var(--space-0);
-  --spacing-3xs: var(--space-0);
+  --spacing-3xs: var(--space-2);
   --spacing-2xs: var(--space-4);
   --spacing-xs: var(--space-8);
   --spacing-sm: var(--space-12);
@@ -64,7 +64,7 @@
 [data-density='compact'] {
   --spacing-4xs: var(--space-negative-4);
   --spacing-none: var(--space-0);
-  --spacing-3xs: var(--space-0);
+  --spacing-3xs: var(--space-2);
   --spacing-2xs: var(--space-4);
   --spacing-xs: var(--space-8);
   --spacing-sm: var(--space-12);

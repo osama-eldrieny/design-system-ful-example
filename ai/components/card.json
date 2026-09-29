@@ -436,9 +436,9 @@
       "default": "220px"
     },
     "--card-body-padding-x": {
-      "description": "Hairline gap. (Currently 0: the source export had space-2 set to 0; review.)",
+      "description": "Hairline gap (2px), e.g. between rating stars.",
       "references": "--spacing-3xs",
-      "default": "0"
+      "default": "2px"
     },
     "--card-body-padding-top": {
       "description": "Gap between groups inside a section.",
@@ -471,9 +471,9 @@
       "default": "8px"
     },
     "--card-stars-gap": {
-      "description": "Hairline gap. (Currently 0: the source export had space-2 set to 0; review.)",
+      "description": "Hairline gap (2px), e.g. between rating stars.",
       "references": "--spacing-3xs",
-      "default": "0"
+      "default": "2px"
     },
     "--card-title-font-size": {
       "description": "Type scale.",
