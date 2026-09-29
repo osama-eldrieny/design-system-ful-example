@@ -223,7 +223,13 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
         </div>
 
         <div className="top-bar-controls">
-          <InputField placeholder="Search..." icon={<i className="fas fa-search"></i>} />
+          <InputField
+            label="Search"
+            hideLabel
+            type="search"
+            placeholder="Search..."
+            iconStart={<i className="fas fa-search"></i>}
+          />
           <div className="sort-controls">
             <button className="sort-button" onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
               <i className="fas fa-sliders"></i> Filter

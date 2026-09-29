@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 172 | 172 | 0 |
-| diamond-dark | 172 | 172 | 0 |
-| amber-light | 172 | 172 | 0 |
-| amber-dark | 172 | 172 | 0 |
-| opal-light | 172 | 172 | 0 |
-| opal-dark | 172 | 172 | 0 |
+| diamond-light | 178 | 178 | 0 |
+| diamond-dark | 178 | 178 | 0 |
+| amber-light | 178 | 178 | 0 |
+| amber-dark | 178 | 178 | 0 |
+| opal-light | 178 | 178 | 0 |
+| opal-dark | 178 | 178 | 0 |
 
 ## Failures (0)
 
@@ -36,6 +36,8 @@ None.
 | diamond-light | `--color-fg-on-primary-high` | `--color-bg-primary-1` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-primary-medium` | `--color-bg-primary-1` | #6741d9 on #f2edff | 5.50:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-primary-low` | `--color-bg-primary-1` | #362373 on #f2edff | 11.15:1 | 4.5:1 |
+| diamond-light | `--color-border-primary-strong` | `--color-bg-surface` | #916dff on #fff | 3.60:1 | 3:1 |
+| diamond-light | `--color-border-primary-strong` | `--color-bg-default` | #916dff on #f8f7fb | 3.37:1 | 3:1 |
 | diamond-light | `--color-fg-on-accent-secondary-default` | `--color-bg-accent-secondary-default` | #fff on #76717f | 4.73:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-accent-secondary-text-default` | `--color-bg-surface` | #64606c on #fff | 6.12:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-accent-secondary-text-default` | `--color-bg-default` | #64606c on #f8f7fb | 5.74:1 | 4.5:1 |
@@ -60,6 +62,8 @@ None.
 | diamond-light | `--color-fg-on-success-high` | `--color-bg-success-1` | #005b22 on #e6faed | 7.64:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-success-medium` | `--color-bg-success-1` | #00732b on #e6faed | 5.52:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-success-low` | `--color-bg-success-1` | #005b22 on #e6faed | 7.64:1 | 4.5:1 |
+| diamond-light | `--color-border-success-strong` | `--color-bg-surface` | #008f35 on #fff | 4.22:1 | 3:1 |
+| diamond-light | `--color-border-success-strong` | `--color-bg-default` | #008f35 on #f8f7fb | 3.95:1 | 3:1 |
 | diamond-light | `--color-fg-on-accent-danger-default` | `--color-bg-accent-danger-default` | #fee9e9 on #cf2121 | 4.64:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-accent-danger-text-default` | `--color-bg-surface` | #cf2121 on #fff | 5.39:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-accent-danger-text-default` | `--color-bg-default` | #cf2121 on #f8f7fb | 5.06:1 | 4.5:1 |
@@ -72,6 +76,8 @@ None.
 | diamond-light | `--color-fg-on-danger-high` | `--color-bg-danger-1` | #ad1c1c on #fee9e9 | 6.10:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-danger-medium` | `--color-bg-danger-1` | #cf2121 on #fee9e9 | 4.64:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-danger-low` | `--color-bg-danger-1` | #6d1212 on #fee9e9 | 10.34:1 | 4.5:1 |
+| diamond-light | `--color-border-danger-strong` | `--color-bg-surface` | #f54e4e on #fff | 3.45:1 | 3:1 |
+| diamond-light | `--color-border-danger-strong` | `--color-bg-default` | #f54e4e on #f8f7fb | 3.24:1 | 3:1 |
 | diamond-light | `--color-fg-on-accent-warning-default` | `--color-bg-accent-warning-default` | #24202d on #f0be2e | 9.18:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-accent-warning-text-default` | `--color-bg-surface` | #876400 on #fff | 5.45:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-accent-warning-text-default` | `--color-bg-default` | #876400 on #f8f7fb | 5.11:1 | 4.5:1 |
@@ -84,6 +90,8 @@ None.
 | diamond-light | `--color-fg-on-warning-high` | `--color-bg-warning-1` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-warning-medium` | `--color-bg-warning-1` | #876400 on #fdf7e6 | 5.09:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-warning-low` | `--color-bg-warning-1` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
+| diamond-light | `--color-border-warning-strong` | `--color-bg-surface` | #a87d00 on #fff | 3.75:1 | 3:1 |
+| diamond-light | `--color-border-warning-strong` | `--color-bg-default` | #a87d00 on #f8f7fb | 3.52:1 | 3:1 |
 | diamond-light | `--color-fg-on-surface-primary` | `--color-bg-surface` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--color-fg-on-surface-secondary` | `--color-bg-surface` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--focus-ring-color` | `--color-bg-surface` | #6741d9 on #fff | 6.30:1 | 3:1 |
@@ -139,9 +147,7 @@ None.
 | diamond-light | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #24242c on #f2edff | 13.44:1 | 3:1 |
 | diamond-light | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #24242c on #dfd4ff | 11.00:1 | 4.5:1 |
 | diamond-light | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #24242c on #dfd4ff | 11.00:1 | 3:1 |
-| diamond-light | `--input-field-default-font-color` | `--input-field-default-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
-| diamond-light | `--input-field-hover-font-color` | `--input-field-hover-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
-| diamond-light | `--input-field-focus-font-color` | `--input-field-focus-bg-color` | #5637b5 on #fff | 8.05:1 | 4.5:1 |
+| diamond-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
@@ -208,6 +214,8 @@ None.
 | diamond-dark | `--color-fg-on-primary-high` | `--color-bg-primary-1` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-primary-medium` | `--color-bg-primary-1` | #ab8fff on #332e3c | 5.08:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-primary-low` | `--color-bg-primary-1` | #f2edff on #332e3c | 11.48:1 | 4.5:1 |
+| diamond-dark | `--color-border-primary-strong` | `--color-bg-surface` | #916dff on #24202d | 4.42:1 | 3:1 |
+| diamond-dark | `--color-border-primary-strong` | `--color-bg-default` | #916dff on #332e3c | 3.65:1 | 3:1 |
 | diamond-dark | `--color-fg-on-accent-secondary-default` | `--color-bg-accent-secondary-default` | #24202d on #f1f1f2 | 14.10:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-secondary-text-default` | `--color-bg-surface` | #a9a6ae on #24202d | 6.63:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-secondary-text-default` | `--color-bg-default` | #a9a6ae on #332e3c | 5.48:1 | 4.5:1 |
@@ -232,6 +240,8 @@ None.
 | diamond-dark | `--color-fg-on-success-high` | `--color-bg-success-1` | #91e8b2 on #332e3c | 9.01:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-success-medium` | `--color-bg-success-1` | #5ede8e on #332e3c | 7.71:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-success-low` | `--color-bg-success-1` | #e6faed on #332e3c | 12.06:1 | 4.5:1 |
+| diamond-dark | `--color-border-success-strong` | `--color-bg-surface` | #00ac40 on #24202d | 5.29:1 | 3:1 |
+| diamond-dark | `--color-border-success-strong` | `--color-bg-default` | #00ac40 on #332e3c | 4.37:1 | 3:1 |
 | diamond-dark | `--color-fg-on-accent-danger-default` | `--color-bg-accent-danger-default` | #8b1616 on #fee9e9 | 8.11:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-danger-text-default` | `--color-bg-surface` | #f77777 on #24202d | 5.96:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-danger-text-default` | `--color-bg-default` | #f77777 on #332e3c | 4.92:1 | 4.5:1 |
@@ -244,6 +254,8 @@ None.
 | diamond-dark | `--color-fg-on-danger-high` | `--color-bg-danger-1` | #faa2a2 on #332e3c | 6.74:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-danger-medium` | `--color-bg-danger-1` | #f77777 on #332e3c | 4.92:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-danger-low` | `--color-bg-danger-1` | #fee9e9 on #332e3c | 11.30:1 | 4.5:1 |
+| diamond-dark | `--color-border-danger-strong` | `--color-bg-surface` | #f32727 on #24202d | 3.89:1 | 3:1 |
+| diamond-dark | `--color-border-danger-strong` | `--color-bg-default` | #f32727 on #332e3c | 3.21:1 | 3:1 |
 | diamond-dark | `--color-fg-on-accent-warning-default` | `--color-bg-accent-warning-default` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-warning-text-default` | `--color-bg-surface` | #c99600 on #24202d | 5.95:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-warning-text-default` | `--color-bg-default` | #c99600 on #332e3c | 4.91:1 | 4.5:1 |
@@ -256,6 +268,8 @@ None.
 | diamond-dark | `--color-fg-on-warning-high` | `--color-bg-warning-1` | #f7dd91 on #332e3c | 9.84:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-warning-medium` | `--color-bg-warning-1` | #f4cd5e on #332e3c | 8.61:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-warning-low` | `--color-bg-warning-1` | #fdf7e6 on #332e3c | 12.29:1 | 4.5:1 |
+| diamond-dark | `--color-border-warning-strong` | `--color-bg-surface` | #a87d00 on #24202d | 4.24:1 | 3:1 |
+| diamond-dark | `--color-border-warning-strong` | `--color-bg-default` | #a87d00 on #332e3c | 3.51:1 | 3:1 |
 | diamond-dark | `--color-fg-on-surface-primary` | `--color-bg-surface` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-surface-secondary` | `--color-bg-surface` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--focus-ring-color` | `--color-bg-surface` | #c5b2ff on #24202d | 8.48:1 | 3:1 |
@@ -311,9 +325,7 @@ None.
 | diamond-dark | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #ececed on #332e3c | 11.14:1 | 3:1 |
 | diamond-dark | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #ececed on #5637b5 | 6.82:1 | 4.5:1 |
 | diamond-dark | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #ececed on #5637b5 | 6.82:1 | 3:1 |
-| diamond-dark | `--input-field-default-font-color` | `--input-field-default-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
-| diamond-dark | `--input-field-hover-font-color` | `--input-field-hover-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
-| diamond-dark | `--input-field-focus-font-color` | `--input-field-focus-bg-color` | #c5b2ff on #24202d | 8.48:1 | 4.5:1 |
+| diamond-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
@@ -380,6 +392,8 @@ None.
 | amber-light | `--color-fg-on-primary-high` | `--color-bg-primary-1` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--color-fg-on-primary-medium` | `--color-bg-primary-1` | #8a663e on #f9f4ee | 4.74:1 | 4.5:1 |
 | amber-light | `--color-fg-on-primary-low` | `--color-bg-primary-1` | #574028 on #f9f4ee | 8.85:1 | 4.5:1 |
+| amber-light | `--color-border-primary-strong` | `--color-bg-surface` | #a57a4b on #fff | 3.83:1 | 3:1 |
+| amber-light | `--color-border-primary-strong` | `--color-bg-default` | #a57a4b on #f9f5f1 | 3.53:1 | 3:1 |
 | amber-light | `--color-fg-on-accent-secondary-default` | `--color-bg-accent-secondary-default` | #fff on #76717f | 4.73:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-secondary-text-default` | `--color-bg-surface` | #64606c on #fff | 6.12:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-secondary-text-default` | `--color-bg-default` | #64606c on #f9f5f1 | 5.64:1 | 4.5:1 |
@@ -404,6 +418,8 @@ None.
 | amber-light | `--color-fg-on-success-high` | `--color-bg-success-1` | #3a6360 on #ecf1f1 | 5.88:1 | 4.5:1 |
 | amber-light | `--color-fg-on-success-medium` | `--color-bg-success-1` | #447571 on #ecf1f1 | 4.57:1 | 4.5:1 |
 | amber-light | `--color-fg-on-success-low` | `--color-bg-success-1` | #1f3533 on #ecf1f1 | 11.40:1 | 4.5:1 |
+| amber-light | `--color-border-success-strong` | `--color-bg-surface` | #668e8b on #fff | 3.62:1 | 3:1 |
+| amber-light | `--color-border-success-strong` | `--color-bg-default` | #668e8b on #f9f5f1 | 3.33:1 | 3:1 |
 | amber-light | `--color-fg-on-accent-danger-default` | `--color-bg-accent-danger-default` | #f4edef on #934c5e | 5.30:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-danger-text-default` | `--color-bg-surface` | #934c5e on #fff | 6.11:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-danger-text-default` | `--color-bg-default` | #934c5e on #f9f5f1 | 5.63:1 | 4.5:1 |
@@ -416,6 +432,8 @@ None.
 | amber-light | `--color-fg-on-danger-high` | `--color-bg-danger-1` | #7d4150 on #f4edef | 6.64:1 | 4.5:1 |
 | amber-light | `--color-fg-on-danger-medium` | `--color-bg-danger-1` | #934c5e on #f4edef | 5.30:1 | 4.5:1 |
 | amber-light | `--color-fg-on-danger-low` | `--color-bg-danger-1` | #42222a on #f4edef | 12.19:1 | 4.5:1 |
+| amber-light | `--color-border-danger-strong` | `--color-bg-surface` | #a66c7b on #fff | 4.16:1 | 3:1 |
+| amber-light | `--color-border-danger-strong` | `--color-bg-default` | #a66c7b on #f9f5f1 | 3.83:1 | 3:1 |
 | amber-light | `--color-fg-on-accent-warning-default` | `--color-bg-accent-warning-default` | #f3eff9 on #6f53a7 | 5.34:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-warning-text-default` | `--color-bg-surface` | #6f53a7 on #fff | 6.05:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-warning-text-default` | `--color-bg-default` | #6f53a7 on #f9f5f1 | 5.58:1 | 4.5:1 |
@@ -428,6 +446,8 @@ None.
 | amber-light | `--color-fg-on-warning-high` | `--color-bg-warning-1` | #5c468c on #f3eff9 | 6.84:1 | 4.5:1 |
 | amber-light | `--color-fg-on-warning-medium` | `--color-bg-warning-1` | #6f53a7 on #f3eff9 | 5.34:1 | 4.5:1 |
 | amber-light | `--color-fg-on-warning-low` | `--color-bg-warning-1` | #3a2c59 on #f3eff9 | 11.00:1 | 4.5:1 |
+| amber-light | `--color-border-warning-strong` | `--color-bg-surface` | #997ecf on #fff | 3.37:1 | 3:1 |
+| amber-light | `--color-border-warning-strong` | `--color-bg-default` | #997ecf on #f9f5f1 | 3.10:1 | 3:1 |
 | amber-light | `--color-fg-on-surface-primary` | `--color-bg-surface` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--color-fg-on-surface-secondary` | `--color-bg-surface` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--focus-ring-color` | `--color-bg-surface` | #a57a4b on #fff | 3.83:1 | 3:1 |
@@ -483,9 +503,7 @@ None.
 | amber-light | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #6a625a on #f9f4ee | 5.47:1 | 3:1 |
 | amber-light | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #6a625a on #f0e4d7 | 4.79:1 | 4.5:1 |
 | amber-light | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #6a625a on #f0e4d7 | 4.79:1 | 3:1 |
-| amber-light | `--input-field-default-font-color` | `--input-field-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
-| amber-light | `--input-field-hover-font-color` | `--input-field-hover-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
-| amber-light | `--input-field-focus-font-color` | `--input-field-focus-bg-color` | #6f5232 on #fff | 7.17:1 | 4.5:1 |
+| amber-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
@@ -552,6 +570,8 @@ None.
 | amber-dark | `--color-fg-on-primary-high` | `--color-bg-primary-1` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-primary-medium` | `--color-bg-primary-1` | #d9b896 on #574028 | 5.18:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-primary-low` | `--color-bg-primary-1` | #f9f4ee on #574028 | 8.85:1 | 4.5:1 |
+| amber-dark | `--color-border-primary-strong` | `--color-bg-surface` | #a57a4b on #1e140d | 4.72:1 | 3:1 |
+| amber-dark | `--color-border-primary-strong` | `--color-bg-default` | #a57a4b on #2a1f16 | 4.20:1 | 3:1 |
 | amber-dark | `--color-fg-on-accent-secondary-default` | `--color-bg-accent-secondary-default` | #1e140d on #f1f1f2 | 16.02:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-secondary-text-default` | `--color-bg-surface` | #8f8b96 on #1e140d | 5.43:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-secondary-text-default` | `--color-bg-default` | #8f8b96 on #2a1f16 | 4.82:1 | 4.5:1 |
@@ -576,6 +596,8 @@ None.
 | amber-dark | `--color-fg-on-success-high` | `--color-bg-success-1` | #d2dedd on #274340 | 7.76:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-success-medium` | `--color-bg-success-1` | #afc4c2 on #274340 | 5.86:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-success-low` | `--color-bg-success-1` | #ecf1f1 on #274340 | 9.38:1 | 4.5:1 |
+| amber-dark | `--color-border-success-strong` | `--color-bg-surface` | #668e8b on #1e140d | 5.00:1 | 3:1 |
+| amber-dark | `--color-border-success-strong` | `--color-bg-default` | #668e8b on #2a1f16 | 4.45:1 | 3:1 |
 | amber-dark | `--color-fg-on-accent-danger-default` | `--color-bg-accent-danger-default` | #683643 on #f4edef | 8.29:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-danger-text-default` | `--color-bg-surface` | #bb8e9a on #1e140d | 6.42:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-danger-text-default` | `--color-bg-default` | #bb8e9a on #2a1f16 | 5.70:1 | 4.5:1 |
@@ -588,6 +610,8 @@ None.
 | amber-dark | `--color-fg-on-danger-high` | `--color-bg-danger-1` | #e5d4d8 on #542b36 | 8.30:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-danger-medium` | `--color-bg-danger-1` | #d1b2ba on #542b36 | 6.08:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-danger-low` | `--color-bg-danger-1` | #f4edef on #542b36 | 10.25:1 | 4.5:1 |
+| amber-dark | `--color-border-danger-strong` | `--color-bg-surface` | #a66c7b on #1e140d | 4.35:1 | 3:1 |
+| amber-dark | `--color-border-danger-strong` | `--color-bg-default` | #a66c7b on #2a1f16 | 3.87:1 | 3:1 |
 | amber-dark | `--color-fg-on-accent-warning-default` | `--color-bg-accent-warning-default` | #4a3870 on #f3eff9 | 8.86:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-warning-text-default` | `--color-bg-surface` | #997ecf on #1e140d | 5.37:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-warning-text-default` | `--color-bg-default` | #997ecf on #2a1f16 | 4.78:1 | 4.5:1 |
@@ -600,6 +624,8 @@ None.
 | amber-dark | `--color-fg-on-warning-high` | `--color-bg-warning-1` | #e1d9f1 on #4a3870 | 7.36:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-warning-medium` | `--color-bg-warning-1` | #c9bbe6 on #4a3870 | 5.61:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-warning-low` | `--color-bg-warning-1` | #f3eff9 on #4a3870 | 8.86:1 | 4.5:1 |
+| amber-dark | `--color-border-warning-strong` | `--color-bg-surface` | #997ecf on #1e140d | 5.37:1 | 3:1 |
+| amber-dark | `--color-border-warning-strong` | `--color-bg-default` | #997ecf on #2a1f16 | 4.78:1 | 3:1 |
 | amber-dark | `--color-fg-on-surface-primary` | `--color-bg-surface` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-surface-secondary` | `--color-bg-surface` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--focus-ring-color` | `--color-bg-surface` | #e5cfb7 on #1e140d | 12.01:1 | 3:1 |
@@ -655,9 +681,7 @@ None.
 | amber-dark | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #fdfbf9 on #574028 | 9.38:1 | 3:1 |
 | amber-dark | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #fdfbf9 on #8a663e | 5.02:1 | 4.5:1 |
 | amber-dark | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #fdfbf9 on #8a663e | 5.02:1 | 3:1 |
-| amber-dark | `--input-field-default-font-color` | `--input-field-default-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
-| amber-dark | `--input-field-hover-font-color` | `--input-field-hover-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
-| amber-dark | `--input-field-focus-font-color` | `--input-field-focus-bg-color` | #f0e4d7 on #1e140d | 14.46:1 | 4.5:1 |
+| amber-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
@@ -724,6 +748,8 @@ None.
 | opal-light | `--color-fg-on-primary-high` | `--color-bg-primary-1` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--color-fg-on-primary-medium` | `--color-bg-primary-1` | #2a5caf on #ebf3fe | 5.78:1 | 4.5:1 |
 | opal-light | `--color-fg-on-primary-low` | `--color-bg-primary-1` | #1b3a6f on #ebf3fe | 9.98:1 | 4.5:1 |
+| opal-light | `--color-border-primary-strong` | `--color-bg-surface` | #3b82f6 on #fff | 3.68:1 | 3:1 |
+| opal-light | `--color-border-primary-strong` | `--color-bg-default` | #3b82f6 on #f4f6fc | 3.40:1 | 3:1 |
 | opal-light | `--color-fg-on-accent-secondary-default` | `--color-bg-accent-secondary-default` | #fff on #76717f | 4.73:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-secondary-text-default` | `--color-bg-surface` | #64606c on #fff | 6.12:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-secondary-text-default` | `--color-bg-default` | #64606c on #f4f6fc | 5.66:1 | 4.5:1 |
@@ -748,6 +774,8 @@ None.
 | opal-light | `--color-fg-on-success-high` | `--color-bg-success-1` | #3b5c0a on #f3fae8 | 7.22:1 | 4.5:1 |
 | opal-light | `--color-fg-on-success-medium` | `--color-bg-success-1` | #4b740d on #f3fae8 | 5.17:1 | 4.5:1 |
 | opal-light | `--color-fg-on-success-low` | `--color-bg-success-1` | #3b5c0a on #f3fae8 | 7.22:1 | 4.5:1 |
+| opal-light | `--color-border-success-strong` | `--color-bg-surface` | #5e9110 on #fff | 3.80:1 | 3:1 |
+| opal-light | `--color-border-success-strong` | `--color-bg-default` | #5e9110 on #f4f6fc | 3.51:1 | 3:1 |
 | opal-light | `--color-fg-on-accent-danger-default` | `--color-bg-accent-danger-default` | #feecef on #ad2d43 | 5.71:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-danger-text-default` | `--color-bg-surface` | #cf3650 on #fff | 4.89:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-danger-text-default` | `--color-bg-default` | #cf3650 on #f4f6fc | 4.52:1 | 4.5:1 |
@@ -760,6 +788,8 @@ None.
 | opal-light | `--color-fg-on-danger-high` | `--color-bg-danger-1` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
 | opal-light | `--color-fg-on-danger-medium` | `--color-bg-danger-1` | #ad2d43 on #feecef | 5.71:1 | 4.5:1 |
 | opal-light | `--color-fg-on-danger-low` | `--color-bg-danger-1` | #6e1c2a on #feecef | 9.91:1 | 4.5:1 |
+| opal-light | `--color-border-danger-strong` | `--color-bg-surface` | #f43f5e on #fff | 3.67:1 | 3:1 |
+| opal-light | `--color-border-danger-strong` | `--color-bg-default` | #f43f5e on #f4f6fc | 3.40:1 | 3:1 |
 | opal-light | `--color-fg-on-accent-warning-default` | `--color-bg-accent-warning-default` | #292d3e on #eec133 | 8.00:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-warning-text-default` | `--color-bg-surface` | #856603 on #fff | 5.39:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-warning-text-default` | `--color-bg-default` | #856603 on #f4f6fc | 4.98:1 | 4.5:1 |
@@ -772,6 +802,8 @@ None.
 | opal-light | `--color-fg-on-warning-high` | `--color-bg-warning-1` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
 | opal-light | `--color-fg-on-warning-medium` | `--color-bg-warning-1` | #856603 on #fdf7e6 | 5.03:1 | 4.5:1 |
 | opal-light | `--color-fg-on-warning-low` | `--color-bg-warning-1` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
+| opal-light | `--color-border-warning-strong` | `--color-bg-surface` | #a67f04 on #fff | 3.71:1 | 3:1 |
+| opal-light | `--color-border-warning-strong` | `--color-bg-default` | #a67f04 on #f4f6fc | 3.43:1 | 3:1 |
 | opal-light | `--color-fg-on-surface-primary` | `--color-bg-surface` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--color-fg-on-surface-secondary` | `--color-bg-surface` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--focus-ring-color` | `--color-bg-surface` | #326fd1 on #fff | 4.85:1 | 3:1 |
@@ -827,9 +859,7 @@ None.
 | opal-light | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #282b3b on #ebf3fe | 12.53:1 | 3:1 |
 | opal-light | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #282b3b on #d0e1fd | 10.59:1 | 4.5:1 |
 | opal-light | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #282b3b on #d0e1fd | 10.59:1 | 3:1 |
-| opal-light | `--input-field-default-font-color` | `--input-field-default-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
-| opal-light | `--input-field-hover-font-color` | `--input-field-hover-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
-| opal-light | `--input-field-focus-font-color` | `--input-field-focus-bg-color` | #224a8c on #fff | 8.66:1 | 4.5:1 |
+| opal-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
@@ -896,6 +926,8 @@ None.
 | opal-dark | `--color-fg-on-primary-high` | `--color-bg-primary-1` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-primary-medium` | `--color-bg-primary-1` | #84b0f9 on #1b3a6f | 5.08:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-primary-low` | `--color-bg-primary-1` | #ebf3fe on #1b3a6f | 9.98:1 | 4.5:1 |
+| opal-dark | `--color-border-primary-strong` | `--color-bg-surface` | #5e99f8 on #292d3e | 4.80:1 | 3:1 |
+| opal-dark | `--color-border-primary-strong` | `--color-bg-default` | #5e99f8 on #3d4460 | 3.37:1 | 3:1 |
 | opal-dark | `--color-fg-on-accent-secondary-default` | `--color-bg-accent-secondary-default` | #292d3e on #f1f1f2 | 12.09:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-secondary-text-default` | `--color-bg-surface` | #c4c2c8 on #292d3e | 7.73:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-secondary-text-default` | `--color-bg-default` | #c4c2c8 on #3d4460 | 5.42:1 | 4.5:1 |
@@ -920,6 +952,8 @@ None.
 | opal-dark | `--color-fg-on-success-high` | `--color-bg-success-1` | #cae99b on #3b5c0a | 5.75:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-success-medium` | `--color-bg-success-1` | #b2df6d on #3b5c0a | 5.02:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-success-low` | `--color-bg-success-1` | #f3fae8 on #3b5c0a | 7.22:1 | 4.5:1 |
+| opal-dark | `--color-border-success-strong` | `--color-bg-surface` | #70ad14 on #292d3e | 4.99:1 | 3:1 |
+| opal-dark | `--color-border-success-strong` | `--color-bg-default` | #70ad14 on #3d4460 | 3.50:1 | 3:1 |
 | opal-dark | `--color-fg-on-accent-danger-default` | `--color-bg-accent-danger-default` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-danger-text-default` | `--color-bg-surface` | #faacba on #292d3e | 7.59:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-danger-text-default` | `--color-bg-default` | #faacba on #3d4460 | 5.32:1 | 4.5:1 |
@@ -932,6 +966,8 @@ None.
 | opal-dark | `--color-fg-on-danger-high` | `--color-bg-danger-1` | #faacba on #6e1c2a | 6.27:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-danger-medium` | `--color-bg-danger-1` | #f8869a on #6e1c2a | 4.76:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-danger-low` | `--color-bg-danger-1` | #feecef on #6e1c2a | 9.91:1 | 4.5:1 |
+| opal-dark | `--color-border-danger-strong` | `--color-bg-surface` | #f6627b on #292d3e | 4.52:1 | 3:1 |
+| opal-dark | `--color-border-danger-strong` | `--color-bg-default` | #f6627b on #3d4460 | 3.17:1 | 3:1 |
 | opal-dark | `--color-fg-on-accent-warning-default` | `--color-bg-accent-warning-default` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-warning-text-default` | `--color-bg-surface` | #eab306 on #292d3e | 7.11:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-warning-text-default` | `--color-bg-default` | #eab306 on #3d4460 | 4.99:1 | 4.5:1 |
@@ -944,6 +980,8 @@ None.
 | opal-dark | `--color-fg-on-warning-high` | `--color-bg-warning-1` | #f6de94 on #695103 | 5.68:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-warning-medium` | `--color-bg-warning-1` | #f2cf62 on #695103 | 4.99:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-warning-low` | `--color-bg-warning-1` | #fdf7e6 on #695103 | 7.06:1 | 4.5:1 |
+| opal-dark | `--color-border-warning-strong` | `--color-bg-surface` | #c79805 on #292d3e | 5.15:1 | 3:1 |
+| opal-dark | `--color-border-warning-strong` | `--color-bg-default` | #c79805 on #3d4460 | 3.61:1 | 3:1 |
 | opal-dark | `--color-fg-on-surface-primary` | `--color-bg-surface` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-surface-secondary` | `--color-bg-surface` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--focus-ring-color` | `--color-bg-surface` | #abc9fb on #292d3e | 8.11:1 | 3:1 |
@@ -999,9 +1037,7 @@ None.
 | opal-dark | `--menu-item-hover-icon-color` | `--menu-item-hover-bg-color` | #ededf0 on #1b3a6f | 9.55:1 | 3:1 |
 | opal-dark | `--menu-item-active-font-color` | `--menu-item-active-bg-color` | #ededf0 on #2a5caf | 5.53:1 | 4.5:1 |
 | opal-dark | `--menu-item-active-icon-color` | `--menu-item-active-bg-color` | #ededf0 on #2a5caf | 5.53:1 | 3:1 |
-| opal-dark | `--input-field-default-font-color` | `--input-field-default-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
-| opal-dark | `--input-field-hover-font-color` | `--input-field-hover-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
-| opal-dark | `--input-field-focus-font-color` | `--input-field-focus-bg-color` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
+| opal-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |

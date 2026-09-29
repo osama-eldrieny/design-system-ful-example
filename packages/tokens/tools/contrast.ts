@@ -59,6 +59,10 @@ export function contrastPairs(set: TokenSet): Pair[] {
     for (const level of ['high', 'medium', 'low']) {
       add(`--color-fg-on-${tone}-${level}`, `--color-bg-${tone}-1`);
     }
+    // Strong borders mark component boundaries (e.g. a field's outline): 3:1 (WCAG 1.4.11).
+    // Medium and subtle borders are decorative dividers and are exempt.
+    add(`--color-border-${tone}-strong`, '--color-bg-surface', 'ui');
+    add(`--color-border-${tone}-strong`, '--color-bg-default', 'ui');
   }
   for (const bg of ['--color-bg-surface', '--color-bg-default']) {
     add('--color-fg-on-surface-primary', bg);

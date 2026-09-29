@@ -272,8 +272,11 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
             <div className="sidebar-subsection">
               <h3 className="sidebar-subsection-title">Search</h3>
               <InputField
+                label="Search products"
+                hideLabel
+                type="search"
                 placeholder="Search products..."
-                icon={<i className="fas fa-search"></i>}
+                iconStart={<i className="fas fa-search"></i>}
               />
             </div>
 
@@ -435,10 +438,13 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
               <p>Subscribe to our newsletter for exclusive offers</p>
               <div className="newsletter-form">
                 <InputField
+                  label="Email address"
+                  hideLabel
+                  type="email"
                   placeholder="Enter your email address"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  icon={<i className="fas fa-envelope"></i>}
+                  iconStart={<i className="fas fa-envelope"></i>}
                 />
                 <Button variant="primary" appearance="filled" size="small">
                   <i className="fas fa-bell"></i> Subscribe

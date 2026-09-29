@@ -15,7 +15,6 @@ const MIGRATING = [
   'Card',
   'Choose Card',
   'Dropdown',
-  'Input Field',
   'Pagination',
   'Tabs',
   'Apps Notifications',

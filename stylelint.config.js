@@ -11,7 +11,6 @@ const notYetOnComponentTokens = [
   'Dropdown',
   'Footer',
   'Header',
-  'InputField',
   'Logo',
   'MeetingCard',
   'Navbar',

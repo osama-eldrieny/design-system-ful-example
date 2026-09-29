@@ -140,13 +140,13 @@
   --color-border-primary-strong: var(--color-diamond-primary-500);
   --color-border-primary-subtle: var(--color-diamond-primary-100);
   --color-border-primary-medium: var(--color-diamond-primary-300);
-  --color-border-success-strong: var(--color-diamond-success-500);
+  --color-border-success-strong: var(--color-diamond-success-800);
   --color-border-success-medium: var(--color-diamond-success-300);
   --color-border-success-subtle: var(--color-diamond-success-100);
   --color-border-danger-strong: var(--color-diamond-danger-500);
   --color-border-danger-medium: var(--color-diamond-danger-300);
   --color-border-danger-subtle: var(--color-diamond-danger-100);
-  --color-border-warning-strong: var(--color-diamond-warning-500);
+  --color-border-warning-strong: var(--color-diamond-warning-800);
   --color-border-warning-medium: var(--color-diamond-warning-300);
   --color-border-warning-subtle: var(--color-diamond-warning-100);
   --image-light: url('./images/card-image-diamond.png');
@@ -288,13 +288,13 @@
   --color-fg-on-secondary-strong: var(--color-diamond-secondary-1000);
   --color-border-accent: var(--color-diamond-primary-300);
   --color-border-base: var(--color-diamond-base-800);
-  --color-border-primary-strong: var(--color-diamond-primary-700);
+  --color-border-primary-strong: var(--color-diamond-primary-500);
   --color-border-primary-subtle: var(--color-diamond-base-800);
   --color-border-primary-medium: var(--color-diamond-primary-800);
   --color-border-success-strong: var(--color-diamond-success-700);
   --color-border-success-medium: var(--color-diamond-success-800);
   --color-border-success-subtle: var(--color-diamond-base-800);
-  --color-border-danger-strong: var(--color-diamond-danger-800);
+  --color-border-danger-strong: var(--color-diamond-danger-600);
   --color-border-danger-medium: var(--color-diamond-danger-800);
   --color-border-danger-subtle: var(--color-diamond-base-800);
   --color-border-warning-strong: var(--color-diamond-warning-800);
@@ -344,7 +344,7 @@
 [data-brand='amber'][data-mode='light'] {
   --color-border-base: var(--color-amber-base-200);
   --color-border-accent: var(--color-amber-primary-700);
-  --color-border-primary-strong: var(--color-amber-primary-500);
+  --color-border-primary-strong: var(--color-amber-primary-700);
   --color-border-primary-medium: var(--color-amber-primary-300);
   --color-border-primary-subtle: var(--color-amber-primary-100);
   --color-border-success-strong: var(--color-amber-success-500);
@@ -646,16 +646,16 @@
 [data-brand='opal'][data-mode='light'] {
   --color-border-base: var(--color-opal-base-200);
   --color-border-accent: var(--color-opal-primary-700);
-  --color-border-primary-strong: var(--color-opal-primary-500);
+  --color-border-primary-strong: var(--color-opal-primary-600);
   --color-border-primary-medium: var(--color-opal-primary-300);
   --color-border-primary-subtle: var(--color-opal-primary-100);
-  --color-border-success-strong: var(--color-opal-success-500);
+  --color-border-success-strong: var(--color-opal-success-800);
   --color-border-success-medium: var(--color-opal-success-300);
   --color-border-success-subtle: var(--color-opal-success-100);
-  --color-border-danger-strong: var(--color-opal-danger-500);
+  --color-border-danger-strong: var(--color-opal-danger-600);
   --color-border-danger-medium: var(--color-opal-danger-300);
   --color-border-danger-subtle: var(--color-opal-danger-100);
-  --color-border-warning-strong: var(--color-opal-warning-500);
+  --color-border-warning-strong: var(--color-opal-warning-800);
   --color-border-warning-medium: var(--color-opal-warning-300);
   --color-border-warning-subtle: var(--color-opal-warning-100);
   --image-card: url('./images/card-image-opal.png');
@@ -797,13 +797,13 @@
 [data-brand='opal'][data-mode='dark'] {
   --color-border-base: var(--color-opal-base-800);
   --color-border-accent: var(--color-opal-primary-300);
-  --color-border-primary-strong: var(--color-opal-primary-700);
+  --color-border-primary-strong: var(--color-opal-primary-500);
   --color-border-primary-medium: var(--color-opal-primary-800);
   --color-border-primary-subtle: var(--color-opal-primary-1000);
   --color-border-success-strong: var(--color-opal-success-700);
   --color-border-success-medium: var(--color-opal-success-800);
   --color-border-success-subtle: var(--color-opal-success-1000);
-  --color-border-danger-strong: var(--color-opal-danger-700);
+  --color-border-danger-strong: var(--color-opal-danger-500);
   --color-border-danger-medium: var(--color-opal-danger-800);
   --color-border-danger-subtle: var(--color-opal-danger-1000);
   --color-border-warning-strong: var(--color-opal-warning-700);
