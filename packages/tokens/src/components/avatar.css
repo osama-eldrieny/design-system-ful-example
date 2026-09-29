@@ -1,0 +1,13 @@
+/**
+ * Component tokens: avatar
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --avatar-border-width: var(--border-width-regular);
+  --avatar-small-size: var(--sizing-lg);
+  --avatar-large-size: var(--sizing-3xl);
+  --avatar-group-gap: var(--spacing-4xs);
+}

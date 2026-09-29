@@ -1,0 +1,25 @@
+/**
+ * Component tokens: pagination
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --pagination-item-default-bg-color: var(--color-bg-default);
+  --pagination-item-default-font-color: var(--color-fg-on-surface-primary);
+  --pagination-item-hover-bg-color: var(--color-bg-primary-1);
+  --pagination-item-hover-font-color: var(--color-fg-on-primary-high);
+  --pagination-item-active-bg-color: var(--color-bg-primary-1);
+  --pagination-item-active-font-color: var(--color-fg-on-primary-high);
+  --pagination-number-padding-x: var(--spacing-md);
+  --pagination-number-padding-y: var(--spacing-sm);
+  --pagination-arrow-padding-x: var(--spacing-sm);
+  --pagination-arrow-padding-y: var(--spacing-sm);
+  --pagination-number-font-size: var(--font-size-md);
+  --pagination-number-font-line-height: var(--font-line-height-sm);
+  --pagination-number-font-weight: var(--font-weight-medium);
+  --pagination-number-font-family: var(--font-family-body);
+  --pagination-arrow-font-size: var(--font-size-sm);
+  --pagination-arrow-font-line-height: var(--font-line-height-xs);
+}

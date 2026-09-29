@@ -1,0 +1,19 @@
+/**
+ * Component tokens: toggle
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --toggle-on-bg-color: var(--color-bg-accent-primary-default);
+  --toggle-on-circle-bg-color: var(--color-bg-base);
+  --toggle-on-border-color: var(--color-bg-accent-primary-default);
+  --toggle-off-circle-bg-color: var(--color-bg-base);
+  --toggle-off-bg-color: var(--color-bg-accent-secondary-default);
+  --toggle-off-border-color: var(--color-bg-accent-secondary-default);
+  --toggle-width: var(--sizing-xl);
+  --toggle-height: var(--sizing-md);
+  --toggle-circle-width: var(--sizing-sm);
+  --toggle-circle-height: var(--sizing-sm);
+}

@@ -1,0 +1,10 @@
+/**
+ * Component tokens: footer
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --footer-gap: var(--spacing-sm);
+}

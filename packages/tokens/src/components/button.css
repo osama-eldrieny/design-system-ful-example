@@ -1,0 +1,39 @@
+/**
+ * Component tokens: button
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --button-primary-default-bg-color: var(--color-bg-accent-primary-default);
+  --button-primary-default-text-color: var(--color-fg-on-accent-primary-default);
+  --button-primary-hover-bg-color: var(--color-bg-accent-primary-hover);
+  --button-primary-hover-text-color: var(--color-fg-on-accent-primary-hover);
+  --button-primary-focus-bg-color: var(--color-bg-accent-primary-focus);
+  --button-primary-focus-text-color: var(--color-fg-on-accent-primary-focus);
+  --button-primary-text-default-text-color: var(--color-fg-on-accent-primary-text-default);
+  --button-primary-text-hover-text-color: var(--color-fg-on-accent-primary-text-hover);
+  --button-primary-text-focus-text-color: var(--color-fg-on-accent-primary-text-focus);
+  --button-secondary-default-bg-color: var(--color-bg-accent-secondary-default);
+  --button-secondary-default-text-color: var(--color-fg-on-accent-secondary-default);
+  --button-secondary-hover-bg-color: var(--color-bg-accent-secondary-hover);
+  --button-secondary-hover-text-color: var(--color-fg-on-accent-secondary-hover);
+  --button-secondary-focus-bg-color: var(--color-bg-accent-secondary-focus);
+  --button-secondary-focus-text-color: var(--color-fg-on-accent-secondary-focus);
+  --button-secondary-text-default-text-color: var(--color-fg-on-accent-secondary-text-default);
+  --button-secondary-text-hover-text-color: var(--color-fg-on-accent-secondary-text-hover);
+  --button-secondary-text-focus-text-color: var(--color-fg-on-accent-secondary-text-focus);
+  --button-disabled-opacity: var(--opacity-medium);
+  --button-medium-padding-y: var(--spacing-md);
+  --button-small-padding-y: var(--spacing-sm);
+  --button-font-family: var(--font-family-body);
+  --button-font-weight: var(--font-weight-regular);
+  --button-text-decoration: underline;
+  --button-medium-font-size: var(--font-size-md);
+  --button-medium-font-line-height: var(--font-line-height-md);
+  --button-small-font-size: var(--font-size-sm);
+  --button-small-font-line-height: var(--font-line-height-sm);
+  --button-icon-font-size: var(--font-size-sm);
+  --button-icon-font-line-height: var(--font-line-height-xs);
+}

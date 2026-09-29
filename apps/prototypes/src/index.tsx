@@ -15,7 +15,7 @@ import '@fontsource/jetbrains-mono/600.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
 // Design System Tokens and Styles
-import '@ds/react/styles/tokens.css';
+import '@ds/tokens/tokens.css';
 import './index.css';
 import App from './App';
 

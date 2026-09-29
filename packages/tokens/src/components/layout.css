@@ -1,0 +1,19 @@
+/**
+ * Component tokens: layout
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --page-bg-color: var(--color-bg-base);
+  --section-bg-color: var(--color-bg-base);
+  --section-shadow-color: var(--color-shadow-surface);
+  --section-title-font-color: var(--color-fg-on-surface-primary);
+  --container-bg-color: var(--color-bg-default);
+  --section-shadow-x: var(--shadow-none);
+  --section-title-font-size: var(--font-size-md);
+  --section-title-font-family: var(--font-family-body);
+  --section-title-font-weight: var(--font-weight-bold);
+  --section-title-font-line-height: var(--font-line-height-md);
+}

@@ -1,0 +1,19 @@
+/**
+ * Component tokens: logo
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --logo-icon-bg-color: var(--color-bg-accent-primary-default);
+  --logo-icon-color: var(--color-bg-base);
+  --logo-name-font-color: var(--color-fg-on-surface-primary);
+  --logo-icon-padding: var(--spacing-sm);
+  --logo-icon-font-size: var(--font-size-lg);
+  --logo-icon-font-line-height: var(--font-line-height-md);
+  --logo-name-font-size: var(--font-size-md);
+  --logo-name-font-line-height: var(--font-line-height-md);
+  --logo-name-font-weight: var(--font-weight-bold);
+  --logo-name-font-family: var(--font-family-body);
+}

@@ -1,0 +1,70 @@
+/**
+ * Theme: shadow
+ *
+ * Shadow scale per elevation style. Set data-shadow (flat | subtle | default | raised).
+ */
+
+/* shadow: default (default) */
+:root,
+[data-shadow='default'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-8);
+  --section-shadow-blur: var(--shadow-16);
+  --menu-dropdown-shadow-y: var(--shadow-8);
+  --menu-dropdown-shadow-blur: var(--shadow-16);
+}
+
+/* shadow: flat */
+[data-shadow='flat'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-0);
+  --section-shadow-blur: var(--shadow-0);
+  --menu-dropdown-shadow-y: var(--shadow-0);
+  --menu-dropdown-shadow-blur: var(--shadow-0);
+}
+
+/* shadow: subtle */
+[data-shadow='subtle'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-4);
+  --section-shadow-blur: var(--shadow-8);
+  --menu-dropdown-shadow-y: var(--shadow-4);
+  --menu-dropdown-shadow-blur: var(--shadow-8);
+}
+
+/* shadow: raised */
+[data-shadow='raised'] {
+  --shadow-none: var(--shadow-0);
+  --shadow-2xs: var(--shadow-4);
+  --shadow-xs: var(--shadow-8);
+  --shadow-sm: var(--shadow-12);
+  --shadow-md: var(--shadow-16);
+  --shadow-lg: var(--shadow-20);
+  --shadow-xl: var(--shadow-28);
+  --shadow-2xl: var(--shadow-40);
+  --section-shadow-y: var(--shadow-16);
+  --section-shadow-blur: var(--shadow-28);
+  --menu-dropdown-shadow-y: var(--shadow-16);
+  --menu-dropdown-shadow-blur: var(--shadow-28);
+}

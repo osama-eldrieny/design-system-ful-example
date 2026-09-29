@@ -1,0 +1,36 @@
+/**
+ * Component tokens: dropdown
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --menu-item-default-bg-color: var(--color-bg-base);
+  --menu-item-default-font-color: var(--color-fg-on-surface-primary);
+  --menu-item-default-icon-color: var(--color-fg-on-surface-primary);
+  --menu-item-hover-bg-color: var(--color-bg-primary-1);
+  --menu-item-hover-font-color: var(--color-fg-on-surface-primary);
+  --menu-item-hover-icon-color: var(--color-fg-on-surface-primary);
+  --menu-dropdown-bg-color: var(--color-bg-base);
+  --menu-dropdown-shadow-color: var(--color-shadow-surface);
+  --menu-dropdown-border-color: var(--color-border-base);
+  --menu-dropdown-divider-color: var(--color-bg-default);
+  --menu-dropdown-border-width: var(--border-width-regular);
+  --menu-dropdown-divider-width: var(--border-width-regular);
+  --menu-item-padding-x: var(--spacing-md);
+  --menu-item-padding-y: var(--spacing-sm);
+  --menu-item-gap: var(--spacing-xs);
+  --menu-dropdown-item-border-radius: var(--radius-none);
+  --menu-dropdown-shadow-x: var(--shadow-none);
+  --menu-item-font-family: var(--font-family-body);
+  --menu-item-font-size: var(--font-size-md);
+  --menu-item-font-line-height: var(--font-line-height-md);
+  --menu-item-font-weight: var(--font-weight-regular);
+  --menu-item-icon-size: var(--font-size-sm);
+  --menu-item-icon-line-height: var(--font-line-height-sm);
+  --menu-item-active-bg-color: var(--color-bg-primary-200);
+  --menu-item-active-font-color: var(--color-fg-on-surface-primary);
+  --menu-item-active-icon-color: var(--color-fg-on-surface-primary);
+  --menu-dropdown-gap: var(--spacing-2xs);
+}

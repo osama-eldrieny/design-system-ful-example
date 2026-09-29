@@ -1,0 +1,37 @@
+/**
+ * Component tokens: alert
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --alerts-primary-bg-color: var(--color-bg-primary-1);
+  --alerts-primary-icon-color: var(--color-fg-on-primary-high);
+  --alerts-primary-font-color: var(--color-fg-on-primary-high);
+  --alerts-primary-border-color: var(--color-border-primary-medium);
+  --alerts-success-bg-color: var(--color-bg-success-1);
+  --alerts-success-icon-color: var(--color-fg-on-success-high);
+  --alerts-success-font-color: var(--color-fg-on-success-high);
+  --alerts-success-border-color: var(--color-border-success-medium);
+  --alerts-warning-bg-color: var(--color-bg-warning-1);
+  --alerts-warning-icon-color: var(--color-fg-on-warning-high);
+  --alerts-warning-font-color: var(--color-fg-on-warning-high);
+  --alerts-warning-border-color: var(--color-border-warning-medium);
+  --alerts-danger-bg-color: var(--color-bg-danger-1);
+  --alerts-danger-icon-color: var(--color-fg-on-danger-high);
+  --alerts-danger-font-color: var(--color-fg-on-danger-high);
+  --alerts-danger-border-color: var(--color-border-danger-medium);
+  --alerts-border-width: var(--border-width-regular);
+  --alerts-padding-x: var(--spacing-lg);
+  --alerts-padding-y: var(--spacing-lg);
+  --alerts-gap: var(--spacing-md);
+  --alerts-title-font-family: var(--font-family-body);
+  --alerts-title-font-size: var(--font-size-sm);
+  --alerts-title-font-line-height: var(--font-line-height-sm);
+  --alerts-title-font-weight: var(--font-weight-semi-bold);
+  --alerts-icon-font-size: var(--font-size-lg);
+  --alerts-icon-font-line-height: var(--font-line-height-md);
+  --alerts-border-style: solid;
+  --alerts-warning-border-style: dashed;
+}

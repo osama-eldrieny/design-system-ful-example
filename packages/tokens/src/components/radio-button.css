@@ -1,0 +1,14 @@
+/**
+ * Component tokens: radio-button
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --radio-on-bg-color: var(--color-bg-accent-primary-default);
+  --radio-on-border-color: var(--color-bg-accent-primary-default);
+  --radio-off-bg-color: var(--color-bg-secondary-1);
+  --radio-off-border-color: var(--color-bg-secondary-1);
+  --radio-default-font-color: var(--color-fg-on-surface-primary);
+}

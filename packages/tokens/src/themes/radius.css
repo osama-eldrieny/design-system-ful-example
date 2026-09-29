@@ -1,0 +1,111 @@
+/**
+ * Theme: radius
+ *
+ * Corner radius scale per radius style. Set data-radius (square | round | pills).
+ */
+
+/* radius: round (default) */
+:root,
+[data-radius='round'] {
+  --radius-none: var(--radius-0);
+  --radius-2xs: var(--radius-1);
+  --radius-xs: var(--radius-2);
+  --radius-sm: var(--radius-3);
+  --radius-md: var(--radius-4);
+  --radius-lg: var(--radius-8);
+  --radius-xl: var(--radius-12);
+  --radius-2xl: var(--radius-16);
+  --radius-3xl: var(--radius-20);
+  --radius-4xl: var(--radius-40);
+  --radius-full: var(--radius-999);
+  --section-border-radius: var(--radius-20);
+  --container-border-radius: var(--radius-20);
+  --avatar-small-border-radius: var(--radius-8);
+  --avatar-large-border-radius: var(--radius-16);
+  --meeting-card-border-radius: var(--radius-8);
+  --button-medium-border-radius: var(--radius-16);
+  --button-small-border-radius: var(--radius-12);
+  --button-icon-border-radius: var(--radius-12);
+  --toggle-border-radius: var(--radius-999);
+  --toggle-circle-border-radius: var(--radius-999);
+  --logo-icon-border-radius: var(--radius-12);
+  --tap-border-radius: var(--radius-8);
+  --tap-item-border-radius: var(--radius-4);
+  --menu-item-border-radius: var(--radius-8);
+  --input-field-border-radius: var(--radius-8);
+  --pagination-item-border-radius: var(--radius-8);
+  --palettes-item-border-radius: var(--radius-8);
+  --alerts-border-radius: var(--radius-8);
+  --card-image-border-radius: var(--radius-4);
+  --menu-dropdown-border-radius: var(--radius-12);
+}
+
+/* radius: square */
+[data-radius='square'] {
+  --radius-none: var(--radius-0);
+  --radius-2xs: var(--radius-1);
+  --radius-xs: var(--radius-2);
+  --radius-sm: var(--radius-3);
+  --radius-md: var(--radius-4);
+  --radius-lg: var(--radius-8);
+  --radius-xl: var(--radius-12);
+  --radius-2xl: var(--radius-16);
+  --radius-3xl: var(--radius-20);
+  --radius-4xl: var(--radius-40);
+  --radius-full: var(--radius-999);
+  --section-border-radius: var(--radius-4);
+  --container-border-radius: var(--radius-8);
+  --avatar-small-border-radius: var(--radius-4);
+  --avatar-large-border-radius: var(--radius-4);
+  --meeting-card-border-radius: var(--radius-4);
+  --button-medium-border-radius: var(--radius-4);
+  --button-small-border-radius: var(--radius-3);
+  --button-icon-border-radius: var(--radius-4);
+  --toggle-border-radius: var(--radius-4);
+  --toggle-circle-border-radius: var(--radius-2);
+  --logo-icon-border-radius: var(--radius-4);
+  --tap-border-radius: var(--radius-4);
+  --tap-item-border-radius: var(--radius-3);
+  --menu-item-border-radius: var(--radius-4);
+  --input-field-border-radius: var(--radius-4);
+  --pagination-item-border-radius: var(--radius-4);
+  --palettes-item-border-radius: var(--radius-4);
+  --alerts-border-radius: var(--radius-4);
+  --card-image-border-radius: var(--radius-3);
+  --menu-dropdown-border-radius: var(--radius-4);
+}
+
+/* radius: pills */
+[data-radius='pills'] {
+  --radius-none: var(--radius-0);
+  --radius-2xs: var(--radius-1);
+  --radius-xs: var(--radius-2);
+  --radius-sm: var(--radius-3);
+  --radius-md: var(--radius-4);
+  --radius-lg: var(--radius-8);
+  --radius-xl: var(--radius-12);
+  --radius-2xl: var(--radius-16);
+  --radius-3xl: var(--radius-20);
+  --radius-4xl: var(--radius-40);
+  --radius-full: var(--radius-999);
+  --section-border-radius: var(--radius-40);
+  --container-border-radius: var(--radius-40);
+  --avatar-small-border-radius: var(--radius-999);
+  --avatar-large-border-radius: var(--radius-999);
+  --meeting-card-border-radius: var(--radius-20);
+  --button-medium-border-radius: var(--radius-999);
+  --button-small-border-radius: var(--radius-999);
+  --button-icon-border-radius: var(--radius-999);
+  --toggle-border-radius: var(--radius-999);
+  --toggle-circle-border-radius: var(--radius-999);
+  --logo-icon-border-radius: var(--radius-999);
+  --tap-border-radius: var(--radius-999);
+  --tap-item-border-radius: var(--radius-999);
+  --menu-item-border-radius: var(--radius-999);
+  --input-field-border-radius: var(--radius-999);
+  --pagination-item-border-radius: var(--radius-999);
+  --palettes-item-border-radius: var(--radius-999);
+  --alerts-border-radius: var(--radius-12);
+  --card-image-border-radius: var(--radius-8);
+  --menu-dropdown-border-radius: var(--radius-16);
+}

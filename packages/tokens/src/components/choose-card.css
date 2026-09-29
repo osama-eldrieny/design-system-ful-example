@@ -1,0 +1,29 @@
+/**
+ * Component tokens: choose-card
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --choose-card-border-color: var(--color-border-primary-strong);
+  --choose-card-title-font-color: var(--color-fg-on-surface-primary);
+  --choose-card-price-font-color: var(--color-fg-on-surface-primary);
+  --choose-card-desc-font-color: var(--color-fg-on-surface-secondary);
+  --choose-card-border-width: var(--border-width-regular);
+  --choose-card-padding-y: var(--spacing-lg);
+  --choose-card-horizontal-gap: var(--spacing-md);
+  --choose-card-vertical-gap: var(--spacing-sm);
+  --choose-card-title-font-family: var(--font-family-body);
+  --choose-card-title-font-size: var(--font-size-md);
+  --choose-card-title-font-line-height: var(--font-line-height-md);
+  --choose-card-title-font-weight: var(--font-weight-medium);
+  --choose-card-desc-font-family: var(--font-family-body);
+  --choose-card-desc-font-size: var(--font-size-sm);
+  --choose-card-desc-font-line-height: var(--font-line-height-sm);
+  --choose-card-desc-font-weight: var(--font-weight-regular);
+  --choose-card-price-font-family: var(--font-family-body);
+  --choose-card-price-font-size: var(--font-size-md);
+  --choose-card-price-font-line-height: var(--font-line-height-md);
+  --choose-card-price-font-weight: var(--font-weight-regular);
+}

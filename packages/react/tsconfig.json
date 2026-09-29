@@ -3,7 +3,13 @@
   "compilerOptions": {
     "outDir": "../../node_modules/.cache/tsc/react",
     "rootDir": "src",
-    "types": ["vite/client", "@testing-library/jest-dom/vitest"]
+    "types": ["vite/client", "@testing-library/jest-dom/vitest"],
+    "tsBuildInfoFile": "../../node_modules/.cache/tsc/react.tsbuildinfo"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../tokens"
+    }
+  ]
 }

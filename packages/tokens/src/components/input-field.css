@@ -1,0 +1,25 @@
+/**
+ * Component tokens: input-field
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --input-field-default-bg-color: var(--color-bg-base);
+  --input-field-default-font-color: var(--color-fg-on-surface-secondary);
+  --input-field-default-border-color: var(--color-border-primary-subtle);
+  --input-field-hover-bg-color: var(--color-bg-base);
+  --input-field-hover-font-color: var(--color-fg-on-surface-secondary);
+  --input-field-hover-border-color: var(--color-border-primary-strong);
+  --input-field-focus-bg-color: var(--color-bg-base);
+  --input-field-focus-font-color: var(--color-fg-on-primary-high);
+  --input-field-focus-border-color: var(--color-border-primary-strong);
+  --input-field-border-width: var(--border-width-regular);
+  --input-field-padding-x: var(--spacing-md);
+  --input-field-padding-y: var(--spacing-xs);
+  --input-field-font-family: var(--font-family-body);
+  --input-field-font-size: var(--font-size-md);
+  --input-field-font-line-height: var(--font-line-height-md);
+  --input-field-font-weight: var(--font-weight-medium);
+}

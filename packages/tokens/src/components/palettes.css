@@ -1,0 +1,105 @@
+/**
+ * Component tokens: palettes
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --palettes-primary100-bg-color: var(--color-bg-primary-100);
+  --palettes-primary100-font-color: var(--color-fg-on-primary-low);
+  --palettes-primary200-bg-color: var(--color-bg-primary-200);
+  --palettes-primary200-font-color: var(--color-fg-on-primary-low);
+  --palettes-primary300-bg-color: var(--color-bg-primary-300);
+  --palettes-primary300-font-color: var(--color-fg-on-primary-low);
+  --palettes-primary400-bg-color: var(--color-bg-primary-400);
+  --palettes-primary400-font-color: var(--color-fg-on-primary-low);
+  --palettes-primary500-bg-color: var(--color-bg-primary-500);
+  --palettes-primary500-font-color: var(--color-fg-on-primary-strong);
+  --palettes-primary600-bg-color: var(--color-bg-primary-600);
+  --palettes-primary600-font-color: var(--color-fg-on-primary-strong);
+  --palettes-primary700-bg-color: var(--color-bg-primary-700);
+  --palettes-primary700-font-color: var(--color-fg-on-primary-strong);
+  --palettes-primary800-bg-color: var(--color-bg-primary-800);
+  --palettes-primary800-font-color: var(--color-fg-on-primary-strong);
+  --palettes-primary900-bg-color: var(--color-bg-primary-900);
+  --palettes-primary900-font-color: var(--color-fg-on-primary-strong);
+  --palettes-secondary100-bg-color: var(--color-bg-secondary-100);
+  --palettes-secondary100-font-color: var(--color-fg-on-secondary-low);
+  --palettes-secondary200-bg-color: var(--color-bg-secondary-200);
+  --palettes-secondary200-font-color: var(--color-fg-on-secondary-low);
+  --palettes-secondary300-bg-color: var(--color-bg-secondary-300);
+  --palettes-secondary300-font-color: var(--color-fg-on-secondary-low);
+  --palettes-secondary400-bg-color: var(--color-bg-secondary-400);
+  --palettes-secondary400-font-color: var(--color-fg-on-secondary-low);
+  --palettes-secondary500-bg-color: var(--color-bg-secondary-500);
+  --palettes-secondary500-font-color: var(--color-fg-on-secondary-strong);
+  --palettes-secondary600-bg-color: var(--color-bg-secondary-600);
+  --palettes-secondary600-font-color: var(--color-fg-on-secondary-strong);
+  --palettes-secondary700-bg-color: var(--color-bg-secondary-700);
+  --palettes-secondary700-font-color: var(--color-fg-on-secondary-strong);
+  --palettes-secondary800-bg-color: var(--color-bg-secondary-800);
+  --palettes-secondary800-font-color: var(--color-fg-on-secondary-strong);
+  --palettes-secondary900-bg-color: var(--color-bg-secondary-900);
+  --palettes-secondary900-font-color: var(--color-fg-on-secondary-strong);
+  --palettes-success100-bg-color: var(--color-bg-success-100);
+  --palettes-success100-font-color: var(--color-fg-on-success-low);
+  --palettes-success200-bg-color: var(--color-bg-success-200);
+  --palettes-success200-font-color: var(--color-fg-on-success-low);
+  --palettes-success300-bg-color: var(--color-bg-success-300);
+  --palettes-success300-font-color: var(--color-fg-on-success-low);
+  --palettes-success400-bg-color: var(--color-bg-success-400);
+  --palettes-success400-font-color: var(--color-fg-on-success-low);
+  --palettes-success500-bg-color: var(--color-bg-success-500);
+  --palettes-success500-font-color: var(--color-fg-on-success-strong);
+  --palettes-success600-bg-color: var(--color-bg-success-600);
+  --palettes-success600-font-color: var(--color-fg-on-success-strong);
+  --palettes-success700-bg-color: var(--color-bg-success-700);
+  --palettes-success700-font-color: var(--color-fg-on-success-strong);
+  --palettes-success800-bg-color: var(--color-bg-success-800);
+  --palettes-success800-font-color: var(--color-fg-on-success-strong);
+  --palettes-success900-bg-color: var(--color-bg-success-900);
+  --palettes-success900-font-color: var(--color-fg-on-success-strong);
+  --palettes-warning100-bg-color: var(--color-bg-warning-100);
+  --palettes-warning100-font-color: var(--color-fg-on-warning-low);
+  --palettes-warning200-bg-color: var(--color-bg-warning-200);
+  --palettes-warning200-font-color: var(--color-fg-on-warning-low);
+  --palettes-warning300-bg-color: var(--color-bg-warning-300);
+  --palettes-warning300-font-color: var(--color-fg-on-warning-low);
+  --palettes-warning400-bg-color: var(--color-bg-warning-400);
+  --palettes-warning400-font-color: var(--color-fg-on-warning-low);
+  --palettes-warning500-bg-color: var(--color-bg-warning-500);
+  --palettes-warning500-font-color: var(--color-fg-on-warning-strong);
+  --palettes-warning600-bg-color: var(--color-bg-warning-600);
+  --palettes-warning600-font-color: var(--color-fg-on-warning-strong);
+  --palettes-warning700-bg-color: var(--color-bg-warning-700);
+  --palettes-warning700-font-color: var(--color-fg-on-warning-strong);
+  --palettes-warning800-bg-color: var(--color-bg-warning-800);
+  --palettes-warning800-font-color: var(--color-fg-on-warning-strong);
+  --palettes-warning900-bg-color: var(--color-bg-warning-900);
+  --palettes-warning900-font-color: var(--color-fg-on-warning-strong);
+  --palettes-danger100-bg-color: var(--color-bg-danger-100);
+  --palettes-danger100-font-color: var(--color-fg-on-danger-low);
+  --palettes-danger200-bg-color: var(--color-bg-danger-200);
+  --palettes-danger200-font-color: var(--color-fg-on-danger-low);
+  --palettes-danger300-bg-color: var(--color-bg-danger-300);
+  --palettes-danger300-font-color: var(--color-fg-on-danger-low);
+  --palettes-danger400-bg-color: var(--color-bg-danger-400);
+  --palettes-danger400-font-color: var(--color-fg-on-danger-low);
+  --palettes-danger500-bg-color: var(--color-bg-danger-500);
+  --palettes-danger500-font-color: var(--color-fg-on-danger-strong);
+  --palettes-danger600-bg-color: var(--color-bg-danger-600);
+  --palettes-danger600-font-color: var(--color-fg-on-danger-strong);
+  --palettes-danger700-bg-color: var(--color-bg-danger-700);
+  --palettes-danger700-font-color: var(--color-fg-on-danger-strong);
+  --palettes-danger800-bg-color: var(--color-bg-danger-800);
+  --palettes-danger800-font-color: var(--color-fg-on-danger-strong);
+  --palettes-danger900-bg-color: var(--color-bg-danger-900);
+  --palettes-danger900-font-color: var(--color-fg-on-danger-strong);
+  --palettes-item-padding-x: var(--spacing-sm);
+  --palettes-item-padding-y: var(--spacing-md);
+  --palettes-item-font-size: var(--font-size-md);
+  --palettes-item-font-line-height: var(--font-line-height-sm);
+  --palettes-item-font-weight: var(--font-weight-regular);
+  --palettes-item-font-family: var(--font-family-body);
+}

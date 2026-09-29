@@ -1,0 +1,14 @@
+/**
+ * Component tokens: apps-notifications
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --app-notifications-title-font-color: var(--color-fg-on-surface-primary);
+  --app-notifications-title-font-family: var(--font-family-body);
+  --app-notifications-title-font-weight: var(--font-weight-regular);
+  --app-notifications-title-font-size: var(--font-size-md);
+  --app-notifications-title-font-line-height: var(--font-line-height-md);
+}

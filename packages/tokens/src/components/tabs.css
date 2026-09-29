@@ -1,0 +1,29 @@
+/**
+ * Component tokens: tabs
+ *
+ * Style this component only with these tokens.
+ */
+
+:root,
+[data-theme] {
+  --tap-item-default-bg-color: var(--color-bg-secondary-1);
+  --tap-item-default-font-color: var(--color-fg-on-surface-primary);
+  --tap-item-default-icon-color: var(--color-fg-on-surface-primary);
+  --tap-item-hover-bg-color: var(--color-bg-secondary-1);
+  --tap-item-hover-font-color: var(--color-fg-on-primary-high);
+  --tap-item-hover-icon-color: var(--color-fg-on-primary-high);
+  --tap-item-active-bg-color: var(--color-bg-accent-primary-focus);
+  --tap-item-active-font-color: var(--color-fg-on-accent-primary-focus);
+  --tap-item-active-icon-color: var(--color-fg-on-accent-primary-focus);
+  --tap-bg-color: var(--color-bg-secondary-1);
+  --tap-padding: var(--spacing-2xs);
+  --tap-item-padding-x: var(--spacing-sm);
+  --tap-item-padding-y: var(--spacing-xs);
+  --tap-item-padding-gap: var(--spacing-xs);
+  --tap-item-label-font-family: var(--font-family-body);
+  --tap-item-label-font-weight: var(--font-weight-regular);
+  --tap-item-label-font-size: var(--font-size-md);
+  --tap-item-label-font-line-height: var(--font-line-height-md);
+  --tap-item-icon-font-size: var(--font-size-sm);
+  --tap-item-icon-font-line-height: var(--font-line-height-sm);
+}
