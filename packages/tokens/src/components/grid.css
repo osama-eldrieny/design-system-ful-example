@@ -1,0 +1,22 @@
+/**
+ * Component tokens: grid
+ *
+ * Style this component only with these tokens. Gaps follow the spacing scale, which
+ * follows the density theme.
+ *
+ * Grammar: --grid-gap-{step} and --grid-min-column-width.
+ */
+
+:root,
+[data-theme] {
+  --grid-gap-none: var(--spacing-none);
+  --grid-gap-2xs: var(--spacing-2xs);
+  --grid-gap-xs: var(--spacing-xs);
+  --grid-gap-sm: var(--spacing-sm);
+  --grid-gap-md: var(--spacing-md);
+  --grid-gap-lg: var(--spacing-lg);
+  --grid-gap-xl: var(--spacing-xl);
+  --grid-gap-2xl: var(--spacing-2xl);
+  --grid-gap-3xl: var(--spacing-3xl);
+  --grid-min-column-width: var(--sizing-8xl);
+}

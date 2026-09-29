@@ -1,0 +1,16 @@
+/**
+ * Component tokens: container
+ *
+ * Style this component only with these tokens. Gaps follow the spacing scale, which
+ * follows the density theme.
+ *
+ * Grammar: --container-{size}-width; the side padding is --container-padding (density theme).
+ */
+
+:root,
+[data-theme] {
+  --container-small-width: calc(var(--sizing-8xl) * 3);
+  --container-medium-width: calc(var(--sizing-8xl) * 5);
+  --container-large-width: calc(var(--sizing-8xl) * 6.5);
+  --container-mobile-padding: var(--spacing-md);
+}

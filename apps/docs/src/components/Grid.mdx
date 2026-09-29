@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Grid } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Grid/Grid.stories';
+import meta from '../../../../packages/react/src/Grid/Grid.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Grid
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Grid]}
+  optionStories={{ gap: 'Playground', columns: 'Playground' }}
+  behaviorStory="RightToLeft"
+/>

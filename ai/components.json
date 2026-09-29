@@ -154,6 +154,17 @@
       "contract": "ai/components/combobox.json"
     },
     {
+      "id": "container",
+      "name": "Container",
+      "exports": [
+        "Container"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Container centers page content with a maximum width and page gutters that follow density, with smaller gutters on phones..",
+      "contract": "ai/components/container.json"
+    },
+    {
       "id": "divider",
       "name": "Divider",
       "exports": [
@@ -236,6 +247,17 @@
       "contract": "ai/components/form-field.json"
     },
     {
+      "id": "grid",
+      "name": "Grid",
+      "exports": [
+        "Grid"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Grid lays children out in equal columns: a fixed number, or as many as fit (auto), so it reflows on small screens..",
+      "contract": "ai/components/grid.json"
+    },
+    {
       "id": "header",
       "name": "Header",
       "exports": [
@@ -258,6 +280,17 @@
       "status": "stable",
       "purpose": "A hover card previews what a link points to, such as a person’s profile, when a mouse user points at it or a keyboard user focuses it.",
       "contract": "ai/components/hover-card.json"
+    },
+    {
+      "id": "inline",
+      "name": "Inline",
+      "exports": [
+        "Inline"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Inline lays its children out in a row that wraps onto more lines, e.g.",
+      "contract": "ai/components/inline.json"
     },
     {
       "id": "input-field",
@@ -479,6 +512,17 @@
       "status": "stable",
       "purpose": "A spinner shows that something is loading when the time it takes is unknown.",
       "contract": "ai/components/spinner.json"
+    },
+    {
+      "id": "stack",
+      "name": "Stack",
+      "exports": [
+        "Stack"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "Stack lays its children out vertically with even spacing from the density-aware spacing scale..",
+      "contract": "ai/components/stack.json"
     },
     {
       "id": "stat",

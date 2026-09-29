@@ -1,0 +1,21 @@
+/**
+ * Component tokens: stack
+ *
+ * Style this component only with these tokens. Gaps follow the spacing scale, which
+ * follows the density theme.
+ *
+ * Grammar: --stack-gap-{step}; step: none | 2xs … 3xl.
+ */
+
+:root,
+[data-theme] {
+  --stack-gap-none: var(--spacing-none);
+  --stack-gap-2xs: var(--spacing-2xs);
+  --stack-gap-xs: var(--spacing-xs);
+  --stack-gap-sm: var(--spacing-sm);
+  --stack-gap-md: var(--spacing-md);
+  --stack-gap-lg: var(--spacing-lg);
+  --stack-gap-xl: var(--spacing-xl);
+  --stack-gap-2xl: var(--spacing-2xl);
+  --stack-gap-3xl: var(--spacing-3xl);
+}

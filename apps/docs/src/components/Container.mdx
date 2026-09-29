@@ -1,0 +1,17 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Container } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Container/Container.stories';
+import meta from '../../../../packages/react/src/Container/Container.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Container
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Container]}
+  optionStories={{ size: 'Playground' }}
+  behaviorStory="RightToLeft"
+/>

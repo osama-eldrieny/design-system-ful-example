@@ -1,0 +1,82 @@
+/** Inline. Styled only with --inline-* tokens. */
+
+.ds-inline {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.ds-inline--nowrap {
+  flex-wrap: nowrap;
+}
+
+.ds-inline--gap-none {
+  gap: var(--inline-gap-none);
+}
+
+.ds-inline--gap-2xs {
+  gap: var(--inline-gap-2xs);
+}
+
+.ds-inline--gap-xs {
+  gap: var(--inline-gap-xs);
+}
+
+.ds-inline--gap-sm {
+  gap: var(--inline-gap-sm);
+}
+
+.ds-inline--gap-md {
+  gap: var(--inline-gap-md);
+}
+
+.ds-inline--gap-lg {
+  gap: var(--inline-gap-lg);
+}
+
+.ds-inline--gap-xl {
+  gap: var(--inline-gap-xl);
+}
+
+.ds-inline--gap-2xl {
+  gap: var(--inline-gap-2xl);
+}
+
+.ds-inline--gap-3xl {
+  gap: var(--inline-gap-3xl);
+}
+
+.ds-inline--align-start {
+  align-items: flex-start;
+}
+
+.ds-inline--align-center {
+  align-items: center;
+}
+
+.ds-inline--align-end {
+  align-items: flex-end;
+}
+
+.ds-inline--align-baseline {
+  align-items: baseline;
+}
+
+.ds-inline--align-stretch {
+  align-items: stretch;
+}
+
+.ds-inline--justify-start {
+  justify-content: flex-start;
+}
+
+.ds-inline--justify-center {
+  justify-content: center;
+}
+
+.ds-inline--justify-end {
+  justify-content: flex-end;
+}
+
+.ds-inline--justify-between {
+  justify-content: space-between;
+}

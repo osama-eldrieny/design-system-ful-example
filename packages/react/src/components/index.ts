@@ -55,3 +55,7 @@ export * from '../EmptyState';
 export * from '../List';
 export * from '../Accordion';
 export * from '../Table';
+export * from '../Stack';
+export * from '../Inline';
+export * from '../Grid';
+export * from '../Container';

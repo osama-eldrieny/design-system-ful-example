@@ -280,7 +280,7 @@ Each new component: design its component tokens first (aliasing semantic tokens,
 
 ---
 
-## Phase 5 — New components, wave B (feedback, overlays, navigation, data)
+## Phase 5 — New components, wave B (feedback, overlays, navigation, data) ✅
 
 | Group | Components |
 |---|---|
