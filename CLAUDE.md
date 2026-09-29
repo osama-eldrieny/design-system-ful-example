@@ -8,7 +8,8 @@ The overhaul is in progress. **[docs/ROADMAP.md](docs/ROADMAP.md)** is the appro
 
 **Code is the single source of truth** (since 2026-09-29; before that it was Figma).
 
-- Tokens live in the repo and are the origin of every value. CSS/SCSS for developers and the Figma variables import are generated from them.
+- Tokens are **plain CSS custom properties** in `packages/tokens/src`, edited by hand. It's the same CSS handed off to developers. There is no JSON source and no token build step; any JSON (e.g. for AI) is derived from the CSS.
+- Tiers: primitives → semantic tokens per theme (`themes/*.css`, scoped by `data-*` attributes) → component tokens (`components/*.css`, as `var()` references). Describe new tokens in the file header's "Token reference" legend.
 - Every component and variant is styled only through its **own component tokens**. Never hardcode colors, sizes, spacing, radii or shadows.
 
 ## Structure
@@ -23,7 +24,7 @@ scripts/            build helpers (assemble-site.mjs builds site/)
 docs/ROADMAP.md     the plan
 ```
 
-`apps/docs` (Storybook), `packages/mcp`, `packages/lint`, `ai/`, `skills/` and `evals/` are added in later phases. See the roadmap.
+`apps/docs` (Storybook), `packages/mcp`, `ai/`, `skills/` and `evals/` are added in later phases. See the roadmap.
 
 ## Commands
 
@@ -52,8 +53,12 @@ CI (`.github/workflows/ci.yml`) runs typecheck, lint, test and build on every pu
 - **Real interaction states:** use `:hover` / `:focus-visible` / `:active` / `[disabled]`, not a `state` prop (existing components get migrated in Phase 3).
 - **CSS class names are BEM** (`block__element--modifier`), and Stylelint enforces it. Use logical properties (`padding-inline`, `margin-inline-start`) so Arabic RTL works.
 - **Lint baseline:** `eslint-suppressions.json` records known a11y errors in Toggle, Dropdown, Navbar and AppsNotifications. Don't add to it. Remove entries as components are fixed (`npx eslint . --prune-suppressions`).
-- **Themes:** Diamond / Amber / Opal × Light / Dark, English / Arabic × Serif / Sans-serif, Comfortable / Compact density, Square / Round / Pills radius, Flat / Subtle / Default / Raised shadow. The current full set lives in `legacy/demo/css/` until Phase 1 moves it into the token source.
-- **Deploying:** pushing to GitHub publishes the live site. Only push with the owner's OK.
+- **Themes:** Diamond / Amber / Opal × Light / Dark, English / Arabic × Serif / Sans-serif, Comfortable / Compact density, Square / Round / Pills radius, Flat / Subtle / Default / Raised shadow. Apply with `applyTheme()` (`@ds/tokens`) or `<ThemeProvider>` (`@ds/react`).
+  - **Default theme:** Diamond, light, English, sans, round, comfortable, flat.
+- **Component token rule:** `ds/component-tokens-only` (Stylelint) allows a component's CSS only its own tokens: no semantic tokens, no other components' tokens, no raw colors or lengths. The existing stylesheets are listed in `stylelint.config.js` until Phase 3 migrates them. Don't add to that list.
+- **Contrast:** `npm run tokens:contrast` fails on any *new* WCAG AA failure. Known failures are in `packages/tokens/reports/contrast-baseline.json`, pending the owner's decision on brand color fixes.
+- **Docs site:** its interface stays neutral (not themed by the design system's themes). Component examples render with the default theme; the docs include a Theming guide for projects.
+- **Deploying:** pushing to GitHub publishes the live site. The owner wants a single push at the end of the overhaul; work stays on the local `overhaul` branch until then.
 
 ## UI UX Pro Max
 
