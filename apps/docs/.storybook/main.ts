@@ -5,6 +5,8 @@ import remarkGfm from 'remark-gfm';
 const config: StorybookConfig = {
   framework: '@storybook/react-vite',
   stories: ['../src/**/*.mdx', '../../../packages/react/src/**/*.stories.@(ts|tsx)'],
+  // Sample photos used in stories and docs (shared with the prototypes).
+  staticDirs: [{ from: '../../prototypes/public/assets', to: '/assets' }],
   addons: [
     {
       name: '@storybook/addon-docs',

@@ -4,7 +4,6 @@ import designSystem from './packages/lint/stylelint/index.js';
 // its own component tokens; remove a file from this list once it passes. Don't add to it.
 const notYetOnComponentTokens = [
   'AppsNotifications',
-  'Avatar',
   'Card',
   'ChooseCard',
   'Dropdown',

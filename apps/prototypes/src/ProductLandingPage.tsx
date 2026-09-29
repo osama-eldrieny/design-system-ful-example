@@ -421,7 +421,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
                 {teamMembers.map((member, idx) => (
                   <div key={idx} className="team-member">
                     <div className="team-avatar-wrapper">
-                      <Avatar src={member.avatar} alt={member.name} size="xlarge" radius="round" />
+                      <Avatar src={member.avatar} name={member.name} size="xlarge" decorative />
                     </div>
                     <h4>{member.name}</h4>
                     <p>{member.role}</p>

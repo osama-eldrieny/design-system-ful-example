@@ -29,7 +29,9 @@
   --section-border-radius: var(--radius-20);
   --container-border-radius: var(--radius-20);
   --avatar-small-border-radius: var(--radius-8);
-  --avatar-large-border-radius: var(--radius-16);
+  --avatar-medium-border-radius: var(--radius-8);
+  --avatar-large-border-radius: var(--radius-12);
+  --avatar-xlarge-border-radius: var(--radius-16);
   --meeting-card-border-radius: var(--radius-8);
   --button-medium-border-radius: var(--radius-16);
   --button-small-border-radius: var(--radius-12);
@@ -67,7 +69,9 @@
   --section-border-radius: var(--radius-4);
   --container-border-radius: var(--radius-8);
   --avatar-small-border-radius: var(--radius-4);
+  --avatar-medium-border-radius: var(--radius-4);
   --avatar-large-border-radius: var(--radius-4);
+  --avatar-xlarge-border-radius: var(--radius-4);
   --meeting-card-border-radius: var(--radius-4);
   --button-medium-border-radius: var(--radius-4);
   --button-small-border-radius: var(--radius-3);
@@ -105,7 +109,9 @@
   --section-border-radius: var(--radius-40);
   --container-border-radius: var(--radius-40);
   --avatar-small-border-radius: var(--radius-999);
+  --avatar-medium-border-radius: var(--radius-999);
   --avatar-large-border-radius: var(--radius-999);
+  --avatar-xlarge-border-radius: var(--radius-999);
   --meeting-card-border-radius: var(--radius-20);
   --button-medium-border-radius: var(--radius-999);
   --button-small-border-radius: var(--radius-999);

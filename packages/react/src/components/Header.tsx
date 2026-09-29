@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/Header.css';
-import { Avatar } from './Avatar';
+import { Avatar } from '../Avatar';
 
 interface HeaderProps {
   name?: string;
@@ -20,7 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className={`header ${className}`}>
       <div className="header-personal-info">
-        {avatar && <Avatar src={avatar} alt={name} size="xlarge" radius="round" />}
+        {avatar && <Avatar src={avatar} name={name} size="xlarge" decorative />}
         <div className="header-text-group">
           <div className="header-name">{name}</div>
           <div className="header-role">{role}</div>

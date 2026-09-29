@@ -429,7 +429,7 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
                 {teamMembers.map((member, idx) => (
                   <div key={idx} className="dashboard-team-member">
                     <div className="dashboard-team-avatar">
-                      <Avatar src={member.avatar} alt={member.name} size="small" radius="round" />
+                      <Avatar src={member.avatar} name={member.name} size="medium" decorative />
                     </div>
                     <div className="dashboard-team-info">
                       <h4>{member.name}</h4>
