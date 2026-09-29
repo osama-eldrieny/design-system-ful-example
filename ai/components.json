@@ -1,6 +1,29 @@
 {
   "components": [
     {
+      "id": "alert",
+      "name": "Alert",
+      "exports": [
+        "Alert"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "An alert shows a message about the page or the result of an action: information, success, a warning or an error.",
+      "contract": "ai/components/alert.json"
+    },
+    {
+      "id": "avatar",
+      "name": "Avatar",
+      "exports": [
+        "Avatar",
+        "AvatarGroup"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "An avatar represents a person or team with their photo, or their initials when there’s no photo.",
+      "contract": "ai/components/avatar.json"
+    },
+    {
       "id": "button",
       "name": "Button",
       "exports": [
@@ -11,6 +34,114 @@
       "status": "stable",
       "purpose": "A button triggers an action in place: saving a form, opening a dialog, deleting an item.",
       "contract": "ai/components/button.json"
+    },
+    {
+      "id": "card",
+      "name": "Card",
+      "exports": [
+        "Card",
+        "CardMedia",
+        "CardBody",
+        "CardTitle",
+        "CardDescription",
+        "CardFooter"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A card groups content and actions about one subject, such as an article, a product or a person, into a single container.",
+      "contract": "ai/components/card.json"
+    },
+    {
+      "id": "dropdown-menu",
+      "name": "DropdownMenu",
+      "exports": [
+        "DropdownMenu",
+        "DropdownMenuTrigger",
+        "DropdownMenuContent",
+        "DropdownMenuItem",
+        "DropdownMenuCheckboxItem",
+        "DropdownMenuRadioGroup",
+        "DropdownMenuRadioItem",
+        "DropdownMenuLabel",
+        "DropdownMenuSeparator",
+        "DropdownMenuSub",
+        "DropdownMenuSubTrigger",
+        "DropdownMenuSubContent"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A dropdown menu shows a list of actions or options when people press a button.",
+      "contract": "ai/components/dropdown-menu.json"
+    },
+    {
+      "id": "input-field",
+      "name": "InputField",
+      "exports": [
+        "InputField"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "An input field lets people enter a single line of text: a name, an email address, a search term.",
+      "contract": "ai/components/input-field.json"
+    },
+    {
+      "id": "pagination",
+      "name": "Pagination",
+      "exports": [
+        "Pagination"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "Pagination moves between pages of a long list or table.",
+      "contract": "ai/components/pagination.json"
+    },
+    {
+      "id": "product-card",
+      "name": "ProductCard",
+      "exports": [
+        "ProductCard"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions.",
+      "contract": "ai/components/product-card.json"
+    },
+    {
+      "id": "radio-group",
+      "name": "RadioGroup",
+      "exports": [
+        "RadioGroup",
+        "Radio"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A radio group lets people pick exactly one option from a short list, with every option visible at once.",
+      "contract": "ai/components/radio-group.json"
+    },
+    {
+      "id": "switch",
+      "name": "Switch",
+      "exports": [
+        "Switch"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A switch turns a single setting on or off and applies the change immediately, like a light switch.",
+      "contract": "ai/components/switch.json"
+    },
+    {
+      "id": "tabs",
+      "name": "Tabs",
+      "exports": [
+        "Tabs",
+        "TabList",
+        "Tab",
+        "TabPanel"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "Tabs switch between related views of content in the same place, one at a time.",
+      "contract": "ai/components/tabs.json"
     }
   ]
 }

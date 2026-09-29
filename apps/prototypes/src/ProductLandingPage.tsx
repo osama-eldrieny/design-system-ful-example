@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import {
   Button,
-  Card,
+  ProductCard,
+  ThemeProvider,
   InputField,
   Avatar,
   Logo,
@@ -387,15 +388,17 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
                 <div className={`products-grid ${gridView ? 'grid' : 'list'}`}>
                   {paginatedProducts.map((product) => (
                     <div key={product.id} className="product-wrapper">
-                      <Card
-                        title={product.title}
-                        description={product.description}
-                        imageUrl={product.image}
-                        newPrice={product.price}
-                        oldPrice={product.oldPrice}
-                        reviews={product.reviews}
-                        brand={product.brand}
-                      />
+                      <ThemeProvider theme={{ brand: product.brand }}>
+                        <ProductCard
+                          title={product.title}
+                          description={product.description}
+                          imageUrl={product.image}
+                          price={product.price}
+                          oldPrice={product.oldPrice}
+                          rating={5}
+                          reviews={product.reviews}
+                        />
+                      </ThemeProvider>
                     </div>
                   ))}
                 </div>

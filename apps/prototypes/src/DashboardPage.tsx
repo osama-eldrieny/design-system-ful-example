@@ -2,6 +2,10 @@ import { useState } from 'react';
 import {
   Button,
   Card,
+  CardBody,
+  CardTitle,
+  CardDescription,
+  ThemeProvider,
   Alert,
   InputField,
   Avatar,
@@ -323,12 +327,15 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
             <div className="kpi-grid">
               {kpiCards.map((kpi) => (
                 <div key={kpi.id} className="kpi-card-wrapper">
-                  <Card
-                    title={kpi.title}
-                    description={kpi.value}
-                    newPrice={kpi.change}
-                    brand={kpi.brand}
-                  />
+                  <ThemeProvider theme={{ brand: kpi.brand }}>
+                    <Card>
+                      <CardBody>
+                        <CardTitle>{kpi.title}</CardTitle>
+                        <CardDescription>{kpi.value}</CardDescription>
+                        <p className="kpi-change">{kpi.change}</p>
+                      </CardBody>
+                    </Card>
+                  </ThemeProvider>
                 </div>
               ))}
             </div>
@@ -358,12 +365,15 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
                 <div className="data-grid">
                   {paginatedCards.map((card) => (
                     <div key={card.id} className="data-card-wrapper">
-                      <Card
-                        title={card.title}
-                        description={card.description}
-                        newPrice={card.price}
-                        brand={card.brand}
-                      />
+                      <ThemeProvider theme={{ brand: card.brand }}>
+                        <Card>
+                          <CardBody>
+                            <CardTitle>{card.title}</CardTitle>
+                            <CardDescription>{card.description}</CardDescription>
+                            <p className="kpi-change">{card.price}</p>
+                          </CardBody>
+                        </Card>
+                      </ThemeProvider>
                     </div>
                   ))}
                 </div>

@@ -25,6 +25,8 @@
   --shadow-2xl: var(--shadow-40);
   --section-shadow-y: var(--shadow-0);
   --section-shadow-blur: var(--shadow-0);
+  --card-shadow-y: var(--shadow-0);
+  --card-shadow-blur: var(--shadow-0);
   --menu-dropdown-shadow-y: var(--shadow-0);
   --menu-dropdown-shadow-blur: var(--shadow-0);
 }
@@ -41,6 +43,8 @@
   --shadow-2xl: var(--shadow-40);
   --section-shadow-y: var(--shadow-4);
   --section-shadow-blur: var(--shadow-8);
+  --card-shadow-y: var(--shadow-4);
+  --card-shadow-blur: var(--shadow-8);
   --menu-dropdown-shadow-y: var(--shadow-4);
   --menu-dropdown-shadow-blur: var(--shadow-8);
 }
@@ -57,6 +61,8 @@
   --shadow-2xl: var(--shadow-40);
   --section-shadow-y: var(--shadow-8);
   --section-shadow-blur: var(--shadow-16);
+  --card-shadow-y: var(--shadow-8);
+  --card-shadow-blur: var(--shadow-16);
   --menu-dropdown-shadow-y: var(--shadow-8);
   --menu-dropdown-shadow-blur: var(--shadow-16);
 }
@@ -73,6 +79,8 @@
   --shadow-2xl: var(--shadow-40);
   --section-shadow-y: var(--shadow-16);
   --section-shadow-blur: var(--shadow-28);
+  --card-shadow-y: var(--shadow-16);
+  --card-shadow-blur: var(--shadow-28);
   --menu-dropdown-shadow-y: var(--shadow-16);
   --menu-dropdown-shadow-blur: var(--shadow-28);
 }

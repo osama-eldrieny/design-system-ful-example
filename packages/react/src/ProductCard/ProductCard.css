@@ -1,0 +1,67 @@
+/**
+ * ProductCard. Styled only with --card-* tokens (it is a Card).
+ */
+
+.ds-product-card__rating {
+  display: flex;
+  align-items: center;
+  gap: var(--card-body-review-gap);
+}
+
+.ds-product-card__stars {
+  display: inline-flex;
+  gap: var(--card-stars-gap);
+  color: var(--card-stars-empty-icon-color);
+}
+
+.ds-product-card__stars > svg {
+  inline-size: var(--card-stars-icon-size);
+  block-size: var(--card-stars-icon-size);
+}
+
+.ds-product-card__star--on {
+  color: var(--card-stars-icon-color);
+  fill: currentcolor;
+}
+
+.ds-product-card__reviews {
+  color: var(--card-review-font-color);
+  font-family: var(--card-review-font-family);
+  font-size: var(--card-review-font-size);
+  line-height: var(--card-review-font-line-height);
+  font-weight: var(--card-review-font-weight);
+}
+
+.ds-product-card__prices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--card-body-prices-gap);
+  margin: 0;
+}
+
+.ds-product-card__price {
+  color: var(--card-new-price-font-color);
+  font-family: var(--card-new-price-font-family);
+  font-size: var(--card-new-price-font-size);
+  line-height: var(--card-new-price-font-line-height);
+  font-weight: var(--card-new-price-font-weight);
+}
+
+.ds-product-card__old-price {
+  color: var(--card-old-price-font-color);
+  font-family: var(--card-old-price-font-family);
+  font-size: var(--card-old-price-font-size);
+  line-height: var(--card-old-price-font-line-height);
+  font-weight: var(--card-old-price-font-weight);
+}
+
+/* Visually hidden, still announced ("Was $399"). */
+.ds-product-card__hidden {
+  position: absolute;
+  inline-size: var(--card-visually-hidden-size);
+  block-size: var(--card-visually-hidden-size);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

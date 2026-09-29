@@ -45,4 +45,27 @@
   --card-new-price-font-family: var(--font-family-body);
   --card-stars-icon-size: var(--font-size-sm);
   --card-stars-icon-line-height: var(--font-line-height-sm);
+
+  /* Container (generic Card): matches page sections */
+  --card-bg-color: var(--color-bg-surface);
+  --card-filled-bg-color: var(--color-bg-primary-1);
+  --card-border-color: var(--color-border-base);
+  --card-outlined-border-color: var(--color-bg-accent-secondary-default);
+  --card-border-width: var(--border-width-hairline);
+  --card-shadow-x: var(--shadow-0);
+  --card-shadow-color: var(--color-shadow-surface);
+  --card-gap: var(--spacing-md);
+  --card-horizontal-media-width: var(--sizing-8xl);
+
+  /* Clickable card */
+  --card-hover-border-color: var(--color-border-primary-strong);
+  --card-focus-ring-width: var(--focus-ring-width);
+  --card-focus-ring-offset: var(--focus-ring-offset);
+  --card-focus-ring-color: var(--focus-ring-color);
+  --card-transition-duration: var(--duration-fast);
+  --card-transition-easing: var(--easing-standard);
+
+  /* Product card: filled stars, empty stars, price */
+  --card-stars-empty-icon-color: var(--color-border-primary-medium);
+  --card-visually-hidden-size: var(--border-width-hairline);
 }

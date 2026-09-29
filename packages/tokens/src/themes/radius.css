@@ -27,6 +27,7 @@
   --radius-4xl: var(--radius-40);
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-20);
+  --card-border-radius: var(--radius-20);
   --container-border-radius: var(--radius-20);
   --avatar-small-border-radius: var(--radius-8);
   --avatar-medium-border-radius: var(--radius-8);
@@ -67,6 +68,7 @@
   --radius-4xl: var(--radius-40);
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-4);
+  --card-border-radius: var(--radius-4);
   --container-border-radius: var(--radius-8);
   --avatar-small-border-radius: var(--radius-4);
   --avatar-medium-border-radius: var(--radius-4);
@@ -107,6 +109,7 @@
   --radius-4xl: var(--radius-40);
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-40);
+  --card-border-radius: var(--radius-40);
   --container-border-radius: var(--radius-40);
   --avatar-small-border-radius: var(--radius-999);
   --avatar-medium-border-radius: var(--radius-999);

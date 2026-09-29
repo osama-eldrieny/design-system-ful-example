@@ -9,7 +9,10 @@ import { defaultTheme, themeAttributes, type Theme } from '@ds/tokens';
 const ThemeContext = createContext<Theme | null>(null);
 
 export interface ThemeProviderProps extends HTMLAttributes<HTMLDivElement> {
-  /** Theme for this subtree. Axes you leave out use the default theme. */
+  /**
+   * Theme for this subtree. Axes you leave out come from the nearest parent ThemeProvider,
+   * or the default theme at the top level.
+   */
   theme?: Partial<Theme>;
 }
 
@@ -19,13 +22,17 @@ export interface ThemeProviderProps extends HTMLAttributes<HTMLDivElement> {
  * call `applyTheme()` from `@ds/tokens` instead.
  */
 export const ThemeProvider = forwardRef<HTMLDivElement, ThemeProviderProps>(
-  ({ theme, children, ...props }, ref) => (
-    <ThemeContext.Provider value={{ ...defaultTheme, ...theme }}>
-      <div ref={ref} {...themeAttributes(theme)} {...props}>
-        {children}
-      </div>
-    </ThemeContext.Provider>
-  ),
+  ({ theme, children, ...props }, ref) => {
+    const parent = useContext(ThemeContext);
+    const resolved: Theme = { ...defaultTheme, ...parent, ...theme };
+    return (
+      <ThemeContext.Provider value={resolved}>
+        <div ref={ref} {...themeAttributes(resolved)} {...props}>
+          {children}
+        </div>
+      </ThemeContext.Provider>
+    );
+  },
 );
 
 ThemeProvider.displayName = 'ThemeProvider';
