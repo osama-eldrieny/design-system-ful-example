@@ -153,7 +153,10 @@ Distribution: the `ai/` folder, `AGENTS.md` snippet, and MCP server ship **insid
 
 ---
 
-## Phase 2 — Docs platform (Storybook shell, branding, templates)
+## Phase 2 — Docs platform (Storybook shell, branding, templates) ✅
+
+**Status (2026-09-29):** done. Storybook 10.6 in `apps/docs` (neutral docs UI; theme toolbar + Preview theme bar; default theme preselected), docs blocks driven by `*.meta.ts` and the token CSS, Button as the reference page (18 sections, stories run as browser tests with axe in all 6 brand × mode themes), Foundations and Get started pages including the Theming guide, AI pipeline (`npm run ai` → `ai/`, `/llms.txt`). Served at `/storybook/` until launch. Deviations: Terrazzo/Style Dictionary dropped (tokens are CSS); a Markdown copy of each guide page lives under `ai/docs/` instead of next to each Storybook URL.
+
 
 **Goal:** a professional docs experience before content scales. Docs-chrome styling follows the UI UX Pro Max recommendation (minimal Swiss style, indigo accent close to today's #312E81/#6366F1, Inter for UI, JetBrains Mono for code). Components themselves use only design-system tokens.
 

@@ -51,7 +51,16 @@ import {
   ]}
 >
   {/* Keep the label on one line: MDX wraps multi-line text in a paragraph. */}
-  <Button iconStart={<Download />} iconEnd={<ArrowRight />} style={{ outline: 'var(--button-focus-ring-width) solid var(--button-focus-ring-color)', outlineOffset: 'var(--button-focus-ring-offset)' }}>Download report</Button>
+  <Button
+    iconStart={<Download />}
+    iconEnd={<ArrowRight />}
+    style={{
+      outline: 'var(--button-focus-ring-width) solid var(--button-focus-ring-color)',
+      outlineOffset: 'var(--button-focus-ring-offset)',
+    }}
+  >
+    Download report
+  </Button>
 </Anatomy>
 
 ## Variants
@@ -102,7 +111,9 @@ Hover, focus and pressed are real browser states (`:hover`, `:focus-visible`, `:
     0: {
       do: (
         <>
-          <Button variant="secondary" appearance="outline">Cancel</Button>
+          <Button variant="secondary" appearance="outline">
+            Cancel
+          </Button>
           <Button>Save changes</Button>
         </>
       ),
@@ -117,24 +128,41 @@ Hover, focus and pressed are real browser states (`:hover`, `:focus-visible`, `:
     1: {
       do: (
         <>
-          <Button variant="secondary" appearance="outline">Cancel</Button>
+          <Button variant="secondary" appearance="outline">
+            Cancel
+          </Button>
           <Button>Continue</Button>
         </>
       ),
       dont: (
         <>
           <Button>Cancel</Button>
-          <Button variant="secondary" appearance="text">Continue</Button>
+          <Button variant="secondary" appearance="text">
+            Continue
+          </Button>
         </>
       ),
     },
     2: {
-      do: <Button variant="danger" iconStart={<Trash2 />}>Delete project</Button>,
+      do: (
+        <Button variant="danger" iconStart={<Trash2 />}>
+          Delete project
+        </Button>
+      ),
       dont: <Button variant="danger">Learn more</Button>,
     },
     3: {
-      do: <IconButton icon={<Trash2 />} label="Delete message" variant="secondary" appearance="ghost" />,
-      dont: <Button variant="secondary" appearance="ghost" iconStart={<ArrowRight />} aria-label="" />,
+      do: (
+        <IconButton
+          icon={<Trash2 />}
+          label="Delete message"
+          variant="secondary"
+          appearance="ghost"
+        />
+      ),
+      dont: (
+        <Button variant="secondary" appearance="ghost" iconStart={<ArrowRight />} aria-label="" />
+      ),
     },
   }}
 />

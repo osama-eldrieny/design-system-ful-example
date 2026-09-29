@@ -34,6 +34,7 @@ function loadSidebarDirect() {
   <a class="sidebar-link" href="components/tabs.html">Tabs</a>
   <a class="sidebar-link" href="components/toggle.html">Toggle</a>
   <div class="sidebar-group-label">Examples</div>
+  <a class="sidebar-link" href="storybook/" target="_blank">New docs (preview)</a>
   <a class="sidebar-link" href="demo/index.html" target="_blank">Demo</a>
   <a class="sidebar-link" href="prototypes/index.html#/landing" target="_blank">Landing Page</a>
   <a class="sidebar-link" href="prototypes/index.html#/dashboard" target="_blank">Dashboard</a>

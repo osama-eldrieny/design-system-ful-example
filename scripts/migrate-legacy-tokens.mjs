@@ -68,7 +68,9 @@ const rank = (tokenName, candidates) => {
   const prop = tokenName;
   const kindBonus = (c) =>
     (/bg-color$/.test(prop) && c.startsWith('--color-bg-')) ||
-    (/(text|font|icon)-color$|-color$/.test(prop) && !/bg-color$|border-color$/.test(prop) && c.startsWith('--color-fg-')) ||
+    (/(text|font|icon)-color$|-color$/.test(prop) &&
+      !/bg-color$|border-color$/.test(prop) &&
+      c.startsWith('--color-fg-')) ||
     (/border-color$/.test(prop) && c.startsWith('--color-border-')) ||
     (/shadow-color$/.test(prop) && c.startsWith('--color-shadow'))
       ? 10
@@ -90,7 +92,7 @@ const aliasPrimitive = (value, prims, hint = '') => {
   return matches.sort(
     (a, b) =>
       overlap(hint, b) - overlap(hint, a) ||
-      (Number(a.match(/-(\d+)$/)?.[1] ?? 1e9) - Number(b.match(/-(\d+)$/)?.[1] ?? 1e9)) ||
+      Number(a.match(/-(\d+)$/)?.[1] ?? 1e9) - Number(b.match(/-(\d+)$/)?.[1] ?? 1e9) ||
       a.localeCompare(b),
   )[0];
 };
@@ -151,7 +153,16 @@ const addComponent = (name, value) => {
 };
 
 // Generic single-axis migration (density, radius, shadow).
-const migrateAxis = ({ axis, modes, defaultMode, primRe, primName, semRe, semName, primValue = px }) => {
+const migrateAxis = ({
+  axis,
+  modes,
+  defaultMode,
+  primRe,
+  primName,
+  semRe,
+  semName,
+  primValue = px,
+}) => {
   const files = Object.fromEntries(modes.map((m) => [m, parse(`${axis}-${m}`)]));
   const first = files[defaultMode];
   const prims = new Map();
@@ -182,7 +193,9 @@ const migrateAxis = ({ axis, modes, defaultMode, primRe, primName, semRe, semNam
   for (const key of compKeys) {
     const name = componentName(key);
     const vals = Object.fromEntries(modes.map((m) => [m, files[m].get(key)]));
-    const sems = [...semRaw[defaultMode].keys()].filter((s) => modes.every((m) => norm(semRaw[m].get(s)) === norm(vals[m])));
+    const sems = [...semRaw[defaultMode].keys()].filter((s) =>
+      modes.every((m) => norm(semRaw[m].get(s)) === norm(vals[m])),
+    );
     if (sems.length) {
       addComponent(name, `var(${rank(name, sems)})`);
       continue;
@@ -226,7 +239,8 @@ const MODES = ['light', 'dark'];
     const brandPrims = [];
     for (const [key, value] of base) {
       if (!key.startsWith(`${b}Color`)) continue;
-      if (new Set(combos.map((c) => files[c].get(key))).size !== 1) throw new Error(`color primitive ${key} varies`);
+      if (new Set(combos.map((c) => files[c].get(key))).size !== 1)
+        throw new Error(`color primitive ${key} varies`);
       const name = `--color-${b}-${kebab(key.slice(b.length + 'Color'.length), true)}`;
       prims.set(name, value.toLowerCase());
       brandPrims.push([name, value.toLowerCase()]);
@@ -251,7 +265,11 @@ const MODES = ['light', 'dark'];
         const name = isImage ? `--${rest.replace(/^bg-/, '')}` : `--color-${rest}`;
         semRaw[c].set(name, raw);
         const alias = isImage ? null : aliasPrimitive(raw, brandPrims, name);
-        const value = alias ? `var(${alias})` : isImage ? raw.replace('../imgs/', './images/') : raw.toLowerCase();
+        const value = alias
+          ? `var(${alias})`
+          : isImage
+            ? raw.replace('../imgs/', './images/')
+            : raw.toLowerCase();
         if (!alias && !isImage) report.unaliased.push(`color/${c}: ${name} = ${raw}`);
         semOut[c].push([name, value]);
       }
@@ -386,9 +404,14 @@ const FACES = { serif: 'serif', sansserif: 'sans' };
     [/^fontSize(\w+)$/, (n) => `--font-size-${kebab(n, true)}`, px],
     [/^fontLineHeight(\w+)$/, (n) => `--font-line-height-${kebab(n, true)}`, px],
     [/^fontWeight(\w+)$/, (n) => `--font-weight-${kebab(n, true)}`, (v) => v],
-    [/^(english|arabic)Font(Serif|SansSerif)$/, (l, f) => `--font-family-${LANGS[l]}-${f === 'Serif' ? 'serif' : 'sans'}`, quoteFont],
+    [
+      /^(english|arabic)Font(Serif|SansSerif)$/,
+      (l, f) => `--font-family-${LANGS[l]}-${f === 'Serif' ? 'serif' : 'sans'}`,
+      quoteFont,
+    ],
   ];
-  const isSem = (key) => /^(english|arabic)((Action|Headings|Body)FontFamily|BorderWidth(Left|Right))$/.test(key);
+  const isSem = (key) =>
+    /^(english|arabic)((Action|Headings|Body)FontFamily|BorderWidth(Left|Right))$/.test(key);
   const semName = (key) => {
     const m = key.match(/^(english|arabic)(.*)$/);
     return m[2].endsWith('FontFamily')
@@ -399,7 +422,8 @@ const FACES = { serif: 'serif', sansserif: 'sans' };
   for (const [key, raw] of base) {
     const p = PRIM.find(([re]) => re.test(key));
     if (!p) continue;
-    if (new Set(combos.map((c) => files[c].get(key))).size !== 1) throw new Error(`typography primitive ${key} varies`);
+    if (new Set(combos.map((c) => files[c].get(key))).size !== 1)
+      throw new Error(`typography primitive ${key} varies`);
     const m = key.match(p[0]);
     const name = p[1](m[1], m[2]);
     prims.set(name, p[2](raw));
@@ -427,7 +451,8 @@ const FACES = { serif: 'serif', sansserif: 'sans' };
     }
   }
   for (const key of base.keys()) {
-    if (PRIM.some(([re]) => re.test(key)) || isSem(key) || /^languageBorderWidth\d+$/.test(key)) continue;
+    if (PRIM.some(([re]) => re.test(key)) || isSem(key) || /^languageBorderWidth\d+$/.test(key))
+      continue;
     const name = componentName(key);
     const vals = Object.fromEntries(combos.map((c) => [c, files[c].get(key)]));
     const sems = [...semRaw['english-sansserif'].keys()].filter((s) =>
@@ -501,15 +526,19 @@ files['primitives.css'] =
   ).replace(/ {2}(\/\* .* \*\/): null;/g, '\n  $1');
 
 const THEME_DOCS = {
-  color: 'Semantic colors per brand × mode. Set data-brand (diamond | amber | opal) and\ndata-mode (light | dark) on a theme scope.',
-  typography: 'Font families and text direction per language × typeface. Set data-language\n(en | ar) and data-typeface (serif | sans) on a theme scope.',
+  color:
+    'Semantic colors per brand × mode. Set data-brand (diamond | amber | opal) and\ndata-mode (light | dark) on a theme scope.',
+  typography:
+    'Font families and text direction per language × typeface. Set data-language\n(en | ar) and data-typeface (serif | sans) on a theme scope.',
   density: 'Spacing scale per density. Set data-density (comfortable | compact).',
   radius: 'Corner radius scale per radius style. Set data-radius (square | round | pills).',
   shadow: 'Shadow scale per elevation style. Set data-shadow (flat | subtle | default | raised).',
 };
 for (const [axis, blocks] of Object.entries(themes)) {
   files[`themes/${axis}.css`] =
-    header(`Theme: ${axis}`, THEME_DOCS[axis]) + '\n' + blocks.map((b) => block(b.selector, b.decls, b.comment)).join('\n');
+    header(`Theme: ${axis}`, THEME_DOCS[axis]) +
+    '\n' +
+    blocks.map((b) => block(b.selector, b.decls, b.comment)).join('\n');
 }
 for (const [file, decls] of Object.entries(components).sort()) {
   files[`components/${file}.css`] =
@@ -547,7 +576,8 @@ const decls = [];
   for (const [, css] of all) {
     for (const m of css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^}]*)\}/g)) {
       const selectors = m[1].split(',').map((s) => s.trim());
-      for (const d of m[2].matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/g)) decls.push({ selectors, name: d[1], value: d[2].trim(), order: order++ });
+      for (const d of m[2].matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/g))
+        decls.push({ selectors, name: d[1], value: d[2].trim(), order: order++ });
     }
   }
 }
@@ -560,10 +590,13 @@ const matches = (sel, attrs) => {
 const resolveAll = (attrs) => {
   const winner = new Map();
   for (const d of decls) {
-    const spec = Math.max(...d.selectors.map((s) => (matches(s, attrs)[0] ? matches(s, attrs)[1] : -1)));
+    const spec = Math.max(
+      ...d.selectors.map((s) => (matches(s, attrs)[0] ? matches(s, attrs)[1] : -1)),
+    );
     if (spec < 0) continue;
     const cur = winner.get(d.name);
-    if (!cur || spec > cur.spec || (spec === cur.spec && d.order > cur.order)) winner.set(d.name, { ...d, spec });
+    if (!cur || spec > cur.spec || (spec === cur.spec && d.order > cur.order))
+      winner.set(d.name, { ...d, spec });
   }
   const resolve = (name, depth = 0) => {
     if (depth > 20) throw new Error(`cycle at ${name}`);
@@ -573,36 +606,70 @@ const resolveAll = (attrs) => {
   };
   return resolve;
 };
-const DEFAULTS = { 'data-theme': '', 'data-brand': 'diamond', 'data-mode': 'light', 'data-language': 'en', 'data-typeface': 'sans', 'data-density': 'comfortable', 'data-radius': 'round', 'data-shadow': 'flat' };
+const DEFAULTS = {
+  'data-theme': '',
+  'data-brand': 'diamond',
+  'data-mode': 'light',
+  'data-language': 'en',
+  'data-typeface': 'sans',
+  'data-density': 'comfortable',
+  'data-radius': 'round',
+  'data-shadow': 'flat',
+};
 const failures = [];
 const checkFile = (legacyName, attrs) => {
   const resolve = resolveAll({ ...DEFAULTS, ...attrs });
   for (const [key, expected] of parse(legacyName)) {
-    if (/^(diamond|amber|opal)/.test(key) || /^(space|spacing|borderRadius|shadow|borderWidth|size|sizing|opacity|transparency|fontSize|fontLineHeight|fontWeight|languageBorderWidth)[A-Z0-9]/.test(key) || /^(english|arabic)/.test(key)) continue;
+    if (
+      /^(diamond|amber|opal)/.test(key) ||
+      /^(space|spacing|borderRadius|shadow|borderWidth|size|sizing|opacity|transparency|fontSize|fontLineHeight|fontWeight|languageBorderWidth)[A-Z0-9]/.test(
+        key,
+      ) ||
+      /^(english|arabic)/.test(key)
+    )
+      continue;
     const name = componentName(key);
     const got = resolve(name);
     const exp = expected.replace('../imgs/', './images/');
-    if (got === undefined || norm(got) !== norm(exp)) failures.push(`${legacyName}: ${name} expected ${exp}, got ${got}`);
+    if (got === undefined || norm(got) !== norm(exp))
+      failures.push(`${legacyName}: ${name} expected ${exp}, got ${got}`);
   }
 };
-for (const b of BRANDS) for (const m of MODES) checkFile(`${b}-${m}`, { 'data-brand': b, 'data-mode': m });
-for (const [l, code] of Object.entries(LANGS)) for (const [t, face] of Object.entries(FACES)) checkFile(`${l}-${t}`, { 'data-language': code, 'data-typeface': face });
+for (const b of BRANDS)
+  for (const m of MODES) checkFile(`${b}-${m}`, { 'data-brand': b, 'data-mode': m });
+for (const [l, code] of Object.entries(LANGS))
+  for (const [t, face] of Object.entries(FACES))
+    checkFile(`${l}-${t}`, { 'data-language': code, 'data-typeface': face });
 for (const m of ['comfortable', 'compact']) checkFile(`density-${m}`, { 'data-density': m });
 for (const m of ['square', 'round', 'pills']) checkFile(`radius-${m}`, { 'data-radius': m });
-for (const m of ['flat', 'subtle', 'default', 'raised']) checkFile(`shadow-${m}`, { 'data-shadow': m });
+for (const m of ['flat', 'subtle', 'default', 'raised'])
+  checkFile(`shadow-${m}`, { 'data-shadow': m });
 checkFile('global', {});
 
 const componentCount = Object.values(components).reduce((n, d) => n + d.length, 0);
-const aliased = Object.values(components).flat().filter(([, v]) => v.startsWith('var(')).length;
-console.log(`Component tokens: ${componentCount} (${aliased} aliased to semantic/primitive tokens)`);
-console.log(`Component tokens varying per theme without a semantic match: ${report.perMode.length}`);
+const aliased = Object.values(components)
+  .flat()
+  .filter(([, v]) => v.startsWith('var(')).length;
+console.log(
+  `Component tokens: ${componentCount} (${aliased} aliased to semantic/primitive tokens)`,
+);
+console.log(
+  `Component tokens varying per theme without a semantic match: ${report.perMode.length}`,
+);
 console.log(`Unaliased raw values: ${report.unaliased.length}`);
 console.log(`Parity failures: ${failures.length}`);
 if (failures.length) console.log(failures.slice(0, 40).join('\n'));
 if (process.env.REPORT) console.log(JSON.stringify(report, null, 2));
 
-if (!checkOnly && !failures.length && existsSync(join(outDir, 'tokens.css')) && !process.argv.includes('--force')) {
-  console.log('packages/tokens/src already exists and is now edited by hand. Not overwriting (pass --force to override).');
+if (
+  !checkOnly &&
+  !failures.length &&
+  existsSync(join(outDir, 'tokens.css')) &&
+  !process.argv.includes('--force')
+) {
+  console.log(
+    'packages/tokens/src already exists and is now edited by hand. Not overwriting (pass --force to override).',
+  );
 } else if (!checkOnly && !failures.length) {
   for (const [file, css] of Object.entries(files)) {
     mkdirSync(dirname(join(outDir, file)), { recursive: true });

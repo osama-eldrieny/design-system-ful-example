@@ -1,0 +1,28 @@
+# Spectrum Design System
+
+> Themeable, accessible React components (@ds/react) and CSS design tokens (@ds/tokens). Three brands (Diamond, Amber, Opal), light and dark, English and Arabic (RTL), two densities, three radius styles, four shadow levels. WCAG 2.2 AA in every theme.
+
+Use library components instead of raw HTML, only documented props, and tokens instead of raw values. Start with foundations.json for the always-on rules, then fetch a component’s contract before using it.
+
+## Components
+- [Button](https://osama-eldrieny.github.io/design-system-ful-example/ai/components/button.md): A button triggers an action in place: saving a form, opening a dialog, deleting an item. Contract: https://osama-eldrieny.github.io/design-system-ful-example/ai/components/button.json
+
+## Foundations and guides
+- [Foundations (rules, scales, color roles)](https://osama-eldrieny.github.io/design-system-ful-example/ai/foundations.json): Always-on context.
+- [Foundations/Accessibility](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-accessibility.md)
+- [Foundations/Colors](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-colors.md)
+- [Foundations/Iconography](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-iconography.md)
+- [Foundations/Motion](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-motion.md)
+- [Foundations/Radius](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-radius.md)
+- [Foundations/Shadows & elevation](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-shadows.md)
+- [Foundations/Spacing & density](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-spacing.md)
+- [Foundations/Typography](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/foundations-typography.md)
+- [Get started/Installation](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/get-started-installation.md)
+- [Get started/Introduction](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/get-started-introduction.md)
+- [Get started/Theming](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/get-started-theming.md)
+- [Get started/Using with AI](https://osama-eldrieny.github.io/design-system-ful-example/ai/docs/get-started-usingwithai.md)
+
+## Optional
+- [All tokens with values per theme](https://osama-eldrieny.github.io/design-system-ful-example/ai/tokens.json)
+- [Component index](https://osama-eldrieny.github.io/design-system-ful-example/ai/components.json)
+- [Interactive docs](https://osama-eldrieny.github.io/design-system-ful-example/storybook/)

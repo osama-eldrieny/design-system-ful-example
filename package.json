@@ -8,13 +8,15 @@
   ],
   "scripts": {
     "dev": "npm run dev -w @ds/prototypes --",
-    "build": "npm run build --workspaces --if-present && node scripts/assemble-site.mjs",
+    "build": "npm run ai && npm run build --workspaces --if-present && node scripts/assemble-site.mjs",
     "typecheck": "tsc -b",
     "lint": "eslint . && stylelint \"**/*.css\" && npm run tokens:contrast",
     "format": "prettier --write .",
     "test": "vitest run",
     "serve": "npx --yes serve site -l 8096",
-    "tokens:contrast": "node packages/tokens/tools/contrast-report.ts --check"
+    "tokens:contrast": "node packages/tokens/tools/contrast-report.ts --check",
+    "ai": "tsx scripts/build-ai.ts",
+    "docs": "npm run dev -w @ds/docs"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.5",
@@ -32,8 +34,10 @@
     "globals": "^17.12.0",
     "jsdom": "^29.1.1",
     "prettier": "^3.9.9",
+    "react-docgen-typescript": "^2.4.0",
     "stylelint": "^17.15.0",
     "stylelint-config-standard": "^40.0.0",
+    "tsx": "^4.23.15",
     "typescript": "~6.0",
     "typescript-eslint": "^8.71.0",
     "vite": "^8.3.1",

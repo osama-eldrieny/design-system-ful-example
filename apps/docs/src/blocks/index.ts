@@ -15,5 +15,17 @@ export { Anatomy } from './Anatomy';
 export { TokenTable } from './TokenTable';
 export { ThemeMatrix } from './ThemeMatrix';
 export { ThemeBar } from './ThemeBar';
+export { Catalog } from './Catalog';
+export {
+  PaletteGrid,
+  SemanticColors,
+  ContrastSummary,
+  TypeScale,
+  FontFamilies,
+  LengthScale,
+  ModeComparison,
+  MotionTokens,
+  Gallery,
+} from './Foundations';
 export { useDocsTheme } from './theme-globals';
 export { tokenSet } from './tokens';

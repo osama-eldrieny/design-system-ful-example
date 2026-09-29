@@ -3,7 +3,7 @@
  */
 import type { Theme } from '../src/theme.ts';
 import { themeOptions } from '../src/theme.ts';
-import { resolveTheme, type TokenSet } from './resolve.ts';
+import { resolveTheme, type TokenSet } from './core.ts';
 
 export interface Pair {
   fg: string;

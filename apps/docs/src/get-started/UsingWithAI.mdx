@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Get started/Using with AI" />
+
+# Using with AI
+
+The design system is written to be read by AI coding assistants as well as people. Every component's documentation comes from a structured metadata file next to its code, and the same metadata is published in machine-readable form.
+
+## Available now
+
+- **`/llms.txt`**: an index of the system in the [llms.txt](https://llmstxt.org) format, with links to every component and foundation.
+- **`/ai/components/{name}.json`**: each component's contract: props and allowed values, what every variant means, states, accessibility rules, do/don't with reasons, examples and tokens.
+- **`/ai/components/{name}.md`**: the same guidance as prose.
+- **`/ai/tokens.json`**: every token in every theme, with its purpose.
+- **Storybook MCP server**: while Storybook runs locally (`npm run dev -w @ds/docs`), agents can connect to `http://localhost:6006/mcp` to list components, read their docs and run their tests.
+
+```bash
+# Claude Code
+claude mcp add --transport http spectrum-storybook http://localhost:6006/mcp
+```
+
+## Rules for assistants
+
+When generating UI with this system:
+
+1. Import components from `@ds/react`; never recreate one with raw HTML and CSS.
+2. Use only props and values listed in the component's contract.
+3. Style custom elements with semantic tokens (`--color-*`, `--spacing-*`); never hex values or pixel sizes.
+4. Follow each component's accessibility rules, e.g. every `IconButton` needs a `label`.
+
+## Coming next
+
+A dedicated MCP server with a `validate_code` tool, an Agent Skill for building screens, lint rules for AI output, and an evaluation suite are planned; see the roadmap.

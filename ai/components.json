@@ -1,0 +1,16 @@
+{
+  "components": [
+    {
+      "id": "button",
+      "name": "Button",
+      "exports": [
+        "Button",
+        "IconButton"
+      ],
+      "category": "Actions",
+      "status": "stable",
+      "purpose": "A button triggers an action in place: saving a form, opening a dialog, deleting an item.",
+      "contract": "ai/components/button.json"
+    }
+  ]
+}

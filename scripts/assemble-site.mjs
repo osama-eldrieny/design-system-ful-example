@@ -37,6 +37,11 @@ mkdirSync(site);
 copy('legacy/index.html', 'index.html');
 for (const dir of ['assets', 'components', 'pages', 'includes', 'demo']) copy(`legacy/${dir}`, dir);
 copy('apps/prototypes/dist', 'prototypes');
+// Storybook docs live at /storybook/ until they replace the legacy docs at launch (Phase 8).
+copy('apps/docs/dist', 'storybook');
+// AI-readable files: /ai/… and /llms.txt at the site root (llms.txt convention).
+copy('ai', 'ai');
+copy('ai/llms.txt', 'llms.txt');
 
 // Old prototype URL from before the monorepo; keeps #/landing and #/dashboard links working.
 redirect('react-app-live', '../prototypes/');
