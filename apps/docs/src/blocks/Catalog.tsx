@@ -19,7 +19,6 @@ const MIGRATING = [
   'Pagination',
   'Radio Button',
   'Tabs',
-  'Toggle',
   'Apps Notifications',
   'Footer',
   'Header',

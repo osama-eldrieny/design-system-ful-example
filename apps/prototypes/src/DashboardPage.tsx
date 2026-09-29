@@ -9,7 +9,7 @@ import {
   Footer,
   Dropdown,
   RadioButton,
-  Toggle,
+  Switch,
   Tabs,
   Pagination,
   ChooseCard,
@@ -279,8 +279,11 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
             </div>
             <div className="sidebar-subsection">
               <div className="realtime-toggle">
-                <Toggle isActive={realtimeEnabled} onChange={setRealtimeEnabled} />
-                <span className="toggle-label">Real-time</span>
+                <Switch
+                  label="Real-time"
+                  checked={realtimeEnabled}
+                  onCheckedChange={setRealtimeEnabled}
+                />
               </div>
             </div>
           </div>
@@ -396,18 +399,24 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
                 <div className="settings-group">
                   <h3 className="settings-group-title">Widgets</h3>
                   <div className="widget-toggles">
-                    <div className="widget-toggle-item">
-                      <span>KPI Cards</span>
-                      <Toggle isActive={true} onChange={() => {}} />
-                    </div>
-                    <div className="widget-toggle-item">
-                      <span>Data Charts</span>
-                      <Toggle isActive={true} onChange={() => {}} />
-                    </div>
-                    <div className="widget-toggle-item">
-                      <span>Team Activity</span>
-                      <Toggle isActive={true} onChange={() => {}} />
-                    </div>
+                    <Switch
+                      className="widget-toggle-item"
+                      label="KPI Cards"
+                      labelPosition="start"
+                      defaultChecked
+                    />
+                    <Switch
+                      className="widget-toggle-item"
+                      label="Data Charts"
+                      labelPosition="start"
+                      defaultChecked
+                    />
+                    <Switch
+                      className="widget-toggle-item"
+                      label="Team Activity"
+                      labelPosition="start"
+                      defaultChecked
+                    />
                   </div>
                 </div>
               </div>

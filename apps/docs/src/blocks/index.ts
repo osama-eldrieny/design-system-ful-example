@@ -16,6 +16,7 @@ export { TokenTable } from './TokenTable';
 export { ThemeMatrix } from './ThemeMatrix';
 export { ThemeBar } from './ThemeBar';
 export { Catalog } from './Catalog';
+export { ComponentPage, type ComponentPageProps } from './ComponentPage';
 export {
   PaletteGrid,
   SemanticColors,

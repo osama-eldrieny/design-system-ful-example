@@ -9,7 +9,7 @@ import {
   Footer,
   Dropdown,
   RadioButton,
-  Toggle,
+  Switch,
   Tabs,
   Pagination,
   ChooseCard,
@@ -305,8 +305,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
             <div className="sidebar-subsection">
               <h3 className="sidebar-subsection-title">View Mode</h3>
               <div className="view-toggle">
-                <Toggle isActive={gridView} onChange={setGridView} />
-                <span className="toggle-label">{gridView ? 'Grid View' : 'List View'}</span>
+                <Switch label="Grid view" checked={gridView} onCheckedChange={setGridView} />
               </div>
             </div>
           </div>

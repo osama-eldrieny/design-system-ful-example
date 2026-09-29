@@ -18,7 +18,6 @@ const notYetOnComponentTokens = [
   'Pagination',
   'RadioButton',
   'Tabs',
-  'Toggle',
 ].map((name) => `packages/react/src/styles/${name}.css`);
 
 export default {

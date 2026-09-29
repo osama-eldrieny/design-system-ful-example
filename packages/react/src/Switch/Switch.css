@@ -1,0 +1,99 @@
+/**
+ * Switch. Styled only with --switch-* tokens. Radix sets data-state="checked|unchecked"
+ * on the track and thumb; hover, focus and disabled are real states.
+ */
+
+.ds-switch {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--switch-gap);
+}
+
+.ds-switch--label-start {
+  flex-direction: row-reverse;
+}
+
+.ds-switch__track {
+  --_bg: var(--switch-off-bg-color);
+  --_bg-hover: var(--switch-off-hover-bg-color);
+  --_inset: calc((var(--switch-height) - var(--switch-thumb-size)) / 2);
+  --_travel: calc(var(--switch-width) - var(--switch-thumb-size) - 2 * var(--_inset));
+
+  position: relative;
+  flex: none;
+  inline-size: var(--switch-width);
+  block-size: var(--switch-height);
+  padding: 0;
+  border: 0;
+  border-radius: var(--switch-border-radius);
+  background-color: var(--_bg);
+  cursor: pointer;
+  transition: background-color var(--switch-transition-duration) var(--switch-transition-easing);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ds-switch__track[data-state='checked'] {
+  --_bg: var(--switch-on-bg-color);
+  --_bg-hover: var(--switch-on-hover-bg-color);
+}
+
+.ds-switch__track:hover:not(:disabled) {
+  background-color: var(--_bg-hover);
+}
+
+.ds-switch__track:focus-visible {
+  outline: var(--switch-focus-ring-width) solid var(--switch-focus-ring-color);
+  outline-offset: var(--switch-focus-ring-offset);
+}
+
+.ds-switch__track:disabled {
+  opacity: var(--switch-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-switch__thumb {
+  position: absolute;
+  inset-block-start: var(--_inset);
+  inset-inline-start: var(--_inset);
+  inline-size: var(--switch-thumb-size);
+  block-size: var(--switch-thumb-size);
+  border-radius: var(--switch-thumb-border-radius);
+  background-color: var(--switch-thumb-color);
+  transition: transform var(--switch-transition-duration) var(--switch-transition-easing);
+}
+
+.ds-switch__thumb[data-state='checked'] {
+  transform: translateX(var(--_travel));
+}
+
+/* Right-to-left: the thumb travels toward the start (left). */
+.ds-switch__thumb[data-state='checked']:dir(rtl) {
+  transform: translateX(calc(-1 * var(--_travel)));
+}
+
+.ds-switch__text {
+  display: grid;
+  gap: 0;
+}
+
+.ds-switch__label {
+  font-family: var(--switch-label-font-family);
+  font-size: var(--switch-label-font-size);
+  line-height: var(--switch-label-font-line-height);
+  font-weight: var(--switch-label-font-weight);
+  color: var(--switch-label-text-color);
+  cursor: pointer;
+}
+
+.ds-switch__description {
+  font-family: var(--switch-label-font-family);
+  font-size: var(--switch-description-font-size);
+  line-height: var(--switch-description-font-line-height);
+  color: var(--switch-description-text-color);
+}
+
+.ds-switch[data-disabled] .ds-switch__label,
+.ds-switch[data-disabled] .ds-switch__description {
+  opacity: var(--switch-disabled-opacity);
+  cursor: not-allowed;
+}

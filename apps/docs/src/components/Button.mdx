@@ -1,147 +1,78 @@
-import { Meta, Canvas, Controls, ArgTypes } from '@storybook/addon-docs/blocks';
-import { Download, ArrowRight, Trash2 } from 'lucide-react';
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ArrowRight, Download, Trash2 } from 'lucide-react';
 import { Button, IconButton } from '@ds/react';
 import * as ButtonStories from '../../../../packages/react/src/Button/Button.stories';
 import buttonMeta from '../../../../packages/react/src/Button/Button.meta';
-import {
-  ComponentHeader,
-  ThemeBar,
-  WhenToUse,
-  Anatomy,
-  OptionTable,
-  StatesTable,
-  Behavior,
-  ContentGuidelines,
-  DoDont,
-  Accessibility,
-  TokenTable,
-  Examples,
-  ThemeMatrix,
-  Related,
-  Changelog,
-} from '../blocks';
+import { ComponentPage } from '../blocks';
 
 <Meta of={ButtonStories} name="Docs" />
 
 # Button
 
-<ComponentHeader meta={buttonMeta} />
-
-<ThemeBar />
-
-## Playground
-
-<Canvas of={ButtonStories.Playground} />
-<Controls of={ButtonStories.Playground} />
-
-## Overview
-
-<WhenToUse meta={buttonMeta} />
-
-## Anatomy
-
-<Anatomy
+<ComponentPage
   meta={buttonMeta}
-  targets={[
-    { selector: '.ds-button', at: 'start' },
-    '.ds-button__icon:first-child',
-    '.ds-button__label',
-    '.ds-button__icon:last-child',
-    { selector: '.ds-button', at: 'end' },
+  stories={ButtonStories}
+  components={[Button, IconButton]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-button', at: 'start' },
+      '.ds-button__icon:first-child',
+      '.ds-button__label',
+      '.ds-button__icon:last-child',
+      { selector: '.ds-button', at: 'end' },
+    ],
+    example: (
+      <Button
+        iconStart={<Download />}
+        iconEnd={<ArrowRight />}
+        style={{
+          outline: 'var(--button-focus-ring-width) solid var(--button-focus-ring-color)',
+          outlineOffset: 'var(--button-focus-ring-offset)',
+        }}
+      >
+        Download report
+      </Button>
+    ),
+  }}
+  optionStories={{ variant: 'Variants', appearance: 'Appearances', size: 'Sizes' }}
+  extras={[
+    { title: 'With icons', story: 'WithIcons' },
+    {
+      title: 'Icon buttons',
+      story: 'IconButtons',
+      text: 'Icon-only buttons need a label: it is the accessible name and the tooltip.',
+    },
+    { title: 'Loading', story: 'Loading' },
+    { title: 'Full width', story: 'FullWidth' },
   ]}
->
-  {/* Keep the label on one line: MDX wraps multi-line text in a paragraph. */}
-  <Button
-    iconStart={<Download />}
-    iconEnd={<ArrowRight />}
-    style={{
-      outline: 'var(--button-focus-ring-width) solid var(--button-focus-ring-color)',
-      outlineOffset: 'var(--button-focus-ring-offset)',
-    }}
-  >
-    Download report
-  </Button>
-</Anatomy>
-
-## Variants
-
-<Canvas of={ButtonStories.Variants} />
-<OptionTable meta={buttonMeta} prop="variant" />
-
-## Appearances
-
-<Canvas of={ButtonStories.Appearances} />
-<OptionTable meta={buttonMeta} prop="appearance" />
-
-## Sizes
-
-<Canvas of={ButtonStories.Sizes} />
-<OptionTable meta={buttonMeta} prop="size" />
-
-### With icons
-
-<Canvas of={ButtonStories.WithIcons} />
-
-### Icon buttons
-
-<Canvas of={ButtonStories.IconButtons} />
-
-## States
-
-Hover, focus and pressed are real browser states (`:hover`, `:focus-visible`, `:active`), not props. This example forces them so you can compare them side by side.
-
-<Canvas of={ButtonStories.States} />
-<StatesTable meta={buttonMeta} />
-
-## Behavior
-
-<Behavior meta={buttonMeta} />
-
-<Canvas of={ButtonStories.RightToLeft} />
-
-## Content guidelines
-
-<ContentGuidelines meta={buttonMeta} />
-
-## Do and don’t
-
-<DoDont
-  meta={buttonMeta}
-  visuals={{
+  behaviorStory="RightToLeft"
+  dodont={{
     0: {
-      do: (
-        <>
-          <Button variant="secondary" appearance="outline">
-            Cancel
-          </Button>
-          <Button>Save changes</Button>
-        </>
-      ),
-      dont: (
-        <>
-          <Button>Save draft</Button>
-          <Button>Publish</Button>
-          <Button>Share</Button>
-        </>
-      ),
+      do: [
+        <Button key="c" variant="secondary" appearance="outline">
+          Cancel
+        </Button>,
+        <Button key="s">Save changes</Button>,
+      ],
+      dont: [
+        <Button key="a">Save draft</Button>,
+        <Button key="b">Publish</Button>,
+        <Button key="c">Share</Button>,
+      ],
     },
     1: {
-      do: (
-        <>
-          <Button variant="secondary" appearance="outline">
-            Cancel
-          </Button>
-          <Button>Continue</Button>
-        </>
-      ),
-      dont: (
-        <>
-          <Button>Cancel</Button>
-          <Button variant="secondary" appearance="text">
-            Continue
-          </Button>
-        </>
-      ),
+      do: [
+        <Button key="c" variant="secondary" appearance="outline">
+          Cancel
+        </Button>,
+        <Button key="n">Continue</Button>,
+      ],
+      dont: [
+        <Button key="c">Cancel</Button>,
+        <Button key="n" variant="secondary" appearance="text">
+          Continue
+        </Button>,
+      ],
     },
     2: {
       do: (
@@ -165,54 +96,17 @@ Hover, focus and pressed are real browser states (`:hover`, `:focus-visible`, `:
       ),
     },
   }}
+  matrix={
+    <div style={{ display: 'grid', gap: 10 }}>
+      {['filled', 'outline', 'ghost', 'text'].map((appearance) => (
+        <div key={appearance} style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+          {['primary', 'secondary', 'success', 'danger', 'warning'].map((variant) => (
+            <Button key={variant} size="small" variant={variant} appearance={appearance}>
+              {variant}
+            </Button>
+          ))}
+        </div>
+      ))}
+    </div>
+  }
 />
-
-## Accessibility
-
-<Accessibility meta={buttonMeta} />
-
-## Design tokens
-
-Button is styled only with these tokens. Values follow the theme picked above or in the toolbar.
-
-<TokenTable prefixes={['--button-']} />
-
-## API reference
-
-### Button
-
-<ArgTypes of={Button} />
-
-### IconButton
-
-<ArgTypes of={IconButton} />
-
-## Code examples
-
-<Examples meta={buttonMeta} />
-
-## Theme matrix
-
-Every variant and appearance in each brand and mode.
-
-<ThemeMatrix>
-  <div style={{ display: 'grid', gap: 10 }}>
-    {['filled', 'outline', 'ghost', 'text'].map((appearance) => (
-      <div key={appearance} style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-        {['primary', 'secondary', 'success', 'danger', 'warning'].map((variant) => (
-          <Button key={variant} size="small" variant={variant} appearance={appearance}>
-            {variant}
-          </Button>
-        ))}
-      </div>
-    ))}
-  </div>
-</ThemeMatrix>
-
-## Related components
-
-<Related meta={buttonMeta} />
-
-## Changelog
-
-<Changelog meta={buttonMeta} />
