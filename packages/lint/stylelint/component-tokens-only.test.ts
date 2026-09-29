@@ -37,6 +37,18 @@ describe('ds/component-tokens-only', () => {
     expect(warnings[0]).toMatch(/--section-title-font-color/);
   });
 
+  it('allows private helpers declared in the same file, but not undeclared ones', async () => {
+    const warnings = await lint(
+      '.btn { --_bg: var(--button-primary-default-bg-color); background: var(--_bg); color: var(--_fg); }',
+    );
+    expect(warnings).toHaveLength(1);
+    expect(warnings[0]).toMatch(/--_fg/);
+  });
+
+  it('rejects raw values assigned to private helpers', async () => {
+    expect(await lint('.btn { --_bg: #fff; background: var(--_bg); }')).toHaveLength(1);
+  });
+
   it('rejects raw colors and lengths, including inside var() fallbacks', async () => {
     const warnings = await lint(
       '.btn { color: #fff; border: 1px solid rgb(0 0 0 / 10%); width: var(--button-width, 24px); }',

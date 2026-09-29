@@ -20,6 +20,7 @@
     "react-dom": "^19.2.0"
   },
   "dependencies": {
-    "@ds/tokens": "*"
+    "@ds/tokens": "*",
+    "lucide-react": "^1.48.0"
   }
 }

@@ -45,6 +45,7 @@
   --meeting-card-margin-bottom: var(--space-20);
   --button-medium-padding-x: var(--space-32);
   --button-small-padding-x: var(--space-28);
+  --button-large-padding-x: var(--space-40);
   --button-icon-padding-x: var(--space-16);
   --button-icon-padding-y: var(--space-16);
   --app-notifications-list-gap: var(--space-20);
@@ -83,6 +84,7 @@
   --meeting-card-margin-bottom: var(--space-12);
   --button-medium-padding-x: var(--space-28);
   --button-small-padding-x: var(--space-24);
+  --button-large-padding-x: var(--space-36);
   --button-icon-padding-x: var(--space-12);
   --button-icon-padding-y: var(--space-12);
   --app-notifications-list-gap: var(--space-24);

@@ -49,4 +49,13 @@ describe('design tokens', () => {
     expect(semantic.length).toBeGreaterThan(100);
     expect(semantic.filter((n) => !tokens.describe(n))).toEqual([]);
   });
+
+  it('describe tokens from the right legend line', () => {
+    expect(tokens.describe('--color-bg-accent-primary-default')).toMatch(/^Solid fill/);
+    expect(tokens.describe('--color-fg-on-accent-danger-text-hover')).toMatch(/^Tone-colored text/);
+    expect(tokens.describe('--color-diamond-primary-500')).toBe('Brand color ramp.');
+    expect(tokens.describe('--spacing-md')).toMatch(/^Default gap/);
+    expect(tokens.describe('--radius-lg')).toMatch(/^Controls and small surfaces/);
+    expect(tokens.describe('--duration-loop')).toMatch(/repeating animation/);
+  });
 });

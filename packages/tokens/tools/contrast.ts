@@ -52,7 +52,9 @@ export function contrastPairs(set: TokenSet): Pair[] {
   for (const tone of TONES) {
     for (const state of STATES) {
       add(`--color-fg-on-accent-${tone}-${state}`, `--color-bg-accent-${tone}-${state}`);
+      // Tone text (text buttons, links) sits on surfaces and directly on the page background.
       add(`--color-fg-on-accent-${tone}-text-${state}`, '--color-bg-surface');
+      add(`--color-fg-on-accent-${tone}-text-${state}`, '--color-bg-default');
     }
     for (const level of ['high', 'medium', 'low']) {
       add(`--color-fg-on-${tone}-${level}`, `--color-bg-${tone}-1`);

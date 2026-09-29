@@ -367,10 +367,10 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
               <div className="settings-header">
                 <h2>Settings</h2>
                 <div className="settings-actions-top">
-                  <Button variant="secondary" buttonStyle="text" size="small">
+                  <Button variant="secondary" appearance="text" size="small">
                     <i className="fas fa-redo"></i> Refresh
                   </Button>
-                  <Button variant="primary" buttonStyle="filled" size="small">
+                  <Button variant="primary" appearance="filled" size="small">
                     <i className="fas fa-download"></i> Export
                   </Button>
                 </div>

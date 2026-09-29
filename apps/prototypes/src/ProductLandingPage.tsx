@@ -255,7 +255,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
         <div className="hero-content">
           <h2>Premium Tech Products</h2>
           <p>Discover the latest technology with the best quality and prices</p>
-          <Button variant="primary" buttonStyle="filled">
+          <Button variant="primary" appearance="filled">
             Explore Products
           </Button>
         </div>
@@ -449,7 +449,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
                   onChange={(e) => setEmail(e.target.value)}
                   icon={<i className="fas fa-envelope"></i>}
                 />
-                <Button variant="primary" buttonStyle="filled" size="small">
+                <Button variant="primary" appearance="filled" size="small">
                   <i className="fas fa-bell"></i> Subscribe
                 </Button>
               </div>

@@ -6,7 +6,6 @@ const notYetOnComponentTokens = [
   'Alert',
   'AppsNotifications',
   'Avatar',
-  'Button',
   'Card',
   'ChooseCard',
   'Dropdown',
@@ -31,6 +30,11 @@ export default {
     'selector-class-pattern': [
       '^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)*$',
       { message: 'Use BEM class names (block__element--modifier)' },
+    ],
+    // Kebab-case custom properties; a leading underscore marks a component's private helper.
+    'custom-property-pattern': [
+      '^_?[a-z0-9]+(-[a-z0-9]+)*$',
+      { message: 'Use kebab-case custom properties (--_name for private helpers)' },
     ],
     // Variant/state selectors are grouped per component, not ordered by specificity.
     'no-descending-specificity': null,

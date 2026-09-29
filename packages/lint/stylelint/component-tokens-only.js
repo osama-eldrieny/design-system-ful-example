@@ -2,7 +2,8 @@
  * Stylelint rule `ds/component-tokens-only`.
  *
  * A component's stylesheet may only use that component's own tokens:
- *   - every var(--x) must start with one of the component's token prefixes
+ *   - every var(--x) must start with one of the component's token prefixes, or be a
+ *     private helper (--_name) declared in the same stylesheet
  *   - no raw colors (hex, rgb(), hsl(), …)
  *   - no raw lengths other than 0 (px, rem, em, …)
  *
@@ -50,8 +51,14 @@ const rule = (enabled, options = {}) => {
     const prefixes = options.prefixes?.[base] ?? [kebab(base)];
     const allowed = prefixes.map((p) => `--${p}-*`).join(', ');
 
+    // Private helpers (--_name) relay the component's own tokens inside its stylesheet,
+    // e.g. a variant sets --_bg and the base rule reads it. Only ones declared here count.
+    const privates = new Set();
+    root.walkDecls(/^--_/, (decl) => privates.add(decl.prop));
+
     root.walkDecls((decl) => {
-      for (const [, token] of decl.value.matchAll(/var\(\s*(--[a-z0-9-]+)/g)) {
+      for (const [, token] of decl.value.matchAll(/var\(\s*(--[a-z0-9_-]+)/g)) {
+        if (privates.has(token)) continue;
         if (!prefixes.some((p) => token === `--${p}` || token.startsWith(`--${p}-`))) {
           report({
             ruleName,

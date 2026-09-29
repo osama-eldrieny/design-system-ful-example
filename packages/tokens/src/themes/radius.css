@@ -33,6 +33,7 @@
   --meeting-card-border-radius: var(--radius-8);
   --button-medium-border-radius: var(--radius-16);
   --button-small-border-radius: var(--radius-12);
+  --button-large-border-radius: var(--radius-20);
   --button-icon-border-radius: var(--radius-12);
   --toggle-border-radius: var(--radius-999);
   --toggle-circle-border-radius: var(--radius-999);
@@ -68,6 +69,7 @@
   --meeting-card-border-radius: var(--radius-4);
   --button-medium-border-radius: var(--radius-4);
   --button-small-border-radius: var(--radius-3);
+  --button-large-border-radius: var(--radius-4);
   --button-icon-border-radius: var(--radius-4);
   --toggle-border-radius: var(--radius-4);
   --toggle-circle-border-radius: var(--radius-2);
@@ -103,6 +105,7 @@
   --meeting-card-border-radius: var(--radius-20);
   --button-medium-border-radius: var(--radius-999);
   --button-small-border-radius: var(--radius-999);
+  --button-large-border-radius: var(--radius-999);
   --button-icon-border-radius: var(--radius-999);
   --toggle-border-radius: var(--radius-999);
   --toggle-circle-border-radius: var(--radius-999);

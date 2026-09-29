@@ -1,0 +1,25 @@
+/**
+ * Fonts
+ *
+ * The font files for every typeface theme: Inter and Domine (English sans/serif),
+ * Cairo and IBM Plex Sans Arabic (Arabic sans/serif), in the weights components use.
+ * Import it once next to tokens.css in projects built with a bundler (Vite, webpack);
+ * other projects can load the same families from Google Fonts instead.
+ */
+
+@import url('@fontsource/inter/400.css');
+@import url('@fontsource/inter/500.css');
+@import url('@fontsource/inter/600.css');
+@import url('@fontsource/inter/700.css');
+@import url('@fontsource/domine/400.css');
+@import url('@fontsource/domine/500.css');
+@import url('@fontsource/domine/600.css');
+@import url('@fontsource/domine/700.css');
+@import url('@fontsource/cairo/400.css');
+@import url('@fontsource/cairo/500.css');
+@import url('@fontsource/cairo/600.css');
+@import url('@fontsource/cairo/700.css');
+@import url('@fontsource/ibm-plex-sans-arabic/400.css');
+@import url('@fontsource/ibm-plex-sans-arabic/500.css');
+@import url('@fontsource/ibm-plex-sans-arabic/600.css');
+@import url('@fontsource/ibm-plex-sans-arabic/700.css');
