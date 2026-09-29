@@ -1,135 +1,180 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import {
+  Alert,
+  AppsNotifications,
+  Avatar,
+  Badge,
   Button,
   Card,
   CardBody,
-  CardTitle,
-  CardDescription,
-  ThemeProvider,
-  Alert,
-  InputField,
-  Avatar,
-  Logo,
-  Navbar,
-  Footer,
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  RadioGroup,
-  Radio,
-  Switch,
-  Tabs,
-  TabList,
-  Tab,
-  TabPanel,
-  Pagination,
   ChooseCard,
   ChooseCardGroup,
+  Container,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  Footer,
+  Grid,
+  Inline,
+  List,
+  ListItem,
+  Logo,
   MeetingCard,
-  AppsNotifications,
+  Navbar,
+  Radio,
+  RadioGroup,
+  SearchField,
+  Stack,
+  Stat,
+  Switch,
+  Tab,
+  TabList,
+  TabPanel,
+  Table,
+  Tabs,
+  useToast,
+  type TableColumn,
 } from '@ds/react';
-import { ChartLine, SlidersHorizontal, ChevronDown } from 'lucide-react';
-import './DashboardPage.css';
+import {
+  BarChart3,
+  ChartLine,
+  ChevronDown,
+  DollarSign,
+  Download,
+  RefreshCw,
+  SlidersHorizontal,
+  Users,
+} from 'lucide-react';
 
-const kpiCards = [
-  { id: 1, title: 'Total Revenue', value: '$124,567', change: '+12.5%', brand: 'diamond' as const },
-  { id: 2, title: 'Active Users', value: '8,432', change: '+8.2%', brand: 'diamond' as const },
-  { id: 3, title: 'Transactions', value: '2,156', change: '+15.3%', brand: 'diamond' as const },
-  { id: 4, title: 'Growth Rate', value: '24.5%', change: '+3.1%', brand: 'diamond' as const },
+const kpis = [
+  { label: 'Total revenue', value: '$124,567', change: '+12.5%' },
+  { label: 'Active users', value: '8,432', change: '+8.2%' },
+  { label: 'Transactions', value: '2,156', change: '+15.3%' },
+  { label: 'Growth rate', value: '24.5%', change: '+3.1%' },
 ];
 
-// Revenue Category
-const revenueCards = [
+type MetricCategory = 'revenue' | 'users' | 'engagement';
+interface Metric {
+  id: string;
+  category: MetricCategory;
+  name: string;
+  description: string;
+  value: string;
+  sortValue: number;
+  status: 'On track' | 'Watch' | 'Below target';
+}
+
+const metrics: Metric[] = [
   {
-    id: 1,
+    id: 'rev-total',
     category: 'revenue',
-    title: 'Total Revenue',
-    description: 'Total income from all sources this month',
-    price: '$124,567',
-    brand: 'diamond' as const,
+    name: 'Total revenue',
+    description: 'All sources this month',
+    value: '$124,567',
+    sortValue: 124567,
+    status: 'On track',
   },
   {
-    id: 2,
+    id: 'rev-growth',
     category: 'revenue',
-    title: 'Revenue Growth',
-    description: 'Month-over-month revenue increase',
-    price: '+$12,450',
-    brand: 'diamond' as const,
+    name: 'Revenue growth',
+    description: 'Month over month',
+    value: '+$12,450',
+    sortValue: 12450,
+    status: 'On track',
   },
   {
-    id: 3,
+    id: 'rev-user',
     category: 'revenue',
-    title: 'Revenue Per User',
-    description: 'Average spending per user account',
-    price: '$15.80',
-    brand: 'diamond' as const,
+    name: 'Revenue per user',
+    description: 'Average per account',
+    value: '$15.80',
+    sortValue: 15.8,
+    status: 'Watch',
+  },
+  {
+    id: 'users-active',
+    category: 'users',
+    name: 'Active users',
+    description: 'Active on the platform now',
+    value: '8,432',
+    sortValue: 8432,
+    status: 'On track',
+  },
+  {
+    id: 'users-new',
+    category: 'users',
+    name: 'New users',
+    description: 'Registered this month',
+    value: '+1,245',
+    sortValue: 1245,
+    status: 'On track',
+  },
+  {
+    id: 'users-geo',
+    category: 'users',
+    name: 'Countries',
+    description: 'Where users are',
+    value: '45',
+    sortValue: 45,
+    status: 'Watch',
+  },
+  {
+    id: 'eng-session',
+    category: 'engagement',
+    name: 'Session duration',
+    description: 'Average per session',
+    value: '4m 32s',
+    sortValue: 272,
+    status: 'On track',
+  },
+  {
+    id: 'eng-bounce',
+    category: 'engagement',
+    name: 'Bounce rate',
+    description: 'Single-page sessions',
+    value: '32.1%',
+    sortValue: 32.1,
+    status: 'Below target',
+  },
+  {
+    id: 'eng-retention',
+    category: 'engagement',
+    name: 'Retention',
+    description: 'Returning users',
+    value: '68.5%',
+    sortValue: 68.5,
+    status: 'On track',
   },
 ];
-
-// Users Category
-const usersCards = [
+const statusTone = { 'On track': 'success', Watch: 'warning', 'Below target': 'danger' } as const;
+const columns: TableColumn<Metric>[] = [
   {
-    id: 4,
-    category: 'users',
-    title: 'Active Users',
-    description: 'Users currently active on platform',
-    price: '8,432',
-    brand: 'diamond' as const,
+    key: 'name',
+    header: 'Metric',
+    sortable: true,
+    render: (m) => (
+      <Stack gap="none">
+        <span>{m.name}</span>
+        <span className="proto-muted">{m.description}</span>
+      </Stack>
+    ),
   },
   {
-    id: 5,
-    category: 'users',
-    title: 'New Users',
-    description: 'Newly registered users this month',
-    price: '+1,245',
-    brand: 'diamond' as const,
+    key: 'status',
+    header: 'Status',
+    sortable: true,
+    render: (m) => <Badge tone={statusTone[m.status]}>{m.status}</Badge>,
   },
-  {
-    id: 6,
-    category: 'users',
-    title: 'Geographic Distribution',
-    description: 'Users across different regions worldwide',
-    price: '45 Countries',
-    brand: 'diamond' as const,
-  },
+  { key: 'value', header: 'Value', align: 'end', sortable: true, sortValue: (m) => m.sortValue },
 ];
-
-// Engagement Category
-const engagementCards = [
-  {
-    id: 7,
-    category: 'engagement',
-    title: 'Session Duration',
-    description: 'Average time spent per user session',
-    price: '4m 32s',
-    brand: 'diamond' as const,
-  },
-  {
-    id: 8,
-    category: 'engagement',
-    title: 'Bounce Rate',
-    description: 'Percentage of single-page sessions',
-    price: '32.1%',
-    brand: 'diamond' as const,
-  },
-  {
-    id: 9,
-    category: 'engagement',
-    title: 'User Retention',
-    description: 'Percentage of returning users overall',
-    price: '68.5%',
-    brand: 'diamond' as const,
-  },
-];
-
-const allDataCards = [...revenueCards, ...usersCards, ...engagementCards];
 
 const systemStatus = [
   {
     id: 1,
-    title: 'Database: Healthy',
-    time: 'Uptime: 99.99%',
+    title: 'Database: healthy',
+    time: 'Uptime 99.99%',
     variant: 'success' as const,
     attendees: [
       { name: 'Osama', src: 'assets/avatar-1.png' },
@@ -138,9 +183,9 @@ const systemStatus = [
   },
   {
     id: 2,
-    title: 'API Server: Active',
-    time: 'Latency: 120ms',
-    variant: 'success' as const,
+    title: 'API: slow responses',
+    time: 'Latency 820 ms',
+    variant: 'warning' as const,
     attendees: [
       { name: 'Sarah', src: 'assets/avatar-2.png' },
       { name: 'Maria', src: 'assets/avatar-3.png' },
@@ -148,8 +193,8 @@ const systemStatus = [
   },
   {
     id: 3,
-    title: 'Backup: In Progress',
-    time: 'ETA: 15 min',
+    title: 'Backup in progress',
+    time: 'About 15 min left',
     variant: 'primary' as const,
     attendees: [
       { name: 'Maria', src: 'assets/avatar-3.png' },
@@ -158,7 +203,7 @@ const systemStatus = [
   },
 ];
 
-const teamMembers = [
+const team = [
   { name: 'Osama', role: 'Admin', avatar: 'assets/avatar-1.png' },
   { name: 'Sarah', role: 'Editor', avatar: 'assets/avatar-2.png' },
   { name: 'Maria', role: 'Viewer', avatar: 'assets/avatar-3.png' },
@@ -168,331 +213,291 @@ const teamMembers = [
 const integrations = [
   { id: 'google', name: 'Google', icon: 'assets/google.png' },
   { id: 'mixpanel', name: 'Mixpanel', icon: 'assets/linkedin.png' },
-  { id: 'amplitude', name: 'Amplitude', icon: 'assets/behance.png' },
+  { id: 'amplitude', name: 'Amplitude', icon: 'assets/behance.png', defaultEnabled: false },
   { id: 'segment', name: 'Segment', icon: 'assets/twitter.png' },
 ];
 
 function DashboardPage() {
-  const [timePeriod, setTimePeriod] = useState('month');
-  const [realtimeEnabled, setRealtimeEnabled] = useState(true);
-  const [activeMetricTab, setActiveMetricTab] = useState('all');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [selectedRefresh, setSelectedRefresh] = useState('realtime');
+  const toast = useToast();
+  const [period, setPeriod] = useState('month');
+  const [realtime, setRealtime] = useState(true);
+  const [tab, setTab] = useState<'all' | MetricCategory>('all');
+  const [query, setQuery] = useState('');
+  const [refresh, setRefresh] = useState('realtime');
+  const [widgets, setWidgets] = useState({ charts: true, alerts: true, team: true });
 
-  // Filter cards based on active tab
-  const filteredCards =
-    activeMetricTab === 'all'
-      ? allDataCards
-      : allDataCards.filter((card) => card.category === activeMetricTab);
-
-  const itemsPerPage = 4;
-  const totalPages = Math.ceil(filteredCards.length / itemsPerPage);
-  const startIdx = (currentPage - 1) * itemsPerPage;
-  const paginatedCards = filteredCards.slice(startIdx, startIdx + itemsPerPage);
-
-  const dropdownItems = [
-    { id: 'revenue', label: 'By Revenue', icon: 'fa-solid fa-arrow-down' },
-    { id: 'users', label: 'By Users', icon: 'fa-solid fa-arrow-up' },
-    { id: 'growth', label: 'By Growth', icon: 'fa-solid fa-chart-line' },
-  ];
-
-  const metricTabs = [
-    { id: 'all', label: 'All Metrics', icon: 'fa-solid fa-chart-line' },
-    { id: 'revenue', label: 'Revenue', icon: 'fa-solid fa-dollar-sign' },
-    { id: 'users', label: 'Users', icon: 'fa-solid fa-users' },
-    { id: 'engagement', label: 'Engagement', icon: 'fa-solid fa-chart-bar' },
-  ];
-
-  const refreshOptions = [
-    { id: 'realtime', title: 'Real-time', desc: 'Live updates' },
-    { id: '5min', title: 'Every 5 min', desc: 'Frequent' },
-    { id: '15min', title: 'Every 15 min', desc: 'Standard' },
-  ];
-
-  const menuItems = [
-    { label: 'Products', href: '#/landing' },
-    { label: 'Dashboard', href: '#/dashboard' },
-  ];
+  const rows = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return metrics.filter(
+      (m) => (tab === 'all' || m.category === tab) && (!q || m.name.toLowerCase().includes(q)),
+    );
+  }, [tab, query]);
 
   return (
-    <div className="dashboard-page">
-      {/* Top bar: logo, navigation and search */}
-      <div className="dashboard-top-bar">
-        <Navbar
-          logo={<Logo icon={<ChartLine />} name="Analytics" href="#/dashboard" />}
-          items={menuItems}
-          currentItem="Dashboard"
-          actions={
-            <div className="top-bar-controls">
-              <InputField
-                label="Search"
-                hideLabel
-                type="search"
-                placeholder="Search..."
-                iconStart={<i className="fas fa-search"></i>}
-              />
-              <div className="sort-controls">
+    <div className="proto">
+      <div className="proto-top">
+        <Container size="full">
+          <Navbar
+            logo={<Logo icon={<ChartLine />} name="Analytics" href="#/dashboard" />}
+            items={[
+              { label: 'Products', href: '#/landing' },
+              { label: 'Dashboard', href: '#/dashboard' },
+              { label: 'Theme playground', href: '#/demo' },
+            ]}
+            currentItem="Dashboard"
+            actions={
+              <>
+                <SearchField
+                  label="Search metrics"
+                  placeholder="Search metrics"
+                  size="small"
+                  shortcut="mod+k"
+                  value={query}
+                  onValueChange={setQuery}
+                />
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
                       size="small"
+                      appearance="outline"
+                      variant="secondary"
                       iconStart={<SlidersHorizontal />}
                       iconEnd={<ChevronDown />}
                     >
-                      Filter
+                      Period
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    {dropdownItems.map((item) => (
-                      <DropdownMenuItem
-                        key={item.id}
-                        icon={<i className={item.icon}></i>}
-                        onSelect={() => console.log('Filter:', item.id)}
-                      >
-                        {item.label}
-                      </DropdownMenuItem>
-                    ))}
+                    <DropdownMenuItem onSelect={() => setPeriod('week')}>
+                      This week
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={() => setPeriod('month')}>
+                      This month
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onSelect={() => setPeriod('year')}>
+                      This year
+                    </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
-              </div>
-            </div>
-          }
-        />
+              </>
+            }
+          />
+        </Container>
       </div>
 
-      {/* Main Container - 3 Column Layout */}
-      <div className="dashboard-container">
-        {/* Left Sidebar - Filters & Status */}
-        <aside className="dashboard-sidebar">
-          {/* Filters Card */}
-          <div className="sidebar-filter-section">
-            <h3 className="sidebar-section-title">Filters</h3>
-            <div className="sidebar-subsection">
-              <h3 className="sidebar-subsection-title" id="time-period-label">
-                Time Period
-              </h3>
-              <RadioGroup
-                aria-labelledby="time-period-label"
-                value={timePeriod}
-                onValueChange={setTimePeriod}
-              >
-                <Radio value="today" label="Today" />
-                <Radio value="week" label="This Week" />
-                <Radio value="month" label="This Month" />
-                <Radio value="year" label="This Year" />
-              </RadioGroup>
-            </div>
-            <div className="sidebar-subsection">
-              <div className="realtime-toggle">
-                <Switch
-                  label="Real-time"
-                  checked={realtimeEnabled}
-                  onCheckedChange={setRealtimeEnabled}
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* Status Section */}
-          <div className="sidebar-status-section">
-            <h3 className="sidebar-section-title">System Status</h3>
-            <div className="status-cards">
-              {systemStatus.map((status) => (
+      <Container as="main" size="full" className="proto-main">
+        <h1 className="proto-title">Analytics overview</h1>
+        <div className="proto-layout proto-layout--three">
+          <Stack as="aside" gap="lg" aria-label="Filters and system status">
+            <Card appearance="outlined" as="section" aria-labelledby="filters-title">
+              <CardBody>
+                <Stack gap="lg">
+                  <h2 className="proto-subtitle" id="filters-title">
+                    Filters
+                  </h2>
+                  <RadioGroup label="Time period" value={period} onValueChange={setPeriod}>
+                    <Radio value="today" label="Today" />
+                    <Radio value="week" label="This week" />
+                    <Radio value="month" label="This month" />
+                    <Radio value="year" label="This year" />
+                  </RadioGroup>
+                  <Switch
+                    label="Real-time updates"
+                    checked={realtime}
+                    onCheckedChange={setRealtime}
+                  />
+                </Stack>
+              </CardBody>
+            </Card>
+            <Stack as="section" gap="sm" aria-labelledby="status-title">
+              <h2 className="proto-subtitle" id="status-title">
+                System status
+              </h2>
+              {systemStatus.map((s) => (
                 <MeetingCard
-                  key={status.id}
-                  title={status.title}
-                  time={status.time}
-                  variant={status.variant}
-                  attendees={status.attendees}
+                  key={s.id}
+                  title={s.title}
+                  time={s.time}
+                  variant={s.variant}
+                  attendees={s.attendees}
                   attendeesLabel="On call"
                 />
               ))}
-            </div>
-          </div>
-        </aside>
+            </Stack>
+          </Stack>
 
-        {/* Main Content */}
-        <main className="dashboard-main">
-          {/* Alert Section */}
-          {realtimeEnabled && (
-            <Alert variant="success" title="Real-time data enabled.">
-              Updates every 30 seconds.
-            </Alert>
-          )}
+          <Stack gap="xl">
+            {realtime && widgets.alerts && (
+              <Alert variant="success" title="Real-time data is on">
+                Figures update every 30 seconds.
+              </Alert>
+            )}
 
-          {/* KPI Cards Section */}
-          <section className="kpi-section">
-            <div className="kpi-grid">
-              {kpiCards.map((kpi) => (
-                <div key={kpi.id} className="kpi-card-wrapper">
-                  <ThemeProvider theme={{ brand: kpi.brand }}>
-                    <Card>
-                      <CardBody>
-                        <CardTitle>{kpi.title}</CardTitle>
-                        <CardDescription>{kpi.value}</CardDescription>
-                        <p className="kpi-change">{kpi.change}</p>
-                      </CardBody>
-                    </Card>
-                  </ThemeProvider>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Analytics Data Section */}
-          <section className="metrics-section">
-            <Tabs
-              value={activeMetricTab}
-              onValueChange={(id) => {
-                setActiveMetricTab(id);
-                setCurrentPage(1);
-              }}
-            >
-              <div className="section-header">
-                <h2>Analytics Data</h2>
-                <TabList label="Metric categories">
-                  {metricTabs.map((t) => (
-                    <Tab key={t.id} value={t.id} icon={<i className={t.icon}></i>}>
-                      {t.label}
-                    </Tab>
-                  ))}
-                </TabList>
-              </div>
-
-              <TabPanel value={activeMetricTab}>
-                <div className="data-grid">
-                  {paginatedCards.map((card) => (
-                    <div key={card.id} className="data-card-wrapper">
-                      <ThemeProvider theme={{ brand: card.brand }}>
-                        <Card>
-                          <CardBody>
-                            <CardTitle>{card.title}</CardTitle>
-                            <CardDescription>{card.description}</CardDescription>
-                            <p className="kpi-change">{card.price}</p>
-                          </CardBody>
-                        </Card>
-                      </ThemeProvider>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="pagination-container">
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={setCurrentPage}
-                  />
-                </div>
-              </TabPanel>
-            </Tabs>
-          </section>
-
-          {/* Settings Section */}
-          <section className="settings-section">
-            <div className="settings-section-wrapper">
-              <div className="settings-header">
-                <h2>Settings</h2>
-                <div className="settings-actions-top">
-                  <Button variant="secondary" appearance="text" size="small">
-                    <i className="fas fa-redo"></i> Refresh
-                  </Button>
-                  <Button variant="primary" appearance="filled" size="small">
-                    <i className="fas fa-download"></i> Export
-                  </Button>
-                </div>
-              </div>
-
-              <div className="settings-content">
-                <div className="settings-group">
-                  <h3 className="settings-group-title" id="refresh-heading">
-                    Data Refresh
-                  </h3>
-                  <ChooseCardGroup
-                    className="layout-cards"
-                    orientation="horizontal"
-                    aria-labelledby="refresh-heading"
-                    value={selectedRefresh}
-                    onValueChange={setSelectedRefresh}
-                  >
-                    {refreshOptions.map((option) => (
-                      <ChooseCard
-                        key={option.id}
-                        value={option.id}
-                        title={option.title}
-                        description={option.desc}
+            {widgets.charts && (
+              <Grid minItemWidth="11rem" as="section" aria-label="Key figures">
+                {kpis.map((k) => (
+                  <Card key={k.label} appearance="outlined">
+                    <CardBody>
+                      <Stat
+                        label={k.label}
+                        value={k.value}
+                        change={k.change}
+                        trend="up"
+                        help="vs last month"
                       />
-                    ))}
-                  </ChooseCardGroup>
-                </div>
-
-                <div className="settings-group">
-                  <h3 className="settings-group-title">Widgets</h3>
-                  <div className="widget-toggles">
-                    <Switch
-                      className="widget-toggle-item"
-                      label="KPI Cards"
-                      labelPosition="start"
-                      defaultChecked
-                    />
-                    <Switch
-                      className="widget-toggle-item"
-                      label="Data Charts"
-                      labelPosition="start"
-                      defaultChecked
-                    />
-                    <Switch
-                      className="widget-toggle-item"
-                      label="Team Activity"
-                      labelPosition="start"
-                      defaultChecked
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </main>
-
-        {/* Right Sidebar - Team & Apps */}
-        <aside className="dashboard-right-sidebar">
-          {/* Team Section */}
-          <section className="dashboard-team-section">
-            <div className="dashboard-team-wrapper">
-              <h3 className="sidebar-section-title">Team</h3>
-              <div className="dashboard-team-grid">
-                {teamMembers.map((member, idx) => (
-                  <div key={idx} className="dashboard-team-member">
-                    <div className="dashboard-team-avatar">
-                      <Avatar src={member.avatar} name={member.name} size="medium" decorative />
-                    </div>
-                    <div className="dashboard-team-info">
-                      <h4>{member.name}</h4>
-                      <p>{member.role}</p>
-                    </div>
-                  </div>
+                    </CardBody>
+                  </Card>
                 ))}
-              </div>
-            </div>
-          </section>
+              </Grid>
+            )}
 
-          {/* Apps Section */}
-          <div className="sidebar-integrations-section">
-            <AppsNotifications appearance="outlined" title="Connected apps" items={integrations} />
-          </div>
-        </aside>
-      </div>
+            <Card as="section" aria-labelledby="metrics-title">
+              <CardBody>
+                <Stack gap="md">
+                  <h2 className="proto-subtitle" id="metrics-title">
+                    Metrics
+                  </h2>
+                  <Tabs value={tab} onValueChange={(v) => setTab(v as 'all' | MetricCategory)}>
+                    <TabList label="Metric categories">
+                      <Tab value="all" icon={<ChartLine />}>
+                        All
+                      </Tab>
+                      <Tab value="revenue" icon={<DollarSign />}>
+                        Revenue
+                      </Tab>
+                      <Tab value="users" icon={<Users />}>
+                        Users
+                      </Tab>
+                      <Tab value="engagement" icon={<BarChart3 />}>
+                        Engagement
+                      </Tab>
+                    </TabList>
+                    <TabPanel value={tab}>
+                      <Table
+                        caption="Metrics"
+                        hideCaption
+                        columns={columns}
+                        rows={rows}
+                        empty="No metrics match your search."
+                        striped
+                      />
+                    </TabPanel>
+                  </Tabs>
+                </Stack>
+              </CardBody>
+            </Card>
 
-      {/* Footer */}
-      <div className="dashboard-footer-wrapper">
+            <Card as="section" aria-labelledby="settings-title">
+              <CardBody>
+                <Stack gap="lg">
+                  <Inline justify="between">
+                    <h2 className="proto-subtitle" id="settings-title">
+                      Dashboard settings
+                    </h2>
+                    <Inline gap="xs">
+                      <Button
+                        size="small"
+                        appearance="outline"
+                        variant="secondary"
+                        iconStart={<RefreshCw />}
+                        onClick={() => toast({ title: 'Data refreshed', tone: 'success' })}
+                      >
+                        Refresh
+                      </Button>
+                      <Button
+                        size="small"
+                        iconStart={<Download />}
+                        onClick={() =>
+                          toast({
+                            title: 'Export started',
+                            description: 'You’ll get an email when it’s ready.',
+                          })
+                        }
+                      >
+                        Export
+                      </Button>
+                    </Inline>
+                  </Inline>
+                  <Stack gap="xs">
+                    <h3 className="proto-subtitle" id="refresh-title">
+                      Data refresh
+                    </h3>
+                    <ChooseCardGroup
+                      orientation="horizontal"
+                      aria-labelledby="refresh-title"
+                      value={refresh}
+                      onValueChange={setRefresh}
+                    >
+                      <ChooseCard value="realtime" title="Real-time" description="Live updates" />
+                      <ChooseCard value="5min" title="Every 5 min" description="Frequent" />
+                      <ChooseCard value="15min" title="Every 15 min" description="Standard" />
+                    </ChooseCardGroup>
+                  </Stack>
+                  <Stack gap="xs">
+                    <h3 className="proto-subtitle">Widgets</h3>
+                    <Switch
+                      label="Show charts"
+                      checked={widgets.charts}
+                      onCheckedChange={(v) => setWidgets((w) => ({ ...w, charts: v }))}
+                    />
+                    <Switch
+                      label="Show alerts"
+                      checked={widgets.alerts}
+                      onCheckedChange={(v) => setWidgets((w) => ({ ...w, alerts: v }))}
+                    />
+                    <Switch
+                      label="Show team activity"
+                      checked={widgets.team}
+                      onCheckedChange={(v) => setWidgets((w) => ({ ...w, team: v }))}
+                    />
+                  </Stack>
+                </Stack>
+              </CardBody>
+            </Card>
+          </Stack>
+
+          <Stack as="aside" gap="lg" aria-label="Team and integrations">
+            {widgets.team && (
+              <Card appearance="outlined" as="section" aria-labelledby="team-title">
+                <CardBody>
+                  <Stack gap="sm">
+                    <h2 className="proto-subtitle" id="team-title">
+                      Team
+                    </h2>
+                    <List divided>
+                      {team.map((m) => (
+                        <ListItem
+                          key={m.name}
+                          icon={<Avatar name={m.name} src={m.avatar} decorative />}
+                          title={m.name}
+                          description={m.role}
+                        />
+                      ))}
+                    </List>
+                  </Stack>
+                </CardBody>
+              </Card>
+            )}
+            <AppsNotifications
+              appearance="outlined"
+              title="Connected apps"
+              titleAs="h2"
+              items={integrations}
+            />
+          </Stack>
+        </div>
+      </Container>
+
+      <Container size="full">
         <Footer
-          title="© 2024 Analytics Dashboard. All rights reserved."
+          title={`© ${new Date().getFullYear()} Analytics. All rights reserved.`}
           links={[
-            { label: 'Privacy Policy', onClick: () => {} },
-            { label: 'Terms of Service', onClick: () => {} },
-            { label: 'Support', onClick: () => {} },
+            { label: 'Privacy', href: '#/dashboard/privacy' },
+            { label: 'Terms', href: '#/dashboard/terms' },
+            { label: 'Support', href: '#/dashboard/support' },
           ]}
         />
-      </div>
+      </Container>
     </div>
   );
 }

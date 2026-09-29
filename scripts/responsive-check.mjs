@@ -27,6 +27,7 @@ const pages = [
     .map((e) => ({ name: e.id, url: `${base}/storybook/iframe.html?id=${e.id}&viewMode=docs` })),
   { name: 'prototype landing', url: `${base}/prototypes/#/landing` },
   { name: 'prototype dashboard', url: `${base}/prototypes/#/dashboard` },
+  { name: 'theme playground', url: `${base}/prototypes/#/demo` },
 ];
 
 const browser = await chromium.launch();

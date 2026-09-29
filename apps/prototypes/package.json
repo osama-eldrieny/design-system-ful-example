@@ -10,9 +10,6 @@
   },
   "dependencies": {
     "@ds/react": "*",
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/jetbrains-mono": "^5.2.8",
-    "@fortawesome/fontawesome-free": "^7.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "@ds/tokens": "*"
