@@ -1,0 +1,14 @@
+/**
+ * Component tokens: button-group
+ *
+ * Style this component only with these tokens. The buttons style themselves; the group
+ * only spaces or joins them.
+ *
+ * Grammar: --button-group-{property}
+ */
+
+:root,
+[data-theme] {
+  --button-group-gap: var(--spacing-xs);
+  --button-group-border-width: var(--border-width-regular);
+}

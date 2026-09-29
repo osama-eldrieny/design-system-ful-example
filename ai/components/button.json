@@ -1927,6 +1927,16 @@
       "references": "--duration-loop",
       "default": "1000ms"
     },
+    "--button-group-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--button-group-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
     "--button-medium-padding-x": {
       "description": "Spacing steps in px (see --spacing-* in themes/density.css).",
       "references": "--space-32",

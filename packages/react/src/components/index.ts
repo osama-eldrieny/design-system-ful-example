@@ -1,5 +1,6 @@
 export { Button, IconButton } from '../Button';
 export type { ButtonProps, IconButtonProps } from '../Button';
+export * from '../ButtonGroup';
 export { Alert } from '../Alert';
 export type { AlertProps } from '../Alert';
 export { Avatar, AvatarGroup } from '../Avatar';

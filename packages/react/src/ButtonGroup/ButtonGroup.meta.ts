@@ -1,0 +1,145 @@
+import { defineMeta } from '../meta';
+
+export default defineMeta({
+  id: 'button-group',
+  name: 'ButtonGroup',
+  category: 'Actions',
+  status: 'stable',
+  since: '0.3.0',
+  description:
+    'A button group shows related buttons together, spaced or attached into one control. With a value it becomes a segmented control where exactly one button is pressed, such as a list/grid view switcher.',
+  imports: [{ name: 'ButtonGroup', from: '@ds/react' }],
+  whenToUse: [
+    'For two to five related actions, e.g. Previous / Next or Bold / Italic / Underline.',
+    'For switching between a few views or modes of the same content (segmented).',
+  ],
+  whenNotToUse: [
+    { text: 'To switch between panels of content.', alternative: 'Tabs' },
+    { text: 'To pick a value for a form.', alternative: 'RadioGroup' },
+    { text: 'For many actions.', alternative: 'DropdownMenu' },
+  ],
+  anatomy: [
+    { name: 'Group', description: 'Named by aria-label.' },
+    {
+      name: 'Buttons',
+      description: 'Regular Buttons; the pressed one is filled in segmented mode.',
+    },
+  ],
+  options: [
+    {
+      prop: 'attached',
+      title: 'Layout',
+      values: [
+        { value: 'false', meaning: 'Spaced buttons. Default.' },
+        { value: 'true', meaning: 'Joined into one control; inner corners squared.' },
+      ],
+    },
+    {
+      prop: 'orientation',
+      title: 'Orientation',
+      values: [
+        { value: 'horizontal', meaning: 'In a row. Default.' },
+        { value: 'vertical', meaning: 'Stacked, full width.' },
+      ],
+    },
+  ],
+  states: [
+    {
+      name: 'Pressed',
+      meaning: 'Segmented: the selected button is filled and aria-pressed.',
+      trigger: 'value',
+    },
+    { name: 'Button states', meaning: 'Hover, focus and disabled come from Button.', trigger: '—' },
+  ],
+  behavior: [
+    {
+      topic: 'Segmented',
+      text: 'Give each Button a value and the group a value/defaultValue or onValueChange. Clicking a button presses it and releases the others.',
+    },
+    {
+      topic: 'Focus',
+      text: 'Every button is a Tab stop; in attached groups the focus ring stays above neighbours.',
+    },
+  ],
+  content: ['Use short, parallel labels, or icons with aria-labels (IconButton).'],
+  guidelines: [
+    {
+      do: 'Group only closely related actions.',
+      dont: 'Put Save and Delete in one attached group.',
+      why: 'Attached buttons read as one control; a destructive action needs space.',
+    },
+    {
+      do: 'Name the group with aria-label.',
+      dont: 'Leave a group of icon buttons unnamed.',
+      why: 'The name tells screen reader users what the buttons control.',
+    },
+    {
+      do: 'Use Tabs to switch content panels.',
+      dont: 'Use a segmented group to replace tabs.',
+      why: 'Tabs have panel semantics and arrow-key navigation.',
+    },
+  ],
+  accessibility: {
+    role: 'group of buttons; segmented buttons are toggle buttons (aria-pressed).',
+    keyboard: [
+      { keys: 'Tab', action: 'Moves between buttons.' },
+      { keys: 'Enter / Space', action: 'Activates or presses a button.' },
+    ],
+    aria: [
+      { attribute: 'role="group" + aria-label', when: 'Always.' },
+      { attribute: 'aria-pressed', when: 'Segmented mode.' },
+    ],
+    focus: 'Each button shows its focus ring.',
+    wcag: [
+      { criterion: '1.3.1 Info and Relationships', how: 'A named group.' },
+      {
+        criterion: '1.4.1 Use of Color',
+        how: 'Pressed is filled vs outlined, not a color change alone.',
+      },
+      { criterion: '4.1.2 Name, Role, Value', how: 'aria-pressed exposes the selection.' },
+    ],
+    notes: [],
+  },
+  examples: [
+    {
+      id: 'spaced',
+      title: 'Spaced',
+      description: 'Related actions.',
+      code: `import { ButtonGroup, Button } from '@ds/react';
+
+<ButtonGroup aria-label="Pages">
+  <Button appearance="outline" variant="secondary">Previous</Button>
+  <Button appearance="outline" variant="secondary">Next</Button>
+</ButtonGroup>`,
+    },
+    {
+      id: 'attached',
+      title: 'Attached',
+      description: 'Joined into one control.',
+      code: `import { ButtonGroup, Button } from '@ds/react';
+
+<ButtonGroup aria-label="Zoom" attached>
+  <Button appearance="outline">−</Button>
+  <Button appearance="outline">100%</Button>
+  <Button appearance="outline">+</Button>
+</ButtonGroup>`,
+    },
+    {
+      id: 'segmented',
+      title: 'Segmented',
+      description: 'One pressed button switches the view.',
+      code: `import { ButtonGroup, Button } from '@ds/react';
+
+<ButtonGroup aria-label="View" attached value={view} onValueChange={setView}>
+  <Button value="list">List</Button>
+  <Button value="grid">Grid</Button>
+</ButtonGroup>`,
+    },
+  ],
+  tokenPrefixes: ['--button-group-'],
+  related: [
+    { id: 'button', relation: 'The buttons inside.' },
+    { id: 'tabs', relation: 'For switching content panels.' },
+  ],
+  changelog: [{ version: '0.3.0', date: '2026-09-29', changes: ['New component.'] }],
+});

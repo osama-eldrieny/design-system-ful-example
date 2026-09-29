@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ButtonGroup, Button } from '@ds/react';
+import * as GroupStories from '../../../../packages/react/src/ButtonGroup/ButtonGroup.stories';
+import groupMeta from '../../../../packages/react/src/ButtonGroup/ButtonGroup.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={GroupStories} name="Docs" />
+
+# ButtonGroup
+
+<ComponentPage
+  meta={groupMeta}
+  stories={GroupStories}
+  components={[ButtonGroup]}
+  anatomy={{
+    targets: [{ selector: '.ds-button-group', at: 'start' }, '.ds-button-group > :first-child'],
+    example: (
+      <ButtonGroup aria-label="View" attached defaultValue="list">
+        <Button value="list">List</Button>
+        <Button value="grid">Grid</Button>
+      </ButtonGroup>
+    ),
+  }}
+  optionStories={{ attached: 'Layouts', orientation: 'Layouts' }}
+  extras={[{ title: 'Segmented', story: 'Segmented' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <ButtonGroup aria-label="View" attached defaultValue="list">
+      <Button value="list">List</Button>
+      <Button value="grid">Grid</Button>
+    </ButtonGroup>
+  }
+/>
