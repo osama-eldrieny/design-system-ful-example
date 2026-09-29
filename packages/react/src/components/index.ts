@@ -44,3 +44,6 @@ export * from '../Popover';
 export * from '../Tooltip';
 export * from '../HoverCard';
 export * from '../Toast';
+export * from '../Breadcrumb';
+export * from '../Stepper';
+export * from '../SideNav';

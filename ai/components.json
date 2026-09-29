@@ -46,6 +46,17 @@
       "contract": "ai/components/badge.json"
     },
     {
+      "id": "breadcrumb",
+      "name": "Breadcrumb",
+      "exports": [
+        "Breadcrumb"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "A breadcrumb shows where the current page sits in the site’s hierarchy, with links back up each level.",
+      "contract": "ai/components/breadcrumb.json"
+    },
+    {
       "id": "button",
       "name": "Button",
       "exports": [
@@ -358,6 +369,17 @@
       "contract": "ai/components/select.json"
     },
     {
+      "id": "side-nav",
+      "name": "SideNav",
+      "exports": [
+        "SideNav"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "A side navigation lists the pages of an app or docs site in sections, with icons and nested groups that expand and collapse.",
+      "contract": "ai/components/side-nav.json"
+    },
+    {
       "id": "skeleton",
       "name": "Skeleton",
       "exports": [
@@ -389,6 +411,17 @@
       "status": "stable",
       "purpose": "A spinner shows that something is loading when the time it takes is unknown.",
       "contract": "ai/components/spinner.json"
+    },
+    {
+      "id": "stepper",
+      "name": "Stepper",
+      "exports": [
+        "Stepper"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "A stepper shows progress through a task with several steps, such as checkout: which steps are done, which is current and what’s left.",
+      "contract": "ai/components/stepper.json"
     },
     {
       "id": "switch",

@@ -1,0 +1,27 @@
+/**
+ * Component tokens: breadcrumb
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --breadcrumb-{part}-{state?}-{property}
+ *   part: link | current | separator | more; state: hover.
+ */
+
+:root,
+[data-theme] {
+  --breadcrumb-link-text-color: var(--color-fg-on-accent-secondary-text-default);
+  --breadcrumb-link-hover-text-color: var(--color-fg-on-accent-primary-text-hover);
+  --breadcrumb-current-text-color: var(--color-fg-on-surface-primary);
+  --breadcrumb-current-font-weight: var(--font-weight-medium);
+  --breadcrumb-separator-color: var(--color-fg-on-surface-secondary);
+  --breadcrumb-gap: var(--spacing-2xs);
+  --breadcrumb-icon-size: var(--sizing-xs);
+  --breadcrumb-font-family: var(--font-family-body);
+  --breadcrumb-font-size: var(--font-size-sm);
+  --breadcrumb-font-line-height: var(--font-line-height-sm);
+  --breadcrumb-underline-width: var(--border-width-hairline);
+  --breadcrumb-border-radius: var(--radius-xs);
+  --breadcrumb-focus-ring-width: var(--focus-ring-width);
+  --breadcrumb-focus-ring-offset: var(--focus-ring-offset);
+  --breadcrumb-focus-ring-color: var(--focus-ring-color);
+}

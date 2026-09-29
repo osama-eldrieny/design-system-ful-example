@@ -12,6 +12,7 @@
 @import url('./components/apps-notifications.css');
 @import url('./components/avatar.css');
 @import url('./components/badge.css');
+@import url('./components/breadcrumb.css');
 @import url('./components/button-group.css');
 @import url('./components/button.css');
 @import url('./components/card.css');
@@ -37,9 +38,11 @@
 @import url('./components/radio-button.css');
 @import url('./components/search-field.css');
 @import url('./components/select.css');
+@import url('./components/side-nav.css');
 @import url('./components/skeleton.css');
 @import url('./components/slider.css');
 @import url('./components/spinner.css');
+@import url('./components/stepper.css');
 @import url('./components/switch.css');
 @import url('./components/tabs.css');
 @import url('./components/tag.css');

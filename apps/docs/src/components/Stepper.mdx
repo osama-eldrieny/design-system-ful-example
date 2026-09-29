@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Stepper } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Stepper/Stepper.stories';
+import meta from '../../../../packages/react/src/Stepper/Stepper.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Stepper
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Stepper]}
+  anatomy={{
+    targets: ['.ds-stepper__indicator', '.ds-stepper__label', '.ds-stepper__description'],
+    example: (
+      <div style={{ inlineSize: 420 }}>
+        <Stepper
+          aria-label="Anatomy"
+          current={1}
+          steps={[
+            { label: 'Cart', description: '3 items' },
+            { label: 'Shipping' },
+            { label: 'Payment' },
+          ]}
+        />
+      </div>
+    ),
+  }}
+  optionStories={{ orientation: 'Orientation' }}
+  extras={[{ title: 'Going back', story: 'GoingBack' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ inlineSize: 260 }}>
+      <Stepper
+        aria-label="Matrix"
+        current={1}
+        steps={[{ label: 'Cart' }, { label: 'Ship' }, { label: 'Pay' }]}
+      />
+    </div>
+  }
+/>
