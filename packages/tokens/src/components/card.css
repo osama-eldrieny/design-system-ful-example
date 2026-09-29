@@ -66,6 +66,6 @@
   --card-transition-easing: var(--easing-standard);
 
   /* Product card: filled stars, empty stars, price */
-  --card-stars-empty-icon-color: var(--color-border-primary-medium);
+  --card-stars-empty-icon-color: var(--color-border-primary-strong);
   --card-visually-hidden-size: var(--border-width-hairline);
 }

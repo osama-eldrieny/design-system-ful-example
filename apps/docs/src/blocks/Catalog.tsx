@@ -9,17 +9,7 @@ const metas = Object.values(
 
 // Components still on the pre-overhaul implementation; each moves to a documented
 // component (with a *.meta.ts) in Phase 3.
-const MIGRATING = [
-  'Choose Card',
-  'Apps Notifications',
-  'Footer',
-  'Header',
-  'Logo',
-  'Meeting Card',
-  'Navbar',
-  'Notification List Item',
-  'Palettes',
-];
+const MIGRATING = ['Footer', 'Header', 'Logo', 'Navbar', 'Palettes'];
 
 const slug = (s: string) => s.toLowerCase().replace(/\s+/g, '-');
 

@@ -2,6 +2,10 @@
  * Component tokens: choose-card
  *
  * Style this component only with these tokens.
+ *
+ * Grammar: --choose-card-{state?}-{part?}-{property}
+ *   state: hover | selected; part: title | desc | price | indicator | group.
+ *   Corners come from the radius theme (themes/radius.css).
  */
 
 :root,
@@ -26,4 +30,29 @@
   --choose-card-price-font-size: var(--font-size-md);
   --choose-card-price-font-line-height: var(--font-line-height-md);
   --choose-card-price-font-weight: var(--font-weight-regular);
+
+  /* Container and states */
+  --choose-card-bg-color: var(--color-bg-surface);
+  --choose-card-padding-x: var(--spacing-lg);
+  --choose-card-hover-border-color: var(--color-bg-accent-primary-default);
+  --choose-card-selected-border-color: var(--color-bg-accent-primary-default);
+  --choose-card-selected-border-width: var(--border-width-strong);
+
+  /* Radio indicator */
+  --choose-card-indicator-size: var(--sizing-sm);
+  --choose-card-indicator-border-width: var(--border-width-regular);
+  --choose-card-indicator-off-border-color: var(--color-bg-accent-secondary-default);
+  --choose-card-indicator-on-bg-color: var(--color-bg-accent-primary-default);
+  --choose-card-indicator-dot-color: var(--color-fg-on-accent-primary-default);
+
+  /* Group */
+  --choose-card-group-gap: var(--spacing-md);
+
+  /* Focus, motion, disabled */
+  --choose-card-focus-ring-width: var(--focus-ring-width);
+  --choose-card-focus-ring-offset: var(--focus-ring-offset);
+  --choose-card-focus-ring-color: var(--focus-ring-color);
+  --choose-card-transition-duration: var(--duration-fast);
+  --choose-card-transition-easing: var(--easing-standard);
+  --choose-card-disabled-opacity: var(--opacity-medium);
 }

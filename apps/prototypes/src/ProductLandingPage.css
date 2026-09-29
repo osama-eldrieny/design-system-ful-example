@@ -196,36 +196,6 @@ body {
   gap: 12px;
 }
 
-.sidebar-meetings .meeting-card {
-  max-width: 100%;
-  width: 100%;
-}
-
-.sidebar-apps-section .apps-notifications {
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-  gap: 0;
-}
-
-.sidebar-apps-section .apps-notifications-title {
-  display: none;
-}
-
-.sidebar-apps-section .apps-list {
-  gap: 0;
-}
-
-.sidebar-apps-section .notification-list-item {
-  padding: 12px 0;
-  border-bottom: 1px solid rgb(99 102 241 / 5%);
-}
-
-.sidebar-apps-section .notification-list-item:last-child {
-  border-bottom: none;
-}
-
 .page-main {
   display: flex;
   flex-direction: column;
@@ -392,11 +362,6 @@ button i {
   margin: 60px auto;
   padding: 0 40px;
   width: 100%;
-}
-
-.apps-notifications {
-  max-width: 350px;
-  margin: 0 auto;
 }
 
 /* Pricing Section */

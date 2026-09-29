@@ -21,6 +21,7 @@ import {
   TabPanel,
   Pagination,
   ChooseCard,
+  ChooseCardGroup,
   MeetingCard,
   AppsNotifications,
 } from '@ds/react';
@@ -178,21 +179,30 @@ const meetings = [
     title: 'Q2 Product Review',
     time: '2:00 PM - 3:00 PM',
     variant: 'primary' as const,
-    avatars: ['assets/avatar-1.png', 'assets/avatar-2.png'],
+    attendees: [
+      { name: 'Osama Eldrieny', src: 'assets/avatar-1.png' },
+      { name: 'Sarah Chen', src: 'assets/avatar-2.png' },
+    ],
   },
   {
     id: 2,
     title: 'Team Standup',
     time: '10:00 AM - 10:30 AM',
     variant: 'success' as const,
-    avatars: ['assets/avatar-3.png', 'assets/avatar-4.png'],
+    attendees: [
+      { name: 'Maria Garcia', src: 'assets/avatar-3.png' },
+      { name: 'James Wilson', src: 'assets/avatar-4.png' },
+    ],
   },
   {
     id: 3,
     title: 'Budget Planning',
     time: '4:00 PM - 5:30 PM',
     variant: 'danger' as const,
-    avatars: ['assets/avatar-1.png', 'assets/avatar-3.png'],
+    attendees: [
+      { name: 'Osama Eldrieny', src: 'assets/avatar-1.png' },
+      { name: 'Maria Garcia', src: 'assets/avatar-3.png' },
+    ],
   },
 ];
 
@@ -239,10 +249,10 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
   ];
 
   const notifications = [
-    { id: 'google', appTitle: 'Google', appIcon: 'assets/google.png' },
-    { id: 'linkedin', appTitle: 'LinkedIn', appIcon: 'assets/linkedin.png' },
-    { id: 'behance', appTitle: 'Behance', appIcon: 'assets/behance.png' },
-    { id: 'twitter', appTitle: 'Twitter', appIcon: 'assets/twitter.png' },
+    { id: 'google', name: 'Google', icon: 'assets/google.png' },
+    { id: 'linkedin', name: 'LinkedIn', icon: 'assets/linkedin.png' },
+    { id: 'behance', name: 'Behance', icon: 'assets/behance.png' },
+    { id: 'twitter', name: 'Twitter', icon: 'assets/twitter.png' },
   ];
 
   return (
@@ -321,7 +331,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
                   title={meeting.title}
                   time={meeting.time}
                   variant={meeting.variant}
-                  avatars={meeting.avatars}
+                  attendees={meeting.attendees}
                 />
               ))}
             </div>
@@ -329,16 +339,7 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
 
           {/* Section 3: Connected Apps */}
           <div className="sidebar-apps-section">
-            <h3 className="sidebar-section-title">Connected Apps</h3>
-            <AppsNotifications
-              title="Connected Apps"
-              items={notifications.map((notif) => ({
-                id: notif.id,
-                appTitle: notif.appTitle,
-                appIcon: notif.appIcon,
-                isEnabled: true,
-              }))}
-            />
+            <AppsNotifications appearance="outlined" title="Connected Apps" items={notifications} />
           </div>
         </aside>
 
@@ -416,21 +417,26 @@ function ProductLandingPage({ onNavigate }: ProductLandingPageProps) {
           <section className="pricing-section">
             <div className="pricing-section-wrapper">
               <div className="section-header">
-                <h2>Choose Your Plan</h2>
+                <h2 id="plan-heading">Choose Your Plan</h2>
                 <p>Select the perfect plan for your needs</p>
               </div>
-              <div className="pricing-cards">
+              <ChooseCardGroup
+                className="pricing-cards"
+                orientation="horizontal"
+                aria-labelledby="plan-heading"
+                value={selectedPlan ?? undefined}
+                onValueChange={setSelectedPlan}
+              >
                 {pricingPlans.map((plan) => (
                   <ChooseCard
                     key={plan.id}
+                    value={plan.id}
                     title={plan.title}
                     description={plan.desc}
                     price={plan.price}
-                    isSelected={selectedPlan === plan.id}
-                    onChange={() => setSelectedPlan(plan.id)}
                   />
                 ))}
-              </div>
+              </ChooseCardGroup>
             </div>
           </section>
 

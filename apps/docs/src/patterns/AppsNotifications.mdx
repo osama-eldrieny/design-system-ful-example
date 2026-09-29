@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { AppsNotifications } from '@ds/react';
+import * as AppsStories from '../../../../packages/react/src/AppsNotifications/AppsNotifications.stories';
+import appsMeta from '../../../../packages/react/src/AppsNotifications/AppsNotifications.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={AppsStories} name="Docs" />
+
+# AppsNotifications
+
+<ComponentPage
+  meta={appsMeta}
+  stories={AppsStories}
+  components={[AppsNotifications]}
+  anatomy={{
+    targets: [
+      { selector: '.ds-apps-notifications', at: 'start' },
+      '.ds-card__title',
+      '.ds-apps-notifications__app',
+      '.ds-switch__track',
+    ],
+    example: (
+      <AppsNotifications
+        style={{ inlineSize: 280 }}
+        title="Notifications"
+        items={[{ id: 'slack', name: 'Slack' }]}
+      />
+    ),
+  }}
+  optionStories={{ appearance: 'Appearances' }}
+  extras={[{ title: 'States', story: 'States' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <AppsNotifications
+      style={{ maxInlineSize: 240 }}
+      title="Notifications"
+      items={[
+        { id: 'slack', name: 'Slack' },
+        { id: 'github', name: 'GitHub', defaultEnabled: false },
+      ]}
+    />
+  }
+/>

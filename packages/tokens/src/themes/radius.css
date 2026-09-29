@@ -28,6 +28,7 @@
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-20);
   --card-border-radius: var(--radius-20);
+  --choose-card-border-radius: var(--radius-20);
   --container-border-radius: var(--radius-20);
   --avatar-small-border-radius: var(--radius-8);
   --avatar-medium-border-radius: var(--radius-8);
@@ -38,8 +39,6 @@
   --button-small-border-radius: var(--radius-12);
   --button-large-border-radius: var(--radius-20);
   --button-icon-border-radius: var(--radius-12);
-  --toggle-border-radius: var(--radius-999);
-  --toggle-circle-border-radius: var(--radius-999);
   --switch-border-radius: var(--radius-999);
   --switch-thumb-border-radius: var(--radius-999);
   --logo-icon-border-radius: var(--radius-12);
@@ -69,6 +68,7 @@
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-4);
   --card-border-radius: var(--radius-4);
+  --choose-card-border-radius: var(--radius-4);
   --container-border-radius: var(--radius-8);
   --avatar-small-border-radius: var(--radius-4);
   --avatar-medium-border-radius: var(--radius-4);
@@ -79,8 +79,6 @@
   --button-small-border-radius: var(--radius-3);
   --button-large-border-radius: var(--radius-4);
   --button-icon-border-radius: var(--radius-4);
-  --toggle-border-radius: var(--radius-4);
-  --toggle-circle-border-radius: var(--radius-2);
   --switch-border-radius: var(--radius-4);
   --switch-thumb-border-radius: var(--radius-2);
   --logo-icon-border-radius: var(--radius-4);
@@ -110,6 +108,7 @@
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-40);
   --card-border-radius: var(--radius-40);
+  --choose-card-border-radius: var(--radius-40);
   --container-border-radius: var(--radius-40);
   --avatar-small-border-radius: var(--radius-999);
   --avatar-medium-border-radius: var(--radius-999);
@@ -120,8 +119,6 @@
   --button-small-border-radius: var(--radius-999);
   --button-large-border-radius: var(--radius-999);
   --button-icon-border-radius: var(--radius-999);
-  --toggle-border-radius: var(--radius-999);
-  --toggle-circle-border-radius: var(--radius-999);
   --switch-border-radius: var(--radius-999);
   --switch-thumb-border-radius: var(--radius-999);
   --logo-icon-border-radius: var(--radius-999);

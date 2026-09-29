@@ -70,16 +70,34 @@ export function contrastPairs(set: TokenSet): Pair[] {
     add('--focus-ring-color', bg, 'ui');
   }
 
-  // Component tokens: a text/icon color and the background with the same prefix.
+  // Component tokens: a text/icon color and the nearest background sharing its prefix, e.g.
+  // --meeting-card-primary-title-text-color → --meeting-card-primary-bg-color.
   for (const name of set.names) {
     const m = name.match(/^(--.+)-(text|font|icon)-color$/);
     if (!m || name.startsWith('--color-')) continue;
+    if (NOT_ON_COMPONENT_BG.some((re) => re.test(name))) continue;
     const kind = m[2] === 'icon' ? 'ui' : 'text';
-    const bg = [`${m[1]}-bg-color`, `${m[1]}-bgcolor`].find((b) => has.has(b));
-    if (bg) add(name, bg, kind);
+    const segments = m[1].split('-');
+    for (let end = segments.length; end >= 3; end--) {
+      const prefix = segments.slice(0, end).join('-');
+      const bg = [`${prefix}-bg-color`, `${prefix}-bgcolor`].find((b) => has.has(b));
+      if (bg) {
+        add(name, bg, kind);
+        break;
+      }
+    }
   }
   return pairs;
 }
+
+/**
+ * Text colors that don't sit on their component's background, so the nearest-prefix match
+ * would pair them wrongly. Their semantic colors are checked against the page instead.
+ */
+const NOT_ON_COMPONENT_BG = [
+  // Only enclosed tabs paint --tabs-bg-color; line and pill tabs sit on the page.
+  /^--tabs-(line|pill)-/,
+];
 
 /** Checks every pair in every brand × mode (other axes at their defaults). */
 export function checkContrast(set: TokenSet): PairResult[] {

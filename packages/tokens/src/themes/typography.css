@@ -8,8 +8,6 @@
  *   --font-family-headings: Headings and titles.
  *   --font-family-body: Body text and most UI text.
  *   --font-family-action: Buttons, links and other actions.
- *   --direction-border-width-left: Left border width of edge-accented cards; swaps with right in RTL.
- *   --direction-border-width-right: Right border width of edge-accented cards; swaps with left in RTL.
  *   --container-direction: Text direction of containers (ltr or rtl).
  *   --*-content: Translated demo text. Real components take text from props, not tokens.
  */
@@ -19,8 +17,6 @@
   --font-family-action: var(--font-family-en-serif);
   --font-family-headings: var(--font-family-en-serif);
   --font-family-body: var(--font-family-en-serif);
-  --direction-border-width-left: var(--border-width-5);
-  --direction-border-width-right: var(--border-width-0);
   --section-meetings-title-content: 'My Meetings';
   --section-apps-title-content: 'Apps Notification';
   --container-direction: ltr;
@@ -89,8 +85,6 @@
   --font-family-action: var(--font-family-en-sans);
   --font-family-headings: var(--font-family-en-sans);
   --font-family-body: var(--font-family-en-sans);
-  --direction-border-width-left: var(--border-width-5);
-  --direction-border-width-right: var(--border-width-0);
   --section-meetings-title-content: 'My Meetings';
   --section-apps-title-content: 'Apps Notification';
   --container-direction: ltr;
@@ -158,8 +152,6 @@
   --font-family-action: var(--font-family-ar-serif);
   --font-family-headings: var(--font-family-ar-serif);
   --font-family-body: var(--font-family-ar-serif);
-  --direction-border-width-left: var(--border-width-0);
-  --direction-border-width-right: var(--border-width-5);
   --section-meetings-title-content: 'الإجتماعات';
   --section-apps-title-content: 'إشعارات التطبيقات';
   --container-direction: rtl;
@@ -227,8 +219,6 @@
   --font-family-action: var(--font-family-ar-sans);
   --font-family-headings: var(--font-family-ar-sans);
   --font-family-body: var(--font-family-ar-sans);
-  --direction-border-width-left: var(--border-width-0);
-  --direction-border-width-right: var(--border-width-5);
   --section-meetings-title-content: 'الإجتماعات';
   --section-apps-title-content: 'إشعارات التطبيقات';
   --container-direction: rtl;

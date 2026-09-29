@@ -1,0 +1,71 @@
+/**
+ * MeetingCard. Styled only with --meeting-card-* tokens. Each variant sets the private
+ * helpers; the accent edge is on the inline start, so it flips in right-to-left layouts.
+ */
+
+.ds-meeting-card {
+  --_bg: var(--meeting-card-primary-bg-color);
+  --_border: var(--meeting-card-primary-border-color);
+  --_title: var(--meeting-card-primary-title-text-color);
+  --_time: var(--meeting-card-primary-time-text-color);
+  --_avatar-border: var(--meeting-card-primary-avatar-border-color);
+
+  /* The attendee avatars' ring matches this card instead of the page. */
+  --avatar-ring-color: var(--_avatar-border);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--meeting-card-gap);
+  padding: var(--meeting-card-padding);
+  border-inline-start: var(--meeting-card-border-width) solid var(--_border);
+  border-radius: var(--meeting-card-border-radius);
+  background-color: var(--_bg);
+}
+
+.ds-meeting-card--success {
+  --_bg: var(--meeting-card-success-bg-color);
+  --_border: var(--meeting-card-success-border-color);
+  --_title: var(--meeting-card-success-title-text-color);
+  --_time: var(--meeting-card-success-time-text-color);
+  --_avatar-border: var(--meeting-card-success-avatar-border-color);
+}
+
+.ds-meeting-card--warning {
+  --_bg: var(--meeting-card-warning-bg-color);
+  --_border: var(--meeting-card-warning-border-color);
+  --_title: var(--meeting-card-warning-title-text-color);
+  --_time: var(--meeting-card-warning-time-text-color);
+  --_avatar-border: var(--meeting-card-warning-avatar-border-color);
+}
+
+.ds-meeting-card--danger {
+  --_bg: var(--meeting-card-danger-bg-color);
+  --_border: var(--meeting-card-danger-border-color);
+  --_title: var(--meeting-card-danger-title-text-color);
+  --_time: var(--meeting-card-danger-time-text-color);
+  --_avatar-border: var(--meeting-card-danger-avatar-border-color);
+}
+
+.ds-meeting-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--meeting-card-title-margin-bottom);
+}
+
+.ds-meeting-card__title {
+  margin: 0;
+  font-family: var(--meeting-card-title-font-family);
+  font-size: var(--meeting-card-title-font-size);
+  font-weight: var(--meeting-card-title-font-weight);
+  line-height: var(--meeting-card-title-font-line-height);
+  color: var(--_title);
+}
+
+.ds-meeting-card__time {
+  margin: 0;
+  font-family: var(--meeting-card-time-font-family);
+  font-size: var(--meeting-card-time-font-size);
+  font-weight: var(--meeting-card-time-font-weight);
+  line-height: var(--meeting-card-time-font-line-height);
+  color: var(--_time);
+}

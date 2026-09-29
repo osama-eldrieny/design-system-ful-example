@@ -238,11 +238,6 @@ body {
   gap: 8px;
 }
 
-.status-cards .meeting-card {
-  max-width: 100%;
-  width: 100%;
-}
-
 .dashboard-page .sidebar-integrations-section {
   display: flex;
   flex-direction: column;
@@ -252,31 +247,6 @@ body {
   border-radius: var(--section-border-radius);
   box-shadow: var(--section-shadow-x) var(--section-shadow-y) var(--section-shadow-blur)
     var(--section-shadow-color);
-}
-
-.sidebar-integrations-section .apps-notifications {
-  width: 100%;
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-  gap: 0;
-}
-
-.sidebar-integrations-section .apps-notifications-title {
-  display: none;
-}
-
-.sidebar-integrations-section .apps-list {
-  gap: 0;
-}
-
-.sidebar-integrations-section .notification-list-item {
-  padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.sidebar-integrations-section .notification-list-item:last-child {
-  border-bottom: none;
 }
 
 /* Main Content */

@@ -24,6 +24,7 @@ import {
   TabPanel,
   Pagination,
   ChooseCard,
+  ChooseCardGroup,
   MeetingCard,
   AppsNotifications,
 } from '@ds/react';
@@ -128,21 +129,30 @@ const systemStatus = [
     title: 'Database: Healthy',
     time: 'Uptime: 99.99%',
     variant: 'success' as const,
-    avatars: ['assets/avatar-1.png', 'assets/avatar-2.png'],
+    attendees: [
+      { name: 'Osama', src: 'assets/avatar-1.png' },
+      { name: 'Sarah', src: 'assets/avatar-2.png' },
+    ],
   },
   {
     id: 2,
     title: 'API Server: Active',
     time: 'Latency: 120ms',
     variant: 'success' as const,
-    avatars: ['assets/avatar-2.png', 'assets/avatar-3.png'],
+    attendees: [
+      { name: 'Sarah', src: 'assets/avatar-2.png' },
+      { name: 'Maria', src: 'assets/avatar-3.png' },
+    ],
   },
   {
     id: 3,
     title: 'Backup: In Progress',
     time: 'ETA: 15 min',
     variant: 'primary' as const,
-    avatars: ['assets/avatar-3.png', 'assets/avatar-4.png'],
+    attendees: [
+      { name: 'Maria', src: 'assets/avatar-3.png' },
+      { name: 'James', src: 'assets/avatar-4.png' },
+    ],
   },
 ];
 
@@ -154,10 +164,10 @@ const teamMembers = [
 ];
 
 const integrations = [
-  { id: 'google', appTitle: 'Google', appIcon: 'assets/google.png' },
-  { id: 'mixpanel', appTitle: 'Mixpanel', appIcon: 'assets/linkedin.png' },
-  { id: 'amplitude', appTitle: 'Amplitude', appIcon: 'assets/behance.png' },
-  { id: 'segment', appTitle: 'Segment', appIcon: 'assets/twitter.png' },
+  { id: 'google', name: 'Google', icon: 'assets/google.png' },
+  { id: 'mixpanel', name: 'Mixpanel', icon: 'assets/linkedin.png' },
+  { id: 'amplitude', name: 'Amplitude', icon: 'assets/behance.png' },
+  { id: 'segment', name: 'Segment', icon: 'assets/twitter.png' },
 ];
 
 interface DashboardPageProps {
@@ -306,7 +316,8 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
                   title={status.title}
                   time={status.time}
                   variant={status.variant}
-                  avatars={status.avatars}
+                  attendees={status.attendees}
+                  attendeesLabel="On call"
                 />
               ))}
             </div>
@@ -406,19 +417,25 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
 
               <div className="settings-content">
                 <div className="settings-group">
-                  <h3 className="settings-group-title">Data Refresh</h3>
-                  <div className="layout-cards">
+                  <h3 className="settings-group-title" id="refresh-heading">
+                    Data Refresh
+                  </h3>
+                  <ChooseCardGroup
+                    className="layout-cards"
+                    orientation="horizontal"
+                    aria-labelledby="refresh-heading"
+                    value={selectedRefresh}
+                    onValueChange={setSelectedRefresh}
+                  >
                     {refreshOptions.map((option) => (
                       <ChooseCard
                         key={option.id}
+                        value={option.id}
                         title={option.title}
                         description={option.desc}
-                        price=""
-                        isSelected={selectedRefresh === option.id}
-                        onChange={() => setSelectedRefresh(option.id)}
                       />
                     ))}
-                  </div>
+                  </ChooseCardGroup>
                 </div>
 
                 <div className="settings-group">
@@ -473,16 +490,7 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
 
           {/* Apps Section */}
           <div className="sidebar-integrations-section">
-            <h3 className="sidebar-section-title">Apps</h3>
-            <AppsNotifications
-              title="Connected"
-              items={integrations.map((int) => ({
-                id: int.id,
-                appTitle: int.appTitle,
-                appIcon: int.appIcon,
-                isEnabled: true,
-              }))}
-            />
+            <AppsNotifications appearance="outlined" title="Connected apps" items={integrations} />
           </div>
         </aside>
       </div>
