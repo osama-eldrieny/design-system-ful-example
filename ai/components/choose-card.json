@@ -229,6 +229,14 @@
         "isSelected/onChange replaced by value/onValueChange on the group.",
         "New tokens for hover, selected, indicator, focus and per-mode corners."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Softer borders: a 1 px field-gray border, 2 px accent when selected.",
+        "Horizontal groups share the row equally and wrap text; a card moves to a new row only below its minimum width."
+      ]
     }
   ],
   "components": [
@@ -319,14 +327,11 @@
   ],
   "tokens": {
     "--choose-card-border-color": {
-      "description": "Emphasized tone outline, e.g. a selected card.",
-      "references": "--color-border-primary-strong",
-      "default": "#916dff",
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
       "byTheme": {
-        "brand=amber,mode=light": "#a57a4b",
-        "brand=amber,mode=dark": "#a57a4b",
-        "brand=opal,mode=light": "#3b82f6",
-        "brand=opal,mode=dark": "#5e99f8"
+        "brand=opal,mode=dark": "#a9a6ae"
       }
     },
     "--choose-card-title-font-color": {
@@ -367,8 +372,8 @@
     },
     "--choose-card-border-width": {
       "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
+      "references": "--border-width-hairline",
+      "default": "1px"
     },
     "--choose-card-padding-y": {
       "description": "Gap between groups inside a section.",
@@ -498,8 +503,8 @@
     },
     "--choose-card-selected-border-width": {
       "description": "Stroke widths in px.",
-      "references": "--border-width-strong",
-      "default": "5px"
+      "references": "--border-width-regular",
+      "default": "2px"
     },
     "--choose-card-indicator-size": {
       "description": "Fixed element sizes in px.",
@@ -548,6 +553,11 @@
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
       "default": "16px"
+    },
+    "--choose-card-group-item-min-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 0.6)"
     },
     "--choose-card-focus-ring-width": {
       "description": "Thickness of the keyboard focus ring.",

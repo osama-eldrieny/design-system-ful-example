@@ -7,11 +7,16 @@
 .ds-input-field {
   --_px: var(--input-field-padding-x);
   --_py: var(--input-field-padding-y);
+  --_height: var(--input-field-height);
   --_font-size: var(--input-field-font-size);
   --_line-height: var(--input-field-font-line-height);
   --_border: var(--input-field-default-border-color);
 
   display: grid;
+
+  /* Keep label, control and messages at their own height when a grid row makes the
+     field taller (e.g. beside a field with help text), so inputs line up. */
+  align-content: start;
   gap: var(--input-field-gap);
   font-family: var(--input-field-font-family);
 }
@@ -19,6 +24,7 @@
 .ds-input-field--small {
   --_px: var(--input-field-small-padding-x);
   --_py: var(--input-field-small-padding-y);
+  --_height: var(--input-field-small-height);
   --_font-size: var(--input-field-small-font-size);
   --_line-height: var(--input-field-small-font-line-height);
 }
@@ -26,6 +32,7 @@
 .ds-input-field--large {
   --_px: var(--input-field-large-padding-x);
   --_py: var(--input-field-large-padding-y);
+  --_height: var(--input-field-large-height);
   --_font-size: var(--input-field-large-font-size);
   --_line-height: var(--input-field-large-font-line-height);
 }
@@ -58,11 +65,18 @@
   border: 0;
 }
 
+.ds-input-field__optional {
+  font-weight: var(--input-field-optional-font-weight);
+  color: var(--input-field-optional-text-color);
+}
+
 .ds-input-field__required {
   color: var(--input-field-required-text-color);
 }
 
 .ds-input-field__control {
+  box-sizing: border-box;
+  min-block-size: var(--_height);
   display: flex;
   align-items: center;
   gap: var(--input-field-control-gap);
@@ -87,7 +101,9 @@
 .ds-input-field__control:focus-within {
   border-color: var(--input-field-focus-border-color);
   outline: var(--input-field-focus-ring-width) solid var(--input-field-focus-ring-color);
-  outline-offset: var(--input-field-focus-ring-offset);
+
+  /* The ring covers the border, so focus reads as one thicker border, not two lines. */
+  outline-offset: calc(-1 * var(--input-field-border-width));
 }
 
 .ds-input-field[data-readonly] .ds-input-field__control {

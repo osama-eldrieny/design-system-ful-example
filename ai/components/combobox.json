@@ -450,13 +450,11 @@
       }
     },
     "--combobox-control-default-border-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-secondary-default",
-      "default": "#76717f",
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
       "byTheme": {
-        "brand=diamond,mode=dark": "#f1f1f2",
-        "brand=amber,mode=dark": "#f1f1f2",
-        "brand=opal,mode=dark": "#f1f1f2"
+        "brand=opal,mode=dark": "#a9a6ae"
       }
     },
     "--combobox-control-hover-border-color": {
@@ -507,8 +505,8 @@
     },
     "--combobox-control-border-width": {
       "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
+      "references": "--border-width-hairline",
+      "default": "1px"
     },
     "--combobox-control-gap": {
       "description": "Small gap inside compact controls.",
@@ -552,9 +550,33 @@
       "default": "16px"
     },
     "--combobox-padding-y": {
-      "description": "Small gap inside compact controls.",
-      "references": "--spacing-xs",
-      "default": "8px"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--combobox-height": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--combobox-small-height": {
+      "description": "Height of small buttons, fields and selects, so they line up in a row.",
+      "references": "--control-height-small",
+      "default": "32px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "28px"
+      }
+    },
+    "--combobox-large-height": {
+      "description": "Height of large buttons, fields and selects.",
+      "references": "--control-height-large",
+      "default": "48px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "44px"
+      }
     },
     "--combobox-font-size": {
       "description": "Type scale.",
@@ -572,9 +594,9 @@
       "default": "12px"
     },
     "--combobox-small-padding-y": {
-      "description": "Tightest gap between tightly related items, e.g. icon and label.",
-      "references": "--spacing-2xs",
-      "default": "4px"
+      "description": "No space.",
+      "references": "--spacing-none",
+      "default": "0"
     },
     "--combobox-small-font-size": {
       "description": "Type scale.",
@@ -592,9 +614,9 @@
       "default": "20px"
     },
     "--combobox-large-padding-y": {
-      "description": "Gap between related items in a group.",
-      "references": "--spacing-sm",
-      "default": "12px"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
     },
     "--combobox-large-font-size": {
       "description": "Type scale.",
@@ -630,8 +652,8 @@
     },
     "--combobox-content-border-width": {
       "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
+      "references": "--border-width-hairline",
+      "default": "1px"
     },
     "--combobox-content-shadow-x": {
       "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",

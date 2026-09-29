@@ -27,6 +27,12 @@ export interface TabsProps extends Omit<
    * `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections.
    */
   appearance?: TabsAppearance;
+  /**
+   * `horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a
+   * column beside the panel, for settings pages with many sections; Up and Down arrows move
+   * between tabs. On narrow screens vertical tabs sit above the panel.
+   */
+  orientation?: 'horizontal' | 'vertical';
   /** TabList and TabPanels. */
   children: ReactNode;
 }
@@ -36,11 +42,19 @@ export interface TabsProps extends Omit<
  * time. Arrow keys move between tabs.
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  ({ appearance = 'enclosed', className, children, ...props }, ref) => (
+  ({ appearance = 'enclosed', orientation = 'horizontal', className, children, ...props }, ref) => (
     <AppearanceContext.Provider value={appearance}>
       <TabsPrimitive.Root
         ref={ref}
-        className={['ds-tabs', `ds-tabs--${appearance}`, className].filter(Boolean).join(' ')}
+        orientation={orientation}
+        className={[
+          'ds-tabs',
+          `ds-tabs--${appearance}`,
+          orientation === 'vertical' && 'ds-tabs--vertical',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
         {...props}
       >
         {children}

@@ -378,7 +378,7 @@ Each new component: design its component tokens first (aliasing semantic tokens,
 ## Open decisions (raised when their phase starts)
 
 - **Contrast fixes** change brand colors; you approve the proposed values (Phase 1).
-- **Name:** the docs header says "Spectrum", which is also Adobe's design system (`@adobe/react-spectrum`). Consider a distinct name before publishing a package (Phase 0).
+- **Name:** decided on 2026-09-29: the system is called **Panda** (display name "Panda Design System"). npm packages keep the neutral `@ds/*` scope until a publishing decision is made.
 - **npm publishing** of `packages/react` / `packages/tokens`: public, private (GitHub Packages), or repo-only.
 - **Optional components:** DatePicker, Menubar.
 - **Hosted MCP:** GitHub Pages can't host an MCP server, so the plan ships a local one. A hosted remote MCP (like Carbon's) would need a small server (e.g. Cloudflare Workers); decide in Phase 6 if wanted.

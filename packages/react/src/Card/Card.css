@@ -5,6 +5,9 @@
  */
 
 .ds-card {
+  /* Sizes include padding and border, so a card set to 100% fits its container. */
+  box-sizing: border-box;
+
   --_bg: var(--card-bg-color);
   --_border: transparent;
 

@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
 import { applyTheme, defaultTheme, ThemeProvider, ToastProvider, type Theme } from '@ds/react';
-import ProductLandingPage from './ProductLandingPage';
-import DashboardPage from './DashboardPage';
-import DemoPage from './DemoPage';
+import { useRoute } from './router';
+import AdminOrdersPage from './pages/AdminOrdersPage';
+import AdminOverviewPage from './pages/AdminOverviewPage';
+import AdminTeamPage from './pages/AdminTeamPage';
+import DemoPage from './pages/DemoPage';
+import SettingsPage from './pages/SettingsPage';
 import './prototype.css';
-
-type Page = 'landing' | 'dashboard' | 'demo';
-
-// Each page has its own URL: #/landing, #/dashboard and #/demo (theme playground).
-const pageFromHash = (): Page =>
-  window.location.hash.startsWith('#/dashboard')
-    ? 'dashboard'
-    : window.location.hash.startsWith('#/demo')
-      ? 'demo'
-      : 'landing';
 
 const STORAGE_KEY = 'ds-prototype-theme';
 const savedTheme = (): Theme => {
@@ -24,18 +17,31 @@ const savedTheme = (): Theme => {
   }
 };
 
-function App() {
-  const [page, setPage] = useState<Page>(pageFromHash);
-  const [theme, setTheme] = useState<Theme>(savedTheme);
+function Page({
+  route,
+  theme,
+  setTheme,
+}: {
+  route: string;
+  theme: Theme;
+  setTheme: (t: Theme) => void;
+}) {
+  if (route.startsWith('/admin/orders')) return <AdminOrdersPage />;
+  if (route.startsWith('/admin/team')) return <AdminTeamPage />;
+  if (route.startsWith('/admin')) return <AdminOverviewPage />;
+  if (route.startsWith('/settings')) return <SettingsPage />;
+  if (route.startsWith('/demo'))
+    return (
+      <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
+    );
+  // The admin overview is the prototypes' home page.
+  return <AdminOverviewPage />;
+}
 
-  useEffect(() => {
-    const onHashChange = () => {
-      setPage(pageFromHash());
-      window.scrollTo(0, 0);
-    };
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
-  }, []);
+/** The prototypes app: the TechHub admin, the theme playground, toasts and the saved theme. */
+function App() {
+  const route = useRoute();
+  const [theme, setTheme] = useState<Theme>(savedTheme);
 
   useEffect(() => {
     applyTheme(theme);
@@ -49,11 +55,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <ToastProvider>
-        {page === 'landing' && <ProductLandingPage />}
-        {page === 'dashboard' && <DashboardPage />}
-        {page === 'demo' && (
-          <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
-        )}
+        <Page route={route} theme={theme} setTheme={setTheme} />
       </ToastProvider>
     </ThemeProvider>
   );

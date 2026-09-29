@@ -17,6 +17,17 @@ export default defineMeta({
   anatomy: [{ name: 'Cells', description: 'Equal-width columns.' }],
   options: [
     {
+      prop: 'stretch',
+      title: 'Stretch',
+      values: [
+        {
+          value: 'false',
+          meaning: 'Steady column width, room for more items. Default; card grids.',
+        },
+        { value: 'true', meaning: 'Items share leftover space; form fields and stat rows.' },
+      ],
+    },
+    {
       prop: 'gap',
       title: 'Gap',
       values: [
@@ -96,5 +107,12 @@ export default defineMeta({
     { id: 'card', relation: 'Common grid content.' },
     { id: 'stack', relation: 'For vertical layouts.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    {
+      version: '1.1.0',
+      date: '2026-09-29',
+      changes: ['New stretch prop: auto-fit columns that share leftover space.'],
+    },
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+  ],
 });

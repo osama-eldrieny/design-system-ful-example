@@ -31,8 +31,11 @@
   --button-secondary-text-hover-text-color: var(--color-fg-on-accent-secondary-text-hover);
   --button-secondary-text-focus-text-color: var(--color-fg-on-accent-secondary-text-focus);
   --button-disabled-opacity: var(--opacity-medium);
-  --button-medium-padding-y: var(--spacing-md);
-  --button-small-padding-y: var(--spacing-sm);
+  --button-medium-padding-y: var(--spacing-2xs);
+  --button-small-padding-y: var(--spacing-3xs);
+  --button-small-height: var(--control-height-small);
+  --button-medium-height: var(--control-height-medium);
+  --button-large-height: var(--control-height-large);
   --button-font-family: var(--font-family-body);
   --button-font-weight: var(--font-weight-regular);
   --button-text-decoration: underline;
@@ -83,7 +86,7 @@
   --button-primary-outline-hover-text-color: var(--color-fg-on-primary-high);
   --button-primary-outline-focus-bg-color: var(--color-bg-primary-1);
   --button-primary-outline-focus-text-color: var(--color-fg-on-primary-low);
-  --button-secondary-outline-default-border-color: var(--color-bg-accent-secondary-default);
+  --button-secondary-outline-default-border-color: var(--color-border-field);
   --button-secondary-outline-hover-border-color: var(--color-bg-accent-secondary-hover);
   --button-secondary-outline-focus-border-color: var(--color-bg-accent-secondary-focus);
   --button-secondary-outline-default-text-color: var(--color-fg-on-accent-secondary-text-default);
@@ -144,7 +147,7 @@
   --button-warning-ghost-focus-text-color: var(--color-fg-on-warning-low);
 
   /* Large size (padding-x and radius vary by density and radius theme) */
-  --button-large-padding-y: var(--spacing-lg);
+  --button-large-padding-y: var(--spacing-xs);
   --button-large-font-size: var(--font-size-md);
   --button-large-font-line-height: var(--font-line-height-md);
 
@@ -157,7 +160,7 @@
   --button-large-icon-size: var(--sizing-md);
 
   /* Outline stroke, keyboard focus ring, motion, loading spinner */
-  --button-outline-border-width: var(--border-width-regular);
+  --button-outline-border-width: var(--border-width-hairline);
   --button-focus-ring-width: var(--focus-ring-width);
   --button-focus-ring-offset: var(--focus-ring-offset);
   --button-focus-ring-color: var(--focus-ring-color);

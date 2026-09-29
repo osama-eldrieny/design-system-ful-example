@@ -703,14 +703,38 @@
       "default": "0.5"
     },
     "--button-medium-padding-y": {
-      "description": "Default gap and control padding.",
-      "references": "--spacing-md",
-      "default": "16px"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
     },
     "--button-small-padding-y": {
-      "description": "Gap between related items in a group.",
-      "references": "--spacing-sm",
-      "default": "12px"
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--button-small-height": {
+      "description": "Height of small buttons, fields and selects, so they line up in a row.",
+      "references": "--control-height-small",
+      "default": "32px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "28px"
+      }
+    },
+    "--button-medium-height": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--button-large-height": {
+      "description": "Height of large buttons, fields and selects.",
+      "references": "--control-height-large",
+      "default": "48px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "44px"
+      }
     },
     "--button-font-family": {
       "description": "Body text and most UI text.",
@@ -1176,13 +1200,11 @@
       }
     },
     "--button-secondary-outline-default-border-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-secondary-default",
-      "default": "#76717f",
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
       "byTheme": {
-        "brand=diamond,mode=dark": "#f1f1f2",
-        "brand=amber,mode=dark": "#f1f1f2",
-        "brand=opal,mode=dark": "#f1f1f2"
+        "brand=opal,mode=dark": "#a9a6ae"
       }
     },
     "--button-secondary-outline-hover-border-color": {
@@ -1827,9 +1849,9 @@
       }
     },
     "--button-large-padding-y": {
-      "description": "Gap between groups inside a section.",
-      "references": "--spacing-lg",
-      "default": "20px"
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
     },
     "--button-large-font-size": {
       "description": "Type scale.",
@@ -1873,8 +1895,8 @@
     },
     "--button-outline-border-width": {
       "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
+      "references": "--border-width-hairline",
+      "default": "1px"
     },
     "--button-focus-ring-width": {
       "description": "Thickness of the keyboard focus ring.",

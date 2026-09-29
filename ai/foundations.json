@@ -104,6 +104,7 @@
     "--color-fg-on-secondary-low": "Darkest tone text, for maximum contrast on tinted backgrounds.",
     "--color-fg-on-secondary-strong": "Text on strong (solid) tone fills.",
     "--color-border-accent": "Brand-colored outline; also the focus ring color.",
+    "--color-border-field": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
     "--color-border-base": "Default dividers and outlines.",
     "--color-border-primary-strong": "Emphasized tone outline, e.g. a selected card.",
     "--color-border-primary-subtle": "Faint tone outline on tinted backgrounds.",

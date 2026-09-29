@@ -7,3 +7,7 @@ dist/
 storybook-static/
 coverage/
 *.tsbuildinfo
+
+# Local tooling output
+.vitest-attachments/
+.claude/

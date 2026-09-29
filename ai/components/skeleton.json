@@ -208,15 +208,13 @@
   ],
   "tokens": {
     "--skeleton-bg-color": {
-      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
-      "references": "--color-bg-secondary-1",
-      "default": "#acadb2",
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-secondary-200",
+      "default": "#dedde0",
       "byTheme": {
-        "brand=diamond,mode=dark": "#363641",
-        "brand=amber,mode=light": "#f3e8dc",
-        "brand=amber,mode=dark": "#6a625a",
-        "brand=opal,mode=light": "#afb2be",
-        "brand=opal,mode=dark": "#3c4058"
+        "brand=diamond,mode=dark": "#54505a",
+        "brand=amber,mode=dark": "#54505a",
+        "brand=opal,mode=dark": "#54505a"
       }
     },
     "--skeleton-highlight-color": {

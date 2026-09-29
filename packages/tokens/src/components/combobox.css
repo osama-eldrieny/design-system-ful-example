@@ -17,12 +17,12 @@
   --combobox-control-default-bg-color: var(--color-bg-surface);
   --combobox-control-default-text-color: var(--color-fg-on-surface-primary);
   --combobox-control-placeholder-text-color: var(--color-fg-on-surface-secondary);
-  --combobox-control-default-border-color: var(--color-bg-accent-secondary-default);
+  --combobox-control-default-border-color: var(--color-border-field);
   --combobox-control-hover-border-color: var(--color-border-primary-strong);
   --combobox-control-focus-border-color: var(--color-border-primary-strong);
   --combobox-control-error-border-color: var(--color-border-danger-strong);
   --combobox-control-success-border-color: var(--color-border-success-strong);
-  --combobox-control-border-width: var(--border-width-regular);
+  --combobox-control-border-width: var(--border-width-hairline);
   --combobox-control-gap: var(--spacing-xs);
   --combobox-icon-color: var(--color-fg-on-surface-secondary);
   --combobox-icon-size: var(--sizing-sm);
@@ -31,22 +31,25 @@
 
   /* Sizes */
   --combobox-padding-x: var(--spacing-md);
-  --combobox-padding-y: var(--spacing-xs);
+  --combobox-padding-y: var(--spacing-2xs);
+  --combobox-height: var(--control-height-medium);
+  --combobox-small-height: var(--control-height-small);
+  --combobox-large-height: var(--control-height-large);
   --combobox-font-size: var(--font-size-md);
   --combobox-font-line-height: var(--font-line-height-md);
   --combobox-small-padding-x: var(--spacing-sm);
-  --combobox-small-padding-y: var(--spacing-2xs);
+  --combobox-small-padding-y: var(--spacing-none);
   --combobox-small-font-size: var(--font-size-sm);
   --combobox-small-font-line-height: var(--font-line-height-md);
   --combobox-large-padding-x: var(--spacing-lg);
-  --combobox-large-padding-y: var(--spacing-sm);
+  --combobox-large-padding-y: var(--spacing-2xs);
   --combobox-large-font-size: var(--font-size-md);
   --combobox-large-font-line-height: var(--font-line-height-lg);
 
   /* List */
   --combobox-content-bg-color: var(--color-bg-base);
   --combobox-content-border-color: var(--color-border-base);
-  --combobox-content-border-width: var(--border-width-regular);
+  --combobox-content-border-width: var(--border-width-hairline);
   --combobox-content-shadow-x: var(--shadow-none);
   --combobox-content-shadow-color: var(--color-shadow-surface);
   --combobox-content-padding: var(--spacing-2xs);

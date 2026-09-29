@@ -38,6 +38,8 @@ import { SearchField } from '@ds/react';
 | `onValueChange` | `((query: string) => void)` |  | Called with the new query as people type or clear. |
 | `size` | `InputFieldSize` |  | `small` for dense UI, `medium` by default, `large` for prominent forms. |
 | `hideLabel` | `boolean` |  | Hides the label visually but keeps it for screen readers. Only for fields whose purpose is obvious from context, such as a search box with a search icon. |
+| `optional` | `boolean` |  | Marks the field optional with text after the label. Use when most fields are required. |
+| `optionalLabel` | `string` |  | Text shown for optional fields. Default "(optional)". |
 | `description` | `ReactNode` |  | Help text under the field, e.g. format hints. |
 | `error` | `ReactNode` |  | Error message. Marks the field invalid and replaces the success message. |
 | `success` | `ReactNode` |  | Confirmation message, e.g. "Username is available". |

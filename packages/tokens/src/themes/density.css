@@ -18,11 +18,17 @@
  *   --spacing-3xl: Space between major sections.
  *   --spacing-4xl: Extra-large layout spacing.
  *   --spacing-5xl: Page-level outer spacing.
+ *   --control-height-small: Height of small buttons, fields and selects, so they line up in a row.
+ *   --control-height-medium: Height of medium (default) buttons, fields and selects.
+ *   --control-height-large: Height of large buttons, fields and selects.
  */
 
 /* density: comfortable (default) */
 :root,
 [data-density='comfortable'] {
+  --control-height-small: var(--size-32);
+  --control-height-medium: var(--size-40);
+  --control-height-large: var(--size-48);
   --spacing-4xs: var(--space-negative-4);
   --spacing-none: var(--space-0);
   --spacing-3xs: var(--space-2);
@@ -62,6 +68,9 @@
 
 /* density: compact */
 [data-density='compact'] {
+  --control-height-small: var(--size-28);
+  --control-height-medium: var(--size-36);
+  --control-height-large: var(--size-44);
   --spacing-4xs: var(--space-negative-4);
   --spacing-none: var(--space-0);
   --spacing-3xs: var(--space-2);

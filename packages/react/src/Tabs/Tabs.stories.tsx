@@ -144,3 +144,18 @@ export const Keyboard: Story = {
     });
   },
 };
+
+export const Vertical: Story = {
+  render: () => (
+    <Tabs defaultValue="profile" appearance="line" orientation="vertical">
+      <TabList label="Settings">
+        <Tab value="profile">Profile</Tab>
+        <Tab value="notifications">Notifications</Tab>
+        <Tab value="security">Security</Tab>
+      </TabList>
+      <TabPanel value="profile">Your photo, name and bio.</TabPanel>
+      <TabPanel value="notifications">What we email you about.</TabPanel>
+      <TabPanel value="security">Two-step verification and devices.</TabPanel>
+    </Tabs>
+  ),
+};

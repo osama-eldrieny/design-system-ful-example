@@ -20,8 +20,6 @@
   --side-nav-item-hover-text-color: var(--color-fg-on-surface-primary);
   --side-nav-item-active-bg-color: var(--color-bg-primary-1);
   --side-nav-item-active-text-color: var(--color-fg-on-primary-high);
-  --side-nav-item-active-indicator-color: var(--color-bg-accent-primary-default);
-  --side-nav-item-active-indicator-width: var(--border-width-strong);
   --side-nav-item-padding-x: var(--spacing-sm);
   --side-nav-item-padding-y: var(--spacing-xs);
   --side-nav-item-gap: var(--spacing-xs);

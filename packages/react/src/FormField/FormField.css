@@ -26,6 +26,12 @@
   margin-block-end: var(--form-field-gap);
 }
 
+/* Space between the group's legend (and help text) and its controls, so the legend reads as
+   the title of the group. */
+.ds-form-field--group > .ds-form-field__controls {
+  margin-block-start: var(--form-field-group-controls-gap);
+}
+
 .ds-form-field__controls {
   display: flex;
   flex-direction: column;

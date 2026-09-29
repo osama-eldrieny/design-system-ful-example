@@ -13,9 +13,11 @@
   flex-flow: row wrap;
 }
 
-/* Cards share a row while their content fits, then wrap; each shrinks on narrow screens. */
+/* Cards share the row equally and their text wraps; a card only moves to a new row when
+   it would get narrower than the minimum width. */
 .ds-choose-card-group--horizontal > .ds-choose-card {
-  flex: 1 1 max-content;
+  flex: 1 1 var(--choose-card-group-item-min-width);
+  min-inline-size: 0;
 }
 
 .ds-choose-card {

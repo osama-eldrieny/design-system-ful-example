@@ -25,9 +25,11 @@ const pages = [
   ...Object.values(index)
     .filter((e) => e.type === 'docs')
     .map((e) => ({ name: e.id, url: `${base}/iframe.html?id=${e.id}&viewMode=docs` })),
-  { name: 'prototype landing', url: `${base}/prototypes/#/landing` },
-  { name: 'prototype dashboard', url: `${base}/prototypes/#/dashboard` },
-  { name: 'theme playground', url: `${base}/prototypes/#/demo` },
+  { name: 'prototype admin', url: `${base}/prototypes/#/admin` },
+  { name: 'prototype admin/orders', url: `${base}/prototypes/#/admin/orders` },
+  { name: 'prototype admin/team', url: `${base}/prototypes/#/admin/team` },
+  { name: 'prototype settings', url: `${base}/prototypes/#/settings` },
+  { name: 'prototype demo', url: `${base}/prototypes/#/demo` },
 ];
 
 const browser = await chromium.launch();

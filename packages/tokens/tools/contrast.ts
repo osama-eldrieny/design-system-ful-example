@@ -68,6 +68,8 @@ export function contrastPairs(set: TokenSet): Pair[] {
     add('--color-fg-on-surface-primary', bg);
     add('--color-fg-on-surface-secondary', bg);
     add('--focus-ring-color', bg, 'ui');
+    // Field outlines show where to type: 3:1 (WCAG 1.4.11).
+    add('--color-border-field', bg, 'ui');
   }
 
   // Component tokens: a text/icon color and the nearest background sharing its prefix, e.g.

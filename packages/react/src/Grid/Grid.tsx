@@ -10,6 +10,12 @@ export interface GridProps extends HTMLAttributes<HTMLElement> {
   columns?: number | 'auto';
   /** Smallest column width for columns="auto", e.g. "16rem". Default the grid token. */
   minItemWidth?: string;
+  /**
+   * With columns="auto": `false` (default) keeps every column at a steady width, leaving
+   * room for more (good for card grids); `true` stretches items to use the leftover space
+   * (good for form fields and stat rows).
+   */
+  stretch?: boolean;
   /** Space between cells (follows density). Default md. */
   gap?: SpaceStep;
   as?: ElementType;
@@ -21,6 +27,7 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
     {
       columns = 'auto',
       minItemWidth,
+      stretch = false,
       gap = 'md',
       as: Component = 'div',
       className,
@@ -35,6 +42,7 @@ export const Grid = forwardRef<HTMLElement, GridProps>(
         'ds-grid',
         `ds-grid--gap-${gap}`,
         columns === 'auto' ? 'ds-grid--auto' : 'ds-grid--fixed',
+        stretch && 'ds-grid--stretch',
         className,
       ]
         .filter(Boolean)

@@ -15,6 +15,10 @@ import { Grid } from '@ds/react';
 - For tabular data. Use Table.
 - For a single row. Use Inline.
 
+## Stretch (`stretch`)
+- `false`: Steady column width, room for more items. Default; card grids.
+- `true`: Items share leftover space; form fields and stat rows.
+
 ## Gap (`gap`)
 - `none … 3xl`: Steps of the spacing scale; they shrink in compact density.
 
@@ -32,6 +36,7 @@ import { Grid } from '@ds/react';
 | --- | --- | --- | --- |
 | `columns` | `number \| "auto"` | auto | A number of equal columns, or `auto` (default) to fit as many columns of at least minItemWidth as there is room for, so it reflows on small screens. |
 | `minItemWidth` | `string` |  | Smallest column width for columns="auto", e.g. "16rem". Default the grid token. |
+| `stretch` | `boolean` | false | With columns="auto": `false` (default) keeps every column at a steady width, leaving room for more (good for card grids); `true` stretches items to use the leftover space (good for form fields and stat rows). |
 | `gap` | `SpaceStep` | md | Space between cells (follows density). Default md. |
 | `as` | `ElementType` | div |  |
 

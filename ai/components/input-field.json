@@ -251,6 +251,13 @@
   ],
   "changelog": [
     {
+      "version": "1.1.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New optional prop: “(optional)” after the label, matching FormField and Textarea."
+      ]
+    },
+    {
       "version": "0.2.0",
       "date": "2026-09-29",
       "changes": [
@@ -277,6 +284,18 @@
           "required": false,
           "default": false,
           "description": "Hides the label visually but keeps it for screen readers. Only for fields whose purpose\nis obvious from context, such as a search box with a search icon."
+        },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Marks the field optional with text after the label. Use when most fields are required."
+        },
+        "optionalLabel": {
+          "type": "string",
+          "required": false,
+          "default": "(optional)",
+          "description": "Text shown for optional fields. Default \"(optional)\"."
         },
         "description": {
           "type": "ReactNode",
@@ -376,13 +395,11 @@
       }
     },
     "--input-field-default-border-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-secondary-default",
-      "default": "#76717f",
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
       "byTheme": {
-        "brand=diamond,mode=dark": "#f1f1f2",
-        "brand=amber,mode=dark": "#f1f1f2",
-        "brand=opal,mode=dark": "#f1f1f2"
+        "brand=opal,mode=dark": "#a9a6ae"
       }
     },
     "--input-field-hover-border-color": {
@@ -445,8 +462,8 @@
     },
     "--input-field-border-width": {
       "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
+      "references": "--border-width-hairline",
+      "default": "1px"
     },
     "--input-field-font-family": {
       "description": "Body text and most UI text.",
@@ -468,9 +485,33 @@
       "default": "16px"
     },
     "--input-field-padding-y": {
-      "description": "Small gap inside compact controls.",
-      "references": "--spacing-xs",
-      "default": "8px"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--input-field-height": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--input-field-small-height": {
+      "description": "Height of small buttons, fields and selects, so they line up in a row.",
+      "references": "--control-height-small",
+      "default": "32px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "28px"
+      }
+    },
+    "--input-field-large-height": {
+      "description": "Height of large buttons, fields and selects.",
+      "references": "--control-height-large",
+      "default": "48px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "44px"
+      }
     },
     "--input-field-font-size": {
       "description": "Type scale.",
@@ -488,9 +529,9 @@
       "default": "12px"
     },
     "--input-field-small-padding-y": {
-      "description": "Tightest gap between tightly related items, e.g. icon and label.",
-      "references": "--spacing-2xs",
-      "default": "4px"
+      "description": "No space.",
+      "references": "--spacing-none",
+      "default": "0"
     },
     "--input-field-small-font-size": {
       "description": "Type scale.",
@@ -508,9 +549,9 @@
       "default": "20px"
     },
     "--input-field-large-padding-y": {
-      "description": "Gap between related items in a group.",
-      "references": "--spacing-sm",
-      "default": "12px"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
     },
     "--input-field-large-font-size": {
       "description": "Type scale.",
@@ -599,6 +640,23 @@
         "brand=opal,mode=light": "#cf3650",
         "brand=opal,mode=dark": "#faacba"
       }
+    },
+    "--input-field-optional-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--input-field-optional-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
     },
     "--input-field-message-font-size": {
       "description": "Type scale.",

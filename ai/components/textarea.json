@@ -363,13 +363,11 @@
       }
     },
     "--textarea-default-border-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-secondary-default",
-      "default": "#76717f",
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
       "byTheme": {
-        "brand=diamond,mode=dark": "#f1f1f2",
-        "brand=amber,mode=dark": "#f1f1f2",
-        "brand=opal,mode=dark": "#f1f1f2"
+        "brand=opal,mode=dark": "#a9a6ae"
       }
     },
     "--textarea-hover-border-color": {
@@ -432,8 +430,8 @@
     },
     "--textarea-border-width": {
       "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
+      "references": "--border-width-hairline",
+      "default": "1px"
     },
     "--textarea-font-family": {
       "description": "Body text and most UI text.",
@@ -547,6 +545,11 @@
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
       "default": "12px"
+    },
+    "--textarea-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
     },
     "--textarea-focus-ring-width": {
       "description": "Thickness of the keyboard focus ring.",

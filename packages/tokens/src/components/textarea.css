@@ -16,13 +16,13 @@
   --textarea-default-bg-color: var(--color-bg-surface);
   --textarea-default-text-color: var(--color-fg-on-surface-primary);
   --textarea-placeholder-text-color: var(--color-fg-on-surface-secondary);
-  --textarea-default-border-color: var(--color-bg-accent-secondary-default);
+  --textarea-default-border-color: var(--color-border-field);
   --textarea-hover-border-color: var(--color-border-primary-strong);
   --textarea-focus-border-color: var(--color-border-primary-strong);
   --textarea-error-border-color: var(--color-border-danger-strong);
   --textarea-success-border-color: var(--color-border-success-strong);
   --textarea-readonly-bg-color: var(--color-bg-default);
-  --textarea-border-width: var(--border-width-regular);
+  --textarea-border-width: var(--border-width-hairline);
   --textarea-font-family: var(--font-family-body);
   --textarea-font-weight: var(--font-weight-regular);
 
@@ -46,6 +46,7 @@
   --textarea-counter-font-size: var(--font-size-sm);
   --textarea-counter-font-line-height: var(--font-line-height-sm);
   --textarea-footer-gap: var(--spacing-sm);
+  --textarea-gap: var(--spacing-2xs);
 
   /* Focus, motion, disabled */
   --textarea-focus-ring-width: var(--focus-ring-width);

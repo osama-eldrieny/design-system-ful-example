@@ -1,4 +1,4 @@
-# Spectrum Design System
+# Panda Design System
 
 > Themeable, accessible React components (@ds/react) and CSS design tokens (@ds/tokens). Three brands (Diamond, Amber, Opal), light and dark, English and Arabic (RTL), two densities, three radius styles, four shadow levels. WCAG 2.2 AA in every theme.
 

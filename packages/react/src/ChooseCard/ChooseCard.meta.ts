@@ -179,5 +179,13 @@ const [speed, setSpeed] = useState('standard');
         'New tokens for hover, selected, indicator, focus and per-mode corners.',
       ],
     },
+    {
+      version: '1.1.0',
+      date: '2026-09-29',
+      changes: [
+        'Softer borders: a 1 px field-gray border, 2 px accent when selected.',
+        'Horizontal groups share the row equally and wrap text; a card moves to a new row only below its minimum width.',
+      ],
+    },
   ],
 });

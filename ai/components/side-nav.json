@@ -199,6 +199,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Removed the bar on the current item; its background and text color mark it."
+      ]
     }
   ],
   "components": [
@@ -323,23 +330,6 @@
         "brand=opal,mode=light": "#224a8c",
         "brand=opal,mode=dark": "#abc9fb"
       }
-    },
-    "--side-nav-item-active-indicator-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-primary-default",
-      "default": "#794dff",
-      "byTheme": {
-        "brand=diamond,mode=dark": "#f2edff",
-        "brand=amber,mode=light": "#cda376",
-        "brand=amber,mode=dark": "#fff",
-        "brand=opal,mode=light": "#326fd1",
-        "brand=opal,mode=dark": "#fff"
-      }
-    },
-    "--side-nav-item-active-indicator-width": {
-      "description": "Stroke widths in px.",
-      "references": "--border-width-strong",
-      "default": "5px"
     },
     "--side-nav-item-padding-x": {
       "description": "Gap between related items in a group.",

@@ -19,6 +19,10 @@ export interface InputFieldProps extends Omit<InputHTMLAttributes<HTMLInputEleme
    * is obvious from context, such as a search box with a search icon.
    */
   hideLabel?: boolean;
+  /** Marks the field optional with text after the label. Use when most fields are required. */
+  optional?: boolean;
+  /** Text shown for optional fields. Default "(optional)". */
+  optionalLabel?: string;
   /** Help text under the field, e.g. format hints. */
   description?: ReactNode;
   /** Error message. Marks the field invalid and replaces the success message. */
@@ -47,6 +51,8 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
     {
       label,
       hideLabel = false,
+      optional = false,
+      optionalLabel = '(optional)',
       description,
       error,
       success,
@@ -98,6 +104,12 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
               {' '}
               *
             </span>
+          )}
+          {optional && !required && (
+            <>
+              {' '}
+              <span className="ds-input-field__optional">{optionalLabel}</span>
+            </>
           )}
         </label>
         <div className="ds-input-field__control">

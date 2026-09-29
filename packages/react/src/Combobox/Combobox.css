@@ -6,6 +6,7 @@
 .ds-combobox {
   --_px: var(--combobox-padding-x);
   --_py: var(--combobox-padding-y);
+  --_height: var(--combobox-height);
   --_font-size: var(--combobox-font-size);
   --_line-height: var(--combobox-font-line-height);
   --_border: var(--combobox-control-default-border-color);
@@ -14,6 +15,7 @@
 .ds-combobox--small {
   --_px: var(--combobox-small-padding-x);
   --_py: var(--combobox-small-padding-y);
+  --_height: var(--combobox-small-height);
   --_font-size: var(--combobox-small-font-size);
   --_line-height: var(--combobox-small-font-line-height);
 }
@@ -21,6 +23,7 @@
 .ds-combobox--large {
   --_px: var(--combobox-large-padding-x);
   --_py: var(--combobox-large-padding-y);
+  --_height: var(--combobox-large-height);
   --_font-size: var(--combobox-large-font-size);
   --_line-height: var(--combobox-large-font-line-height);
 }
@@ -39,6 +42,8 @@
 }
 
 .ds-combobox__control {
+  box-sizing: border-box;
+  min-block-size: var(--_height);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -63,7 +68,9 @@
 .ds-combobox__control:focus-within {
   border-color: var(--combobox-control-focus-border-color);
   outline: var(--combobox-focus-ring-width) solid var(--combobox-focus-ring-color);
-  outline-offset: var(--combobox-focus-ring-offset);
+
+  /* The ring covers the border, so focus reads as one thicker border, not two lines. */
+  outline-offset: calc(-1 * var(--combobox-control-border-width));
 }
 
 .ds-combobox__control[data-disabled] {

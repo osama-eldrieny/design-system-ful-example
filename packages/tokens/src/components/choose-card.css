@@ -10,11 +10,11 @@
 
 :root,
 [data-theme] {
-  --choose-card-border-color: var(--color-border-primary-strong);
+  --choose-card-border-color: var(--color-border-field);
   --choose-card-title-font-color: var(--color-fg-on-surface-primary);
   --choose-card-price-font-color: var(--color-fg-on-surface-primary);
   --choose-card-desc-font-color: var(--color-fg-on-surface-secondary);
-  --choose-card-border-width: var(--border-width-regular);
+  --choose-card-border-width: var(--border-width-hairline);
   --choose-card-padding-y: var(--spacing-lg);
   --choose-card-horizontal-gap: var(--spacing-md);
   --choose-card-vertical-gap: var(--spacing-sm);
@@ -36,7 +36,7 @@
   --choose-card-padding-x: var(--spacing-lg);
   --choose-card-hover-border-color: var(--color-bg-accent-primary-default);
   --choose-card-selected-border-color: var(--color-bg-accent-primary-default);
-  --choose-card-selected-border-width: var(--border-width-strong);
+  --choose-card-selected-border-width: var(--border-width-regular);
 
   /* Radio indicator */
   --choose-card-indicator-size: var(--sizing-sm);
@@ -47,6 +47,7 @@
 
   /* Group */
   --choose-card-group-gap: var(--spacing-md);
+  --choose-card-group-item-min-width: calc(var(--sizing-8xl) * 0.6);
 
   /* Focus, motion, disabled */
   --choose-card-focus-ring-width: var(--focus-ring-width);

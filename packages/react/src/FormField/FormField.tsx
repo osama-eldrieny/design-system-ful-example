@@ -147,14 +147,18 @@ export const FormField = forwardRef<HTMLElement, FormFieldProps>(
       'data-disabled': disabled ? '' : undefined,
     };
 
+    const descriptionNode = description && (
+      <span className="ds-form-field__description" id={descriptionId}>
+        {description}
+      </span>
+    );
+
     const body = (
       <FormFieldContext.Provider value={control}>
+        {/* A group's help text belongs to the whole group, so it sits under the legend. */}
+        {group && descriptionNode}
         {group ? <div className="ds-form-field__controls">{content}</div> : content}
-        {description && (
-          <span className="ds-form-field__description" id={descriptionId}>
-            {description}
-          </span>
-        )}
+        {!group && descriptionNode}
         {(error || success) && (
           <span
             className={`ds-form-field__message ds-form-field__message--${error ? 'error' : 'success'}`}

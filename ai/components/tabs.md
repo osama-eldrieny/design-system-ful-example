@@ -26,6 +26,10 @@ import { TabPanel } from '@ds/react';
 - `pill`: Filled pill on the selected tab, no container. Light filtering inside cards.
 - `line`: Underline under the selected tab. Page-level sections.
 
+## Orientation (`orientation`)
+- `horizontal`: Tabs in a row above the panel. Default.
+- `vertical`: Tabs in a column beside the panel, e.g. settings with many sections. A row again on narrow screens.
+
 ## States
 - **Default**: Not selected. (At rest.)
 - **Hover**: Shows the tab responds to the pointer. (:hover.)
@@ -42,6 +46,7 @@ import { TabPanel } from '@ds/react';
 | `defaultValue` | `string` |  | Initially selected tab when uncontrolled. |
 | `onValueChange` | `((value: string) => void)` |  | Called with the new tab's value. |
 | `appearance` | `TabsAppearance` | enclosed | `enclosed` (default): tabs in a tinted container, for compact filters and toolbars. `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections. |
+| `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a column beside the panel, for settings pages with many sections; Up and Down arrows move between tabs. On narrow screens vertical tabs sit above the panel. |
 | `children` | `ReactNode` |  | TabList and TabPanels. |
 
 ### TabList

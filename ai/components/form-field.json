@@ -209,6 +209,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-30",
+      "changes": [
+        "Groups: help text sits under the legend, and more space separates the legend from the controls."
+      ]
     }
   ],
   "components": [
@@ -235,6 +242,11 @@
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
       "default": "12px"
+    },
+    "--form-field-group-controls-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
     },
     "--form-field-label-font-family": {
       "description": "Body text and most UI text.",

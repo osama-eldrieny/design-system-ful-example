@@ -254,6 +254,18 @@
           "default": null,
           "description": "Hides the label visually but keeps it for screen readers. Only for fields whose purpose\nis obvious from context, such as a search box with a search icon."
         },
+        "optional": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the field optional with text after the label. Use when most fields are required."
+        },
+        "optionalLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Text shown for optional fields. Default \"(optional)\"."
+        },
         "description": {
           "type": "ReactNode",
           "required": false,

@@ -32,6 +32,20 @@
   ],
   "options": [
     {
+      "prop": "stretch",
+      "title": "Stretch",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Steady column width, room for more items. Default; card grids."
+        },
+        {
+          "value": "true",
+          "meaning": "Items share leftover space; form fields and stat rows."
+        }
+      ]
+    },
+    {
       "prop": "gap",
       "title": "Gap",
       "values": [
@@ -151,6 +165,13 @@
   ],
   "changelog": [
     {
+      "version": "1.1.0",
+      "date": "2026-09-29",
+      "changes": [
+        "New stretch prop: auto-fit columns that share leftover space."
+      ]
+    },
+    {
       "version": "0.4.0",
       "date": "2026-09-29",
       "changes": [
@@ -175,6 +196,12 @@
           "required": false,
           "default": null,
           "description": "Smallest column width for columns=\"auto\", e.g. \"16rem\". Default the grid token."
+        },
+        "stretch": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "With columns=\"auto\": `false` (default) keeps every column at a steady width, leaving\nroom for more (good for card grids); `true` stretches items to use the leftover space\n(good for form fields and stat rows)."
         },
         "gap": {
           "type": "SpaceStep",

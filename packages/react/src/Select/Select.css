@@ -7,6 +7,7 @@
 .ds-select {
   --_px: var(--select-padding-x);
   --_py: var(--select-padding-y);
+  --_height: var(--select-height);
   --_font-size: var(--select-font-size);
   --_line-height: var(--select-font-line-height);
   --_border: var(--select-trigger-default-border-color);
@@ -15,6 +16,7 @@
 .ds-select--small {
   --_px: var(--select-small-padding-x);
   --_py: var(--select-small-padding-y);
+  --_height: var(--select-small-height);
   --_font-size: var(--select-small-font-size);
   --_line-height: var(--select-small-font-line-height);
 }
@@ -22,6 +24,7 @@
 .ds-select--large {
   --_px: var(--select-large-padding-x);
   --_py: var(--select-large-padding-y);
+  --_height: var(--select-large-height);
   --_font-size: var(--select-large-font-size);
   --_line-height: var(--select-large-font-line-height);
 }
@@ -35,6 +38,8 @@
 }
 
 .ds-select__trigger {
+  box-sizing: border-box;
+  min-block-size: var(--_height);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,7 +72,9 @@
 .ds-select__trigger:focus-visible {
   border-color: var(--select-trigger-focus-border-color);
   outline: var(--select-focus-ring-width) solid var(--select-focus-ring-color);
-  outline-offset: var(--select-focus-ring-offset);
+
+  /* The ring covers the border, so focus reads as one thicker border, not two lines. */
+  outline-offset: calc(-1 * var(--select-trigger-border-width));
 }
 
 .ds-select__trigger:disabled {

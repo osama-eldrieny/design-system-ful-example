@@ -15,6 +15,7 @@
 
   /* Space between the controls of a group */
   --form-field-group-gap: var(--spacing-sm);
+  --form-field-group-controls-gap: var(--spacing-xs);
   --form-field-label-font-family: var(--font-family-body);
   --form-field-label-font-size: var(--font-size-md);
   --form-field-label-font-line-height: var(--font-line-height-md);

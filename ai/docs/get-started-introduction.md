@@ -1,6 +1,6 @@
-# Spectrum Design System
+# Panda Design System
 
-Spectrum is a themeable, accessible React component library and the design tokens behind it. One codebase serves three brands (Diamond, Amber, Opal), light and dark mode, English and Arabic, two densities, three corner styles and four shadow levels.
+Panda is a themeable, accessible React component library and the design tokens behind it. One codebase serves three brands (Diamond, Amber, Opal), light and dark mode, English and Arabic, two densities, three corner styles and four shadow levels.
 
 **Code is the source of truth.** Tokens are plain CSS, the components are the React library, and these docs render the real components, so what you see here is exactly what ships.
 

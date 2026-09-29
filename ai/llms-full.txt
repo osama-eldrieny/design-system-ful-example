@@ -1,4 +1,4 @@
-# Spectrum Design System
+# Panda Design System
 
 > Themeable, accessible React components (@ds/react) and CSS design tokens (@ds/tokens). Three brands (Diamond, Amber, Opal), light and dark, English and Arabic (RTL), two densities, three radius styles, four shadow levels. WCAG 2.2 AA in every theme.
 
@@ -207,8 +207,10 @@ Complete screens built only from `@ds/react` components and tokens. They open ou
 
 | Example | What it shows |
 | --- | --- |
-| <a href="prototypes/#/landing" target="_top">Store landing page</a> | Navbar, filters that work (search, categories, price, sort), product grid with pagination, plan picker, newsletter form with a toast |
-| <a href="prototypes/#/dashboard" target="_top">Analytics dashboard</a> | Stats, a sortable metrics table in tabs, system status, settings, team list and integrations |
+| <a href="prototypes/#/admin" target="_top">TechHub admin: Overview</a> | Key figures by period, sales by channel, latest orders with a detail drawer, low stock, today’s meetings, a task checklist and the team |
+| <a href="prototypes/#/admin/orders" target="_top">TechHub admin: Orders</a> | Status tabs, search and filters, a sortable selectable table with bulk actions, an order drawer and a new-order form |
+| <a href="prototypes/#/admin/team" target="_top">TechHub admin: Team</a> | Seats, a members table with roles, pending invitations, role permissions and an invite form |
+| <a href="prototypes/#/settings" target="_top">TechHub admin: Settings</a> | Profile form, notification switches, summary-email choice, connected apps and a delete-account confirmation |
 | <a href="prototypes/#/demo" target="_top">Theme playground</a> | Switch brand, mode, language, typeface, density, radius and shadow, and copy the attributes for your app |
 
 
@@ -279,9 +281,9 @@ The packages are developed in this repository and not published to npm yet; unti
 
 ---
 
-# Spectrum Design System
+# Panda Design System
 
-Spectrum is a themeable, accessible React component library and the design tokens behind it. One codebase serves three brands (Diamond, Amber, Opal), light and dark mode, English and Arabic, two densities, three corner styles and four shadow levels.
+Panda is a themeable, accessible React component library and the design tokens behind it. One codebase serves three brands (Diamond, Amber, Opal), light and dark mode, English and Arabic, two densities, three corner styles and four shadow levels.
 
 **Code is the source of truth.** Tokens are plain CSS, the components are the React library, and these docs render the real components, so what you see here is exactly what ships.
 
@@ -3000,6 +3002,10 @@ import { Grid } from '@ds/react';
 - For tabular data. Use Table.
 - For a single row. Use Inline.
 
+## Stretch (`stretch`)
+- `false`: Steady column width, room for more items. Default; card grids.
+- `true`: Items share leftover space; form fields and stat rows.
+
 ## Gap (`gap`)
 - `none … 3xl`: Steps of the spacing scale; they shrink in compact density.
 
@@ -3017,6 +3023,7 @@ import { Grid } from '@ds/react';
 | --- | --- | --- | --- |
 | `columns` | `number \| "auto"` | auto | A number of equal columns, or `auto` (default) to fit as many columns of at least minItemWidth as there is room for, so it reflows on small screens. |
 | `minItemWidth` | `string` |  | Smallest column width for columns="auto", e.g. "16rem". Default the grid token. |
+| `stretch` | `boolean` | false | With columns="auto": `false` (default) keeps every column at a steady width, leaving room for more (good for card grids); `true` stretches items to use the leftover space (good for form fields and stat rows). |
 | `gap` | `SpaceStep` | md | Space between cells (follows density). Default md. |
 | `as` | `ElementType` | div |  |
 
@@ -3395,6 +3402,8 @@ import { InputField } from '@ds/react';
 | --- | --- | --- | --- |
 | `label` | `ReactNode` |  | What to enter, e.g. "Email address". Always required: it is the field's accessible name. |
 | `hideLabel` | `boolean` | false | Hides the label visually but keeps it for screen readers. Only for fields whose purpose is obvious from context, such as a search box with a search icon. |
+| `optional` | `boolean` | false | Marks the field optional with text after the label. Use when most fields are required. |
+| `optionalLabel` | `string` | (optional) | Text shown for optional fields. Default "(optional)". |
 | `description` | `ReactNode` |  | Help text under the field, e.g. format hints. |
 | `error` | `ReactNode` |  | Error message. Marks the field invalid and replaces the success message. |
 | `success` | `ReactNode` |  | Confirmation message, e.g. "Username is available". |
@@ -4843,6 +4852,8 @@ import { SearchField } from '@ds/react';
 | `onValueChange` | `((query: string) => void)` |  | Called with the new query as people type or clear. |
 | `size` | `InputFieldSize` |  | `small` for dense UI, `medium` by default, `large` for prominent forms. |
 | `hideLabel` | `boolean` |  | Hides the label visually but keeps it for screen readers. Only for fields whose purpose is obvious from context, such as a search box with a search icon. |
+| `optional` | `boolean` |  | Marks the field optional with text after the label. Use when most fields are required. |
+| `optionalLabel` | `string` |  | Text shown for optional fields. Default "(optional)". |
 | `description` | `ReactNode` |  | Help text under the field, e.g. format hints. |
 | `error` | `ReactNode` |  | Error message. Marks the field invalid and replaces the success message. |
 | `success` | `ReactNode` |  | Confirmation message, e.g. "Username is available". |
@@ -5990,6 +6001,10 @@ import { TabPanel } from '@ds/react';
 - `pill`: Filled pill on the selected tab, no container. Light filtering inside cards.
 - `line`: Underline under the selected tab. Page-level sections.
 
+## Orientation (`orientation`)
+- `horizontal`: Tabs in a row above the panel. Default.
+- `vertical`: Tabs in a column beside the panel, e.g. settings with many sections. A row again on narrow screens.
+
 ## States
 - **Default**: Not selected. (At rest.)
 - **Hover**: Shows the tab responds to the pointer. (:hover.)
@@ -6006,6 +6021,7 @@ import { TabPanel } from '@ds/react';
 | `defaultValue` | `string` |  | Initially selected tab when uncontrolled. |
 | `onValueChange` | `((value: string) => void)` |  | Called with the new tab's value. |
 | `appearance` | `TabsAppearance` | enclosed | `enclosed` (default): tabs in a tinted container, for compact filters and toolbars. `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections. |
+| `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a column beside the panel, for settings pages with many sections; Up and Down arrows move between tabs. On narrow screens vertical tabs sit above the panel. |
 | `children` | `ReactNode` |  | TabList and TabPanels. |
 
 ### TabList

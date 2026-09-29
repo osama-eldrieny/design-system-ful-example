@@ -220,6 +220,13 @@ import { Search } from 'lucide-react';
   ],
   changelog: [
     {
+      version: '1.1.0',
+      date: '2026-09-29',
+      changes: [
+        'New optional prop: “(optional)” after the label, matching FormField and Textarea.',
+      ],
+    },
+    {
       version: '0.2.0',
       date: '2026-09-29',
       changes: [

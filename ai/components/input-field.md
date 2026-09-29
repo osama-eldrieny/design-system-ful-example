@@ -38,6 +38,8 @@ import { InputField } from '@ds/react';
 | --- | --- | --- | --- |
 | `label` | `ReactNode` |  | What to enter, e.g. "Email address". Always required: it is the field's accessible name. |
 | `hideLabel` | `boolean` | false | Hides the label visually but keeps it for screen readers. Only for fields whose purpose is obvious from context, such as a search box with a search icon. |
+| `optional` | `boolean` | false | Marks the field optional with text after the label. Use when most fields are required. |
+| `optionalLabel` | `string` | (optional) | Text shown for optional fields. Default "(optional)". |
 | `description` | `ReactNode` |  | Help text under the field, e.g. format hints. |
 | `error` | `ReactNode` |  | Error message. Marks the field invalid and replaces the success message. |
 | `success` | `ReactNode` |  | Confirmation message, e.g. "Username is available". |

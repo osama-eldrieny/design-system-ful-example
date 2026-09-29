@@ -4,6 +4,8 @@ Complete screens built only from `@ds/react` components and tokens. They open ou
 
 | Example | What it shows |
 | --- | --- |
-| <a href="prototypes/#/landing" target="_top">Store landing page</a> | Navbar, filters that work (search, categories, price, sort), product grid with pagination, plan picker, newsletter form with a toast |
-| <a href="prototypes/#/dashboard" target="_top">Analytics dashboard</a> | Stats, a sortable metrics table in tabs, system status, settings, team list and integrations |
+| <a href="prototypes/#/admin" target="_top">TechHub admin: Overview</a> | Key figures by period, sales by channel, latest orders with a detail drawer, low stock, today’s meetings, a task checklist and the team |
+| <a href="prototypes/#/admin/orders" target="_top">TechHub admin: Orders</a> | Status tabs, search and filters, a sortable selectable table with bulk actions, an order drawer and a new-order form |
+| <a href="prototypes/#/admin/team" target="_top">TechHub admin: Team</a> | Seats, a members table with roles, pending invitations, role permissions and an invite form |
+| <a href="prototypes/#/settings" target="_top">TechHub admin: Settings</a> | Profile form, notification switches, summary-email choice, connected apps and a delete-account confirmation |
 | <a href="prototypes/#/demo" target="_top">Theme playground</a> | Switch brand, mode, language, typeface, density, radius and shadow, and copy the attributes for your app |

@@ -1,6 +1,6 @@
 // Assembles the deployable site/ folder from the workspace builds:
 //   /                Storybook docs
-//   /prototypes/     prototypes (#/landing, #/dashboard, #/demo)
+//   /prototypes/     prototypes (#/admin, #/admin/orders, #/admin/team, #/settings, #/demo)
 //   /ai/, /llms.txt  AI-readable files
 // plus redirect stubs so links to the retired static docs keep working.
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -41,6 +41,13 @@ rmSync(site, { recursive: true, force: true });
 mkdirSync(site);
 
 copy('apps/docs/dist', '.');
+// Storybook writes its own "<title>storybook - Storybook</title>"; the docs use the design
+// system's name (set in apps/docs/.storybook/manager-head.html).
+const docsIndex = join(site, 'index.html');
+writeFileSync(
+  docsIndex,
+  readFileSync(docsIndex, 'utf8').replace(/<title>[^<]*Storybook<\/title>\s*/i, ''),
+);
 copy('apps/prototypes/dist', 'prototypes');
 copy('ai', 'ai');
 copy('ai/llms.txt', 'llms.txt');

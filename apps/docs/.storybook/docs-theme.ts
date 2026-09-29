@@ -3,7 +3,7 @@ import { create } from 'storybook/theming';
 // The docs interface is neutral: it never follows the design system's themes, so the
 // component examples are what changes when you switch themes in the toolbar.
 const shared = {
-  brandTitle: 'Spectrum Design System',
+  brandTitle: 'Panda Design System',
   brandUrl: './',
   fontBase: '"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif',
   fontCode: '"JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace',

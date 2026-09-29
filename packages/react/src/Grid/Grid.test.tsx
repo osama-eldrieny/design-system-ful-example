@@ -14,3 +14,12 @@ describe('Grid', () => {
     expect(el).toHaveClass('ds-grid');
   });
 });
+
+describe('Grid stretch', () => {
+  it('adds the stretch class and keeps it off the DOM', () => {
+    render(<Grid stretch data-testid="g" />);
+    const el = screen.getByTestId('g');
+    expect(el).toHaveClass('ds-grid--stretch');
+    expect(el).not.toHaveAttribute('stretch');
+  });
+});

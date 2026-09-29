@@ -67,16 +67,9 @@
 }
 
 .ds-side-nav__item[aria-current='page'] {
-  box-shadow: inset var(--side-nav-item-active-indicator-width) 0 0
-    var(--side-nav-item-active-indicator-color);
   background-color: var(--side-nav-item-active-bg-color);
   color: var(--side-nav-item-active-text-color);
   font-weight: var(--side-nav-active-font-weight);
-}
-
-.ds-side-nav__item[aria-current='page']:dir(rtl) {
-  box-shadow: inset calc(-1 * var(--side-nav-item-active-indicator-width)) 0 0
-    var(--side-nav-item-active-indicator-color);
 }
 
 .ds-side-nav__item:focus-visible {

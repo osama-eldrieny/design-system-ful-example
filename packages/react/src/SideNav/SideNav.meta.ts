@@ -122,5 +122,12 @@ export default defineMeta({
     { id: 'navbar', relation: 'For a few top-level pages.' },
     { id: 'breadcrumb', relation: 'Shows location in deep hierarchies.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-09-29',
+      changes: ['Removed the bar on the current item; its background and text color mark it.'],
+    },
+  ],
 });

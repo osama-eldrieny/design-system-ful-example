@@ -61,7 +61,9 @@
   --_border: var(--textarea-focus-border-color);
 
   outline: var(--textarea-focus-ring-width) solid var(--textarea-focus-ring-color);
-  outline-offset: var(--textarea-focus-ring-offset);
+
+  /* The ring covers the border, so focus reads as one thicker border, not two lines. */
+  outline-offset: calc(-1 * var(--textarea-border-width));
 }
 
 .ds-textarea[data-invalid] .ds-textarea__input {
@@ -76,6 +78,27 @@
   opacity: var(--textarea-disabled-opacity);
   cursor: not-allowed;
   resize: none;
+}
+
+/* With a counter, help text and counter share one row under the field: help text at the
+   start, counter at the end. Other messages keep their own full-width rows. */
+.ds-textarea:has(.ds-textarea__footer) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-auto-flow: row dense;
+  gap: var(--textarea-gap) var(--textarea-footer-gap);
+}
+
+.ds-textarea:has(.ds-textarea__footer) > * {
+  grid-column: 1 / -1;
+}
+
+.ds-textarea:has(.ds-textarea__footer) > .ds-textarea__footer {
+  grid-column: 2;
+}
+
+.ds-textarea:has(.ds-textarea__footer) > .ds-form-field__description {
+  grid-column: 1;
 }
 
 .ds-textarea__footer {

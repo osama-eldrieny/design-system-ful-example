@@ -43,6 +43,18 @@ export default defineMeta({
         { value: 'line', meaning: 'Underline under the selected tab. Page-level sections.' },
       ],
     },
+    {
+      prop: 'orientation',
+      title: 'Orientation',
+      values: [
+        { value: 'horizontal', meaning: 'Tabs in a row above the panel. Default.' },
+        {
+          value: 'vertical',
+          meaning:
+            'Tabs in a column beside the panel, e.g. settings with many sections. A row again on narrow screens.',
+        },
+      ],
+    },
   ],
   states: [
     { name: 'Default', meaning: 'Not selected.', trigger: 'At rest.' },
@@ -188,6 +200,13 @@ import { LayoutGrid, Laptop } from 'lucide-react';
       changes: [
         'Compound API (Tabs, TabList, Tab, TabPanel) on Radix with keyboard navigation and linked panels.',
         'Appearances enclosed, pill and line; icons as React nodes; tokens renamed from --tap-* to --tabs-*.',
+      ],
+    },
+    {
+      version: '1.1.0',
+      date: '2026-09-29',
+      changes: [
+        'Line tabs: thin neutral baseline, so only the selected tab is underlined in the accent color.',
       ],
     },
   ],

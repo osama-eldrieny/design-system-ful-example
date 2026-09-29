@@ -159,5 +159,14 @@ export default defineMeta({
     { id: 'textarea', relation: 'Built on FormField.' },
     { id: 'input-field', relation: 'Has the same label and messages built in.' },
   ],
-  changelog: [{ version: '0.3.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.3.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: [
+        'Groups: help text sits under the legend, and more space separates the legend from the controls.',
+      ],
+    },
+  ],
 });

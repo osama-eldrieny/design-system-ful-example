@@ -19,6 +19,23 @@ const renderTabs = (onValueChange = vi.fn()) =>
   );
 
 describe('Tabs', () => {
+  it('vertical: marks the list vertical and moves with the Down arrow', async () => {
+    render(
+      <Tabs defaultValue="a" orientation="vertical">
+        <TabList label="Settings">
+          <Tab value="a">A</Tab>
+          <Tab value="b">B</Tab>
+        </TabList>
+        <TabPanel value="a">Panel A</TabPanel>
+        <TabPanel value="b">Panel B</TabPanel>
+      </Tabs>,
+    );
+    expect(screen.getByRole('tablist')).toHaveAttribute('aria-orientation', 'vertical');
+    screen.getByRole('tab', { name: 'A' }).focus();
+    await userEvent.keyboard('{ArrowDown}');
+    expect(screen.getByRole('tab', { name: 'B' })).toHaveFocus();
+  });
+
   it('is a labelled tablist with linked panels', () => {
     renderTabs();
     expect(screen.getByRole('tablist', { name: 'Sections' })).toBeInTheDocument();

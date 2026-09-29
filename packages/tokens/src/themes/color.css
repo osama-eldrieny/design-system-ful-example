@@ -25,6 +25,7 @@
  *   --color-fg-on-{tone}-strong: Text on strong (solid) tone fills.
  *   --color-border-base: Default dividers and outlines.
  *   --color-border-accent: Brand-colored outline; also the focus ring color.
+ *   --color-border-field: Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.
  *   --color-border-{tone}-strong: Emphasized tone outline, e.g. a selected card.
  *   --color-border-{tone}-medium: Regular tone outline, e.g. alert borders.
  *   --color-border-{tone}-subtle: Faint tone outline on tinted backgrounds.
@@ -136,6 +137,7 @@
   --color-fg-on-secondary-low: var(--color-diamond-secondary-1000);
   --color-fg-on-secondary-strong: var(--color-diamond-secondary-100);
   --color-border-accent: var(--color-diamond-primary-700);
+  --color-border-field: var(--color-diamond-secondary-500);
   --color-border-base: var(--color-diamond-base-200);
   --color-border-primary-strong: var(--color-diamond-primary-500);
   --color-border-primary-subtle: var(--color-diamond-primary-100);
@@ -287,6 +289,7 @@
   --color-fg-on-secondary-low: var(--color-diamond-secondary-100);
   --color-fg-on-secondary-strong: var(--color-diamond-secondary-1000);
   --color-border-accent: var(--color-diamond-primary-300);
+  --color-border-field: var(--color-diamond-secondary-500);
   --color-border-base: var(--color-diamond-base-800);
   --color-border-primary-strong: var(--color-diamond-primary-500);
   --color-border-primary-subtle: var(--color-diamond-base-800);
@@ -344,6 +347,7 @@
 [data-brand='amber'][data-mode='light'] {
   --color-border-base: var(--color-amber-base-200);
   --color-border-accent: var(--color-amber-primary-700);
+  --color-border-field: var(--color-amber-secondary-500);
   --color-border-primary-strong: var(--color-amber-primary-700);
   --color-border-primary-medium: var(--color-amber-primary-300);
   --color-border-primary-subtle: var(--color-amber-primary-100);
@@ -495,6 +499,7 @@
 [data-brand='amber'][data-mode='dark'] {
   --color-border-base: var(--color-amber-base-800);
   --color-border-accent: var(--color-amber-primary-300);
+  --color-border-field: var(--color-amber-secondary-500);
   --color-border-primary-strong: var(--color-amber-primary-700);
   --color-border-primary-medium: var(--color-amber-primary-700);
   --color-border-primary-subtle: var(--color-amber-primary-1000);
@@ -646,6 +651,7 @@
 [data-brand='opal'][data-mode='light'] {
   --color-border-base: var(--color-opal-base-200);
   --color-border-accent: var(--color-opal-primary-700);
+  --color-border-field: var(--color-opal-secondary-500);
   --color-border-primary-strong: var(--color-opal-primary-600);
   --color-border-primary-medium: var(--color-opal-primary-300);
   --color-border-primary-subtle: var(--color-opal-primary-100);
@@ -797,6 +803,7 @@
 [data-brand='opal'][data-mode='dark'] {
   --color-border-base: var(--color-opal-base-800);
   --color-border-accent: var(--color-opal-primary-300);
+  --color-border-field: var(--color-opal-secondary-400);
   --color-border-primary-strong: var(--color-opal-primary-500);
   --color-border-primary-medium: var(--color-opal-primary-800);
   --color-border-primary-subtle: var(--color-opal-primary-1000);

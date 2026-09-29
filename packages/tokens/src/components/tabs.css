@@ -4,7 +4,7 @@
  * Style this component only with these tokens.
  *
  * Grammar: --tabs-{appearance?}-{part}-{state?}-{property}
- *   appearance: enclosed (omitted) | pill | line
+ *   appearance: enclosed (omitted) | pill | line; vertical: layout of vertical tabs
  *   state: default | hover | active; corners come from the radius theme
  */
 
@@ -28,7 +28,8 @@
 
   /* Line: an underline marks the selected tab */
   --tabs-line-gap: var(--spacing-md);
-  --tabs-line-border-color: var(--color-border-primary-medium);
+  --tabs-line-border-color: var(--color-border-base);
+  --tabs-line-border-width: var(--border-width-hairline);
   --tabs-line-item-default-font-color: var(--color-fg-on-surface-secondary);
   --tabs-line-item-hover-font-color: var(--color-fg-on-accent-primary-text-hover);
   --tabs-line-item-active-font-color: var(--color-fg-on-accent-primary-text-default);
@@ -45,6 +46,10 @@
   --tabs-item-label-font-size: var(--font-size-md);
   --tabs-item-label-font-line-height: var(--font-line-height-md);
   --tabs-item-icon-size: var(--sizing-sm);
+
+  /* Vertical: tabs in a column beside the panel */
+  --tabs-vertical-list-width: var(--sizing-8xl);
+  --tabs-vertical-gap: var(--spacing-xl);
 
   /* Panel */
   --tabs-panel-padding-y: var(--spacing-md);

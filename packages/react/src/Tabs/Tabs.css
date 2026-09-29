@@ -19,7 +19,7 @@
 .ds-tabs__list--line {
   display: flex;
   gap: var(--tabs-line-gap);
-  box-shadow: inset 0 calc(-1 * var(--tabs-line-indicator-width)) 0 var(--tabs-line-border-color);
+  box-shadow: inset 0 calc(-1 * var(--tabs-line-border-width)) 0 var(--tabs-line-border-color);
 }
 
 .ds-tabs__tab {
@@ -108,4 +108,71 @@
 
 .ds-tabs__panel {
   padding-block: var(--tabs-panel-padding-y);
+}
+
+/* Vertical: tabs stacked in a column beside the panel. */
+.ds-tabs--vertical {
+  display: grid;
+  grid-template-columns: var(--tabs-vertical-list-width) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--tabs-vertical-gap);
+}
+
+.ds-tabs--vertical .ds-tabs__list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ds-tabs--vertical .ds-tabs__tab {
+  justify-content: flex-start;
+  text-align: start;
+}
+
+.ds-tabs--vertical .ds-tabs__panel {
+  padding-block: 0;
+}
+
+/* Line: the baseline and the indicator run down the inline-start edge. */
+.ds-tabs--vertical .ds-tabs__list--line {
+  gap: 0;
+  box-shadow: none;
+  border-inline-start: var(--tabs-line-border-width) solid var(--tabs-line-border-color);
+}
+
+.ds-tabs--vertical.ds-tabs--line .ds-tabs__tab {
+  padding-inline: var(--tabs-item-padding-x);
+  margin-inline-start: calc(-1 * var(--tabs-line-border-width));
+  border-inline-start: var(--tabs-line-indicator-width) solid transparent;
+}
+
+.ds-tabs--vertical.ds-tabs--line .ds-tabs__tab[data-state='active'] {
+  box-shadow: none;
+  border-inline-start-color: var(--tabs-line-indicator-color);
+}
+
+/* Narrow screens: tabs go back to a row above the panel. */
+@media (width < 40rem) {
+  .ds-tabs--vertical {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ds-tabs--vertical .ds-tabs__list {
+    flex-flow: row wrap;
+  }
+
+  .ds-tabs--vertical .ds-tabs__list--line {
+    border-inline-start: 0;
+    box-shadow: inset 0 calc(-1 * var(--tabs-line-border-width)) 0 var(--tabs-line-border-color);
+  }
+
+  .ds-tabs--vertical.ds-tabs--line .ds-tabs__tab {
+    margin-inline-start: 0;
+    border-inline-start: 0;
+  }
+
+  .ds-tabs--vertical.ds-tabs--line .ds-tabs__tab[data-state='active'] {
+    box-shadow: inset 0 calc(-1 * var(--tabs-line-indicator-width)) 0
+      var(--tabs-line-indicator-color);
+  }
 }

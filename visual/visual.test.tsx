@@ -3,8 +3,8 @@
  * RightToLeft story. Catches unintended visual changes to tokens, CSS and components.
  */
 import { composeStories, setProjectAnnotations } from '@storybook/react-vite';
-import { render } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { cleanup, render } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
 import { page } from 'vitest/browser';
 import preview from '../apps/docs/.storybook/preview';
 
@@ -15,6 +15,10 @@ const freeze = document.createElement('style');
 freeze.textContent =
   '*, *::before, *::after { animation: none !important; transition: none !important; caret-color: transparent !important; }';
 document.head.append(freeze);
+
+// Unmount each story (and its portals) so earlier stories and open overlays don't shift
+// the next screenshot.
+afterEach(cleanup);
 
 const modules = import.meta.glob<Record<string, unknown>>('../packages/react/src/*/*.stories.tsx', {
   eager: true,

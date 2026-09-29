@@ -81,6 +81,20 @@
           "meaning": "Underline under the selected tab. Page-level sections."
         }
       ]
+    },
+    {
+      "prop": "orientation",
+      "title": "Orientation",
+      "values": [
+        {
+          "value": "horizontal",
+          "meaning": "Tabs in a row above the panel. Default."
+        },
+        {
+          "value": "vertical",
+          "meaning": "Tabs in a column beside the panel, e.g. settings with many sections. A row again on narrow screens."
+        }
+      ]
     }
   ],
   "states": [
@@ -244,6 +258,13 @@
         "Compound API (Tabs, TabList, Tab, TabPanel) on Radix with keyboard navigation and linked panels.",
         "Appearances enclosed, pill and line; icons as React nodes; tokens renamed from --tap-* to --tabs-*."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-29",
+      "changes": [
+        "Line tabs: thin neutral baseline, so only the selected tab is underlined in the accent color."
+      ]
     }
   ],
   "components": [
@@ -280,6 +301,16 @@
           "required": false,
           "default": "enclosed",
           "description": "`enclosed` (default): tabs in a tinted container, for compact filters and toolbars.\n`pill`: filled pill on the selected tab, no container. `line`: underline, for page sections."
+        },
+        "orientation": {
+          "type": "\"horizontal\" | \"vertical\"",
+          "values": [
+            "horizontal",
+            "vertical"
+          ],
+          "required": false,
+          "default": "horizontal",
+          "description": "`horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a\ncolumn beside the panel, for settings pages with many sections; Up and Down arrows move\nbetween tabs. On narrow screens vertical tabs sit above the panel."
         },
         "children": {
           "type": "ReactNode",
@@ -482,16 +513,21 @@
       "default": "16px"
     },
     "--tabs-line-border-color": {
-      "description": "Regular tone outline, e.g. alert borders.",
-      "references": "--color-border-primary-medium",
-      "default": "#c5b2ff",
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
       "byTheme": {
-        "brand=diamond,mode=dark": "#5637b5",
-        "brand=amber,mode=light": "#e5cfb7",
-        "brand=amber,mode=dark": "#a57a4b",
-        "brand=opal,mode=light": "#abc9fb",
-        "brand=opal,mode=dark": "#2a5caf"
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
       }
+    },
+    "--tabs-line-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
     },
     "--tabs-line-item-default-font-color": {
       "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
@@ -594,6 +630,16 @@
       "description": "Fixed element sizes in px.",
       "references": "--sizing-sm",
       "default": "16px"
+    },
+    "--tabs-vertical-list-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--tabs-vertical-gap": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
     },
     "--tabs-panel-padding-y": {
       "description": "Default gap and control padding.",

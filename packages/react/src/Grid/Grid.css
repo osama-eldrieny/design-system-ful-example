@@ -11,6 +11,10 @@
   grid-template-columns: repeat(auto-fill, minmax(min(var(--_min), 100%), 1fr));
 }
 
+.ds-grid--auto.ds-grid--stretch {
+  grid-template-columns: repeat(auto-fit, minmax(min(var(--_min), 100%), 1fr));
+}
+
 .ds-grid--fixed {
   grid-template-columns: repeat(var(--_columns), minmax(0, 1fr));
 }
