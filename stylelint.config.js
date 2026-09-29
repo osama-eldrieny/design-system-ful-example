@@ -3,7 +3,6 @@ import designSystem from './packages/lint/stylelint/index.js';
 // Component stylesheets written before the token rule existed. Phase 3 migrates each one to
 // its own component tokens; remove a file from this list once it passes. Don't add to it.
 const notYetOnComponentTokens = [
-  'Alert',
   'AppsNotifications',
   'Avatar',
   'Card',

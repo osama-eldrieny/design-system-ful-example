@@ -302,7 +302,9 @@ function DashboardPage({ onNavigate }: DashboardPageProps) {
         <main className="dashboard-main">
           {/* Alert Section */}
           {realtimeEnabled && (
-            <Alert variant="primary" title="✓ Real-time data enabled. Updates every 30 seconds." />
+            <Alert variant="success" title="Real-time data enabled.">
+              Updates every 30 seconds.
+            </Alert>
           )}
 
           {/* KPI Cards Section */}

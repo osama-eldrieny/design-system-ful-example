@@ -10,7 +10,6 @@ const metas = Object.values(
 // Components still on the pre-overhaul implementation; each moves to a documented
 // component (with a *.meta.ts) in Phase 3.
 const MIGRATING = [
-  'Alert',
   'Avatar',
   'Card',
   'Choose Card',

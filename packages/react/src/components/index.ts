@@ -1,6 +1,7 @@
 export { Button, IconButton } from '../Button';
 export type { ButtonProps, IconButtonProps } from '../Button';
-export { Alert } from './Alert';
+export { Alert } from '../Alert';
+export type { AlertProps } from '../Alert';
 export { Avatar } from './Avatar';
 export { Card } from './Card';
 export { InputField } from '../InputField';
