@@ -14,7 +14,7 @@
   --search-field-shortcut-border-color: var(--color-border-base);
   --search-field-shortcut-border-width: var(--border-width-hairline);
   --search-field-shortcut-border-radius: var(--radius-xs);
-  --search-field-shortcut-padding-x: var(--spacing-3xs);
+  --search-field-shortcut-padding-x: var(--spacing-2xs);
   --search-field-shortcut-font-family: var(--font-family-body);
   --search-field-shortcut-font-size: var(--font-size-sm);
   --search-field-shortcut-font-line-height: var(--font-line-height-sm);

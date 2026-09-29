@@ -34,7 +34,7 @@
   --footer-link-hover-underline-color: var(--color-fg-on-accent-secondary-text-hover);
   --footer-link-list-gap: var(--spacing-xs);
   --footer-link-padding-x: var(--spacing-sm);
-  --footer-link-padding-y: var(--spacing-3xs);
+  --footer-link-padding-y: var(--spacing-2xs);
   --footer-link-font-family: var(--font-family-body);
   --footer-link-font-size: var(--font-size-sm);
   --footer-link-font-line-height: var(--font-line-height-sm);

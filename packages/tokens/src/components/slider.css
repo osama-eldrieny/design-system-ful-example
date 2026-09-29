@@ -1,0 +1,38 @@
+/**
+ * Component tokens: slider
+ *
+ * Style this component only with these tokens. The label, help text and messages come
+ * from FormField.
+ *
+ * Grammar: --slider-{part}-{state?}-{property}
+ *   part: track | range (the filled part) | thumb | mark | value; state: hover.
+ */
+
+:root,
+[data-theme] {
+  --slider-track-bg-color: var(--color-bg-accent-secondary-default);
+  --slider-track-size: var(--spacing-2xs);
+  --slider-range-bg-color: var(--color-bg-accent-primary-default);
+  --slider-thumb-bg-color: var(--color-bg-base);
+  --slider-thumb-border-color: var(--color-bg-accent-primary-default);
+  --slider-thumb-hover-border-color: var(--color-bg-accent-primary-hover);
+  --slider-thumb-border-width: var(--border-width-regular);
+  --slider-thumb-size: var(--sizing-md);
+  --slider-thumb-border-radius: var(--radius-full);
+  --slider-track-border-radius: var(--radius-full);
+  --slider-mark-text-color: var(--color-fg-on-surface-secondary);
+  --slider-mark-font-size: var(--font-size-sm);
+  --slider-mark-font-line-height: var(--font-line-height-sm);
+  --slider-value-text-color: var(--color-fg-on-surface-primary);
+  --slider-value-font-size: var(--font-size-md);
+  --slider-value-font-weight: var(--font-weight-medium);
+  --slider-font-family: var(--font-family-body);
+  --slider-gap: var(--spacing-xs);
+  --slider-focus-ring-width: var(--focus-ring-width);
+  --slider-focus-ring-offset: var(--focus-ring-offset);
+  --slider-focus-ring-color: var(--focus-ring-color);
+  --slider-disabled-opacity: var(--opacity-medium);
+
+  /* Size of visually hidden thumb labels */
+  --slider-hidden-size: var(--border-width-hairline);
+}

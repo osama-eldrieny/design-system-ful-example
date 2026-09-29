@@ -59,7 +59,7 @@ export interface FormFieldProps extends Omit<HTMLAttributes<HTMLElement>, 'child
    * The control. A single element gets the control props (id, aria-describedby,
    * aria-invalid, required, disabled) merged in; or pass a function that receives them.
    */
-  children: ReactNode | ((control: FormFieldControlProps) => ReactNode);
+  children: ReactNode | ((control: FormFieldControlProps, field: { labelId: string }) => ReactNode);
 }
 
 /**
@@ -88,6 +88,8 @@ export const FormField = forwardRef<HTMLElement, FormFieldProps>(
   ) => {
     const autoId = useId();
     const controlId = id ?? autoId;
+    // For controls a <label for> can't name (e.g. custom sliders): use aria-labelledby.
+    const labelId = `${controlId}-label`;
     const descriptionId = description ? `${controlId}-description` : undefined;
     const messageId = error || success ? `${controlId}-message` : undefined;
     const describedBy = [descriptionId, messageId].filter(Boolean).join(' ') || undefined;
@@ -102,7 +104,7 @@ export const FormField = forwardRef<HTMLElement, FormFieldProps>(
 
     let content: ReactNode;
     if (typeof children === 'function') {
-      content = children(control);
+      content = children(control, { labelId });
     } else if (!group && isValidElement(children)) {
       const child = children as ReactElement<Record<string, unknown>>;
       content = cloneElement(child, {
@@ -173,14 +175,16 @@ export const FormField = forwardRef<HTMLElement, FormFieldProps>(
           {...shared}
           {...props}
         >
-          <legend className={labelClass}>{labelContent}</legend>
+          <legend className={labelClass} id={labelId}>
+            {labelContent}
+          </legend>
           {body}
         </fieldset>
       );
     }
     return (
       <div ref={ref as Ref<HTMLDivElement>} {...shared} {...props}>
-        <label className={labelClass} htmlFor={controlId}>
+        <label className={labelClass} htmlFor={controlId} id={labelId}>
           {labelContent}
         </label>
         {body}

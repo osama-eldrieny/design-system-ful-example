@@ -1,0 +1,107 @@
+/**
+ * Slider. Styled only with --slider-* tokens. Radix positions the thumbs and range and
+ * sets data-disabled; hover and focus are real states.
+ */
+
+.ds-slider {
+  font-family: var(--slider-font-family);
+}
+
+.ds-slider__value {
+  color: var(--slider-value-text-color);
+  font-size: var(--slider-value-font-size);
+  font-weight: var(--slider-value-font-weight);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-slider__root {
+  position: relative;
+  display: flex;
+  align-items: center;
+  inline-size: 100%;
+  block-size: var(--slider-thumb-size);
+  touch-action: none;
+  user-select: none;
+}
+
+.ds-slider__root[data-disabled] {
+  opacity: var(--slider-disabled-opacity);
+}
+
+.ds-slider__track {
+  position: relative;
+  flex-grow: 1;
+  block-size: var(--slider-track-size);
+  overflow: hidden;
+  border-radius: var(--slider-track-border-radius);
+  background-color: var(--slider-track-bg-color);
+}
+
+.ds-slider__range {
+  position: absolute;
+  block-size: 100%;
+  background-color: var(--slider-range-bg-color);
+}
+
+.ds-slider__thumb {
+  display: block;
+  box-sizing: border-box;
+  inline-size: var(--slider-thumb-size);
+  block-size: var(--slider-thumb-size);
+  border: var(--slider-thumb-border-width) solid var(--slider-thumb-border-color);
+  border-radius: var(--slider-thumb-border-radius);
+  background-color: var(--slider-thumb-bg-color);
+  cursor: grab;
+}
+
+.ds-slider__thumb:hover {
+  border-color: var(--slider-thumb-hover-border-color);
+}
+
+.ds-slider__thumb:active {
+  cursor: grabbing;
+}
+
+.ds-slider__thumb:focus-visible {
+  outline: var(--slider-focus-ring-width) solid var(--slider-focus-ring-color);
+  outline-offset: var(--slider-focus-ring-offset);
+}
+
+.ds-slider__root[data-disabled] .ds-slider__thumb {
+  cursor: not-allowed;
+}
+
+.ds-slider__marks {
+  position: relative;
+  block-size: var(--slider-mark-font-line-height);
+  margin-inline: calc(var(--slider-thumb-size) / 2);
+  color: var(--slider-mark-text-color);
+  font-size: var(--slider-mark-font-size);
+  line-height: var(--slider-mark-font-line-height);
+}
+
+.ds-slider__mark {
+  position: absolute;
+  translate: -50% 0;
+  white-space: nowrap;
+}
+
+.ds-slider__mark:dir(rtl) {
+  translate: 50% 0;
+}
+
+.ds-slider__hidden {
+  position: absolute;
+  inline-size: var(--slider-hidden-size);
+  block-size: var(--slider-hidden-size);
+  margin: calc(-1 * var(--slider-hidden-size));
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (forced-colors: active) {
+  .ds-slider__range {
+    background-color: Highlight;
+  }
+}

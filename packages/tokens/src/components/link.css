@@ -17,13 +17,13 @@
   --link-secondary-hover-text-color: var(--color-fg-on-accent-secondary-text-hover);
   --link-underline-width: var(--border-width-hairline);
   --link-hover-underline-width: var(--border-width-regular);
-  --link-underline-offset: var(--spacing-3xs);
+  --link-underline-offset: var(--spacing-2xs);
   --link-inline-icon-size: var(--font-size-sm);
 
   /* Standalone links */
   --link-font-family: var(--font-family-body);
   --link-font-weight: var(--font-weight-medium);
-  --link-gap: var(--spacing-3xs);
+  --link-gap: var(--spacing-2xs);
   --link-font-size: var(--font-size-md);
   --link-font-line-height: var(--font-line-height-md);
   --link-icon-size: var(--sizing-sm);

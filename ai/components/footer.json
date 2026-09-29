@@ -349,9 +349,9 @@
       "default": "12px"
     },
     "--footer-link-padding-y": {
-      "description": "Hairline gap. (Currently 0: the source export had space-2 set to 0; review.)",
-      "references": "--spacing-3xs",
-      "default": "0"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
     },
     "--footer-link-font-family": {
       "description": "Body text and most UI text.",

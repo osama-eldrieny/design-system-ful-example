@@ -1,0 +1,43 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Slider } from '@ds/react';
+import * as SliderStories from '../../../../packages/react/src/Slider/Slider.stories';
+import sliderMeta from '../../../../packages/react/src/Slider/Slider.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={SliderStories} name="Docs" />
+
+# Slider
+
+<ComponentPage
+  meta={sliderMeta}
+  stories={SliderStories}
+  components={[Slider]}
+  anatomy={{
+    targets: [
+      '.ds-slider__value',
+      { selector: '.ds-slider__track', at: 'end' },
+      '.ds-slider__range',
+      '.ds-slider__thumb',
+      '.ds-slider__mark',
+    ],
+    example: (
+      <div style={{ inlineSize: 300 }}>
+        <Slider
+          label="Price"
+          defaultValue={[100, 300]}
+          min={0}
+          max={500}
+          showValue
+          marks={[{ value: 0 }, { value: 500 }]}
+        />
+      </div>
+    ),
+  }}
+  optionStories={{ value: 'Range' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 240 }}>
+      <Slider label="Volume" defaultValue={[60]} showValue />
+    </div>
+  }
+/>

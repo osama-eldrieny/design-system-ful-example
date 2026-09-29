@@ -369,9 +369,9 @@
       "default": "2px"
     },
     "--link-underline-offset": {
-      "description": "Hairline gap. (Currently 0: the source export had space-2 set to 0; review.)",
-      "references": "--spacing-3xs",
-      "default": "0"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
     },
     "--link-inline-icon-size": {
       "description": "Type scale.",
@@ -393,9 +393,9 @@
       "default": "500"
     },
     "--link-gap": {
-      "description": "Hairline gap. (Currently 0: the source export had space-2 set to 0; review.)",
-      "references": "--spacing-3xs",
-      "default": "0"
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
     },
     "--link-font-size": {
       "description": "Type scale.",
