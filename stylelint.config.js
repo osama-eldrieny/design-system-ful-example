@@ -5,7 +5,7 @@ import designSystem from './packages/lint/stylelint/index.js';
 export default {
   extends: ['stylelint-config-standard'],
   plugins: designSystem,
-  ignoreFiles: ['legacy/**', 'site/**', '**/dist/**', '**/node_modules/**'],
+  ignoreFiles: ['site/**', '**/dist/**', '**/node_modules/**'],
   rules: {
     // Components use BEM: block, block__element, block--modifier.
     'selector-class-pattern': [

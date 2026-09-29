@@ -4,7 +4,7 @@ A themeable, accessible, AI-ready design system: tokens → React library → St
 
 **AI agents: read [AGENTS.md](AGENTS.md)** — golden rules, where to find component contracts, commands and trust levels.
 
-The overhaul is in progress. **[docs/ROADMAP.md](docs/ROADMAP.md)** is the approved plan: phases, architecture, and the per-component definition of done. Read it before starting work.
+Version 1.0.0: the overhaul in **[docs/ROADMAP.md](docs/ROADMAP.md)** is complete except the final push and the AI eval run: phases, architecture, and the per-component definition of done. Read it before starting work.
 
 ## The one critical rule
 
@@ -20,13 +20,13 @@ The overhaul is in progress. **[docs/ROADMAP.md](docs/ROADMAP.md)** is the appro
 packages/tokens/    token CSS (the source of truth): primitives, foundations, themes/, components/; tools/ resolver + contrast report
 packages/react/     component library (@ds/react): components/, styles/, icons/, ThemeProvider
 packages/lint/      Stylelint rule ds/component-tokens-only
-apps/prototypes/    Vite app: #/landing and #/dashboard prototypes, importing @ds/react
-legacy/             the previous static HTML docs + demo, served unchanged until the Storybook launch
+apps/docs/          Storybook docs (served at the site root)
+apps/prototypes/    Vite app: #/landing, #/dashboard and #/demo (theme playground), importing @ds/react
+packages/mcp/       local MCP server for AI agents (ds-mcp)
 scripts/            build helpers (assemble-site.mjs builds site/)
 docs/ROADMAP.md     the plan
 ```
 
-`apps/docs` (Storybook), `packages/mcp`, `ai/`, `skills/` and `evals/` are added in later phases. See the roadmap.
 
 ## Commands
 

@@ -353,7 +353,7 @@ Each new component: design its component tokens first (aliasing semantic tokens,
 
 ---
 
-## Phase 8 — Demo & prototypes on the library, launch
+## Phase 8 — Demo & prototypes on the library, launch ✅ (push pending)
 
 1. **Prototypes** (`apps/prototypes`): rebuild Landing and Dashboard with `packages/react` components + `ThemeProvider`, and fix the unused imports noted in the build warnings. Keep hash routes. Images come from the app's own assets (the relative-path fix from earlier stays).
 2. **Demo** becomes the "Theme playground" page inside the prototypes app at `/demo/`: the same 7-switch panel, built from library components and generated tokens. This replaces the Bootstrap + `demo/css` copy, so it can never drift again.

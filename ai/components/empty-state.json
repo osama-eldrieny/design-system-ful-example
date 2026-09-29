@@ -328,5 +328,5 @@
       "default": "calc(220px * 2)"
     }
   },
-  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/storybook/?path=/docs/components-feedback-emptystate--docs"
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-emptystate--docs"
 }

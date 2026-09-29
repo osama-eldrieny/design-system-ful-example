@@ -35,8 +35,8 @@ React, Radix, lucide-react and downshift are shared dependencies and not counted
 | ChooseCard | 0.6 | 0.8 |
 | RadioGroup | 0.7 | 0.7 |
 | Card | 0.6 | 0.7 |
+| Navbar | 0.6 | 0.7 |
 | Progress | 0.7 | 0.6 |
-| Navbar | 0.6 | 0.6 |
 | Popover | 0.7 | 0.6 |
 | Switch | 0.5 | 0.7 |
 | Tabs | 0.6 | 0.7 |

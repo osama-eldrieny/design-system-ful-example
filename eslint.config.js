@@ -6,7 +6,7 @@ import globals from 'globals';
 import ds from './packages/lint/eslint/index.js';
 
 export default tseslint.config(
-  { ignores: ['**/dist/**', 'site/**', 'legacy/**', '**/storybook-static/**', 'coverage/**'] },
+  { ignores: ['**/dist/**', 'site/**', '**/storybook-static/**', 'coverage/**'] },
   {
     files: ['**/*.{ts,tsx}'],
     extends: [

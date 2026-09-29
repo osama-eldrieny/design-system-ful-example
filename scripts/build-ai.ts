@@ -171,7 +171,7 @@ for (const file of metaFiles) {
     ...meta,
     components,
     tokens: Object.fromEntries(componentTokens.map((n) => [n, tokenJson[n]])),
-    docs: `${SITE}/storybook/?path=/docs/${docsId(meta)}`,
+    docs: `${SITE}/?path=/docs/${docsId(meta)}`,
   };
   writeFileSync(
     join(out, 'components', `${meta.id}.json`),
@@ -336,7 +336,7 @@ const llms = [
   '## Optional',
   `- [All tokens with values per theme](${SITE}/ai/tokens.json)`,
   `- [Component index](${SITE}/ai/components.json)`,
-  `- [Interactive docs](${SITE}/storybook/)`,
+  `- [Interactive docs](${SITE}/)`,
   '',
 ];
 writeFileSync(join(out, 'llms.txt'), llms.join('\n'));

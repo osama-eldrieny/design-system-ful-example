@@ -20,11 +20,11 @@ const server = createServer((req, res) => {
 }).listen(0);
 const base = `http://localhost:${server.address().port}`;
 
-const index = JSON.parse(readFileSync('site/storybook/index.json', 'utf8')).entries;
+const index = JSON.parse(readFileSync('site/index.json', 'utf8')).entries;
 const pages = [
   ...Object.values(index)
     .filter((e) => e.type === 'docs')
-    .map((e) => ({ name: e.id, url: `${base}/storybook/iframe.html?id=${e.id}&viewMode=docs` })),
+    .map((e) => ({ name: e.id, url: `${base}/iframe.html?id=${e.id}&viewMode=docs` })),
   { name: 'prototype landing', url: `${base}/prototypes/#/landing` },
   { name: 'prototype dashboard', url: `${base}/prototypes/#/dashboard` },
   { name: 'theme playground', url: `${base}/prototypes/#/demo` },

@@ -1,6 +1,6 @@
 {
   "name": "@ds/lint",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Lint rules that keep code on the design system: components over raw HTML, documented props, accessible names, tokens only.",

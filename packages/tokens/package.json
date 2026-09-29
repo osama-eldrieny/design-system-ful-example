@@ -1,6 +1,6 @@
 {
   "name": "@ds/tokens",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Design tokens as CSS custom properties, with every theme. The CSS files are the source of truth.",
