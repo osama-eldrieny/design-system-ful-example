@@ -29,7 +29,7 @@ import {
   MeetingCard,
   AppsNotifications,
 } from '@ds/react';
-import { ChartLine } from 'lucide-react';
+import { ChartLine, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import './DashboardPage.css';
 
 const kpiCards = [
@@ -234,10 +234,13 @@ function DashboardPage() {
               <div className="sort-controls">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <button className="sort-button">
-                      <i className="fas fa-sliders"></i> Filter
-                      <i className="fas fa-chevron-down"></i>
-                    </button>
+                    <Button
+                      size="small"
+                      iconStart={<SlidersHorizontal />}
+                      iconEnd={<ChevronDown />}
+                    >
+                      Filter
+                    </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     {dropdownItems.map((item) => (

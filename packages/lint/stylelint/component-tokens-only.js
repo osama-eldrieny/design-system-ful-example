@@ -12,6 +12,7 @@
  *
  * Options (secondary):
  *   prefixes: { [fileBaseName]: string[] }   extra/override token prefixes per file
+ *   anyToken: true                            allow any token (for app CSS): only raw values are errors
  */
 import stylelint from 'stylelint';
 import { basename } from 'node:path';
@@ -57,7 +58,7 @@ const rule = (enabled, options = {}) => {
     root.walkDecls(/^--_/, (decl) => privates.add(decl.prop));
 
     root.walkDecls((decl) => {
-      for (const [, token] of decl.value.matchAll(/var\(\s*(--[a-z0-9_-]+)/g)) {
+      for (const [, token] of options.anyToken ? [] : decl.value.matchAll(/var\(\s*(--[a-z0-9_-]+)/g)) {
         if (privates.has(token)) continue;
         // Runtime values that primitives libraries set on elements (e.g. Radix positioning).
         if (token.startsWith('--radix-')) continue;

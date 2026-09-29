@@ -3,6 +3,7 @@ import tseslint from 'typescript-eslint';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import globals from 'globals';
+import ds from './packages/lint/eslint/index.js';
 
 export default tseslint.config(
   { ignores: ['**/dist/**', 'site/**', 'legacy/**', '**/storybook-static/**', 'coverage/**'] },
@@ -20,6 +21,11 @@ export default tseslint.config(
       // Props destructured only to keep them off the DOM element (e.g. `language` in Logo) are fine.
       '@typescript-eslint/no-unused-vars': ['error', { ignoreRestSiblings: true }],
     },
+  },
+  // Apps build UI from the design system: components, documented props, tokens.
+  {
+    files: ['apps/prototypes/**/*.{ts,tsx}'],
+    ...ds.configs.recommended,
   },
   {
     files: ['**/*.{js,mjs}'],

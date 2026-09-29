@@ -25,7 +25,7 @@ import {
   MeetingCard,
   AppsNotifications,
 } from '@ds/react';
-import { Flame } from 'lucide-react';
+import { Flame, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import './ProductLandingPage.css';
 
 const products = [
@@ -355,10 +355,13 @@ function ProductLandingPage() {
                 <div className="sort-controls">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <button className="sort-button">
-                        <i className="fas fa-sliders"></i> Sort By
-                        <i className="fas fa-chevron-down"></i>
-                      </button>
+                      <Button
+                        size="small"
+                        iconStart={<SlidersHorizontal />}
+                        iconEnd={<ChevronDown />}
+                      >
+                        Sort By
+                      </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       {dropdownItems.map((item) => (

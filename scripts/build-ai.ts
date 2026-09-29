@@ -128,6 +128,8 @@ const parser = docgen.withCustomConfig(join(root, 'packages/react/tsconfig.json'
 });
 
 const index: unknown[] = [];
+// Compact prop data for the ESLint plugin (@ds/lint), which ships it inside the package.
+const lintData: Record<string, { status: string; component: string; props: Record<string, string[]> }> = {};
 for (const file of metaFiles) {
   const meta: ComponentMeta = componentMetaSchema.parse(
     (await import(pathToFileURL(file).href)).default,
@@ -173,6 +175,17 @@ for (const file of metaFiles) {
     JSON.stringify(contract, null, 2) + '\n',
   );
   writeFileSync(join(out, 'components', `${meta.id}.md`), componentMarkdown(meta, components));
+  for (const c of components) {
+    lintData[c.name] = {
+      status: meta.status,
+      component: meta.id,
+      props: Object.fromEntries(
+        Object.entries(c.props)
+          .filter(([, p]) => Array.isArray(p.values) && p.values.length > 0)
+          .map(([name, p]) => [name, p.values as string[]]),
+      ),
+    };
+  }
   index.push({
     id: meta.id,
     name: meta.name,
@@ -184,6 +197,10 @@ for (const file of metaFiles) {
   });
 }
 writeFileSync(join(out, 'components.json'), JSON.stringify({ components: index }, null, 2) + '\n');
+writeFileSync(
+  join(root, 'packages/lint/eslint/components.json'),
+  JSON.stringify(lintData, null, 2) + '\n',
+);
 
 function componentMarkdown(
   meta: ComponentMeta,
