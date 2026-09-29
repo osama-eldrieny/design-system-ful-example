@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SearchField } from '@ds/react';
+import * as SearchStories from '../../../../packages/react/src/SearchField/SearchField.stories';
+import searchMeta from '../../../../packages/react/src/SearchField/SearchField.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={SearchStories} name="Docs" />
+
+# SearchField
+
+<ComponentPage
+  meta={searchMeta}
+  stories={SearchStories}
+  components={[SearchField]}
+  anatomy={{
+    targets: [
+      '.ds-input-field__icon',
+      { selector: '.ds-input-field__input', at: 'center' },
+      '.ds-search-field__shortcut',
+    ],
+    example: (
+      <div style={{ inlineSize: 300 }}>
+        <SearchField label="Anatomy search" placeholder="Search docs" shortcut="/" />
+      </div>
+    ),
+  }}
+  optionStories={{ size: 'Sizes' }}
+  extras={[
+    { title: 'With a visible label', story: 'WithLabel' },
+    { title: 'Filled', story: 'Filled' },
+  ]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 240 }}>
+      <SearchField label="Theme search" placeholder="Search" shortcut="/" />
+    </div>
+  }
+/>

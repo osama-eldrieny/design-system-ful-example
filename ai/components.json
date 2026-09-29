@@ -243,6 +243,17 @@
       "contract": "ai/components/radio-group.json"
     },
     {
+      "id": "search-field",
+      "name": "SearchField",
+      "exports": [
+        "SearchField"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A search field has a search icon, a clear button and an optional keyboard shortcut that focuses it from anywhere on the page.",
+      "contract": "ai/components/search-field.json"
+    },
+    {
       "id": "select",
       "name": "Select",
       "exports": [

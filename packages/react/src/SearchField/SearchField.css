@@ -1,0 +1,22 @@
+/**
+ * SearchField. The field is an InputField; this styles the shortcut hint with
+ * --search-field-* tokens.
+ */
+
+.ds-search-field__shortcut {
+  padding-inline: var(--search-field-shortcut-padding-x);
+  border: var(--search-field-shortcut-border-width) solid var(--search-field-shortcut-border-color);
+  border-radius: var(--search-field-shortcut-border-radius);
+  background-color: var(--search-field-shortcut-bg-color);
+  color: var(--search-field-shortcut-text-color);
+  font-family: var(--search-field-shortcut-font-family);
+  font-size: var(--search-field-shortcut-font-size);
+  line-height: var(--search-field-shortcut-font-line-height);
+  white-space: nowrap;
+}
+
+/* The hint is text, so let its slot in the field size to it. */
+.ds-input-field__icon:has(> .ds-search-field__shortcut) {
+  inline-size: auto;
+  block-size: auto;
+}

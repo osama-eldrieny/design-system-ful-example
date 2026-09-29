@@ -9,6 +9,7 @@ export * from '../Card';
 export * from '../ProductCard';
 export * from '../Checkbox';
 export * from '../FormField';
+export * from '../SearchField';
 export * from '../Select';
 export * from '../Textarea';
 export { InputField } from '../InputField';
