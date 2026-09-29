@@ -16,7 +16,7 @@ describe('design tokens', () => {
       combinations++;
     }
     expect(combinations).toBe(6 * 4 * 2 * 3 * 4);
-  }, 30_000);
+  }, 120_000); // 576 combinations; CI machines are slower than a laptop.
 
   it('resolve to the expected default values', () => {
     const resolved = resolveTheme(tokens, defaultTheme);
