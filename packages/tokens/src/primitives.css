@@ -6,6 +6,7 @@
  * point here. Add a primitive only when a semantic token needs a value that does not exist.
  *
  * Token reference ({brand}: diamond | amber | opal; {step}: 100 lightest to 1000 darkest):
+ *   --color-black: Pure black, only for text on mid-tone fills (see --color-fg-max-contrast).
  *   --color-{brand}-primary-{step}: Brand color ramp.
  *   --color-{brand}-secondary-{step}: Secondary (neutral action) ramp.
  *   --color-{brand}-neutral-{step}: Grays for text and borders.
@@ -24,6 +25,9 @@
  */
 
 :root {
+  /* color: neutral */
+  --color-black: #000;
+
   /* color: diamond */
   --color-diamond-primary-100: #f2edff;
   --color-diamond-primary-200: #dfd4ff;

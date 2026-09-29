@@ -147,7 +147,7 @@ Distribution: the `ai/` folder, `AGENTS.md` snippet, and MCP server ship **insid
    - the AI export
 7. ✅ **Token lint** (Stylelint rule `ds/component-tokens-only` in `packages/lint`, enforced for every new component; the 17 existing stylesheets are listed in `stylelint.config.js` until Phase 3 migrates them): a component's CSS may use only `var(--{its-component}-*)` tokens. No raw hex/px/rgba.
 8. ✅ **Contrast report** (`npm run tokens:contrast`, report in `packages/tokens/reports/contrast.md`; 251 of 768 pairs fail today and are baselined, so only new failures break the build): every text/background token pair in all 6 brand × mode combinations against WCAG AA.
-   - Known failures: button primary 3.14:1, secondary 2.95:1. **Fixing them changes brand colors, so I'll bring you proposed values to approve.**
+   - ✅ Fixed (approved 2026-09-29): semantic tokens re-pointed to other steps of the same palettes; no palette color or token name changed. All 768 pairs pass AA in every brand × mode; the baseline is empty.
 
 **Done when:** tokens resolve in every theme (test), the token lint and contrast report run in CI, and the prototypes render in every theme.
 

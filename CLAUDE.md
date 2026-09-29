@@ -56,7 +56,7 @@ CI (`.github/workflows/ci.yml`) runs typecheck, lint, test and build on every pu
 - **Themes:** Diamond / Amber / Opal × Light / Dark, English / Arabic × Serif / Sans-serif, Comfortable / Compact density, Square / Round / Pills radius, Flat / Subtle / Default / Raised shadow. Apply with `applyTheme()` (`@ds/tokens`) or `<ThemeProvider>` (`@ds/react`).
   - **Default theme:** Diamond, light, English, sans, round, comfortable, flat.
 - **Component token rule:** `ds/component-tokens-only` (Stylelint) allows a component's CSS only its own tokens: no semantic tokens, no other components' tokens, no raw colors or lengths. The existing stylesheets are listed in `stylelint.config.js` until Phase 3 migrates them. Don't add to that list.
-- **Contrast:** `npm run tokens:contrast` fails on any *new* WCAG AA failure. Known failures are in `packages/tokens/reports/contrast-baseline.json`, pending the owner's decision on brand color fixes.
+- **Contrast:** `npm run tokens:contrast` fails on any WCAG AA failure. All 768 text/background pairs pass in every brand × mode; keep it that way (the baseline is empty).
 - **Docs site:** its interface stays neutral (not themed by the design system's themes). Component examples render with the default theme; the docs include a Theming guide for projects.
 - **Deploying:** pushing to GitHub publishes the live site. The owner wants a single push at the end of the overhaul; work stays on the local `overhaul` branch until then.
 

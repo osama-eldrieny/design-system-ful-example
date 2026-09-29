@@ -7,9 +7,9 @@
 :root,
 [data-theme] {
   --tap-item-default-bg-color: var(--color-bg-secondary-1);
-  --tap-item-default-font-color: var(--color-fg-on-surface-primary);
-  --tap-item-default-icon-color: var(--color-fg-on-surface-primary);
-  --tap-item-hover-bg-color: var(--color-bg-secondary-1);
+  --tap-item-default-font-color: var(--color-fg-on-secondary-high);
+  --tap-item-default-icon-color: var(--color-fg-on-secondary-high);
+  --tap-item-hover-bg-color: var(--color-bg-primary-1);
   --tap-item-hover-font-color: var(--color-fg-on-primary-high);
   --tap-item-hover-icon-color: var(--color-fg-on-primary-high);
   --tap-item-active-bg-color: var(--color-bg-accent-primary-focus);
