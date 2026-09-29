@@ -154,6 +154,17 @@
       "contract": "ai/components/input-field.json"
     },
     {
+      "id": "link",
+      "name": "Link",
+      "exports": [
+        "Link"
+      ],
+      "category": "Actions",
+      "status": "stable",
+      "purpose": "A link takes people to another page or place.",
+      "contract": "ai/components/link.json"
+    },
+    {
       "id": "logo",
       "name": "Logo",
       "exports": [

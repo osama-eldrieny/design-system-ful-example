@@ -12,6 +12,7 @@ export * from '../Select';
 export * from '../Textarea';
 export { InputField } from '../InputField';
 export type { InputFieldProps } from '../InputField';
+export * from '../Link';
 export * from '../Logo';
 export * from '../Header';
 export * from '../Navbar';
