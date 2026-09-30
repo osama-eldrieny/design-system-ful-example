@@ -193,5 +193,10 @@ export default defineMeta({
         'Accessible clickable cards via href.',
       ],
     },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: ['Outlined cards use a softer border (--card-outlined-border-color).'],
+    },
   ],
 });

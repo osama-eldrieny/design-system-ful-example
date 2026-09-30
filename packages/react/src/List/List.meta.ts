@@ -111,5 +111,15 @@ export default defineMeta({
     { id: 'table', relation: 'For comparing attributes.' },
     { id: 'apps-notifications', relation: 'A pattern built on the same idea.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: [
+        'Bigger item icons (--list-icon-size: 22px).',
+        'Slightly darker dividers (--list-divider-color), matching Table borders.',
+      ],
+    },
+  ],
 });

@@ -39,10 +39,12 @@
   --hover-card-shadow-blur: var(--shadow-0);
   --toast-shadow-y: var(--shadow-0);
   --toast-shadow-blur: var(--shadow-0);
-  --select-content-shadow-y: var(--shadow-0);
-  --select-content-shadow-blur: var(--shadow-0);
-  --combobox-content-shadow-y: var(--shadow-0);
-  --combobox-content-shadow-blur: var(--shadow-0);
+
+  /* Open option lists float over content, so they keep a small shadow even in flat. */
+  --select-content-shadow-y: var(--shadow-4);
+  --select-content-shadow-blur: var(--shadow-8);
+  --combobox-content-shadow-y: var(--shadow-4);
+  --combobox-content-shadow-blur: var(--shadow-8);
 }
 
 /* shadow: subtle */

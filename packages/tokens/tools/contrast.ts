@@ -52,6 +52,8 @@ export function contrastPairs(set: TokenSet): Pair[] {
   for (const tone of TONES) {
     for (const state of STATES) {
       add(`--color-fg-on-accent-${tone}-${state}`, `--color-bg-accent-${tone}-${state}`);
+      // Filled buttons use the strong accent (darker in dark mode).
+      add(`--color-fg-on-accent-${tone}-strong-${state}`, `--color-bg-accent-${tone}-strong-${state}`);
       // Tone text (text buttons, links) sits on surfaces and directly on the page background.
       add(`--color-fg-on-accent-${tone}-text-${state}`, '--color-bg-surface');
       add(`--color-fg-on-accent-${tone}-text-${state}`, '--color-bg-default');

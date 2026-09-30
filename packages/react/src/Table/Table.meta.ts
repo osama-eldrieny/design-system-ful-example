@@ -147,5 +147,12 @@ export default defineMeta({
     { id: 'pagination', relation: 'For long data sets.' },
     { id: 'checkbox', relation: 'Row selection.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: ['Slightly darker cell borders (--table-border-color), so rows read clearly.'],
+    },
+  ],
 });

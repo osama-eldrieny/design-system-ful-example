@@ -172,5 +172,13 @@ const items = [
         'Own --navbar-* tokens instead of --menu-item-*; no fixed width or absolute positioning.',
       ],
     },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: [
+        'Removed the bar under the current item; its color and background mark it (underlined in forced colors).',
+        'New item option static: plain text, not a link or button, for placeholder menus (keeps the hover style).',
+      ],
+    },
   ],
 });

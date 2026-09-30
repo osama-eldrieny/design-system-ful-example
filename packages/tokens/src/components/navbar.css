@@ -31,8 +31,6 @@
   --navbar-item-active-bg-color: var(--color-bg-primary-1);
   --navbar-item-active-text-color: var(--color-fg-on-primary-high);
   --navbar-item-active-icon-color: var(--color-fg-on-primary-high);
-  --navbar-item-active-indicator-color: var(--color-bg-accent-primary-default);
-  --navbar-item-active-indicator-size: var(--border-width-strong);
   --navbar-item-padding-x: var(--spacing-md);
   --navbar-item-padding-y: var(--spacing-xs);
   --navbar-item-gap: var(--spacing-xs);

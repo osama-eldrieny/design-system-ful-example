@@ -16,6 +16,10 @@ import { Header } from '@ds/react';
 - For a person in a list or card. Use Avatar with text.
 - For a page not about a person. Use A plain h1.
 
+## Layout (`layout`)
+- `vertical`: Photo, name and heading stacked and centered. Default; profile pages.
+- `horizontal`: Photo and name at the start, heading at the end of one row; compact page tops.
+
 ## Heading level (`headingAs`)
 - `h1`: Default: the header opens the page.
 - `h2`: When the page already has an h1.
@@ -34,6 +38,7 @@ import { Header } from '@ds/react';
 | `heading` | `ReactNode` |  | The page heading under the person, e.g. the project's name. |
 | `avatar` | `string` |  | Photo URL. Without it, initials show. |
 | `headingAs` | `"h1" \| "h2" \| "h3"` | h1 | Heading level. Default h1, since this usually opens the page. |
+| `layout` | `"vertical" \| "horizontal"` | vertical | `vertical` (default): photo, name and heading stacked and centered. `horizontal`: photo and name at the start, the heading at the end of one row; stacks again on narrow screens. |
 
 ## Guidelines
 - Do: Keep one h1 per page: the Header’s heading or the page’s own, not both. Don’t: Leave headingAs at h1 when the page already has one. Why: One h1 gives screen reader users a clear starting point.

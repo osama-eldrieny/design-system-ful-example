@@ -12,7 +12,7 @@
 [data-theme] {
   --table-bg-color: var(--color-bg-base);
   --table-text-color: var(--color-fg-on-surface-primary);
-  --table-border-color: var(--color-border-base);
+  --table-border-color: var(--color-bg-secondary-200);
   --table-border-width: var(--border-width-hairline);
   --table-header-bg-color: var(--color-bg-default);
   --table-header-text-color: var(--color-fg-on-surface-secondary);

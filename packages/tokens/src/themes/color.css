@@ -23,6 +23,8 @@
  *   --color-fg-on-{tone}-medium: Secondary tone-colored text: timestamps, captions.
  *   --color-fg-on-{tone}-low: Darkest tone text, for maximum contrast on tinted backgrounds.
  *   --color-fg-on-{tone}-strong: Text on strong (solid) tone fills.
+ *   --color-bg-accent-{tone}-strong-{state}: Fill of filled buttons; the accent in light mode, a darker step in dark mode.
+ *   --color-fg-on-accent-{tone}-strong-{state}: Text and icons on the matching strong fill (light text in dark mode).
  *   --color-border-base: Default dividers and outlines.
  *   --color-border-accent: Brand-colored outline; also the focus ring color.
  *   --color-border-field: Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.
@@ -189,6 +191,38 @@
   --color-fg-ink: var(--color-diamond-base-900);
   --color-fg-inverse: var(--color-diamond-base-100);
   --color-fg-max-contrast: var(--color-black);
+
+  /* Filled buttons */
+  --color-bg-accent-primary-strong-default: var(--color-bg-accent-primary-default);
+  --color-fg-on-accent-primary-strong-default: var(--color-fg-on-accent-primary-default);
+  --color-bg-accent-primary-strong-hover: var(--color-bg-accent-primary-hover);
+  --color-fg-on-accent-primary-strong-hover: var(--color-fg-on-accent-primary-hover);
+  --color-bg-accent-primary-strong-focus: var(--color-bg-accent-primary-focus);
+  --color-fg-on-accent-primary-strong-focus: var(--color-fg-on-accent-primary-focus);
+  --color-bg-accent-secondary-strong-default: var(--color-bg-accent-secondary-default);
+  --color-fg-on-accent-secondary-strong-default: var(--color-fg-on-accent-secondary-default);
+  --color-bg-accent-secondary-strong-hover: var(--color-bg-accent-secondary-hover);
+  --color-fg-on-accent-secondary-strong-hover: var(--color-fg-on-accent-secondary-hover);
+  --color-bg-accent-secondary-strong-focus: var(--color-bg-accent-secondary-focus);
+  --color-fg-on-accent-secondary-strong-focus: var(--color-fg-on-accent-secondary-focus);
+  --color-bg-accent-success-strong-default: var(--color-bg-accent-success-default);
+  --color-fg-on-accent-success-strong-default: var(--color-fg-on-accent-success-default);
+  --color-bg-accent-success-strong-hover: var(--color-bg-accent-success-hover);
+  --color-fg-on-accent-success-strong-hover: var(--color-fg-on-accent-success-hover);
+  --color-bg-accent-success-strong-focus: var(--color-bg-accent-success-focus);
+  --color-fg-on-accent-success-strong-focus: var(--color-fg-on-accent-success-focus);
+  --color-bg-accent-danger-strong-default: var(--color-bg-accent-danger-default);
+  --color-fg-on-accent-danger-strong-default: var(--color-fg-on-accent-danger-default);
+  --color-bg-accent-danger-strong-hover: var(--color-bg-accent-danger-hover);
+  --color-fg-on-accent-danger-strong-hover: var(--color-fg-on-accent-danger-hover);
+  --color-bg-accent-danger-strong-focus: var(--color-bg-accent-danger-focus);
+  --color-fg-on-accent-danger-strong-focus: var(--color-fg-on-accent-danger-focus);
+  --color-bg-accent-warning-strong-default: var(--color-bg-accent-warning-default);
+  --color-fg-on-accent-warning-strong-default: var(--color-fg-on-accent-warning-default);
+  --color-bg-accent-warning-strong-hover: var(--color-bg-accent-warning-hover);
+  --color-fg-on-accent-warning-strong-hover: var(--color-fg-on-accent-warning-hover);
+  --color-bg-accent-warning-strong-focus: var(--color-bg-accent-warning-focus);
+  --color-fg-on-accent-warning-strong-focus: var(--color-fg-on-accent-warning-focus);
 }
 
 /* Brand diamond, dark mode */
@@ -341,6 +375,38 @@
   --color-fg-ink: var(--color-diamond-base-900);
   --color-fg-inverse: var(--color-diamond-base-100);
   --color-fg-max-contrast: var(--color-black);
+
+  /* Filled buttons */
+  --color-bg-accent-primary-strong-default: var(--color-diamond-primary-600);
+  --color-fg-on-accent-primary-strong-default: var(--color-diamond-base-100);
+  --color-bg-accent-primary-strong-hover: var(--color-diamond-primary-700);
+  --color-fg-on-accent-primary-strong-hover: var(--color-diamond-base-100);
+  --color-bg-accent-primary-strong-focus: var(--color-diamond-primary-800);
+  --color-fg-on-accent-primary-strong-focus: var(--color-diamond-base-100);
+  --color-bg-accent-secondary-strong-default: var(--color-diamond-secondary-600);
+  --color-fg-on-accent-secondary-strong-default: var(--color-diamond-base-100);
+  --color-bg-accent-secondary-strong-hover: var(--color-diamond-secondary-700);
+  --color-fg-on-accent-secondary-strong-hover: var(--color-diamond-base-100);
+  --color-bg-accent-secondary-strong-focus: var(--color-diamond-secondary-800);
+  --color-fg-on-accent-secondary-strong-focus: var(--color-diamond-base-100);
+  --color-bg-accent-success-strong-default: var(--color-diamond-success-900);
+  --color-fg-on-accent-success-strong-default: var(--color-diamond-base-100);
+  --color-bg-accent-success-strong-hover: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-strong-hover: var(--color-diamond-base-100);
+  --color-bg-accent-success-strong-focus: var(--color-diamond-success-1000);
+  --color-fg-on-accent-success-strong-focus: var(--color-diamond-base-100);
+  --color-bg-accent-danger-strong-default: var(--color-diamond-danger-700);
+  --color-fg-on-accent-danger-strong-default: var(--color-diamond-base-100);
+  --color-bg-accent-danger-strong-hover: var(--color-diamond-danger-800);
+  --color-fg-on-accent-danger-strong-hover: var(--color-diamond-base-100);
+  --color-bg-accent-danger-strong-focus: var(--color-diamond-danger-900);
+  --color-fg-on-accent-danger-strong-focus: var(--color-diamond-base-100);
+  --color-bg-accent-warning-strong-default: var(--color-diamond-warning-900);
+  --color-fg-on-accent-warning-strong-default: var(--color-diamond-base-100);
+  --color-bg-accent-warning-strong-hover: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-strong-hover: var(--color-diamond-base-100);
+  --color-bg-accent-warning-strong-focus: var(--color-diamond-warning-1000);
+  --color-fg-on-accent-warning-strong-focus: var(--color-diamond-base-100);
 }
 
 /* Brand amber, light mode */
@@ -493,6 +559,38 @@
   --color-fg-ink: var(--color-amber-base-900);
   --color-fg-inverse: var(--color-amber-base-100);
   --color-fg-max-contrast: var(--color-black);
+
+  /* Filled buttons */
+  --color-bg-accent-primary-strong-default: var(--color-bg-accent-primary-default);
+  --color-fg-on-accent-primary-strong-default: var(--color-fg-on-accent-primary-default);
+  --color-bg-accent-primary-strong-hover: var(--color-bg-accent-primary-hover);
+  --color-fg-on-accent-primary-strong-hover: var(--color-fg-on-accent-primary-hover);
+  --color-bg-accent-primary-strong-focus: var(--color-bg-accent-primary-focus);
+  --color-fg-on-accent-primary-strong-focus: var(--color-fg-on-accent-primary-focus);
+  --color-bg-accent-secondary-strong-default: var(--color-bg-accent-secondary-default);
+  --color-fg-on-accent-secondary-strong-default: var(--color-fg-on-accent-secondary-default);
+  --color-bg-accent-secondary-strong-hover: var(--color-bg-accent-secondary-hover);
+  --color-fg-on-accent-secondary-strong-hover: var(--color-fg-on-accent-secondary-hover);
+  --color-bg-accent-secondary-strong-focus: var(--color-bg-accent-secondary-focus);
+  --color-fg-on-accent-secondary-strong-focus: var(--color-fg-on-accent-secondary-focus);
+  --color-bg-accent-success-strong-default: var(--color-bg-accent-success-default);
+  --color-fg-on-accent-success-strong-default: var(--color-fg-on-accent-success-default);
+  --color-bg-accent-success-strong-hover: var(--color-bg-accent-success-hover);
+  --color-fg-on-accent-success-strong-hover: var(--color-fg-on-accent-success-hover);
+  --color-bg-accent-success-strong-focus: var(--color-bg-accent-success-focus);
+  --color-fg-on-accent-success-strong-focus: var(--color-fg-on-accent-success-focus);
+  --color-bg-accent-danger-strong-default: var(--color-bg-accent-danger-default);
+  --color-fg-on-accent-danger-strong-default: var(--color-fg-on-accent-danger-default);
+  --color-bg-accent-danger-strong-hover: var(--color-bg-accent-danger-hover);
+  --color-fg-on-accent-danger-strong-hover: var(--color-fg-on-accent-danger-hover);
+  --color-bg-accent-danger-strong-focus: var(--color-bg-accent-danger-focus);
+  --color-fg-on-accent-danger-strong-focus: var(--color-fg-on-accent-danger-focus);
+  --color-bg-accent-warning-strong-default: var(--color-bg-accent-warning-default);
+  --color-fg-on-accent-warning-strong-default: var(--color-fg-on-accent-warning-default);
+  --color-bg-accent-warning-strong-hover: var(--color-bg-accent-warning-hover);
+  --color-fg-on-accent-warning-strong-hover: var(--color-fg-on-accent-warning-hover);
+  --color-bg-accent-warning-strong-focus: var(--color-bg-accent-warning-focus);
+  --color-fg-on-accent-warning-strong-focus: var(--color-fg-on-accent-warning-focus);
 }
 
 /* Brand amber, dark mode */
@@ -645,6 +743,38 @@
   --color-fg-ink: var(--color-amber-base-900);
   --color-fg-inverse: var(--color-amber-base-100);
   --color-fg-max-contrast: var(--color-black);
+
+  /* Filled buttons */
+  --color-bg-accent-primary-strong-default: var(--color-amber-primary-800);
+  --color-fg-on-accent-primary-strong-default: var(--color-amber-base-100);
+  --color-bg-accent-primary-strong-hover: var(--color-amber-primary-900);
+  --color-fg-on-accent-primary-strong-hover: var(--color-amber-base-100);
+  --color-bg-accent-primary-strong-focus: var(--color-amber-primary-1000);
+  --color-fg-on-accent-primary-strong-focus: var(--color-amber-base-100);
+  --color-bg-accent-secondary-strong-default: var(--color-amber-secondary-600);
+  --color-fg-on-accent-secondary-strong-default: var(--color-amber-base-100);
+  --color-bg-accent-secondary-strong-hover: var(--color-amber-secondary-700);
+  --color-fg-on-accent-secondary-strong-hover: var(--color-amber-base-100);
+  --color-bg-accent-secondary-strong-focus: var(--color-amber-secondary-800);
+  --color-fg-on-accent-secondary-strong-focus: var(--color-amber-base-100);
+  --color-bg-accent-success-strong-default: var(--color-amber-success-600);
+  --color-fg-on-accent-success-strong-default: var(--color-amber-base-100);
+  --color-bg-accent-success-strong-hover: var(--color-amber-success-700);
+  --color-fg-on-accent-success-strong-hover: var(--color-amber-base-100);
+  --color-bg-accent-success-strong-focus: var(--color-amber-success-800);
+  --color-fg-on-accent-success-strong-focus: var(--color-amber-base-100);
+  --color-bg-accent-danger-strong-default: var(--color-amber-danger-600);
+  --color-fg-on-accent-danger-strong-default: var(--color-amber-base-100);
+  --color-bg-accent-danger-strong-hover: var(--color-amber-danger-700);
+  --color-fg-on-accent-danger-strong-hover: var(--color-amber-base-100);
+  --color-bg-accent-danger-strong-focus: var(--color-amber-danger-800);
+  --color-fg-on-accent-danger-strong-focus: var(--color-amber-base-100);
+  --color-bg-accent-warning-strong-default: var(--color-amber-warning-900);
+  --color-fg-on-accent-warning-strong-default: var(--color-amber-base-100);
+  --color-bg-accent-warning-strong-hover: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-strong-hover: var(--color-amber-base-100);
+  --color-bg-accent-warning-strong-focus: var(--color-amber-warning-1000);
+  --color-fg-on-accent-warning-strong-focus: var(--color-amber-base-100);
 }
 
 /* Brand opal, light mode */
@@ -797,6 +927,38 @@
   --color-fg-ink: var(--color-opal-base-900);
   --color-fg-inverse: var(--color-opal-base-100);
   --color-fg-max-contrast: var(--color-black);
+
+  /* Filled buttons */
+  --color-bg-accent-primary-strong-default: var(--color-bg-accent-primary-default);
+  --color-fg-on-accent-primary-strong-default: var(--color-fg-on-accent-primary-default);
+  --color-bg-accent-primary-strong-hover: var(--color-bg-accent-primary-hover);
+  --color-fg-on-accent-primary-strong-hover: var(--color-fg-on-accent-primary-hover);
+  --color-bg-accent-primary-strong-focus: var(--color-bg-accent-primary-focus);
+  --color-fg-on-accent-primary-strong-focus: var(--color-fg-on-accent-primary-focus);
+  --color-bg-accent-secondary-strong-default: var(--color-bg-accent-secondary-default);
+  --color-fg-on-accent-secondary-strong-default: var(--color-fg-on-accent-secondary-default);
+  --color-bg-accent-secondary-strong-hover: var(--color-bg-accent-secondary-hover);
+  --color-fg-on-accent-secondary-strong-hover: var(--color-fg-on-accent-secondary-hover);
+  --color-bg-accent-secondary-strong-focus: var(--color-bg-accent-secondary-focus);
+  --color-fg-on-accent-secondary-strong-focus: var(--color-fg-on-accent-secondary-focus);
+  --color-bg-accent-success-strong-default: var(--color-bg-accent-success-default);
+  --color-fg-on-accent-success-strong-default: var(--color-fg-on-accent-success-default);
+  --color-bg-accent-success-strong-hover: var(--color-bg-accent-success-hover);
+  --color-fg-on-accent-success-strong-hover: var(--color-fg-on-accent-success-hover);
+  --color-bg-accent-success-strong-focus: var(--color-bg-accent-success-focus);
+  --color-fg-on-accent-success-strong-focus: var(--color-fg-on-accent-success-focus);
+  --color-bg-accent-danger-strong-default: var(--color-bg-accent-danger-default);
+  --color-fg-on-accent-danger-strong-default: var(--color-fg-on-accent-danger-default);
+  --color-bg-accent-danger-strong-hover: var(--color-bg-accent-danger-hover);
+  --color-fg-on-accent-danger-strong-hover: var(--color-fg-on-accent-danger-hover);
+  --color-bg-accent-danger-strong-focus: var(--color-bg-accent-danger-focus);
+  --color-fg-on-accent-danger-strong-focus: var(--color-fg-on-accent-danger-focus);
+  --color-bg-accent-warning-strong-default: var(--color-bg-accent-warning-default);
+  --color-fg-on-accent-warning-strong-default: var(--color-fg-on-accent-warning-default);
+  --color-bg-accent-warning-strong-hover: var(--color-bg-accent-warning-hover);
+  --color-fg-on-accent-warning-strong-hover: var(--color-fg-on-accent-warning-hover);
+  --color-bg-accent-warning-strong-focus: var(--color-bg-accent-warning-focus);
+  --color-fg-on-accent-warning-strong-focus: var(--color-fg-on-accent-warning-focus);
 }
 
 /* Brand opal, dark mode */
@@ -949,4 +1111,36 @@
   --color-fg-ink: var(--color-opal-base-900);
   --color-fg-inverse: var(--color-opal-base-100);
   --color-fg-max-contrast: var(--color-black);
+
+  /* Filled buttons */
+  --color-bg-accent-primary-strong-default: var(--color-opal-primary-700);
+  --color-fg-on-accent-primary-strong-default: var(--color-opal-base-100);
+  --color-bg-accent-primary-strong-hover: var(--color-opal-primary-800);
+  --color-fg-on-accent-primary-strong-hover: var(--color-opal-base-100);
+  --color-bg-accent-primary-strong-focus: var(--color-opal-primary-900);
+  --color-fg-on-accent-primary-strong-focus: var(--color-opal-base-100);
+  --color-bg-accent-secondary-strong-default: var(--color-opal-secondary-600);
+  --color-fg-on-accent-secondary-strong-default: var(--color-opal-base-100);
+  --color-bg-accent-secondary-strong-hover: var(--color-opal-secondary-700);
+  --color-fg-on-accent-secondary-strong-hover: var(--color-opal-base-100);
+  --color-bg-accent-secondary-strong-focus: var(--color-opal-secondary-800);
+  --color-fg-on-accent-secondary-strong-focus: var(--color-opal-base-100);
+  --color-bg-accent-success-strong-default: var(--color-opal-success-900);
+  --color-fg-on-accent-success-strong-default: var(--color-opal-base-100);
+  --color-bg-accent-success-strong-hover: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-strong-hover: var(--color-opal-base-100);
+  --color-bg-accent-success-strong-focus: var(--color-opal-success-1000);
+  --color-fg-on-accent-success-strong-focus: var(--color-opal-base-100);
+  --color-bg-accent-danger-strong-default: var(--color-opal-danger-700);
+  --color-fg-on-accent-danger-strong-default: var(--color-opal-base-100);
+  --color-bg-accent-danger-strong-hover: var(--color-opal-danger-800);
+  --color-fg-on-accent-danger-strong-hover: var(--color-opal-base-100);
+  --color-bg-accent-danger-strong-focus: var(--color-opal-danger-900);
+  --color-fg-on-accent-danger-strong-focus: var(--color-opal-base-100);
+  --color-bg-accent-warning-strong-default: var(--color-opal-warning-900);
+  --color-fg-on-accent-warning-strong-default: var(--color-opal-base-100);
+  --color-bg-accent-warning-strong-hover: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-strong-hover: var(--color-opal-base-100);
+  --color-bg-accent-warning-strong-focus: var(--color-opal-warning-1000);
+  --color-fg-on-accent-warning-strong-focus: var(--color-opal-base-100);
 }

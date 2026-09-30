@@ -141,5 +141,14 @@ export default defineMeta({
         'Split from the old Card: rating in words, old price announced as “was”, themed via ThemeProvider instead of hard-coded brand colors.',
       ],
     },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: [
+        'Rating now sits above the title; the price and the action share the last row (price at the start, action at the end).',
+        'Keeps a steady width (--card-product-max-width) instead of stretching across wide columns.',
+        'The old price sits under the price, so the action always stays on the same row.',
+      ],
+    },
   ],
 });

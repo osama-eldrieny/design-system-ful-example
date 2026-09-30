@@ -190,6 +190,15 @@
       "changes": [
         "Split from the old Card: rating in words, old price announced as “was”, themed via ThemeProvider instead of hard-coded brand colors."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-30",
+      "changes": [
+        "Rating now sits above the title; the price and the action share the last row (price at the start, action at the end).",
+        "Keeps a steady width (--card-product-max-width) instead of stretching across wide columns.",
+        "The old price sits under the price, so the action always stays on the same row."
+      ]
     }
   ],
   "components": [
@@ -424,6 +433,11 @@
       "references": "--spacing-xs",
       "default": "8px"
     },
+    "--card-product-max-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 1.3)"
+    },
     "--card-stars-gap": {
       "description": "Hairline gap (2px), e.g. between rating stars.",
       "references": "--spacing-3xs",
@@ -594,13 +608,13 @@
       }
     },
     "--card-outlined-border-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-secondary-default",
-      "default": "#76717f",
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-secondary-200",
+      "default": "#dedde0",
       "byTheme": {
-        "brand=diamond,mode=dark": "#f1f1f2",
-        "brand=amber,mode=dark": "#f1f1f2",
-        "brand=opal,mode=dark": "#f1f1f2"
+        "brand=diamond,mode=dark": "#54505a",
+        "brand=amber,mode=dark": "#54505a",
+        "brand=opal,mode=dark": "#54505a"
       }
     },
     "--card-border-width": {

@@ -8,6 +8,11 @@ export interface NavbarItem {
   label: string;
   /** Destination. Items with href are links; items without are buttons (for app views). */
   href?: string;
+  /**
+   * Shows the item as plain text: not a link or button, not focusable. For placeholder
+   * menus in mockups and prototypes.
+   */
+  static?: boolean;
   /** Decorative icon before the label. */
   icon?: ReactNode;
   /** Called on click, e.g. to switch views in a single-page app. */
@@ -90,7 +95,9 @@ export const Navbar = forwardRef<HTMLElement, NavbarProps>(
             );
             return (
               <li key={id}>
-                {item.href ? (
+                {item.static ? (
+                  <span className="ds-navbar__item ds-navbar__item--static">{content}</span>
+                ) : item.href ? (
                   <a href={item.href} {...shared}>
                     {content}
                   </a>

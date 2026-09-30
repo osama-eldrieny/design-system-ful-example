@@ -22,6 +22,7 @@
   --card-body-text-gap: var(--spacing-xs);
   --card-body-review-gap: var(--spacing-xs);
   --card-body-prices-gap: var(--spacing-xs);
+  --card-product-max-width: calc(var(--sizing-8xl) * 1.3);
   --card-stars-gap: var(--spacing-3xs);
   --card-title-font-size: var(--font-size-lg);
   --card-title-font-line-height: var(--font-line-height-lg);
@@ -50,7 +51,7 @@
   --card-bg-color: var(--color-bg-surface);
   --card-filled-bg-color: var(--color-bg-primary-1);
   --card-border-color: var(--color-border-base);
-  --card-outlined-border-color: var(--color-bg-accent-secondary-default);
+  --card-outlined-border-color: var(--color-bg-secondary-200);
   --card-border-width: var(--border-width-hairline);
   --card-shadow-x: var(--shadow-0);
   --card-shadow-color: var(--color-shadow-surface);

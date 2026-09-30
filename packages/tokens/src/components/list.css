@@ -14,8 +14,8 @@
   --list-description-text-color: var(--color-fg-on-surface-secondary);
   --list-meta-text-color: var(--color-fg-on-surface-secondary);
   --list-icon-color: var(--color-fg-on-surface-secondary);
-  --list-icon-size: var(--sizing-sm);
-  --list-divider-color: var(--color-border-base);
+  --list-icon-size: var(--sizing-md);
+  --list-divider-color: var(--color-bg-secondary-200);
   --list-divider-width: var(--border-width-hairline);
   --list-item-padding-x: var(--spacing-sm);
   --list-item-padding-y: var(--spacing-sm);

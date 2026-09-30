@@ -24,6 +24,7 @@ describe('design tokens', () => {
     expect(resolved.get('--button-primary-default-bg-color')?.resolved).toBe('#794dff');
     expect(resolved.get('--button-primary-default-bg-color')?.chain).toEqual([
       '--button-primary-default-bg-color',
+      '--color-bg-accent-primary-strong-default',
       '--color-bg-accent-primary-default',
       '--color-diamond-primary-600',
     ]);

@@ -219,6 +219,14 @@
         "currentItem / defaultCurrentItem / onCurrentItemChange replace defaultActiveItem; items take href and a ReactNode icon; new actions slot.",
         "Own --navbar-* tokens instead of --menu-item-*; no fixed width or absolute positioning."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-30",
+      "changes": [
+        "Removed the bar under the current item; its color and background mark it (underlined in forced colors).",
+        "New item option static: plain text, not a link or button, for placeholder menus (keeps the hover style)."
+      ]
     }
   ],
   "components": [
@@ -443,23 +451,6 @@
         "brand=opal,mode=light": "#224a8c",
         "brand=opal,mode=dark": "#abc9fb"
       }
-    },
-    "--navbar-item-active-indicator-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-primary-default",
-      "default": "#794dff",
-      "byTheme": {
-        "brand=diamond,mode=dark": "#f2edff",
-        "brand=amber,mode=light": "#cda376",
-        "brand=amber,mode=dark": "#fff",
-        "brand=opal,mode=light": "#326fd1",
-        "brand=opal,mode=dark": "#fff"
-      }
-    },
-    "--navbar-item-active-indicator-size": {
-      "description": "Stroke widths in px.",
-      "references": "--border-width-strong",
-      "default": "5px"
     },
     "--navbar-item-padding-x": {
       "description": "Default gap and control padding.",

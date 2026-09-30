@@ -221,6 +221,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-30",
+      "changes": [
+        "Slightly darker cell borders (--table-border-color), so rows read clearly."
+      ]
     }
   ],
   "components": [
@@ -376,15 +383,13 @@
       }
     },
     "--table-border-color": {
-      "description": "Default dividers and outlines.",
-      "references": "--color-border-base",
-      "default": "#f8f7fb",
+      "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
+      "references": "--color-bg-secondary-200",
+      "default": "#dedde0",
       "byTheme": {
-        "brand=diamond,mode=dark": "#332e3c",
-        "brand=amber,mode=light": "#f9f5f1",
-        "brand=amber,mode=dark": "#2a1f16",
-        "brand=opal,mode=light": "#f4f6fc",
-        "brand=opal,mode=dark": "#3d4460"
+        "brand=diamond,mode=dark": "#54505a",
+        "brand=amber,mode=dark": "#54505a",
+        "brand=opal,mode=dark": "#54505a"
       }
     },
     "--table-border-width": {

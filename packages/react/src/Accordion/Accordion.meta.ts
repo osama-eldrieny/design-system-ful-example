@@ -123,5 +123,12 @@ export default defineMeta({
   ],
   tokenPrefixes: ['--accordion-'],
   related: [{ id: 'tabs', relation: 'For switching between views.' }],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: ['Slightly darker borders (--accordion-border-color), matching Table borders.'],
+    },
+  ],
 });

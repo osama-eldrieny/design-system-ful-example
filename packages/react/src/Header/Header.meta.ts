@@ -26,6 +26,20 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'layout',
+      title: 'Layout',
+      values: [
+        {
+          value: 'vertical',
+          meaning: 'Photo, name and heading stacked and centered. Default; profile pages.',
+        },
+        {
+          value: 'horizontal',
+          meaning: 'Photo and name at the start, heading at the end of one row; compact page tops.',
+        },
+      ],
+    },
+    {
       prop: 'headingAs',
       title: 'Heading level',
       values: [
@@ -117,6 +131,13 @@ export default defineMeta({
         'role → jobTitle (role is an HTML attribute), title → heading, rendered as a real heading (headingAs, default h1).',
         'name is required; no placeholder defaults.',
         'Surface tokens (--header-bg-color, padding, radius, shadow) replace section tokens.',
+      ],
+    },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: [
+        'New layout="horizontal": photo and name at the start, heading at the end of one row.',
       ],
     },
   ],

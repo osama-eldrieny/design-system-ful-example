@@ -12,21 +12,21 @@
 
 :root,
 [data-theme] {
-  --button-primary-default-bg-color: var(--color-bg-accent-primary-default);
-  --button-primary-default-text-color: var(--color-fg-on-accent-primary-default);
-  --button-primary-hover-bg-color: var(--color-bg-accent-primary-hover);
-  --button-primary-hover-text-color: var(--color-fg-on-accent-primary-hover);
-  --button-primary-focus-bg-color: var(--color-bg-accent-primary-focus);
-  --button-primary-focus-text-color: var(--color-fg-on-accent-primary-focus);
+  --button-primary-default-bg-color: var(--color-bg-accent-primary-strong-default);
+  --button-primary-default-text-color: var(--color-fg-on-accent-primary-strong-default);
+  --button-primary-hover-bg-color: var(--color-bg-accent-primary-strong-hover);
+  --button-primary-hover-text-color: var(--color-fg-on-accent-primary-strong-hover);
+  --button-primary-focus-bg-color: var(--color-bg-accent-primary-strong-focus);
+  --button-primary-focus-text-color: var(--color-fg-on-accent-primary-strong-focus);
   --button-primary-text-default-text-color: var(--color-fg-on-accent-primary-text-default);
   --button-primary-text-hover-text-color: var(--color-fg-on-accent-primary-text-hover);
   --button-primary-text-focus-text-color: var(--color-fg-on-accent-primary-text-focus);
-  --button-secondary-default-bg-color: var(--color-bg-accent-secondary-default);
-  --button-secondary-default-text-color: var(--color-fg-on-accent-secondary-default);
-  --button-secondary-hover-bg-color: var(--color-bg-accent-secondary-hover);
-  --button-secondary-hover-text-color: var(--color-fg-on-accent-secondary-hover);
-  --button-secondary-focus-bg-color: var(--color-bg-accent-secondary-focus);
-  --button-secondary-focus-text-color: var(--color-fg-on-accent-secondary-focus);
+  --button-secondary-default-bg-color: var(--color-bg-accent-secondary-strong-default);
+  --button-secondary-default-text-color: var(--color-fg-on-accent-secondary-strong-default);
+  --button-secondary-hover-bg-color: var(--color-bg-accent-secondary-strong-hover);
+  --button-secondary-hover-text-color: var(--color-fg-on-accent-secondary-strong-hover);
+  --button-secondary-focus-bg-color: var(--color-bg-accent-secondary-strong-focus);
+  --button-secondary-focus-text-color: var(--color-fg-on-accent-secondary-strong-focus);
   --button-secondary-text-default-text-color: var(--color-fg-on-accent-secondary-text-default);
   --button-secondary-text-hover-text-color: var(--color-fg-on-accent-secondary-text-hover);
   --button-secondary-text-focus-text-color: var(--color-fg-on-accent-secondary-text-focus);
@@ -47,24 +47,24 @@
   --button-icon-font-line-height: var(--font-line-height-xs);
 
   /* Filled: success, danger, warning (primary and secondary are above) */
-  --button-success-default-bg-color: var(--color-bg-accent-success-default);
-  --button-success-default-text-color: var(--color-fg-on-accent-success-default);
-  --button-success-hover-bg-color: var(--color-bg-accent-success-hover);
-  --button-success-hover-text-color: var(--color-fg-on-accent-success-hover);
-  --button-success-focus-bg-color: var(--color-bg-accent-success-focus);
-  --button-success-focus-text-color: var(--color-fg-on-accent-success-focus);
-  --button-danger-default-bg-color: var(--color-bg-accent-danger-default);
-  --button-danger-default-text-color: var(--color-fg-on-accent-danger-default);
-  --button-danger-hover-bg-color: var(--color-bg-accent-danger-hover);
-  --button-danger-hover-text-color: var(--color-fg-on-accent-danger-hover);
-  --button-danger-focus-bg-color: var(--color-bg-accent-danger-focus);
-  --button-danger-focus-text-color: var(--color-fg-on-accent-danger-focus);
-  --button-warning-default-bg-color: var(--color-bg-accent-warning-default);
-  --button-warning-default-text-color: var(--color-fg-on-accent-warning-default);
-  --button-warning-hover-bg-color: var(--color-bg-accent-warning-hover);
-  --button-warning-hover-text-color: var(--color-fg-on-accent-warning-hover);
-  --button-warning-focus-bg-color: var(--color-bg-accent-warning-focus);
-  --button-warning-focus-text-color: var(--color-fg-on-accent-warning-focus);
+  --button-success-default-bg-color: var(--color-bg-accent-success-strong-default);
+  --button-success-default-text-color: var(--color-fg-on-accent-success-strong-default);
+  --button-success-hover-bg-color: var(--color-bg-accent-success-strong-hover);
+  --button-success-hover-text-color: var(--color-fg-on-accent-success-strong-hover);
+  --button-success-focus-bg-color: var(--color-bg-accent-success-strong-focus);
+  --button-success-focus-text-color: var(--color-fg-on-accent-success-strong-focus);
+  --button-danger-default-bg-color: var(--color-bg-accent-danger-strong-default);
+  --button-danger-default-text-color: var(--color-fg-on-accent-danger-strong-default);
+  --button-danger-hover-bg-color: var(--color-bg-accent-danger-strong-hover);
+  --button-danger-hover-text-color: var(--color-fg-on-accent-danger-strong-hover);
+  --button-danger-focus-bg-color: var(--color-bg-accent-danger-strong-focus);
+  --button-danger-focus-text-color: var(--color-fg-on-accent-danger-strong-focus);
+  --button-warning-default-bg-color: var(--color-bg-accent-warning-strong-default);
+  --button-warning-default-text-color: var(--color-fg-on-accent-warning-strong-default);
+  --button-warning-hover-bg-color: var(--color-bg-accent-warning-strong-hover);
+  --button-warning-hover-text-color: var(--color-fg-on-accent-warning-strong-hover);
+  --button-warning-focus-bg-color: var(--color-bg-accent-warning-strong-focus);
+  --button-warning-focus-text-color: var(--color-fg-on-accent-warning-strong-focus);
 
   /* Text appearance: success, danger, warning */
   --button-success-text-default-text-color: var(--color-fg-on-accent-success-text-default);
