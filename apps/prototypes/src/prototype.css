@@ -433,7 +433,14 @@ html {
 /* Playground categories sit three times the section spacing apart. */
 .proto-categories {
   display: grid;
+
+  /* One column that may shrink below its content's natural width (no page overflow on phones). */
+  grid-template-columns: minmax(0, 1fr);
   gap: calc(3 * var(--spacing-3xl));
+}
+
+.proto-categories > * {
+  min-inline-size: 0;
 }
 
 /* Cards flow top to bottom in columns, so a short card doesn't leave a gap below it. */
