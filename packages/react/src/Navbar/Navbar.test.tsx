@@ -4,6 +4,20 @@ import { describe, expect, it, vi } from 'vitest';
 import { Navbar } from './Navbar';
 
 describe('Navbar', () => {
+  it('renders static items as plain text, not links or buttons', () => {
+    render(
+      <Navbar
+        items={[
+          { label: 'Pricing', static: true },
+          { label: 'Docs', href: '/docs' },
+        ]}
+      />,
+    );
+    expect(screen.getByText('Pricing').closest('a, button')).toBeNull();
+    expect(screen.getAllByRole('link')).toHaveLength(1);
+    expect(screen.queryByRole('button')).toBeNull();
+  });
+
   it('is a named navigation landmark with a list of links', () => {
     render(
       <Navbar

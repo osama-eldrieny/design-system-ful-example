@@ -50,6 +50,20 @@
   ],
   "options": [
     {
+      "prop": "layout",
+      "title": "Layout",
+      "values": [
+        {
+          "value": "vertical",
+          "meaning": "Photo, name and heading stacked and centered. Default; profile pages."
+        },
+        {
+          "value": "horizontal",
+          "meaning": "Photo and name at the start, heading at the end of one row; compact page tops."
+        }
+      ]
+    },
+    {
       "prop": "headingAs",
       "title": "Heading level",
       "values": [
@@ -175,6 +189,13 @@
         "name is required; no placeholder defaults.",
         "Surface tokens (--header-bg-color, padding, radius, shadow) replace section tokens."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-09-30",
+      "changes": [
+        "New layout=\"horizontal\": photo and name at the start, heading at the end of one row."
+      ]
     }
   ],
   "components": [
@@ -217,6 +238,16 @@
           "required": false,
           "default": "h1",
           "description": "Heading level. Default h1, since this usually opens the page."
+        },
+        "layout": {
+          "type": "\"vertical\" | \"horizontal\"",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "required": false,
+          "default": "vertical",
+          "description": "`vertical` (default): photo, name and heading stacked and centered. `horizontal`: photo\nand name at the start, the heading at the end of one row; stacks again on narrow screens."
         }
       }
     }

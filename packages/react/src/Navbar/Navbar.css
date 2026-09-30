@@ -45,7 +45,6 @@
   --_bg: var(--navbar-item-default-bg-color);
   --_text: var(--navbar-item-default-text-color);
   --_icon: var(--navbar-item-default-icon-color);
-  --_indicator: 0;
 
   display: inline-flex;
   align-items: center;
@@ -53,9 +52,6 @@
   padding: var(--navbar-item-padding-y) var(--navbar-item-padding-x);
   border: 0;
   border-radius: var(--navbar-item-border-radius);
-
-  /* The current page gets a bar under the label, so it isn't marked by color alone. */
-  box-shadow: inset 0 calc(-1 * var(--_indicator)) 0 var(--navbar-item-active-indicator-color);
   background-color: var(--_bg);
   color: var(--_text);
   font-family: var(--navbar-item-font-family);
@@ -79,7 +75,11 @@
   --_bg: var(--navbar-item-active-bg-color);
   --_text: var(--navbar-item-active-text-color);
   --_icon: var(--navbar-item-active-icon-color);
-  --_indicator: var(--navbar-item-active-indicator-size);
+}
+
+/* Static items (mockups) show the same hover as links but aren't clickable. */
+.ds-navbar__item--static {
+  cursor: default;
 }
 
 .ds-navbar__item:focus-visible {

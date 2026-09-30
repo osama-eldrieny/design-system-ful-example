@@ -974,20 +974,18 @@
     },
     "--combobox-content-shadow-y": {
       "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
-      "references": "--shadow-0",
-      "default": "0",
+      "references": "--shadow-4",
+      "default": "4px",
       "byTheme": {
-        "brand=diamond,mode=light,shadow=subtle": "4px",
         "brand=diamond,mode=light,shadow=default": "8px",
         "brand=diamond,mode=light,shadow=raised": "16px"
       }
     },
     "--combobox-content-shadow-blur": {
       "description": "Shadow offset/blur steps in px (see --shadow-* in themes/shadow.css).",
-      "references": "--shadow-0",
-      "default": "0",
+      "references": "--shadow-8",
+      "default": "8px",
       "byTheme": {
-        "brand=diamond,mode=light,shadow=subtle": "8px",
         "brand=diamond,mode=light,shadow=default": "16px",
         "brand=diamond,mode=light,shadow=raised": "28px"
       }

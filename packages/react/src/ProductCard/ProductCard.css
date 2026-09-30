@@ -2,6 +2,12 @@
  * ProductCard. Styled only with --card-* tokens (it is a Card).
  */
 
+/* Product cards keep a steady width, so a single card doesn't stretch across a wide column. */
+.ds-product-card {
+  inline-size: 100%;
+  max-inline-size: var(--card-product-max-width);
+}
+
 .ds-product-card__rating {
   display: flex;
   align-items: center;
@@ -30,6 +36,28 @@
   font-size: var(--card-review-font-size);
   line-height: var(--card-review-font-line-height);
   font-weight: var(--card-review-font-weight);
+}
+
+.ds-product-card__footer {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--card-body-prices-gap);
+  margin-block-start: auto;
+}
+
+.ds-product-card__actions {
+  display: flex;
+  flex: none;
+  gap: var(--card-body-prices-gap);
+}
+
+.ds-product-card__footer .ds-product-card__prices {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  min-inline-size: 0;
 }
 
 .ds-product-card__prices {

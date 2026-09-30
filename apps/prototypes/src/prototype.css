@@ -91,7 +91,7 @@ html {
 
 @media (width >= 64rem) {
   .proto-playground {
-    grid-template-columns: calc(var(--sizing-8xl) * 1.4) minmax(0, 1fr);
+    grid-template-columns: calc(var(--sizing-8xl) * 1.9) minmax(0, 1fr);
     align-items: start;
   }
 }
@@ -261,4 +261,279 @@ html {
 .proto-switch-row {
   inline-size: 100%;
   justify-content: space-between;
+}
+
+/* Playground: the theme panel stays in view while the showcase scrolls. */
+@media (width >= 64rem) {
+  .proto-playground__panel {
+    position: sticky;
+    inset-block-start: var(--spacing-md);
+    max-block-size: calc(100dvh - 2 * var(--spacing-md));
+    overflow-y: auto;
+  }
+}
+
+/* Button palette: variants down, appearances across. */
+.proto-palette {
+  display: grid;
+  gap: var(--spacing-sm);
+  overflow-x: auto;
+}
+
+.proto-palette__row {
+  display: grid;
+  grid-template-columns: calc(var(--sizing-8xl) * 0.45) repeat(4, minmax(max-content, 1fr));
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.proto-palette__head {
+  color: var(--color-fg-on-surface-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* A color token sample. */
+.proto-swatch {
+  flex: none;
+  inline-size: var(--sizing-xl);
+  block-size: var(--sizing-xl);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-sm);
+}
+
+.proto-swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(var(--sizing-8xl) * 0.5), 1fr));
+  gap: var(--spacing-sm);
+}
+
+.proto-swatches__item {
+  display: grid;
+  gap: var(--spacing-2xs);
+}
+
+.proto-swatches__item .proto-swatch {
+  inline-size: 100%;
+}
+
+.proto-swatches__name {
+  color: var(--color-fg-on-surface-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  overflow-wrap: anywhere;
+}
+
+/* Playground gallery: component cards two per row; wide ones span the row. */
+.proto-demos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(calc(var(--sizing-8xl) * 1.6), 100%), 1fr));
+  align-items: start;
+  gap: var(--spacing-lg);
+}
+
+.proto-demos > * {
+  min-inline-size: 0;
+}
+
+.proto-demos--four {
+  grid-template-columns: repeat(auto-fit, minmax(min(calc(var(--sizing-8xl) * 0.9), 100%), 1fr));
+}
+
+.proto-demo--wide {
+  grid-column: 1 / -1;
+}
+
+/* A row where the last card grows to fill the space next to the one before it. */
+.proto-fill-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+}
+
+.proto-fill-row > * {
+  flex: 0 1 calc(var(--sizing-8xl) * 1.6);
+  min-inline-size: 0;
+}
+
+.proto-fill-row > .proto-demo--fill {
+  flex: 1 1 calc(var(--sizing-8xl) * 1.6);
+}
+
+.proto-variant-label {
+  color: var(--color-fg-on-surface-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+}
+
+.proto-demos--three {
+  grid-template-columns: repeat(auto-fit, minmax(min(calc(var(--sizing-8xl) * 1.2), 100%), 1fr));
+}
+
+.proto-demos--two {
+  grid-template-columns: repeat(auto-fit, minmax(min(calc(var(--sizing-8xl) * 1.6), 100%), 1fr));
+}
+
+/* Product cards keep their own width, side by side. */
+.proto-product-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+}
+
+/* Palettes, as on the docs Colors page: family name, then one swatch per step. */
+.proto-palette-rows {
+  display: grid;
+  gap: var(--spacing-sm);
+}
+
+.proto-palette-row {
+  display: grid;
+  grid-template-columns: calc(var(--sizing-8xl) * 0.4) repeat(10, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--spacing-sm);
+}
+
+.proto-palette-row__name {
+  align-self: center;
+  color: var(--color-fg-on-surface-secondary);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-sm);
+}
+
+.proto-palette-swatch {
+  display: grid;
+  align-content: space-between;
+  min-block-size: var(--sizing-3xl);
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.proto-palette-swatch__hex {
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-regular);
+  overflow-wrap: anywhere;
+}
+
+@media (width < 48rem) {
+  .proto-palette-row {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .proto-palette-row__name {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Playground categories sit three times the section spacing apart. */
+.proto-categories {
+  display: grid;
+  gap: calc(3 * var(--spacing-3xl));
+}
+
+/* Cards flow top to bottom in columns, so a short card doesn't leave a gap below it. */
+.proto-masonry {
+  column-width: calc(var(--sizing-8xl) * 1.6);
+  column-gap: var(--spacing-lg);
+}
+
+.proto-masonry > * {
+  break-inside: avoid;
+  margin-block-end: var(--spacing-lg);
+}
+
+/* Patterns: product cards at their own width, apps notifications and meetings beside them. */
+.proto-patterns-row {
+  display: grid;
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+.proto-patterns-row > * {
+  min-inline-size: 0;
+}
+
+/* Apps notifications and meetings side by side. */
+.proto-patterns-side {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(calc(var(--sizing-8xl) * 1.1), 100%), 1fr));
+  align-items: start;
+  gap: var(--spacing-lg);
+}
+
+/* Very wide screens: both product cards, then apps and meetings, all in one row. */
+@media (width >= 96rem) {
+  .proto-patterns-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .proto-patterns-row .proto-product-row {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Theme panel: tighter segmented options, so every axis fits on one line. */
+.proto-axis-group {
+  --button-small-padding-x: var(--spacing-md);
+}
+
+/* Patterns: products, apps and meetings in a row; header and footer under products and apps. */
+.proto-patterns {
+  display: grid;
+  grid-template-areas: 'products' 'apps' 'meetings' 'header';
+  align-items: start;
+  gap: var(--spacing-lg);
+}
+
+.proto-patterns > * {
+  min-inline-size: 0;
+}
+
+.proto-area--products {
+  grid-area: products;
+}
+
+.proto-area--apps {
+  grid-area: apps;
+}
+
+.proto-area--meetings {
+  grid-area: meetings;
+}
+
+.proto-area--header {
+  grid-area: header;
+}
+
+@media (width >= 80rem) {
+  .proto-patterns {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      'products products'
+      'apps meetings'
+      'header header';
+  }
+}
+
+@media (width >= 96rem) {
+  .proto-patterns {
+    grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      'products apps meetings'
+      'header header meetings';
+  }
+
+  .proto-patterns .proto-product-row {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Category titles use the brand text color, so they stand apart from section titles. */
+.proto-categories .proto-title {
+  color: var(--color-fg-on-accent-primary-text-default);
 }

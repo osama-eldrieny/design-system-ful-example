@@ -1,14 +1,6 @@
 import { forwardRef, type ReactNode } from 'react';
 import { Star } from 'lucide-react';
-import {
-  Card,
-  CardBody,
-  CardDescription,
-  CardFooter,
-  CardMedia,
-  CardTitle,
-  type CardProps,
-} from '../Card';
+import { Card, CardBody, CardDescription, CardMedia, CardTitle, type CardProps } from '../Card';
 import './ProductCard.css';
 
 export interface ProductCardProps extends Omit<CardProps, 'children' | 'title'> {
@@ -62,8 +54,6 @@ export const ProductCard = forwardRef<HTMLElement, ProductCardProps>(
         {/* The title names the product, so the photo is decorative here. */}
         <CardMedia src={imageUrl} alt="" />
         <CardBody>
-          <CardTitle>{title}</CardTitle>
-          {description && <CardDescription>{description}</CardDescription>}
           {rating !== undefined && (
             <div className="ds-product-card__rating">
               <span
@@ -86,17 +76,22 @@ export const ProductCard = forwardRef<HTMLElement, ProductCardProps>(
               )}
             </div>
           )}
-          <p className="ds-product-card__prices">
-            <span className="ds-product-card__price">{price}</span>
-            {oldPrice && (
-              <del className="ds-product-card__old-price">
-                <span className="ds-product-card__hidden">{labels.was ?? 'Was'} </span>
-                {oldPrice}
-              </del>
-            )}
-          </p>
+          <CardTitle>{title}</CardTitle>
+          {description && <CardDescription>{description}</CardDescription>}
+          {/* Price at the start, the action (e.g. Add to cart) at the end of the same row. */}
+          <div className="ds-product-card__footer">
+            <p className="ds-product-card__prices">
+              <span className="ds-product-card__price">{price}</span>
+              {oldPrice && (
+                <del className="ds-product-card__old-price">
+                  <span className="ds-product-card__hidden">{labels.was ?? 'Was'} </span>
+                  {oldPrice}
+                </del>
+              )}
+            </p>
+            {actions && <div className="ds-product-card__actions">{actions}</div>}
+          </div>
         </CardBody>
-        {actions && <CardFooter>{actions}</CardFooter>}
       </Card>
     );
   },

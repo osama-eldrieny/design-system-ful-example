@@ -22,6 +22,16 @@
   gap: var(--header-avatar-margin-bottom);
 }
 
+.ds-header--horizontal {
+  flex-flow: row wrap;
+  justify-content: space-between;
+  text-align: start;
+}
+
+.ds-header--horizontal .ds-header__person {
+  flex-direction: row;
+}
+
 .ds-header__text {
   display: flex;
   flex-direction: column;

@@ -297,5 +297,12 @@ import { X } from 'lucide-react';
       date: '2025',
       changes: ['First version: primary and secondary, filled and text, small and medium.'],
     },
+    {
+      version: '1.1.0',
+      date: '2026-09-30',
+      changes: [
+        'Filled buttons in dark mode use a darker fill with light text (new --color-bg-accent-{tone}-strong-* roles); AA contrast in every brand.',
+      ],
+    },
   ],
 });

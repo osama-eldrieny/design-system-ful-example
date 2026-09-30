@@ -25,6 +25,10 @@ export const WithoutPhoto: Story = {
   args: { avatar: undefined, name: 'Sarah Chen', jobTitle: 'Head of Products' },
 };
 
+export const Horizontal: Story = {
+  args: { layout: 'horizontal' },
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: {

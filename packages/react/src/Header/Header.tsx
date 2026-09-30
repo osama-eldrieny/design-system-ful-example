@@ -13,6 +13,11 @@ export interface HeaderProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> 
   avatar?: string;
   /** Heading level. Default h1, since this usually opens the page. */
   headingAs?: 'h1' | 'h2' | 'h3';
+  /**
+   * `vertical` (default): photo, name and heading stacked and centered. `horizontal`: photo
+   * and name at the start, the heading at the end of one row; stacks again on narrow screens.
+   */
+  layout?: 'vertical' | 'horizontal';
 }
 
 /**
@@ -20,8 +25,26 @@ export interface HeaderProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> 
  * page heading. Use it once, at the top of a portfolio or profile page.
  */
 export const Header = forwardRef<HTMLElement, HeaderProps>(
-  ({ name, jobTitle, heading, avatar, headingAs: Heading = 'h1', className, ...props }, ref) => (
-    <header ref={ref} className={['ds-header', className].filter(Boolean).join(' ')} {...props}>
+  (
+    {
+      name,
+      jobTitle,
+      heading,
+      avatar,
+      headingAs: Heading = 'h1',
+      layout = 'vertical',
+      className,
+      ...props
+    },
+    ref,
+  ) => (
+    <header
+      ref={ref}
+      className={['ds-header', layout === 'horizontal' && 'ds-header--horizontal', className]
+        .filter(Boolean)
+        .join(' ')}
+      {...props}
+    >
       <div className="ds-header__person">
         {/* Decorative: the name is right next to it. */}
         <Avatar name={name} src={avatar} size="xlarge" decorative />
