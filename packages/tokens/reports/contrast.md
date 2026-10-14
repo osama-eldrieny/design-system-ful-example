@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 387 | 387 | 0 |
-| diamond-dark | 387 | 387 | 0 |
-| amber-light | 387 | 387 | 0 |
-| amber-dark | 387 | 387 | 0 |
-| opal-light | 387 | 387 | 0 |
-| opal-dark | 387 | 387 | 0 |
+| diamond-light | 389 | 389 | 0 |
+| diamond-dark | 389 | 389 | 0 |
+| amber-light | 389 | 389 | 0 |
+| amber-dark | 389 | 389 | 0 |
+| opal-light | 389 | 389 | 0 |
+| opal-dark | 389 | 389 | 0 |
 
 ## Failures (0)
 
@@ -259,6 +259,8 @@ None.
 | diamond-light | `--card-old-price-font-color` | `--card-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--card-new-price-font-color` | `--card-bg-color` | #5637b5 on #fff | 8.05:1 | 4.5:1 |
 | diamond-light | `--card-stars-empty-icon-color` | `--card-bg-color` | #916dff on #fff | 3.60:1 | 3:1 |
+| diamond-light | `--chart-tooltip-text-color` | `--chart-tooltip-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--chart-tooltip-label-text-color` | `--chart-tooltip-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
@@ -646,6 +648,8 @@ None.
 | diamond-dark | `--card-old-price-font-color` | `--card-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--card-new-price-font-color` | `--card-bg-color` | #c5b2ff on #24202d | 8.48:1 | 4.5:1 |
 | diamond-dark | `--card-stars-empty-icon-color` | `--card-bg-color` | #916dff on #24202d | 4.42:1 | 3:1 |
+| diamond-dark | `--chart-tooltip-text-color` | `--chart-tooltip-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--chart-tooltip-label-text-color` | `--chart-tooltip-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
@@ -1033,6 +1037,8 @@ None.
 | amber-light | `--card-old-price-font-color` | `--card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--card-new-price-font-color` | `--card-bg-color` | #6f5232 on #fff | 7.17:1 | 4.5:1 |
 | amber-light | `--card-stars-empty-icon-color` | `--card-bg-color` | #a57a4b on #fff | 3.83:1 | 3:1 |
+| amber-light | `--chart-tooltip-text-color` | `--chart-tooltip-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--chart-tooltip-label-text-color` | `--chart-tooltip-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
@@ -1420,6 +1426,8 @@ None.
 | amber-dark | `--card-old-price-font-color` | `--card-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--card-new-price-font-color` | `--card-bg-color` | #f0e4d7 on #1e140d | 14.46:1 | 4.5:1 |
 | amber-dark | `--card-stars-empty-icon-color` | `--card-bg-color` | #a57a4b on #1e140d | 4.72:1 | 3:1 |
+| amber-dark | `--chart-tooltip-text-color` | `--chart-tooltip-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--chart-tooltip-label-text-color` | `--chart-tooltip-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
@@ -1807,6 +1815,8 @@ None.
 | opal-light | `--card-old-price-font-color` | `--card-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--card-new-price-font-color` | `--card-bg-color` | #224a8c on #fff | 8.66:1 | 4.5:1 |
 | opal-light | `--card-stars-empty-icon-color` | `--card-bg-color` | #3b82f6 on #fff | 3.68:1 | 3:1 |
+| opal-light | `--chart-tooltip-text-color` | `--chart-tooltip-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--chart-tooltip-label-text-color` | `--chart-tooltip-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--choose-card-title-font-color` | `--choose-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--choose-card-price-font-color` | `--choose-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
@@ -2194,6 +2204,8 @@ None.
 | opal-dark | `--card-old-price-font-color` | `--card-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--card-new-price-font-color` | `--card-bg-color` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
 | opal-dark | `--card-stars-empty-icon-color` | `--card-bg-color` | #5e99f8 on #292d3e | 4.80:1 | 3:1 |
+| opal-dark | `--chart-tooltip-text-color` | `--chart-tooltip-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--chart-tooltip-label-text-color` | `--chart-tooltip-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--choose-card-title-font-color` | `--choose-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--choose-card-price-font-color` | `--choose-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--choose-card-desc-font-color` | `--choose-card-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |

@@ -1,0 +1,270 @@
+/**
+ * Charts (LineChart, AreaChart, BarChart, DonutChart, RadarChart, Sparkline). Styled only with
+ * --chart-* tokens. Each mark sets `color` to its series token and paints with currentcolor.
+ */
+
+.ds-chart {
+  display: flex;
+  flex-direction: column;
+  gap: var(--chart-gap);
+  min-inline-size: 0;
+  margin: 0;
+  font-family: var(--chart-font-family);
+}
+
+.ds-chart--donut,
+.ds-chart--radar {
+  align-items: center;
+}
+
+.ds-chart__caption {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.ds-chart__title {
+  color: var(--chart-center-value-text-color);
+  font-size: var(--chart-legend-font-size);
+  font-weight: var(--chart-center-value-font-weight);
+  line-height: var(--chart-legend-font-line-height);
+}
+
+.ds-chart__description {
+  color: var(--chart-legend-text-color);
+  font-size: var(--chart-legend-font-size);
+  line-height: var(--chart-legend-font-line-height);
+}
+
+.ds-chart__plot {
+  position: relative;
+  inline-size: 100%;
+  min-inline-size: 0;
+  border-radius: var(--chart-tooltip-border-radius);
+  touch-action: pan-y;
+}
+
+.ds-chart__plot--donut {
+  inline-size: auto;
+}
+
+.ds-chart__plot:focus-visible {
+  outline: var(--chart-focus-ring-width) solid var(--chart-focus-ring-color);
+  outline-offset: var(--chart-focus-ring-offset);
+}
+
+.ds-chart__svg {
+  display: block;
+  overflow: visible;
+}
+
+.ds-chart__grid {
+  stroke: var(--chart-grid-color);
+  stroke-width: var(--chart-grid-width);
+  shape-rendering: crispedges;
+}
+
+.ds-chart__grid--polygon {
+  fill: none;
+}
+
+.ds-chart__axis {
+  fill: var(--chart-axis-text-color);
+  font-family: var(--chart-axis-font-family);
+  font-size: var(--chart-axis-font-size);
+  line-height: var(--chart-axis-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-chart__crosshair {
+  stroke: var(--chart-crosshair-color);
+  stroke-width: var(--chart-grid-width);
+  stroke-dasharray: 4 4;
+}
+
+.ds-chart__line {
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: var(--chart-line-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ds-chart__area {
+  fill: currentcolor;
+  fill-opacity: var(--chart-area-opacity);
+  stroke: none;
+}
+
+.ds-chart__dot {
+  r: calc(var(--chart-dot-size) / 2);
+  fill: currentcolor;
+  stroke: var(--chart-dot-ring-color);
+  stroke-width: 2;
+}
+
+.ds-chart__bar {
+  fill: currentcolor;
+  rx: var(--chart-bar-border-radius);
+}
+
+.ds-chart__band {
+  fill: var(--chart-donut-track-color);
+}
+
+.ds-chart__donut-track {
+  fill: none;
+  stroke: var(--chart-donut-track-color);
+}
+
+.ds-chart__slice {
+  fill: currentcolor;
+  stroke: var(--chart-donut-gap-color);
+  stroke-width: 2;
+  transition: opacity var(--chart-transition-duration) var(--chart-transition-easing);
+}
+
+.ds-chart__slice--dim {
+  opacity: var(--chart-radar-fill-opacity);
+}
+
+.ds-chart__radar {
+  fill: currentcolor;
+  fill-opacity: var(--chart-radar-fill-opacity);
+  stroke: currentcolor;
+  stroke-width: var(--chart-line-width);
+  stroke-linejoin: round;
+}
+
+.ds-chart__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  text-align: center;
+}
+
+.ds-chart__center-value {
+  color: var(--chart-center-value-text-color);
+  font-size: var(--chart-center-value-font-size);
+  font-weight: var(--chart-center-value-font-weight);
+  line-height: var(--chart-center-value-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-chart__center-label {
+  color: var(--chart-center-label-text-color);
+  font-size: var(--chart-legend-font-size);
+  line-height: var(--chart-legend-font-line-height);
+}
+
+.ds-chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--chart-legend-item-gap) var(--chart-legend-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--chart-legend-text-color);
+  font-size: var(--chart-legend-font-size);
+  line-height: var(--chart-legend-font-line-height);
+}
+
+.ds-chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--chart-legend-item-gap);
+}
+
+.ds-chart__legend-marker {
+  flex: none;
+  inline-size: var(--chart-legend-marker-size);
+  block-size: var(--chart-legend-marker-size);
+  border-radius: 50%;
+}
+
+.ds-chart__tooltip {
+  position: absolute;
+  inset-block-start: 0;
+  z-index: var(--chart-tooltip-z-index);
+  display: flex;
+  flex-direction: column;
+  gap: var(--chart-tooltip-gap);
+  min-inline-size: max-content;
+  padding-block: var(--chart-tooltip-padding-y);
+  padding-inline: var(--chart-tooltip-padding-x);
+  border: var(--chart-tooltip-border-width) solid var(--chart-tooltip-border-color);
+  border-radius: var(--chart-tooltip-border-radius);
+  background-color: var(--chart-tooltip-bg-color);
+  box-shadow: 0 var(--chart-tooltip-shadow-y) var(--chart-tooltip-shadow-blur)
+    var(--chart-tooltip-shadow-color);
+  color: var(--chart-tooltip-text-color);
+  font-size: var(--chart-tooltip-font-size);
+  line-height: var(--chart-tooltip-font-line-height);
+  pointer-events: none;
+}
+
+.ds-chart__tooltip-title {
+  font-weight: var(--chart-center-value-font-weight);
+}
+
+.ds-chart__tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: var(--chart-legend-item-gap);
+}
+
+.ds-chart__tooltip-label {
+  color: var(--chart-tooltip-label-text-color);
+}
+
+.ds-chart__tooltip-value {
+  margin-inline-start: auto;
+  padding-inline-start: var(--chart-legend-gap);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-chart__hidden {
+  position: absolute;
+  inline-size: var(--chart-hidden-size);
+  block-size: var(--chart-hidden-size);
+  margin: calc(-1 * var(--chart-hidden-size));
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Sparkline */
+.ds-sparkline {
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.ds-sparkline > svg {
+  display: block;
+  overflow: visible;
+}
+
+.ds-sparkline__line {
+  fill: none;
+  stroke: currentcolor;
+  stroke-width: var(--chart-sparkline-line-width);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (forced-colors: active) {
+  .ds-chart__line,
+  .ds-sparkline__line,
+  .ds-chart__radar {
+    stroke: CanvasText;
+  }
+
+  .ds-chart__bar,
+  .ds-chart__slice {
+    fill: CanvasText;
+  }
+}

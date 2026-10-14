@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { AreaChart, BarChart, DonutChart, LineChart, RadarChart, Sparkline } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Chart/Chart.stories';
+import meta from '../../../../packages/react/src/Chart/Chart.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Charts
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[LineChart, AreaChart, BarChart, DonutChart, RadarChart, Sparkline]}
+  anatomy={{
+    targets: ['.ds-chart__caption', '.ds-chart__plot', '.ds-chart__legend'],
+    example: (
+      <BarChart
+        title="Orders"
+        description="Orders per quarter"
+        data={[
+          { q: 'Q1', web: 120, store: 80 },
+          { q: 'Q2', web: 160, store: 90 },
+          { q: 'Q3', web: 140, store: 110 },
+        ]}
+        xKey="q"
+        series={[
+          { key: 'web', label: 'Web' },
+          { key: 'store', label: 'Store' },
+        ]}
+        height={180}
+      />
+    ),
+  }}
+  optionStories={{ chart: 'Bars', 'series.color': 'Area' }}
+  behaviorStory="RightToLeft"
+  matrix={<Sparkline data={[3, 5, 4, 7, 6, 9]} />}
+/>

@@ -1,0 +1,87 @@
+/**
+ * Component tokens: chart (LineChart, BarChart, DonutChart, RadarChart, Sparkline)
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --chart-{part}-{state?}-{property}
+ *   part: series-{n} (1–8) | grid | axis | tooltip | legend | line | bar | area | donut | dot.
+ *   Series colors follow --color-chart-{n} (themes/palette.css): brand first, then category hues.
+ *   Stroke widths and opacities are unitless SVG values.
+ */
+
+:root,
+[data-theme] {
+  /* Series */
+  --chart-series-1-color: var(--color-chart-1);
+  --chart-series-2-color: var(--color-chart-2);
+  --chart-series-3-color: var(--color-chart-3);
+  --chart-series-4-color: var(--color-chart-4);
+  --chart-series-5-color: var(--color-chart-5);
+  --chart-series-6-color: var(--color-chart-6);
+  --chart-series-7-color: var(--color-chart-7);
+  --chart-series-8-color: var(--color-chart-8);
+  --chart-positive-color: var(--color-chart-positive);
+  --chart-negative-color: var(--color-chart-negative);
+
+  /* Grid and axes */
+  --chart-grid-color: var(--color-chart-grid);
+  --chart-grid-width: 1;
+  --chart-axis-text-color: var(--color-chart-axis);
+  --chart-axis-font-family: var(--font-family-body);
+  --chart-axis-font-size: var(--font-size-xs);
+  --chart-axis-font-line-height: var(--font-line-height-xs);
+  --chart-crosshair-color: var(--color-border-field);
+
+  /* Marks */
+  --chart-line-width: 2;
+  --chart-sparkline-line-width: 2;
+  --chart-area-opacity: 0.16;
+  --chart-dot-size: var(--sizing-3xs);
+  --chart-dot-ring-color: var(--color-bg-surface);
+  --chart-bar-border-radius: var(--radius-xs);
+  --chart-donut-track-color: var(--color-bg-default);
+  --chart-donut-gap-color: var(--color-bg-surface);
+  --chart-radar-fill-opacity: 0.2;
+
+  /* Center label of donut charts */
+  --chart-center-value-text-color: var(--color-fg-on-surface-primary);
+  --chart-center-value-font-size: var(--font-size-2xl);
+  --chart-center-value-font-line-height: var(--font-line-height-2xl);
+  --chart-center-value-font-weight: var(--font-weight-semi-bold);
+  --chart-center-label-text-color: var(--color-fg-on-surface-secondary);
+
+  /* Legend */
+  --chart-legend-text-color: var(--color-fg-on-surface-secondary);
+  --chart-legend-font-size: var(--font-size-sm);
+  --chart-legend-font-line-height: var(--font-line-height-sm);
+  --chart-legend-gap: var(--spacing-md);
+  --chart-legend-item-gap: var(--spacing-2xs);
+  --chart-legend-marker-size: var(--sizing-3xs);
+
+  /* Tooltip */
+  --chart-tooltip-bg-color: var(--color-bg-surface);
+  --chart-tooltip-text-color: var(--color-fg-on-surface-primary);
+  --chart-tooltip-label-text-color: var(--color-fg-on-surface-secondary);
+  --chart-tooltip-border-color: var(--color-border-base);
+  --chart-tooltip-border-width: var(--border-width-hairline);
+  --chart-tooltip-border-radius: var(--radius-lg);
+  --chart-tooltip-padding-x: var(--spacing-sm);
+  --chart-tooltip-padding-y: var(--spacing-xs);
+  --chart-tooltip-gap: var(--spacing-3xs);
+  --chart-tooltip-font-size: var(--font-size-sm);
+  --chart-tooltip-font-line-height: var(--font-line-height-sm);
+  --chart-tooltip-shadow-y: var(--shadow-2xs);
+  --chart-tooltip-shadow-blur: var(--shadow-xs);
+  --chart-tooltip-shadow-color: var(--color-shadow-surface);
+  --chart-tooltip-z-index: var(--z-tooltip);
+
+  /* Frame */
+  --chart-gap: var(--spacing-md);
+  --chart-font-family: var(--font-family-body);
+  --chart-focus-ring-width: var(--focus-ring-width);
+  --chart-focus-ring-offset: var(--focus-ring-offset);
+  --chart-focus-ring-color: var(--focus-ring-color);
+  --chart-hidden-size: var(--border-width-hairline);
+  --chart-transition-duration: var(--duration-fast);
+  --chart-transition-easing: var(--easing-standard);
+}
