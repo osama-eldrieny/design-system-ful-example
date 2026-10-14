@@ -32,6 +32,13 @@
   --switch-description-font-line-height: var(--font-line-height-sm);
   --switch-description-text-color: var(--color-fg-on-surface-secondary);
 
+  /* Small size */
+  --switch-small-width: var(--sizing-xl-minus);
+  --switch-small-height: var(--sizing-sm-plus);
+  --switch-small-thumb-size: var(--sizing-xs);
+  --switch-small-label-font-size: var(--font-size-sm);
+  --switch-small-label-font-line-height: var(--font-line-height-sm);
+
   /* Focus, motion, disabled */
   --switch-focus-ring-width: var(--focus-ring-width);
   --switch-focus-ring-offset: var(--focus-ring-offset);

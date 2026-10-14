@@ -1,0 +1,51 @@
+/**
+ * Component tokens: verification-code-input
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --verification-code-input-{size?}-{state?}-{property}
+ *   size: small | medium | large; state: default | hover | focus | error | disabled.
+ */
+
+:root,
+[data-theme] {
+  /* Digit boxes */
+  --verification-code-input-default-bg-color: var(--color-bg-surface);
+  --verification-code-input-default-text-color: var(--color-fg-on-accent-primary-text-default);
+  --verification-code-input-placeholder-text-color: var(--color-fg-on-surface-secondary);
+  --verification-code-input-default-border-color: var(--color-border-field);
+  --verification-code-input-hover-border-color: var(--color-border-primary-strong);
+  --verification-code-input-focus-border-color: var(--color-border-primary-strong);
+  --verification-code-input-error-border-color: var(--color-border-danger-strong);
+  --verification-code-input-border-width: var(--border-width-hairline);
+  --verification-code-input-border-radius: var(--radius-lg);
+  --verification-code-input-font-family: var(--font-family-body);
+  --verification-code-input-font-weight: var(--font-weight-medium);
+  --verification-code-input-focus-ring-width: var(--focus-ring-width);
+  --verification-code-input-focus-ring-color: var(--focus-ring-color);
+  --verification-code-input-disabled-opacity: var(--opacity-medium);
+
+  /* Sizes */
+  --verification-code-input-small-size: var(--sizing-2xl-plus);
+  --verification-code-input-small-font-size: var(--font-size-3xl);
+  --verification-code-input-small-font-line-height: var(--font-line-height-3xl);
+  --verification-code-input-medium-size: var(--sizing-3xl);
+  --verification-code-input-medium-font-size: var(--font-size-4xl);
+  --verification-code-input-medium-font-line-height: var(--font-line-height-4xl);
+  --verification-code-input-large-size: var(--sizing-4xl);
+  --verification-code-input-large-font-size: var(--font-size-5xl);
+  --verification-code-input-large-font-line-height: var(--font-line-height-5xl);
+
+  /* Layout, separator, label and messages */
+  --verification-code-input-gap: var(--spacing-xs);
+  --verification-code-input-field-gap: var(--spacing-2xs);
+  --verification-code-input-separator-text-color: var(--color-fg-on-surface-secondary);
+  --verification-code-input-label-text-color: var(--color-fg-on-surface-primary);
+  --verification-code-input-label-font-size: var(--font-size-md);
+  --verification-code-input-label-font-line-height: var(--font-line-height-md);
+  --verification-code-input-label-font-weight: var(--font-weight-medium);
+  --verification-code-input-description-text-color: var(--color-fg-on-surface-secondary);
+  --verification-code-input-error-text-color: var(--color-fg-on-accent-danger-text-default);
+  --verification-code-input-message-font-size: var(--font-size-sm);
+  --verification-code-input-message-font-line-height: var(--font-line-height-sm);
+}

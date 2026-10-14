@@ -35,6 +35,14 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: 'Dense settings lists and table rows.' },
+        { value: 'medium', meaning: 'Default.' },
+      ],
+    },
+    {
       prop: 'labelPosition',
       title: 'Label position',
       values: [
@@ -167,6 +175,7 @@ export default defineMeta({
     { id: 'radio-group', relation: 'Use to pick one option from several.' },
   ],
   changelog: [
+    { version: '1.1.0', date: '2026-10-15', changes: ['size: small.'] },
     {
       version: '0.2.0',
       date: '2026-09-29',

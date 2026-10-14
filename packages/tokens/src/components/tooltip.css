@@ -21,4 +21,11 @@
   --tooltip-border-radius: var(--radius-xs);
   --tooltip-duration: var(--duration-fast);
   --tooltip-easing: var(--easing-enter);
+
+  /* With a title: a bold line above supporting text */
+  --tooltip-rich-gap: var(--spacing-3xs);
+  --tooltip-rich-padding-x: var(--spacing-sm);
+  --tooltip-rich-padding-y: var(--spacing-xs);
+  --tooltip-title-font-weight: var(--font-weight-semi-bold);
+  --tooltip-supporting-text-color: var(--color-bg-default);
 }

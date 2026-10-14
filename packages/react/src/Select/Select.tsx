@@ -3,6 +3,8 @@ import * as SelectPrimitive from '@radix-ui/react-select';
 import { Check, ChevronDown } from 'lucide-react';
 import { FormField } from '../FormField';
 import { usePortalThemeAttributes } from '../ThemeProvider';
+import { Avatar } from '../Avatar';
+import type { BadgeColor } from '../Badge';
 import './Select.css';
 
 export type SelectSize = 'small' | 'medium' | 'large';
@@ -126,17 +128,37 @@ export interface SelectItemProps extends Omit<
   value: string;
   /** Option text; also used for typeahead. */
   children: ReactNode;
+  /** Decorative icon before the text; also shown in the trigger when selected. */
+  icon?: ReactNode;
+  /** A person's picture (with initials fallback) before the text. */
+  avatar?: { name: string; src?: string };
+  /** A status dot before the text, in a meaning or category color. */
+  dot?: BadgeColor;
+  /** Secondary text after the label, e.g. a username or an email. */
+  supportingText?: ReactNode;
 }
 
 /** One option. The selected option shows a tick. */
 export const SelectItem = forwardRef<HTMLDivElement, SelectItemProps>(
-  ({ className, children, ...props }, ref) => (
+  ({ className, children, icon, avatar, dot, supportingText, ...props }, ref) => (
     <SelectPrimitive.Item
       ref={ref}
       className={['ds-select__item', className].filter(Boolean).join(' ')}
       {...props}
     >
-      <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemText>
+        <span className="ds-select__item-content">
+          {dot && <span className={`ds-select__dot ds-select__dot--${dot}`} aria-hidden="true" />}
+          {avatar && <Avatar {...avatar} size="xsmall" decorative />}
+          {icon && (
+            <span className="ds-select__item-icon" aria-hidden="true">
+              {icon}
+            </span>
+          )}
+          <span>{children}</span>
+          {supportingText && <span className="ds-select__supporting">{supportingText}</span>}
+        </span>
+      </SelectPrimitive.ItemText>
       <SelectPrimitive.ItemIndicator className="ds-select__indicator">
         <Check aria-hidden="true" />
       </SelectPrimitive.ItemIndicator>

@@ -121,5 +121,8 @@ import { Trash2 } from 'lucide-react';
     { id: 'popover', relation: 'For interactive or longer content.' },
     { id: 'button', relation: 'IconButton needs a label and often a tooltip.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    { version: '1.1.0', date: '2026-10-15', changes: ['title and arrow.'] },
+  ],
 });

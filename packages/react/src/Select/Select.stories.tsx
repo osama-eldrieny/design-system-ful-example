@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, fn, screen, userEvent, waitFor } from 'storybook/test';
+import { Mail, MessageSquare, Webhook } from 'lucide-react';
 import { ThemeProvider } from '../ThemeProvider';
 import { Select, SelectGroup, SelectItem, SelectSeparator } from './Select';
 
@@ -82,6 +83,48 @@ export const Groups: Story = {
       </>
     ),
   },
+};
+
+/** Options with an avatar, icon or status dot, and supporting text. They show in the trigger too. */
+export const RichOptions: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16, maxInlineSize: 360 }}>
+      <Select label="Assignee" defaultValue="olivia">
+        <SelectItem
+          value="olivia"
+          avatar={{ name: 'Olivia Rhye', src: 'assets/avatar-2.png' }}
+          supportingText="@olivia"
+        >
+          Olivia Rhye
+        </SelectItem>
+        <SelectItem value="phoenix" avatar={{ name: 'Phoenix Baker' }} supportingText="@phoenix">
+          Phoenix Baker
+        </SelectItem>
+      </Select>
+      <Select label="Status" defaultValue="active">
+        <SelectItem value="active" dot="success">
+          Active
+        </SelectItem>
+        <SelectItem value="paused" dot="warning">
+          Paused
+        </SelectItem>
+        <SelectItem value="archived" dot="gray">
+          Archived
+        </SelectItem>
+      </Select>
+      <Select label="Integration" defaultValue="chat">
+        <SelectItem value="chat" icon={<MessageSquare />}>
+          Chat
+        </SelectItem>
+        <SelectItem value="email" icon={<Mail />}>
+          Email
+        </SelectItem>
+        <SelectItem value="webhook" icon={<Webhook />}>
+          Webhook
+        </SelectItem>
+      </Select>
+    </div>
+  ),
 };
 
 export const RightToLeft: Story = {

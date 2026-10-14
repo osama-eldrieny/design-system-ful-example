@@ -13,16 +13,40 @@
   flex-direction: row-reverse;
 }
 
+.ds-switch__track,
+.ds-switch {
+  --_w: var(--switch-width);
+  --_h: var(--switch-height);
+  --_thumb: var(--switch-thumb-size);
+  --_label-size: var(--switch-label-font-size);
+  --_label-line: var(--switch-label-font-line-height);
+}
+
+.ds-switch__track.ds-switch--small,
+.ds-switch--small {
+  --_w: var(--switch-small-width);
+  --_h: var(--switch-small-height);
+  --_thumb: var(--switch-small-thumb-size);
+  --_label-size: var(--switch-small-label-font-size);
+  --_label-line: var(--switch-small-label-font-line-height);
+}
+
+.ds-switch--small .ds-switch__track {
+  --_w: var(--switch-small-width);
+  --_h: var(--switch-small-height);
+  --_thumb: var(--switch-small-thumb-size);
+}
+
 .ds-switch__track {
   --_bg: var(--switch-off-bg-color);
   --_bg-hover: var(--switch-off-hover-bg-color);
-  --_inset: calc((var(--switch-height) - var(--switch-thumb-size)) / 2);
-  --_travel: calc(var(--switch-width) - var(--switch-thumb-size) - 2 * var(--_inset));
+  --_inset: calc((var(--_h) - var(--_thumb)) / 2);
+  --_travel: calc(var(--_w) - var(--_thumb) - 2 * var(--_inset));
 
   position: relative;
   flex: none;
-  inline-size: var(--switch-width);
-  block-size: var(--switch-height);
+  inline-size: var(--_w);
+  block-size: var(--_h);
   padding: 0;
   border: 0;
   border-radius: var(--switch-border-radius);
@@ -55,8 +79,8 @@
   position: absolute;
   inset-block-start: var(--_inset);
   inset-inline-start: var(--_inset);
-  inline-size: var(--switch-thumb-size);
-  block-size: var(--switch-thumb-size);
+  inline-size: var(--_thumb);
+  block-size: var(--_thumb);
   border-radius: var(--switch-thumb-border-radius);
   background-color: var(--switch-thumb-color);
   transition: transform var(--switch-transition-duration) var(--switch-transition-easing);
@@ -78,8 +102,8 @@
 
 .ds-switch__label {
   font-family: var(--switch-label-font-family);
-  font-size: var(--switch-label-font-size);
-  line-height: var(--switch-label-font-line-height);
+  font-size: var(--_label-size);
+  line-height: var(--_label-line);
   font-weight: var(--switch-label-font-weight);
   color: var(--switch-label-text-color);
   cursor: pointer;

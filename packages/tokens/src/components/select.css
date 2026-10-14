@@ -82,4 +82,23 @@
   --select-transition-duration: var(--duration-fast);
   --select-transition-easing: var(--easing-enter);
   --select-disabled-opacity: var(--opacity-medium);
+
+  /* Item extras: icon, dot, supporting text */
+  --select-item-icon-color: var(--color-fg-on-surface-secondary);
+  --select-item-icon-size: var(--sizing-sm);
+  --select-item-supporting-text-color: var(--color-fg-on-surface-secondary);
+  --select-item-dot-size: var(--sizing-3xs);
+  --select-item-dot-primary-bg-color: var(--color-bg-accent-primary-default);
+  --select-item-dot-secondary-bg-color: var(--color-bg-accent-secondary-default);
+  --select-item-dot-success-bg-color: var(--color-bg-accent-success-default);
+  --select-item-dot-warning-bg-color: var(--color-bg-accent-warning-default);
+  --select-item-dot-danger-bg-color: var(--color-bg-accent-danger-default);
+  --select-item-dot-gray-bg-color: var(--color-dot-gray);
+  --select-item-dot-blue-bg-color: var(--color-dot-blue);
+  --select-item-dot-sky-bg-color: var(--color-dot-sky);
+  --select-item-dot-indigo-bg-color: var(--color-dot-indigo);
+  --select-item-dot-purple-bg-color: var(--color-dot-purple);
+  --select-item-dot-pink-bg-color: var(--color-dot-pink);
+  --select-item-dot-orange-bg-color: var(--color-dot-orange);
+  --select-item-dot-teal-bg-color: var(--color-dot-teal);
 }

@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 368 | 368 | 0 |
-| diamond-dark | 368 | 368 | 0 |
-| amber-light | 368 | 368 | 0 |
-| amber-dark | 368 | 368 | 0 |
-| opal-light | 368 | 368 | 0 |
-| opal-dark | 368 | 368 | 0 |
+| diamond-light | 371 | 371 | 0 |
+| diamond-dark | 371 | 371 | 0 |
+| amber-light | 371 | 371 | 0 |
+| amber-dark | 371 | 371 | 0 |
+| opal-light | 371 | 371 | 0 |
+| opal-dark | 371 | 371 | 0 |
 
 ## Failures (0)
 
@@ -312,6 +312,7 @@ None.
 | diamond-light | `--header-role-font-color` | `--header-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--hover-card-text-color` | `--hover-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--input-field-addon-text-color` | `--input-field-addon-bg-color` | #62626d on #f8f7fb | 5.65:1 | 4.5:1 |
 | diamond-light | `--kbd-text-color` | `--kbd-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--section-title-font-color` | `--section-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
@@ -392,6 +393,8 @@ None.
 | diamond-light | `--toast-warning-icon-color` | `--toast-bg-color` | #6b4f00 on #fff | 7.65:1 | 3:1 |
 | diamond-light | `--toast-danger-icon-color` | `--toast-bg-color` | #ad1c1c on #fff | 7.10:1 | 3:1 |
 | diamond-light | `--tooltip-text-color` | `--tooltip-bg-color` | #fff on #24242c | 15.40:1 | 4.5:1 |
+| diamond-light | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #f8f7fb on #24242c | 14.44:1 | 4.5:1 |
+| diamond-light | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #794dff on #fff | 4.86:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #ab8fff on #24202d | 6.14:1 | 4.5:1 |
@@ -680,6 +683,7 @@ None.
 | diamond-dark | `--header-role-font-color` | `--header-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--hover-card-text-color` | `--hover-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--input-field-addon-text-color` | `--input-field-addon-bg-color` | #acadb2 on #332e3c | 5.87:1 | 4.5:1 |
 | diamond-dark | `--kbd-text-color` | `--kbd-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--section-title-font-color` | `--section-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
@@ -760,6 +764,8 @@ None.
 | diamond-dark | `--toast-warning-icon-color` | `--toast-bg-color` | #f7dd91 on #24202d | 11.90:1 | 3:1 |
 | diamond-dark | `--toast-danger-icon-color` | `--toast-bg-color` | #faa2a2 on #24202d | 8.15:1 | 3:1 |
 | diamond-dark | `--tooltip-text-color` | `--tooltip-bg-color` | #24202d on #ececed | 13.48:1 | 4.5:1 |
+| diamond-dark | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #332e3c on #ececed | 11.14:1 | 4.5:1 |
+| diamond-dark | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #ab8fff on #24202d | 6.14:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #8a663e on #fff | 5.18:1 | 4.5:1 |
@@ -1048,6 +1054,7 @@ None.
 | amber-light | `--header-role-font-color` | `--header-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--hover-card-text-color` | `--hover-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--input-field-addon-text-color` | `--input-field-addon-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--kbd-text-color` | `--kbd-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--section-title-font-color` | `--section-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
@@ -1128,6 +1135,8 @@ None.
 | amber-light | `--toast-warning-icon-color` | `--toast-bg-color` | #6b4f00 on #fff | 7.65:1 | 3:1 |
 | amber-light | `--toast-danger-icon-color` | `--toast-bg-color` | #7d4150 on #fff | 7.65:1 | 3:1 |
 | amber-light | `--tooltip-text-color` | `--tooltip-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
+| amber-light | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #f9f5f1 on #6a625a | 5.52:1 | 4.5:1 |
+| amber-light | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #8a663e on #fff | 5.18:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #8a663e | 5.18:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #cda376 on #1e140d | 7.83:1 | 4.5:1 |
@@ -1416,6 +1425,7 @@ None.
 | amber-dark | `--header-role-font-color` | `--header-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--hover-card-text-color` | `--hover-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--input-field-addon-text-color` | `--input-field-addon-bg-color` | #f7efe7 on #2a1f16 | 14.13:1 | 4.5:1 |
 | amber-dark | `--kbd-text-color` | `--kbd-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--section-title-font-color` | `--section-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
@@ -1496,6 +1506,8 @@ None.
 | amber-dark | `--toast-warning-icon-color` | `--toast-bg-color` | #f7dd91 on #1e140d | 13.53:1 | 3:1 |
 | amber-dark | `--toast-danger-icon-color` | `--toast-bg-color` | #e5d4d8 on #1e140d | 12.70:1 | 3:1 |
 | amber-dark | `--tooltip-text-color` | `--tooltip-bg-color` | #1e140d on #fdfbf9 | 17.52:1 | 4.5:1 |
+| amber-dark | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #2a1f16 on #fdfbf9 | 15.58:1 | 4.5:1 |
+| amber-dark | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #cda376 on #1e140d | 7.83:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #2a5caf on #fff | 6.46:1 | 4.5:1 |
@@ -1784,6 +1796,7 @@ None.
 | opal-light | `--header-role-font-color` | `--header-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--hover-card-text-color` | `--hover-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--input-field-default-text-color` | `--input-field-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--input-field-addon-text-color` | `--input-field-addon-bg-color` | #676b83 on #f4f6fc | 4.85:1 | 4.5:1 |
 | opal-light | `--kbd-text-color` | `--kbd-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--section-title-font-color` | `--section-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
@@ -1864,6 +1877,8 @@ None.
 | opal-light | `--toast-warning-icon-color` | `--toast-bg-color` | #695103 on #fff | 7.56:1 | 3:1 |
 | opal-light | `--toast-danger-icon-color` | `--toast-bg-color` | #8b2436 on #fff | 8.74:1 | 3:1 |
 | opal-light | `--tooltip-text-color` | `--tooltip-bg-color` | #fff on #282b3b | 14.01:1 | 4.5:1 |
+| opal-light | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #f4f6fc on #282b3b | 12.97:1 | 4.5:1 |
+| opal-light | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #2a5caf on #fff | 6.46:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-text-default` | `--color-bg-surface` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
@@ -2152,6 +2167,7 @@ None.
 | opal-dark | `--header-role-font-color` | `--header-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--hover-card-text-color` | `--hover-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--input-field-default-text-color` | `--input-field-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--input-field-addon-text-color` | `--input-field-addon-bg-color` | #afb2be on #3d4460 | 4.53:1 | 4.5:1 |
 | opal-dark | `--kbd-text-color` | `--kbd-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--section-title-font-color` | `--section-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--meeting-card-primary-title-text-color` | `--meeting-card-primary-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
@@ -2232,3 +2248,5 @@ None.
 | opal-dark | `--toast-warning-icon-color` | `--toast-bg-color` | #f6de94 on #292d3e | 10.26:1 | 3:1 |
 | opal-dark | `--toast-danger-icon-color` | `--toast-bg-color` | #faacba on #292d3e | 7.59:1 | 3:1 |
 | opal-dark | `--tooltip-text-color` | `--tooltip-bg-color` | #292d3e on #ededf0 | 11.68:1 | 4.5:1 |
+| opal-dark | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #3d4460 on #ededf0 | 8.19:1 | 4.5:1 |
+| opal-dark | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |

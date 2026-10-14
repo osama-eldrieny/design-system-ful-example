@@ -72,4 +72,10 @@
   --input-field-transition-duration: var(--duration-fast);
   --input-field-transition-easing: var(--easing-standard);
   --input-field-disabled-opacity: var(--opacity-medium);
+
+  /* Prefix and suffix addons, hint icon */
+  --input-field-addon-bg-color: var(--color-bg-default);
+  --input-field-addon-text-color: var(--color-fg-on-surface-secondary);
+  --input-field-addon-border-color: var(--color-border-field);
+  --input-field-hint-icon-color: var(--color-fg-on-surface-secondary);
 }

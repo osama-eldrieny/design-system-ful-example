@@ -207,3 +207,89 @@
     transition: none;
   }
 }
+
+/* Item content: icon, avatar or dot, label, supporting text (also shown in the trigger) */
+.ds-select__item-content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--select-item-gap);
+  min-inline-size: 0;
+}
+
+.ds-select__item-icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--select-item-icon-color);
+}
+
+.ds-select__item-icon > svg {
+  inline-size: var(--select-item-icon-size);
+  block-size: var(--select-item-icon-size);
+}
+
+.ds-select__supporting {
+  overflow: hidden;
+  color: var(--select-item-supporting-text-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-select__dot {
+  flex: none;
+  inline-size: var(--select-item-dot-size);
+  block-size: var(--select-item-dot-size);
+  border-radius: 50%;
+  background-color: var(--_dot);
+}
+
+.ds-select__dot--primary {
+  --_dot: var(--select-item-dot-primary-bg-color);
+}
+
+.ds-select__dot--secondary {
+  --_dot: var(--select-item-dot-secondary-bg-color);
+}
+
+.ds-select__dot--success {
+  --_dot: var(--select-item-dot-success-bg-color);
+}
+
+.ds-select__dot--warning {
+  --_dot: var(--select-item-dot-warning-bg-color);
+}
+
+.ds-select__dot--danger {
+  --_dot: var(--select-item-dot-danger-bg-color);
+}
+
+.ds-select__dot--gray {
+  --_dot: var(--select-item-dot-gray-bg-color);
+}
+
+.ds-select__dot--blue {
+  --_dot: var(--select-item-dot-blue-bg-color);
+}
+
+.ds-select__dot--sky {
+  --_dot: var(--select-item-dot-sky-bg-color);
+}
+
+.ds-select__dot--indigo {
+  --_dot: var(--select-item-dot-indigo-bg-color);
+}
+
+.ds-select__dot--purple {
+  --_dot: var(--select-item-dot-purple-bg-color);
+}
+
+.ds-select__dot--pink {
+  --_dot: var(--select-item-dot-pink-bg-color);
+}
+
+.ds-select__dot--orange {
+  --_dot: var(--select-item-dot-orange-bg-color);
+}
+
+.ds-select__dot--teal {
+  --_dot: var(--select-item-dot-teal-bg-color);
+}

@@ -51,6 +51,9 @@
 
 .ds-choose-card[data-state='checked'] {
   --_border-color: var(--choose-card-selected-border-color);
+
+  background-color: var(--choose-card-selected-bg-color);
+
   --_selected-width: calc(
     var(--choose-card-selected-border-width) - var(--choose-card-border-width)
   );
@@ -92,6 +95,12 @@
   block-size: 40%;
   border-radius: 50%;
   background-color: var(--choose-card-indicator-dot-color);
+}
+
+.ds-choose-card__icon {
+  margin-block-start: calc(
+    (var(--choose-card-title-font-line-height) - var(--choose-card-icon-size)) / 2
+  );
 }
 
 .ds-choose-card__text {

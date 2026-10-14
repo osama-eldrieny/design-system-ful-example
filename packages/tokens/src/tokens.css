@@ -62,6 +62,7 @@
 @import url('./components/textarea.css');
 @import url('./components/toast.css');
 @import url('./components/tooltip.css');
+@import url('./components/verification-code-input.css');
 @import url('./themes/color.css');
 @import url('./themes/palette.css');
 @import url('./themes/density.css');

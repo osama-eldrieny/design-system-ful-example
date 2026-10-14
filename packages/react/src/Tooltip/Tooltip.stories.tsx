@@ -27,6 +27,16 @@ export const Playground: Story = {};
 
 export const Open: Story = { args: { defaultOpen: true } };
 
+/** A bold title above supporting text, with an arrow pointing at the trigger. */
+export const WithTitle: Story = {
+  args: {
+    defaultOpen: true,
+    arrow: true,
+    title: 'Delete file',
+    content: 'Files in the bin are removed after 30 days.',
+  },
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: { content: 'حذف', defaultOpen: true },

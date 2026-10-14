@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Mail, Search } from 'lucide-react';
+import { DollarSign, Mail, Search } from 'lucide-react';
 import { useState } from 'react';
 import { expect, userEvent } from 'storybook/test';
 import { ThemeProvider } from '../ThemeProvider';
@@ -52,6 +52,33 @@ export const WithIcons: Story = {
         type="search"
         placeholder="Search…"
         iconStart={<Search />}
+      />
+    </div>
+  ),
+};
+
+/**
+ * A prefix or suffix inside the border ("https://", ".com", a unit), a keyboard shortcut hint,
+ * and a ? icon with extra help in a tooltip.
+ */
+export const Addons: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16, maxInlineSize: 360 }}>
+      <InputField label="Website" prefix="https://" placeholder="www.example.com" />
+      <InputField label="Company domain" suffix=".com" placeholder="example" />
+      <InputField label="Amount" iconStart={<DollarSign />} suffix="USD" placeholder="1,000.00" />
+      <InputField
+        label="Search"
+        hideLabel
+        iconStart={<Search />}
+        shortcut="⌘K"
+        placeholder="Search"
+      />
+      <InputField
+        label="Email"
+        iconStart={<Mail />}
+        hint="We only use it to send receipts."
+        placeholder="olivia@example.com"
       />
     </div>
   ),

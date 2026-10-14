@@ -9,6 +9,10 @@ export interface TooltipProps extends Pick<
 > {
   /** Short hint shown on hover and keyboard focus. Plain text only, no links or buttons. */
   content: ReactNode;
+  /** Bold first line above the content, for a tooltip with a title and supporting text. */
+  title?: ReactNode;
+  /** Shows a small arrow pointing at the trigger. */
+  arrow?: boolean;
   /** The element it describes; must be focusable (e.g. an IconButton). */
   children: ReactElement;
   /** Delay before showing, in ms. Default 400. */
@@ -25,6 +29,8 @@ export interface TooltipProps extends Pick<
  */
 export const Tooltip = ({
   content,
+  title,
+  arrow = false,
   children,
   side = 'top',
   align = 'center',
@@ -40,13 +46,15 @@ export const Tooltip = ({
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
         <TooltipPrimitive.Portal>
           <TooltipPrimitive.Content
-            className="ds-tooltip"
+            className={['ds-tooltip', title && 'ds-tooltip--rich'].filter(Boolean).join(' ')}
             side={side}
             align={align}
             sideOffset={6}
             {...themeAttrs}
           >
-            {content}
+            {title && <span className="ds-tooltip__title">{title}</span>}
+            {title ? <span className="ds-tooltip__text">{content}</span> : content}
+            {arrow && <TooltipPrimitive.Arrow className="ds-tooltip__arrow" />}
           </TooltipPrimitive.Content>
         </TooltipPrimitive.Portal>
       </TooltipPrimitive.Root>

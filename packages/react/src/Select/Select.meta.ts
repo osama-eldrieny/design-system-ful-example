@@ -121,6 +121,12 @@ export default defineMeta({
   },
   examples: [
     {
+      id: 'people',
+      title: 'People with avatars',
+      description: 'Options with an avatar and a username.',
+      code: `import { Select, SelectItem } from '@ds/react';\n\n<Select label="Assignee">\n  <SelectItem value="olivia" avatar={{ name: 'Olivia Rhye' }} supportingText="@olivia">Olivia Rhye</SelectItem>\n</Select>`,
+    },
+    {
       id: 'basic',
       title: 'Select',
       description: 'Label, placeholder and options.',
@@ -177,5 +183,12 @@ const [plan, setPlan] = useState<string>();
     { id: 'dropdown-menu', relation: 'For actions, not values.' },
     { id: 'form-field', relation: 'Provides the label and messages.' },
   ],
-  changelog: [{ version: '0.3.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.3.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: ['SelectItem: icon, avatar, dot and supportingText, shown in the trigger too.'],
+    },
+  ],
 });

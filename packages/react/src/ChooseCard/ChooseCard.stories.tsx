@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor } from 'storybook/test';
+import { CreditCard, Landmark, Wallet } from 'lucide-react';
 import { ThemeProvider } from '../ThemeProvider';
 import { ChooseCard, ChooseCardGroup } from './ChooseCard';
 
@@ -61,6 +62,32 @@ export const WithoutPrice: Story = {
       <ChooseCard value="realtime" title="Real-time" description="Live updates" />
       <ChooseCard value="hourly" title="Hourly" description="Every hour" />
       <ChooseCard value="daily" title="Daily" description="Once a day" />
+    </ChooseCardGroup>
+  ),
+};
+
+/** A featured icon before the text, e.g. for payment methods or plans. */
+export const WithIcons: Story = {
+  render: () => (
+    <ChooseCardGroup aria-label="Payment method" defaultValue="card">
+      <ChooseCard
+        value="card"
+        icon={<CreditCard />}
+        title="Card"
+        description="Visa ending in 1234"
+      />
+      <ChooseCard
+        value="bank"
+        icon={<Landmark />}
+        title="Bank transfer"
+        description="2–3 business days"
+      />
+      <ChooseCard
+        value="wallet"
+        icon={<Wallet />}
+        title="Wallet"
+        description="Pay with your balance"
+      />
     </ChooseCardGroup>
   ),
 };

@@ -31,3 +31,23 @@
     outline: var(--tooltip-padding-y) solid CanvasText;
   }
 }
+
+.ds-tooltip--rich {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tooltip-rich-gap);
+  padding-block: var(--tooltip-rich-padding-y);
+  padding-inline: var(--tooltip-rich-padding-x);
+}
+
+.ds-tooltip__title {
+  font-weight: var(--tooltip-title-font-weight);
+}
+
+.ds-tooltip__text {
+  color: var(--tooltip-supporting-text-color);
+}
+
+.ds-tooltip__arrow {
+  fill: var(--tooltip-bg-color);
+}

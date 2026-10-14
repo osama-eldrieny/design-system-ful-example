@@ -56,4 +56,8 @@
   --choose-card-transition-duration: var(--duration-fast);
   --choose-card-transition-easing: var(--easing-standard);
   --choose-card-disabled-opacity: var(--opacity-medium);
+
+  /* Selected tint and the optional featured icon */
+  --choose-card-selected-bg-color: var(--color-bg-surface);
+  --choose-card-icon-size: var(--sizing-xl-minus);
 }

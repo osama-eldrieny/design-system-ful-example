@@ -152,6 +152,62 @@
   block-size: 100%;
 }
 
+.ds-input-field__hint {
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--input-field-icon-size);
+  block-size: var(--input-field-icon-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--input-field-border-radius);
+  background: transparent;
+  color: var(--input-field-hint-icon-color);
+  cursor: help;
+}
+
+.ds-input-field__hint > svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ds-input-field__hint:focus-visible {
+  outline: var(--input-field-focus-ring-width) solid var(--input-field-focus-ring-color);
+  outline-offset: var(--input-field-focus-ring-offset);
+}
+
+.ds-input-field__shortcut {
+  flex: none;
+}
+
+/* Prefix and suffix: a tinted segment stretched to the control's full height */
+.ds-input-field__addon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  align-self: stretch;
+  margin-block: calc(-1 * var(--_py));
+  padding-inline: var(--_px);
+  background-color: var(--input-field-addon-bg-color);
+  color: var(--input-field-addon-text-color);
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+  white-space: nowrap;
+}
+
+.ds-input-field__addon--start {
+  margin-inline-start: calc(-1 * var(--_px));
+  border-inline-end: var(--input-field-border-width) solid var(--input-field-addon-border-color);
+  border-start-start-radius: var(--input-field-border-radius);
+  border-end-start-radius: var(--input-field-border-radius);
+}
+
+.ds-input-field__addon--end {
+  margin-inline-end: calc(-1 * var(--_px));
+  border-inline-start: var(--input-field-border-width) solid var(--input-field-addon-border-color);
+  border-start-end-radius: var(--input-field-border-radius);
+  border-end-end-radius: var(--input-field-border-radius);
+}
+
 .ds-input-field__clear {
   display: inline-flex;
   flex: none;

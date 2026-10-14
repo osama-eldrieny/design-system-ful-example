@@ -171,6 +171,11 @@ const [speed, setSpeed] = useState('standard');
   ],
   changelog: [
     {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: ['icon shows a featured icon before the text; selected background token.'],
+    },
+    {
       version: '0.2.0',
       date: '2026-09-29',
       changes: [

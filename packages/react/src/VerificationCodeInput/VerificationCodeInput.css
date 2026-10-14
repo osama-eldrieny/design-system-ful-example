@@ -1,0 +1,113 @@
+/**
+ * VerificationCodeInput. Styled only with --verification-code-input-* tokens. One input per
+ * character; states are real (:hover, :focus-visible, :disabled) plus data-invalid.
+ */
+
+.ds-verification-code-input {
+  --_size: var(--verification-code-input-medium-size);
+  --_font-size: var(--verification-code-input-medium-font-size);
+  --_line-height: var(--verification-code-input-medium-font-line-height);
+  --_border: var(--verification-code-input-default-border-color);
+
+  display: grid;
+  gap: var(--verification-code-input-field-gap);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-inline-size: 0;
+  font-family: var(--verification-code-input-font-family);
+}
+
+.ds-verification-code-input--small {
+  --_size: var(--verification-code-input-small-size);
+  --_font-size: var(--verification-code-input-small-font-size);
+  --_line-height: var(--verification-code-input-small-font-line-height);
+}
+
+.ds-verification-code-input--large {
+  --_size: var(--verification-code-input-large-size);
+  --_font-size: var(--verification-code-input-large-font-size);
+  --_line-height: var(--verification-code-input-large-font-line-height);
+}
+
+.ds-verification-code-input[data-invalid] {
+  --_border: var(--verification-code-input-error-border-color);
+}
+
+.ds-verification-code-input__label {
+  padding: 0;
+  color: var(--verification-code-input-label-text-color);
+  font-size: var(--verification-code-input-label-font-size);
+  font-weight: var(--verification-code-input-label-font-weight);
+  line-height: var(--verification-code-input-label-font-line-height);
+}
+
+.ds-verification-code-input__fields {
+  display: flex;
+  align-items: center;
+  gap: var(--verification-code-input-gap);
+}
+
+.ds-verification-code-input__digit {
+  box-sizing: border-box;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+  min-inline-size: 0;
+  flex: 0 1 var(--_size);
+  padding: 0;
+  border: var(--verification-code-input-border-width) solid var(--_border);
+  border-radius: var(--verification-code-input-border-radius);
+  background-color: var(--verification-code-input-default-bg-color);
+  color: var(--verification-code-input-default-text-color);
+  font: inherit;
+  font-size: var(--_font-size);
+  font-weight: var(--verification-code-input-font-weight);
+  line-height: var(--_line-height);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-verification-code-input__digit::placeholder {
+  color: var(--verification-code-input-placeholder-text-color);
+  opacity: 1;
+}
+
+.ds-verification-code-input__digit:hover:not(:disabled) {
+  border-color: var(--verification-code-input-hover-border-color);
+}
+
+.ds-verification-code-input[data-invalid] .ds-verification-code-input__digit:hover {
+  border-color: var(--_border);
+}
+
+.ds-verification-code-input__digit:focus-visible {
+  border-color: var(--verification-code-input-focus-border-color);
+  outline: var(--verification-code-input-focus-ring-width) solid
+    var(--verification-code-input-focus-ring-color);
+  outline-offset: calc(-1 * var(--verification-code-input-border-width));
+}
+
+.ds-verification-code-input__digit:disabled {
+  opacity: var(--verification-code-input-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-verification-code-input__separator {
+  color: var(--verification-code-input-separator-text-color);
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
+}
+
+.ds-verification-code-input__description,
+.ds-verification-code-input__error {
+  font-size: var(--verification-code-input-message-font-size);
+  line-height: var(--verification-code-input-message-font-line-height);
+}
+
+.ds-verification-code-input__description {
+  color: var(--verification-code-input-description-text-color);
+}
+
+.ds-verification-code-input__error {
+  color: var(--verification-code-input-error-text-color);
+}

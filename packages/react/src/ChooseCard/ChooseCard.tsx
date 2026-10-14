@@ -1,5 +1,6 @@
 import { forwardRef, useId, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import * as RadioPrimitive from '@radix-ui/react-radio-group';
+import { FeaturedIcon } from '../FeaturedIcon';
 import './ChooseCard.css';
 
 export interface ChooseCardGroupProps extends Omit<
@@ -54,11 +55,13 @@ export interface ChooseCardProps extends Omit<
   description?: ReactNode;
   /** Price or other key figure, shown at the end, e.g. "$12 / month". */
   price?: ReactNode;
+  /** Decorative icon before the text, shown in a featured icon, e.g. a plan or method logo. */
+  icon?: ReactNode;
 }
 
 /** One option inside a ChooseCardGroup. The whole card is the radio button. */
 export const ChooseCard = forwardRef<HTMLButtonElement, ChooseCardProps>(
-  ({ title, description, price, className, ...props }, ref) => {
+  ({ title, description, price, icon, className, ...props }, ref) => {
     const id = useId();
     const describedBy =
       [description && `${id}-description`, price && `${id}-price`].filter(Boolean).join(' ') ||
@@ -74,6 +77,7 @@ export const ChooseCard = forwardRef<HTMLButtonElement, ChooseCardProps>(
         <span className="ds-choose-card__indicator" aria-hidden="true">
           <RadioPrimitive.Indicator className="ds-choose-card__dot" />
         </span>
+        {icon && <FeaturedIcon icon={icon} size="small" className="ds-choose-card__icon" />}
         <span className="ds-choose-card__text">
           <span className="ds-choose-card__title" id={`${id}-title`}>
             {title}

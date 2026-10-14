@@ -164,6 +164,12 @@ export default defineMeta({
   },
   examples: [
     {
+      id: 'addons',
+      title: 'Prefix and suffix',
+      description: 'Fixed text inside the border, read with the field.',
+      code: `import { InputField } from '@ds/react';\n\n<InputField label="Website" prefix="https://" suffix=".com" />`,
+    },
+    {
       id: 'basic',
       title: 'Labelled field',
       description: 'A controlled field with help text.',
@@ -219,6 +225,11 @@ import { Search } from 'lucide-react';
     { id: 'form-field', relation: 'Wraps other controls with the same label and message layout.' },
   ],
   changelog: [
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: ['prefix and suffix addons, shortcut hint and a hint tooltip.'],
+    },
     {
       version: '1.1.0',
       date: '2026-09-29',

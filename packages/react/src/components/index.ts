@@ -34,6 +34,7 @@ export * from '../MeetingCard';
 export * from '../AppsNotifications';
 export * from '../Badge';
 export * from '../FeaturedIcon';
+export * from '../VerificationCodeInput';
 export * from '../Tag';
 export * from '../Spinner';
 export * from '../Progress';

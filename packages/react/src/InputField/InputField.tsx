@@ -6,12 +6,17 @@ import {
   type InputHTMLAttributes,
   type ReactNode,
 } from 'react';
-import { X } from 'lucide-react';
+import { HelpCircle, X } from 'lucide-react';
+import { Kbd } from '../Kbd';
+import { Tooltip } from '../Tooltip';
 import './InputField.css';
 
 export type InputFieldSize = 'small' | 'medium' | 'large';
 
-export interface InputFieldProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
+export interface InputFieldProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  'size' | 'prefix'
+> {
   /** What to enter, e.g. "Email address". Always required: it is the field's accessible name. */
   label: ReactNode;
   /**
@@ -41,6 +46,19 @@ export interface InputFieldProps extends Omit<InputHTMLAttributes<HTMLInputEleme
   onClear?: () => void;
   /** Accessible name of the clear button. Default "Clear". */
   clearLabel?: string;
+  /**
+   * A fixed part before the text, inside the border, e.g. "https://" or a country code. It is
+   * read with the label. Pass an element (e.g. a small select) for an interactive addon.
+   */
+  prefix?: ReactNode;
+  /** A fixed part after the text, e.g. ".com", "USD" or a unit. */
+  suffix?: ReactNode;
+  /** A keyboard shortcut hint at the end, e.g. "⌘K". Decorative. */
+  shortcut?: string;
+  /** Extra help shown in a tooltip from a ? icon at the end of the field. */
+  hint?: ReactNode;
+  /** Accessible name of the hint button. Default "More information". */
+  hintLabel?: string;
 }
 
 /**
@@ -62,6 +80,11 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
       clearable = false,
       onClear,
       clearLabel = 'Clear',
+      prefix,
+      suffix,
+      shortcut,
+      hint,
+      hintLabel = 'More information',
       id,
       className,
       type = 'text',
@@ -79,6 +102,8 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
 
     const descriptionId = description ? `${inputId}-description` : undefined;
     const messageId = error || success ? `${inputId}-message` : undefined;
+    const prefixId = prefix ? `${inputId}-prefix` : undefined;
+    const suffixId = suffix ? `${inputId}-suffix` : undefined;
     const showClear =
       clearable && !disabled && !readOnly && props.value !== undefined && props.value !== '';
 
@@ -112,7 +137,20 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
             </>
           )}
         </label>
-        <div className="ds-input-field__control">
+        <div
+          className={[
+            'ds-input-field__control',
+            prefix && 'ds-input-field__control--prefixed',
+            suffix && 'ds-input-field__control--suffixed',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
+          {prefix && (
+            <span className="ds-input-field__addon ds-input-field__addon--start" id={prefixId}>
+              {prefix}
+            </span>
+          )}
           {iconStart && (
             <span className="ds-input-field__icon" aria-hidden="true">
               {iconStart}
@@ -127,7 +165,9 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
             readOnly={readOnly}
             disabled={disabled}
             aria-invalid={error ? true : undefined}
-            aria-describedby={[descriptionId, messageId].filter(Boolean).join(' ') || undefined}
+            aria-describedby={
+              [prefixId, suffixId, descriptionId, messageId].filter(Boolean).join(' ') || undefined
+            }
             {...props}
           />
           {showClear && (
@@ -147,6 +187,23 @@ export const InputField = forwardRef<HTMLInputElement, InputFieldProps>(
           {iconEnd && (
             <span className="ds-input-field__icon" aria-hidden="true">
               {iconEnd}
+            </span>
+          )}
+          {shortcut && (
+            <Kbd className="ds-input-field__shortcut" aria-hidden="true">
+              {shortcut}
+            </Kbd>
+          )}
+          {hint && (
+            <Tooltip content={hint}>
+              <button type="button" className="ds-input-field__hint" aria-label={hintLabel}>
+                <HelpCircle aria-hidden="true" />
+              </button>
+            </Tooltip>
+          )}
+          {suffix && (
+            <span className="ds-input-field__addon ds-input-field__addon--end" id={suffixId}>
+              {suffix}
             </span>
           )}
         </div>

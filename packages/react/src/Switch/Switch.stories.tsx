@@ -32,6 +32,15 @@ export const LabelPosition: Story = {
   ),
 };
 
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: 'grid', gap: 16 }}>
+      <Switch {...args} size="small" label="Small" />
+      <Switch {...args} size="medium" label="Medium" />
+    </div>
+  ),
+};
+
 export const WithDescription: Story = {
   args: {
     label: 'Real-time updates',

@@ -51,4 +51,15 @@ describe('InputField', () => {
     render(<InputField label="Name" required />);
     expect(screen.getByRole('textbox', { name: 'Name' })).toBeRequired();
   });
+
+  it('reads the prefix and suffix with the field', () => {
+    render(<InputField label="Website" prefix="https://" suffix=".com" />);
+    const input = screen.getByLabelText('Website');
+    expect(input).toHaveAccessibleDescription('https:// .com');
+  });
+
+  it('has a named hint button', () => {
+    render(<InputField label="Email" hint="Only for receipts" hintLabel="About email" />);
+    expect(screen.getByRole('button', { name: 'About email' })).toBeInTheDocument();
+  });
 });

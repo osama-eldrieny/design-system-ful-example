@@ -21,6 +21,8 @@ export interface SwitchProps extends Omit<
   description?: ReactNode;
   /** Side of the switch the label sits on. `end` (default) or `start` for settings lists. */
   labelPosition?: 'start' | 'end';
+  /** `small` for dense settings lists and tables, `medium` by default. */
+  size?: 'small' | 'medium';
 }
 
 /**
@@ -28,7 +30,10 @@ export interface SwitchProps extends Omit<
  * applied after pressing Save, use a Checkbox instead.
  */
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
-  ({ label, description, labelPosition = 'end', id, className, style, ...props }, ref) => {
+  (
+    { label, description, labelPosition = 'end', size = 'medium', id, className, style, ...props },
+    ref,
+  ) => {
     const autoId = useId();
     const switchId = id ?? autoId;
     const descriptionId = description ? `${switchId}-description` : undefined;
@@ -38,7 +43,13 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
       <SwitchPrimitive.Root
         ref={ref}
         id={switchId}
-        className={['ds-switch__track', !label && className].filter(Boolean).join(' ')}
+        className={[
+          'ds-switch__track',
+          !label && size === 'small' && 'ds-switch--small',
+          !label && className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
         style={label ? undefined : style}
         aria-describedby={descriptionId}
         {...props}
@@ -51,7 +62,12 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
 
     return (
       <div
-        className={['ds-switch', `ds-switch--label-${labelPosition}`, className]
+        className={[
+          'ds-switch',
+          `ds-switch--label-${labelPosition}`,
+          size === 'small' && 'ds-switch--small',
+          className,
+        ]
           .filter(Boolean)
           .join(' ')}
         style={style}
