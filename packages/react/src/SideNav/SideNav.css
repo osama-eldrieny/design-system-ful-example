@@ -102,6 +102,51 @@
   transform: rotate(180deg);
 }
 
+.ds-side-nav__badge {
+  min-inline-size: var(--side-nav-badge-min-size);
+  padding-inline: var(--side-nav-badge-padding-x);
+  border-radius: var(--side-nav-badge-border-radius);
+  background-color: var(--side-nav-badge-bg-color);
+  color: var(--side-nav-badge-text-color);
+  font-size: var(--side-nav-badge-font-size);
+  font-weight: var(--side-nav-badge-font-weight);
+  line-height: var(--side-nav-badge-font-line-height);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-side-nav__header {
+  padding-block-end: var(--side-nav-gap);
+}
+
+.ds-side-nav__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--side-nav-gap);
+  margin-block-start: auto;
+  padding-block-start: var(--side-nav-section-gap);
+  border-block-start: var(--side-nav-footer-border-width) solid var(--side-nav-footer-border-color);
+}
+
+/* Collapsed: icons only; labels move to tooltips */
+.ds-side-nav--collapsed {
+  align-items: center;
+  inline-size: var(--side-nav-collapsed-width);
+  box-sizing: border-box;
+}
+
+.ds-side-nav--collapsed .ds-side-nav__item {
+  justify-content: center;
+  padding-inline: var(--side-nav-item-padding-y);
+}
+
+.ds-side-nav--collapsed .ds-side-nav__label,
+.ds-side-nav--collapsed .ds-side-nav__badge,
+.ds-side-nav--collapsed .ds-side-nav__chevron,
+.ds-side-nav--collapsed .ds-side-nav__group-label {
+  display: none;
+}
+
 @media (forced-colors: active) {
   .ds-side-nav__item[aria-current='page'] {
     text-decoration: underline;

@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Button, PageHeader } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/PageHeader/PageHeader.stories';
+import meta from '../../../../packages/react/src/PageHeader/PageHeader.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# PageHeader
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[PageHeader]}
+  anatomy={{
+    targets: ['.ds-page-header__title', '.ds-page-header__description', '.ds-page-header__actions'],
+    example: (
+      <PageHeader
+        titleAs="h2"
+        title="Products"
+        description="Manage your catalog."
+        actions={<Button>Add product</Button>}
+      />
+    ),
+  }}
+  optionStories={{ size: 'Variants', divider: 'Full' }}
+  behaviorStory="RightToLeft"
+  matrix={<PageHeader titleAs="h2" title="Products" size="small" />}
+/>

@@ -1,0 +1,38 @@
+/**
+ * Component tokens: activity-feed
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --activity-feed-{part?}-{property}
+ *   part: item | connector | time | content | unread.
+ */
+
+:root,
+[data-theme] {
+  --activity-feed-gap: var(--spacing-lg);
+  --activity-feed-item-gap: var(--spacing-sm);
+  --activity-feed-text-gap: var(--spacing-3xs);
+  --activity-feed-font-family: var(--font-family-body);
+  --activity-feed-font-size: var(--font-size-sm);
+  --activity-feed-font-line-height: var(--font-line-height-sm);
+  --activity-feed-text-color: var(--color-fg-on-surface-secondary);
+  --activity-feed-strong-text-color: var(--color-fg-on-surface-primary);
+  --activity-feed-strong-font-weight: var(--font-weight-semi-bold);
+  --activity-feed-time-text-color: var(--color-fg-on-surface-secondary);
+  --activity-feed-time-font-size: var(--font-size-xs);
+  --activity-feed-time-font-line-height: var(--font-line-height-xs);
+  --activity-feed-marker-size: var(--sizing-xl-minus);
+  --activity-feed-connector-color: var(--color-border-base);
+  --activity-feed-connector-width: var(--border-width-regular);
+  --activity-feed-content-bg-color: var(--color-bg-surface);
+  --activity-feed-content-text-color: var(--color-fg-on-surface-primary);
+  --activity-feed-content-border-color: var(--color-border-base);
+  --activity-feed-content-border-width: var(--border-width-hairline);
+  --activity-feed-content-border-radius: var(--radius-lg);
+  --activity-feed-content-padding-x: var(--spacing-sm);
+  --activity-feed-content-padding-y: var(--spacing-xs);
+  --activity-feed-unread-color: var(--color-bg-accent-primary-default);
+  --activity-feed-unread-size: var(--sizing-3xs);
+  --activity-feed-divider-color: var(--color-border-base);
+  --activity-feed-divider-width: var(--border-width-hairline);
+}

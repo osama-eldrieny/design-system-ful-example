@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 389 | 389 | 0 |
-| diamond-dark | 389 | 389 | 0 |
-| amber-light | 389 | 389 | 0 |
-| amber-dark | 389 | 389 | 0 |
-| opal-light | 389 | 389 | 0 |
-| opal-dark | 389 | 389 | 0 |
+| diamond-light | 393 | 393 | 0 |
+| diamond-dark | 393 | 393 | 0 |
+| amber-light | 393 | 393 | 0 |
+| amber-dark | 393 | 393 | 0 |
+| opal-light | 393 | 393 | 0 |
+| opal-dark | 393 | 393 | 0 |
 
 ## Failures (0)
 
@@ -166,6 +166,7 @@ None.
 | diamond-light | `--accordion-trigger-text-color` | `--accordion-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--accordion-content-text-color` | `--accordion-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--accordion-icon-color` | `--accordion-bg-color` | #62626d on #fff | 6.02:1 | 3:1 |
+| diamond-light | `--activity-feed-content-text-color` | `--activity-feed-content-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #5637b5 on #f2edff | 7.03:1 | 3:1 |
 | diamond-light | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #005b22 on #e6faed | 7.64:1 | 3:1 |
@@ -340,6 +341,8 @@ None.
 | diamond-light | `--navbar-item-hover-text-color` | `--navbar-item-hover-bg-color` | #24242c on #f2edff | 13.44:1 | 4.5:1 |
 | diamond-light | `--navbar-item-active-text-color` | `--navbar-item-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--navbar-item-active-icon-color` | `--navbar-item-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 3:1 |
+| diamond-light | `--page-header-title-text-color` | `--page-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--page-header-description-text-color` | `--page-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
@@ -354,6 +357,7 @@ None.
 | diamond-light | `--side-nav-item-active-text-color` | `--side-nav-item-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--side-nav-icon-color` | `--side-nav-bg-color` | #62626d on #fff | 6.02:1 | 3:1 |
 | diamond-light | `--side-nav-group-label-text-color` | `--side-nav-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--side-nav-badge-text-color` | `--side-nav-badge-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
 | diamond-light | `--stepper-complete-indicator-text-color` | `--stepper-complete-indicator-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-light | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #5637b5 on #fff | 8.05:1 | 4.5:1 |
 | diamond-light | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
@@ -555,6 +559,7 @@ None.
 | diamond-dark | `--accordion-trigger-text-color` | `--accordion-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--accordion-content-text-color` | `--accordion-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--accordion-icon-color` | `--accordion-bg-color` | #acadb2 on #24202d | 7.10:1 | 3:1 |
+| diamond-dark | `--activity-feed-content-text-color` | `--activity-feed-content-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 3:1 |
 | diamond-dark | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #91e8b2 on #332e3c | 9.01:1 | 3:1 |
@@ -729,6 +734,8 @@ None.
 | diamond-dark | `--navbar-item-hover-text-color` | `--navbar-item-hover-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--navbar-item-active-text-color` | `--navbar-item-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--navbar-item-active-icon-color` | `--navbar-item-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 3:1 |
+| diamond-dark | `--page-header-title-text-color` | `--page-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--page-header-description-text-color` | `--page-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
@@ -743,6 +750,7 @@ None.
 | diamond-dark | `--side-nav-item-active-text-color` | `--side-nav-item-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--side-nav-icon-color` | `--side-nav-bg-color` | #acadb2 on #24202d | 7.10:1 | 3:1 |
 | diamond-dark | `--side-nav-group-label-text-color` | `--side-nav-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--side-nav-badge-text-color` | `--side-nav-badge-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--stepper-complete-indicator-text-color` | `--stepper-complete-indicator-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #c5b2ff on #24202d | 8.48:1 | 4.5:1 |
 | diamond-dark | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
@@ -944,6 +952,7 @@ None.
 | amber-light | `--accordion-trigger-text-color` | `--accordion-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--accordion-content-text-color` | `--accordion-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--accordion-icon-color` | `--accordion-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
+| amber-light | `--activity-feed-content-text-color` | `--activity-feed-content-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 3:1 |
 | amber-light | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #3a6360 on #ecf1f1 | 5.88:1 | 3:1 |
@@ -1118,6 +1127,8 @@ None.
 | amber-light | `--navbar-item-hover-text-color` | `--navbar-item-hover-bg-color` | #6a625a on #f9f4ee | 5.47:1 | 4.5:1 |
 | amber-light | `--navbar-item-active-text-color` | `--navbar-item-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--navbar-item-active-icon-color` | `--navbar-item-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 3:1 |
+| amber-light | `--page-header-title-text-color` | `--page-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--page-header-description-text-color` | `--page-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
@@ -1132,6 +1143,7 @@ None.
 | amber-light | `--side-nav-item-active-text-color` | `--side-nav-item-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--side-nav-icon-color` | `--side-nav-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
 | amber-light | `--side-nav-group-label-text-color` | `--side-nav-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--side-nav-badge-text-color` | `--side-nav-badge-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--stepper-complete-indicator-text-color` | `--stepper-complete-indicator-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #6f5232 on #fff | 7.17:1 | 4.5:1 |
 | amber-light | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
@@ -1333,6 +1345,7 @@ None.
 | amber-dark | `--accordion-trigger-text-color` | `--accordion-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--accordion-content-text-color` | `--accordion-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--accordion-icon-color` | `--accordion-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 3:1 |
+| amber-dark | `--activity-feed-content-text-color` | `--activity-feed-content-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 3:1 |
 | amber-dark | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #d2dedd on #274340 | 7.76:1 | 3:1 |
@@ -1507,6 +1520,8 @@ None.
 | amber-dark | `--navbar-item-hover-text-color` | `--navbar-item-hover-bg-color` | #fdfbf9 on #574028 | 9.38:1 | 4.5:1 |
 | amber-dark | `--navbar-item-active-text-color` | `--navbar-item-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--navbar-item-active-icon-color` | `--navbar-item-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 3:1 |
+| amber-dark | `--page-header-title-text-color` | `--page-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--page-header-description-text-color` | `--page-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
@@ -1521,6 +1536,7 @@ None.
 | amber-dark | `--side-nav-item-active-text-color` | `--side-nav-item-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--side-nav-icon-color` | `--side-nav-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 3:1 |
 | amber-dark | `--side-nav-group-label-text-color` | `--side-nav-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--side-nav-badge-text-color` | `--side-nav-badge-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
 | amber-dark | `--stepper-complete-indicator-text-color` | `--stepper-complete-indicator-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #f0e4d7 on #1e140d | 14.46:1 | 4.5:1 |
 | amber-dark | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
@@ -1722,6 +1738,7 @@ None.
 | opal-light | `--accordion-trigger-text-color` | `--accordion-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--accordion-content-text-color` | `--accordion-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--accordion-icon-color` | `--accordion-bg-color` | #676b83 on #fff | 5.24:1 | 3:1 |
+| opal-light | `--activity-feed-content-text-color` | `--activity-feed-content-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 3:1 |
 | opal-light | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #3b5c0a on #f3fae8 | 7.22:1 | 3:1 |
@@ -1896,6 +1913,8 @@ None.
 | opal-light | `--navbar-item-hover-text-color` | `--navbar-item-hover-bg-color` | #282b3b on #ebf3fe | 12.53:1 | 4.5:1 |
 | opal-light | `--navbar-item-active-text-color` | `--navbar-item-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--navbar-item-active-icon-color` | `--navbar-item-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 3:1 |
+| opal-light | `--page-header-title-text-color` | `--page-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--page-header-description-text-color` | `--page-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
@@ -1910,6 +1929,7 @@ None.
 | opal-light | `--side-nav-item-active-text-color` | `--side-nav-item-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--side-nav-icon-color` | `--side-nav-bg-color` | #676b83 on #fff | 5.24:1 | 3:1 |
 | opal-light | `--side-nav-group-label-text-color` | `--side-nav-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--side-nav-badge-text-color` | `--side-nav-badge-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
 | opal-light | `--stepper-complete-indicator-text-color` | `--stepper-complete-indicator-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #224a8c on #fff | 8.66:1 | 4.5:1 |
 | opal-light | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
@@ -2111,6 +2131,7 @@ None.
 | opal-dark | `--accordion-trigger-text-color` | `--accordion-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--accordion-content-text-color` | `--accordion-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--accordion-icon-color` | `--accordion-bg-color` | #afb2be on #292d3e | 6.45:1 | 3:1 |
+| opal-dark | `--activity-feed-content-text-color` | `--activity-feed-content-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--alerts-primary-icon-color` | `--alerts-primary-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 3:1 |
 | opal-dark | `--alerts-primary-font-color` | `--alerts-primary-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--alerts-success-icon-color` | `--alerts-success-bg-color` | #cae99b on #3b5c0a | 5.75:1 | 3:1 |
@@ -2285,6 +2306,8 @@ None.
 | opal-dark | `--navbar-item-hover-text-color` | `--navbar-item-hover-bg-color` | #ededf0 on #1b3a6f | 9.55:1 | 4.5:1 |
 | opal-dark | `--navbar-item-active-text-color` | `--navbar-item-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--navbar-item-active-icon-color` | `--navbar-item-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 3:1 |
+| opal-dark | `--page-header-title-text-color` | `--page-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--page-header-description-text-color` | `--page-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--pagination-item-default-font-color` | `--pagination-item-default-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--pagination-item-hover-font-color` | `--pagination-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--pagination-item-active-font-color` | `--pagination-item-active-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
@@ -2299,6 +2322,7 @@ None.
 | opal-dark | `--side-nav-item-active-text-color` | `--side-nav-item-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--side-nav-icon-color` | `--side-nav-bg-color` | #afb2be on #292d3e | 6.45:1 | 3:1 |
 | opal-dark | `--side-nav-group-label-text-color` | `--side-nav-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--side-nav-badge-text-color` | `--side-nav-badge-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
 | opal-dark | `--stepper-complete-indicator-text-color` | `--stepper-complete-indicator-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--stepper-current-indicator-text-color` | `--stepper-current-indicator-bg-color` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
 | opal-dark | `--stepper-upcoming-indicator-text-color` | `--stepper-upcoming-indicator-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |

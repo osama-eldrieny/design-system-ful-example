@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ActivityFeed } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/ActivityFeed/ActivityFeed.stories';
+import meta from '../../../../packages/react/src/ActivityFeed/ActivityFeed.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# ActivityFeed
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[ActivityFeed]}
+  anatomy={{
+    targets: [
+      '.ds-activity-feed__marker',
+      '.ds-activity-feed__title',
+      '.ds-activity-feed__time',
+      '.ds-activity-feed__content',
+    ],
+    example: (
+      <ActivityFeed
+        aria-label="Example"
+        items={[
+          {
+            id: 1,
+            avatar: { name: 'Olivia Rhye' },
+            title: 'Olivia Rhye commented',
+            time: '2 min ago',
+            content: 'Looks great!',
+          },
+        ]}
+      />
+    ),
+  }}
+  optionStories={{ appearance: 'Appearances' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <ActivityFeed aria-label="Matrix" items={[{ id: 1, title: 'Export finished', time: 'Mon' }]} />
+  }
+/>

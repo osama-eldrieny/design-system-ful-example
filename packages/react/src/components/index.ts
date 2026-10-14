@@ -37,6 +37,8 @@ export * from '../FeaturedIcon';
 export * from '../VerificationCodeInput';
 export * from '../MetricCard';
 export * from '../Chart';
+export * from '../PageHeader';
+export * from '../ActivityFeed';
 export * from '../Tag';
 export * from '../Spinner';
 export * from '../Progress';

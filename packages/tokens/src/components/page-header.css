@@ -1,0 +1,31 @@
+/**
+ * Component tokens: page-header
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --page-header-{part?}-{property}
+ *   part: title | description | divider. size: medium | small (section headers).
+ */
+
+:root,
+[data-theme] {
+  --page-header-gap: var(--spacing-lg);
+  --page-header-row-gap: var(--spacing-md);
+  --page-header-text-gap: var(--spacing-2xs);
+  --page-header-actions-gap: var(--spacing-sm);
+  --page-header-padding-y: var(--spacing-none);
+  --page-header-font-family: var(--font-family-body);
+  --page-header-title-text-color: var(--color-fg-on-surface-primary);
+  --page-header-title-font-size: var(--font-size-3xl);
+  --page-header-title-font-line-height: var(--font-line-height-3xl);
+  --page-header-title-font-weight: var(--font-weight-semi-bold);
+  --page-header-small-title-font-size: var(--font-size-lg);
+  --page-header-small-title-font-line-height: var(--font-line-height-lg);
+  --page-header-description-text-color: var(--color-fg-on-surface-secondary);
+  --page-header-description-font-size: var(--font-size-md);
+  --page-header-description-font-line-height: var(--font-line-height-md);
+  --page-header-small-description-font-size: var(--font-size-sm);
+  --page-header-small-description-font-line-height: var(--font-line-height-sm);
+  --page-header-divider-color: var(--color-border-base);
+  --page-header-divider-width: var(--border-width-hairline);
+}

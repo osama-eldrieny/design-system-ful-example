@@ -22,6 +22,14 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'collapsed',
+      title: 'Collapsed',
+      values: [
+        { value: 'false', meaning: 'Icons and labels. Default.' },
+        { value: 'true', meaning: 'Icons only, labels in tooltips, for a slim sidebar.' },
+      ],
+    },
+    {
       prop: 'sections',
       title: 'Structure',
       values: [
@@ -124,6 +132,11 @@ export default defineMeta({
   ],
   changelog: [
     { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: ['Item badge; collapsed (icon-only) mode with tooltips; header and footer slots.'],
+    },
     {
       version: '1.1.0',
       date: '2026-09-29',

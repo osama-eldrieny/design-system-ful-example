@@ -40,4 +40,19 @@
   --side-nav-focus-ring-width: var(--focus-ring-width);
   --side-nav-focus-ring-offset: var(--focus-ring-offset);
   --side-nav-focus-ring-color: var(--focus-ring-color);
+
+  /* Badge after the label */
+  --side-nav-badge-min-size: var(--sizing-sm-plus);
+  --side-nav-badge-padding-x: var(--spacing-2xs);
+  --side-nav-badge-border-radius: var(--radius-full);
+  --side-nav-badge-bg-color: var(--color-bg-default);
+  --side-nav-badge-text-color: var(--color-fg-on-surface-primary);
+  --side-nav-badge-font-size: var(--font-size-xs);
+  --side-nav-badge-font-weight: var(--font-weight-medium);
+  --side-nav-badge-font-line-height: var(--font-line-height-sm);
+
+  /* Footer and collapsed (icon-only) width */
+  --side-nav-footer-border-color: var(--color-border-base);
+  --side-nav-footer-border-width: var(--border-width-hairline);
+  --side-nav-collapsed-width: var(--sizing-3xl);
 }

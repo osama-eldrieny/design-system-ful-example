@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { BarChart3, House, Package, Settings, Users } from 'lucide-react';
 import { expect, userEvent } from 'storybook/test';
+import { AvatarLabelGroup } from '../Avatar';
 import { ThemeProvider } from '../ThemeProvider';
 import { SideNav, type SideNavSection } from './SideNav';
 
@@ -8,7 +9,7 @@ const sections: SideNavSection[] = [
   {
     items: [
       { id: 'home', label: 'Home', href: '#home', icon: <House /> },
-      { id: 'orders', label: 'Orders', href: '#orders', icon: <Package /> },
+      { id: 'orders', label: 'Orders', href: '#orders', icon: <Package />, badge: 12 },
       {
         id: 'reports',
         label: 'Reports',
@@ -42,6 +43,26 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Playground: Story = {};
+
+/** A header, a footer with the account, and badges after labels. */
+export const WithHeaderAndFooter: Story = {
+  args: {
+    header: <strong>Panda</strong>,
+    footer: (
+      <AvatarLabelGroup name="Olivia Rhye" supportingText="olivia@untitled.com" size="small" />
+    ),
+  },
+};
+
+/** Collapsed: icons only, labels in tooltips, for a slim sidebar. */
+export const Collapsed: Story = {
+  decorators: [],
+  args: {
+    collapsed: true,
+    currentItem: 'orders',
+    sections: [{ items: [...sections[0].items.slice(0, 2), ...sections[1].items] }],
+  },
+};
 
 export const Flat: Story = {
   args: {
