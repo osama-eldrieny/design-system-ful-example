@@ -1,0 +1,137 @@
+/**
+ * FileUpload and FileUploadItem. Styled only with --file-upload-* tokens. The zone is a label
+ * for a hidden file input, so clicking and keyboard both open the file picker.
+ */
+
+.ds-file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: var(--file-upload-list-gap);
+  font-family: var(--file-upload-font-family);
+  font-size: var(--file-upload-font-size);
+  line-height: var(--file-upload-font-line-height);
+}
+
+.ds-file-upload__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--file-upload-zone-gap);
+  padding-block: var(--file-upload-zone-padding-y);
+  padding-inline: var(--file-upload-zone-padding-x);
+  border: var(--file-upload-zone-border-width) dashed var(--file-upload-zone-default-border-color);
+  border-radius: var(--file-upload-zone-border-radius);
+  background-color: var(--file-upload-zone-default-bg-color);
+  color: var(--file-upload-zone-text-color);
+  text-align: center;
+  cursor: pointer;
+}
+
+.ds-file-upload__zone:hover {
+  border-color: var(--file-upload-zone-hover-border-color);
+}
+
+.ds-file-upload__zone:has(:focus-visible) {
+  outline: var(--file-upload-focus-ring-width) solid var(--file-upload-focus-ring-color);
+  outline-offset: var(--file-upload-focus-ring-offset);
+}
+
+.ds-file-upload__zone[data-dragging] {
+  border-style: solid;
+  border-color: var(--file-upload-zone-active-border-color);
+  background-color: var(--file-upload-zone-active-bg-color);
+}
+
+.ds-file-upload[data-disabled] .ds-file-upload__zone {
+  opacity: var(--file-upload-zone-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-file-upload__input {
+  position: absolute;
+  inline-size: var(--file-upload-zone-border-width);
+  block-size: var(--file-upload-zone-border-width);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ds-file-upload__action {
+  color: var(--file-upload-zone-action-text-color);
+  font-weight: var(--file-upload-zone-action-font-weight);
+}
+
+.ds-file-upload__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--file-upload-list-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-file-upload-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--file-upload-item-gap);
+  padding: var(--file-upload-item-padding);
+  border: var(--file-upload-item-border-width) solid var(--file-upload-item-border-color);
+  border-radius: var(--file-upload-item-border-radius);
+  background-color: var(--file-upload-item-bg-color);
+}
+
+.ds-file-upload-item--error {
+  border-color: var(--file-upload-item-error-border-color);
+}
+
+.ds-file-upload-item__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--file-upload-item-gap);
+  min-inline-size: 0;
+}
+
+.ds-file-upload-item__head {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--file-upload-item-gap);
+}
+
+.ds-file-upload-item__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.ds-file-upload-item__name {
+  overflow: hidden;
+  color: var(--file-upload-name-text-color);
+  font-weight: var(--file-upload-name-font-weight);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-file-upload-item__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--file-upload-item-gap);
+  color: var(--file-upload-meta-text-color);
+}
+
+.ds-file-upload-item__error {
+  color: var(--file-upload-error-text-color);
+}
+
+.ds-file-upload-item__complete {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--file-upload-complete-gap);
+  color: var(--file-upload-complete-icon-color);
+}
+
+.ds-file-upload-item__complete > svg {
+  inline-size: var(--file-upload-complete-icon-size);
+  block-size: var(--file-upload-complete-icon-size);
+}

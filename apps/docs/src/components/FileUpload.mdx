@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FileUpload, FileUploadItem } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/FileUpload/FileUpload.stories';
+import meta from '../../../../packages/react/src/FileUpload/FileUpload.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# FileUpload
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[FileUpload, FileUploadItem]}
+  anatomy={{
+    targets: ['.ds-file-upload__zone', '.ds-file-upload-item'],
+    example: (
+      <FileUpload id="anatomy-upload" hint="PNG or JPG">
+        <FileUploadItem name="report.pdf" size="200 KB" progress={40} />
+      </FileUpload>
+    ),
+  }}
+  optionStories={{ status: 'WithFiles' }}
+  behaviorStory="RightToLeft"
+  matrix={<FileUpload id="matrix-upload" />}
+/>

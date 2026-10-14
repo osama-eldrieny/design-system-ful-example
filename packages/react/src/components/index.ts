@@ -39,6 +39,7 @@ export * from '../MetricCard';
 export * from '../Chart';
 export * from '../PageHeader';
 export * from '../ActivityFeed';
+export * from '../FileUpload';
 export * from '../Tag';
 export * from '../Spinner';
 export * from '../Progress';

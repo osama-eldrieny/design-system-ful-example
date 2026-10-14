@@ -1,0 +1,50 @@
+/**
+ * Component tokens: file-upload (FileUpload drop zone and FileUploadItem)
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --file-upload-{part}-{state?}-{property}
+ *   part: zone | item | name | meta; state: default | hover | active (dragging) | error | disabled.
+ */
+
+:root,
+[data-theme] {
+  /* Drop zone */
+  --file-upload-zone-default-bg-color: var(--color-bg-surface);
+  --file-upload-zone-default-border-color: var(--color-border-field);
+  --file-upload-zone-hover-border-color: var(--color-border-primary-strong);
+  --file-upload-zone-active-bg-color: var(--color-bg-primary-1);
+  --file-upload-zone-active-border-color: var(--color-border-primary-strong);
+  --file-upload-zone-border-width: var(--border-width-hairline);
+  --file-upload-zone-border-radius: var(--radius-xl);
+  --file-upload-zone-padding-x: var(--spacing-xl);
+  --file-upload-zone-padding-y: var(--spacing-lg);
+  --file-upload-zone-gap: var(--spacing-sm);
+  --file-upload-zone-text-color: var(--color-fg-on-surface-secondary);
+  --file-upload-zone-action-text-color: var(--color-fg-on-accent-primary-text-default);
+  --file-upload-zone-action-font-weight: var(--font-weight-semi-bold);
+  --file-upload-zone-disabled-opacity: var(--opacity-medium);
+  --file-upload-font-family: var(--font-family-body);
+  --file-upload-font-size: var(--font-size-sm);
+  --file-upload-font-line-height: var(--font-line-height-sm);
+  --file-upload-focus-ring-width: var(--focus-ring-width);
+  --file-upload-focus-ring-offset: var(--focus-ring-offset);
+  --file-upload-focus-ring-color: var(--focus-ring-color);
+
+  /* File rows */
+  --file-upload-list-gap: var(--spacing-sm);
+  --file-upload-item-bg-color: var(--color-bg-surface);
+  --file-upload-item-border-color: var(--color-border-base);
+  --file-upload-item-error-border-color: var(--color-border-danger-strong);
+  --file-upload-item-border-width: var(--border-width-hairline);
+  --file-upload-item-border-radius: var(--radius-xl);
+  --file-upload-item-padding: var(--spacing-md);
+  --file-upload-item-gap: var(--spacing-sm);
+  --file-upload-name-text-color: var(--color-fg-on-surface-primary);
+  --file-upload-name-font-weight: var(--font-weight-medium);
+  --file-upload-meta-text-color: var(--color-fg-on-surface-secondary);
+  --file-upload-error-text-color: var(--color-fg-on-accent-danger-text-default);
+  --file-upload-complete-icon-color: var(--color-fg-on-accent-success-text-default);
+  --file-upload-complete-icon-size: var(--sizing-xs);
+  --file-upload-complete-gap: var(--spacing-3xs);
+}
