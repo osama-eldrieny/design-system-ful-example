@@ -1,0 +1,22 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Calendar, DatePicker, DateRangePicker } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/DatePicker/DatePicker.stories';
+import meta from '../../../../packages/react/src/DatePicker/DatePicker.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# DatePicker
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[DatePicker, DateRangePicker, Calendar]}
+  anatomy={{
+    targets: ['.ds-calendar__header', '.ds-calendar__grid'],
+    example: <Calendar />,
+  }}
+  optionStories={{ mode: 'Calendars', months: 'Range' }}
+  behaviorStory="RightToLeft"
+  matrix={<DatePicker label="Due date" />}
+/>

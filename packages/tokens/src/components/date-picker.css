@@ -1,0 +1,56 @@
+/**
+ * Component tokens: date-picker (Calendar, DatePicker, DateRangePicker)
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --date-picker-{part}-{state?}-{property}
+ *   part: day | weekday | heading | nav | range | presets | trigger;
+ *   state: default | hover | selected | today | outside | disabled.
+ */
+
+:root,
+[data-theme] {
+  --date-picker-font-family: var(--font-family-body);
+  --date-picker-font-size: var(--font-size-sm);
+  --date-picker-font-line-height: var(--font-line-height-sm);
+  --date-picker-gap: var(--spacing-sm);
+  --date-picker-months-gap: var(--spacing-xl);
+
+  /* Month heading and navigation */
+  --date-picker-heading-text-color: var(--color-fg-on-surface-primary);
+  --date-picker-heading-font-weight: var(--font-weight-semi-bold);
+  --date-picker-heading-font-size: var(--font-size-md);
+  --date-picker-heading-font-line-height: var(--font-line-height-md);
+  --date-picker-weekday-text-color: var(--color-fg-on-surface-secondary);
+  --date-picker-weekday-font-weight: var(--font-weight-medium);
+
+  /* Days */
+  --date-picker-day-size: var(--control-height-medium);
+  --date-picker-day-border-radius: var(--radius-full);
+  --date-picker-day-default-text-color: var(--color-fg-on-surface-primary);
+  --date-picker-day-hover-bg-color: var(--color-bg-default);
+  --date-picker-day-selected-bg-color: var(--color-bg-accent-primary-strong-default);
+  --date-picker-day-selected-text-color: var(--color-fg-on-accent-primary-strong-default);
+  --date-picker-day-today-indicator-color: var(--color-bg-accent-primary-default);
+  --date-picker-day-today-indicator-size: var(--sizing-4xs);
+  --date-picker-day-outside-text-color: var(--color-fg-on-surface-secondary);
+  --date-picker-day-disabled-opacity: var(--opacity-medium);
+  --date-picker-range-bg-color: var(--color-bg-primary-1);
+  --date-picker-range-text-color: var(--color-fg-on-primary-high);
+  --date-picker-focus-ring-width: var(--focus-ring-width);
+  --date-picker-focus-ring-offset: var(--focus-ring-offset);
+  --date-picker-focus-ring-color: var(--focus-ring-color);
+
+  /* Picker panel: presets list and footer */
+  --date-picker-panel-padding: var(--spacing-lg);
+  --date-picker-presets-width: calc(var(--sizing-8xl) * 0.72);
+  --date-picker-presets-border-color: var(--color-border-base);
+  --date-picker-presets-border-width: var(--border-width-hairline);
+  --date-picker-presets-item-hover-bg-color: var(--color-bg-default);
+  --date-picker-presets-item-selected-bg-color: var(--color-bg-primary-1);
+  --date-picker-presets-item-selected-text-color: var(--color-fg-on-primary-high);
+  --date-picker-presets-item-padding-x: var(--spacing-sm);
+  --date-picker-presets-item-padding-y: var(--spacing-xs);
+  --date-picker-presets-item-border-radius: var(--radius-md);
+  --date-picker-footer-gap: var(--spacing-sm);
+}

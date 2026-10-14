@@ -1,0 +1,221 @@
+/** Calendar, DatePicker and DateRangePicker. Styled only with --date-picker-* tokens. */
+
+.ds-calendar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--date-picker-months-gap);
+  font-family: var(--date-picker-font-family);
+  font-size: var(--date-picker-font-size);
+  line-height: var(--date-picker-font-line-height);
+}
+
+.ds-calendar__month {
+  display: flex;
+  flex-direction: column;
+  gap: var(--date-picker-gap);
+}
+
+.ds-calendar__header {
+  display: grid;
+  grid-template-columns: var(--date-picker-day-size) 1fr var(--date-picker-day-size);
+  align-items: center;
+}
+
+.ds-calendar__heading {
+  color: var(--date-picker-heading-text-color);
+  font-size: var(--date-picker-heading-font-size);
+  font-weight: var(--date-picker-heading-font-weight);
+  line-height: var(--date-picker-heading-font-line-height);
+  text-align: center;
+}
+
+.ds-calendar__chevron:dir(rtl) {
+  transform: scaleX(-1);
+}
+
+.ds-calendar__grid {
+  border-collapse: collapse;
+}
+
+.ds-calendar__weekday {
+  inline-size: var(--date-picker-day-size);
+  color: var(--date-picker-weekday-text-color);
+  font-weight: var(--date-picker-weekday-font-weight);
+  text-align: center;
+}
+
+.ds-calendar__cell {
+  padding: 0;
+}
+
+.ds-calendar__cell--in-range,
+.ds-calendar__cell--range-start,
+.ds-calendar__cell--range-end {
+  background-color: var(--date-picker-range-bg-color);
+}
+
+.ds-calendar__cell--range-start {
+  border-start-start-radius: var(--date-picker-day-border-radius);
+  border-end-start-radius: var(--date-picker-day-border-radius);
+}
+
+.ds-calendar__cell--range-end {
+  border-start-end-radius: var(--date-picker-day-border-radius);
+  border-end-end-radius: var(--date-picker-day-border-radius);
+}
+
+.ds-calendar__day {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: var(--date-picker-day-size);
+  block-size: var(--date-picker-day-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--date-picker-day-border-radius);
+  background: none;
+  color: var(--date-picker-day-default-text-color);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.ds-calendar__cell--in-range .ds-calendar__day {
+  color: var(--date-picker-range-text-color);
+}
+
+.ds-calendar__day:hover:not(:disabled, [aria-pressed='true']) {
+  background-color: var(--date-picker-day-hover-bg-color);
+}
+
+.ds-calendar__day--outside {
+  color: var(--date-picker-day-outside-text-color);
+}
+
+.ds-calendar__day[aria-pressed='true'] {
+  background-color: var(--date-picker-day-selected-bg-color);
+  color: var(--date-picker-day-selected-text-color);
+}
+
+.ds-calendar__day--today::after {
+  position: absolute;
+  inset-block-end: var(--date-picker-day-today-indicator-size);
+  inline-size: var(--date-picker-day-today-indicator-size);
+  block-size: var(--date-picker-day-today-indicator-size);
+  border-radius: 50%;
+  background-color: var(--date-picker-day-today-indicator-color);
+  content: '';
+}
+
+.ds-calendar__day[aria-pressed='true']::after {
+  background-color: var(--date-picker-day-selected-text-color);
+}
+
+.ds-calendar__day:focus-visible {
+  outline: var(--date-picker-focus-ring-width) solid var(--date-picker-focus-ring-color);
+  outline-offset: var(--date-picker-focus-ring-offset);
+}
+
+.ds-calendar__day:disabled {
+  opacity: var(--date-picker-day-disabled-opacity);
+  cursor: not-allowed;
+}
+
+/* Picker panel */
+.ds-date-picker__panel {
+  max-inline-size: none;
+}
+
+.ds-date-picker {
+  display: flex;
+  gap: var(--date-picker-panel-padding);
+  font-family: var(--date-picker-font-family);
+  font-size: var(--date-picker-font-size);
+  line-height: var(--date-picker-font-line-height);
+}
+
+.ds-date-picker__presets {
+  display: flex;
+  flex-direction: column;
+  inline-size: var(--date-picker-presets-width);
+  margin: 0;
+  padding: 0;
+  padding-inline-end: var(--date-picker-panel-padding);
+  border-inline-end: var(--date-picker-presets-border-width) solid
+    var(--date-picker-presets-border-color);
+  list-style: none;
+}
+
+.ds-date-picker__preset {
+  inline-size: 100%;
+  padding-block: var(--date-picker-presets-item-padding-y);
+  padding-inline: var(--date-picker-presets-item-padding-x);
+  border: 0;
+  border-radius: var(--date-picker-presets-item-border-radius);
+  background: none;
+  color: var(--date-picker-day-default-text-color);
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.ds-date-picker__preset:hover {
+  background-color: var(--date-picker-presets-item-hover-bg-color);
+}
+
+.ds-date-picker__preset[aria-pressed='true'] {
+  background-color: var(--date-picker-presets-item-selected-bg-color);
+  color: var(--date-picker-presets-item-selected-text-color);
+}
+
+.ds-date-picker__preset:focus-visible {
+  outline: var(--date-picker-focus-ring-width) solid var(--date-picker-focus-ring-color);
+  outline-offset: var(--date-picker-focus-ring-offset);
+}
+
+.ds-date-picker__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--date-picker-panel-padding);
+}
+
+.ds-date-picker__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--date-picker-footer-gap);
+  padding-block-start: var(--date-picker-panel-padding);
+  border-block-start: var(--date-picker-presets-border-width) solid
+    var(--date-picker-presets-border-color);
+}
+
+.ds-date-picker__summary {
+  margin-inline-end: auto;
+  color: var(--date-picker-weekday-text-color);
+}
+
+@media (width < 40rem) {
+  .ds-date-picker {
+    flex-direction: column;
+  }
+
+  .ds-date-picker__presets {
+    flex-flow: row wrap;
+    inline-size: auto;
+    padding-inline-end: 0;
+    padding-block-end: var(--date-picker-panel-padding);
+    border-inline-end: 0;
+    border-block-end: var(--date-picker-presets-border-width) solid
+      var(--date-picker-presets-border-color);
+  }
+
+  .ds-date-picker__preset {
+    inline-size: auto;
+  }
+}
+
+@media (forced-colors: active) {
+  .ds-calendar__day[aria-pressed='true'] {
+    outline: var(--date-picker-presets-border-width) solid Highlight;
+  }
+}

@@ -41,6 +41,7 @@ export * from '../PageHeader';
 export * from '../ActivityFeed';
 export * from '../FileUpload';
 export * from '../CommandMenu';
+export * from '../DatePicker';
 export * from '../Tag';
 export * from '../Spinner';
 export * from '../Progress';
