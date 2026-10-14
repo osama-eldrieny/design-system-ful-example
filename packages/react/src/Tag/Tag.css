@@ -1,19 +1,24 @@
 /** Tag. Styled only with --tag-* tokens; each tone × appearance sets the helpers. */
 
 .ds-tag {
+  --_px: var(--tag-padding-x);
+  --_py: var(--tag-padding-y);
+  --_font-size: var(--tag-font-size);
+  --_line-height: var(--tag-font-line-height);
+
   display: inline-flex;
   align-items: center;
   gap: var(--tag-gap);
-  padding-block: var(--tag-padding-y);
-  padding-inline: var(--tag-padding-x);
+  padding-block: var(--_py);
+  padding-inline: var(--_px);
   border: var(--tag-border-width) solid var(--_border, var(--_bg));
   border-radius: var(--tag-border-radius);
   background-color: var(--_bg);
   color: var(--_text);
   font-family: var(--tag-font-family);
-  font-size: var(--tag-font-size);
+  font-size: var(--_font-size);
   font-weight: var(--tag-font-weight);
-  line-height: var(--tag-font-line-height);
+  line-height: var(--_line-height);
   white-space: nowrap;
   vertical-align: middle;
 }
@@ -66,6 +71,115 @@
 .ds-tag--danger-subtle {
   --_bg: var(--tag-danger-subtle-bg-color);
   --_text: var(--tag-danger-subtle-text-color);
+}
+
+.ds-tag--gray-solid {
+  --_bg: var(--tag-gray-solid-bg-color);
+  --_text: var(--tag-gray-solid-text-color);
+}
+
+.ds-tag--gray-subtle {
+  --_bg: var(--tag-gray-subtle-bg-color);
+  --_text: var(--tag-gray-subtle-text-color);
+}
+
+.ds-tag--blue-solid {
+  --_bg: var(--tag-blue-solid-bg-color);
+  --_text: var(--tag-blue-solid-text-color);
+}
+
+.ds-tag--blue-subtle {
+  --_bg: var(--tag-blue-subtle-bg-color);
+  --_text: var(--tag-blue-subtle-text-color);
+}
+
+.ds-tag--sky-solid {
+  --_bg: var(--tag-sky-solid-bg-color);
+  --_text: var(--tag-sky-solid-text-color);
+}
+
+.ds-tag--sky-subtle {
+  --_bg: var(--tag-sky-subtle-bg-color);
+  --_text: var(--tag-sky-subtle-text-color);
+}
+
+.ds-tag--indigo-solid {
+  --_bg: var(--tag-indigo-solid-bg-color);
+  --_text: var(--tag-indigo-solid-text-color);
+}
+
+.ds-tag--indigo-subtle {
+  --_bg: var(--tag-indigo-subtle-bg-color);
+  --_text: var(--tag-indigo-subtle-text-color);
+}
+
+.ds-tag--purple-solid {
+  --_bg: var(--tag-purple-solid-bg-color);
+  --_text: var(--tag-purple-solid-text-color);
+}
+
+.ds-tag--purple-subtle {
+  --_bg: var(--tag-purple-subtle-bg-color);
+  --_text: var(--tag-purple-subtle-text-color);
+}
+
+.ds-tag--pink-solid {
+  --_bg: var(--tag-pink-solid-bg-color);
+  --_text: var(--tag-pink-solid-text-color);
+}
+
+.ds-tag--pink-subtle {
+  --_bg: var(--tag-pink-subtle-bg-color);
+  --_text: var(--tag-pink-subtle-text-color);
+}
+
+.ds-tag--orange-solid {
+  --_bg: var(--tag-orange-solid-bg-color);
+  --_text: var(--tag-orange-solid-text-color);
+}
+
+.ds-tag--orange-subtle {
+  --_bg: var(--tag-orange-subtle-bg-color);
+  --_text: var(--tag-orange-subtle-text-color);
+}
+
+.ds-tag--teal-solid {
+  --_bg: var(--tag-teal-solid-bg-color);
+  --_text: var(--tag-teal-solid-text-color);
+}
+
+.ds-tag--teal-subtle {
+  --_bg: var(--tag-teal-subtle-bg-color);
+  --_text: var(--tag-teal-subtle-text-color);
+}
+
+.ds-tag--small {
+  --_px: var(--tag-small-padding-x);
+  --_py: var(--tag-small-padding-y);
+  --_font-size: var(--tag-small-font-size);
+  --_line-height: var(--tag-small-font-line-height);
+}
+
+.ds-tag--large {
+  --_px: var(--tag-large-padding-x);
+  --_py: var(--tag-large-padding-y);
+  --_font-size: var(--tag-large-font-size);
+  --_line-height: var(--tag-large-font-line-height);
+}
+
+.ds-tag__count {
+  padding-inline: var(--tag-count-padding-x);
+  border-radius: var(--tag-count-border-radius);
+  background-color: var(--tag-count-bg-color);
+  color: var(--tag-count-text-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-tag__image {
+  inline-size: var(--tag-image-size);
+  block-size: var(--tag-image-size);
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .ds-tag--selectable:has([aria-pressed='true']) {

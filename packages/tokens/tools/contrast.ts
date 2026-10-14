@@ -23,6 +23,7 @@ export interface PairResult extends Pair {
 
 const TONES = ['primary', 'secondary', 'success', 'danger', 'warning'];
 const STATES = ['default', 'hover', 'focus'];
+const HUES = ['gray', 'blue', 'sky', 'indigo', 'purple', 'pink', 'orange', 'teal'];
 
 const luminance = (hex: string): number => {
   let h = hex.replace('#', '');
@@ -66,6 +67,14 @@ export function contrastPairs(set: TokenSet): Pair[] {
     add(`--color-border-${tone}-strong`, '--color-bg-surface', 'ui');
     add(`--color-border-${tone}-strong`, '--color-bg-default', 'ui');
   }
+  for (const hue of HUES) {
+    add(`--color-fg-on-${hue}-high`, `--color-bg-${hue}-1`);
+    add(`--color-fg-on-${hue}-high`, `--color-bg-${hue}-2`);
+    add(`--color-fg-on-${hue}-high`, '--color-bg-surface');
+    add(`--color-fg-on-accent-${hue}-default`, `--color-bg-accent-${hue}-default`);
+    add(`--color-border-${hue}-strong`, '--color-bg-surface', 'ui');
+  }
+  for (let n = 1; n <= 8; n++) add(`--color-chart-${n}`, '--color-bg-surface', 'ui');
   for (const bg of ['--color-bg-surface', '--color-bg-default']) {
     add('--color-fg-on-surface-primary', bg);
     add('--color-fg-on-surface-secondary', bg);
@@ -101,6 +110,8 @@ export function contrastPairs(set: TokenSet): Pair[] {
 const NOT_ON_COMPONENT_BG = [
   // Only enclosed tabs paint --tabs-bg-color; line and pill tabs sit on the page.
   /^--tabs-(line|pill)-/,
+  // AvatarLabelGroup text sits on the page, not on the avatar's fallback fill.
+  /^--avatar-label-group-/,
 ];
 
 /** Checks every pair in every brand × mode (other axes at their defaults). */

@@ -34,6 +34,19 @@ export default defineMeta({
         { value: 'success', meaning: 'Positive category.' },
         { value: 'warning', meaning: 'Caution category.' },
         { value: 'danger', meaning: 'Negative category.' },
+        {
+          value: 'gray | blue | sky | indigo | purple | pink | orange | teal',
+          meaning: 'Category hues with no meaning of their own.',
+        },
+      ],
+    },
+    {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: 'Dense tables and filter bars.' },
+        { value: 'medium', meaning: 'Default.' },
+        { value: 'large', meaning: 'Prominent lists of keywords.' },
       ],
     },
     {
@@ -129,5 +142,12 @@ export default defineMeta({
     { id: 'badge', relation: 'For statuses and counts.' },
     { id: 'combobox', relation: 'For choosing several values in a form.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: ['Category hues for tone; size; count and image.'],
+    },
+  ],
 });

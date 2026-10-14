@@ -72,6 +72,28 @@ describe('Button', () => {
       'ds-button--large',
     );
   });
+
+  it('renders a link with href, not followed while disabled', () => {
+    const { rerender } = render(<Button href="/report">View report</Button>);
+    expect(screen.getByRole('link', { name: 'View report' })).toHaveAttribute('href', '/report');
+    rerender(
+      <Button href="/report" disabled>
+        View report
+      </Button>,
+    );
+    const link = screen.getByRole('link', { name: 'View report' });
+    expect(link).not.toHaveAttribute('href');
+    expect(link).toHaveAttribute('aria-disabled', 'true');
+  });
+
+  it('shows loadingText while loading', () => {
+    render(
+      <Button loading loadingText="Saving…">
+        Save
+      </Button>,
+    );
+    expect(screen.getByRole('button', { name: 'Saving…' })).toHaveAttribute('aria-busy', 'true');
+  });
 });
 
 describe('IconButton', () => {

@@ -1,0 +1,183 @@
+/**
+ * Theme: palette
+ *
+ * Categorical colors for labels, avatars, tags and data visualization. They are the same in
+ * every brand; only data-mode changes them. Use them for categories (e.g. a "Design" label),
+ * never for meaning: success, warning and danger stay semantic (themes/color.css).
+ *
+ * Token reference ({hue}: gray | blue | sky | indigo | purple | pink | orange | teal):
+ *   --color-bg-{hue}-1: Subtle tinted background, e.g. a badge or tag.
+ *   --color-bg-{hue}-2: Slightly stronger tint, e.g. a hovered item or an avatar placeholder.
+ *   --color-fg-on-{hue}-high: Hue-colored text on the tinted backgrounds and on surfaces.
+ *   --color-border-{hue}-subtle: Faint outline on the tinted background.
+ *   --color-border-{hue}-strong: Hue-colored outline or icon with 3:1 on surfaces.
+ *   --color-bg-accent-{hue}-default: Solid fill of the hue.
+ *   --color-fg-on-accent-{hue}-default: Text and icons on the solid fill.
+ *   --color-dot-{hue}: Status dots and legend markers.
+ *   --color-chart-{n}: Data series colors 1–8, in the order charts assign them; 1 is the brand.
+ *   --color-chart-grid: Chart gridlines.
+ *   --color-chart-axis: Chart axis labels and ticks.
+ *   --color-chart-positive: Positive values, e.g. a rising sparkline.
+ *   --color-chart-negative: Negative values.
+ */
+
+/* mode: light (default) */
+:root,
+[data-mode='light'] {
+  --color-bg-gray-1: var(--color-gray-50);
+  --color-bg-gray-2: var(--color-gray-100);
+  --color-fg-on-gray-high: var(--color-gray-700);
+  --color-border-gray-subtle: var(--color-gray-200);
+  --color-border-gray-strong: var(--color-gray-600);
+  --color-bg-accent-gray-default: var(--color-gray-700);
+  --color-fg-on-accent-gray-default: var(--color-fg-inverse);
+  --color-dot-gray: var(--color-gray-500);
+  --color-bg-blue-1: var(--color-blue-50);
+  --color-bg-blue-2: var(--color-blue-100);
+  --color-fg-on-blue-high: var(--color-blue-700);
+  --color-border-blue-subtle: var(--color-blue-200);
+  --color-border-blue-strong: var(--color-blue-600);
+  --color-bg-accent-blue-default: var(--color-blue-700);
+  --color-fg-on-accent-blue-default: var(--color-fg-inverse);
+  --color-dot-blue: var(--color-blue-500);
+  --color-bg-sky-1: var(--color-sky-50);
+  --color-bg-sky-2: var(--color-sky-100);
+  --color-fg-on-sky-high: var(--color-sky-700);
+  --color-border-sky-subtle: var(--color-sky-200);
+  --color-border-sky-strong: var(--color-sky-600);
+  --color-bg-accent-sky-default: var(--color-sky-700);
+  --color-fg-on-accent-sky-default: var(--color-fg-inverse);
+  --color-dot-sky: var(--color-sky-600);
+  --color-bg-indigo-1: var(--color-indigo-50);
+  --color-bg-indigo-2: var(--color-indigo-100);
+  --color-fg-on-indigo-high: var(--color-indigo-700);
+  --color-border-indigo-subtle: var(--color-indigo-200);
+  --color-border-indigo-strong: var(--color-indigo-600);
+  --color-bg-accent-indigo-default: var(--color-indigo-700);
+  --color-fg-on-accent-indigo-default: var(--color-fg-inverse);
+  --color-dot-indigo: var(--color-indigo-500);
+  --color-bg-purple-1: var(--color-purple-50);
+  --color-bg-purple-2: var(--color-purple-100);
+  --color-fg-on-purple-high: var(--color-purple-700);
+  --color-border-purple-subtle: var(--color-purple-200);
+  --color-border-purple-strong: var(--color-purple-600);
+  --color-bg-accent-purple-default: var(--color-purple-700);
+  --color-fg-on-accent-purple-default: var(--color-fg-inverse);
+  --color-dot-purple: var(--color-purple-500);
+  --color-bg-pink-1: var(--color-pink-50);
+  --color-bg-pink-2: var(--color-pink-100);
+  --color-fg-on-pink-high: var(--color-pink-700);
+  --color-border-pink-subtle: var(--color-pink-200);
+  --color-border-pink-strong: var(--color-pink-600);
+  --color-bg-accent-pink-default: var(--color-pink-700);
+  --color-fg-on-accent-pink-default: var(--color-fg-inverse);
+  --color-dot-pink: var(--color-pink-500);
+  --color-bg-orange-1: var(--color-orange-50);
+  --color-bg-orange-2: var(--color-orange-100);
+  --color-fg-on-orange-high: var(--color-orange-700);
+  --color-border-orange-subtle: var(--color-orange-200);
+  --color-border-orange-strong: var(--color-orange-600);
+  --color-bg-accent-orange-default: var(--color-orange-700);
+  --color-fg-on-accent-orange-default: var(--color-fg-inverse);
+  --color-dot-orange: var(--color-orange-600);
+  --color-bg-teal-1: var(--color-teal-50);
+  --color-bg-teal-2: var(--color-teal-100);
+  --color-fg-on-teal-high: var(--color-teal-700);
+  --color-border-teal-subtle: var(--color-teal-200);
+  --color-border-teal-strong: var(--color-teal-600);
+  --color-bg-accent-teal-default: var(--color-teal-700);
+  --color-fg-on-accent-teal-default: var(--color-fg-inverse);
+  --color-dot-teal: var(--color-teal-600);
+  --color-chart-1: var(--color-fg-on-accent-primary-text-default);
+  --color-chart-2: var(--color-blue-500);
+  --color-chart-3: var(--color-teal-600);
+  --color-chart-4: var(--color-orange-600);
+  --color-chart-5: var(--color-pink-500);
+  --color-chart-6: var(--color-sky-600);
+  --color-chart-7: var(--color-purple-500);
+  --color-chart-8: var(--color-gray-500);
+  --color-chart-grid: var(--color-border-base);
+  --color-chart-axis: var(--color-fg-on-surface-secondary);
+  --color-chart-positive: var(--color-bg-accent-success-default);
+  --color-chart-negative: var(--color-bg-accent-danger-default);
+}
+
+/* mode: dark */
+[data-mode='dark'] {
+  --color-bg-gray-1: var(--color-gray-950);
+  --color-bg-gray-2: var(--color-gray-900);
+  --color-fg-on-gray-high: var(--color-gray-300);
+  --color-border-gray-subtle: var(--color-gray-800);
+  --color-border-gray-strong: var(--color-gray-400);
+  --color-bg-accent-gray-default: var(--color-gray-700);
+  --color-fg-on-accent-gray-default: var(--color-fg-inverse);
+  --color-dot-gray: var(--color-gray-400);
+  --color-bg-blue-1: var(--color-blue-950);
+  --color-bg-blue-2: var(--color-blue-900);
+  --color-fg-on-blue-high: var(--color-blue-300);
+  --color-border-blue-subtle: var(--color-blue-800);
+  --color-border-blue-strong: var(--color-blue-400);
+  --color-bg-accent-blue-default: var(--color-blue-700);
+  --color-fg-on-accent-blue-default: var(--color-fg-inverse);
+  --color-dot-blue: var(--color-blue-400);
+  --color-bg-sky-1: var(--color-sky-950);
+  --color-bg-sky-2: var(--color-sky-900);
+  --color-fg-on-sky-high: var(--color-sky-300);
+  --color-border-sky-subtle: var(--color-sky-800);
+  --color-border-sky-strong: var(--color-sky-400);
+  --color-bg-accent-sky-default: var(--color-sky-700);
+  --color-fg-on-accent-sky-default: var(--color-fg-inverse);
+  --color-dot-sky: var(--color-sky-400);
+  --color-bg-indigo-1: var(--color-indigo-950);
+  --color-bg-indigo-2: var(--color-indigo-900);
+  --color-fg-on-indigo-high: var(--color-indigo-300);
+  --color-border-indigo-subtle: var(--color-indigo-800);
+  --color-border-indigo-strong: var(--color-indigo-400);
+  --color-bg-accent-indigo-default: var(--color-indigo-700);
+  --color-fg-on-accent-indigo-default: var(--color-fg-inverse);
+  --color-dot-indigo: var(--color-indigo-400);
+  --color-bg-purple-1: var(--color-purple-950);
+  --color-bg-purple-2: var(--color-purple-900);
+  --color-fg-on-purple-high: var(--color-purple-300);
+  --color-border-purple-subtle: var(--color-purple-800);
+  --color-border-purple-strong: var(--color-purple-400);
+  --color-bg-accent-purple-default: var(--color-purple-700);
+  --color-fg-on-accent-purple-default: var(--color-fg-inverse);
+  --color-dot-purple: var(--color-purple-400);
+  --color-bg-pink-1: var(--color-pink-950);
+  --color-bg-pink-2: var(--color-pink-900);
+  --color-fg-on-pink-high: var(--color-pink-300);
+  --color-border-pink-subtle: var(--color-pink-800);
+  --color-border-pink-strong: var(--color-pink-400);
+  --color-bg-accent-pink-default: var(--color-pink-700);
+  --color-fg-on-accent-pink-default: var(--color-fg-inverse);
+  --color-dot-pink: var(--color-pink-400);
+  --color-bg-orange-1: var(--color-orange-950);
+  --color-bg-orange-2: var(--color-orange-900);
+  --color-fg-on-orange-high: var(--color-orange-300);
+  --color-border-orange-subtle: var(--color-orange-800);
+  --color-border-orange-strong: var(--color-orange-400);
+  --color-bg-accent-orange-default: var(--color-orange-700);
+  --color-fg-on-accent-orange-default: var(--color-fg-inverse);
+  --color-dot-orange: var(--color-orange-400);
+  --color-bg-teal-1: var(--color-teal-950);
+  --color-bg-teal-2: var(--color-teal-900);
+  --color-fg-on-teal-high: var(--color-teal-300);
+  --color-border-teal-subtle: var(--color-teal-800);
+  --color-border-teal-strong: var(--color-teal-400);
+  --color-bg-accent-teal-default: var(--color-teal-700);
+  --color-fg-on-accent-teal-default: var(--color-fg-inverse);
+  --color-dot-teal: var(--color-teal-400);
+  --color-chart-1: var(--color-bg-accent-primary-default);
+  --color-chart-2: var(--color-blue-400);
+  --color-chart-3: var(--color-teal-400);
+  --color-chart-4: var(--color-orange-400);
+  --color-chart-5: var(--color-pink-400);
+  --color-chart-6: var(--color-sky-400);
+  --color-chart-7: var(--color-purple-400);
+  --color-chart-8: var(--color-gray-400);
+  --color-chart-grid: var(--color-border-base);
+  --color-chart-axis: var(--color-fg-on-surface-secondary);
+  --color-chart-positive: var(--color-bg-accent-success-default);
+  --color-chart-negative: var(--color-bg-accent-danger-default);
+}

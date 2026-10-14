@@ -2,10 +2,11 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { Hash } from 'lucide-react';
 import { expect, fn, userEvent } from 'storybook/test';
+import { BADGE_HUES } from '../Badge';
 import { ThemeProvider } from '../ThemeProvider';
 import { Tag, type TagTone } from './Tag';
 
-const TONES: TagTone[] = ['secondary', 'primary', 'success', 'warning', 'danger'];
+const TONES: TagTone[] = ['secondary', 'primary', 'success', 'warning', 'danger', ...BADGE_HUES];
 const row = { display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' } as const;
 
 const meta = {
@@ -33,6 +34,33 @@ export const Tones: Story = {
           ))}
         </div>
       ))}
+    </div>
+  ),
+};
+
+export const Sizes: Story = {
+  render: () => (
+    <div style={row}>
+      {(['small', 'medium', 'large'] as const).map((size) => (
+        <Tag key={size} size={size} onRemove={fn()}>
+          {size}
+        </Tag>
+      ))}
+    </div>
+  ),
+};
+
+/** A count, e.g. how many results a filter matches, or a person's picture. */
+export const CountAndImage: Story = {
+  render: () => (
+    <div style={row}>
+      <Tag count={12}>Design</Tag>
+      <Tag tone="blue" count={4}>
+        Engineering
+      </Tag>
+      <Tag image="assets/avatar-2.png" onRemove={fn()}>
+        Sarah Chen
+      </Tag>
     </div>
   ),
 };

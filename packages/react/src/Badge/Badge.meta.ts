@@ -8,7 +8,10 @@ export default defineMeta({
   since: '0.4.0',
   description:
     'A badge is a small, non-interactive label for a status (“Paid”, “New”) or a count (3 unread). It comes in five tones, solid or subtle, and as a dot.',
-  imports: [{ name: 'Badge', from: '@ds/react' }],
+  imports: [
+    { name: 'Badge', from: '@ds/react' },
+    { name: 'BadgeGroup', from: '@ds/react' },
+  ],
   whenToUse: [
     'To show the status of an item in a list or table.',
     'To show a count on navigation or an icon, e.g. unread messages.',
@@ -32,6 +35,32 @@ export default defineMeta({
         { value: 'success', meaning: 'Done or healthy, e.g. “Paid”.' },
         { value: 'warning', meaning: 'Needs attention, e.g. “Due soon”.' },
         { value: 'danger', meaning: 'Failed or overdue.' },
+        {
+          value: 'gray | blue | sky | indigo | purple | pink | orange | teal',
+          meaning:
+            'Category hues with no meaning of their own: departments, projects, file types. Same in every brand.',
+        },
+      ],
+    },
+    {
+      prop: 'shape',
+      title: 'Shape',
+      values: [
+        { value: 'pill', meaning: 'Fully rounded. Default.' },
+        { value: 'rounded', meaning: 'Small corners; reads as a label in dense tables.' },
+        {
+          value: 'modern',
+          meaning: 'Neutral surface with a border; only the dot or icon takes the color.',
+        },
+      ],
+    },
+    {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: '20px, for tables and dense lists.' },
+        { value: 'medium', meaning: '24px. Default.' },
+        { value: 'large', meaning: '28px, next to headings.' },
       ],
     },
     {
@@ -119,11 +148,40 @@ export default defineMeta({
       description: 'New activity.',
       code: `import { Badge } from '@ds/react';\n\n<Badge dot tone="primary" label="New activity" />`,
     },
+    {
+      id: 'category',
+      title: 'Category label',
+      description: 'A modern badge with a colored dot, e.g. a team in a table.',
+      code: `import { Badge } from '@ds/react';\n\n<Badge tone="indigo" shape="modern" withDot>Design</Badge>`,
+    },
+    {
+      id: 'trend',
+      title: 'Trend',
+      description: 'A change with an arrow icon.',
+      code: `import { Badge } from '@ds/react';\nimport { ArrowUp } from 'lucide-react';\n\n<Badge tone="success" size="small" iconStart={<ArrowUp />}>12%</Badge>`,
+    },
+    {
+      id: 'group',
+      title: 'Announcement',
+      description: 'BadgeGroup links to news.',
+      code: `import { BadgeGroup } from '@ds/react';\n\n<BadgeGroup badge="New" href="/changelog">Dashboards are here</BadgeGroup>`,
+    },
   ],
   tokenPrefixes: ['--badge-'],
   related: [
     { id: 'tag', relation: 'For removable or selectable labels.' },
     { id: 'alert', relation: 'For messages.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: [
+        'Eight category hues for tone; shape (pill, rounded, modern), size and bordered.',
+        'withDot, iconStart, iconEnd, image, onDismiss; icon-only badges.',
+        'New BadgeGroup: a badge with a message, optionally a link.',
+      ],
+    },
+  ],
 });

@@ -4,12 +4,14 @@
  * Style this component only with these tokens.
  *
  * Grammar: --avatar-{size?}-{property} and --avatar-status-{status}-color
- *   size: small | medium | large | xlarge; corners come from the radius theme
+ *   size: xsmall | small | medium | large | xlarge; corners come from the radius theme
  */
 
 :root,
 [data-theme] {
   /* Sizes */
+  --avatar-xsmall-size: var(--sizing-sm-plus);
+  --avatar-xsmall-font-size: var(--font-size-xs);
   --avatar-small-size: var(--sizing-lg);
   --avatar-medium-size: var(--sizing-xl);
   --avatar-large-size: var(--sizing-2xl);
@@ -35,6 +37,33 @@
   --avatar-status-busy-color: var(--color-bg-accent-danger-default);
   --avatar-status-offline-color: var(--color-bg-accent-secondary-default);
 
-  /* Group */
+  /* Verified mark (bottom end corner) */
+  --avatar-verified-bg-color: var(--color-bg-accent-primary-default);
+  --avatar-verified-icon-color: var(--color-fg-on-accent-primary-default);
+
+  /* Group, and its add button */
   --avatar-group-gap: var(--spacing-4xs);
+  --avatar-group-add-bg-color: var(--color-bg-surface);
+  --avatar-group-add-icon-color: var(--color-fg-on-surface-secondary);
+  --avatar-group-add-border-color: var(--color-border-field);
+  --avatar-group-add-hover-bg-color: var(--color-bg-default);
+  --avatar-group-add-border-width: var(--border-width-hairline);
+  --avatar-focus-ring-width: var(--focus-ring-width);
+  --avatar-focus-ring-offset: var(--focus-ring-offset);
+  --avatar-focus-ring-color: var(--focus-ring-color);
+
+  /* AvatarLabelGroup: avatar with a name and supporting text */
+  --avatar-label-group-gap: var(--spacing-sm);
+  --avatar-label-group-name-text-color: var(--color-fg-on-surface-primary);
+  --avatar-label-group-name-font-weight: var(--font-weight-semi-bold);
+  --avatar-label-group-supporting-text-color: var(--color-fg-on-surface-secondary);
+  --avatar-label-group-font-family: var(--font-family-body);
+  --avatar-label-group-small-font-size: var(--font-size-sm);
+  --avatar-label-group-small-font-line-height: var(--font-line-height-sm);
+  --avatar-label-group-medium-font-size: var(--font-size-sm);
+  --avatar-label-group-medium-font-line-height: var(--font-line-height-sm);
+  --avatar-label-group-large-font-size: var(--font-size-md);
+  --avatar-label-group-large-font-line-height: var(--font-line-height-md);
+  --avatar-label-group-xlarge-font-size: var(--font-size-lg);
+  --avatar-label-group-xlarge-font-line-height: var(--font-line-height-lg);
 }

@@ -26,6 +26,7 @@
 @import url('./components/drawer.css');
 @import url('./components/dropdown.css');
 @import url('./components/empty-state.css');
+@import url('./components/featured-icon.css');
 @import url('./components/footer.css');
 @import url('./components/form-field.css');
 @import url('./components/grid.css');
@@ -62,6 +63,7 @@
 @import url('./components/toast.css');
 @import url('./components/tooltip.css');
 @import url('./themes/color.css');
+@import url('./themes/palette.css');
 @import url('./themes/density.css');
 @import url('./themes/radius.css');
 @import url('./themes/shadow.css');

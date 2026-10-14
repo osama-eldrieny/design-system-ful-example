@@ -1,10 +1,14 @@
 /**
- * Component tokens: badge
+ * Component tokens: badge (Badge and BadgeGroup)
  *
  * Style this component only with these tokens.
  *
- * Grammar: --badge-{tone}-{appearance}-{property} and --badge-{property}
- *   tone: primary | secondary | success | warning | danger; appearance: solid | subtle.
+ * Grammar: --badge-{color}-{appearance}-{property}, --badge-{size}-{property},
+ *   --badge-{shape}-{property} and --badge-{property}
+ *   color: primary | secondary | success | warning | danger (meaning) and
+ *     gray | blue | sky | indigo | purple | pink | orange | teal (categories);
+ *   appearance: solid | subtle; size: small | medium | large; shape: pill | rounded | modern.
+ *   Modern badges sit on the surface with a border; only their dot or icon takes the color.
  */
 
 :root,
@@ -13,25 +17,118 @@
   --badge-primary-solid-text-color: var(--color-fg-on-accent-primary-default);
   --badge-primary-subtle-bg-color: var(--color-bg-primary-1);
   --badge-primary-subtle-text-color: var(--color-fg-on-primary-high);
+  --badge-primary-subtle-border-color: var(--color-border-primary-subtle);
+  --badge-primary-icon-color: var(--color-bg-accent-primary-default);
   --badge-secondary-solid-bg-color: var(--color-bg-accent-secondary-default);
   --badge-secondary-solid-text-color: var(--color-fg-on-accent-secondary-default);
   --badge-secondary-subtle-bg-color: var(--color-bg-secondary-1);
   --badge-secondary-subtle-text-color: var(--color-fg-on-secondary-high);
+  --badge-secondary-subtle-border-color: var(--color-border-base);
+  --badge-secondary-icon-color: var(--color-bg-accent-secondary-default);
   --badge-success-solid-bg-color: var(--color-bg-accent-success-default);
   --badge-success-solid-text-color: var(--color-fg-on-accent-success-default);
   --badge-success-subtle-bg-color: var(--color-bg-success-1);
   --badge-success-subtle-text-color: var(--color-fg-on-success-high);
+  --badge-success-subtle-border-color: var(--color-border-success-subtle);
+  --badge-success-icon-color: var(--color-bg-accent-success-default);
   --badge-warning-solid-bg-color: var(--color-bg-accent-warning-default);
   --badge-warning-solid-text-color: var(--color-fg-on-accent-warning-default);
   --badge-warning-subtle-bg-color: var(--color-bg-warning-1);
   --badge-warning-subtle-text-color: var(--color-fg-on-warning-high);
+  --badge-warning-subtle-border-color: var(--color-border-warning-subtle);
+  --badge-warning-icon-color: var(--color-bg-accent-warning-default);
   --badge-danger-solid-bg-color: var(--color-bg-accent-danger-default);
   --badge-danger-solid-text-color: var(--color-fg-on-accent-danger-default);
   --badge-danger-subtle-bg-color: var(--color-bg-danger-1);
   --badge-danger-subtle-text-color: var(--color-fg-on-danger-high);
+  --badge-danger-subtle-border-color: var(--color-border-danger-subtle);
+  --badge-danger-icon-color: var(--color-bg-accent-danger-default);
+  --badge-gray-solid-bg-color: var(--color-bg-accent-gray-default);
+  --badge-gray-solid-text-color: var(--color-fg-on-accent-gray-default);
+  --badge-gray-subtle-bg-color: var(--color-bg-gray-1);
+  --badge-gray-subtle-text-color: var(--color-fg-on-gray-high);
+  --badge-gray-subtle-border-color: var(--color-border-gray-subtle);
+  --badge-gray-icon-color: var(--color-dot-gray);
+  --badge-blue-solid-bg-color: var(--color-bg-accent-blue-default);
+  --badge-blue-solid-text-color: var(--color-fg-on-accent-blue-default);
+  --badge-blue-subtle-bg-color: var(--color-bg-blue-1);
+  --badge-blue-subtle-text-color: var(--color-fg-on-blue-high);
+  --badge-blue-subtle-border-color: var(--color-border-blue-subtle);
+  --badge-blue-icon-color: var(--color-dot-blue);
+  --badge-sky-solid-bg-color: var(--color-bg-accent-sky-default);
+  --badge-sky-solid-text-color: var(--color-fg-on-accent-sky-default);
+  --badge-sky-subtle-bg-color: var(--color-bg-sky-1);
+  --badge-sky-subtle-text-color: var(--color-fg-on-sky-high);
+  --badge-sky-subtle-border-color: var(--color-border-sky-subtle);
+  --badge-sky-icon-color: var(--color-dot-sky);
+  --badge-indigo-solid-bg-color: var(--color-bg-accent-indigo-default);
+  --badge-indigo-solid-text-color: var(--color-fg-on-accent-indigo-default);
+  --badge-indigo-subtle-bg-color: var(--color-bg-indigo-1);
+  --badge-indigo-subtle-text-color: var(--color-fg-on-indigo-high);
+  --badge-indigo-subtle-border-color: var(--color-border-indigo-subtle);
+  --badge-indigo-icon-color: var(--color-dot-indigo);
+  --badge-purple-solid-bg-color: var(--color-bg-accent-purple-default);
+  --badge-purple-solid-text-color: var(--color-fg-on-accent-purple-default);
+  --badge-purple-subtle-bg-color: var(--color-bg-purple-1);
+  --badge-purple-subtle-text-color: var(--color-fg-on-purple-high);
+  --badge-purple-subtle-border-color: var(--color-border-purple-subtle);
+  --badge-purple-icon-color: var(--color-dot-purple);
+  --badge-pink-solid-bg-color: var(--color-bg-accent-pink-default);
+  --badge-pink-solid-text-color: var(--color-fg-on-accent-pink-default);
+  --badge-pink-subtle-bg-color: var(--color-bg-pink-1);
+  --badge-pink-subtle-text-color: var(--color-fg-on-pink-high);
+  --badge-pink-subtle-border-color: var(--color-border-pink-subtle);
+  --badge-pink-icon-color: var(--color-dot-pink);
+  --badge-orange-solid-bg-color: var(--color-bg-accent-orange-default);
+  --badge-orange-solid-text-color: var(--color-fg-on-accent-orange-default);
+  --badge-orange-subtle-bg-color: var(--color-bg-orange-1);
+  --badge-orange-subtle-text-color: var(--color-fg-on-orange-high);
+  --badge-orange-subtle-border-color: var(--color-border-orange-subtle);
+  --badge-orange-icon-color: var(--color-dot-orange);
+  --badge-teal-solid-bg-color: var(--color-bg-accent-teal-default);
+  --badge-teal-solid-text-color: var(--color-fg-on-accent-teal-default);
+  --badge-teal-subtle-bg-color: var(--color-bg-teal-1);
+  --badge-teal-subtle-text-color: var(--color-fg-on-teal-high);
+  --badge-teal-subtle-border-color: var(--color-border-teal-subtle);
+  --badge-teal-icon-color: var(--color-dot-teal);
+
+  /* Modern: neutral surface with a border */
+  --badge-modern-bg-color: var(--color-bg-surface);
+  --badge-modern-text-color: var(--color-fg-on-surface-primary);
+  --badge-modern-border-color: var(--color-border-base);
+  --badge-modern-border-radius: var(--radius-sm);
+
+  /* Shapes */
+  --badge-pill-border-radius: var(--radius-full);
+  --badge-rounded-border-radius: var(--radius-sm);
+  --badge-border-width: var(--border-width-hairline);
+
+  /* Sizes */
+  --badge-small-height: var(--sizing-sm-plus);
+  --badge-small-padding-x: var(--spacing-2xs);
+  --badge-small-gap: var(--spacing-3xs);
+  --badge-small-font-size: var(--font-size-xs);
+  --badge-small-font-line-height: var(--font-line-height-xs);
+  --badge-small-icon-size: var(--sizing-2xs);
+  --badge-medium-height: var(--sizing-lg);
+  --badge-medium-padding-x: var(--spacing-xs);
+  --badge-medium-gap: var(--spacing-2xs);
+  --badge-medium-font-size: var(--font-size-sm);
+  --badge-medium-font-line-height: var(--font-line-height-sm);
+  --badge-medium-icon-size: var(--sizing-2xs);
+  --badge-large-height: var(--sizing-lg-plus);
+  --badge-large-padding-x: var(--spacing-sm);
+  --badge-large-gap: var(--spacing-2xs);
+  --badge-large-font-size: var(--font-size-sm);
+  --badge-large-font-line-height: var(--font-line-height-sm);
+  --badge-large-icon-size: var(--sizing-xs);
+
+  /* Shared */
+  --badge-height: var(--sizing-lg);
   --badge-padding-x: var(--spacing-xs);
-  --badge-height: var(--sizing-md);
   --badge-dot-size: var(--spacing-xs);
+  --badge-status-dot-size: var(--sizing-4xs);
+  --badge-image-size: var(--sizing-sm);
   --badge-font-family: var(--font-family-body);
   --badge-font-size: var(--font-size-sm);
   --badge-font-line-height: var(--font-line-height-sm);
@@ -40,4 +137,18 @@
   --badge-ring-color: var(--color-bg-base);
   --badge-ring-width: var(--border-width-regular);
   --badge-hidden-size: var(--border-width-hairline);
+  --badge-dismiss-hover-opacity: var(--opacity-medium);
+  --badge-focus-ring-width: var(--focus-ring-width);
+  --badge-focus-ring-offset: var(--focus-ring-offset);
+  --badge-focus-ring-color: var(--focus-ring-color);
+
+  /* BadgeGroup: a badge inside a tinted pill, followed by a message */
+  --badge-group-gap: var(--spacing-xs);
+  --badge-group-padding-y: var(--spacing-3xs);
+  --badge-group-padding-start: var(--spacing-3xs);
+  --badge-group-padding-end: var(--spacing-xs);
+  --badge-group-border-radius: var(--radius-full);
+  --badge-group-border-width: var(--border-width-hairline);
+  --badge-group-icon-size: var(--sizing-sm);
+  --badge-group-hover-opacity: var(--opacity-medium);
 }

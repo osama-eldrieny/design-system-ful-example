@@ -1,14 +1,22 @@
 import { forwardRef, type HTMLAttributes, type ReactNode } from 'react';
 import { X } from 'lucide-react';
+import type { BadgeColor } from '../Badge';
 import './Tag.css';
 
-export type TagTone = 'primary' | 'secondary' | 'success' | 'warning' | 'danger';
+export type TagTone = BadgeColor;
+export type TagSize = 'small' | 'medium' | 'large';
 
 export interface TagProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'onChange'> {
   /** Text of the tag; also names its remove button. */
   children: string;
-  /** Color meaning. Default secondary (neutral). */
+  /** Color meaning or category hue. Default secondary (neutral). */
   tone?: TagTone;
+  /** `small`, `medium` (default) or `large`. */
+  size?: TagSize;
+  /** A count after the text, e.g. how many items match a filter. */
+  count?: number;
+  /** Small round picture before the text, e.g. a person. Decorative. */
+  image?: string;
   /** `subtle` (default) or `solid`. */
   appearance?: 'solid' | 'subtle';
   /** Decorative icon before the text. */
@@ -33,6 +41,9 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
     {
       children,
       tone = 'secondary',
+      size = 'medium',
+      count,
+      image,
       appearance = 'subtle',
       icon,
       onRemove,
@@ -54,7 +65,9 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
             {icon}
           </span>
         )}
+        {image && <img className="ds-tag__image" src={image} alt="" />}
         {children}
+        {count !== undefined && <span className="ds-tag__count">{count}</span>}
       </>
     );
     return (
@@ -63,6 +76,7 @@ export const Tag = forwardRef<HTMLSpanElement, TagProps>(
         className={[
           'ds-tag',
           `ds-tag--${tone}-${look}`,
+          size !== 'medium' && `ds-tag--${size}`,
           selectable && 'ds-tag--selectable',
           className,
         ]

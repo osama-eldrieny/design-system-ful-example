@@ -14,6 +14,7 @@
  *   --color-{brand}-success-{step}: Positive states.
  *   --color-{brand}-danger-{step}: Errors and destructive actions.
  *   --color-{brand}-warning-{step}: Cautions.
+ *   --color-{hue}-{n}: Categorical ramps shared by every brand (see themes/palette.css), 50 lightest to 950 darkest.
  *   --border-width-{n}, --border-width-{name}: Stroke widths in px.
  *   --size-{n}, --sizing-{name}: Fixed element sizes in px.
  *   --opacity-{n}, --opacity-{name}: Opacity from 0 to 1.
@@ -27,6 +28,110 @@
 :root {
   /* color: neutral */
   --color-black: #000;
+
+  /* color: gray (shared by every brand) */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f4f4f5;
+  --color-gray-200: #e4e4e7;
+  --color-gray-300: #d4d4d8;
+  --color-gray-400: #a1a1aa;
+  --color-gray-500: #71717a;
+  --color-gray-600: #52525b;
+  --color-gray-700: #3f3f46;
+  --color-gray-800: #27272a;
+  --color-gray-900: #18181b;
+  --color-gray-950: #09090b;
+
+  /* color: blue (shared by every brand) */
+  --color-blue-50: #eff6ff;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bfdbfe;
+  --color-blue-300: #93c5fd;
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-800: #1e40af;
+  --color-blue-900: #1e3a8a;
+  --color-blue-950: #172554;
+
+  /* color: sky (shared by every brand) */
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-300: #7dd3fc;
+  --color-sky-400: #38bdf8;
+  --color-sky-500: #0ea5e9;
+  --color-sky-600: #0284c7;
+  --color-sky-700: #0369a1;
+  --color-sky-800: #075985;
+  --color-sky-900: #0c4a6e;
+  --color-sky-950: #082f49;
+
+  /* color: indigo (shared by every brand) */
+  --color-indigo-50: #eef2ff;
+  --color-indigo-100: #e0e7ff;
+  --color-indigo-200: #c7d2fe;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+  --color-indigo-700: #4338ca;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #312e81;
+  --color-indigo-950: #1e1b4b;
+
+  /* color: purple (shared by every brand) */
+  --color-purple-50: #faf5ff;
+  --color-purple-100: #f3e8ff;
+  --color-purple-200: #e9d5ff;
+  --color-purple-300: #d8b4fe;
+  --color-purple-400: #c084fc;
+  --color-purple-500: #a855f7;
+  --color-purple-600: #9333ea;
+  --color-purple-700: #7e22ce;
+  --color-purple-800: #6b21a8;
+  --color-purple-900: #581c87;
+  --color-purple-950: #3b0764;
+
+  /* color: pink (shared by every brand) */
+  --color-pink-50: #fdf2f8;
+  --color-pink-100: #fce7f3;
+  --color-pink-200: #fbcfe8;
+  --color-pink-300: #f9a8d4;
+  --color-pink-400: #f472b6;
+  --color-pink-500: #ec4899;
+  --color-pink-600: #db2777;
+  --color-pink-700: #be185d;
+  --color-pink-800: #9d174d;
+  --color-pink-900: #831843;
+  --color-pink-950: #500724;
+
+  /* color: orange (shared by every brand) */
+  --color-orange-50: #fff7ed;
+  --color-orange-100: #ffedd5;
+  --color-orange-200: #fed7aa;
+  --color-orange-300: #fdba74;
+  --color-orange-400: #fb923c;
+  --color-orange-500: #f97316;
+  --color-orange-600: #ea580c;
+  --color-orange-700: #c2410c;
+  --color-orange-800: #9a3412;
+  --color-orange-900: #7c2d12;
+  --color-orange-950: #431407;
+
+  /* color: teal (shared by every brand) */
+  --color-teal-50: #f0fdfa;
+  --color-teal-100: #ccfbf1;
+  --color-teal-200: #99f6e4;
+  --color-teal-300: #5eead4;
+  --color-teal-400: #2dd4bf;
+  --color-teal-500: #14b8a6;
+  --color-teal-600: #0d9488;
+  --color-teal-700: #0f766e;
+  --color-teal-800: #115e59;
+  --color-teal-900: #134e4a;
+  --color-teal-950: #042f2e;
 
   /* color: diamond */
   --color-diamond-primary-100: #f2edff;
@@ -237,7 +342,13 @@
   --border-width-1: 1px;
   --border-width-2: 2px;
   --border-width-5: 5px;
+  --size-6: 6px;
+  --size-8: 8px;
+  --size-10: 10px;
+  --size-12: 12px;
   --size-14: 14px;
+  --size-18: 18px;
+  --size-20: 20px;
   --size-16: 16px;
   --size-22: 22px;
   --size-24: 24px;
@@ -249,7 +360,10 @@
   --size-48: 48px;
   --size-38: 38px;
   --size-56: 56px;
+  --size-64: 64px;
+  --size-72: 72px;
   --size-80: 80px;
+  --size-96: 96px;
   --size-220: 220px;
   --opacity-50: 0.5;
 
@@ -258,13 +372,22 @@
   --border-width-hairline: var(--border-width-1);
   --border-width-regular: var(--border-width-2);
   --border-width-strong: var(--border-width-5);
+  --sizing-4xs: var(--size-6);
+  --sizing-3xs: var(--size-8);
+  --sizing-2xs: var(--size-12);
   --sizing-xs: var(--size-14);
   --sizing-sm: var(--size-16);
+  --sizing-sm-plus: var(--size-20);
   --sizing-md: var(--size-22);
   --sizing-lg: var(--size-24);
+  --sizing-lg-plus: var(--size-28);
+  --sizing-xl-minus: var(--size-32);
   --sizing-xl: var(--size-38);
+  --sizing-xl-plus: var(--size-48);
   --sizing-2xl: var(--size-56);
+  --sizing-2xl-plus: var(--size-64);
   --sizing-3xl: var(--size-80);
+  --sizing-4xl: var(--size-96);
   --sizing-8xl: var(--size-220);
   --opacity-medium: var(--opacity-50);
 
@@ -281,6 +404,7 @@
   --space-32: 32px;
   --space-36: 36px;
   --space-40: 40px;
+  --space-48: 48px;
   --space-negative-4: -4px;
 
   /* radius */

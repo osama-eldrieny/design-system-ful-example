@@ -11,6 +11,7 @@ export default defineMeta({
   imports: [
     { name: 'Avatar', from: '@ds/react' },
     { name: 'AvatarGroup', from: '@ds/react' },
+    { name: 'AvatarLabelGroup', from: '@ds/react' },
   ],
   whenToUse: [
     'Next to a person’s name in lists, comments, cards and headers.',
@@ -41,6 +42,7 @@ export default defineMeta({
       prop: 'size',
       title: 'Size',
       values: [
+        { value: 'xsmall', meaning: '20px. Inline mentions and chips.' },
         { value: 'small', meaning: '24px. Dense lists, table rows, stacked groups.' },
         { value: 'medium', meaning: '38px. Default for lists and cards.' },
         { value: 'large', meaning: '56px. Comments, contact cards.' },
@@ -135,6 +137,12 @@ export default defineMeta({
   },
   examples: [
     {
+      id: 'label-group',
+      title: 'With name and email',
+      description: 'AvatarLabelGroup for table cells and menus.',
+      code: `import { AvatarLabelGroup } from '@ds/react';\n\n<AvatarLabelGroup name="Sarah Chen" supportingText="sarah@example.com" />`,
+    },
+    {
       id: 'basic',
       title: 'Avatar with a photo',
       description: 'Falls back to initials if the photo is missing.',
@@ -167,6 +175,15 @@ export default defineMeta({
   tokenPrefixes: ['--avatar-'],
   related: [{ id: 'header', relation: 'Profile header pattern built with an xlarge Avatar.' }],
   changelog: [
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: [
+        'Size xsmall; verified check mark.',
+        'AvatarGroup: onAdd shows a dashed add button.',
+        'New AvatarLabelGroup: avatar with a name and supporting text.',
+      ],
+    },
     {
       version: '0.2.0',
       date: '2026-09-29',

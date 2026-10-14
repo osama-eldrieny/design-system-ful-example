@@ -7,7 +7,7 @@
  *   variant: primary | secondary | success | danger | warning
  *   appearance: filled (omitted) | outline | ghost | text
  *   state: default | hover | focus (pressed)
- *   size tokens: --button-{small|medium|large|icon}-{property}
+ *   size tokens: --button-{xsmall|small|medium|large|xlarge|icon}-{property}
  */
 
 :root,
@@ -150,6 +150,20 @@
   --button-large-padding-y: var(--spacing-xs);
   --button-large-font-size: var(--font-size-md);
   --button-large-font-line-height: var(--font-line-height-md);
+
+  /* Extra small and extra large sizes */
+  --button-xsmall-height: var(--sizing-lg-plus);
+  --button-xsmall-padding-y: var(--spacing-3xs);
+  --button-xsmall-font-size: var(--font-size-xs);
+  --button-xsmall-font-line-height: var(--font-line-height-xs);
+  --button-xsmall-gap: var(--spacing-2xs);
+  --button-xsmall-icon-size: var(--sizing-xs);
+  --button-xlarge-height: var(--sizing-2xl);
+  --button-xlarge-padding-y: var(--spacing-sm);
+  --button-xlarge-font-size: var(--font-size-lg);
+  --button-xlarge-font-line-height: var(--font-line-height-lg);
+  --button-xlarge-gap: var(--spacing-sm);
+  --button-xlarge-icon-size: var(--sizing-lg);
 
   /* Icons and spacing between icon and label */
   --button-small-gap: var(--spacing-2xs);

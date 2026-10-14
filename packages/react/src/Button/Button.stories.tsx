@@ -8,7 +8,7 @@ import { ThemeProvider } from '../ThemeProvider';
 
 const VARIANTS: ButtonVariant[] = ['primary', 'secondary', 'success', 'danger', 'warning'];
 const APPEARANCES: ButtonAppearance[] = ['filled', 'outline', 'ghost', 'text'];
-const SIZES: ButtonSize[] = ['small', 'medium', 'large'];
+const SIZES: ButtonSize[] = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 
 const Row = ({ children, style }: { children: ReactNode; style?: CSSProperties }) => (
   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', ...style }}>
@@ -176,6 +176,28 @@ export const IconButtons: Story = {
 };
 
 /** Padding and icons use logical sides, so the start icon moves to the right in Arabic. */
+/** With href it is a link that looks like a button, for navigation styled as an action. */
+export const AsLink: Story = {
+  render: (args) => (
+    <Row>
+      <Button {...args} href="#report" iconEnd={<ArrowRight />}>
+        View report
+      </Button>
+      <Button {...args} href="#docs" appearance="outline" variant="secondary">
+        Read the docs
+      </Button>
+      <Button {...args} href="#off" disabled>
+        Unavailable
+      </Button>
+    </Row>
+  ),
+};
+
+/** loadingText replaces the label while the action runs. */
+export const LoadingText: Story = {
+  args: { loading: true, loadingText: 'Saving…' },
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   render: (args) => (

@@ -7,10 +7,10 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
-import { User } from 'lucide-react';
+import { Check, Plus, User } from 'lucide-react';
 import './Avatar.css';
 
-export type AvatarSize = 'small' | 'medium' | 'large' | 'xlarge';
+export type AvatarSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 export type AvatarStatus = 'online' | 'away' | 'busy' | 'offline';
 
 const STATUS_LABELS: Record<AvatarStatus, string> = {
@@ -25,8 +25,15 @@ export interface AvatarProps extends Omit<HTMLAttributes<HTMLSpanElement>, 'chil
   name: string;
   /** Photo URL. If it's missing or fails to load, initials are shown instead. */
   src?: string;
-  /** `small` 24px for dense lists, `medium` 38px, `large` 56px, `xlarge` 80px for profiles. */
+  /**
+   * `xsmall` 20px for inline mentions, `small` 24px for dense lists, `medium` 38px, `large`
+   * 56px, `xlarge` 80px for profiles.
+   */
   size?: AvatarSize;
+  /** Shows a verified check mark. Announced after the name. */
+  verified?: boolean;
+  /** Replaces the default "Verified" wording, e.g. for translation. */
+  verifiedLabel?: string;
   /** Presence dot. Announced after the name, e.g. "Sarah Chen, Online". */
   status?: AvatarStatus;
   /** Replaces the default status wording, e.g. for translation. */
@@ -51,7 +58,18 @@ const initialsOf = (name: string) =>
  */
 export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
   (
-    { name, src, size = 'medium', status, statusLabel, decorative = false, className, ...props },
+    {
+      name,
+      src,
+      size = 'medium',
+      status,
+      statusLabel,
+      verified = false,
+      verifiedLabel = 'Verified',
+      decorative = false,
+      className,
+      ...props
+    },
     ref,
   ) => {
     const [failedSrc, setFailedSrc] = useState<string | null>(null);
@@ -59,7 +77,9 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
     const initials = initialsOf(name);
     // An empty name would leave the image unnamed; announce something generic instead.
     const who = name.trim() || 'Unknown person';
-    const label = status ? `${who}, ${statusLabel ?? STATUS_LABELS[status]}` : who;
+    const label = [who, verified && verifiedLabel, status && (statusLabel ?? STATUS_LABELS[status])]
+      .filter(Boolean)
+      .join(', ');
 
     return (
       <span
@@ -79,8 +99,14 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
             <User className="ds-avatar__icon" aria-hidden="true" />
           )}
         </span>
-        {status && (
-          <span className={`ds-avatar__status ds-avatar__status--${status}`} aria-hidden="true" />
+        {verified ? (
+          <span className="ds-avatar__verified" aria-hidden="true">
+            <Check strokeWidth={3} />
+          </span>
+        ) : (
+          status && (
+            <span className={`ds-avatar__status ds-avatar__status--${status}`} aria-hidden="true" />
+          )
         )}
       </span>
     );
@@ -96,13 +122,20 @@ export interface AvatarGroupProps extends HTMLAttributes<HTMLDivElement> {
   max?: number;
   /** Size for every avatar in the group. */
   size?: AvatarSize;
+  /** Shows a dashed “add” button after the avatars, e.g. to invite someone. */
+  onAdd?: () => void;
+  /** Accessible name of the add button. Default "Add person". */
+  addLabel?: string;
   /** Avatar elements. */
   children: ReactNode;
 }
 
 /** Overlapping avatars for a set of people, with a count of the rest. */
 export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
-  ({ label, max, size = 'small', className, children, ...props }, ref) => {
+  (
+    { label, max, size = 'small', onAdd, addLabel = 'Add person', className, children, ...props },
+    ref,
+  ) => {
     const avatars = Children.toArray(children).filter(
       isValidElement,
     ) as ReactElement<AvatarProps>[];
@@ -113,7 +146,9 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
         ref={ref}
         role="group"
         aria-label={label}
-        className={['ds-avatar-group', className].filter(Boolean).join(' ')}
+        className={['ds-avatar-group', `ds-avatar-group--${size}`, className]
+          .filter(Boolean)
+          .join(' ')}
         {...props}
       >
         {shown.map((avatar, i) => (
@@ -132,9 +167,57 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
             </span>
           </span>
         )}
+        {onAdd && (
+          <button
+            type="button"
+            className="ds-avatar-group__add"
+            aria-label={addLabel}
+            onClick={onAdd}
+          >
+            <Plus aria-hidden="true" />
+          </button>
+        )}
       </div>
     );
   },
 );
 
 AvatarGroup.displayName = 'AvatarGroup';
+
+export interface AvatarLabelGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
+  /** The person's name, shown in bold. */
+  name: string;
+  /** Supporting text under the name, e.g. an email address or a role. */
+  supportingText?: ReactNode;
+  /** Photo URL. */
+  src?: string;
+  /** Size of the avatar; the text scales with it. Default medium. */
+  size?: Exclude<AvatarSize, 'xsmall'>;
+  /** Presence dot. */
+  status?: AvatarStatus;
+  /** Verified check mark. */
+  verified?: boolean;
+}
+
+/** An avatar with a name and supporting text, e.g. in a table cell, menu or sidebar footer. */
+export const AvatarLabelGroup = forwardRef<HTMLDivElement, AvatarLabelGroupProps>(
+  ({ name, supportingText, src, size = 'medium', status, verified, className, ...props }, ref) => (
+    <div
+      ref={ref}
+      className={['ds-avatar-label-group', `ds-avatar-label-group--${size}`, className]
+        .filter(Boolean)
+        .join(' ')}
+      {...props}
+    >
+      <Avatar name={name} src={src} size={size} status={status} verified={verified} decorative />
+      <span className="ds-avatar-label-group__text">
+        <span className="ds-avatar-label-group__name">{name}</span>
+        {supportingText && (
+          <span className="ds-avatar-label-group__supporting">{supportingText}</span>
+        )}
+      </span>
+    </div>
+  ),
+);
+
+AvatarLabelGroup.displayName = 'AvatarLabelGroup';

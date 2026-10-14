@@ -1,6 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Avatar, AvatarGroup } from './Avatar';
+import userEvent from '@testing-library/user-event';
+import { vi } from 'vitest';
+import { Avatar, AvatarGroup, AvatarLabelGroup } from './Avatar';
 
 describe('Avatar', () => {
   it('is an image named after the person, with status', () => {
@@ -38,5 +40,30 @@ describe('AvatarGroup', () => {
     expect(screen.getByRole('img', { name: 'Ann Lee' })).toBeInTheDocument();
     expect(screen.queryByRole('img', { name: 'Cy Do' })).toBeNull();
     expect(screen.getByRole('img', { name: 'and 2 more' })).toHaveTextContent('+2');
+  });
+
+  it('announces verified and shows the mark', () => {
+    render(<Avatar name="Sarah Chen" verified />);
+    expect(screen.getByRole('img', { name: 'Sarah Chen, Verified' })).toBeInTheDocument();
+  });
+
+  it('has a named add button', async () => {
+    const onAdd = vi.fn();
+    render(
+      <AvatarGroup label="Team" onAdd={onAdd} addLabel="Invite">
+        <Avatar name="A B" />
+      </AvatarGroup>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Invite' }));
+    expect(onAdd).toHaveBeenCalledOnce();
+  });
+});
+
+describe('AvatarLabelGroup', () => {
+  it('shows the name and supporting text, with a decorative avatar', () => {
+    const { container } = render(<AvatarLabelGroup name="Sarah Chen" supportingText="Designer" />);
+    expect(screen.getByText('Sarah Chen')).toBeInTheDocument();
+    expect(screen.getByText('Designer')).toBeInTheDocument();
+    expect(container.querySelector('.ds-avatar')).toHaveAttribute('aria-hidden', 'true');
   });
 });

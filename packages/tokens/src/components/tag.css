@@ -4,7 +4,8 @@
  * Style this component only with these tokens.
  *
  * Grammar: --tag-{tone}-{appearance}-{property} and --tag-{state?}-{property}
- *   tone: primary | secondary | success | warning | danger; appearance: solid | subtle.
+ *   tone: primary | secondary | success | warning | danger | gray | blue | sky | indigo |
+ *     purple | pink | orange | teal; appearance: solid | subtle; size: small | medium | large.
  *   Corners come from the radius theme (themes/radius.css).
  */
 
@@ -30,6 +31,38 @@
   --tag-danger-solid-text-color: var(--color-fg-on-accent-danger-default);
   --tag-danger-subtle-bg-color: var(--color-bg-danger-1);
   --tag-danger-subtle-text-color: var(--color-fg-on-danger-high);
+  --tag-gray-solid-bg-color: var(--color-bg-accent-gray-default);
+  --tag-gray-solid-text-color: var(--color-fg-on-accent-gray-default);
+  --tag-gray-subtle-bg-color: var(--color-bg-gray-1);
+  --tag-gray-subtle-text-color: var(--color-fg-on-gray-high);
+  --tag-blue-solid-bg-color: var(--color-bg-accent-blue-default);
+  --tag-blue-solid-text-color: var(--color-fg-on-accent-blue-default);
+  --tag-blue-subtle-bg-color: var(--color-bg-blue-1);
+  --tag-blue-subtle-text-color: var(--color-fg-on-blue-high);
+  --tag-sky-solid-bg-color: var(--color-bg-accent-sky-default);
+  --tag-sky-solid-text-color: var(--color-fg-on-accent-sky-default);
+  --tag-sky-subtle-bg-color: var(--color-bg-sky-1);
+  --tag-sky-subtle-text-color: var(--color-fg-on-sky-high);
+  --tag-indigo-solid-bg-color: var(--color-bg-accent-indigo-default);
+  --tag-indigo-solid-text-color: var(--color-fg-on-accent-indigo-default);
+  --tag-indigo-subtle-bg-color: var(--color-bg-indigo-1);
+  --tag-indigo-subtle-text-color: var(--color-fg-on-indigo-high);
+  --tag-purple-solid-bg-color: var(--color-bg-accent-purple-default);
+  --tag-purple-solid-text-color: var(--color-fg-on-accent-purple-default);
+  --tag-purple-subtle-bg-color: var(--color-bg-purple-1);
+  --tag-purple-subtle-text-color: var(--color-fg-on-purple-high);
+  --tag-pink-solid-bg-color: var(--color-bg-accent-pink-default);
+  --tag-pink-solid-text-color: var(--color-fg-on-accent-pink-default);
+  --tag-pink-subtle-bg-color: var(--color-bg-pink-1);
+  --tag-pink-subtle-text-color: var(--color-fg-on-pink-high);
+  --tag-orange-solid-bg-color: var(--color-bg-accent-orange-default);
+  --tag-orange-solid-text-color: var(--color-fg-on-accent-orange-default);
+  --tag-orange-subtle-bg-color: var(--color-bg-orange-1);
+  --tag-orange-subtle-text-color: var(--color-fg-on-orange-high);
+  --tag-teal-solid-bg-color: var(--color-bg-accent-teal-default);
+  --tag-teal-solid-text-color: var(--color-fg-on-accent-teal-default);
+  --tag-teal-subtle-bg-color: var(--color-bg-teal-1);
+  --tag-teal-subtle-text-color: var(--color-fg-on-teal-high);
   --tag-selected-border-color: var(--color-border-primary-strong);
   --tag-border-width: var(--border-width-regular);
   --tag-padding-x: var(--spacing-xs);
@@ -45,4 +78,21 @@
   --tag-focus-ring-offset: var(--focus-ring-offset);
   --tag-focus-ring-color: var(--focus-ring-color);
   --tag-disabled-opacity: var(--opacity-medium);
+
+  /* Sizes (medium uses the shared padding and font above) */
+  --tag-small-padding-x: var(--spacing-2xs);
+  --tag-small-padding-y: var(--spacing-3xs);
+  --tag-small-font-size: var(--font-size-xs);
+  --tag-small-font-line-height: var(--font-line-height-xs);
+  --tag-large-padding-x: var(--spacing-sm);
+  --tag-large-padding-y: var(--spacing-2xs);
+  --tag-large-font-size: var(--font-size-md);
+  --tag-large-font-line-height: var(--font-line-height-md);
+
+  /* Count and picture */
+  --tag-count-bg-color: var(--color-bg-surface);
+  --tag-count-text-color: var(--color-fg-on-surface-primary);
+  --tag-count-padding-x: var(--spacing-2xs);
+  --tag-count-border-radius: var(--radius-sm);
+  --tag-image-size: var(--sizing-sm);
 }

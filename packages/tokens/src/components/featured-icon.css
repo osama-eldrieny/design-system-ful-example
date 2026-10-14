@@ -1,0 +1,117 @@
+/**
+ * Component tokens: featured-icon
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --featured-icon-{color}-{appearance}-{property}, --featured-icon-{size}-{property}
+ *   color: primary | secondary | success | warning | danger | gray | blue | sky | indigo |
+ *     purple | pink | orange | teal; appearance: light | solid | outline (modern is neutral);
+ *   size: small | medium | large | xlarge.
+ */
+
+:root,
+[data-theme] {
+  --featured-icon-primary-light-bg-color: var(--color-bg-primary-1);
+  --featured-icon-primary-light-icon-color: var(--color-fg-on-primary-high);
+  --featured-icon-primary-solid-bg-color: var(--color-bg-accent-primary-default);
+  --featured-icon-primary-solid-icon-color: var(--color-fg-on-accent-primary-default);
+  --featured-icon-primary-outline-icon-color: var(--color-fg-on-primary-high);
+  --featured-icon-primary-outline-border-color: var(--color-border-primary-subtle);
+  --featured-icon-secondary-light-bg-color: var(--color-bg-secondary-1);
+  --featured-icon-secondary-light-icon-color: var(--color-fg-on-secondary-high);
+  --featured-icon-secondary-solid-bg-color: var(--color-bg-accent-secondary-default);
+  --featured-icon-secondary-solid-icon-color: var(--color-fg-on-accent-secondary-default);
+  --featured-icon-secondary-outline-icon-color: var(--color-fg-on-secondary-high);
+  --featured-icon-secondary-outline-border-color: var(--color-border-base);
+  --featured-icon-success-light-bg-color: var(--color-bg-success-1);
+  --featured-icon-success-light-icon-color: var(--color-fg-on-success-high);
+  --featured-icon-success-solid-bg-color: var(--color-bg-accent-success-default);
+  --featured-icon-success-solid-icon-color: var(--color-fg-on-accent-success-default);
+  --featured-icon-success-outline-icon-color: var(--color-fg-on-success-high);
+  --featured-icon-success-outline-border-color: var(--color-border-success-subtle);
+  --featured-icon-warning-light-bg-color: var(--color-bg-warning-1);
+  --featured-icon-warning-light-icon-color: var(--color-fg-on-warning-high);
+  --featured-icon-warning-solid-bg-color: var(--color-bg-accent-warning-default);
+  --featured-icon-warning-solid-icon-color: var(--color-fg-on-accent-warning-default);
+  --featured-icon-warning-outline-icon-color: var(--color-fg-on-warning-high);
+  --featured-icon-warning-outline-border-color: var(--color-border-warning-subtle);
+  --featured-icon-danger-light-bg-color: var(--color-bg-danger-1);
+  --featured-icon-danger-light-icon-color: var(--color-fg-on-danger-high);
+  --featured-icon-danger-solid-bg-color: var(--color-bg-accent-danger-default);
+  --featured-icon-danger-solid-icon-color: var(--color-fg-on-accent-danger-default);
+  --featured-icon-danger-outline-icon-color: var(--color-fg-on-danger-high);
+  --featured-icon-danger-outline-border-color: var(--color-border-danger-subtle);
+  --featured-icon-gray-light-bg-color: var(--color-bg-gray-1);
+  --featured-icon-gray-light-icon-color: var(--color-fg-on-gray-high);
+  --featured-icon-gray-solid-bg-color: var(--color-bg-accent-gray-default);
+  --featured-icon-gray-solid-icon-color: var(--color-fg-on-accent-gray-default);
+  --featured-icon-gray-outline-icon-color: var(--color-fg-on-gray-high);
+  --featured-icon-gray-outline-border-color: var(--color-border-gray-subtle);
+  --featured-icon-blue-light-bg-color: var(--color-bg-blue-1);
+  --featured-icon-blue-light-icon-color: var(--color-fg-on-blue-high);
+  --featured-icon-blue-solid-bg-color: var(--color-bg-accent-blue-default);
+  --featured-icon-blue-solid-icon-color: var(--color-fg-on-accent-blue-default);
+  --featured-icon-blue-outline-icon-color: var(--color-fg-on-blue-high);
+  --featured-icon-blue-outline-border-color: var(--color-border-blue-subtle);
+  --featured-icon-sky-light-bg-color: var(--color-bg-sky-1);
+  --featured-icon-sky-light-icon-color: var(--color-fg-on-sky-high);
+  --featured-icon-sky-solid-bg-color: var(--color-bg-accent-sky-default);
+  --featured-icon-sky-solid-icon-color: var(--color-fg-on-accent-sky-default);
+  --featured-icon-sky-outline-icon-color: var(--color-fg-on-sky-high);
+  --featured-icon-sky-outline-border-color: var(--color-border-sky-subtle);
+  --featured-icon-indigo-light-bg-color: var(--color-bg-indigo-1);
+  --featured-icon-indigo-light-icon-color: var(--color-fg-on-indigo-high);
+  --featured-icon-indigo-solid-bg-color: var(--color-bg-accent-indigo-default);
+  --featured-icon-indigo-solid-icon-color: var(--color-fg-on-accent-indigo-default);
+  --featured-icon-indigo-outline-icon-color: var(--color-fg-on-indigo-high);
+  --featured-icon-indigo-outline-border-color: var(--color-border-indigo-subtle);
+  --featured-icon-purple-light-bg-color: var(--color-bg-purple-1);
+  --featured-icon-purple-light-icon-color: var(--color-fg-on-purple-high);
+  --featured-icon-purple-solid-bg-color: var(--color-bg-accent-purple-default);
+  --featured-icon-purple-solid-icon-color: var(--color-fg-on-accent-purple-default);
+  --featured-icon-purple-outline-icon-color: var(--color-fg-on-purple-high);
+  --featured-icon-purple-outline-border-color: var(--color-border-purple-subtle);
+  --featured-icon-pink-light-bg-color: var(--color-bg-pink-1);
+  --featured-icon-pink-light-icon-color: var(--color-fg-on-pink-high);
+  --featured-icon-pink-solid-bg-color: var(--color-bg-accent-pink-default);
+  --featured-icon-pink-solid-icon-color: var(--color-fg-on-accent-pink-default);
+  --featured-icon-pink-outline-icon-color: var(--color-fg-on-pink-high);
+  --featured-icon-pink-outline-border-color: var(--color-border-pink-subtle);
+  --featured-icon-orange-light-bg-color: var(--color-bg-orange-1);
+  --featured-icon-orange-light-icon-color: var(--color-fg-on-orange-high);
+  --featured-icon-orange-solid-bg-color: var(--color-bg-accent-orange-default);
+  --featured-icon-orange-solid-icon-color: var(--color-fg-on-accent-orange-default);
+  --featured-icon-orange-outline-icon-color: var(--color-fg-on-orange-high);
+  --featured-icon-orange-outline-border-color: var(--color-border-orange-subtle);
+  --featured-icon-teal-light-bg-color: var(--color-bg-teal-1);
+  --featured-icon-teal-light-icon-color: var(--color-fg-on-teal-high);
+  --featured-icon-teal-solid-bg-color: var(--color-bg-accent-teal-default);
+  --featured-icon-teal-solid-icon-color: var(--color-fg-on-accent-teal-default);
+  --featured-icon-teal-outline-icon-color: var(--color-fg-on-teal-high);
+  --featured-icon-teal-outline-border-color: var(--color-border-teal-subtle);
+
+  /* Modern: a neutral tile with a border, like a key cap */
+  --featured-icon-modern-bg-color: var(--color-bg-surface);
+  --featured-icon-modern-icon-color: var(--color-fg-on-surface-primary);
+  --featured-icon-modern-border-color: var(--color-border-base);
+  --featured-icon-modern-border-width: var(--border-width-hairline);
+
+  /* Outline: two faint concentric rings around the icon */
+  --featured-icon-outline-inner-border-width: var(--border-width-regular);
+  --featured-icon-outline-outer-border-width: var(--border-width-regular);
+  --featured-icon-outline-outer-opacity: var(--opacity-medium);
+
+  /* Shape */
+  --featured-icon-circle-border-radius: var(--radius-full);
+  --featured-icon-square-border-radius: var(--radius-lg);
+
+  /* Sizes */
+  --featured-icon-small-size: var(--sizing-xl-minus);
+  --featured-icon-small-icon-size: var(--sizing-sm);
+  --featured-icon-medium-size: var(--control-height-medium);
+  --featured-icon-medium-icon-size: var(--sizing-sm-plus);
+  --featured-icon-large-size: var(--sizing-xl-plus);
+  --featured-icon-large-icon-size: var(--sizing-lg);
+  --featured-icon-xlarge-size: var(--sizing-2xl);
+  --featured-icon-xlarge-icon-size: var(--sizing-lg-plus);
+}

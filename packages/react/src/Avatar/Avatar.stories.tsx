@@ -1,10 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { expect } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
 import { ThemeProvider } from '../ThemeProvider';
-import { Avatar, AvatarGroup, type AvatarSize, type AvatarStatus } from './Avatar';
+import {
+  Avatar,
+  AvatarGroup,
+  AvatarLabelGroup,
+  type AvatarSize,
+  type AvatarStatus,
+} from './Avatar';
 
 const PHOTO = 'assets/avatar-2.png';
-const SIZES: AvatarSize[] = ['small', 'medium', 'large', 'xlarge'];
+const SIZES: AvatarSize[] = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 const STATUSES: AvatarStatus[] = ['online', 'away', 'busy', 'offline'];
 const PEOPLE = [
   { name: 'Osama Eldrieny', src: 'assets/avatar-1.png' },
@@ -77,6 +83,40 @@ export const Group: Story = {
           <Avatar key={p.name} {...p} />
         ))}
       </AvatarGroup>
+      <AvatarGroup label="Team" size="small" max={4} onAdd={fn()} addLabel="Invite to team">
+        {PEOPLE.map((p) => (
+          <Avatar key={p.name} {...p} />
+        ))}
+      </AvatarGroup>
+    </div>
+  ),
+};
+
+/** A verified check mark, e.g. for confirmed accounts. */
+export const Verified: Story = {
+  render: () => (
+    <Row>
+      {SIZES.map((size) => (
+        <Avatar key={size} {...PEOPLE[1]} size={size} verified />
+      ))}
+    </Row>
+  ),
+};
+
+/** An avatar with a name and supporting text, e.g. in tables, menus and the sidebar. */
+export const LabelGroup: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16 }}>
+      {(['small', 'medium', 'large', 'xlarge'] as const).map((size) => (
+        <AvatarLabelGroup
+          key={size}
+          size={size}
+          name="Sarah Chen"
+          src={PEOPLE[1].src}
+          supportingText="sarah@untitled.com"
+          status="online"
+        />
+      ))}
     </div>
   ),
 };

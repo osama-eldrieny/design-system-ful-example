@@ -95,9 +95,11 @@ export default defineMeta({
       prop: 'size',
       title: 'Size',
       values: [
+        { value: 'xsmall', meaning: 'Inside table rows, chips and tight toolbars.' },
         { value: 'small', meaning: 'Dense UI: tables, toolbars, cards.' },
         { value: 'medium', meaning: 'Default for forms and dialogs.' },
         { value: 'large', meaning: 'Prominent calls to action, e.g. on a landing page hero.' },
+        { value: 'xlarge', meaning: 'The single hero call to action of a page.' },
       ],
     },
   ],
@@ -265,6 +267,14 @@ import { Download } from 'lucide-react';
 <Button loading={isSaving} onClick={save}>Save changes</Button>`,
     },
     {
+      id: 'link',
+      title: 'Link styled as a button',
+      description: 'Navigation that should look like an action.',
+      code: `import { Button } from '@ds/react';
+
+<Button href="/reports/q3" appearance="outline">View report</Button>`,
+    },
+    {
       id: 'icon-button',
       title: 'Icon button',
       description: 'Icon-only; the label is its accessible name and tooltip.',
@@ -282,6 +292,11 @@ import { X } from 'lucide-react';
     { id: 'switch', relation: 'Use for on/off settings.' },
   ],
   changelog: [
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: ['Sizes xsmall and xlarge.', 'href renders a link styled as a button; loadingText.'],
+    },
     {
       version: '0.2.0',
       date: '2026-09-29',

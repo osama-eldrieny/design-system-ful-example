@@ -71,11 +71,31 @@
   cursor: progress;
 }
 
+a.ds-button {
+  box-sizing: border-box;
+}
+
+a.ds-button[aria-disabled='true'] {
+  opacity: var(--button-disabled-opacity);
+  cursor: not-allowed;
+}
+
 .ds-button--full-width {
   inline-size: 100%;
 }
 
 /* Sizes */
+
+.ds-button--xsmall {
+  --_px: var(--button-xsmall-padding-x);
+  --_py: var(--button-xsmall-padding-y);
+  --_height: var(--button-xsmall-height);
+  --_radius: var(--button-xsmall-border-radius);
+  --_font-size: var(--button-xsmall-font-size);
+  --_line-height: var(--button-xsmall-font-line-height);
+  --_gap: var(--button-xsmall-gap);
+  --_icon-size: var(--button-xsmall-icon-size);
+}
 
 .ds-button--small {
   --_px: var(--button-small-padding-x);
@@ -108,6 +128,17 @@
   --_line-height: var(--button-large-font-line-height);
   --_gap: var(--button-large-gap);
   --_icon-size: var(--button-large-icon-size);
+}
+
+.ds-button--xlarge {
+  --_px: var(--button-xlarge-padding-x);
+  --_py: var(--button-xlarge-padding-y);
+  --_height: var(--button-xlarge-height);
+  --_radius: var(--button-xlarge-border-radius);
+  --_font-size: var(--button-xlarge-font-size);
+  --_line-height: var(--button-xlarge-font-line-height);
+  --_gap: var(--button-xlarge-gap);
+  --_icon-size: var(--button-xlarge-icon-size);
 }
 
 /* Icon only: square, with the icon radius of the radius theme */
