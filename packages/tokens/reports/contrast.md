@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 393 | 393 | 0 |
-| diamond-dark | 393 | 393 | 0 |
-| amber-light | 393 | 393 | 0 |
-| amber-dark | 393 | 393 | 0 |
-| opal-light | 393 | 393 | 0 |
-| opal-dark | 393 | 393 | 0 |
+| diamond-light | 402 | 402 | 0 |
+| diamond-dark | 402 | 402 | 0 |
+| amber-light | 402 | 402 | 0 |
+| amber-dark | 402 | 402 | 0 |
+| opal-light | 402 | 402 | 0 |
+| opal-dark | 402 | 402 | 0 |
 
 ## Failures (0)
 
@@ -271,6 +271,15 @@ None.
 | diamond-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #24242c on #f2edff | 13.44:1 | 4.5:1 |
 | diamond-light | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--command-menu-search-text-color` | `--command-menu-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--command-menu-search-placeholder-text-color` | `--command-menu-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--command-menu-icon-color` | `--command-menu-bg-color` | #62626d on #fff | 6.02:1 | 3:1 |
+| diamond-light | `--command-menu-group-label-text-color` | `--command-menu-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--command-menu-item-default-text-color` | `--command-menu-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--command-menu-item-active-text-color` | `--command-menu-item-active-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
+| diamond-light | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
+| diamond-light | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #62626d on #f8f7fb | 5.65:1 | 4.5:1 |
 | diamond-light | `--drawer-text-color` | `--drawer-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--drawer-description-text-color` | `--drawer-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--drawer-close-icon-color` | `--drawer-bg-color` | #62626d on #fff | 6.02:1 | 3:1 |
@@ -664,6 +673,15 @@ None.
 | diamond-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
 | diamond-dark | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--command-menu-search-text-color` | `--command-menu-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--command-menu-search-placeholder-text-color` | `--command-menu-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--command-menu-icon-color` | `--command-menu-bg-color` | #acadb2 on #24202d | 7.10:1 | 3:1 |
+| diamond-dark | `--command-menu-group-label-text-color` | `--command-menu-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--command-menu-item-default-text-color` | `--command-menu-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--command-menu-item-active-text-color` | `--command-menu-item-active-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
+| diamond-dark | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
+| diamond-dark | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #acadb2 on #332e3c | 5.87:1 | 4.5:1 |
 | diamond-dark | `--drawer-text-color` | `--drawer-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--drawer-description-text-color` | `--drawer-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--drawer-close-icon-color` | `--drawer-bg-color` | #acadb2 on #24202d | 7.10:1 | 3:1 |
@@ -1057,6 +1075,15 @@ None.
 | amber-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #6a625a on #f9f4ee | 5.47:1 | 4.5:1 |
 | amber-light | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--command-menu-search-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--command-menu-search-placeholder-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--command-menu-icon-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
+| amber-light | `--command-menu-group-label-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--command-menu-item-default-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--command-menu-item-active-text-color` | `--command-menu-item-active-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
+| amber-light | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
 | amber-light | `--drawer-text-color` | `--drawer-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--drawer-description-text-color` | `--drawer-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--drawer-close-icon-color` | `--drawer-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
@@ -1450,6 +1477,15 @@ None.
 | amber-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #fdfbf9 on #574028 | 9.38:1 | 4.5:1 |
 | amber-dark | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--command-menu-search-text-color` | `--command-menu-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--command-menu-search-placeholder-text-color` | `--command-menu-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--command-menu-icon-color` | `--command-menu-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 3:1 |
+| amber-dark | `--command-menu-group-label-text-color` | `--command-menu-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--command-menu-item-default-text-color` | `--command-menu-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--command-menu-item-active-text-color` | `--command-menu-item-active-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
+| amber-dark | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
+| amber-dark | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #f7efe7 on #2a1f16 | 14.13:1 | 4.5:1 |
 | amber-dark | `--drawer-text-color` | `--drawer-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--drawer-description-text-color` | `--drawer-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 4.5:1 |
 | amber-dark | `--drawer-close-icon-color` | `--drawer-bg-color` | #f7efe7 on #1e140d | 15.90:1 | 3:1 |
@@ -1843,6 +1879,15 @@ None.
 | opal-light | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #282b3b on #ebf3fe | 12.53:1 | 4.5:1 |
 | opal-light | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--command-menu-search-text-color` | `--command-menu-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--command-menu-search-placeholder-text-color` | `--command-menu-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--command-menu-icon-color` | `--command-menu-bg-color` | #676b83 on #fff | 5.24:1 | 3:1 |
+| opal-light | `--command-menu-group-label-text-color` | `--command-menu-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--command-menu-item-default-text-color` | `--command-menu-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--command-menu-item-active-text-color` | `--command-menu-item-active-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
+| opal-light | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
+| opal-light | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #676b83 on #f4f6fc | 4.85:1 | 4.5:1 |
 | opal-light | `--drawer-text-color` | `--drawer-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--drawer-description-text-color` | `--drawer-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--drawer-close-icon-color` | `--drawer-bg-color` | #676b83 on #fff | 5.24:1 | 3:1 |
@@ -2236,6 +2281,15 @@ None.
 | opal-dark | `--combobox-item-default-text-color` | `--combobox-item-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--combobox-item-highlighted-text-color` | `--combobox-item-highlighted-bg-color` | #ededf0 on #1b3a6f | 9.55:1 | 4.5:1 |
 | opal-dark | `--combobox-chip-text-color` | `--combobox-chip-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--command-menu-search-text-color` | `--command-menu-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--command-menu-search-placeholder-text-color` | `--command-menu-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--command-menu-icon-color` | `--command-menu-bg-color` | #afb2be on #292d3e | 6.45:1 | 3:1 |
+| opal-dark | `--command-menu-group-label-text-color` | `--command-menu-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--command-menu-item-default-text-color` | `--command-menu-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--command-menu-item-active-text-color` | `--command-menu-item-active-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
+| opal-dark | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
+| opal-dark | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #afb2be on #3d4460 | 4.53:1 | 4.5:1 |
 | opal-dark | `--drawer-text-color` | `--drawer-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--drawer-description-text-color` | `--drawer-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--drawer-close-icon-color` | `--drawer-bg-color` | #afb2be on #292d3e | 6.45:1 | 3:1 |

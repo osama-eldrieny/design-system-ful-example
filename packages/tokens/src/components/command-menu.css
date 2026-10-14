@@ -1,0 +1,66 @@
+/**
+ * Component tokens: command-menu
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --command-menu-{part}-{state?}-{property}
+ *   part: scrim | panel | search | group-label | item | shortcut | empty | footer;
+ *   state: default | active (highlighted).
+ */
+
+:root,
+[data-theme] {
+  --command-menu-scrim-color: var(--color-fg-on-surface-primary);
+  --command-menu-scrim-opacity: 0.4;
+  --command-menu-z-index: var(--z-modal);
+  --command-menu-bg-color: var(--color-bg-surface);
+  --command-menu-border-color: var(--color-border-base);
+  --command-menu-border-width: var(--border-width-hairline);
+  --command-menu-border-radius: var(--radius-2xl);
+  --command-menu-width: calc(var(--sizing-8xl) * 2.9);
+  --command-menu-max-height: calc(var(--sizing-8xl) * 2);
+  --command-menu-offset-top: var(--spacing-5xl);
+  --command-menu-shadow-y: var(--shadow-lg);
+  --command-menu-shadow-blur: var(--shadow-2xl);
+  --command-menu-shadow-color: var(--color-shadow-surface);
+  --command-menu-font-family: var(--font-family-body);
+  --command-menu-font-size: var(--font-size-sm);
+  --command-menu-font-line-height: var(--font-line-height-sm);
+
+  /* Search */
+  --command-menu-search-padding-x: var(--spacing-md);
+  --command-menu-search-padding-y: var(--spacing-sm);
+  --command-menu-search-gap: var(--spacing-xs);
+  --command-menu-search-text-color: var(--color-fg-on-surface-primary);
+  --command-menu-search-placeholder-text-color: var(--color-fg-on-surface-secondary);
+  --command-menu-search-font-size: var(--font-size-md);
+  --command-menu-search-font-line-height: var(--font-line-height-md);
+  --command-menu-icon-color: var(--color-fg-on-surface-secondary);
+  --command-menu-icon-size: var(--sizing-sm-plus);
+
+  /* Results */
+  --command-menu-list-padding: var(--spacing-xs);
+  --command-menu-group-label-text-color: var(--color-fg-on-surface-secondary);
+  --command-menu-group-label-font-size: var(--font-size-xs);
+  --command-menu-group-label-font-weight: var(--font-weight-semi-bold);
+  --command-menu-group-label-padding-x: var(--spacing-xs);
+  --command-menu-group-label-padding-y: var(--spacing-2xs);
+  --command-menu-item-default-text-color: var(--color-fg-on-surface-primary);
+  --command-menu-item-active-bg-color: var(--color-bg-default);
+  --command-menu-item-active-text-color: var(--color-fg-on-surface-primary);
+  --command-menu-item-description-text-color: var(--color-fg-on-surface-secondary);
+  --command-menu-item-padding-x: var(--spacing-xs);
+  --command-menu-item-padding-y: var(--spacing-xs);
+  --command-menu-item-gap: var(--spacing-sm);
+  --command-menu-item-border-radius: var(--radius-md);
+  --command-menu-empty-text-color: var(--color-fg-on-surface-secondary);
+  --command-menu-empty-padding: var(--spacing-2xl);
+
+  /* Footer with key hints */
+  --command-menu-footer-bg-color: var(--color-bg-default);
+  --command-menu-footer-text-color: var(--color-fg-on-surface-secondary);
+  --command-menu-footer-padding-x: var(--spacing-md);
+  --command-menu-footer-padding-y: var(--spacing-xs);
+  --command-menu-footer-gap: var(--spacing-md);
+  --command-menu-footer-font-size: var(--font-size-xs);
+}

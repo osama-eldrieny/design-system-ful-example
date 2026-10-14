@@ -1,0 +1,157 @@
+/** CommandMenu. Styled only with --command-menu-* tokens. */
+
+.ds-command-menu__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: var(--command-menu-z-index);
+  background-color: var(--command-menu-scrim-color);
+  opacity: var(--command-menu-scrim-opacity);
+}
+
+.ds-command-menu {
+  position: fixed;
+  inset-block-start: var(--command-menu-offset-top);
+  inset-inline: 0;
+  z-index: var(--command-menu-z-index);
+  display: flex;
+  flex-direction: column;
+  inline-size: min(var(--command-menu-width), calc(100% - 2 * var(--command-menu-list-padding)));
+  margin-inline: auto;
+  overflow: hidden;
+  border: var(--command-menu-border-width) solid var(--command-menu-border-color);
+  border-radius: var(--command-menu-border-radius);
+  background-color: var(--command-menu-bg-color);
+  box-shadow: 0 var(--command-menu-shadow-y) var(--command-menu-shadow-blur)
+    var(--command-menu-shadow-color);
+  font-family: var(--command-menu-font-family);
+  font-size: var(--command-menu-font-size);
+  line-height: var(--command-menu-font-line-height);
+}
+
+.ds-command-menu:focus {
+  outline: none;
+}
+
+.ds-command-menu__search {
+  display: flex;
+  align-items: center;
+  gap: var(--command-menu-search-gap);
+  padding-block: var(--command-menu-search-padding-y);
+  padding-inline: var(--command-menu-search-padding-x);
+  border-block-end: var(--command-menu-border-width) solid var(--command-menu-border-color);
+}
+
+.ds-command-menu__input {
+  flex: 1;
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--command-menu-search-text-color);
+  font: inherit;
+  font-size: var(--command-menu-search-font-size);
+  line-height: var(--command-menu-search-font-line-height);
+}
+
+.ds-command-menu__input::placeholder {
+  color: var(--command-menu-search-placeholder-text-color);
+  opacity: 1;
+}
+
+.ds-command-menu__icon {
+  display: inline-flex;
+  flex: none;
+  inline-size: var(--command-menu-icon-size);
+  block-size: var(--command-menu-icon-size);
+  color: var(--command-menu-icon-color);
+}
+
+.ds-command-menu__icon > svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ds-command-menu__list {
+  max-block-size: var(--command-menu-max-height);
+  overflow-y: auto;
+  padding: var(--command-menu-list-padding);
+}
+
+.ds-command-menu__group-label {
+  padding-block: var(--command-menu-group-label-padding-y);
+  padding-inline: var(--command-menu-group-label-padding-x);
+  color: var(--command-menu-group-label-text-color);
+  font-size: var(--command-menu-group-label-font-size);
+  font-weight: var(--command-menu-group-label-font-weight);
+}
+
+.ds-command-menu__item {
+  display: flex;
+  align-items: center;
+  gap: var(--command-menu-item-gap);
+  padding-block: var(--command-menu-item-padding-y);
+  padding-inline: var(--command-menu-item-padding-x);
+  border-radius: var(--command-menu-item-border-radius);
+  color: var(--command-menu-item-default-text-color);
+  cursor: pointer;
+}
+
+.ds-command-menu__item[data-active] {
+  background-color: var(--command-menu-item-active-bg-color);
+  color: var(--command-menu-item-active-text-color);
+}
+
+.ds-command-menu__item[aria-disabled='true'] {
+  opacity: var(--command-menu-scrim-opacity);
+  cursor: not-allowed;
+}
+
+.ds-command-menu__label {
+  flex: none;
+}
+
+.ds-command-menu__description {
+  flex: 1;
+  overflow: hidden;
+  color: var(--command-menu-item-description-text-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-command-menu__shortcut {
+  margin-inline-start: auto;
+}
+
+.ds-command-menu__empty {
+  padding: var(--command-menu-empty-padding);
+  color: var(--command-menu-empty-text-color);
+  text-align: center;
+}
+
+.ds-command-menu__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--command-menu-footer-gap);
+  padding-block: var(--command-menu-footer-padding-y);
+  padding-inline: var(--command-menu-footer-padding-x);
+  border-block-start: var(--command-menu-border-width) solid var(--command-menu-border-color);
+  background-color: var(--command-menu-footer-bg-color);
+  color: var(--command-menu-footer-text-color);
+  font-size: var(--command-menu-footer-font-size);
+}
+
+.ds-command-menu__hidden {
+  position: absolute;
+  inline-size: var(--command-menu-border-width);
+  block-size: var(--command-menu-border-width);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (forced-colors: active) {
+  .ds-command-menu__item[data-active] {
+    outline: var(--command-menu-border-width) solid Highlight;
+  }
+}
