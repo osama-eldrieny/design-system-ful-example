@@ -108,3 +108,11 @@
 .ds-pagination--spread .ds-pagination__list > li:last-child {
   margin-inline-start: auto;
 }
+
+/* Narrow screens: spread keeps previous, the current page and next */
+@media (width < 40rem) {
+  .ds-pagination--spread li:has(> .ds-pagination__number:not([aria-current='page'])),
+  .ds-pagination--spread .ds-pagination__ellipsis {
+    display: none;
+  }
+}

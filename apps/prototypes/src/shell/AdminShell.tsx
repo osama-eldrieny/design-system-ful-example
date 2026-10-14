@@ -1,6 +1,9 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import {
+  ActivityFeed,
   Avatar,
+  AvatarLabelGroup,
+  CommandMenu,
   Badge,
   Button,
   Breadcrumb,
@@ -13,13 +16,10 @@ import {
   DropdownMenuTrigger,
   IconButton,
   Inline,
-  List,
-  ListItem,
   Logo,
   Popover,
   PopoverContent,
   PopoverTrigger,
-  SearchField,
   SideNav,
   Stack,
 } from '@ds/react';
@@ -31,7 +31,10 @@ import {
   House,
   LogOut,
   Package,
+  Plus,
+  Search,
   Settings,
+  UserPlus,
   User,
   Users,
 } from 'lucide-react';
@@ -49,6 +52,7 @@ export function AdminShell({
   children: ReactNode;
 }) {
   const me = people[1];
+  const [commandOpen, setCommandOpen] = useState(false);
   return (
     <div className="proto proto-admin">
       <aside className="proto-admin__side">
@@ -61,7 +65,13 @@ export function AdminShell({
               {
                 items: [
                   { id: 'overview', label: 'Overview', href: '#/admin', icon: <House /> },
-                  { id: 'orders', label: 'Orders', href: '#/admin/orders', icon: <Package /> },
+                  {
+                    id: 'orders',
+                    label: 'Orders',
+                    href: '#/admin/orders',
+                    icon: <Package />,
+                    badge: 12,
+                  },
                   {
                     id: 'reports',
                     label: 'Reports',
@@ -81,6 +91,15 @@ export function AdminShell({
                 ],
               },
             ]}
+            footer={
+              <AvatarLabelGroup
+                name={me.name}
+                src={me.avatar}
+                supportingText={me.role}
+                status={me.status}
+                size="small"
+              />
+            }
           />
         </Stack>
       </aside>
@@ -89,11 +108,68 @@ export function AdminShell({
         <header className="proto-admin__bar">
           <Breadcrumb items={trail} />
           <Inline gap="xs" justify="end">
-            <SearchField
-              label="Search the admin"
-              placeholder="Search"
+            <Button
+              variant="secondary"
+              appearance="outline"
               size="small"
-              shortcut="mod+k"
+              iconStart={<Search />}
+              onClick={() => setCommandOpen(true)}
+            >
+              Search ⌘K
+            </Button>
+            <CommandMenu
+              open={commandOpen}
+              onOpenChange={setCommandOpen}
+              label="Search the admin"
+              groups={[
+                {
+                  label: 'Pages',
+                  items: [
+                    {
+                      id: 'overview',
+                      label: 'Overview',
+                      icon: <House />,
+                      onSelect: () => go('/admin'),
+                    },
+                    {
+                      id: 'orders',
+                      label: 'Orders',
+                      icon: <Package />,
+                      keywords: ['sales'],
+                      onSelect: () => go('/admin/orders'),
+                    },
+                    {
+                      id: 'team',
+                      label: 'Team',
+                      icon: <Users />,
+                      onSelect: () => go('/admin/team'),
+                    },
+                    {
+                      id: 'settings',
+                      label: 'Settings',
+                      icon: <Settings />,
+                      onSelect: () => go('/settings'),
+                    },
+                  ],
+                },
+                {
+                  label: 'Actions',
+                  items: [
+                    {
+                      id: 'order',
+                      label: 'Create order',
+                      icon: <Plus />,
+                      onSelect: () => go('/admin/orders'),
+                    },
+                    {
+                      id: 'invite',
+                      label: 'Invite member',
+                      icon: <UserPlus />,
+                      onSelect: () => go('/admin/team'),
+                    },
+                  ],
+                },
+              ]}
             />
             <Popover>
               <PopoverTrigger asChild>
@@ -113,23 +189,47 @@ export function AdminShell({
                 </span>
               </PopoverTrigger>
               <PopoverContent title="Notifications" align="end">
-                <List divided>
-                  <ListItem
-                    title="New order #1059"
-                    description="Lina Haddad · 2 min ago"
-                    href="#/admin/orders"
-                  />
-                  <ListItem
-                    title="Refund requested"
-                    description="Order #1041 · 1 h ago"
-                    href="#/admin/orders"
-                  />
-                  <ListItem
-                    title="Stock low: Webcam 4K"
-                    description="3 left · today"
-                    href="#/admin"
-                  />
-                </List>
+                <ActivityFeed
+                  aria-label="Notifications"
+                  appearance="divided"
+                  items={[
+                    {
+                      id: 1,
+                      avatar: { name: 'Lina Haddad' },
+                      title: (
+                        <>
+                          <strong>New order</strong> #1059 from Lina Haddad
+                        </>
+                      ),
+                      time: '2 min ago',
+                      unread: true,
+                    },
+                    {
+                      id: 2,
+                      icon: <CreditCard />,
+                      iconTone: 'warning',
+                      title: (
+                        <>
+                          <strong>Refund requested</strong> for #1041
+                        </>
+                      ),
+                      time: '1 h ago',
+                      unread: true,
+                    },
+                    {
+                      id: 3,
+                      icon: <Package />,
+                      iconTone: 'danger',
+                      title: (
+                        <>
+                          <strong>Stock low:</strong> Webcam 4K
+                        </>
+                      ),
+                      time: 'Today',
+                      unread: true,
+                    },
+                  ]}
+                />
               </PopoverContent>
             </Popover>
             <DropdownMenu>

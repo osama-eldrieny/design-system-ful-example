@@ -1,471 +1,492 @@
-import { useEffect, useState } from 'react';
+import { useState, type ReactElement } from 'react';
 import {
-  Avatar,
-  AvatarGroup,
+  ActivityFeed,
+  AreaChart,
+  AvatarLabelGroup,
   Badge,
+  BarChart,
   Button,
   ButtonGroup,
-  Card,
-  CardBody,
-  Checkbox,
-  Divider,
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerFooter,
-  EmptyState,
-  Grid,
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
+  DateRangePicker,
+  DonutChart,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
   IconButton,
-  Inline,
-  Link,
-  List,
-  ListItem,
-  MeetingCard,
-  Progress,
-  Skeleton,
-  Stack,
-  Stat,
-  Switch,
-  Tab,
+  MetricCard,
+  PageHeader,
+  Pagination,
+  ProgressCircle,
+  Sparkline,
   Table,
-  TabList,
-  Tabs,
-  Tag,
-  Tooltip,
+  TableCard,
+  datePresets,
   useToast,
+  type DateRange,
+  type TableColumn,
 } from '@ds/react';
-import { ArrowRight, CircleCheck, Info, RefreshCw } from 'lucide-react';
-import { money, orders, people, products, statusTone, type Order } from '../data';
+import {
+  DollarSign,
+  Download,
+  FileText,
+  MoreVertical,
+  Package,
+  Percent,
+  RotateCcw,
+  ShoppingCart,
+  UserPlus,
+} from 'lucide-react';
+import { money, orders, people, statusTone, type Order } from '../data';
 import { AdminShell } from '../shell/AdminShell';
 
 type Period = '7d' | '30d' | '90d';
-const periodLabel: Record<Period, string> = {
-  '7d': 'last week',
-  '30d': 'last month',
-  '90d': 'last quarter',
-};
-const statsByPeriod: Record<
-  Period,
-  { label: string; value: string; change: string; trend: 'up' | 'down'; positive?: boolean }[]
-> = {
-  '7d': [
-    { label: 'Revenue', value: '$29,840', change: '+4.1%', trend: 'up' },
-    { label: 'Orders', value: '312', change: '+2.6%', trend: 'up' },
-    { label: 'Refund rate', value: '1.6%', change: '−0.2%', trend: 'down', positive: true },
-    { label: 'Conversion', value: '3.6%', change: '+0.1%', trend: 'up' },
-  ],
-  '30d': [
-    { label: 'Revenue', value: '$124,567', change: '+12.5%', trend: 'up' },
-    { label: 'Orders', value: '1,284', change: '+8.2%', trend: 'up' },
-    { label: 'Refund rate', value: '1.8%', change: '+0.4%', trend: 'up', positive: false },
-    { label: 'Conversion', value: '3.4%', change: '−0.2%', trend: 'down' },
-  ],
-  '90d': [
-    { label: 'Revenue', value: '$352,190', change: '+18.9%', trend: 'up' },
-    { label: 'Orders', value: '3,702', change: '+11.4%', trend: 'up' },
-    { label: 'Refund rate', value: '2.0%', change: '+0.3%', trend: 'up', positive: false },
-    { label: 'Conversion', value: '3.3%', change: '−0.4%', trend: 'down' },
-  ],
-};
-const channels = {
-  revenue: [
-    { label: 'Online store', share: 58, last: 54 },
-    { label: 'Marketplace', share: 27, last: 29 },
-    { label: 'Retail partners', share: 15, last: 17 },
-  ],
-  orders: [
-    { label: 'Online store', share: 49, last: 47 },
-    { label: 'Marketplace', share: 38, last: 36 },
-    { label: 'Retail partners', share: 13, last: 17 },
-  ],
-};
-const topSearches = ['headphones', 'usb-c hub', 'keyboard', 'webcam', 'power bank'];
-const initialTasks = [
-  { id: 'refunds', label: 'Review 3 refund requests', done: false },
-  { id: 'restock', label: 'Reorder Webcam 4K', done: false },
-  { id: 'banner', label: 'Schedule the autumn sale banner', done: true },
+
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const revenue = months.map((month, i) => ({
+  month,
+  revenue: Math.round(52000 + Math.sin(i / 1.6) * 9000 + i * 4200),
+  target: Math.round(56000 + i * 3600),
+}));
+const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => ({
+  day,
+  online: [182, 204, 196, 221, 268, 312, 254][i],
+  store: [64, 71, 69, 73, 92, 140, 118][i],
+}));
+const channels = [
+  { label: 'Online store', value: 58 },
+  { label: 'Marketplace', value: 27 },
+  { label: 'Retail partners', value: 15 },
 ];
 
-/** Admin overview: key figures, channels, orders, stock, today’s schedule, tasks and team. */
+const metrics: Record<
+  Period,
+  {
+    label: string;
+    value: string;
+    change: string;
+    trend: 'up' | 'down';
+    positive?: boolean;
+    icon: ReactElement;
+    spark: number[];
+  }[]
+> = {
+  '7d': [
+    {
+      label: 'Revenue',
+      value: '$29,840',
+      change: '4.1%',
+      trend: 'up',
+      icon: <DollarSign />,
+      spark: [3, 4, 4, 5, 4, 6, 7],
+    },
+    {
+      label: 'Orders',
+      value: '312',
+      change: '2.6%',
+      trend: 'up',
+      icon: <ShoppingCart />,
+      spark: [40, 42, 39, 45, 47, 46, 53],
+    },
+    {
+      label: 'Refund rate',
+      value: '1.6%',
+      change: '0.2%',
+      trend: 'down',
+      positive: true,
+      icon: <RotateCcw />,
+      spark: [2.1, 2, 1.9, 1.8, 1.8, 1.7, 1.6],
+    },
+    {
+      label: 'Conversion',
+      value: '3.6%',
+      change: '0.1%',
+      trend: 'up',
+      icon: <Percent />,
+      spark: [3.4, 3.5, 3.4, 3.5, 3.6, 3.5, 3.6],
+    },
+  ],
+  '30d': [
+    {
+      label: 'Revenue',
+      value: '$124,567',
+      change: '12.5%',
+      trend: 'up',
+      icon: <DollarSign />,
+      spark: [8, 9, 11, 10, 12, 14, 15],
+    },
+    {
+      label: 'Orders',
+      value: '1,284',
+      change: '8.2%',
+      trend: 'up',
+      icon: <ShoppingCart />,
+      spark: [30, 34, 33, 38, 41, 40, 45],
+    },
+    {
+      label: 'Refund rate',
+      value: '1.8%',
+      change: '0.4%',
+      trend: 'up',
+      positive: false,
+      icon: <RotateCcw />,
+      spark: [1.4, 1.5, 1.5, 1.6, 1.7, 1.8, 1.8],
+    },
+    {
+      label: 'Conversion',
+      value: '3.4%',
+      change: '0.2%',
+      trend: 'down',
+      icon: <Percent />,
+      spark: [3.7, 3.6, 3.6, 3.5, 3.5, 3.4, 3.4],
+    },
+  ],
+  '90d': [
+    {
+      label: 'Revenue',
+      value: '$352,190',
+      change: '18.9%',
+      trend: 'up',
+      icon: <DollarSign />,
+      spark: [20, 24, 23, 28, 31, 33, 38],
+    },
+    {
+      label: 'Orders',
+      value: '3,702',
+      change: '11.4%',
+      trend: 'up',
+      icon: <ShoppingCart />,
+      spark: [90, 95, 99, 104, 110, 112, 121],
+    },
+    {
+      label: 'Refund rate',
+      value: '2.0%',
+      change: '0.3%',
+      trend: 'up',
+      positive: false,
+      icon: <RotateCcw />,
+      spark: [1.6, 1.7, 1.7, 1.8, 1.9, 2, 2],
+    },
+    {
+      label: 'Conversion',
+      value: '3.3%',
+      change: '0.4%',
+      trend: 'down',
+      icon: <Percent />,
+      spark: [3.8, 3.7, 3.6, 3.5, 3.5, 3.4, 3.3],
+    },
+  ],
+};
+
+const activity = [
+  {
+    id: 1,
+    avatar: { name: 'Lina Haddad' },
+    title: (
+      <>
+        <strong>Lina Haddad</strong> placed order <strong>#1059</strong>
+      </>
+    ),
+    time: '2 min ago',
+    unread: true,
+  },
+  {
+    id: 2,
+    avatar: { name: people[2].name, src: people[2].avatar },
+    title: (
+      <>
+        <strong>{people[2].name}</strong> updated the autumn sale banner
+      </>
+    ),
+    time: '1 hour ago',
+    content: '“Moved the headline above the fold and added the 20% badge.”',
+  },
+  {
+    id: 3,
+    icon: <Package />,
+    iconTone: 'warning' as const,
+    title: (
+      <>
+        Stock low: <strong>Webcam 4K</strong> (3 left)
+      </>
+    ),
+    time: 'Today, 09:12',
+  },
+  {
+    id: 4,
+    icon: <UserPlus />,
+    iconTone: 'success' as const,
+    title: (
+      <>
+        <strong>{people[3].name}</strong> joined the team
+      </>
+    ),
+    time: 'Yesterday',
+  },
+  {
+    id: 5,
+    icon: <FileText />,
+    iconTone: 'blue' as const,
+    title: 'September sales report is ready',
+    time: 'Mon',
+  },
+];
+
+const statusBadge: Record<Order['status'], Parameters<typeof Badge>[0]['tone']> = statusTone;
+
+const orderColumns: TableColumn<Order>[] = [
+  { key: 'id', header: 'Order', sortable: true },
+  {
+    key: 'customer',
+    header: 'Customer',
+    sortable: true,
+    render: (o) => <AvatarLabelGroup name={o.customer} supportingText={o.email} size="small" />,
+  },
+  { key: 'date', header: 'Date', sortable: true, hideBelow: 'medium' },
+  {
+    key: 'status',
+    header: 'Status',
+    render: (o) => (
+      <Badge tone={statusBadge[o.status]} shape="modern" size="small" withDot>
+        {o.status}
+      </Badge>
+    ),
+  },
+  { key: 'items', header: 'Items', align: 'end', hideBelow: 'large' },
+  {
+    key: 'total',
+    header: 'Total',
+    sortable: true,
+    align: 'end',
+    render: (o) => money(o.total),
+  },
+  {
+    key: 'actions',
+    header: <span className="proto-visually-hidden">Actions</span>,
+    align: 'end',
+    width: 48,
+    render: (o) => (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <IconButton
+            icon={<MoreVertical />}
+            label={`Actions for order ${o.id}`}
+            variant="secondary"
+            appearance="ghost"
+            size="small"
+          />
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuItem>View order</DropdownMenuItem>
+          <DropdownMenuItem>Send invoice</DropdownMenuItem>
+          <DropdownMenuItem variant="danger">Refund</DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    ),
+  },
+];
+
+const card = 'proto-card';
+
+/** Admin overview: key figures with trends, revenue, channels, weekly orders, goal, orders, activity. */
 export default function AdminOverviewPage() {
   const toast = useToast();
   const [period, setPeriod] = useState<Period>('30d');
-  const [loading, setLoading] = useState(true);
-  const [metric, setMetric] = useState<'revenue' | 'orders'>('revenue');
-  const [compare, setCompare] = useState(false);
-  const [tasks, setTasks] = useState(initialTasks);
-  const [order, setOrder] = useState<Order | null>(null);
-
-  const load = (then?: () => void) => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      then?.();
-    }, 700);
-  };
-  useEffect(() => {
-    const t = setTimeout(() => setLoading(false), 700);
-    return () => clearTimeout(t);
-  }, []);
-
-  const lowStock = products
-    .filter((p) => p.stock < 10)
-    .map((p) => ({ id: p.id, name: p.title, stock: p.stock }));
-  const done = tasks.filter((t) => t.done).length;
+  const [range, setRange] = useState<DateRange>(() => datePresets()[2].range);
+  const [page, setPage] = useState(1);
+  const pageSize = 6;
+  const shownOrders = orders.slice((page - 1) * pageSize, page * pageSize);
+  const usd = (v: number) =>
+    new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+      notation: 'compact',
+    }).format(v);
 
   return (
     <AdminShell
       current="overview"
       trail={[{ label: 'Admin', href: '#/admin' }, { label: 'Overview' }]}
     >
-      <Stack gap="xl">
-        {/* Page header: title, period and refresh */}
-        <Inline justify="between" align="end">
-          <Stack gap="2xs">
-            <h1 className="proto-hero-title">Good morning, Sarah</h1>
-            <p className="proto-muted">Here’s how the store is doing.</p>
-          </Stack>
-          <Inline gap="sm">
-            <Tabs
-              value={period}
-              onValueChange={(v) => {
-                setPeriod(v as Period);
-                load();
-              }}
-              appearance="pill"
-            >
-              <TabList label="Period">
-                <Tab value="7d">7 days</Tab>
-                <Tab value="30d">30 days</Tab>
-                <Tab value="90d">90 days</Tab>
-              </TabList>
-            </Tabs>
-            <Tooltip content="Reload the figures">
+      <div className="proto-page">
+        <PageHeader
+          title="Good morning, Sarah"
+          description="Here’s how the store is doing."
+          actions={
+            <>
+              <DateRangePicker
+                label="Report period"
+                presets={datePresets()}
+                value={range}
+                onValueChange={setRange}
+              />
               <Button
-                appearance="outline"
                 variant="secondary"
-                iconStart={<RefreshCw />}
-                loading={loading}
-                onClick={() => load(() => toast({ title: 'Figures updated', tone: 'success' }))}
+                appearance="outline"
+                iconStart={<Download />}
+                onClick={() => toast({ title: 'Report exported', tone: 'success' })}
               >
-                Refresh
+                Export
               </Button>
-            </Tooltip>
-          </Inline>
-        </Inline>
-
-        {/* Key figures */}
-        <Grid
-          stretch
-          minItemWidth="13rem"
-          as="section"
-          aria-label="Key figures"
-          aria-busy={loading}
+            </>
+          }
         >
-          {statsByPeriod[period].map((s) => (
-            <Card key={s.label} appearance="outlined">
-              <CardBody>
-                {loading ? (
-                  <Skeleton lines={3} />
-                ) : (
-                  <Stat {...s} help={`vs ${periodLabel[period]}`} />
-                )}
-              </CardBody>
-            </Card>
+          <ButtonGroup
+            aria-label="Compare with"
+            attached
+            value={period}
+            onValueChange={(v) => setPeriod(v as Period)}
+          >
+            <Button value="7d" variant="secondary" appearance="outline" size="small">
+              7 days
+            </Button>
+            <Button value="30d" variant="secondary" appearance="outline" size="small">
+              30 days
+            </Button>
+            <Button value="90d" variant="secondary" appearance="outline" size="small">
+              90 days
+            </Button>
+          </ButtonGroup>
+        </PageHeader>
+
+        <section className="proto-metrics" aria-label="Key figures">
+          {metrics[period].map((m) => (
+            <MetricCard
+              key={m.label}
+              label={m.label}
+              value={m.value}
+              change={m.change}
+              trend={m.trend}
+              positive={m.positive}
+              comparison={`vs previous ${period === '7d' ? 'week' : period === '30d' ? 'month' : 'quarter'}`}
+              icon={m.icon}
+              chart={
+                <Sparkline
+                  data={m.spark}
+                  tone={(m.positive ?? m.trend === 'up') ? 'positive' : 'negative'}
+                />
+              }
+              actions={
+                <IconButton
+                  icon={<MoreVertical />}
+                  label={`More options for ${m.label}`}
+                  variant="secondary"
+                  appearance="ghost"
+                  size="small"
+                />
+              }
+            />
           ))}
-        </Grid>
+        </section>
 
-        {/* Main column + side column */}
-        <div className="proto-dash">
-          <Stack gap="xl">
-            <Card as="section" aria-labelledby="channels-title">
-              <CardBody>
-                <Stack gap="md">
-                  <Inline justify="between">
-                    <h2 className="proto-subtitle" id="channels-title">
-                      Sales by channel
-                    </h2>
-                    <ButtonGroup
-                      aria-label="Measure"
-                      attached
-                      value={metric}
-                      onValueChange={(v) => setMetric(v as 'revenue' | 'orders')}
-                    >
-                      <Button size="small" value="revenue">
-                        Revenue
-                      </Button>
-                      <Button size="small" value="orders">
-                        Orders
-                      </Button>
-                    </ButtonGroup>
-                  </Inline>
-                  {channels[metric].map((c) => (
-                    <Stack key={c.label} gap="2xs">
-                      <Progress label={c.label} value={c.share} showValue />
-                      {compare && (
-                        <Progress
-                          label={`${c.label}, ${periodLabel[period]}`}
-                          value={c.last}
-                          showValue
-                          tone="warning"
-                          size="small"
-                        />
-                      )}
-                    </Stack>
-                  ))}
-                  <Divider />
-                  <Inline justify="between">
-                    <Switch
-                      label={`Compare with ${periodLabel[period]}`}
-                      checked={compare}
-                      onCheckedChange={setCompare}
-                    />
-                    <Progress
-                      className="proto-target"
-                      label="Monthly target"
-                      value={82}
-                      showValue
-                      tone="success"
-                    />
-                  </Inline>
-                </Stack>
-              </CardBody>
-            </Card>
-
-            <Card as="section" aria-labelledby="activity-title">
-              <CardBody>
-                <Stack gap="md">
-                  <Inline justify="between">
-                    <h2 className="proto-subtitle" id="activity-title">
-                      Latest orders
-                    </h2>
-                    <Link href="#/admin/orders" appearance="standalone" icon={<ArrowRight />}>
-                      All orders
-                    </Link>
-                  </Inline>
-                  <List divided>
-                    {orders.slice(0, 5).map((o) => (
-                      <ListItem
-                        key={o.id}
-                        title={`${o.id} · ${o.customer}`}
-                        description={`${o.items} items · ${o.date}`}
-                        meta={
-                          <Inline gap="xs" wrap={false}>
-                            <span>{money(o.total)}</span>
-                            <Badge tone={statusTone[o.status]}>{o.status}</Badge>
-                          </Inline>
-                        }
-                        onClick={() => setOrder(o)}
-                      />
-                    ))}
-                  </List>
-                </Stack>
-              </CardBody>
-            </Card>
-
-            <Card as="section" aria-labelledby="stock-title">
-              <CardBody>
-                <Stack gap="md">
-                  <Inline justify="between">
-                    <h2 className="proto-subtitle" id="stock-title">
-                      Low stock
-                    </h2>
-                    <Badge tone="warning">{`${lowStock.length} products`}</Badge>
-                  </Inline>
-                  <Table
-                    caption="Low stock"
-                    hideCaption
-                    compact
-                    columns={[
-                      { key: 'name', header: 'Product' },
-                      {
-                        key: 'stock',
-                        header: 'Left',
-                        align: 'end',
-                        render: (r) =>
-                          r.stock === 0 ? <Badge tone="danger">Sold out</Badge> : r.stock,
-                      },
-                    ]}
-                    rows={lowStock}
-                  />
-                  <Stack gap="xs">
-                    <span className="proto-muted">Top searches this week</span>
-                    <Inline gap="xs">
-                      {topSearches.map((s) => (
-                        <Tag key={s}>{s}</Tag>
-                      ))}
-                    </Inline>
-                  </Stack>
-                </Stack>
-              </CardBody>
-            </Card>
-          </Stack>
-
-          {/* Side column */}
-          <Stack gap="xl">
-            <Card as="section" aria-labelledby="schedule-title">
-              <CardBody>
-                <Stack gap="md">
-                  <h2 className="proto-subtitle" id="schedule-title">
-                    Today’s meetings
-                  </h2>
-                  <Stack gap="sm">
-                    <MeetingCard
-                      title="Weekly sales review"
-                      time="10:00 – 10:30"
-                      dateTime="2026-09-29T10:00"
-                      attendees={people.map((p) => ({ name: p.name, src: p.avatar }))}
-                      maxAttendees={3}
-                    />
-                    <MeetingCard
-                      variant="warning"
-                      title="Starts in 15 min: Supplier call"
-                      time="11:00 – 11:45"
-                      attendees={[{ name: people[0].name, src: people[0].avatar }]}
-                    />
-                    <MeetingCard variant="success" title="Done: Stock count" time="08:00 – 09:00" />
-                  </Stack>
-                </Stack>
-              </CardBody>
-            </Card>
-
-            <Card as="section" aria-labelledby="tasks-title">
-              <CardBody>
-                <Stack gap="md">
-                  <Inline justify="between">
-                    <h2 className="proto-subtitle" id="tasks-title">
-                      Your tasks
-                    </h2>
-                    <Tooltip content="Tasks assigned to you today">
-                      <IconButton
-                        icon={<Info />}
-                        label="About tasks"
-                        appearance="ghost"
-                        variant="secondary"
-                        size="small"
-                      />
-                    </Tooltip>
-                  </Inline>
-                  <Progress
-                    label={`${done} of ${tasks.length} done`}
-                    value={(done / tasks.length) * 100}
-                  />
-                  {done === tasks.length ? (
-                    <EmptyState
-                      icon={<CircleCheck />}
-                      title="All done"
-                      description="Nothing left for today."
-                      actions={
-                        <Button
-                          appearance="outline"
-                          size="small"
-                          onClick={() => setTasks(initialTasks)}
-                        >
-                          Reset
-                        </Button>
-                      }
-                    />
-                  ) : (
-                    <Stack gap="sm">
-                      {tasks.map((t) => (
-                        <Checkbox
-                          key={t.id}
-                          label={t.label}
-                          checked={t.done}
-                          onCheckedChange={(c) =>
-                            setTasks((all) =>
-                              all.map((x) => (x.id === t.id ? { ...x, done: c === true } : x)),
-                            )
-                          }
-                        />
-                      ))}
-                    </Stack>
-                  )}
-                </Stack>
-              </CardBody>
-            </Card>
-
-            <Card as="section" aria-labelledby="team-title">
-              <CardBody>
-                <Stack gap="md">
-                  <Inline justify="between">
-                    <h2 className="proto-subtitle" id="team-title">
-                      Team
-                    </h2>
-                    <AvatarGroup label="Team members" max={3}>
-                      {people.map((p) => (
-                        <Avatar key={p.name} name={p.name} src={p.avatar} />
-                      ))}
-                    </AvatarGroup>
-                  </Inline>
-                  <ul className="proto-plain-list proto-team">
-                    {people.map((p) => (
-                      <li key={p.name}>
-                        <Inline gap="sm" wrap={false}>
-                          <Avatar name={p.name} src={p.avatar} status={p.status} />
-                          <Stack gap="none">
-                            <HoverCard>
-                              <HoverCardTrigger asChild>
-                                <Link href="#/admin">{p.name}</Link>
-                              </HoverCardTrigger>
-                              <HoverCardContent>
-                                <Inline gap="sm" wrap={false}>
-                                  <Avatar name={p.name} src={p.avatar} size="large" />
-                                  <Stack gap="none">
-                                    <strong>{p.name}</strong>
-                                    <span className="proto-muted">{p.role}</span>
-                                    <span className="proto-muted">Status: {p.status}</span>
-                                  </Stack>
-                                </Inline>
-                              </HoverCardContent>
-                            </HoverCard>
-                            <span className="proto-muted">{p.role}</span>
-                          </Stack>
-                        </Inline>
-                      </li>
-                    ))}
-                  </ul>
-                </Stack>
-              </CardBody>
-            </Card>
-          </Stack>
+        <div className="proto-grid-2-1">
+          <section className={card}>
+            <PageHeader
+              size="small"
+              titleAs="h2"
+              title="Revenue"
+              description="This year against the monthly target."
+            />
+            <AreaChart
+              title="Revenue and target by month"
+              hideTitle
+              data={revenue}
+              xKey="month"
+              series={[
+                { key: 'revenue', label: 'Revenue' },
+                { key: 'target', label: 'Target', color: 8 },
+              ]}
+              formatValue={usd}
+              height={280}
+            />
+          </section>
+          <section className={card}>
+            <PageHeader size="small" titleAs="h2" title="Sales by channel" />
+            <DonutChart
+              title="Share of revenue by channel"
+              hideTitle
+              data={channels}
+              formatValue={(v) => `${v}%`}
+              centerValue="$124.5K"
+              centerLabel="Revenue"
+              size={190}
+            />
+          </section>
         </div>
-      </Stack>
 
-      {/* Order details */}
-      <Drawer open={order !== null} onOpenChange={(o) => !o && setOrder(null)}>
-        {order && (
-          <DrawerContent title={`Order ${order.id}`} description={order.date}>
-            <Stack gap="md">
-              <Inline justify="between">
-                <strong>{order.customer}</strong>
-                <Badge tone={statusTone[order.status]}>{order.status}</Badge>
-              </Inline>
-              <span className="proto-muted">{order.email}</span>
-              <Divider />
-              <dl className="proto-totals">
-                <dt>Items</dt>
-                <dd>{order.items}</dd>
-                <dt className="proto-totals__total">Total</dt>
-                <dd className="proto-totals__total">{money(order.total)}</dd>
-              </dl>
-            </Stack>
-            <DrawerFooter>
-              <DrawerClose asChild>
-                <Button appearance="outline" variant="secondary">
-                  Close
-                </Button>
-              </DrawerClose>
-              <Button onClick={() => (window.location.hash = '/admin/orders')}>
-                Open in Orders
+        <div className="proto-grid-2-1">
+          <section className={card}>
+            <PageHeader
+              size="small"
+              titleAs="h2"
+              title="Orders by weekday"
+              description="Saturdays bring the most orders, online and in store."
+            />
+            <BarChart
+              title="Orders by weekday, online and in store"
+              hideTitle
+              stacked
+              data={weekdays}
+              xKey="day"
+              series={[
+                { key: 'online', label: 'Online' },
+                { key: 'store', label: 'In store', color: 3 },
+              ]}
+              height={240}
+            />
+          </section>
+          <section className={card}>
+            <PageHeader size="small" titleAs="h2" title="Monthly goal" />
+            <div className="proto-center">
+              <ProgressCircle
+                label="Revenue goal, $150K"
+                value={83}
+                shape="half"
+                size="large"
+                caption="of $150K"
+              />
+              <p className="proto-muted">$25.4K to go with 15 days left.</p>
+            </div>
+          </section>
+        </div>
+
+        <div className="proto-grid-2-1">
+          <TableCard
+            title="Recent orders"
+            titleAs="h2"
+            badge={`${orders.length} orders`}
+            description="Orders from the last 30 days."
+            actions={
+              <Button size="small" variant="secondary" appearance="outline" href="#/admin/orders">
+                View all
               </Button>
-            </DrawerFooter>
-          </DrawerContent>
-        )}
-      </Drawer>
+            }
+            footer={
+              <Pagination
+                currentPage={page}
+                totalPages={Math.ceil(orders.length / pageSize)}
+                onPageChange={setPage}
+                showArrowLabels
+                layout="spread"
+                label="Order pages"
+              />
+            }
+          >
+            <Table<Order>
+              caption="Recent orders"
+              hideCaption
+              columns={orderColumns}
+              rows={shownOrders}
+              selectable
+              rowLabel={(o) => `Select order ${o.id}`}
+            />
+          </TableCard>
+          <section className={card}>
+            <PageHeader size="small" titleAs="h2" title="Activity" />
+            <ActivityFeed aria-label="Recent activity" items={activity} />
+          </section>
+        </div>
+      </div>
     </AdminShell>
   );
 }
