@@ -15,6 +15,10 @@ import { SideNav } from '@ds/react';
 - For five or fewer top-level pages. Use Navbar.
 - For switching views inside a page. Use Tabs.
 
+## Collapsed (`collapsed`)
+- `false`: Icons and labels. Default.
+- `true`: Icons only, labels in tooltips, for a slim sidebar.
+
 ## Structure (`sections`)
 - `flat`: Items only.
 - `nested`: Items with items: collapsible groups, indented.
@@ -33,6 +37,9 @@ import { SideNav } from '@ds/react';
 | `sections` | `SideNavSection[]` |  | Sections of links. Nested items expand and collapse. |
 | `currentItem` | `string` |  | Id of the current page’s item. Its parents start expanded. |
 | `aria-label` | `string` | Side | Names the navigation landmark. Default "Side". |
+| `collapsed` | `boolean` | false | Slim: icons only, labels in tooltips, for a collapsed sidebar. Nested groups show their children only when expanded; give every top-level item an icon. |
+| `header` | `ReactNode` |  | Above the sections, e.g. the product logo or a search field. |
+| `footer` | `ReactNode` |  | Pinned to the bottom, e.g. settings links and the account (AvatarLabelGroup). |
 
 ## Guidelines
 - Do: Keep nesting to two levels. Don’t: Nest groups three or four deep. Why: Deep trees are hard to scan and navigate by keyboard.

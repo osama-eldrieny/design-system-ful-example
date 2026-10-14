@@ -70,6 +70,28 @@
         {
           "value": "danger",
           "meaning": "Negative category."
+        },
+        {
+          "value": "gray | blue | sky | indigo | purple | pink | orange | teal",
+          "meaning": "Category hues with no meaning of their own."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dense tables and filter bars."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "Prominent lists of keywords."
         }
       ]
     },
@@ -215,6 +237,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "Category hues for tone; size; count and image."
+      ]
     }
   ],
   "components": [
@@ -230,17 +259,48 @@
           "description": "Text of the tag; also names its remove button."
         },
         "tone": {
-          "type": "TagTone",
+          "type": "BadgeColor",
           "values": [
             "primary",
             "secondary",
             "success",
             "warning",
-            "danger"
+            "danger",
+            "gray",
+            "blue",
+            "sky",
+            "indigo",
+            "purple",
+            "pink",
+            "orange",
+            "teal"
           ],
           "required": false,
           "default": "secondary",
-          "description": "Color meaning. Default secondary (neutral)."
+          "description": "Color meaning or category hue. Default secondary (neutral)."
+        },
+        "size": {
+          "type": "TagSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small`, `medium` (default) or `large`."
+        },
+        "count": {
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "A count after the text, e.g. how many items match a filter."
+        },
+        "image": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Small round picture before the text, e.g. a person. Decorative."
         },
         "appearance": {
           "type": "\"solid\" | \"subtle\"",
@@ -522,6 +582,246 @@
         "brand=opal,mode=dark": "#faacba"
       }
     },
+    "--tag-gray-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-gray-default",
+      "default": "#3f3f46"
+    },
+    "--tag-gray-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-gray-default",
+      "default": "#fff"
+    },
+    "--tag-gray-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-gray-1",
+      "default": "#fafafa",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#09090b",
+        "brand=amber,mode=dark": "#09090b",
+        "brand=opal,mode=dark": "#09090b"
+      }
+    },
+    "--tag-gray-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-gray-high",
+      "default": "#3f3f46",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#d4d4d8",
+        "brand=amber,mode=dark": "#d4d4d8",
+        "brand=opal,mode=dark": "#d4d4d8"
+      }
+    },
+    "--tag-blue-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-blue-default",
+      "default": "#1d4ed8"
+    },
+    "--tag-blue-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-blue-default",
+      "default": "#fff"
+    },
+    "--tag-blue-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-blue-1",
+      "default": "#eff6ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#172554",
+        "brand=amber,mode=dark": "#172554",
+        "brand=opal,mode=dark": "#172554"
+      }
+    },
+    "--tag-blue-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-blue-high",
+      "default": "#1d4ed8",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#93c5fd",
+        "brand=amber,mode=dark": "#93c5fd",
+        "brand=opal,mode=dark": "#93c5fd"
+      }
+    },
+    "--tag-sky-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-sky-default",
+      "default": "#0369a1"
+    },
+    "--tag-sky-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-sky-default",
+      "default": "#fff"
+    },
+    "--tag-sky-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-sky-1",
+      "default": "#f0f9ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#082f49",
+        "brand=amber,mode=dark": "#082f49",
+        "brand=opal,mode=dark": "#082f49"
+      }
+    },
+    "--tag-sky-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-sky-high",
+      "default": "#0369a1",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#7dd3fc",
+        "brand=amber,mode=dark": "#7dd3fc",
+        "brand=opal,mode=dark": "#7dd3fc"
+      }
+    },
+    "--tag-indigo-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-indigo-default",
+      "default": "#4338ca"
+    },
+    "--tag-indigo-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-indigo-default",
+      "default": "#fff"
+    },
+    "--tag-indigo-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-indigo-1",
+      "default": "#eef2ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#1e1b4b",
+        "brand=amber,mode=dark": "#1e1b4b",
+        "brand=opal,mode=dark": "#1e1b4b"
+      }
+    },
+    "--tag-indigo-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-indigo-high",
+      "default": "#4338ca",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a5b4fc",
+        "brand=amber,mode=dark": "#a5b4fc",
+        "brand=opal,mode=dark": "#a5b4fc"
+      }
+    },
+    "--tag-purple-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-purple-default",
+      "default": "#7e22ce"
+    },
+    "--tag-purple-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-purple-default",
+      "default": "#fff"
+    },
+    "--tag-purple-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-purple-1",
+      "default": "#faf5ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#3b0764",
+        "brand=amber,mode=dark": "#3b0764",
+        "brand=opal,mode=dark": "#3b0764"
+      }
+    },
+    "--tag-purple-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-purple-high",
+      "default": "#7e22ce",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#d8b4fe",
+        "brand=amber,mode=dark": "#d8b4fe",
+        "brand=opal,mode=dark": "#d8b4fe"
+      }
+    },
+    "--tag-pink-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-pink-default",
+      "default": "#be185d"
+    },
+    "--tag-pink-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-pink-default",
+      "default": "#fff"
+    },
+    "--tag-pink-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-pink-1",
+      "default": "#fdf2f8",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#500724",
+        "brand=amber,mode=dark": "#500724",
+        "brand=opal,mode=dark": "#500724"
+      }
+    },
+    "--tag-pink-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-pink-high",
+      "default": "#be185d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f9a8d4",
+        "brand=amber,mode=dark": "#f9a8d4",
+        "brand=opal,mode=dark": "#f9a8d4"
+      }
+    },
+    "--tag-orange-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-orange-default",
+      "default": "#c2410c"
+    },
+    "--tag-orange-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-orange-default",
+      "default": "#fff"
+    },
+    "--tag-orange-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-orange-1",
+      "default": "#fff7ed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#431407",
+        "brand=amber,mode=dark": "#431407",
+        "brand=opal,mode=dark": "#431407"
+      }
+    },
+    "--tag-orange-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-orange-high",
+      "default": "#c2410c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdba74",
+        "brand=amber,mode=dark": "#fdba74",
+        "brand=opal,mode=dark": "#fdba74"
+      }
+    },
+    "--tag-teal-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-teal-default",
+      "default": "#0f766e"
+    },
+    "--tag-teal-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-teal-default",
+      "default": "#fff"
+    },
+    "--tag-teal-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-teal-1",
+      "default": "#f0fdfa",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#042f2e",
+        "brand=amber,mode=dark": "#042f2e",
+        "brand=opal,mode=dark": "#042f2e"
+      }
+    },
+    "--tag-teal-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-teal-high",
+      "default": "#0f766e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5eead4",
+        "brand=amber,mode=dark": "#5eead4",
+        "brand=opal,mode=dark": "#5eead4"
+      }
+    },
     "--tag-selected-border-color": {
       "description": "Emphasized tone outline, e.g. a selected card.",
       "references": "--color-border-primary-strong",
@@ -613,6 +913,83 @@
       "description": "Opacity from 0 to 1.",
       "references": "--opacity-medium",
       "default": "0.5"
+    },
+    "--tag-small-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tag-small-padding-y": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--tag-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--tag-small-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xs",
+      "default": "12.5px"
+    },
+    "--tag-large-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--tag-large-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tag-large-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--tag-large-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--tag-count-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--tag-count-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--tag-count-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tag-count-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-sm",
+      "default": "3px"
+    },
+    "--tag-image-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
     },
     "--tag-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

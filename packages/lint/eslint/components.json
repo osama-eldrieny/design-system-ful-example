@@ -17,6 +17,17 @@
       ]
     }
   },
+  "ActivityFeed": {
+    "status": "stable",
+    "component": "activity-feed",
+    "props": {
+      "appearance": [
+        "connected",
+        "divided",
+        "plain"
+      ]
+    }
+  },
   "Alert": {
     "status": "stable",
     "component": "alert",
@@ -31,6 +42,10 @@
         "subtle",
         "solid",
         "outline"
+      ],
+      "layout": [
+        "inline",
+        "banner"
       ]
     }
   },
@@ -61,6 +76,7 @@
     "component": "avatar",
     "props": {
       "size": [
+        "xsmall",
         "small",
         "medium",
         "large",
@@ -79,10 +95,29 @@
     "component": "avatar",
     "props": {
       "size": [
+        "xsmall",
         "small",
         "medium",
         "large",
         "xlarge"
+      ]
+    }
+  },
+  "AvatarLabelGroup": {
+    "status": "stable",
+    "component": "avatar",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ],
+      "status": [
+        "online",
+        "away",
+        "busy",
+        "offline"
       ]
     }
   },
@@ -95,18 +130,70 @@
         "secondary",
         "success",
         "warning",
-        "danger"
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
       ],
       "appearance": [
         "solid",
         "subtle"
+      ],
+      "shape": [
+        "pill",
+        "rounded",
+        "modern"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "BadgeGroup": {
+    "status": "stable",
+    "component": "badge",
+    "props": {
+      "tone": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
+      ],
+      "badgePosition": [
+        "leading",
+        "trailing"
       ]
     }
   },
   "Breadcrumb": {
     "status": "stable",
     "component": "breadcrumb",
-    "props": {}
+    "props": {
+      "separator": [
+        "chevron",
+        "slash"
+      ],
+      "appearance": [
+        "text",
+        "button"
+      ]
+    }
   },
   "Button": {
     "status": "stable",
@@ -126,9 +213,11 @@
         "text"
       ],
       "size": [
+        "xsmall",
         "small",
         "medium",
-        "large"
+        "large",
+        "xlarge"
       ]
     }
   },
@@ -150,9 +239,11 @@
         "text"
       ],
       "size": [
+        "xsmall",
         "small",
         "medium",
-        "large"
+        "large",
+        "xlarge"
       ]
     }
   },
@@ -214,6 +305,56 @@
     "component": "card",
     "props": {}
   },
+  "LineChart": {
+    "status": "beta",
+    "component": "charts",
+    "props": {}
+  },
+  "AreaChart": {
+    "status": "beta",
+    "component": "charts",
+    "props": {}
+  },
+  "BarChart": {
+    "status": "beta",
+    "component": "charts",
+    "props": {
+      "orientation": [
+        "vertical",
+        "horizontal"
+      ]
+    }
+  },
+  "DonutChart": {
+    "status": "beta",
+    "component": "charts",
+    "props": {}
+  },
+  "RadarChart": {
+    "status": "beta",
+    "component": "charts",
+    "props": {}
+  },
+  "Sparkline": {
+    "status": "beta",
+    "component": "charts",
+    "props": {
+      "tone": [
+        "1",
+        "auto",
+        "primary",
+        "positive",
+        "negative",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ]
+    }
+  },
   "Checkbox": {
     "status": "stable",
     "component": "checkbox",
@@ -271,6 +412,11 @@
       ]
     }
   },
+  "CommandMenu": {
+    "status": "stable",
+    "component": "command-menu",
+    "props": {}
+  },
   "Container": {
     "status": "stable",
     "component": "container",
@@ -283,6 +429,53 @@
       ]
     }
   },
+  "DatePicker": {
+    "status": "stable",
+    "component": "date-picker",
+    "props": {
+      "size": [
+        "small",
+        "medium"
+      ],
+      "months": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "DateRangePicker": {
+    "status": "stable",
+    "component": "date-picker",
+    "props": {
+      "size": [
+        "small",
+        "medium"
+      ],
+      "months": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "Calendar": {
+    "status": "stable",
+    "component": "date-picker",
+    "props": {
+      "mode": [
+        "single",
+        "range"
+      ],
+      "months": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  "datePresets": {
+    "status": "stable",
+    "component": "date-picker",
+    "props": {}
+  },
   "Divider": {
     "status": "stable",
     "component": "divider",
@@ -290,6 +483,11 @@
       "orientation": [
         "horizontal",
         "vertical"
+      ],
+      "labelAlign": [
+        "start",
+        "center",
+        "end"
       ]
     }
   },
@@ -312,6 +510,11 @@
         "end",
         "top",
         "bottom"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
       ]
     }
   },
@@ -398,6 +601,64 @@
         "h2",
         "h3",
         "h4"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "FeaturedIcon": {
+    "status": "stable",
+    "component": "featured-icon",
+    "props": {
+      "tone": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
+      ],
+      "appearance": [
+        "light",
+        "solid",
+        "outline",
+        "modern"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ],
+      "shape": [
+        "circle",
+        "square"
+      ]
+    }
+  },
+  "FileUpload": {
+    "status": "stable",
+    "component": "file-upload",
+    "props": {}
+  },
+  "FileUploadItem": {
+    "status": "stable",
+    "component": "file-upload",
+    "props": {
+      "status": [
+        "error",
+        "uploading",
+        "complete"
       ]
     }
   },
@@ -562,6 +823,51 @@
       ]
     }
   },
+  "MetricCard": {
+    "status": "stable",
+    "component": "metric-card",
+    "props": {
+      "trend": [
+        "up",
+        "down",
+        "neutral"
+      ],
+      "trendStyle": [
+        "simple",
+        "badge",
+        "modern"
+      ],
+      "iconTone": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
+      ],
+      "iconAppearance": [
+        "modern",
+        "light",
+        "solid",
+        "outline"
+      ],
+      "layout": [
+        "vertical",
+        "horizontal"
+      ],
+      "size": [
+        "small",
+        "medium"
+      ]
+    }
+  },
   "Modal": {
     "status": "stable",
     "component": "modal",
@@ -579,7 +885,27 @@
       "size": [
         "small",
         "medium",
-        "large"
+        "large",
+        "xlarge"
+      ],
+      "iconTone": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
+      ],
+      "align": [
+        "center",
+        "start"
       ],
       "role": [
         "dialog",
@@ -602,6 +928,21 @@
     "component": "navbar",
     "props": {}
   },
+  "PageHeader": {
+    "status": "stable",
+    "component": "page-header",
+    "props": {
+      "titleAs": [
+        "h1",
+        "h2",
+        "h3"
+      ],
+      "size": [
+        "medium",
+        "small"
+      ]
+    }
+  },
   "Pagination": {
     "status": "stable",
     "component": "pagination",
@@ -609,6 +950,10 @@
       "appearance": [
         "full",
         "simple"
+      ],
+      "layout": [
+        "compact",
+        "spread"
       ]
     }
   },
@@ -660,6 +1005,32 @@
       "size": [
         "small",
         "medium"
+      ],
+      "valuePosition": [
+        "top",
+        "end",
+        "bottom"
+      ]
+    }
+  },
+  "ProgressCircle": {
+    "status": "stable",
+    "component": "progress",
+    "props": {
+      "shape": [
+        "circle",
+        "half"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "tone": [
+        "primary",
+        "success",
+        "warning",
+        "danger"
       ]
     }
   },
@@ -703,7 +1074,23 @@
   "SelectItem": {
     "status": "stable",
     "component": "select",
-    "props": {}
+    "props": {
+      "dot": [
+        "success",
+        "primary",
+        "secondary",
+        "warning",
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
+      ]
+    }
   },
   "SelectGroup": {
     "status": "stable",
@@ -788,6 +1175,15 @@
       "orientation": [
         "horizontal",
         "vertical"
+      ],
+      "marker": [
+        "number",
+        "icon",
+        "dot"
+      ],
+      "size": [
+        "small",
+        "medium"
       ]
     }
   },
@@ -798,6 +1194,10 @@
       "labelPosition": [
         "start",
         "end"
+      ],
+      "size": [
+        "small",
+        "medium"
       ]
     }
   },
@@ -806,6 +1206,17 @@
     "component": "table",
     "props": {}
   },
+  "TableCard": {
+    "status": "stable",
+    "component": "table",
+    "props": {
+      "titleAs": [
+        "h2",
+        "h3",
+        "h4"
+      ]
+    }
+  },
   "Tabs": {
     "status": "stable",
     "component": "tabs",
@@ -813,7 +1224,13 @@
       "appearance": [
         "line",
         "enclosed",
-        "pill"
+        "pill",
+        "segmented",
+        "subtle"
+      ],
+      "size": [
+        "small",
+        "medium"
       ],
       "orientation": [
         "horizontal",
@@ -845,7 +1262,20 @@
         "secondary",
         "success",
         "warning",
-        "danger"
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
       ],
       "appearance": [
         "solid",
@@ -878,5 +1308,20 @@
     "status": "stable",
     "component": "tooltip",
     "props": {}
+  },
+  "VerificationCodeInput": {
+    "status": "stable",
+    "component": "verification-code-input",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "mode": [
+        "numeric",
+        "text"
+      ]
+    }
   }
 }

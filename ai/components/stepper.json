@@ -49,6 +49,38 @@
   ],
   "options": [
     {
+      "prop": "marker",
+      "title": "Marker",
+      "values": [
+        {
+          "value": "number",
+          "meaning": "Step numbers; a check when complete. Default."
+        },
+        {
+          "value": "icon",
+          "meaning": "Each step’s icon in a tile, for onboarding flows."
+        },
+        {
+          "value": "dot",
+          "meaning": "Small dots, for compact progress."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dialogs and narrow panels."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        }
+      ]
+    },
+    {
       "prop": "orientation",
       "title": "Orientation",
       "values": [
@@ -194,6 +226,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "marker (number, icon, dot) and size."
+      ]
     }
   ],
   "components": [
@@ -223,6 +262,27 @@
           "required": false,
           "default": "horizontal",
           "description": "`horizontal` (default) for a few short steps; `vertical` for many or long ones."
+        },
+        "marker": {
+          "type": "\"number\" | \"icon\" | \"dot\"",
+          "values": [
+            "number",
+            "icon",
+            "dot"
+          ],
+          "required": false,
+          "default": "number",
+          "description": "What marks each step: `number` (default), `icon` (each step's icon in a tile), `dot`."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\"",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for compact flows and dialogs, `medium` (default)."
         },
         "onStepClick": {
           "type": "((index: number) => void)",
@@ -441,6 +501,39 @@
       "description": "Stroke widths in px.",
       "references": "--border-width-regular",
       "default": "2px"
+    },
+    "--stepper-small-indicator-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--stepper-small-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-2xs",
+      "default": "12px"
+    },
+    "--stepper-icon-indicator-size": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--stepper-icon-indicator-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--stepper-icon-indicator-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-lg",
+      "default": "8px"
+    },
+    "--stepper-dot-indicator-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-2xs",
+      "default": "12px"
     },
     "--stepper-icon-size": {
       "description": "Fixed element sizes in px.",

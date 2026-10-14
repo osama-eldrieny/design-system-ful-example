@@ -214,6 +214,12 @@
   },
   "examples": [
     {
+      "id": "addons",
+      "title": "Prefix and suffix",
+      "description": "Fixed text inside the border, read with the field.",
+      "code": "import { InputField } from '@ds/react';\n\n<InputField label=\"Website\" prefix=\"https://\" suffix=\".com\" />"
+    },
+    {
       "id": "basic",
       "title": "Labelled field",
       "description": "A controlled field with help text.",
@@ -250,6 +256,13 @@
     }
   ],
   "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "prefix and suffix addons, shortcut hint and a hint tooltip."
+      ]
+    },
     {
       "version": "1.1.0",
       "date": "2026-09-29",
@@ -355,6 +368,36 @@
           "required": false,
           "default": "Clear",
           "description": "Accessible name of the clear button. Default \"Clear\"."
+        },
+        "prefix": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A fixed part before the text, inside the border, e.g. \"https://\" or a country code. It is\nread with the label. Pass an element (e.g. a small select) for an interactive addon."
+        },
+        "suffix": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A fixed part after the text, e.g. \".com\", \"USD\" or a unit."
+        },
+        "shortcut": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "A keyboard shortcut hint at the end, e.g. \"⌘K\". Decorative."
+        },
+        "hint": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Extra help shown in a tooltip from a ? icon at the end of the field."
+        },
+        "hintLabel": {
+          "type": "string",
+          "required": false,
+          "default": "More information",
+          "description": "Accessible name of the hint button. Default \"More information\"."
         }
       }
     }
@@ -745,6 +788,50 @@
       "description": "Opacity from 0 to 1.",
       "references": "--opacity-medium",
       "default": "0.5"
+    },
+    "--input-field-addon-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--input-field-addon-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--input-field-addon-border-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--input-field-hint-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
     },
     "--input-field-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

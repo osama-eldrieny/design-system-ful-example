@@ -67,6 +67,24 @@
   ],
   "options": [
     {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Narrow, for short forms and filters."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "Wide, for a record’s detail panel."
+        }
+      ]
+    },
+    {
       "prop": "side",
       "title": "Side",
       "values": [
@@ -214,6 +232,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "size: small, medium, large."
+      ]
     }
   ],
   "components": [
@@ -264,6 +289,17 @@
           "required": false,
           "default": "end",
           "description": "Edge it slides from: `end` (default; right in LTR, left in RTL), `start`, `top` or\n`bottom` (common on phones)."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\" | \"large\"",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "Width of side drawers: `small`, `medium` (default) or `large`, e.g. for a detail panel."
         },
         "closeLabel": {
           "type": "string",
@@ -502,6 +538,16 @@
       "description": "Elements appearing (decelerate into place).",
       "references": "--easing-enter",
       "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--drawer-small-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 1.5)"
+    },
+    "--drawer-large-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 3)"
     },
     "--drawer-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

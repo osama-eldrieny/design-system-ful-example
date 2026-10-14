@@ -37,6 +37,7 @@ import { SearchField } from '@ds/react';
 | `onSearch` | `((query: string) => void)` |  | Called with the query when Enter is pressed. |
 | `onValueChange` | `((query: string) => void)` |  | Called with the new query as people type or clear. |
 | `size` | `InputFieldSize` |  | `small` for dense UI, `medium` by default, `large` for prominent forms. |
+| `prefix` | `ReactNode` |  | A fixed part before the text, inside the border, e.g. "https://" or a country code. It is read with the label. Pass an element (e.g. a small select) for an interactive addon. |
 | `hideLabel` | `boolean` |  | Hides the label visually but keeps it for screen readers. Only for fields whose purpose is obvious from context, such as a search box with a search icon. |
 | `optional` | `boolean` |  | Marks the field optional with text after the label. Use when most fields are required. |
 | `optionalLabel` | `string` |  | Text shown for optional fields. Default "(optional)". |
@@ -44,6 +45,9 @@ import { SearchField } from '@ds/react';
 | `error` | `ReactNode` |  | Error message. Marks the field invalid and replaces the success message. |
 | `success` | `ReactNode` |  | Confirmation message, e.g. "Username is available". |
 | `clearLabel` | `string` |  | Accessible name of the clear button. Default "Clear". |
+| `suffix` | `ReactNode` |  | A fixed part after the text, e.g. ".com", "USD" or a unit. |
+| `hint` | `ReactNode` |  | Extra help shown in a tooltip from a ? icon at the end of the field. |
+| `hintLabel` | `string` |  | Accessible name of the hint button. Default "More information". |
 
 ## Guidelines
 - Do: Say what is searched in the placeholder or label. Don’t: Write just “Type here”. Why: People need to know the scope of the search.

@@ -248,6 +248,12 @@
           "default": null,
           "description": "`small` for dense UI, `medium` by default, `large` for prominent forms."
         },
+        "prefix": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A fixed part before the text, inside the border, e.g. \"https://\" or a country code. It is\nread with the label. Pass an element (e.g. a small select) for an interactive addon."
+        },
         "hideLabel": {
           "type": "boolean",
           "required": false,
@@ -289,6 +295,24 @@
           "required": false,
           "default": null,
           "description": "Accessible name of the clear button. Default \"Clear\"."
+        },
+        "suffix": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A fixed part after the text, e.g. \".com\", \"USD\" or a unit."
+        },
+        "hint": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Extra help shown in a tooltip from a ? icon at the end of the field."
+        },
+        "hintLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Accessible name of the hint button. Default \"More information\"."
         }
       }
     }

@@ -21,10 +21,15 @@ import { ModalClose } from '@ds/react';
 - For long, multi-step flows. Use A full page.
 - To confirm that something succeeded. Use Toast.
 
+## Alignment (`align`)
+- `start`: Text and icon at the start. Default.
+- `center`: Centered, with full-width footer buttons; short confirmations.
+
 ## Size (`size`)
 - `small`: Confirmations.
 - `medium`: Forms. Default.
 - `large`: Rich or long content.
+- `xlarge`: Wide content, e.g. a table or a multi-column form.
 
 ## Role (`role`)
 - `dialog`: Default; clicking outside closes it.
@@ -52,7 +57,10 @@ import { ModalClose } from '@ds/react';
 | --- | --- | --- | --- |
 | `title` | `ReactNode` |  | Heading of the dialog; names it for screen readers. |
 | `description` | `ReactNode` |  | Short explanation under the title; describes the dialog. |
-| `size` | `"small" \| "medium" \| "large"` | medium | `small` for confirmations, `medium` (default) for forms, `large` for rich content. |
+| `size` | `"small" \| "medium" \| "large" \| "xlarge"` | medium | `small` for confirmations, `medium` (default) for forms, `large` for rich content. |
+| `icon` | `ReactNode` |  | A featured icon above the title, e.g. a trash can for a delete confirmation. |
+| `iconTone` | `BadgeColor` | primary | Color of the featured icon. Default primary; danger for destructive dialogs. |
+| `align` | `"center" \| "start"` | start | `start` (default) or `center`: centers the icon, text and footer buttons. |
 | `role` | `"dialog" \| "alertdialog"` | dialog | `alertdialog` for urgent confirmations (e.g. delete): clicking outside doesn't close it and there's no close icon, so people choose an action. |
 | `closeLabel` | `string` | Close | Accessible name of the close button. Default "Close". |
 | `asChild` | `boolean` |  |  |

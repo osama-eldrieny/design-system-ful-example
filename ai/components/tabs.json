@@ -79,6 +79,28 @@
         {
           "value": "line",
           "meaning": "Underline under the selected tab. Page-level sections."
+        },
+        {
+          "value": "segmented",
+          "meaning": "Bordered bar with the selected tab raised. View switchers, e.g. Day / Week / Month."
+        },
+        {
+          "value": "subtle",
+          "meaning": "No container; the selected tab tinted in the brand color. Settings sidebars."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Toolbars, cards and table headers."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
         }
       ]
     },
@@ -252,6 +274,13 @@
   ],
   "changelog": [
     {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "Appearances segmented and subtle; size small; fullWidth; Tab count."
+      ]
+    },
+    {
       "version": "0.2.0",
       "date": "2026-09-29",
       "changes": [
@@ -296,11 +325,29 @@
           "values": [
             "line",
             "enclosed",
-            "pill"
+            "pill",
+            "segmented",
+            "subtle"
           ],
           "required": false,
           "default": "enclosed",
-          "description": "`enclosed` (default): tabs in a tinted container, for compact filters and toolbars.\n`pill`: filled pill on the selected tab, no container. `line`: underline, for page sections."
+          "description": "`enclosed` (default): tabs in a tinted container, for compact filters and toolbars.\n`pill`: filled pill on the selected tab, no container. `line`: underline, for page sections.\n`segmented`: bordered bar, the selected tab raised on the surface, for view switchers.\n`subtle`: no container, the selected tab tinted in the brand color, for sidebars."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\"",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for toolbars and cards, `medium` (default)."
+        },
+        "fullWidth": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Stretches the tab list to the full width, tabs sharing it equally."
         },
         "orientation": {
           "type": "\"horizontal\" | \"vertical\"",
@@ -361,6 +408,12 @@
           "required": true,
           "default": null,
           "description": "Tab label."
+        },
+        "count": {
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "A count after the label, e.g. unread items."
         }
       }
     },
@@ -581,6 +634,271 @@
       "description": "Stroke widths in px.",
       "references": "--border-width-regular",
       "default": "2px"
+    },
+    "--tabs-segmented-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--tabs-segmented-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--tabs-segmented-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--tabs-segmented-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-lg",
+      "default": "8px"
+    },
+    "--tabs-segmented-padding": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--tabs-segmented-item-default-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--tabs-segmented-item-hover-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--tabs-segmented-item-hover-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--tabs-segmented-item-active-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--tabs-segmented-item-active-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--tabs-segmented-item-active-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--tabs-subtle-item-default-font-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--tabs-subtle-item-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--tabs-subtle-item-hover-font-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--tabs-subtle-item-active-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--tabs-subtle-item-active-font-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--tabs-count-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--tabs-count-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tabs-count-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--tabs-count-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--tabs-count-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--tabs-count-active-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--tabs-count-active-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--tabs-count-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--tabs-count-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--tabs-count-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--tabs-small-item-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--tabs-small-item-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tabs-small-item-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--tabs-small-item-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
     },
     "--tabs-item-padding-x": {
       "description": "Gap between related items in a group.",

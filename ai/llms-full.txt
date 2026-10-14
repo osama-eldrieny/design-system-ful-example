@@ -205,13 +205,13 @@ Sizes and line heights come in pairs: use `--font-line-height-md` with `--font-s
 
 Complete screens built only from `@ds/react` components and tokens. They open outside the docs; the theme you pick in the playground applies to all of them.
 
-| Example | What it shows |
-| --- | --- |
-| <a href="prototypes/#/admin" target="_top">TechHub admin: Overview</a> | Key figures by period, sales by channel, latest orders with a detail drawer, low stock, today’s meetings, a task checklist and the team |
-| <a href="prototypes/#/admin/orders" target="_top">TechHub admin: Orders</a> | Status tabs, search and filters, a sortable selectable table with bulk actions, an order drawer and a new-order form |
-| <a href="prototypes/#/admin/team" target="_top">TechHub admin: Team</a> | Seats, a members table with roles, pending invitations, role permissions and an invite form |
-| <a href="prototypes/#/settings" target="_top">TechHub admin: Settings</a> | Profile form, notification switches, summary-email choice, connected apps and a delete-account confirmation |
-| <a href="prototypes/#/demo" target="_top">Theme playground</a> | Switch brand, mode, language, typeface, density, radius and shadow, and copy the attributes for your app |
+| Example                                                                     | What it shows                                                                                                                           |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| <a href="prototypes/#/admin" target="_top">TechHub admin: Overview</a>      | Key figures by period, sales by channel, latest orders with a detail drawer, low stock, today’s meetings, a task checklist and the team |
+| <a href="prototypes/#/admin/orders" target="_top">TechHub admin: Orders</a> | Status tabs, search and filters, a sortable selectable table with bulk actions, an order drawer and a new-order form                    |
+| <a href="prototypes/#/admin/team" target="_top">TechHub admin: Team</a>     | Seats, a members table with roles, pending invitations, role permissions and an invite form                                             |
+| <a href="prototypes/#/settings" target="_top">TechHub admin: Settings</a>   | Profile form, notification switches, summary-email choice, connected apps and a delete-account confirmation                             |
+| <a href="prototypes/#/demo" target="_top">Theme playground</a>              | Switch brand, mode, language, typeface, density, radius and shadow, and copy the attributes for your app                                |
 
 
 ---
@@ -444,25 +444,23 @@ claude mcp add ds -- npx ds-mcp
 ```js
 // eslint.config.js
 
-export default [
-  { files: ['src/**/*.{ts,tsx}'], ...ds.configs.recommended },
-];
+export default [{ files: ['src/**/*.{ts,tsx}'], ...ds.configs.recommended }];
 ```
 
 **4. Optional: install the skill.** Copy `skills/ds-builder/` into your agent's skills folder (for Claude Code, `.claude/skills/`). It adds step-by-step procedures for building a screen, adding a variant or component, and auditing a screen.
 
 ## MCP tools
 
-| Tool | Returns |
-|---|---|
-| `list_components` | Every component with its purpose, category and status |
-| `get_component` | One component's contract: props and allowed values, options with meaning, states, accessibility, do/don't, examples |
-| `get_component_examples` | Runnable JSX examples |
-| `get_foundations` | Always-on rules, color roles, spacing, radius, type and motion scales, theme axes |
-| `get_tokens` | Tokens matching a filter, with description and value in every theme |
-| `search_docs` | Matches in the guides and component docs |
-| `validate_code` | Problems in a JSX/TSX snippet: raw HTML controls, undocumented props, missing accessible names, raw colors and sizes |
-| `get_changes` | Changelog entries since a version |
+| Tool                     | Returns                                                                                                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `list_components`        | Every component with its purpose, category and status                                                                |
+| `get_component`          | One component's contract: props and allowed values, options with meaning, states, accessibility, do/don't, examples  |
+| `get_component_examples` | Runnable JSX examples                                                                                                |
+| `get_foundations`        | Always-on rules, color roles, spacing, radius, type and motion scales, theme axes                                    |
+| `get_tokens`             | Tokens matching a filter, with description and value in every theme                                                  |
+| `search_docs`            | Matches in the guides and component docs                                                                             |
+| `validate_code`          | Problems in a JSX/TSX snippet: raw HTML controls, undocumented props, missing accessible names, raw colors and sizes |
+| `get_changes`            | Changelog entries since a version                                                                                    |
 
 ## Validate anything
 
@@ -471,26 +469,26 @@ npx ds-validate src/            # readable report
 npx ds-validate src/ --json     # for agents and CI
 ```
 
-| Rule | Catches |
-|---|---|
-| `ds/no-raw-element` | `<button>`, `<input>`, `<select>`, `<table>`… where a component exists |
-| `ds/valid-props` | Prop values that aren't documented, e.g. `variant="destructive"` |
-| `ds/require-accessible-name` | Checkbox, Switch, IconButton or Popover without a name |
-| `ds/no-deprecated` | Imports of deprecated components |
-| `ds/no-raw-style-values` | Hex colors and px sizes in inline styles |
-| CSS | Raw colors and lengths instead of tokens |
+| Rule                         | Catches                                                                |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| `ds/no-raw-element`          | `<button>`, `<input>`, `<select>`, `<table>`… where a component exists |
+| `ds/valid-props`             | Prop values that aren't documented, e.g. `variant="destructive"`       |
+| `ds/require-accessible-name` | Checkbox, Switch, IconButton or Popover without a name                 |
+| `ds/no-deprecated`           | Imports of deprecated components                                       |
+| `ds/no-raw-style-values`     | Hex colors and px sizes in inline styles                               |
+| CSS                          | Raw colors and lengths instead of tokens                               |
 
 ## Files for the web and other tools
 
-| File | What it's for |
-|---|---|
-| `/llms.txt` | Index in the [llms.txt](https://llmstxt.org) format |
-| `/llms-full.txt` | Every guide and component page in one file |
-| `/ai/components/{id}.json` · `.md` | One component's contract, and the same guidance as prose |
-| `/ai/components.json` | The component index |
-| `/ai/foundations.json` | The always-on rules and scales (small enough to load every time) |
-| `/ai/tokens.json` | Every token in every theme, with its purpose |
-| `DESIGN.md` | A portable summary of the default theme for design and prototyping tools |
+| File                               | What it's for                                                            |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| `/llms.txt`                        | Index in the [llms.txt](https://llmstxt.org) format                      |
+| `/llms-full.txt`                   | Every guide and component page in one file                               |
+| `/ai/components/{id}.json` · `.md` | One component's contract, and the same guidance as prose                 |
+| `/ai/components.json`              | The component index                                                      |
+| `/ai/foundations.json`             | The always-on rules and scales (small enough to load every time)         |
+| `/ai/tokens.json`                  | Every token in every theme, with its purpose                             |
+| `DESIGN.md`                        | A portable summary of the default theme for design and prototyping tools |
 
 While Storybook runs locally, its own MCP server at `http://localhost:6006/mcp` also lists stories and can run their tests.
 
@@ -753,6 +751,98 @@ Tokens: `--accordion-*` (values per theme in ai/components/accordion.json).
 
 ---
 
+# ActivityFeed
+
+> A list of recent events, newest first: who did what and when, with an avatar or icon, optional content such as a comment or file, and an unread dot. As a timeline, a divided list or plain.
+
+Status: stable · Category: Data display · Since 1.1.0
+
+```tsx
+import { ActivityFeed } from '@ds/react';
+```
+
+## When to use
+- Recent activity on a dashboard or a record’s detail page.
+- Notification lists and audit trails.
+
+## When not to use
+- For steps of a process. Use Stepper.
+- For data people sort and filter. Use Table.
+
+## Appearance (`appearance`)
+- `connected`: A timeline line between markers. Default.
+- `divided`: A line between items, for notification lists.
+- `plain`: Neither, for compact cards.
+
+## States
+- **Read**: Seen. (Default.)
+- **Unread**: New since the last visit. (item.unread)
+
+## Props
+### ActivityFeed
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `items` | `ActivityFeedItem[]` |  |  |
+| `appearance` | `"connected" \| "divided" \| "plain"` | connected | `connected` (default) a line joins the markers like a timeline, `divided` lines between items, `plain` neither. |
+| `unreadLabel` | `string` | Unread | Word announced for unread items. Default "Unread". |
+
+## Guidelines
+- Do: Bold names and objects with <strong>. Don’t: Bold the whole sentence. Why: People scan for who and what.
+- Do: Show the most recent 5–10 events with a link to the rest. Don’t: Render hundreds of events on a dashboard. Why: Feeds are for recent context, not history.
+- Do: Use an icon for system events. Don’t: Invent avatars for automated actions. Why: An avatar implies a person did it.
+
+## Content
+- Lead with the actor in bold, then the action: "Olivia Rhye uploaded 2 files".
+- Use relative times for recent events ("2 hours ago") and dates for older ones.
+
+## Accessibility
+- Role: Ordered list (ol) of list items.
+- Tab: Moves to links and buttons inside items.
+- `Hidden "Unread:" prefix`: On unread items; translate with unreadLabel.
+- `aria-hidden on avatars and icons`: The title names the actor.
+- Focus: Only interactive content inside items is focusable.
+- WCAG 1.3.1 Info and Relationships: A real ordered list.
+- WCAG 1.4.1 Use of Color: Unread is also announced in words.
+- Give the list an aria-label when there are several feeds on a page.
+
+## Examples
+### Recent activity
+Avatars, times and a comment.
+
+```tsx
+import { ActivityFeed } from '@ds/react';
+
+<ActivityFeed
+  aria-label="Recent activity"
+  items={[{ id: 1, avatar: { name: 'Olivia Rhye' }, title: <><strong>Olivia Rhye</strong> commented</>, time: '2 min ago', content: 'Looks great!' }]}
+/>
+```
+
+### System event
+An icon instead of an avatar.
+
+```tsx
+import { ActivityFeed } from '@ds/react';
+import { Upload } from 'lucide-react';
+
+<ActivityFeed items={[{ id: 1, icon: <Upload />, title: 'Export finished', time: 'Mon' }]} />
+```
+
+### Notifications
+Divided, with unread items.
+
+```tsx
+import { ActivityFeed } from '@ds/react';
+
+<ActivityFeed appearance="divided" items={notifications} />
+```
+
+Tokens: `--activity-feed-*` (values per theme in ai/components/activity-feed.json).
+
+
+---
+
 # Alert
 
 > An alert shows a message about the page or the result of an action: information, success, a warning or an error. It stays in place until the situation changes or people dismiss it.
@@ -772,6 +862,10 @@ import { Alert } from '@ds/react';
 - For brief confirmations that don’t need to stay on screen. Use Toast.
 - For an error on a single field. Use The field’s error message.
 - For decisions people must make before continuing. Use Dialog.
+
+## Layout (`layout`)
+- `inline`: A card within the content. Default.
+- `banner`: Full width at the top of a page or section.
 
 ## Variant (`variant`)
 - `primary`: Neutral information, e.g. a feature announcement or status.
@@ -801,6 +895,7 @@ import { Alert } from '@ds/react';
 | `actions` | `ReactNode` |  | Buttons or links related to the message, e.g. "Retry". |
 | `onDismiss` | `(() => void)` |  | Shows a dismiss button that calls this. |
 | `dismissLabel` | `string` | Dismiss | Accessible name of the dismiss button. Default "Dismiss". |
+| `layout` | `"inline" \| "banner"` | inline | `inline` (default) a card within the content. `banner` full width with square corners and the text and actions in one row, e.g. at the top of the page. |
 
 ## Guidelines
 - Do: Match the variant to what happened. Don’t: Use danger for a neutral announcement to get attention. Why: Colors carry meaning; misusing them trains people to ignore real problems.
@@ -986,6 +1081,7 @@ Status: stable · Category: Data display · Since 0.2.0
 ```tsx
 import { Avatar } from '@ds/react';
 import { AvatarGroup } from '@ds/react';
+import { AvatarLabelGroup } from '@ds/react';
 ```
 
 ## When to use
@@ -998,6 +1094,7 @@ import { AvatarGroup } from '@ds/react';
 - As the only way to identify a person where names matter. Use Avatar with the name as text.
 
 ## Size (`size`)
+- `xsmall`: 20px. Inline mentions and chips.
 - `small`: 24px. Dense lists, table rows, stacked groups.
 - `medium`: 38px. Default for lists and cards.
 - `large`: 56px. Comments, contact cards.
@@ -1021,7 +1118,9 @@ import { AvatarGroup } from '@ds/react';
 | --- | --- | --- | --- |
 | `name` | `string` |  | The person's (or team's) name. Used as the accessible name and for the initials fallback. |
 | `src` | `string` |  | Photo URL. If it's missing or fails to load, initials are shown instead. |
-| `size` | `AvatarSize` | small | `small` 24px for dense lists, `medium` 38px, `large` 56px, `xlarge` 80px for profiles. |
+| `size` | `AvatarSize` | medium | `xsmall` 20px for inline mentions, `small` 24px for dense lists, `medium` 38px, `large` 56px, `xlarge` 80px for profiles. |
+| `verified` | `boolean` | false | Shows a verified check mark. Announced after the name. |
+| `verifiedLabel` | `string` | Verified | Replaces the default "Verified" wording, e.g. for translation. |
 | `status` | `AvatarStatus` |  | Presence dot. Announced after the name, e.g. "Sarah Chen, Online". |
 | `statusLabel` | `string` |  | Replaces the default status wording, e.g. for translation. |
 | `decorative` | `boolean` | false | Hides the avatar from screen readers. Use when the name is already shown as text right next to it, so it isn't read twice. |
@@ -1032,8 +1131,21 @@ import { AvatarGroup } from '@ds/react';
 | --- | --- | --- | --- |
 | `label` | `string` |  | What the group represents, e.g. "Meeting attendees". Announced before the avatars. |
 | `max` | `number` |  | Show at most this many avatars, then a "+N" count. |
-| `size` | `AvatarSize` | small | Size for every avatar in the group. |
+| `size` | `AvatarSize` | medium | Size for every avatar in the group. |
+| `onAdd` | `(() => void)` |  | Shows a dashed “add” button after the avatars, e.g. to invite someone. |
+| `addLabel` | `string` | Add person | Accessible name of the add button. Default "Add person". |
 | `children` | `ReactNode` |  | Avatar elements. |
+
+### AvatarLabelGroup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `string` |  | The person's name, shown in bold. |
+| `supportingText` | `ReactNode` |  | Supporting text under the name, e.g. an email address or a role. |
+| `src` | `string` |  | Photo URL. |
+| `size` | `"small" \| "medium" \| "large" \| "xlarge"` | medium | Size of the avatar; the text scales with it. Default medium. |
+| `status` | `AvatarStatus` |  | Presence dot. |
+| `verified` | `boolean` | false | Verified check mark. |
 
 ## Guidelines
 - Do: Show the person’s name next to the avatar where it matters. Don’t: Rely on the photo alone to identify someone. Why: Faces are hard to tell apart at small sizes, and missing photos fall back to initials.
@@ -1057,6 +1169,15 @@ import { AvatarGroup } from '@ds/react';
 - Status colors are not the only cue: show the status in words where it matters.
 
 ## Examples
+### With name and email
+AvatarLabelGroup for table cells and menus.
+
+```tsx
+import { AvatarLabelGroup } from '@ds/react';
+
+<AvatarLabelGroup name="Sarah Chen" supportingText="sarah@example.com" />
+```
+
 ### Avatar with a photo
 Falls back to initials if the photo is missing.
 
@@ -1102,6 +1223,7 @@ Status: stable · Category: Feedback · Since 0.4.0
 
 ```tsx
 import { Badge } from '@ds/react';
+import { BadgeGroup } from '@ds/react';
 ```
 
 ## When to use
@@ -1119,6 +1241,17 @@ import { Badge } from '@ds/react';
 - `success`: Done or healthy, e.g. “Paid”.
 - `warning`: Needs attention, e.g. “Due soon”.
 - `danger`: Failed or overdue.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: Category hues with no meaning of their own: departments, projects, file types. Same in every brand.
+
+## Shape (`shape`)
+- `pill`: Fully rounded. Default.
+- `rounded`: Small corners; reads as a label in dense tables.
+- `modern`: Neutral surface with a border; only the dot or icon takes the color.
+
+## Size (`size`)
+- `small`: 20px, for tables and dense lists.
+- `medium`: 24px. Default.
+- `large`: 28px, next to headings.
 
 ## Appearance (`appearance`)
 - `subtle`: Tinted; for statuses in lists. Default.
@@ -1136,12 +1269,31 @@ import { Badge } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `tone` | `BadgeTone` | primary | Meaning: primary (default), secondary (neutral), success, warning, danger. |
+| `tone` | `BadgeColor` | primary | Color: a meaning (primary default, secondary, success, warning, danger) or a category hue (gray, blue, sky, indigo, purple, pink, orange, teal). |
 | `appearance` | `"solid" \| "subtle"` | subtle | `solid` for strong emphasis (counts), `subtle` (default) for status labels. |
+| `shape` | `BadgeShape` | pill | `pill` (default) fully rounded, `rounded` small corners, `modern` neutral with a border. |
+| `size` | `BadgeSize` | medium | `small`, `medium` (default) or `large`. |
+| `bordered` | `boolean` | false | Adds a thin border in the tone's color to subtle badges. |
 | `count` | `number` |  | A number, e.g. unread messages. Shown as max+ above max. |
 | `max` | `number` | 99 | Largest count shown before “99+”. Default 99. |
-| `dot` | `boolean` | false | Shows a small dot instead of text. Give it a label. |
-| `label` | `string` |  | Text for screen readers, e.g. "3 unread messages". Replaces what is shown; required for dots and bare counts, whose meaning isn't in the text. |
+| `dot` | `boolean` | false | Shows only a small dot instead of text. Give it a label. |
+| `withDot` | `boolean` | false | Adds a status dot before the text, e.g. ● Active. |
+| `iconStart` | `ReactNode` |  | Decorative icon before the text. Alone (no text), the badge is icon-only: give it a label. |
+| `iconEnd` | `ReactNode` |  | Decorative icon after the text. |
+| `image` | `string` |  | Small round picture before the text, e.g. a person or a country flag. Decorative. |
+| `onDismiss` | `(() => void)` |  | Shows a remove button that calls this, e.g. for a filter. |
+| `dismissLabel` | `string` |  | Accessible name of the remove button. Default "Remove {text}". |
+| `label` | `string` |  | Text for screen readers, e.g. "3 unread messages". Replaces what is shown; required for dots, icon-only badges and bare counts, whose meaning isn't in the text. |
+
+### BadgeGroup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `badge` | `ReactNode` |  | The short badge text, e.g. "New". |
+| `children` | `ReactNode` |  | The message next to the badge, e.g. "We've just released a new feature". |
+| `tone` | `BadgeColor` | primary | Color of the whole group. Default primary. |
+| `badgePosition` | `"leading" \| "trailing"` | leading | `leading` (default): badge first. `trailing`: message first, badge last. |
+| `icon` | `ReactNode` |  | Icon after the message. Default an arrow when the group is a link; `null` hides it. |
 
 ## Guidelines
 - Do: Pair color with a word: “Overdue” in danger. Don’t: Use a red badge with no text to mean overdue. Why: Color alone isn’t seen by everyone (WCAG 1.4.1).
@@ -1189,6 +1341,34 @@ import { Badge } from '@ds/react';
 <Badge dot tone="primary" label="New activity" />
 ```
 
+### Category label
+A modern badge with a colored dot, e.g. a team in a table.
+
+```tsx
+import { Badge } from '@ds/react';
+
+<Badge tone="indigo" shape="modern" withDot>Design</Badge>
+```
+
+### Trend
+A change with an arrow icon.
+
+```tsx
+import { Badge } from '@ds/react';
+import { ArrowUp } from 'lucide-react';
+
+<Badge tone="success" size="small" iconStart={<ArrowUp />}>12%</Badge>
+```
+
+### Announcement
+BadgeGroup links to news.
+
+```tsx
+import { BadgeGroup } from '@ds/react';
+
+<BadgeGroup badge="New" href="/changelog">Dashboards are here</BadgeGroup>
+```
+
 Tokens: `--badge-*` (values per theme in ai/components/badge.json).
 
 
@@ -1212,6 +1392,14 @@ import { Breadcrumb } from '@ds/react';
 - For steps of a task. Use Stepper.
 - For browsing history. Use A back link.
 
+## Separator (`separator`)
+- `chevron`: Default.
+- `slash`: A lighter look, e.g. in page headers.
+
+## Appearance (`appearance`)
+- `text`: Plain links. Default.
+- `button`: Tinted pill on hover and on the current page.
+
 ## Collapsing (`maxItems`)
 - `undefined`: Shows every level. Default.
 - `n (≥ 3)`: Shows the first, “…”, and the last n − 2.
@@ -1229,6 +1417,9 @@ import { Breadcrumb } from '@ds/react';
 | `items` | `BreadcrumbItem[]` |  | From the top level down to the current page (last). |
 | `maxItems` | `number` |  | Shows at most this many items; the middle collapses into a “…” button that expands them. At least 3. |
 | `expandLabel` | `string` | Show all pages | Accessible name of the “…” button. Default "Show all pages". |
+| `separator` | `"chevron" \| "slash"` | chevron | `chevron` (default) or `slash` between items. |
+| `homeIcon` | `boolean` | false | Shows a home icon instead of the first item's text (its label stays the accessible name). |
+| `appearance` | `"text" \| "button"` | text | `text` (default) or `button`: items get a tinted background on hover and when current. |
 | `aria-label` | `string` | Breadcrumb | Names the navigation landmark. Default "Breadcrumb". |
 
 ## Guidelines
@@ -1324,9 +1515,11 @@ import { IconButton } from '@ds/react';
 - `text`: Lowest emphasis, link-like. Underlined text for inline actions.
 
 ## Size (`size`)
+- `xsmall`: Inside table rows, chips and tight toolbars.
 - `small`: Dense UI: tables, toolbars, cards.
 - `medium`: Default for forms and dialogs.
 - `large`: Prominent calls to action, e.g. on a landing page hero.
+- `xlarge`: The single hero call to action of a page.
 
 ## States
 - **Default**: Ready to use. (At rest.)
@@ -1343,7 +1536,11 @@ import { IconButton } from '@ds/react';
 | --- | --- | --- | --- |
 | `variant` | `ButtonVariant` | primary | What kind of action this is. `primary` for the main action on a screen, `secondary` for supporting actions, `success` to confirm a positive outcome, `danger` for destructive actions, `warning` for actions that need caution. |
 | `appearance` | `ButtonAppearance` | filled | Visual weight. `filled` for the most important action, `outline` for secondary emphasis, `ghost` for low emphasis in toolbars and dense UI, `text` for inline, link-like actions. |
-| `size` | `ButtonSize` | medium | `small` for dense UI, `medium` by default, `large` for prominent calls to action. |
+| `size` | `ButtonSize` | medium | `xsmall` for table rows and chips, `small` for dense UI, `medium` by default, `large` and `xlarge` for prominent calls to action. |
+| `href` | `string` |  | Makes it a link styled as a button (an `<a>`), for navigation that should look like an action, e.g. "View report". Disabled links are not followed. |
+| `target` | `string` |  | With href: where to open the link, e.g. `_blank`. |
+| `rel` | `string` |  | With href: link relationship, e.g. `noopener`. |
+| `loadingText` | `ReactNode` |  | Text shown next to the spinner while loading, e.g. "Saving…". Default: the label. |
 | `iconStart` | `ReactNode` |  | Icon before the label (after it in right-to-left languages). Hidden from screen readers. |
 | `iconEnd` | `ReactNode` |  | Icon after the label (before it in right-to-left languages). Hidden from screen readers. |
 | `loading` | `boolean` | false | Shows a spinner and ignores clicks while an action runs. The button stays focusable and is announced as busy. |
@@ -1358,7 +1555,11 @@ import { IconButton } from '@ds/react';
 | `label` | `string` |  | What the button does, e.g. "Delete message". Required: it is the accessible name screen readers announce and the tooltip sighted users see, since there is no visible text. |
 | `variant` | `ButtonVariant` |  | What kind of action this is. `primary` for the main action on a screen, `secondary` for supporting actions, `success` to confirm a positive outcome, `danger` for destructive actions, `warning` for actions that need caution. |
 | `appearance` | `ButtonAppearance` |  | Visual weight. `filled` for the most important action, `outline` for secondary emphasis, `ghost` for low emphasis in toolbars and dense UI, `text` for inline, link-like actions. |
-| `size` | `ButtonSize` |  | `small` for dense UI, `medium` by default, `large` for prominent calls to action. |
+| `size` | `ButtonSize` |  | `xsmall` for table rows and chips, `small` for dense UI, `medium` by default, `large` and `xlarge` for prominent calls to action. |
+| `href` | `string` |  | Makes it a link styled as a button (an `<a>`), for navigation that should look like an action, e.g. "View report". Disabled links are not followed. |
+| `target` | `string` |  | With href: where to open the link, e.g. `_blank`. |
+| `rel` | `string` |  | With href: link relationship, e.g. `noopener`. |
+| `loadingText` | `ReactNode` |  | Text shown next to the spinner while loading, e.g. "Saving…". Default: the label. |
 | `loading` | `boolean` |  | Shows a spinner and ignores clicks while an action runs. The button stays focusable and is announced as busy. |
 
 ## Guidelines
@@ -1432,6 +1633,15 @@ While saving, the button shows a spinner and ignores clicks.
 import { Button } from '@ds/react';
 
 <Button loading={isSaving} onClick={save}>Save changes</Button>
+```
+
+### Link styled as a button
+Navigation that should look like an action.
+
+```tsx
+import { Button } from '@ds/react';
+
+<Button href="/reports/q3" appearance="outline">View report</Button>
 ```
 
 ### Icon button
@@ -1701,6 +1911,222 @@ Tokens: `--card-*` (values per theme in ai/components/card.json).
 
 ---
 
+# Charts
+
+> Dependency-free SVG charts styled by tokens: LineChart and AreaChart for trends, BarChart for comparing categories (grouped, stacked or horizontal), DonutChart for parts of a whole, RadarChart for several dimensions and Sparkline for a tiny trend next to a figure. Every chart is a named figure with a hidden data table, reads values with the keyboard and mirrors in right-to-left languages.
+
+Status: beta · Category: Data display · Since 1.1.0
+
+```tsx
+import { LineChart } from '@ds/react';
+import { AreaChart } from '@ds/react';
+import { BarChart } from '@ds/react';
+import { DonutChart } from '@ds/react';
+import { RadarChart } from '@ds/react';
+import { Sparkline } from '@ds/react';
+```
+
+## When to use
+- LineChart / AreaChart: a value over time, e.g. monthly revenue; up to about four series.
+- BarChart: comparing categories, e.g. orders per region; stacked for totals made of parts.
+- DonutChart: parts of a whole with up to about six slices.
+- Sparkline: a trend next to a number, e.g. in a MetricCard or table row.
+
+## When not to use
+- For exact values people need to look up or copy. Use Table.
+- For one key number. Use MetricCard.
+- For more than six parts of a whole. Use BarChart (horizontal).
+
+## Chart type (`chart`)
+- `LineChart`: Trends over an ordered axis. curved, showDots, area, stacked.
+- `AreaChart`: LineChart with filled areas.
+- `BarChart`: Categories. stacked; orientation vertical or horizontal.
+- `DonutChart`: Shares. thickness 1 draws a pie; centerValue and centerLabel.
+- `RadarChart`: Several series across several dimensions.
+- `Sparkline`: A tiny trend; tone auto (green rising, red falling).
+
+## Series color (`series.color`)
+- `1`: The brand color; the first series by default.
+- `2–8`: Category hues, assigned in order; set one to keep a series’ color fixed.
+
+## States
+- **Default**: At rest. (—)
+- **Active point**: Tooltip and crosshair at one point. (Hover, or arrow keys while focused.)
+- **Focus**: The plot shows the focus ring. (Tab (:focus-visible).)
+
+## Props
+### LineChart
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `area` | `boolean` | true | Fills the area under each line. |
+| `stacked` | `boolean` | false | Stacks the areas on top of each other (with area). |
+| `curved` | `boolean` | true | Smooth curves instead of straight segments. Default true. |
+| `showDots` | `boolean` | false | Dots on every point. Default: only the active one. |
+| `title` | `string` |  | Names the chart; shown above it unless hideTitle. Also names its data table. |
+| `hideTitle` | `boolean` |  | Hides the title visually; it still names the chart for screen readers. |
+| `description` | `ReactNode` |  | One sentence on what the chart shows. |
+| `data` | `ChartRow[]` |  | One object per point on the x axis, e.g. `{ month: 'Jan', revenue: 12000 }`. |
+| `xKey` | `string` |  | Field holding the x axis label, e.g. "month". |
+| `series` | `ChartSeries[]` |  | The series to draw. |
+| `height` | `number` | 48 | Plot height in px. Default 240. |
+| `formatValue` | `((value: number) => string)` | (value: number) =>
+  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value) | Formats values on the axis and in the tooltip. Default compact numbers (12K). |
+| `showLegend` | `boolean` | true | Shows the legend under the chart. Default: when there are several series. |
+| `showGrid` | `boolean` | true | Shows horizontal gridlines. Default true. |
+| `hideYAxis` | `boolean` | false | Hides the value axis labels, e.g. in small cards. |
+| `className` | `string` |  |  |
+
+### AreaChart
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` |  | Names the chart; shown above it unless hideTitle. Also names its data table. |
+| `hideTitle` | `boolean` |  | Hides the title visually; it still names the chart for screen readers. |
+| `description` | `ReactNode` |  | One sentence on what the chart shows. |
+| `data` | `ChartRow[]` |  | One object per point on the x axis, e.g. `{ month: 'Jan', revenue: 12000 }`. |
+| `xKey` | `string` |  | Field holding the x axis label, e.g. "month". |
+| `series` | `ChartSeries[]` |  | The series to draw. |
+| `height` | `number` | 48 | Plot height in px. Default 240. |
+| `formatValue` | `((value: number) => string)` | (value: number) =>
+  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value) | Formats values on the axis and in the tooltip. Default compact numbers (12K). |
+| `showLegend` | `boolean` | true | Shows the legend under the chart. Default: when there are several series. |
+| `showGrid` | `boolean` | true | Shows horizontal gridlines. Default true. |
+| `hideYAxis` | `boolean` | false | Hides the value axis labels, e.g. in small cards. |
+| `stacked` | `boolean` | false | Stacks the areas on top of each other (with area). |
+| `curved` | `boolean` | true | Smooth curves instead of straight segments. Default true. |
+| `showDots` | `boolean` | false | Dots on every point. Default: only the active one. |
+| `className` | `string` |  |  |
+
+### BarChart
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `stacked` | `boolean` | false | Stacks series in one bar instead of side by side. |
+| `orientation` | `"vertical" \| "horizontal"` | vertical | `vertical` (default) columns, `horizontal` bars, e.g. for long category names. |
+| `title` | `string` |  | Names the chart; shown above it unless hideTitle. Also names its data table. |
+| `hideTitle` | `boolean` |  | Hides the title visually; it still names the chart for screen readers. |
+| `description` | `ReactNode` |  | One sentence on what the chart shows. |
+| `data` | `ChartRow[]` |  | One object per point on the x axis, e.g. `{ month: 'Jan', revenue: 12000 }`. |
+| `xKey` | `string` |  | Field holding the x axis label, e.g. "month". |
+| `series` | `ChartSeries[]` |  | The series to draw. |
+| `height` | `number` | 48 | Plot height in px. Default 240. |
+| `formatValue` | `((value: number) => string)` | (value: number) =>
+  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value) | Formats values on the axis and in the tooltip. Default compact numbers (12K). |
+| `showLegend` | `boolean` | true | Shows the legend under the chart. Default: when there are several series. |
+| `showGrid` | `boolean` | true | Shows horizontal gridlines. Default true. |
+| `hideYAxis` | `boolean` | false | Hides the value axis labels, e.g. in small cards. |
+| `className` | `string` |  |  |
+
+### DonutChart
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` |  |  |
+| `hideTitle` | `boolean` |  |  |
+| `description` | `ReactNode` |  |  |
+| `data` | `{ label: string; value: number; color?: 1 \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8 \| undefined; }[]` |  | One slice per item. |
+| `size` | `number` | 280 | Diameter in px. Default 200. |
+| `thickness` | `number` | 0.28 | Ring thickness as a share of the radius, 0–1. 1 draws a pie. Default 0.28. |
+| `centerValue` | `ReactNode` |  | Big figure in the middle, e.g. the total. |
+| `centerLabel` | `ReactNode` |  | Caption under the center figure, e.g. "Total visits". |
+| `formatValue` | `((value: number) => string)` | (value: number) =>
+  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value) |  |
+| `showLegend` | `boolean` | true | Default true. |
+| `className` | `string` |  |  |
+
+### RadarChart
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string` |  |  |
+| `hideTitle` | `boolean` |  |  |
+| `description` | `ReactNode` |  |  |
+| `data` | `ChartRow[]` |  | One object per axis, e.g. `{ skill: 'Design', alice: 8, bob: 5 }`. |
+| `axisKey` | `string` |  | Field holding each axis name. |
+| `series` | `ChartSeries[]` |  |  |
+| `max` | `number` |  | Largest value on every axis. Default: the largest value in the data. |
+| `size` | `number` | 280 | Diameter in px. Default 280. |
+| `showLegend` | `boolean` | true |  |
+| `formatValue` | `((value: number) => string)` | (value: number) =>
+  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value) |  |
+| `className` | `string` |  |  |
+
+### Sparkline
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `data` | `number[]` |  | The values, oldest first. |
+| `tone` | `1 \| "auto" \| "primary" \| "positive" \| "negative" \| 2 \| 3 \| 4 \| 5 \| 6 \| 7 \| 8` | auto | Line color: `auto` (default) green when the last value is higher than the first and red when lower, or a fixed `primary`, `positive`, `negative` or series 1–8. |
+| `area` | `boolean` | true | Fills the area under the line. Default true. |
+| `height` | `number` | 48 | Height in px. Default 48. Width fills the container. |
+| `label` | `string` |  | What the sparkline shows, e.g. "Revenue, last 12 months: rising". Without it, decorative. |
+| `className` | `string` |  |  |
+
+## Guidelines
+- Do: Start bar charts at zero (they always do). Don’t: Compare bar lengths on a cut axis. Why: Bar length must be proportional to the value.
+- Do: Keep to four series on a line chart and six slices on a donut. Don’t: Plot a dozen series in one chart. Why: Colors become hard to tell apart and the legend hard to match.
+- Do: Say the takeaway in the description. Don’t: Leave people to work out what matters. Why: The description helps everyone, and is the summary for screen readers.
+
+## Content
+- Title: what is measured and over what, e.g. "Revenue, last 12 months".
+- Description: the takeaway, e.g. "Revenue grew 38% over the year".
+- Format values for reading with formatValue, e.g. currency and compact notation.
+
+## Accessibility
+- Role: figure named by its title, containing a slider over the data points and a hidden table.
+- Tab: Focuses the plot.
+- Arrow keys: Move to the previous or next point; its values are announced.
+- Home / End: First or last point.
+- Escape: Clears the selection.
+- `role="slider" + aria-valuetext`: The plot; announces the active point.
+- `aria-hidden on the SVG`: Always; the table and slider carry the data.
+- `Hidden <table>`: Every chart, with every value.
+- Focus: The plot shows the focus ring; the tooltip follows the active point.
+- WCAG 1.1.1 Non-text Content: Each chart has a name, a description and a data table.
+- WCAG 1.4.1 Use of Color: Series are also named in the legend, tooltip and table.
+- WCAG 1.4.11 Non-text Contrast: Series colors meet 3:1 on the surface (checked in CI).
+- WCAG 2.1.1 Keyboard: Every value is reachable with the arrow keys.
+- Sparklines are decorative unless you give them a label.
+
+## Examples
+### Revenue over a year
+Two series with currency values.
+
+```tsx
+import { LineChart } from '@ds/react';
+
+<LineChart
+  title="Revenue"
+  data={months}
+  xKey="month"
+  series={[{ key: 'revenue', label: 'Revenue' }, { key: 'expenses', label: 'Expenses' }]}
+/>
+```
+
+### Stacked bars
+Totals made of parts.
+
+```tsx
+import { BarChart } from '@ds/react';
+
+<BarChart title="Costs" stacked data={rows} xKey="month" series={[{ key: 'ads', label: 'Ads' }, { key: 'staff', label: 'Staff' }]} />
+```
+
+### Donut with a total
+Traffic sources.
+
+```tsx
+import { DonutChart } from '@ds/react';
+
+<DonutChart title="Traffic" data={[{ label: 'Direct', value: 42 }, { label: 'Search', value: 31 }]} centerValue="73" centerLabel="Visits" />
+```
+
+Tokens: `--chart-*` (values per theme in ai/components/charts.json).
+
+
+---
+
 # Checkbox
 
 > A checkbox turns one option on or off, or lets people pick any number of options from a list. The choice applies when the form is submitted. CheckboxGroup puts several under one question with a single legend and error.
@@ -1901,6 +2327,7 @@ import { ChooseCard } from '@ds/react';
 | `title` | `ReactNode` |  | Option name, e.g. "Pro plan". Names the radio. |
 | `description` | `ReactNode` |  | What the option includes. Read after the name. |
 | `price` | `ReactNode` |  | Price or other key figure, shown at the end, e.g. "$12 / month". |
+| `icon` | `ReactNode` |  | Decorative icon before the text, shown in a featured icon, e.g. a plan or method logo. |
 
 ## Guidelines
 - Do: Name the group with a visible heading via aria-labelledby. Don’t: Leave the group unnamed. Why: Screen reader users hear the group name before the options.
@@ -2193,6 +2620,108 @@ Tokens: `--combobox-*` (values per theme in ai/components/combobox.json).
 
 ---
 
+# CommandMenu
+
+> A searchable list of pages and actions in a dialog, opened with ⌘K (Ctrl+K): type to filter, arrow keys to move, Enter to run. Groups, icons, descriptions and shortcut hints.
+
+Status: stable · Category: Overlays · Since 1.1.0
+
+```tsx
+import { CommandMenu } from '@ds/react';
+```
+
+## When to use
+- Fast navigation and actions in apps with many pages.
+- A global search over records, with results grouped by type.
+
+## When not to use
+- For a few actions on one item. Use DropdownMenu.
+- For choosing a form value. Use Combobox.
+
+## Hotkey (`hotkey`)
+- `true`: ⌘K / Ctrl+K toggles the menu anywhere. Default.
+- `false`: Open it yourself, e.g. from a search button.
+
+## States
+- **Closed**: Hidden. (Default.)
+- **Open**: Dialog with focus in the search. (⌘K or open.)
+- **Active item**: Highlighted; Enter runs it. (Arrow keys or pointer.)
+- **Empty**: Nothing matches. (Search text.)
+
+## Props
+### CommandMenu
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `open` | `boolean` |  |  |
+| `defaultOpen` | `boolean` | false |  |
+| `onOpenChange` | `((open: boolean) => void)` |  |  |
+| `groups` | `CommandMenuGroup[]` |  | Results, grouped. Filtered by the search text. |
+| `label` | `string` | Command menu | Names the dialog and the search field. Default "Command menu". |
+| `placeholder` | `string` | Search or type a command… | Default "Search or type a command…". |
+| `emptyText` | `ReactNode` | No results | Shown when nothing matches. Default "No results". |
+| `hotkey` | `boolean` | true | Opens the menu with ⌘K / Ctrl+K anywhere on the page. Default true. |
+| `showFooter` | `boolean` | true | Shows key hints at the bottom. Default true. |
+| `onSearchChange` | `((search: string) => void)` |  | Called with the search text, e.g. to load results from a server. |
+
+## Guidelines
+- Do: Offer a visible search button too. Don’t: Rely on the hotkey alone. Why: Not everyone knows ⌘K.
+- Do: Group results by type. Don’t: Mix pages, people and actions in one list. Why: Groups make long lists scannable.
+- Do: Keep shortcut hints accurate. Don’t: Show shortcuts that do nothing. Why: Hints teach faster paths.
+
+## Content
+- Name items as pages ("Orders") or verbs ("New invoice").
+- Add keywords for synonyms people might type.
+
+## Accessibility
+- Role: dialog with a combobox search field controlling a listbox of options.
+- ⌘K / Ctrl+K: Opens and closes.
+- Arrow Up / Down: Moves between results.
+- Home / End: First or last result.
+- Enter: Runs the active result.
+- Escape: Closes.
+- `aria-activedescendant`: Points the search field at the active option.
+- `role="group" + label`: Each result group.
+- Focus: Focus stays in the search field; the active option is highlighted. Focus returns on close.
+- WCAG 2.1.1 Keyboard: Everything works from the keyboard.
+- WCAG 4.1.2 Name, Role, Value: Combobox and listbox semantics.
+- ⌘K is a convention, not an operating system shortcut; avoid conflicts in your app.
+
+## Examples
+### Pages and actions
+Opens with ⌘K.
+
+```tsx
+import { CommandMenu } from '@ds/react';
+
+<CommandMenu groups={[{ label: 'Pages', items: [{ id: 'orders', label: 'Orders', onSelect: () => go('/orders') }] }]} />
+```
+
+### From a search button
+Controlled open state.
+
+```tsx
+import { Button, CommandMenu } from '@ds/react';
+
+const [open, setOpen] = useState(false);
+<Button onClick={() => setOpen(true)}>Search…</Button>
+<CommandMenu open={open} onOpenChange={setOpen} groups={groups} />
+```
+
+### Server results
+Fetch as people type.
+
+```tsx
+import { CommandMenu } from '@ds/react';
+
+<CommandMenu groups={results} onSearchChange={(q) => fetchResults(q)} />
+```
+
+Tokens: `--command-menu-*` (values per theme in ai/components/command-menu.json).
+
+
+---
+
 # Container
 
 > Container centers page content with a maximum width and page gutters that follow density, with smaller gutters on phones.
@@ -2276,6 +2805,170 @@ Tokens: `--container-*` (values per theme in ai/components/container.json).
 
 ---
 
+# DatePicker
+
+> Pick a date or a date range from a month grid. DatePicker opens a Calendar from a button; DateRangePicker shows two months and presets such as "Last 30 days" and applies with Apply; Calendar is the grid on its own. Month and weekday names, and the first day of the week, follow the locale.
+
+Status: stable · Category: Forms · Since 1.1.0
+
+```tsx
+import { DatePicker } from '@ds/react';
+import { DateRangePicker } from '@ds/react';
+import { Calendar } from '@ds/react';
+import { datePresets } from '@ds/react';
+```
+
+## When to use
+- Choosing a due date, a delivery date or a booking.
+- Choosing a report period on a dashboard (DateRangePicker with presets).
+
+## When not to use
+- For a birth date or a date far in the past. Use InputField with type="date".
+- For a time of day. Use InputField with type="time".
+
+## Calendar mode (`mode`)
+- `single`: One date. Default.
+- `range`: A start and an end date.
+
+## Months shown (`months`)
+- `1`: Default for single dates.
+- `2`: Default for ranges.
+
+## States
+- **Default**: A day that can be picked. (—)
+- **Hover**: Pointer over a day. (:hover)
+- **Focus**: Keyboard focus on a day. (:focus-visible)
+- **Selected**: The picked date or range ends. (value / range)
+- **In range**: Between range start and end. (range)
+- **Today**: Dot under the date. (today)
+- **Disabled**: Out of bounds or excluded. (min, max, isDateDisabled)
+
+## Props
+### DatePicker
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the trigger, e.g. "Due date". |
+| `placeholder` | `string` | Select dates | Text on the trigger with no date. Default "Select date". |
+| `formatDate` | `((date: Date) => string)` |  | Formats the date on the trigger. |
+| `size` | `"small" \| "medium"` | medium | `small` or `medium` (default) trigger. |
+| `disabled` | `boolean` |  |  |
+| `value` | `Date \| null` |  | Selected date (single). |
+| `onValueChange` | `((value: Date) => void)` |  |  |
+| `defaultMonth` | `Date` |  | Month shown first. Default: the selection or today. |
+| `months` | `1 \| 2` | 2 | How many months side by side. Default 1; 2 suits ranges on wide screens. |
+| `min` | `Date` |  | Earliest and latest dates that can be picked. |
+| `max` | `Date` |  |  |
+| `isDateDisabled` | `((date: Date) => boolean)` |  | Return true for dates that can't be picked, e.g. weekends. |
+| `locale` | `string` |  | BCP 47 locale for month and weekday names, e.g. "ar". Default: the browser’s. |
+| `labels` | `{ previous?: string; next?: string; } \| undefined` | {} | Names for the month buttons, for translation. |
+| `today` | `Date` | startOfDay(new Date()) | "Today" for the date that is today. |
+| `className` | `string` |  |  |
+
+### DateRangePicker
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  |  |
+| `value` | `DateRange` |  | Applied range. |
+| `onValueChange` | `((range: DateRange) => void)` |  | Called when people press Apply. |
+| `presets` | `DatePreset[]` |  | Quick choices in a side list, e.g. "Last 7 days". |
+| `placeholder` | `string` | Select dates |  |
+| `formatDate` | `((date: Date) => string)` |  |  |
+| `size` | `"small" \| "medium"` | medium |  |
+| `disabled` | `boolean` |  |  |
+| `actionLabels` | `{ apply?: string; cancel?: string; } \| undefined` | {} | Button texts, for translation. |
+| `defaultMonth` | `Date` |  | Month shown first. Default: the selection or today. |
+| `months` | `1 \| 2` | 2 | How many months side by side. Default 1; 2 suits ranges on wide screens. |
+| `min` | `Date` |  | Earliest and latest dates that can be picked. |
+| `max` | `Date` |  |  |
+| `isDateDisabled` | `((date: Date) => boolean)` |  | Return true for dates that can't be picked, e.g. weekends. |
+| `locale` | `string` |  | BCP 47 locale for month and weekday names, e.g. "ar". Default: the browser’s. |
+| `labels` | `{ previous?: string; next?: string; } \| undefined` | {} | Names for the month buttons, for translation. |
+| `today` | `Date` | startOfDay(new Date()) | "Today" for the date that is today. |
+| `className` | `string` |  |  |
+
+### Calendar
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `mode` | `"single" \| "range"` | single | `single` (default) picks one date, `range` a start and an end. |
+| `value` | `Date \| null` |  | Selected date (single). |
+| `onValueChange` | `((value: Date) => void)` |  |  |
+| `range` | `DateRange` |  | Selected range (range). |
+| `onRangeChange` | `((range: DateRange) => void)` |  |  |
+| `defaultMonth` | `Date` |  | Month shown first. Default: the selection or today. |
+| `months` | `1 \| 2` | 2 | How many months side by side. Default 1; 2 suits ranges on wide screens. |
+| `min` | `Date` |  | Earliest and latest dates that can be picked. |
+| `max` | `Date` |  |  |
+| `isDateDisabled` | `((date: Date) => boolean)` |  | Return true for dates that can't be picked, e.g. weekends. |
+| `locale` | `string` |  | BCP 47 locale for month and weekday names, e.g. "ar". Default: the browser’s. |
+| `labels` | `{ previous?: string; next?: string; } \| undefined` | {} | Names for the month buttons, for translation. |
+| `today` | `Date` | startOfDay(new Date()) | "Today" for the date that is today. |
+| `className` | `string` |  |  |
+
+### datePresets
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Limit dates with min, max and isDateDisabled. Don’t: Let people pick dates you will reject. Why: Prevent errors instead of reporting them.
+- Do: Offer presets for reporting periods. Don’t: Make people click two dates for "last 7 days". Why: Presets cover the common cases in one click.
+- Do: Use InputField type="date" for dates far away, e.g. birthdays. Don’t: Make people page back decades. Why: Typing is faster for distant dates.
+
+## Content
+- Label the trigger with what the date is for, e.g. "Due date".
+- Use presets people actually need, e.g. "Last 30 days" for reports.
+
+## Accessibility
+- Role: grid per month (table) of day buttons; the picker is a popover from a button.
+- Arrow keys: Previous/next day and week.
+- Page Up / Page Down: Previous/next month; with Shift, year.
+- Home / End: Start or end of the week.
+- Enter / Space: Pick the focused day.
+- Escape: Close the picker.
+- `aria-label on days`: The full date, e.g. "Friday, May 15, 2026".
+- `aria-pressed`: Selected days.
+- `aria-current="date"`: Today.
+- Focus: One day is in the tab order; arrow keys move focus within the grid.
+- WCAG 2.1.1 Keyboard: Every day can be reached and picked with the keyboard.
+- WCAG 1.4.3 Contrast (Minimum): Days and selection meet 4.5:1 in every theme.
+- The trigger’s name includes the current value, e.g. "Due date: May 20, 2026".
+
+## Examples
+### Due date
+One date.
+
+```tsx
+import { DatePicker } from '@ds/react';
+
+<DatePicker label="Due date" value={due} onValueChange={setDue} />
+```
+
+### Report period
+Two months and presets.
+
+```tsx
+import { DateRangePicker, datePresets } from '@ds/react';
+
+<DateRangePicker label="Report period" presets={datePresets()} value={range} onValueChange={setRange} />
+```
+
+### Inline calendar
+The grid on its own.
+
+```tsx
+import { Calendar } from '@ds/react';
+
+<Calendar value={date} onValueChange={setDate} />
+```
+
+Tokens: `--date-picker-*` (values per theme in ai/components/date-picker.json).
+
+
+---
+
 # Divider
 
 > A divider is a thin line that separates groups of content, horizontally or vertically, optionally with a short label such as “or”.
@@ -2294,6 +2987,11 @@ import { Divider } from '@ds/react';
 - To separate page sections. Use Spacing or headings.
 - Between every list item. Use List divided.
 
+## Label position (`labelAlign`)
+- `center`: Default, e.g. “or” between sign-in options.
+- `start`: A section title on the line.
+- `end`: An action at the end of the line.
+
 ## Orientation (`orientation`)
 - `horizontal`: Between stacked content. Default.
 - `vertical`: Between items in a row.
@@ -2308,6 +3006,7 @@ import { Divider } from '@ds/react';
 | --- | --- | --- | --- |
 | `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default) between stacked content; `vertical` between items in a row. |
 | `label` | `ReactNode` |  | Short text in the middle of a horizontal divider, e.g. “or”. |
+| `labelAlign` | `"start" \| "center" \| "end"` | center | Where the label sits on the line: `center` (default), `start` or `end`. |
 
 ## Guidelines
 - Do: Prefer spacing and headings. Don’t: Put a divider between every block. Why: Too many lines add noise.
@@ -2381,6 +3080,11 @@ import { DrawerClose } from '@ds/react';
 - For a short confirmation. Use Modal.
 - For the site’s main navigation on desktop. Use SideNav or Navbar.
 
+## Size (`size`)
+- `small`: Narrow, for short forms and filters.
+- `medium`: Default.
+- `large`: Wide, for a record’s detail panel.
+
 ## Side (`side`)
 - `end`: Right in LTR, left in RTL. Default; details and settings.
 - `start`: Left in LTR; navigation on small screens.
@@ -2410,6 +3114,7 @@ import { DrawerClose } from '@ds/react';
 | `title` | `ReactNode` |  | Heading; names the drawer. |
 | `description` | `ReactNode` |  | Short explanation under the title. |
 | `side` | `"start" \| "end" \| "top" \| "bottom"` | end | Edge it slides from: `end` (default; right in LTR, left in RTL), `start`, `top` or `bottom` (common on phones). |
+| `size` | `"small" \| "medium" \| "large"` | medium | Width of side drawers: `small`, `medium` (default) or `large`, e.g. for a detail panel. |
 | `closeLabel` | `string` | Close | Accessible name of the close button. Default "Close". |
 | `asChild` | `boolean` |  |  |
 
@@ -2714,6 +3419,11 @@ import { EmptyState } from '@ds/react';
 - For errors. Use Alert.
 - While loading. Use Skeleton or Spinner.
 
+## Size (`size`)
+- `small`: Inside cards and tables.
+- `medium`: Default.
+- `large`: A whole page, e.g. first use.
+
 ## Heading level (`titleAs`)
 - `h2`: Default.
 - `h3 / h4`: Inside sections.
@@ -2731,6 +3441,8 @@ import { EmptyState } from '@ds/react';
 | `description` | `ReactNode` |  | Why it’s empty and what to do next. |
 | `actions` | `ReactNode` |  | Actions, e.g. a Button to create the first item. |
 | `titleAs` | `"h2" \| "h3" \| "h4"` | h2 | Heading level that fits the page. Default h2. |
+| `size` | `"small" \| "medium" \| "large"` | medium | `small` inside cards and tables, `medium` (default), `large` for a whole page. |
+| `illustration` | `ReactNode` |  | An image or illustration shown instead of the icon. Decorative. |
 
 ## Guidelines
 - Do: Offer the next step. Don’t: Leave people at a dead end. Why: An action gets people going.
@@ -2780,6 +3492,226 @@ import { EmptyState } from '@ds/react';
 ```
 
 Tokens: `--empty-state-*` (values per theme in ai/components/empty-state.json).
+
+
+---
+
+# FeaturedIcon
+
+> An icon in a colored circle or tile that draws the eye and sets the tone of a block: the top of a modal, an empty state, an alert, a metric card or a feature list. Four appearances, thirteen colors and four sizes.
+
+Status: stable · Category: Data display · Since 1.1.0
+
+```tsx
+import { FeaturedIcon } from '@ds/react';
+```
+
+## When to use
+- At the top of a modal or empty state, to signal its kind (success, warning, delete).
+- In metric cards and feature lists, to make each item recognizable at a glance.
+- Next to a notification or activity item, when there is no avatar.
+
+## When not to use
+- For a clickable icon. Use IconButton.
+- For a person or team. Use Avatar.
+- For a small inline status. Use Badge with withDot.
+
+## Appearance (`appearance`)
+- `light`: Tinted background, colored icon. Default.
+- `solid`: Filled, for the strongest emphasis.
+- `outline`: Concentric rings, e.g. in a toast or alert.
+- `modern`: Neutral tile with a border; works on any surface.
+
+## Color (`tone`)
+- `primary`: Brand. Default.
+- `success | warning | danger`: Outcome of an action.
+- `secondary`: Neutral.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: Categories, e.g. one hue per metric.
+
+## Size (`size`)
+- `small`: 32px, in lists and notifications.
+- `medium`: 40px. Default, in cards.
+- `large`: 48px, at the top of modals.
+- `xlarge`: 56px, in empty states.
+
+## Shape (`shape`)
+- `circle`: Default.
+- `square`: Rounded square, follows the radius theme.
+
+## States
+- **Static**: Not interactive. (—)
+
+## Props
+### FeaturedIcon
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `icon` | `ReactNode` |  | The icon, e.g. a lucide-react icon. |
+| `tone` | `BadgeColor` | primary | Color: a meaning (primary default, success, warning, danger, secondary) or a category hue. |
+| `appearance` | `FeaturedIconAppearance` | light | `light` (default) tinted background, `solid` filled, `outline` concentric rings, `modern` a neutral tile with a border. |
+| `size` | `FeaturedIconSize` | medium | `small` 32px, `medium` 40px (default), `large` 48px, `xlarge` 56px. |
+| `shape` | `"circle" \| "square"` | circle | `circle` (default) or `square` with rounded corners. |
+| `label` | `string` |  | What the icon means, when it isn't said in nearby text. Without it the icon is decorative and hidden from screen readers. |
+
+## Guidelines
+- Do: Use one featured icon per block. Don’t: Put featured icons on every list item in a dense table. Why: They draw attention; too many and nothing stands out.
+- Do: Match the tone to the meaning (danger for delete). Don’t: Use danger red as decoration. Why: Color carries meaning across the system.
+- Do: Give it a label when nothing nearby says what it means. Don’t: Label it when a heading next to it already says the same. Why: Screen readers would read the same thing twice.
+
+## Content
+- Pick an icon that matches the heading next to it, e.g. a trash can for "Delete project?".
+- Use the same tone as the action: danger for destructive dialogs, success for completion.
+
+## Accessibility
+- Role: None (hidden) by default; img with label.
+- —: Not focusable.
+- `aria-hidden="true"`: Default: decorative.
+- `role="img" + aria-label`: When label is set.
+- Focus: Not focusable.
+- WCAG 1.4.11 Non-text Contrast: Icon colors meet 3:1 on their background in every brand and mode (checked in CI).
+- Don’t rely on the color alone: the icon shape and nearby text carry the meaning.
+
+## Examples
+### Basic
+A tinted icon in a card.
+
+```tsx
+import { FeaturedIcon } from '@ds/react';
+import { Zap } from 'lucide-react';
+
+<FeaturedIcon icon={<Zap />} />
+```
+
+### Delete dialog
+Danger, large, at the top of a confirm dialog.
+
+```tsx
+import { FeaturedIcon } from '@ds/react';
+import { Trash2 } from 'lucide-react';
+
+<FeaturedIcon icon={<Trash2 />} tone="danger" size="large" />
+```
+
+### Modern tile
+Neutral, for metric cards.
+
+```tsx
+import { FeaturedIcon } from '@ds/react';
+import { Users } from 'lucide-react';
+
+<FeaturedIcon icon={<Users />} appearance="modern" shape="square" />
+```
+
+Tokens: `--featured-icon-*` (values per theme in ai/components/featured-icon.json).
+
+
+---
+
+# FileUpload
+
+> A drop zone to choose or drag files, with FileUploadItem rows that show each file’s progress, completion or error and a delete button. It handles picking and dropping; uploading is up to you.
+
+Status: stable · Category: Forms · Since 1.1.0
+
+```tsx
+import { FileUpload } from '@ds/react';
+import { FileUploadItem } from '@ds/react';
+```
+
+## When to use
+- Attaching documents, images or imports to a record or form.
+
+## When not to use
+- For a single profile picture with a preview. Use Avatar with a Button.
+
+## FileUploadItem status (`status`)
+- `uploading`: Shows a progress bar (with progress).
+- `complete`: Shows a check and “Complete”.
+- `error`: Red border and the error message.
+
+## States
+- **Default**: Ready. (—)
+- **Hover**: Pointer over the zone. (:hover)
+- **Focus**: Keyboard focus on the hidden input. (:focus-visible)
+- **Dragging**: Files are over the zone. (dragover)
+- **Disabled**: No uploads. (disabled prop.)
+
+## Props
+### FileUpload
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `onFilesChange` | `((files: File[]) => void)` |  | Called with the chosen or dropped files. |
+| `label` | `ReactNode` |  | Main line in the zone. Default "Click to upload or drag and drop". |
+| `actionLabel` | `ReactNode` | Click to upload | Words of the label styled as the action. Default "Click to upload". |
+| `hint` | `ReactNode` |  | Help under the label, e.g. "SVG, PNG or JPG (max. 800×400px)". |
+| `children` | `ReactNode` |  | Uploaded or uploading files, as FileUploadItem elements, shown under the zone. |
+
+### FileUploadItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `string` |  | File name. |
+| `size` | `string` |  | Size, formatted, e.g. "200 KB". |
+| `progress` | `number` |  | Upload progress, 0–100. Omit when done. |
+| `status` | `"error" \| "uploading" \| "complete"` |  | `uploading`, `complete` or `error`. Default: uploading while progress is set, else complete. |
+| `error` | `ReactNode` |  | What went wrong, shown with status="error". |
+| `icon` | `ReactNode` | <FileText /> | Icon for the file type. Default a document. |
+| `onRemove` | `(() => void)` |  | Shows a delete button. |
+| `removeLabel` | `string` |  | Accessible name of the delete button. Default "Remove {name}". |
+| `action` | `ReactNode` |  | Extra action after the text, e.g. "Try again" for errors. |
+
+## Guidelines
+- Do: Say which files are accepted before people pick. Don’t: Reject files without saying the rules. Why: People should not need to guess.
+- Do: Show progress for each file. Don’t: Leave people waiting with no feedback. Why: Uploads can take a while.
+- Do: Let people retry or remove failed files. Don’t: Leave failed files with no action. Why: Errors need a way forward.
+
+## Content
+- Hint: name the accepted types and limit, e.g. "PNG or JPG, up to 5 MB".
+- Errors: say why and what to do, e.g. "Larger than 10 MB. Choose a smaller file."
+
+## Accessibility
+- Role: Native file input, labelled by the drop zone; a list of rows.
+- Tab: Focuses the file input (the zone shows the ring).
+- Enter / Space: Opens the file picker.
+- `progressbar`: While uploading, named "Uploading {name}".
+- `aria-label on delete`: "Remove {name}"; translate with removeLabel.
+- Focus: The zone shows the focus ring while its input has focus.
+- WCAG 2.1.1 Keyboard: Native input; dragging is optional.
+- WCAG 2.5.7 Dragging Movements: Clicking the zone does the same as dropping.
+- Announce upload completion with a Toast when it happens in the background.
+
+## Examples
+### Drop zone
+Pick or drop files.
+
+```tsx
+import { FileUpload } from '@ds/react';
+
+<FileUpload hint="PNG or JPG, up to 5 MB" accept="image/*" multiple onFilesChange={upload} />
+```
+
+### With progress
+A row per file.
+
+```tsx
+import { FileUpload, FileUploadItem } from '@ds/react';
+
+<FileUpload onFilesChange={upload}>
+  <FileUploadItem name="report.pdf" size="200 KB" progress={40} onRemove={cancel} />
+</FileUpload>
+```
+
+### Failed upload
+An error with a retry.
+
+```tsx
+import { Button, FileUploadItem } from '@ds/react';
+
+<FileUploadItem name="video.mp4" status="error" error="Too large" action={<Button appearance="text" size="small">Try again</Button>} />
+```
+
+Tokens: `--file-upload-*` (values per theme in ai/components/file-upload.json).
 
 
 ---
@@ -3418,6 +4350,11 @@ import { InputField } from '@ds/react';
 | `clearable` | `boolean` | false | Shows a clear button while the (controlled) value isn't empty. Use with onClear. |
 | `onClear` | `(() => void)` |  | Called when the clear button is pressed; set the value to '' here. |
 | `clearLabel` | `string` | Clear | Accessible name of the clear button. Default "Clear". |
+| `prefix` | `ReactNode` |  | A fixed part before the text, inside the border, e.g. "https://" or a country code. It is read with the label. Pass an element (e.g. a small select) for an interactive addon. |
+| `suffix` | `ReactNode` |  | A fixed part after the text, e.g. ".com", "USD" or a unit. |
+| `shortcut` | `string` |  | A keyboard shortcut hint at the end, e.g. "⌘K". Decorative. |
+| `hint` | `ReactNode` |  | Extra help shown in a tooltip from a ? icon at the end of the field. |
+| `hintLabel` | `string` | More information | Accessible name of the hint button. Default "More information". |
 
 ## Guidelines
 - Do: Always give the field a label. Don’t: Use the placeholder as the only label. Why: Placeholders vanish while typing and are not reliably announced.
@@ -3447,6 +4384,15 @@ import { InputField } from '@ds/react';
 - A visually hidden label is still announced; use hideLabel only when the purpose is obvious, e.g. search with a search icon.
 
 ## Examples
+### Prefix and suffix
+Fixed text inside the border, read with the field.
+
+```tsx
+import { InputField } from '@ds/react';
+
+<InputField label="Website" prefix="https://" suffix=".com" />
+```
+
 ### Labelled field
 A controlled field with help text.
 
@@ -4000,6 +4946,123 @@ Tokens: `--meeting-card-*` (values per theme in ai/components/meeting-card.json)
 
 ---
 
+# MetricCard
+
+> A key figure in a card for dashboards: what is measured, the value, how it changed and against what, with an optional featured icon, a small chart, an actions menu and a footer link.
+
+Status: stable · Category: Data display · Since 1.1.0
+
+```tsx
+import { MetricCard } from '@ds/react';
+```
+
+## When to use
+- At the top of a dashboard, for the three to five numbers that matter most.
+- To show a value with its trend and comparison period.
+
+## When not to use
+- For a figure inside text or a list without a card. Use Stat.
+- For many values to compare. Use Table or a chart.
+
+## Trend style (`trendStyle`)
+- `simple`: Colored arrow and text; the quietest.
+- `badge`: A tinted pill. Default.
+- `modern`: A neutral pill with a colored trend line icon.
+
+## Layout (`layout`)
+- `vertical`: Icon and actions above the figures. Default.
+- `horizontal`: Icon beside the figures; shorter cards.
+
+## Size (`size`)
+- `small`: Smaller value, for dense dashboards.
+- `medium`: Default.
+
+## States
+- **Static**: The card itself is not interactive; its actions are. (—)
+
+## Props
+### MetricCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` |  | What is measured, e.g. "Total revenue". |
+| `value` | `ReactNode` |  | The figure, formatted, e.g. "$124,567". |
+| `change` | `ReactNode` |  | Change since the previous period, e.g. "12%". |
+| `trend` | `"up" \| "down" \| "neutral"` | neutral | Direction of the change. Default neutral. |
+| `positive` | `boolean` |  | Whether the change is good news. Default: up is good. Use false for e.g. costs rising. |
+| `trendStyle` | `MetricTrendStyle` | badge | `simple` arrow and text, `badge` (default) a tinted pill, `modern` a neutral pill. |
+| `comparison` | `ReactNode` |  | Context for the change, e.g. "vs last month". |
+| `icon` | `ReactNode` |  | An icon shown in a featured icon at the top (or start, when horizontal). |
+| `iconTone` | `BadgeColor` | primary | Color of the featured icon. Default primary. |
+| `iconAppearance` | `FeaturedIconAppearance` | modern | Look of the featured icon. Default modern. |
+| `chart` | `ReactNode` |  | A small chart beside the value, e.g. a Sparkline. Decorative: the value carries the meaning. |
+| `actions` | `ReactNode` |  | Actions at the top end, e.g. a DropdownMenu with an IconButton trigger. |
+| `footer` | `ReactNode` |  | Under a divider, e.g. a "View report" link. |
+| `layout` | `"vertical" \| "horizontal"` | vertical | `vertical` (default) icon above, `horizontal` icon beside the figures. |
+| `size` | `"small" \| "medium"` | medium | `small` for dense dashboards, `medium` (default). |
+| `trendLabels` | `{ up?: string; down?: string; } \| undefined` |  | Words announced for the trend, for translation. |
+
+## Guidelines
+- Do: Show three to five metrics in a row. Don’t: Fill a page with a dozen metric cards. Why: Fewer figures are easier to compare at a glance.
+- Do: Set positive={false} for metrics where up is bad. Don’t: Show rising costs in green. Why: Color should match whether the change is good news.
+- Do: Pair a trend with its comparison period. Don’t: Show "12%" with no context. Why: A change means little without what it is compared to.
+
+## Content
+- Label: a short noun phrase, e.g. "Total revenue", not "Revenue total for the month".
+- Format values for reading: "$124.5k" or "$124,567", with the unit.
+- Comparison: name the period, e.g. "vs last month".
+
+## Accessibility
+- Role: article containing a description list (dt label, dd value).
+- Tab: Moves to actions and footer links, if any.
+- `Visually hidden "increased" / "decreased"`: With a trend; translate with trendLabels.
+- `aria-hidden on the chart`: Always; it is decorative.
+- Focus: The card is not focusable; its actions and links are.
+- WCAG 1.4.1 Use of Color: The trend is also an arrow and announced in words.
+- WCAG 1.4.3 Contrast (Minimum): Text meets 4.5:1 in every theme (checked in CI).
+- Give IconButton actions a label, e.g. "More options for Total revenue".
+
+## Examples
+### Revenue
+Value, trend and comparison.
+
+```tsx
+import { MetricCard } from '@ds/react';
+
+<MetricCard label="Total revenue" value="$124,567" change="12%" trend="up" comparison="vs last month" />
+```
+
+### With an icon and actions
+A featured icon and a menu.
+
+```tsx
+import { IconButton, MetricCard } from '@ds/react';
+import { MoreVertical, Users } from 'lucide-react';
+
+<MetricCard
+  label="Active users"
+  value="2,420"
+  change="40%"
+  trend="up"
+  icon={<Users />}
+  actions={<IconButton icon={<MoreVertical />} label="More options" appearance="ghost" />}
+/>
+```
+
+### With a sparkline
+A small chart beside the value.
+
+```tsx
+import { MetricCard, Sparkline } from '@ds/react';
+
+<MetricCard label="Orders" value="1,210" change="4%" trend="down" chart={<Sparkline data={[4, 6, 5, 8, 7, 9]} />} />
+```
+
+Tokens: `--metric-card-*` (values per theme in ai/components/metric-card.json).
+
+
+---
+
 # Modal
 
 > A modal is a dialog over the page that people must deal with before going back: a short form, a confirmation or details. Focus is trapped inside, Escape closes it, and focus returns to the trigger.
@@ -4023,10 +5086,15 @@ import { ModalClose } from '@ds/react';
 - For long, multi-step flows. Use A full page.
 - To confirm that something succeeded. Use Toast.
 
+## Alignment (`align`)
+- `start`: Text and icon at the start. Default.
+- `center`: Centered, with full-width footer buttons; short confirmations.
+
 ## Size (`size`)
 - `small`: Confirmations.
 - `medium`: Forms. Default.
 - `large`: Rich or long content.
+- `xlarge`: Wide content, e.g. a table or a multi-column form.
 
 ## Role (`role`)
 - `dialog`: Default; clicking outside closes it.
@@ -4054,7 +5122,10 @@ import { ModalClose } from '@ds/react';
 | --- | --- | --- | --- |
 | `title` | `ReactNode` |  | Heading of the dialog; names it for screen readers. |
 | `description` | `ReactNode` |  | Short explanation under the title; describes the dialog. |
-| `size` | `"small" \| "medium" \| "large"` | medium | `small` for confirmations, `medium` (default) for forms, `large` for rich content. |
+| `size` | `"small" \| "medium" \| "large" \| "xlarge"` | medium | `small` for confirmations, `medium` (default) for forms, `large` for rich content. |
+| `icon` | `ReactNode` |  | A featured icon above the title, e.g. a trash can for a delete confirmation. |
+| `iconTone` | `BadgeColor` | primary | Color of the featured icon. Default primary; danger for destructive dialogs. |
+| `align` | `"center" \| "start"` | start | `start` (default) or `center`: centers the icon, text and footer buttons. |
 | `role` | `"dialog" \| "alertdialog"` | dialog | `alertdialog` for urgent confirmations (e.g. delete): clicking outside doesn't close it and there's no close icon, so people choose an action. |
 | `closeLabel` | `string` | Close | Accessible name of the close button. Default "Close". |
 | `asChild` | `boolean` |  |  |
@@ -4261,6 +5332,104 @@ Tokens: `--navbar-*` (values per theme in ai/components/navbar.json).
 
 ---
 
+# PageHeader
+
+> The top of a page or section: breadcrumbs, a title with supporting text, actions, and a row for tabs, search or filters. Small size works as a section or card header.
+
+Status: stable · Category: Layout · Since 1.1.0
+
+```tsx
+import { PageHeader } from '@ds/react';
+```
+
+## When to use
+- At the top of every app page, with the page title as h1.
+- Above a section or card, with size="small" and titleAs="h2".
+
+## When not to use
+- For a person’s profile card. Use Header.
+- For the site’s top navigation. Use Navbar.
+
+## Size (`size`)
+- `medium`: Page header. Default.
+- `small`: Section or card header.
+
+## Divider (`divider`)
+- `false`: No line. Default.
+- `true`: A line under the header.
+
+## States
+- **Static**: The header itself is not interactive. (—)
+
+## Props
+### PageHeader
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `ReactNode` |  | The page or section title. |
+| `titleAs` | `"h1" \| "h2" \| "h3"` | h1 | Heading level: h1 for a page (default), h2 or h3 for a section. |
+| `description` | `ReactNode` |  | Supporting text under the title. |
+| `breadcrumbs` | `ReactNode` |  | Above the title, e.g. a Breadcrumb. |
+| `leading` | `ReactNode` |  | Before the title, e.g. an Avatar or FeaturedIcon. |
+| `actions` | `ReactNode` |  | Buttons at the end, e.g. "Export" and "Add". |
+| `children` | `ReactNode` |  | Under the title row, e.g. Tabs, a search field or filters. |
+| `size` | `"medium" \| "small"` | medium | `medium` (default) for pages, `small` for sections and cards. |
+| `divider` | `boolean` | false | A line under the header. |
+
+## Guidelines
+- Do: Use one h1 per page: the PageHeader title. Don’t: Use several page headers with h1 on one page. Why: Headings form the page outline for screen readers.
+- Do: Put the main action at the end of the title row. Don’t: Scatter page-level actions through the content. Why: People look for page actions in the header.
+- Do: Use children for tabs and filters that change the page’s content. Don’t: Put unrelated controls in the header. Why: The header should frame what follows.
+
+## Content
+- Title: the page’s name, matching the navigation item.
+- Description: one sentence on what people do here.
+- Keep to one primary action; put others in outline buttons or a menu.
+
+## Accessibility
+- Role: A div with a heading; it adds no landmark, so several can share a page.
+- Tab: Moves through breadcrumbs, actions and children.
+- `Heading level`: titleAs sets h1, h2 or h3.
+- Focus: Only its interactive children are focusable.
+- WCAG 1.3.1 Info and Relationships: The title is a real heading.
+- WCAG 2.4.6 Headings and Labels: The title names the page.
+- Match the browser tab title to the page title.
+
+## Examples
+### Page header
+Title, description and actions.
+
+```tsx
+import { Button, PageHeader } from '@ds/react';
+
+<PageHeader title="Products" description="Manage your catalog." actions={<Button>Add product</Button>} />
+```
+
+### With breadcrumbs and tabs
+Children render under the title row.
+
+```tsx
+import { Breadcrumb, PageHeader, Tab, TabList, Tabs } from '@ds/react';
+
+<PageHeader title="Products" breadcrumbs={<Breadcrumb items={trail} />}>
+  <Tabs appearance="line" defaultValue="all">…</Tabs>
+</PageHeader>
+```
+
+### Section header
+Small, with an h2.
+
+```tsx
+import { PageHeader } from '@ds/react';
+
+<PageHeader size="small" titleAs="h2" title="Recent orders" divider />
+```
+
+Tokens: `--page-header-*` (values per theme in ai/components/page-header.json).
+
+
+---
+
 # Pagination
 
 > Pagination moves between pages of a long list or table. It shows where people are, lets them step forward and back, and jumps to a page, shortening long ranges with an ellipsis.
@@ -4278,6 +5447,10 @@ import { Pagination } from '@ds/react';
 ## When not to use
 - For feeds people browse casually. Use Infinite scroll or a “Load more” button.
 - For steps in a process. Use Stepper.
+
+## Layout (`layout`)
+- `compact`: Everything together. Default.
+- `spread`: Previous and next at the edges, e.g. under a table.
 
 ## Appearance (`appearance`)
 - `full`: Page numbers with ellipses. Default.
@@ -4300,6 +5473,8 @@ import { Pagination } from '@ds/react';
 | `onPageChange` | `((page: number) => void)` |  | Called with the page to show. |
 | `appearance` | `PaginationAppearance` | full | `full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows “Page 2 of 10” between the arrows, for narrow spaces. |
 | `siblingCount` | `number` | 1 | How many pages to show on each side of the current page before “…”. |
+| `showArrowLabels` | `boolean` | false | Shows "Previous" and "Next" as text beside the arrows. |
+| `layout` | `"compact" \| "spread"` | compact | `compact` (default) keeps everything together. `spread` pushes previous and next to the edges with the pages centered, e.g. under a table. |
 | `label` | `string` | Pagination | Accessible name of the navigation landmark. Default "Pagination". |
 | `labels` | `{ previous?: string; next?: string; page?: ((page: number) => string) \| undefined; summary?: ((page: number, total: number) => string) \| undefined; } \| undefined` | {} | Accessible names and summary wording, for translation. |
 
@@ -4603,6 +5778,7 @@ Status: stable · Category: Feedback · Since 0.4.0
 
 ```tsx
 import { Progress } from '@ds/react';
+import { ProgressCircle } from '@ds/react';
 ```
 
 ## When to use
@@ -4623,6 +5799,15 @@ import { Progress } from '@ds/react';
 - `medium`: Default.
 - `small`: Thin; cards and tables.
 
+## Value position (`valuePosition`)
+- `top`: Beside the label. Default.
+- `end`: After the bar, for compact rows.
+- `bottom`: Under the end of the bar.
+
+## ProgressCircle shape (`shape`)
+- `circle`: A full ring. Default.
+- `half`: A semicircle gauge, for scores and quotas.
+
 ## States
 - **Determinate**: Bar length shows value/max. (value)
 - **Indeterminate**: Animated bar; unknown progress. (no value)
@@ -4640,6 +5825,21 @@ import { Progress } from '@ds/react';
 | `formatValue` | `((value: number, max: number) => string)` | (value: number, max: number) => `${Math.round((value / max) * 100)}%` | Formats the shown and announced value. Default a percentage. |
 | `tone` | `"primary" \| "success" \| "warning" \| "danger"` | primary | Color meaning: primary (default), success, warning, danger. |
 | `size` | `"small" \| "medium"` | medium | `small` for a thin bar in cards and tables, `medium` by default. |
+| `valuePosition` | `"top" \| "end" \| "bottom"` | top | Where the value shows with showValue: `top` (default) beside the label, `end` after the bar, `bottom` under the bar's end. |
+
+### ProgressCircle
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` |  | What is measured, e.g. "Storage used". Names the progress bar; shown under the ring. |
+| `hideLabel` | `boolean` | false | Hides the label visually; it is still announced. |
+| `value` | `number` |  | Current value, 0 to max. |
+| `max` | `number` | 100 |  |
+| `formatValue` | `((value: number, max: number) => string)` | (value: number, max: number) => `${Math.round((value / max) * 100)}%` | Text in the middle. Default: the percentage. |
+| `caption` | `ReactNode` |  | Small caption under the value inside the ring, e.g. "Active users". |
+| `shape` | `"circle" \| "half"` | circle | `circle` (default) full ring, `half` a semicircle gauge. |
+| `size` | `"small" \| "medium" \| "large"` | medium | `small` 64px, `medium` 120px (default), `large` 200px. |
+| `tone` | `"primary" \| "success" \| "warning" \| "danger"` | primary |  |
 
 ## Guidelines
 - Do: Always give a label. Don’t: Show an unlabelled bar. Why: The label says what is progressing.
@@ -4660,6 +5860,24 @@ import { Progress } from '@ds/react';
 - WCAG 2.3.3 Animation from Interactions: Slows for reduced motion.
 
 ## Examples
+### Ring
+ProgressCircle with a caption.
+
+```tsx
+import { ProgressCircle } from '@ds/react';
+
+<ProgressCircle label="Storage used" value={64} caption="of 20 GB" />
+```
+
+### Gauge
+A half-ring for scores.
+
+```tsx
+import { ProgressCircle } from '@ds/react';
+
+<ProgressCircle label="Health score" value={72} shape="half" />
+```
+
 ### Upload
 With the value shown.
 
@@ -4856,6 +6074,7 @@ import { SearchField } from '@ds/react';
 | `onSearch` | `((query: string) => void)` |  | Called with the query when Enter is pressed. |
 | `onValueChange` | `((query: string) => void)` |  | Called with the new query as people type or clear. |
 | `size` | `InputFieldSize` |  | `small` for dense UI, `medium` by default, `large` for prominent forms. |
+| `prefix` | `ReactNode` |  | A fixed part before the text, inside the border, e.g. "https://" or a country code. It is read with the label. Pass an element (e.g. a small select) for an interactive addon. |
 | `hideLabel` | `boolean` |  | Hides the label visually but keeps it for screen readers. Only for fields whose purpose is obvious from context, such as a search box with a search icon. |
 | `optional` | `boolean` |  | Marks the field optional with text after the label. Use when most fields are required. |
 | `optionalLabel` | `string` |  | Text shown for optional fields. Default "(optional)". |
@@ -4863,6 +6082,9 @@ import { SearchField } from '@ds/react';
 | `error` | `ReactNode` |  | Error message. Marks the field invalid and replaces the success message. |
 | `success` | `ReactNode` |  | Confirmation message, e.g. "Username is available". |
 | `clearLabel` | `string` |  | Accessible name of the clear button. Default "Clear". |
+| `suffix` | `ReactNode` |  | A fixed part after the text, e.g. ".com", "USD" or a unit. |
+| `hint` | `ReactNode` |  | Extra help shown in a tooltip from a ? icon at the end of the field. |
+| `hintLabel` | `string` |  | Accessible name of the hint button. Default "More information". |
 
 ## Guidelines
 - Do: Say what is searched in the placeholder or label. Don’t: Write just “Type here”. Why: People need to know the scope of the search.
@@ -4986,6 +6208,10 @@ import { SelectSeparator } from '@ds/react';
 | --- | --- | --- | --- |
 | `value` | `string` |  | The value this option selects. |
 | `children` | `ReactNode` |  | Option text; also used for typeahead. |
+| `icon` | `ReactNode` |  | Decorative icon before the text; also shown in the trigger when selected. |
+| `avatar` | `{ name: string; src?: string; }` |  | A person's picture (with initials fallback) before the text. |
+| `dot` | `BadgeColor` |  | A status dot before the text, in a meaning or category color. |
+| `supportingText` | `ReactNode` |  | Secondary text after the label, e.g. a username or an email. |
 
 ### SelectGroup
 
@@ -5026,6 +6252,17 @@ import { SelectSeparator } from '@ds/react';
 - WCAG 1.4.11 Non-text Contrast: Trigger border meets 3:1 in every theme.
 
 ## Examples
+### People with avatars
+Options with an avatar and a username.
+
+```tsx
+import { Select, SelectItem } from '@ds/react';
+
+<Select label="Assignee">
+  <SelectItem value="olivia" avatar={{ name: 'Olivia Rhye' }} supportingText="@olivia">Olivia Rhye</SelectItem>
+</Select>
+```
+
 ### Select
 Label, placeholder and options.
 
@@ -5101,6 +6338,10 @@ import { SideNav } from '@ds/react';
 - For five or fewer top-level pages. Use Navbar.
 - For switching views inside a page. Use Tabs.
 
+## Collapsed (`collapsed`)
+- `false`: Icons and labels. Default.
+- `true`: Icons only, labels in tooltips, for a slim sidebar.
+
 ## Structure (`sections`)
 - `flat`: Items only.
 - `nested`: Items with items: collapsible groups, indented.
@@ -5119,6 +6360,9 @@ import { SideNav } from '@ds/react';
 | `sections` | `SideNavSection[]` |  | Sections of links. Nested items expand and collapse. |
 | `currentItem` | `string` |  | Id of the current page’s item. Its parents start expanded. |
 | `aria-label` | `string` | Side | Names the navigation landmark. Default "Side". |
+| `collapsed` | `boolean` | false | Slim: icons only, labels in tooltips, for a collapsed sidebar. Nested groups show their children only when expanded; give every top-level item an icon. |
+| `header` | `ReactNode` |  | Above the sections, e.g. the product logo or a search field. |
+| `footer` | `ReactNode` |  | Pinned to the bottom, e.g. settings links and the account (AvatarLabelGroup). |
 
 ## Guidelines
 - Do: Keep nesting to two levels. Don’t: Nest groups three or four deep. Why: Deep trees are hard to scan and navigate by keyboard.
@@ -5670,6 +6914,15 @@ import { Stepper } from '@ds/react';
 - For switching between independent views. Use Tabs.
 - For site location. Use Breadcrumb.
 
+## Marker (`marker`)
+- `number`: Step numbers; a check when complete. Default.
+- `icon`: Each step’s icon in a tile, for onboarding flows.
+- `dot`: Small dots, for compact progress.
+
+## Size (`size`)
+- `small`: Dialogs and narrow panels.
+- `medium`: Default.
+
 ## Orientation (`orientation`)
 - `horizontal`: A few short steps across the top. Default.
 - `vertical`: Many or long steps, or narrow screens.
@@ -5688,6 +6941,8 @@ import { Stepper } from '@ds/react';
 | `steps` | `StepperStep[]` |  | The steps, in order. |
 | `current` | `number` |  | Index of the current step (0-based). Earlier steps are complete. |
 | `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default) for a few short steps; `vertical` for many or long ones. |
+| `marker` | `"number" \| "icon" \| "dot"` | number | What marks each step: `number` (default), `icon` (each step's icon in a tile), `dot`. |
+| `size` | `"small" \| "medium"` | medium | `small` for compact flows and dialogs, `medium` (default). |
 | `onStepClick` | `((index: number) => void)` |  | Lets people go back to a completed step by clicking it. |
 | `statusLabels` | `Partial<Record<StepStatus, string>>` |  | Words announced for each status, for translation. |
 | `aria-label` | `string` |  | Names the list, e.g. "Checkout steps". |
@@ -5769,6 +7024,10 @@ import { Switch } from '@ds/react';
 - To choose one option from several. Use RadioGroup.
 - To trigger an action such as "Refresh". Use Button.
 
+## Size (`size`)
+- `small`: Dense settings lists and table rows.
+- `medium`: Default.
+
 ## Label position (`labelPosition`)
 - `end`: Label after the switch. Default for standalone switches.
 - `start`: Label before the switch, aligned edge to edge in settings lists.
@@ -5791,6 +7050,7 @@ import { Switch } from '@ds/react';
 | `label` | `ReactNode` |  | Visible label saying what the switch controls, e.g. "Email notifications". Clicking it toggles the switch. Without a label, pass aria-label. |
 | `description` | `ReactNode` |  | Extra detail under the label; announced as the switch's description. |
 | `labelPosition` | `"start" \| "end"` | end | Side of the switch the label sits on. `end` (default) or `start` for settings lists. |
+| `size` | `"small" \| "medium"` | medium | `small` for dense settings lists and tables, `medium` by default. |
 
 ## Guidelines
 - Do: Use a switch for settings that apply immediately. Don’t: Use a switch inside a form that is applied with a Save button. Why: People expect a switch to take effect at once; a delayed change is surprising.
@@ -5865,6 +7125,7 @@ Status: stable · Category: Data display · Since 0.4.0
 
 ```tsx
 import { Table } from '@ds/react';
+import { TableCard } from '@ds/react';
 ```
 
 ## When to use
@@ -5914,6 +7175,19 @@ import { Table } from '@ds/react';
 | `empty` | `ReactNode` |  | Shown in a full-width cell when there are no rows. |
 | `ref` | `Ref<HTMLTableElement>` |  |  |
 
+### TableCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `ReactNode` |  | Heading of the card, e.g. "Team members". |
+| `titleAs` | `"h2" \| "h3" \| "h4"` | h2 | Heading level. Default h2. |
+| `badge` | `ReactNode` |  | Small badge after the title, e.g. "100 users". |
+| `description` | `ReactNode` |  | Supporting text under the title. |
+| `actions` | `ReactNode` |  | Buttons at the end of the header, e.g. "Add member". |
+| `toolbar` | `ReactNode` |  | A row between the header and the table, e.g. tabs, search and filters. |
+| `footer` | `ReactNode` |  | Under the table, e.g. Pagination. |
+| `children` | `ReactNode` |  | The Table. |
+
 ## Guidelines
 - Do: Give every table a caption (hide it if the page heading already says it). Don’t: Leave tables unnamed. Why: The caption names the table for screen readers.
 - Do: Align numbers to the end. Don’t: Center or left-align money. Why: Aligned digits are easy to compare.
@@ -5936,6 +7210,22 @@ import { Table } from '@ds/react';
 - WCAG 4.1.2 Name, Role, Value: Named checkboxes and sort state.
 
 ## Examples
+### In a card with a toolbar
+TableCard with actions and pagination.
+
+```tsx
+import { Button, Pagination, Table, TableCard } from '@ds/react';
+
+<TableCard
+  title="Team members"
+  badge="100 users"
+  actions={<Button size="small">Add member</Button>}
+  footer={<Pagination currentPage={1} totalPages={10} layout="spread" showArrowLabels />}
+>
+  <Table caption="Team members" hideCaption columns={columns} rows={rows} />
+</TableCard>
+```
+
 ### Orders
 Sortable, with money aligned.
 
@@ -6005,6 +7295,12 @@ import { TabPanel } from '@ds/react';
 - `enclosed`: Tabs in a tinted container. Compact filters and toolbars.
 - `pill`: Filled pill on the selected tab, no container. Light filtering inside cards.
 - `line`: Underline under the selected tab. Page-level sections.
+- `segmented`: Bordered bar with the selected tab raised. View switchers, e.g. Day / Week / Month.
+- `subtle`: No container; the selected tab tinted in the brand color. Settings sidebars.
+
+## Size (`size`)
+- `small`: Toolbars, cards and table headers.
+- `medium`: Default.
 
 ## Orientation (`orientation`)
 - `horizontal`: Tabs in a row above the panel. Default.
@@ -6025,7 +7321,9 @@ import { TabPanel } from '@ds/react';
 | `value` | `string` |  | Selected tab (controlled). Use with onValueChange. |
 | `defaultValue` | `string` |  | Initially selected tab when uncontrolled. |
 | `onValueChange` | `((value: string) => void)` |  | Called with the new tab's value. |
-| `appearance` | `TabsAppearance` | enclosed | `enclosed` (default): tabs in a tinted container, for compact filters and toolbars. `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections. |
+| `appearance` | `TabsAppearance` | enclosed | `enclosed` (default): tabs in a tinted container, for compact filters and toolbars. `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections. `segmented`: bordered bar, the selected tab raised on the surface, for view switchers. `subtle`: no container, the selected tab tinted in the brand color, for sidebars. |
+| `size` | `"small" \| "medium"` | medium | `small` for toolbars and cards, `medium` (default). |
+| `fullWidth` | `boolean` | false | Stretches the tab list to the full width, tabs sharing it equally. |
 | `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a column beside the panel, for settings pages with many sections; Up and Down arrows move between tabs. On narrow screens vertical tabs sit above the panel. |
 | `children` | `ReactNode` |  | TabList and TabPanels. |
 
@@ -6043,6 +7341,7 @@ import { TabPanel } from '@ds/react';
 | `value` | `string` |  | Matches the TabPanel this tab shows. |
 | `icon` | `ReactNode` |  | Icon before the label. Hidden from screen readers. |
 | `children` | `ReactNode` |  | Tab label. |
+| `count` | `number` |  | A count after the label, e.g. unread items. |
 
 ### TabPanel
 
@@ -6156,6 +7455,12 @@ import { Tag } from '@ds/react';
 - `success`: Positive category.
 - `warning`: Caution category.
 - `danger`: Negative category.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: Category hues with no meaning of their own.
+
+## Size (`size`)
+- `small`: Dense tables and filter bars.
+- `medium`: Default.
+- `large`: Prominent lists of keywords.
 
 ## Appearance (`appearance`)
 - `subtle`: Tinted. Default.
@@ -6172,7 +7477,10 @@ import { Tag } from '@ds/react';
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `children` | `string` |  | Text of the tag; also names its remove button. |
-| `tone` | `TagTone` | secondary | Color meaning. Default secondary (neutral). |
+| `tone` | `BadgeColor` | secondary | Color meaning or category hue. Default secondary (neutral). |
+| `size` | `TagSize` | medium | `small`, `medium` (default) or `large`. |
+| `count` | `number` |  | A count after the text, e.g. how many items match a filter. |
+| `image` | `string` |  | Small round picture before the text, e.g. a person. Decorative. |
 | `appearance` | `"solid" \| "subtle"` | subtle | `subtle` (default) or `solid`. |
 | `icon` | `ReactNode` |  | Decorative icon before the text. |
 | `onRemove` | `(() => void)` |  | Shows a remove button that calls this. |
@@ -6480,6 +7788,8 @@ import { Tooltip } from '@ds/react';
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `content` | `ReactNode` |  | Short hint shown on hover and keyboard focus. Plain text only, no links or buttons. |
+| `title` | `ReactNode` |  | Bold first line above the content, for a tooltip with a title and supporting text. |
+| `arrow` | `boolean` | false | Shows a small arrow pointing at the trigger. |
 | `children` | `ReactElement<unknown, string \| JSXElementConstructor<any>>` |  | The element it describes; must be focusable (e.g. an IconButton). |
 | `delayDuration` | `number` | 400 | Delay before showing, in ms. Default 400. |
 | `open` | `boolean` |  | Open state (controlled). |
@@ -6538,3 +7848,120 @@ import { Tooltip, IconButton } from '@ds/react';
 ```
 
 Tokens: `--tooltip-*` (values per theme in ai/components/tooltip.json).
+
+
+---
+
+# VerificationCodeInput
+
+> One box per character of a one-time code sent by email or SMS. Typing moves to the next box, Backspace goes back, pasting fills every box, and the browser can autofill codes from SMS.
+
+Status: stable · Category: Forms · Since 1.1.0
+
+```tsx
+import { VerificationCodeInput } from '@ds/react';
+```
+
+## When to use
+- Two-factor sign-in and email or phone verification.
+- Short fixed-length codes: 4 to 8 characters.
+
+## When not to use
+- For passwords or long codes. Use InputField.
+- For codes whose length varies. Use InputField.
+
+## Size (`size`)
+- `small`: 64px boxes, for dialogs and narrow screens.
+- `medium`: 80px boxes. Default.
+- `large`: 96px boxes, for a full-page verification step.
+
+## Length (`length`)
+- `4`: Short PINs.
+- `6`: Default; most one-time codes.
+
+## Mode (`mode`)
+- `numeric`: Digits only; opens the number keypad. Default.
+- `text`: Letters and digits.
+
+## States
+- **Default**: Empty, ready. (At rest.)
+- **Hover**: Pointer over a box. (:hover)
+- **Focus**: The box being typed in. (:focus-visible)
+- **Filled**: Characters entered. (value)
+- **Error**: The code was wrong. (error prop.)
+- **Disabled**: Not editable. (disabled prop.)
+
+## Props
+### VerificationCodeInput
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` |  | What to enter, e.g. "Verification code". Names the group. |
+| `length` | `number` | 6 | Number of characters. Default 6. |
+| `value` | `string` |  | The code (controlled). |
+| `defaultValue` | `string` |  | Starting code (uncontrolled). |
+| `onValueChange` | `((value: string) => void)` |  | Called with the whole code on every change. |
+| `onComplete` | `((value: string) => void)` |  | Called once every box is filled, e.g. to submit. |
+| `size` | `"small" \| "medium" \| "large"` | medium | `small` 64px, `medium` 80px (default), `large` 96px boxes. |
+| `separatorAfter` | `number` |  | Shows a dash after this many boxes, e.g. 3 for "123-456". |
+| `mode` | `"numeric" \| "text"` | numeric | `numeric` (default) accepts digits and opens the number keypad; `text` accepts letters too. |
+| `placeholder` | `string` | 0 | Placeholder in each empty box. Default "0". |
+| `description` | `ReactNode` |  | Help text under the boxes. |
+| `error` | `ReactNode` |  | Error message; marks every box invalid. |
+| `disabled` | `boolean` |  |  |
+| `digitLabel` | `((index: number, length: number) => string)` | (i, n) => `Character ${i + 1} of ${n}` | Names each box for screen readers. Default "Character {n} of {length}". |
+| `name` | `string` |  | Form field name; the whole code is submitted in a hidden input. |
+
+## Guidelines
+- Do: Submit automatically with onComplete when the flow allows. Don’t: Make people press Verify after the last digit when nothing else is needed. Why: Fewer steps for a routine task.
+- Do: Offer a way to resend the code. Don’t: Leave people stuck when the code expired. Why: Codes get lost or expire.
+- Do: Use separatorAfter={3} for six-digit codes. Don’t: Split codes in groups the sender didn’t use. Why: Matching the message makes copying easier.
+
+## Content
+- Say where the code was sent: "Enter the code we sent to olivia@example.com".
+- On error, say what to do next: "That code is wrong. Try again or resend it."
+
+## Accessibility
+- Role: group (fieldset with legend); each box is a textbox.
+- Characters: Fill the box and move to the next.
+- Backspace: Clear the box, or the previous one when empty.
+- Arrow Left / Right: Move between boxes.
+- Home / End: First or last box.
+- `aria-label on each box`: "Character n of N"; override with digitLabel.
+- `aria-invalid`: On every box when error is set.
+- `aria-describedby`: Group points at the description and error.
+- Focus: Each box shows the focus ring; focus moves automatically as you type.
+- WCAG 1.3.1 Info and Relationships: fieldset and legend group the boxes.
+- WCAG 1.4.3 Contrast (Minimum): Text meets 4.5:1 in every theme (checked in CI).
+- WCAG 3.3.1 Error Identification: The error is text, linked to the group.
+- Don’t time out silently; tell people when a code expired.
+
+## Examples
+### Six-digit code
+Submits when complete.
+
+```tsx
+import { VerificationCodeInput } from '@ds/react';
+
+<VerificationCodeInput label="Verification code" onComplete={verify} />
+```
+
+### With a separator
+Two groups of three.
+
+```tsx
+import { VerificationCodeInput } from '@ds/react';
+
+<VerificationCodeInput label="Code" separatorAfter={3} size="small" />
+```
+
+### Error
+A wrong code.
+
+```tsx
+import { VerificationCodeInput } from '@ds/react';
+
+<VerificationCodeInput label="Code" length={4} error="That code is wrong." />
+```
+
+Tokens: `--verification-code-input-*` (values per theme in ai/components/verification-code-input.json).

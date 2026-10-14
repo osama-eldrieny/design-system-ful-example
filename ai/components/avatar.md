@@ -7,6 +7,7 @@ Status: stable · Category: Data display · Since 0.2.0
 ```tsx
 import { Avatar } from '@ds/react';
 import { AvatarGroup } from '@ds/react';
+import { AvatarLabelGroup } from '@ds/react';
 ```
 
 ## When to use
@@ -19,6 +20,7 @@ import { AvatarGroup } from '@ds/react';
 - As the only way to identify a person where names matter. Use Avatar with the name as text.
 
 ## Size (`size`)
+- `xsmall`: 20px. Inline mentions and chips.
 - `small`: 24px. Dense lists, table rows, stacked groups.
 - `medium`: 38px. Default for lists and cards.
 - `large`: 56px. Comments, contact cards.
@@ -42,7 +44,9 @@ import { AvatarGroup } from '@ds/react';
 | --- | --- | --- | --- |
 | `name` | `string` |  | The person's (or team's) name. Used as the accessible name and for the initials fallback. |
 | `src` | `string` |  | Photo URL. If it's missing or fails to load, initials are shown instead. |
-| `size` | `AvatarSize` | small | `small` 24px for dense lists, `medium` 38px, `large` 56px, `xlarge` 80px for profiles. |
+| `size` | `AvatarSize` | medium | `xsmall` 20px for inline mentions, `small` 24px for dense lists, `medium` 38px, `large` 56px, `xlarge` 80px for profiles. |
+| `verified` | `boolean` | false | Shows a verified check mark. Announced after the name. |
+| `verifiedLabel` | `string` | Verified | Replaces the default "Verified" wording, e.g. for translation. |
 | `status` | `AvatarStatus` |  | Presence dot. Announced after the name, e.g. "Sarah Chen, Online". |
 | `statusLabel` | `string` |  | Replaces the default status wording, e.g. for translation. |
 | `decorative` | `boolean` | false | Hides the avatar from screen readers. Use when the name is already shown as text right next to it, so it isn't read twice. |
@@ -53,8 +57,21 @@ import { AvatarGroup } from '@ds/react';
 | --- | --- | --- | --- |
 | `label` | `string` |  | What the group represents, e.g. "Meeting attendees". Announced before the avatars. |
 | `max` | `number` |  | Show at most this many avatars, then a "+N" count. |
-| `size` | `AvatarSize` | small | Size for every avatar in the group. |
+| `size` | `AvatarSize` | medium | Size for every avatar in the group. |
+| `onAdd` | `(() => void)` |  | Shows a dashed “add” button after the avatars, e.g. to invite someone. |
+| `addLabel` | `string` | Add person | Accessible name of the add button. Default "Add person". |
 | `children` | `ReactNode` |  | Avatar elements. |
+
+### AvatarLabelGroup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `string` |  | The person's name, shown in bold. |
+| `supportingText` | `ReactNode` |  | Supporting text under the name, e.g. an email address or a role. |
+| `src` | `string` |  | Photo URL. |
+| `size` | `"small" \| "medium" \| "large" \| "xlarge"` | medium | Size of the avatar; the text scales with it. Default medium. |
+| `status` | `AvatarStatus` |  | Presence dot. |
+| `verified` | `boolean` | false | Verified check mark. |
 
 ## Guidelines
 - Do: Show the person’s name next to the avatar where it matters. Don’t: Rely on the photo alone to identify someone. Why: Faces are hard to tell apart at small sizes, and missing photos fall back to initials.
@@ -78,6 +95,15 @@ import { AvatarGroup } from '@ds/react';
 - Status colors are not the only cue: show the status in words where it matters.
 
 ## Examples
+### With name and email
+AvatarLabelGroup for table cells and menus.
+
+```tsx
+import { AvatarLabelGroup } from '@ds/react';
+
+<AvatarLabelGroup name="Sarah Chen" supportingText="sarah@example.com" />
+```
+
 ### Avatar with a photo
 Falls back to initials if the photo is missing.
 

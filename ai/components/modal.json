@@ -72,6 +72,20 @@
   ],
   "options": [
     {
+      "prop": "align",
+      "title": "Alignment",
+      "values": [
+        {
+          "value": "start",
+          "meaning": "Text and icon at the start. Default."
+        },
+        {
+          "value": "center",
+          "meaning": "Centered, with full-width footer buttons; short confirmations."
+        }
+      ]
+    },
+    {
       "prop": "size",
       "title": "Size",
       "values": [
@@ -86,6 +100,10 @@
         {
           "value": "large",
           "meaning": "Rich or long content."
+        },
+        {
+          "value": "xlarge",
+          "meaning": "Wide content, e.g. a table or a multi-column form."
         }
       ]
     },
@@ -242,6 +260,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "Size xlarge; icon (featured icon above the title), iconTone and align=\"center\"."
+      ]
     }
   ],
   "components": [
@@ -282,15 +307,53 @@
           "description": "Short explanation under the title; describes the dialog."
         },
         "size": {
-          "type": "\"small\" | \"medium\" | \"large\"",
+          "type": "\"small\" | \"medium\" | \"large\" | \"xlarge\"",
           "values": [
             "small",
             "medium",
-            "large"
+            "large",
+            "xlarge"
           ],
           "required": false,
           "default": "medium",
           "description": "`small` for confirmations, `medium` (default) for forms, `large` for rich content."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A featured icon above the title, e.g. a trash can for a delete confirmation."
+        },
+        "iconTone": {
+          "type": "BadgeColor",
+          "values": [
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger",
+            "gray",
+            "blue",
+            "sky",
+            "indigo",
+            "purple",
+            "pink",
+            "orange",
+            "teal"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": "Color of the featured icon. Default primary; danger for destructive dialogs."
+        },
+        "align": {
+          "type": "\"center\" | \"start\"",
+          "values": [
+            "center",
+            "start"
+          ],
+          "required": false,
+          "default": "start",
+          "description": "`start` (default) or `center`: centers the icon, text and footer buttons."
         },
         "role": {
           "type": "\"dialog\" | \"alertdialog\"",
@@ -549,6 +612,21 @@
       "description": "Elements appearing (decelerate into place).",
       "references": "--easing-enter",
       "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--modal-xlarge-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 5)"
+    },
+    "--modal-icon-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--modal-close-inset": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
     },
     "--modal-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

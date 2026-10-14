@@ -50,6 +50,20 @@
   ],
   "options": [
     {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dense settings lists and table rows."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        }
+      ]
+    },
+    {
       "prop": "labelPosition",
       "title": "Label position",
       "values": [
@@ -219,6 +233,13 @@
   ],
   "changelog": [
     {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "size: small."
+      ]
+    },
+    {
       "version": "0.2.0",
       "date": "2026-09-29",
       "changes": [
@@ -272,6 +293,16 @@
           "required": false,
           "default": "end",
           "description": "Side of the switch the label sits on. `end` (default) or `start` for settings lists."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\"",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for dense settings lists and tables, `medium` by default."
         }
       }
     }
@@ -408,6 +439,31 @@
         "brand=opal,mode=light": "#676b83",
         "brand=opal,mode=dark": "#afb2be"
       }
+    },
+    "--switch-small-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xl-minus",
+      "default": "32px"
+    },
+    "--switch-small-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--switch-small-thumb-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xs",
+      "default": "14px"
+    },
+    "--switch-small-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--switch-small-label-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
     },
     "--switch-focus-ring-width": {
       "description": "Thickness of the keyboard focus ring.",

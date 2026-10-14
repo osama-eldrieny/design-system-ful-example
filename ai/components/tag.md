@@ -23,6 +23,12 @@ import { Tag } from '@ds/react';
 - `success`: Positive category.
 - `warning`: Caution category.
 - `danger`: Negative category.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: Category hues with no meaning of their own.
+
+## Size (`size`)
+- `small`: Dense tables and filter bars.
+- `medium`: Default.
+- `large`: Prominent lists of keywords.
 
 ## Appearance (`appearance`)
 - `subtle`: Tinted. Default.
@@ -39,7 +45,10 @@ import { Tag } from '@ds/react';
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `children` | `string` |  | Text of the tag; also names its remove button. |
-| `tone` | `TagTone` | secondary | Color meaning. Default secondary (neutral). |
+| `tone` | `BadgeColor` | secondary | Color meaning or category hue. Default secondary (neutral). |
+| `size` | `TagSize` | medium | `small`, `medium` (default) or `large`. |
+| `count` | `number` |  | A count after the text, e.g. how many items match a filter. |
+| `image` | `string` |  | Small round picture before the text, e.g. a person. Decorative. |
 | `appearance` | `"solid" \| "subtle"` | subtle | `subtle` (default) or `solid`. |
 | `icon` | `ReactNode` |  | Decorative icon before the text. |
 | `onRemove` | `(() => void)` |  | Shows a remove button that calls this. |

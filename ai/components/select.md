@@ -64,6 +64,10 @@ import { SelectSeparator } from '@ds/react';
 | --- | --- | --- | --- |
 | `value` | `string` |  | The value this option selects. |
 | `children` | `ReactNode` |  | Option text; also used for typeahead. |
+| `icon` | `ReactNode` |  | Decorative icon before the text; also shown in the trigger when selected. |
+| `avatar` | `{ name: string; src?: string; }` |  | A person's picture (with initials fallback) before the text. |
+| `dot` | `BadgeColor` |  | A status dot before the text, in a meaning or category color. |
+| `supportingText` | `ReactNode` |  | Secondary text after the label, e.g. a username or an email. |
 
 ### SelectGroup
 
@@ -104,6 +108,17 @@ import { SelectSeparator } from '@ds/react';
 - WCAG 1.4.11 Non-text Contrast: Trigger border meets 3:1 in every theme.
 
 ## Examples
+### People with avatars
+Options with an avatar and a username.
+
+```tsx
+import { Select, SelectItem } from '@ds/react';
+
+<Select label="Assignee">
+  <SelectItem value="olivia" avatar={{ name: 'Olivia Rhye' }} supportingText="@olivia">Olivia Rhye</SelectItem>
+</Select>
+```
+
 ### Select
 Label, placeholder and options.
 

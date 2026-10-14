@@ -56,6 +56,20 @@
   ],
   "options": [
     {
+      "prop": "layout",
+      "title": "Layout",
+      "values": [
+        {
+          "value": "inline",
+          "meaning": "A card within the content. Default."
+        },
+        {
+          "value": "banner",
+          "meaning": "Full width at the top of a page or section."
+        }
+      ]
+    },
+    {
       "prop": "variant",
       "title": "Variant",
       "values": [
@@ -232,6 +246,13 @@
   ],
   "changelog": [
     {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "layout=\"banner\"."
+      ]
+    },
+    {
       "version": "0.2.0",
       "date": "2026-09-29",
       "changes": [
@@ -304,6 +325,16 @@
           "required": false,
           "default": "Dismiss",
           "description": "Accessible name of the dismiss button. Default \"Dismiss\"."
+        },
+        "layout": {
+          "type": "\"inline\" | \"banner\"",
+          "values": [
+            "inline",
+            "banner"
+          ],
+          "required": false,
+          "default": "inline",
+          "description": "`inline` (default) a card within the content. `banner` full width with square corners and\nthe text and actions in one row, e.g. at the top of the page."
         }
       }
     }
@@ -992,6 +1023,11 @@
       "description": "Moving between two states on screen.",
       "references": "--easing-standard",
       "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--alerts-banner-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
     },
     "--alerts-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

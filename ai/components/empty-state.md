@@ -16,6 +16,11 @@ import { EmptyState } from '@ds/react';
 - For errors. Use Alert.
 - While loading. Use Skeleton or Spinner.
 
+## Size (`size`)
+- `small`: Inside cards and tables.
+- `medium`: Default.
+- `large`: A whole page, e.g. first use.
+
 ## Heading level (`titleAs`)
 - `h2`: Default.
 - `h3 / h4`: Inside sections.
@@ -33,6 +38,8 @@ import { EmptyState } from '@ds/react';
 | `description` | `ReactNode` |  | Why it’s empty and what to do next. |
 | `actions` | `ReactNode` |  | Actions, e.g. a Button to create the first item. |
 | `titleAs` | `"h2" \| "h3" \| "h4"` | h2 | Heading level that fits the page. Default h2. |
+| `size` | `"small" \| "medium" \| "large"` | medium | `small` inside cards and tables, `medium` (default), `large` for a whole page. |
+| `illustration` | `ReactNode` |  | An image or illustration shown instead of the icon. Decorative. |
 
 ## Guidelines
 - Do: Offer the next step. Don’t: Leave people at a dead end. Why: An action gets people going.

@@ -6,6 +6,7 @@ Status: stable · Category: Feedback · Since 0.4.0
 
 ```tsx
 import { Progress } from '@ds/react';
+import { ProgressCircle } from '@ds/react';
 ```
 
 ## When to use
@@ -26,6 +27,15 @@ import { Progress } from '@ds/react';
 - `medium`: Default.
 - `small`: Thin; cards and tables.
 
+## Value position (`valuePosition`)
+- `top`: Beside the label. Default.
+- `end`: After the bar, for compact rows.
+- `bottom`: Under the end of the bar.
+
+## ProgressCircle shape (`shape`)
+- `circle`: A full ring. Default.
+- `half`: A semicircle gauge, for scores and quotas.
+
 ## States
 - **Determinate**: Bar length shows value/max. (value)
 - **Indeterminate**: Animated bar; unknown progress. (no value)
@@ -43,6 +53,21 @@ import { Progress } from '@ds/react';
 | `formatValue` | `((value: number, max: number) => string)` | (value: number, max: number) => `${Math.round((value / max) * 100)}%` | Formats the shown and announced value. Default a percentage. |
 | `tone` | `"primary" \| "success" \| "warning" \| "danger"` | primary | Color meaning: primary (default), success, warning, danger. |
 | `size` | `"small" \| "medium"` | medium | `small` for a thin bar in cards and tables, `medium` by default. |
+| `valuePosition` | `"top" \| "end" \| "bottom"` | top | Where the value shows with showValue: `top` (default) beside the label, `end` after the bar, `bottom` under the bar's end. |
+
+### ProgressCircle
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `ReactNode` |  | What is measured, e.g. "Storage used". Names the progress bar; shown under the ring. |
+| `hideLabel` | `boolean` | false | Hides the label visually; it is still announced. |
+| `value` | `number` |  | Current value, 0 to max. |
+| `max` | `number` | 100 |  |
+| `formatValue` | `((value: number, max: number) => string)` | (value: number, max: number) => `${Math.round((value / max) * 100)}%` | Text in the middle. Default: the percentage. |
+| `caption` | `ReactNode` |  | Small caption under the value inside the ring, e.g. "Active users". |
+| `shape` | `"circle" \| "half"` | circle | `circle` (default) full ring, `half` a semicircle gauge. |
+| `size` | `"small" \| "medium" \| "large"` | medium | `small` 64px, `medium` 120px (default), `large` 200px. |
+| `tone` | `"primary" \| "success" \| "warning" \| "danger"` | primary |  |
 
 ## Guidelines
 - Do: Always give a label. Don’t: Show an unlabelled bar. Why: The label says what is progressing.
@@ -63,6 +88,24 @@ import { Progress } from '@ds/react';
 - WCAG 2.3.3 Animation from Interactions: Slows for reduced motion.
 
 ## Examples
+### Ring
+ProgressCircle with a caption.
+
+```tsx
+import { ProgressCircle } from '@ds/react';
+
+<ProgressCircle label="Storage used" value={64} caption="of 20 GB" />
+```
+
+### Gauge
+A half-ring for scores.
+
+```tsx
+import { ProgressCircle } from '@ds/react';
+
+<ProgressCircle label="Health score" value={72} shape="half" />
+```
+
 ### Upload
 With the value shown.
 

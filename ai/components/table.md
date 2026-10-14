@@ -6,6 +6,7 @@ Status: stable · Category: Data display · Since 0.4.0
 
 ```tsx
 import { Table } from '@ds/react';
+import { TableCard } from '@ds/react';
 ```
 
 ## When to use
@@ -55,6 +56,19 @@ import { Table } from '@ds/react';
 | `empty` | `ReactNode` |  | Shown in a full-width cell when there are no rows. |
 | `ref` | `Ref<HTMLTableElement>` |  |  |
 
+### TableCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `ReactNode` |  | Heading of the card, e.g. "Team members". |
+| `titleAs` | `"h2" \| "h3" \| "h4"` | h2 | Heading level. Default h2. |
+| `badge` | `ReactNode` |  | Small badge after the title, e.g. "100 users". |
+| `description` | `ReactNode` |  | Supporting text under the title. |
+| `actions` | `ReactNode` |  | Buttons at the end of the header, e.g. "Add member". |
+| `toolbar` | `ReactNode` |  | A row between the header and the table, e.g. tabs, search and filters. |
+| `footer` | `ReactNode` |  | Under the table, e.g. Pagination. |
+| `children` | `ReactNode` |  | The Table. |
+
 ## Guidelines
 - Do: Give every table a caption (hide it if the page heading already says it). Don’t: Leave tables unnamed. Why: The caption names the table for screen readers.
 - Do: Align numbers to the end. Don’t: Center or left-align money. Why: Aligned digits are easy to compare.
@@ -77,6 +91,22 @@ import { Table } from '@ds/react';
 - WCAG 4.1.2 Name, Role, Value: Named checkboxes and sort state.
 
 ## Examples
+### In a card with a toolbar
+TableCard with actions and pagination.
+
+```tsx
+import { Button, Pagination, Table, TableCard } from '@ds/react';
+
+<TableCard
+  title="Team members"
+  badge="100 users"
+  actions={<Button size="small">Add member</Button>}
+  footer={<Pagination currentPage={1} totalPages={10} layout="spread" showArrowLabels />}
+>
+  <Table caption="Team members" hideCaption columns={columns} rows={rows} />
+</TableCard>
+```
+
 ### Orders
 Sortable, with money aligned.
 

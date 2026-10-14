@@ -25,6 +25,12 @@ import { TabPanel } from '@ds/react';
 - `enclosed`: Tabs in a tinted container. Compact filters and toolbars.
 - `pill`: Filled pill on the selected tab, no container. Light filtering inside cards.
 - `line`: Underline under the selected tab. Page-level sections.
+- `segmented`: Bordered bar with the selected tab raised. View switchers, e.g. Day / Week / Month.
+- `subtle`: No container; the selected tab tinted in the brand color. Settings sidebars.
+
+## Size (`size`)
+- `small`: Toolbars, cards and table headers.
+- `medium`: Default.
 
 ## Orientation (`orientation`)
 - `horizontal`: Tabs in a row above the panel. Default.
@@ -45,7 +51,9 @@ import { TabPanel } from '@ds/react';
 | `value` | `string` |  | Selected tab (controlled). Use with onValueChange. |
 | `defaultValue` | `string` |  | Initially selected tab when uncontrolled. |
 | `onValueChange` | `((value: string) => void)` |  | Called with the new tab's value. |
-| `appearance` | `TabsAppearance` | enclosed | `enclosed` (default): tabs in a tinted container, for compact filters and toolbars. `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections. |
+| `appearance` | `TabsAppearance` | enclosed | `enclosed` (default): tabs in a tinted container, for compact filters and toolbars. `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections. `segmented`: bordered bar, the selected tab raised on the surface, for view switchers. `subtle`: no container, the selected tab tinted in the brand color, for sidebars. |
+| `size` | `"small" \| "medium"` | medium | `small` for toolbars and cards, `medium` (default). |
+| `fullWidth` | `boolean` | false | Stretches the tab list to the full width, tabs sharing it equally. |
 | `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a column beside the panel, for settings pages with many sections; Up and Down arrows move between tabs. On narrow screens vertical tabs sit above the panel. |
 | `children` | `ReactNode` |  | TabList and TabPanels. |
 
@@ -63,6 +71,7 @@ import { TabPanel } from '@ds/react';
 | `value` | `string` |  | Matches the TabPanel this tab shows. |
 | `icon` | `ReactNode` |  | Icon before the label. Hidden from screen readers. |
 | `children` | `ReactNode` |  | Tab label. |
+| `count` | `number` |  | A count after the label, e.g. unread items. |
 
 ### TabPanel
 

@@ -17,6 +17,10 @@ import { Switch } from '@ds/react';
 - To choose one option from several. Use RadioGroup.
 - To trigger an action such as "Refresh". Use Button.
 
+## Size (`size`)
+- `small`: Dense settings lists and table rows.
+- `medium`: Default.
+
 ## Label position (`labelPosition`)
 - `end`: Label after the switch. Default for standalone switches.
 - `start`: Label before the switch, aligned edge to edge in settings lists.
@@ -39,6 +43,7 @@ import { Switch } from '@ds/react';
 | `label` | `ReactNode` |  | Visible label saying what the switch controls, e.g. "Email notifications". Clicking it toggles the switch. Without a label, pass aria-label. |
 | `description` | `ReactNode` |  | Extra detail under the label; announced as the switch's description. |
 | `labelPosition` | `"start" \| "end"` | end | Side of the switch the label sits on. `end` (default) or `start` for settings lists. |
+| `size` | `"small" \| "medium"` | medium | `small` for dense settings lists and tables, `medium` by default. |
 
 ## Guidelines
 - Do: Use a switch for settings that apply immediately. Don’t: Use a switch inside a form that is applied with a Save button. Why: People expect a switch to take effect at once; a delayed change is surprising.

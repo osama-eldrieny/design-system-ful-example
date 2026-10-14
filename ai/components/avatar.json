@@ -13,6 +13,10 @@
     {
       "name": "AvatarGroup",
       "from": "@ds/react"
+    },
+    {
+      "name": "AvatarLabelGroup",
+      "from": "@ds/react"
     }
   ],
   "whenToUse": [
@@ -50,6 +54,10 @@
       "prop": "size",
       "title": "Size",
       "values": [
+        {
+          "value": "xsmall",
+          "meaning": "20px. Inline mentions and chips."
+        },
         {
           "value": "small",
           "meaning": "24px. Dense lists, table rows, stacked groups."
@@ -190,6 +198,12 @@
   },
   "examples": [
     {
+      "id": "label-group",
+      "title": "With name and email",
+      "description": "AvatarLabelGroup for table cells and menus.",
+      "code": "import { AvatarLabelGroup } from '@ds/react';\n\n<AvatarLabelGroup name=\"Sarah Chen\" supportingText=\"sarah@example.com\" />"
+    },
+    {
       "id": "basic",
       "title": "Avatar with a photo",
       "description": "Falls back to initials if the photo is missing.",
@@ -218,6 +232,15 @@
     }
   ],
   "changelog": [
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "Size xsmall; verified check mark.",
+        "AvatarGroup: onAdd shows a dashed add button.",
+        "New AvatarLabelGroup: avatar with a name and supporting text."
+      ]
+    },
     {
       "version": "0.2.0",
       "date": "2026-09-29",
@@ -249,14 +272,27 @@
         "size": {
           "type": "AvatarSize",
           "values": [
+            "xsmall",
             "small",
             "medium",
             "large",
             "xlarge"
           ],
           "required": false,
-          "default": "small",
-          "description": "`small` 24px for dense lists, `medium` 38px, `large` 56px, `xlarge` 80px for profiles."
+          "default": "medium",
+          "description": "`xsmall` 20px for inline mentions, `small` 24px for dense lists, `medium` 38px, `large`\n56px, `xlarge` 80px for profiles."
+        },
+        "verified": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows a verified check mark. Announced after the name."
+        },
+        "verifiedLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Verified",
+          "description": "Replaces the default \"Verified\" wording, e.g. for translation."
         },
         "status": {
           "type": "AvatarStatus",
@@ -304,14 +340,27 @@
         "size": {
           "type": "AvatarSize",
           "values": [
+            "xsmall",
             "small",
             "medium",
             "large",
             "xlarge"
           ],
           "required": false,
-          "default": "small",
+          "default": "medium",
           "description": "Size for every avatar in the group."
+        },
+        "onAdd": {
+          "type": "(() => void)",
+          "required": false,
+          "default": null,
+          "description": "Shows a dashed “add” button after the avatars, e.g. to invite someone."
+        },
+        "addLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Add person",
+          "description": "Accessible name of the add button. Default \"Add person\"."
         },
         "children": {
           "type": "ReactNode",
@@ -320,9 +369,74 @@
           "description": "Avatar elements."
         }
       }
+    },
+    {
+      "name": "AvatarLabelGroup",
+      "import": "import { AvatarLabelGroup } from '@ds/react';",
+      "description": "An avatar with a name and supporting text, e.g. in a table cell, menu or sidebar footer.",
+      "props": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The person's name, shown in bold."
+        },
+        "supportingText": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Supporting text under the name, e.g. an email address or a role."
+        },
+        "src": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Photo URL."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\" | \"large\" | \"xlarge\"",
+          "values": [
+            "small",
+            "medium",
+            "large",
+            "xlarge"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "Size of the avatar; the text scales with it. Default medium."
+        },
+        "status": {
+          "type": "AvatarStatus",
+          "values": [
+            "online",
+            "away",
+            "busy",
+            "offline"
+          ],
+          "required": false,
+          "default": null,
+          "description": "Presence dot."
+        },
+        "verified": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Verified check mark."
+        }
+      }
     }
   ],
   "tokens": {
+    "--avatar-xsmall-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--avatar-xsmall-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
     "--avatar-small-size": {
       "description": "Fixed element sizes in px.",
       "references": "--sizing-lg",
@@ -461,10 +575,193 @@
         "brand=opal,mode=dark": "#f1f1f2"
       }
     },
+    "--avatar-verified-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--avatar-verified-icon-color": {
+      "description": "Text and icons on the matching --color-bg-accent fill.",
+      "references": "--color-fg-on-accent-primary-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#1e140d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
     "--avatar-group-gap": {
       "description": "Negative space (-4px) for deliberate overlap, e.g. stacked avatars.",
       "references": "--spacing-4xs",
       "default": "-4px"
+    },
+    "--avatar-group-add-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--avatar-group-add-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--avatar-group-add-border-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--avatar-group-add-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--avatar-group-add-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--avatar-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--avatar-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--avatar-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--avatar-label-group-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--avatar-label-group-name-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--avatar-label-group-name-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--avatar-label-group-supporting-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--avatar-label-group-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--avatar-label-group-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--avatar-label-group-small-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--avatar-label-group-medium-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--avatar-label-group-medium-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--avatar-label-group-large-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--avatar-label-group-large-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--avatar-label-group-xlarge-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--avatar-label-group-xlarge-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--avatar-xsmall-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-4",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
     },
     "--avatar-small-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

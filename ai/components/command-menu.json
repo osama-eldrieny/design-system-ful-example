@@ -1,0 +1,630 @@
+{
+  "id": "command-menu",
+  "name": "CommandMenu",
+  "category": "Overlays",
+  "status": "stable",
+  "since": "1.1.0",
+  "description": "A searchable list of pages and actions in a dialog, opened with ⌘K (Ctrl+K): type to filter, arrow keys to move, Enter to run. Groups, icons, descriptions and shortcut hints.",
+  "imports": [
+    {
+      "name": "CommandMenu",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "Fast navigation and actions in apps with many pages.",
+    "A global search over records, with results grouped by type."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a few actions on one item.",
+      "alternative": "DropdownMenu"
+    },
+    {
+      "text": "For choosing a form value.",
+      "alternative": "Combobox"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Search field",
+      "description": "Filters the results as you type."
+    },
+    {
+      "name": "Group label",
+      "description": "E.g. \"Pages\", \"Actions\"."
+    },
+    {
+      "name": "Item",
+      "description": "Icon, label, description and shortcut hint."
+    },
+    {
+      "name": "Empty state",
+      "description": "When nothing matches.",
+      "optional": true
+    },
+    {
+      "name": "Footer",
+      "description": "Key hints.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "hotkey",
+      "title": "Hotkey",
+      "values": [
+        {
+          "value": "true",
+          "meaning": "⌘K / Ctrl+K toggles the menu anywhere. Default."
+        },
+        {
+          "value": "false",
+          "meaning": "Open it yourself, e.g. from a search button."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Closed",
+      "meaning": "Hidden.",
+      "trigger": "Default."
+    },
+    {
+      "name": "Open",
+      "meaning": "Dialog with focus in the search.",
+      "trigger": "⌘K or open."
+    },
+    {
+      "name": "Active item",
+      "meaning": "Highlighted; Enter runs it.",
+      "trigger": "Arrow keys or pointer."
+    },
+    {
+      "name": "Empty",
+      "meaning": "Nothing matches.",
+      "trigger": "Search text."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Matching",
+      "text": "Matches the label, description and keywords, ignoring case."
+    },
+    {
+      "topic": "Running",
+      "text": "Choosing an item runs onSelect and closes the menu."
+    },
+    {
+      "topic": "Server results",
+      "text": "Use onSearchChange to fetch results and pass new groups."
+    }
+  ],
+  "content": [
+    "Name items as pages (\"Orders\") or verbs (\"New invoice\").",
+    "Add keywords for synonyms people might type."
+  ],
+  "guidelines": [
+    {
+      "do": "Offer a visible search button too.",
+      "dont": "Rely on the hotkey alone.",
+      "why": "Not everyone knows ⌘K."
+    },
+    {
+      "do": "Group results by type.",
+      "dont": "Mix pages, people and actions in one list.",
+      "why": "Groups make long lists scannable."
+    },
+    {
+      "do": "Keep shortcut hints accurate.",
+      "dont": "Show shortcuts that do nothing.",
+      "why": "Hints teach faster paths."
+    }
+  ],
+  "accessibility": {
+    "role": "dialog with a combobox search field controlling a listbox of options.",
+    "keyboard": [
+      {
+        "keys": "⌘K / Ctrl+K",
+        "action": "Opens and closes."
+      },
+      {
+        "keys": "Arrow Up / Down",
+        "action": "Moves between results."
+      },
+      {
+        "keys": "Home / End",
+        "action": "First or last result."
+      },
+      {
+        "keys": "Enter",
+        "action": "Runs the active result."
+      },
+      {
+        "keys": "Escape",
+        "action": "Closes."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-activedescendant",
+        "when": "Points the search field at the active option."
+      },
+      {
+        "attribute": "role=\"group\" + label",
+        "when": "Each result group."
+      }
+    ],
+    "focus": "Focus stays in the search field; the active option is highlighted. Focus returns on close.",
+    "wcag": [
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Everything works from the keyboard."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Combobox and listbox semantics."
+      }
+    ],
+    "notes": [
+      "⌘K is a convention, not an operating system shortcut; avoid conflicts in your app."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Pages and actions",
+      "description": "Opens with ⌘K.",
+      "code": "import { CommandMenu } from '@ds/react';\n\n<CommandMenu groups={[{ label: 'Pages', items: [{ id: 'orders', label: 'Orders', onSelect: () => go('/orders') }] }]} />"
+    },
+    {
+      "id": "controlled",
+      "title": "From a search button",
+      "description": "Controlled open state.",
+      "code": "import { Button, CommandMenu } from '@ds/react';\n\nconst [open, setOpen] = useState(false);\n<Button onClick={() => setOpen(true)}>Search…</Button>\n<CommandMenu open={open} onOpenChange={setOpen} groups={groups} />"
+    },
+    {
+      "id": "server",
+      "title": "Server results",
+      "description": "Fetch as people type.",
+      "code": "import { CommandMenu } from '@ds/react';\n\n<CommandMenu groups={results} onSearchChange={(q) => fetchResults(q)} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--command-menu-"
+  ],
+  "related": [
+    {
+      "id": "kbd",
+      "relation": "Shortcut hints."
+    },
+    {
+      "id": "combobox",
+      "relation": "For picking a value in a form."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "CommandMenu",
+      "import": "import { CommandMenu } from '@ds/react';",
+      "description": "A searchable list of pages and actions in a dialog, opened with ⌘K: type to filter, arrow\nkeys to move, Enter to run.",
+      "props": {
+        "open": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "defaultOpen": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": ""
+        },
+        "onOpenChange": {
+          "type": "((open: boolean) => void)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "groups": {
+          "type": "CommandMenuGroup[]",
+          "required": true,
+          "default": null,
+          "description": "Results, grouped. Filtered by the search text."
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "default": "Command menu",
+          "description": "Names the dialog and the search field. Default \"Command menu\"."
+        },
+        "placeholder": {
+          "type": "string",
+          "required": false,
+          "default": "Search or type a command…",
+          "description": "Default \"Search or type a command…\"."
+        },
+        "emptyText": {
+          "type": "ReactNode",
+          "required": false,
+          "default": "No results",
+          "description": "Shown when nothing matches. Default \"No results\"."
+        },
+        "hotkey": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Opens the menu with ⌘K / Ctrl+K anywhere on the page. Default true."
+        },
+        "showFooter": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows key hints at the bottom. Default true."
+        },
+        "onSearchChange": {
+          "type": "((search: string) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the search text, e.g. to load results from a server."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--command-menu-scrim-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--command-menu-scrim-opacity": {
+      "description": null,
+      "references": null,
+      "default": "0.4"
+    },
+    "--command-menu-z-index": {
+      "description": "Modals and drawers.",
+      "references": "--z-modal",
+      "default": "1400"
+    },
+    "--command-menu-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--command-menu-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--command-menu-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--command-menu-border-radius": {
+      "description": "Large surfaces: cards, sections, modals.",
+      "references": "--radius-2xl",
+      "default": "16px"
+    },
+    "--command-menu-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 2.9)"
+    },
+    "--command-menu-max-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 2)"
+    },
+    "--command-menu-offset-top": {
+      "description": "Page-level outer spacing.",
+      "references": "--spacing-5xl",
+      "default": "40px"
+    },
+    "--command-menu-shadow-y": {
+      "description": "Medium elevation: dropdowns, popovers.",
+      "references": "--shadow-lg",
+      "default": "20px"
+    },
+    "--command-menu-shadow-blur": {
+      "description": "High elevation: modals, toasts.",
+      "references": "--shadow-2xl",
+      "default": "40px"
+    },
+    "--command-menu-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--command-menu-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--command-menu-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--command-menu-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--command-menu-search-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--command-menu-search-padding-y": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--command-menu-search-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--command-menu-search-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--command-menu-search-placeholder-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--command-menu-search-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--command-menu-search-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--command-menu-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--command-menu-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--command-menu-list-padding": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--command-menu-group-label-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--command-menu-group-label-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--command-menu-group-label-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--command-menu-group-label-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--command-menu-group-label-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--command-menu-item-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--command-menu-item-active-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--command-menu-item-active-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--command-menu-item-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--command-menu-item-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--command-menu-item-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--command-menu-item-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--command-menu-item-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-md",
+      "default": "4px"
+    },
+    "--command-menu-empty-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--command-menu-empty-padding": {
+      "description": "Large section padding.",
+      "references": "--spacing-2xl",
+      "default": "28px"
+    },
+    "--command-menu-footer-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--command-menu-footer-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--command-menu-footer-padding-x": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--command-menu-footer-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--command-menu-footer-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--command-menu-footer-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-overlays-commandmenu--docs"
+}

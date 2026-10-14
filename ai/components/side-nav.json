@@ -46,6 +46,20 @@
   ],
   "options": [
     {
+      "prop": "collapsed",
+      "title": "Collapsed",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Icons and labels. Default."
+        },
+        {
+          "value": "true",
+          "meaning": "Icons only, labels in tooltips, for a slim sidebar."
+        }
+      ]
+    },
+    {
       "prop": "sections",
       "title": "Structure",
       "values": [
@@ -201,6 +215,13 @@
       ]
     },
     {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "Item badge; collapsed (icon-only) mode with tooltips; header and footer slots."
+      ]
+    },
+    {
       "version": "1.1.0",
       "date": "2026-09-29",
       "changes": [
@@ -231,6 +252,24 @@
           "required": false,
           "default": "Side",
           "description": "Names the navigation landmark. Default \"Side\"."
+        },
+        "collapsed": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Slim: icons only, labels in tooltips, for a collapsed sidebar. Nested groups show their\nchildren only when expanded; give every top-level item an icon."
+        },
+        "header": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Above the sections, e.g. the product logo or a search field."
+        },
+        "footer": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Pinned to the bottom, e.g. settings links and the account (AvatarLabelGroup)."
         }
       }
     }
@@ -455,6 +494,82 @@
         "brand=opal,mode=light": "#326fd1",
         "brand=opal,mode=dark": "#abc9fb"
       }
+    },
+    "--side-nav-badge-min-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--side-nav-badge-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--side-nav-badge-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--side-nav-badge-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--side-nav-badge-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--side-nav-badge-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--side-nav-badge-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--side-nav-badge-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--side-nav-footer-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--side-nav-footer-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--side-nav-collapsed-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-3xl",
+      "default": "80px"
     },
     "--side-nav-item-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

@@ -18,6 +18,10 @@ import { Alert } from '@ds/react';
 - For an error on a single field. Use The field’s error message.
 - For decisions people must make before continuing. Use Dialog.
 
+## Layout (`layout`)
+- `inline`: A card within the content. Default.
+- `banner`: Full width at the top of a page or section.
+
 ## Variant (`variant`)
 - `primary`: Neutral information, e.g. a feature announcement or status.
 - `success`: An action completed, e.g. "Payment received".
@@ -46,6 +50,7 @@ import { Alert } from '@ds/react';
 | `actions` | `ReactNode` |  | Buttons or links related to the message, e.g. "Retry". |
 | `onDismiss` | `(() => void)` |  | Shows a dismiss button that calls this. |
 | `dismissLabel` | `string` | Dismiss | Accessible name of the dismiss button. Default "Dismiss". |
+| `layout` | `"inline" \| "banner"` | inline | `inline` (default) a card within the content. `banner` full width with square corners and the text and actions in one row, e.g. at the top of the page. |
 
 ## Guidelines
 - Do: Match the variant to what happened. Don’t: Use danger for a neutral announcement to get attention. Why: Colors carry meaning; misusing them trains people to ignore real problems.

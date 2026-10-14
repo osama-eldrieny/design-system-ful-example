@@ -16,6 +16,14 @@ import { Breadcrumb } from '@ds/react';
 - For steps of a task. Use Stepper.
 - For browsing history. Use A back link.
 
+## Separator (`separator`)
+- `chevron`: Default.
+- `slash`: A lighter look, e.g. in page headers.
+
+## Appearance (`appearance`)
+- `text`: Plain links. Default.
+- `button`: Tinted pill on hover and on the current page.
+
 ## Collapsing (`maxItems`)
 - `undefined`: Shows every level. Default.
 - `n (≥ 3)`: Shows the first, “…”, and the last n − 2.
@@ -33,6 +41,9 @@ import { Breadcrumb } from '@ds/react';
 | `items` | `BreadcrumbItem[]` |  | From the top level down to the current page (last). |
 | `maxItems` | `number` |  | Shows at most this many items; the middle collapses into a “…” button that expands them. At least 3. |
 | `expandLabel` | `string` | Show all pages | Accessible name of the “…” button. Default "Show all pages". |
+| `separator` | `"chevron" \| "slash"` | chevron | `chevron` (default) or `slash` between items. |
+| `homeIcon` | `boolean` | false | Shows a home icon instead of the first item's text (its label stays the accessible name). |
+| `appearance` | `"text" \| "button"` | text | `text` (default) or `button`: items get a tinted background on hover and when current. |
 | `aria-label` | `string` | Breadcrumb | Names the navigation landmark. Default "Breadcrumb". |
 
 ## Guidelines

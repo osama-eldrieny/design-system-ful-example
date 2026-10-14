@@ -163,6 +163,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "title and arrow."
+      ]
     }
   ],
   "components": [
@@ -176,6 +183,18 @@
           "required": true,
           "default": null,
           "description": "Short hint shown on hover and keyboard focus. Plain text only, no links or buttons."
+        },
+        "title": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Bold first line above the content, for a tooltip with a title and supporting text."
+        },
+        "arrow": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows a small arrow pointing at the trigger."
         },
         "children": {
           "type": "ReactElement<unknown, string | JSXElementConstructor<any>>",
@@ -286,6 +305,38 @@
       "description": "Elements appearing (decelerate into place).",
       "references": "--easing-enter",
       "default": "cubic-bezier(0, 0, 0, 1)"
+    },
+    "--tooltip-rich-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--tooltip-rich-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--tooltip-rich-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--tooltip-title-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--tooltip-supporting-text-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
     }
   },
   "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-overlays-tooltip--docs"

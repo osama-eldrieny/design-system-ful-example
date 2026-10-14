@@ -29,6 +29,8 @@ import { Tooltip } from '@ds/react';
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
 | `content` | `ReactNode` |  | Short hint shown on hover and keyboard focus. Plain text only, no links or buttons. |
+| `title` | `ReactNode` |  | Bold first line above the content, for a tooltip with a title and supporting text. |
+| `arrow` | `boolean` | false | Shows a small arrow pointing at the trigger. |
 | `children` | `ReactElement<unknown, string \| JSXElementConstructor<any>>` |  | The element it describes; must be focusable (e.g. an IconButton). |
 | `delayDuration` | `number` | 400 | Delay before showing, in ms. Default 400. |
 | `open` | `boolean` |  | Open state (controlled). |

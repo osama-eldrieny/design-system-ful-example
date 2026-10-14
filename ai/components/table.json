@@ -9,6 +9,10 @@
     {
       "name": "Table",
       "from": "@ds/react"
+    },
+    {
+      "name": "TableCard",
+      "from": "@ds/react"
     }
   ],
   "whenToUse": [
@@ -179,6 +183,12 @@
   },
   "examples": [
     {
+      "id": "card",
+      "title": "In a card with a toolbar",
+      "description": "TableCard with actions and pagination.",
+      "code": "import { Button, Pagination, Table, TableCard } from '@ds/react';\n\n<TableCard\n  title=\"Team members\"\n  badge=\"100 users\"\n  actions={<Button size=\"small\">Add member</Button>}\n  footer={<Pagination currentPage={1} totalPages={10} layout=\"spread\" showArrowLabels />}\n>\n  <Table caption=\"Team members\" hideCaption columns={columns} rows={rows} />\n</TableCard>"
+    },
+    {
       "id": "basic",
       "title": "Orders",
       "description": "Sortable, with money aligned.",
@@ -215,6 +225,14 @@
     }
   ],
   "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New TableCard: header with title, badge, description and actions; toolbar; footer.",
+        "Column hint (help tooltip) and hideBelow for narrow screens."
+      ]
+    },
     {
       "version": "0.4.0",
       "date": "2026-09-29",
@@ -355,6 +373,66 @@
           "required": false,
           "default": null,
           "description": ""
+        }
+      }
+    },
+    {
+      "name": "TableCard",
+      "import": "import { TableCard } from '@ds/react';",
+      "description": "A bordered card around a Table with a header (title, badge, description, actions), an\noptional toolbar for filters and a footer for pagination.",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "Heading of the card, e.g. \"Team members\"."
+        },
+        "titleAs": {
+          "type": "\"h2\" | \"h3\" | \"h4\"",
+          "values": [
+            "h2",
+            "h3",
+            "h4"
+          ],
+          "required": false,
+          "default": "h2",
+          "description": "Heading level. Default h2."
+        },
+        "badge": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Small badge after the title, e.g. \"100 users\"."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Supporting text under the title."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Buttons at the end of the header, e.g. \"Add member\"."
+        },
+        "toolbar": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A row between the header and the table, e.g. tabs, search and filters."
+        },
+        "footer": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Under the table, e.g. Pagination."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The Table."
         }
       }
     }
@@ -498,13 +576,13 @@
     },
     "--table-font-size": {
       "description": "Type scale.",
-      "references": "--font-size-md",
-      "default": "16px"
+      "references": "--font-size-sm",
+      "default": "12px"
     },
     "--table-font-line-height": {
       "description": "Type scale.",
-      "references": "--font-line-height-md",
-      "default": "20px"
+      "references": "--font-line-height-sm",
+      "default": "15px"
     },
     "--table-caption-text-color": {
       "description": "Main text on surfaces.",
@@ -588,6 +666,164 @@
         "brand=opal,mode=light": "#326fd1",
         "brand=opal,mode=dark": "#abc9fb"
       }
+    },
+    "--table-hint-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--table-card-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--table-card-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--table-card-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--table-card-border-radius": {
+      "description": "Large surfaces: cards, sections, modals.",
+      "references": "--radius-2xl",
+      "default": "16px"
+    },
+    "--table-card-header-padding-x": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
+    },
+    "--table-card-header-padding-y": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--table-card-header-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--table-card-heading-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--table-card-actions-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--table-card-toolbar-padding-y": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--table-card-footer-padding-y": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--table-card-title-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--table-card-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--table-card-title-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--table-card-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--table-card-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--table-card-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--table-card-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--table-card-badge-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--table-card-badge-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--table-card-badge-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-sm",
+      "default": "3px"
+    },
+    "--table-card-badge-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--table-card-badge-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--table-card-badge-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
     },
     "--table-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

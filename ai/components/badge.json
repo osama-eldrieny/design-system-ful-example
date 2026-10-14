@@ -9,6 +9,10 @@
     {
       "name": "Badge",
       "from": "@ds/react"
+    },
+    {
+      "name": "BadgeGroup",
+      "from": "@ds/react"
     }
   ],
   "whenToUse": [
@@ -63,6 +67,46 @@
         {
           "value": "danger",
           "meaning": "Failed or overdue."
+        },
+        {
+          "value": "gray | blue | sky | indigo | purple | pink | orange | teal",
+          "meaning": "Category hues with no meaning of their own: departments, projects, file types. Same in every brand."
+        }
+      ]
+    },
+    {
+      "prop": "shape",
+      "title": "Shape",
+      "values": [
+        {
+          "value": "pill",
+          "meaning": "Fully rounded. Default."
+        },
+        {
+          "value": "rounded",
+          "meaning": "Small corners; reads as a label in dense tables."
+        },
+        {
+          "value": "modern",
+          "meaning": "Neutral surface with a border; only the dot or icon takes the color."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "20px, for tables and dense lists."
+        },
+        {
+          "value": "medium",
+          "meaning": "24px. Default."
+        },
+        {
+          "value": "large",
+          "meaning": "28px, next to headings."
         }
       ]
     },
@@ -182,6 +226,24 @@
       "title": "Dot",
       "description": "New activity.",
       "code": "import { Badge } from '@ds/react';\n\n<Badge dot tone=\"primary\" label=\"New activity\" />"
+    },
+    {
+      "id": "category",
+      "title": "Category label",
+      "description": "A modern badge with a colored dot, e.g. a team in a table.",
+      "code": "import { Badge } from '@ds/react';\n\n<Badge tone=\"indigo\" shape=\"modern\" withDot>Design</Badge>"
+    },
+    {
+      "id": "trend",
+      "title": "Trend",
+      "description": "A change with an arrow icon.",
+      "code": "import { Badge } from '@ds/react';\nimport { ArrowUp } from 'lucide-react';\n\n<Badge tone=\"success\" size=\"small\" iconStart={<ArrowUp />}>12%</Badge>"
+    },
+    {
+      "id": "group",
+      "title": "Announcement",
+      "description": "BadgeGroup links to news.",
+      "code": "import { BadgeGroup } from '@ds/react';\n\n<BadgeGroup badge=\"New\" href=\"/changelog\">Dashboards are here</BadgeGroup>"
     }
   ],
   "tokenPrefixes": [
@@ -204,26 +266,43 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "Eight category hues for tone; shape (pill, rounded, modern), size and bordered.",
+        "withDot, iconStart, iconEnd, image, onDismiss; icon-only badges.",
+        "New BadgeGroup: a badge with a message, optionally a link."
+      ]
     }
   ],
   "components": [
     {
       "name": "Badge",
       "import": "import { Badge } from '@ds/react';",
-      "description": "A small label for a status or a count, e.g. “New”, “Paid” or 3 unread. Not interactive.",
+      "description": "A small label for a status, category or count, e.g. “Paid”, “Design” or 3 unread. Not\ninteractive, except for its optional remove button.",
       "props": {
         "tone": {
-          "type": "BadgeTone",
+          "type": "BadgeColor",
           "values": [
             "primary",
             "secondary",
             "success",
             "warning",
-            "danger"
+            "danger",
+            "gray",
+            "blue",
+            "sky",
+            "indigo",
+            "purple",
+            "pink",
+            "orange",
+            "teal"
           ],
           "required": false,
           "default": "primary",
-          "description": "Meaning: primary (default), secondary (neutral), success, warning, danger."
+          "description": "Color: a meaning (primary default, secondary, success, warning, danger) or a category hue\n(gray, blue, sky, indigo, purple, pink, orange, teal)."
         },
         "appearance": {
           "type": "\"solid\" | \"subtle\"",
@@ -234,6 +313,34 @@
           "required": false,
           "default": "subtle",
           "description": "`solid` for strong emphasis (counts), `subtle` (default) for status labels."
+        },
+        "shape": {
+          "type": "BadgeShape",
+          "values": [
+            "pill",
+            "rounded",
+            "modern"
+          ],
+          "required": false,
+          "default": "pill",
+          "description": "`pill` (default) fully rounded, `rounded` small corners, `modern` neutral with a border."
+        },
+        "size": {
+          "type": "BadgeSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small`, `medium` (default) or `large`."
+        },
+        "bordered": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Adds a thin border in the tone's color to subtle badges."
         },
         "count": {
           "type": "number",
@@ -251,13 +358,105 @@
           "type": "boolean",
           "required": false,
           "default": false,
-          "description": "Shows a small dot instead of text. Give it a label."
+          "description": "Shows only a small dot instead of text. Give it a label."
+        },
+        "withDot": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Adds a status dot before the text, e.g. ● Active."
+        },
+        "iconStart": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Decorative icon before the text. Alone (no text), the badge is icon-only: give it a label."
+        },
+        "iconEnd": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Decorative icon after the text."
+        },
+        "image": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Small round picture before the text, e.g. a person or a country flag. Decorative."
+        },
+        "onDismiss": {
+          "type": "(() => void)",
+          "required": false,
+          "default": null,
+          "description": "Shows a remove button that calls this, e.g. for a filter."
+        },
+        "dismissLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Accessible name of the remove button. Default \"Remove {text}\"."
         },
         "label": {
           "type": "string",
           "required": false,
           "default": null,
-          "description": "Text for screen readers, e.g. \"3 unread messages\". Replaces what is shown; required for\ndots and bare counts, whose meaning isn't in the text."
+          "description": "Text for screen readers, e.g. \"3 unread messages\". Replaces what is shown; required for\ndots, icon-only badges and bare counts, whose meaning isn't in the text."
+        }
+      }
+    },
+    {
+      "name": "BadgeGroup",
+      "import": "import { BadgeGroup } from '@ds/react';",
+      "description": "A badge with a message, e.g. “New · Dashboards are here →”, to announce something. With\n`href` it is a link.",
+      "props": {
+        "badge": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The short badge text, e.g. \"New\"."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The message next to the badge, e.g. \"We've just released a new feature\"."
+        },
+        "tone": {
+          "type": "BadgeColor",
+          "values": [
+            "primary",
+            "secondary",
+            "success",
+            "warning",
+            "danger",
+            "gray",
+            "blue",
+            "sky",
+            "indigo",
+            "purple",
+            "pink",
+            "orange",
+            "teal"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": "Color of the whole group. Default primary."
+        },
+        "badgePosition": {
+          "type": "\"leading\" | \"trailing\"",
+          "values": [
+            "leading",
+            "trailing"
+          ],
+          "required": false,
+          "default": "leading",
+          "description": "`leading` (default): badge first. `trailing`: message first, badge last."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon after the message. Default an arrow when the group is a link; `null` hides it."
         }
       }
     }
@@ -310,6 +509,30 @@
         "brand=opal,mode=dark": "#abc9fb"
       }
     },
+    "--badge-primary-subtle-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-primary-subtle",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--badge-primary-icon-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
     "--badge-secondary-solid-bg-color": {
       "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
       "references": "--color-bg-accent-secondary-default",
@@ -351,6 +574,28 @@
         "brand=amber,mode=light": "#54505a",
         "brand=amber,mode=dark": "#fff",
         "brand=opal,mode=dark": "#dedde0"
+      }
+    },
+    "--badge-secondary-subtle-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--badge-secondary-icon-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
       }
     },
     "--badge-success-solid-bg-color": {
@@ -401,6 +646,30 @@
         "brand=opal,mode=dark": "#cae99b"
       }
     },
+    "--badge-success-subtle-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-success-subtle",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--badge-success-icon-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
     "--badge-warning-solid-bg-color": {
       "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
       "references": "--color-bg-accent-warning-default",
@@ -443,6 +712,27 @@
         "brand=amber,mode=dark": "#f7dd91",
         "brand=opal,mode=light": "#695103",
         "brand=opal,mode=dark": "#f6de94"
+      }
+    },
+    "--badge-warning-subtle-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-warning-subtle",
+      "default": "#fdf7e6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=dark": "#695103"
+      }
+    },
+    "--badge-warning-icon-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-default",
+      "default": "#f0be2e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#eec133",
+        "brand=opal,mode=dark": "#fdf7e6"
       }
     },
     "--badge-danger-solid-bg-color": {
@@ -493,20 +783,598 @@
         "brand=opal,mode=dark": "#faacba"
       }
     },
+    "--badge-danger-subtle-border-color": {
+      "description": "Faint tone outline on tinted backgrounds.",
+      "references": "--color-border-danger-subtle",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--badge-danger-icon-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--badge-gray-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-gray-default",
+      "default": "#3f3f46"
+    },
+    "--badge-gray-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-gray-default",
+      "default": "#fff"
+    },
+    "--badge-gray-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-gray-1",
+      "default": "#fafafa",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#09090b",
+        "brand=amber,mode=dark": "#09090b",
+        "brand=opal,mode=dark": "#09090b"
+      }
+    },
+    "--badge-gray-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-gray-high",
+      "default": "#3f3f46",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#d4d4d8",
+        "brand=amber,mode=dark": "#d4d4d8",
+        "brand=opal,mode=dark": "#d4d4d8"
+      }
+    },
+    "--badge-gray-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-gray-subtle",
+      "default": "#e4e4e7",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#27272a",
+        "brand=amber,mode=dark": "#27272a",
+        "brand=opal,mode=dark": "#27272a"
+      }
+    },
+    "--badge-gray-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-gray",
+      "default": "#71717a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a1a1aa",
+        "brand=amber,mode=dark": "#a1a1aa",
+        "brand=opal,mode=dark": "#a1a1aa"
+      }
+    },
+    "--badge-blue-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-blue-default",
+      "default": "#1d4ed8"
+    },
+    "--badge-blue-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-blue-default",
+      "default": "#fff"
+    },
+    "--badge-blue-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-blue-1",
+      "default": "#eff6ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#172554",
+        "brand=amber,mode=dark": "#172554",
+        "brand=opal,mode=dark": "#172554"
+      }
+    },
+    "--badge-blue-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-blue-high",
+      "default": "#1d4ed8",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#93c5fd",
+        "brand=amber,mode=dark": "#93c5fd",
+        "brand=opal,mode=dark": "#93c5fd"
+      }
+    },
+    "--badge-blue-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-blue-subtle",
+      "default": "#bfdbfe",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#1e40af",
+        "brand=amber,mode=dark": "#1e40af",
+        "brand=opal,mode=dark": "#1e40af"
+      }
+    },
+    "--badge-blue-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-blue",
+      "default": "#3b82f6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#60a5fa",
+        "brand=amber,mode=dark": "#60a5fa",
+        "brand=opal,mode=dark": "#60a5fa"
+      }
+    },
+    "--badge-sky-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-sky-default",
+      "default": "#0369a1"
+    },
+    "--badge-sky-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-sky-default",
+      "default": "#fff"
+    },
+    "--badge-sky-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-sky-1",
+      "default": "#f0f9ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#082f49",
+        "brand=amber,mode=dark": "#082f49",
+        "brand=opal,mode=dark": "#082f49"
+      }
+    },
+    "--badge-sky-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-sky-high",
+      "default": "#0369a1",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#7dd3fc",
+        "brand=amber,mode=dark": "#7dd3fc",
+        "brand=opal,mode=dark": "#7dd3fc"
+      }
+    },
+    "--badge-sky-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-sky-subtle",
+      "default": "#bae6fd",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#075985",
+        "brand=amber,mode=dark": "#075985",
+        "brand=opal,mode=dark": "#075985"
+      }
+    },
+    "--badge-sky-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-sky",
+      "default": "#0284c7",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#38bdf8",
+        "brand=amber,mode=dark": "#38bdf8",
+        "brand=opal,mode=dark": "#38bdf8"
+      }
+    },
+    "--badge-indigo-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-indigo-default",
+      "default": "#4338ca"
+    },
+    "--badge-indigo-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-indigo-default",
+      "default": "#fff"
+    },
+    "--badge-indigo-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-indigo-1",
+      "default": "#eef2ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#1e1b4b",
+        "brand=amber,mode=dark": "#1e1b4b",
+        "brand=opal,mode=dark": "#1e1b4b"
+      }
+    },
+    "--badge-indigo-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-indigo-high",
+      "default": "#4338ca",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a5b4fc",
+        "brand=amber,mode=dark": "#a5b4fc",
+        "brand=opal,mode=dark": "#a5b4fc"
+      }
+    },
+    "--badge-indigo-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-indigo-subtle",
+      "default": "#c7d2fe",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#3730a3",
+        "brand=amber,mode=dark": "#3730a3",
+        "brand=opal,mode=dark": "#3730a3"
+      }
+    },
+    "--badge-indigo-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-indigo",
+      "default": "#6366f1",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#818cf8",
+        "brand=amber,mode=dark": "#818cf8",
+        "brand=opal,mode=dark": "#818cf8"
+      }
+    },
+    "--badge-purple-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-purple-default",
+      "default": "#7e22ce"
+    },
+    "--badge-purple-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-purple-default",
+      "default": "#fff"
+    },
+    "--badge-purple-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-purple-1",
+      "default": "#faf5ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#3b0764",
+        "brand=amber,mode=dark": "#3b0764",
+        "brand=opal,mode=dark": "#3b0764"
+      }
+    },
+    "--badge-purple-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-purple-high",
+      "default": "#7e22ce",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#d8b4fe",
+        "brand=amber,mode=dark": "#d8b4fe",
+        "brand=opal,mode=dark": "#d8b4fe"
+      }
+    },
+    "--badge-purple-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-purple-subtle",
+      "default": "#e9d5ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#6b21a8",
+        "brand=amber,mode=dark": "#6b21a8",
+        "brand=opal,mode=dark": "#6b21a8"
+      }
+    },
+    "--badge-purple-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-purple",
+      "default": "#a855f7",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c084fc",
+        "brand=amber,mode=dark": "#c084fc",
+        "brand=opal,mode=dark": "#c084fc"
+      }
+    },
+    "--badge-pink-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-pink-default",
+      "default": "#be185d"
+    },
+    "--badge-pink-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-pink-default",
+      "default": "#fff"
+    },
+    "--badge-pink-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-pink-1",
+      "default": "#fdf2f8",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#500724",
+        "brand=amber,mode=dark": "#500724",
+        "brand=opal,mode=dark": "#500724"
+      }
+    },
+    "--badge-pink-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-pink-high",
+      "default": "#be185d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f9a8d4",
+        "brand=amber,mode=dark": "#f9a8d4",
+        "brand=opal,mode=dark": "#f9a8d4"
+      }
+    },
+    "--badge-pink-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-pink-subtle",
+      "default": "#fbcfe8",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#9d174d",
+        "brand=amber,mode=dark": "#9d174d",
+        "brand=opal,mode=dark": "#9d174d"
+      }
+    },
+    "--badge-pink-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-pink",
+      "default": "#ec4899",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f472b6",
+        "brand=amber,mode=dark": "#f472b6",
+        "brand=opal,mode=dark": "#f472b6"
+      }
+    },
+    "--badge-orange-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-orange-default",
+      "default": "#c2410c"
+    },
+    "--badge-orange-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-orange-default",
+      "default": "#fff"
+    },
+    "--badge-orange-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-orange-1",
+      "default": "#fff7ed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#431407",
+        "brand=amber,mode=dark": "#431407",
+        "brand=opal,mode=dark": "#431407"
+      }
+    },
+    "--badge-orange-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-orange-high",
+      "default": "#c2410c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdba74",
+        "brand=amber,mode=dark": "#fdba74",
+        "brand=opal,mode=dark": "#fdba74"
+      }
+    },
+    "--badge-orange-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-orange-subtle",
+      "default": "#fed7aa",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#9a3412",
+        "brand=amber,mode=dark": "#9a3412",
+        "brand=opal,mode=dark": "#9a3412"
+      }
+    },
+    "--badge-orange-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-orange",
+      "default": "#ea580c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fb923c",
+        "brand=amber,mode=dark": "#fb923c",
+        "brand=opal,mode=dark": "#fb923c"
+      }
+    },
+    "--badge-teal-solid-bg-color": {
+      "description": "Solid fill of the hue.",
+      "references": "--color-bg-accent-teal-default",
+      "default": "#0f766e"
+    },
+    "--badge-teal-solid-text-color": {
+      "description": "Text and icons on the solid fill.",
+      "references": "--color-fg-on-accent-teal-default",
+      "default": "#fff"
+    },
+    "--badge-teal-subtle-bg-color": {
+      "description": "Subtle tinted background, e.g. a badge or tag.",
+      "references": "--color-bg-teal-1",
+      "default": "#f0fdfa",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#042f2e",
+        "brand=amber,mode=dark": "#042f2e",
+        "brand=opal,mode=dark": "#042f2e"
+      }
+    },
+    "--badge-teal-subtle-text-color": {
+      "description": "Hue-colored text on the tinted backgrounds and on surfaces.",
+      "references": "--color-fg-on-teal-high",
+      "default": "#0f766e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5eead4",
+        "brand=amber,mode=dark": "#5eead4",
+        "brand=opal,mode=dark": "#5eead4"
+      }
+    },
+    "--badge-teal-subtle-border-color": {
+      "description": "Faint outline on the tinted background.",
+      "references": "--color-border-teal-subtle",
+      "default": "#99f6e4",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#115e59",
+        "brand=amber,mode=dark": "#115e59",
+        "brand=opal,mode=dark": "#115e59"
+      }
+    },
+    "--badge-teal-icon-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-teal",
+      "default": "#0d9488",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#2dd4bf",
+        "brand=amber,mode=dark": "#2dd4bf",
+        "brand=opal,mode=dark": "#2dd4bf"
+      }
+    },
+    "--badge-modern-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--badge-modern-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--badge-modern-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--badge-modern-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-sm",
+      "default": "3px"
+    },
+    "--badge-pill-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--badge-rounded-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-sm",
+      "default": "3px"
+    },
+    "--badge-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--badge-small-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--badge-small-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--badge-small-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--badge-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--badge-small-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xs",
+      "default": "12.5px"
+    },
+    "--badge-small-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-2xs",
+      "default": "12px"
+    },
+    "--badge-medium-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-lg",
+      "default": "24px"
+    },
+    "--badge-medium-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--badge-medium-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--badge-medium-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--badge-medium-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--badge-medium-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-2xs",
+      "default": "12px"
+    },
+    "--badge-large-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-lg-plus",
+      "default": "28px"
+    },
+    "--badge-large-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--badge-large-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--badge-large-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--badge-large-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--badge-large-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xs",
+      "default": "14px"
+    },
+    "--badge-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-lg",
+      "default": "24px"
+    },
     "--badge-padding-x": {
       "description": "Small gap inside compact controls.",
       "references": "--spacing-xs",
       "default": "8px"
     },
-    "--badge-height": {
-      "description": "Fixed element sizes in px.",
-      "references": "--sizing-md",
-      "default": "22px"
-    },
     "--badge-dot-size": {
       "description": "Small gap inside compact controls.",
       "references": "--spacing-xs",
       "default": "8px"
+    },
+    "--badge-status-dot-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-4xs",
+      "default": "6px"
+    },
+    "--badge-image-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
     },
     "--badge-font-family": {
       "description": "Body text and most UI text.",
@@ -556,6 +1424,73 @@
       "description": "Stroke widths in px.",
       "references": "--border-width-hairline",
       "default": "1px"
+    },
+    "--badge-dismiss-hover-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--badge-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--badge-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--badge-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--badge-group-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--badge-group-padding-y": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--badge-group-padding-start": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--badge-group-padding-end": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--badge-group-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--badge-group-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--badge-group-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--badge-group-hover-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
     }
   },
   "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-badge--docs"

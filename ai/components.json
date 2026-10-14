@@ -13,6 +13,17 @@
       "contract": "ai/components/accordion.json"
     },
     {
+      "id": "activity-feed",
+      "name": "ActivityFeed",
+      "exports": [
+        "ActivityFeed"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A list of recent events, newest first: who did what and when, with an avatar or icon, optional content such as a comment or file, and an unread dot.",
+      "contract": "ai/components/activity-feed.json"
+    },
+    {
       "id": "alert",
       "name": "Alert",
       "exports": [
@@ -39,7 +50,8 @@
       "name": "Avatar",
       "exports": [
         "Avatar",
-        "AvatarGroup"
+        "AvatarGroup",
+        "AvatarLabelGroup"
       ],
       "category": "Data display",
       "status": "stable",
@@ -50,7 +62,8 @@
       "id": "badge",
       "name": "Badge",
       "exports": [
-        "Badge"
+        "Badge",
+        "BadgeGroup"
       ],
       "category": "Feedback",
       "status": "stable",
@@ -108,6 +121,22 @@
       "contract": "ai/components/card.json"
     },
     {
+      "id": "charts",
+      "name": "Charts",
+      "exports": [
+        "LineChart",
+        "AreaChart",
+        "BarChart",
+        "DonutChart",
+        "RadarChart",
+        "Sparkline"
+      ],
+      "category": "Data display",
+      "status": "beta",
+      "purpose": "Dependency-free SVG charts styled by tokens: LineChart and AreaChart for trends, BarChart for comparing categories (grouped, stacked or horizontal), DonutChart for parts of a whole, RadarChart for several dimensions and Sparkline for a tiny trend next to a figure.",
+      "contract": "ai/components/charts.json"
+    },
+    {
       "id": "checkbox",
       "name": "Checkbox",
       "exports": [
@@ -154,6 +183,17 @@
       "contract": "ai/components/combobox.json"
     },
     {
+      "id": "command-menu",
+      "name": "CommandMenu",
+      "exports": [
+        "CommandMenu"
+      ],
+      "category": "Overlays",
+      "status": "stable",
+      "purpose": "A searchable list of pages and actions in a dialog, opened with ⌘K (Ctrl+K): type to filter, arrow keys to move, Enter to run.",
+      "contract": "ai/components/command-menu.json"
+    },
+    {
       "id": "container",
       "name": "Container",
       "exports": [
@@ -163,6 +203,20 @@
       "status": "stable",
       "purpose": "Container centers page content with a maximum width and page gutters that follow density, with smaller gutters on phones..",
       "contract": "ai/components/container.json"
+    },
+    {
+      "id": "date-picker",
+      "name": "DatePicker",
+      "exports": [
+        "DatePicker",
+        "DateRangePicker",
+        "Calendar",
+        "datePresets"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "Pick a date or a date range from a month grid.",
+      "contract": "ai/components/date-picker.json"
     },
     {
       "id": "divider",
@@ -222,6 +276,29 @@
       "status": "stable",
       "purpose": "An empty state fills a space that has nothing to show yet, like an empty list or no search results, and explains why and what to do next..",
       "contract": "ai/components/empty-state.json"
+    },
+    {
+      "id": "featured-icon",
+      "name": "FeaturedIcon",
+      "exports": [
+        "FeaturedIcon"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "An icon in a colored circle or tile that draws the eye and sets the tone of a block: the top of a modal, an empty state, an alert, a metric card or a feature list.",
+      "contract": "ai/components/featured-icon.json"
+    },
+    {
+      "id": "file-upload",
+      "name": "FileUpload",
+      "exports": [
+        "FileUpload",
+        "FileUploadItem"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A drop zone to choose or drag files, with FileUploadItem rows that show each file’s progress, completion or error and a delete button.",
+      "contract": "ai/components/file-upload.json"
     },
     {
       "id": "footer",
@@ -360,6 +437,17 @@
       "contract": "ai/components/meeting-card.json"
     },
     {
+      "id": "metric-card",
+      "name": "MetricCard",
+      "exports": [
+        "MetricCard"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A key figure in a card for dashboards: what is measured, the value, how it changed and against what, with an optional featured icon, a small chart, an actions menu and a footer link..",
+      "contract": "ai/components/metric-card.json"
+    },
+    {
       "id": "modal",
       "name": "Modal",
       "exports": [
@@ -384,6 +472,17 @@
       "status": "stable",
       "purpose": "The navigation bar at the top of a site or app: the logo, links to the main sections, and optional actions such as search.",
       "contract": "ai/components/navbar.json"
+    },
+    {
+      "id": "page-header",
+      "name": "PageHeader",
+      "exports": [
+        "PageHeader"
+      ],
+      "category": "Layout",
+      "status": "stable",
+      "purpose": "The top of a page or section: breadcrumbs, a title with supporting text, actions, and a row for tabs, search or filters.",
+      "contract": "ai/components/page-header.json"
     },
     {
       "id": "pagination",
@@ -425,7 +524,8 @@
       "id": "progress",
       "name": "Progress",
       "exports": [
-        "Progress"
+        "Progress",
+        "ProgressCircle"
       ],
       "category": "Feedback",
       "status": "stable",
@@ -561,7 +661,8 @@
       "id": "table",
       "name": "Table",
       "exports": [
-        "Table"
+        "Table",
+        "TableCard"
       ],
       "category": "Data display",
       "status": "stable",
@@ -626,6 +727,17 @@
       "status": "stable",
       "purpose": "A tooltip shows a short text hint for a control when it’s hovered or focused, such as the name of an icon button.",
       "contract": "ai/components/tooltip.json"
+    },
+    {
+      "id": "verification-code-input",
+      "name": "VerificationCodeInput",
+      "exports": [
+        "VerificationCodeInput"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "One box per character of a one-time code sent by email or SMS.",
+      "contract": "ai/components/verification-code-input.json"
     }
   ]
 }

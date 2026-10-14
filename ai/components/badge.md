@@ -6,6 +6,7 @@ Status: stable · Category: Feedback · Since 0.4.0
 
 ```tsx
 import { Badge } from '@ds/react';
+import { BadgeGroup } from '@ds/react';
 ```
 
 ## When to use
@@ -23,6 +24,17 @@ import { Badge } from '@ds/react';
 - `success`: Done or healthy, e.g. “Paid”.
 - `warning`: Needs attention, e.g. “Due soon”.
 - `danger`: Failed or overdue.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: Category hues with no meaning of their own: departments, projects, file types. Same in every brand.
+
+## Shape (`shape`)
+- `pill`: Fully rounded. Default.
+- `rounded`: Small corners; reads as a label in dense tables.
+- `modern`: Neutral surface with a border; only the dot or icon takes the color.
+
+## Size (`size`)
+- `small`: 20px, for tables and dense lists.
+- `medium`: 24px. Default.
+- `large`: 28px, next to headings.
 
 ## Appearance (`appearance`)
 - `subtle`: Tinted; for statuses in lists. Default.
@@ -40,12 +52,31 @@ import { Badge } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
-| `tone` | `BadgeTone` | primary | Meaning: primary (default), secondary (neutral), success, warning, danger. |
+| `tone` | `BadgeColor` | primary | Color: a meaning (primary default, secondary, success, warning, danger) or a category hue (gray, blue, sky, indigo, purple, pink, orange, teal). |
 | `appearance` | `"solid" \| "subtle"` | subtle | `solid` for strong emphasis (counts), `subtle` (default) for status labels. |
+| `shape` | `BadgeShape` | pill | `pill` (default) fully rounded, `rounded` small corners, `modern` neutral with a border. |
+| `size` | `BadgeSize` | medium | `small`, `medium` (default) or `large`. |
+| `bordered` | `boolean` | false | Adds a thin border in the tone's color to subtle badges. |
 | `count` | `number` |  | A number, e.g. unread messages. Shown as max+ above max. |
 | `max` | `number` | 99 | Largest count shown before “99+”. Default 99. |
-| `dot` | `boolean` | false | Shows a small dot instead of text. Give it a label. |
-| `label` | `string` |  | Text for screen readers, e.g. "3 unread messages". Replaces what is shown; required for dots and bare counts, whose meaning isn't in the text. |
+| `dot` | `boolean` | false | Shows only a small dot instead of text. Give it a label. |
+| `withDot` | `boolean` | false | Adds a status dot before the text, e.g. ● Active. |
+| `iconStart` | `ReactNode` |  | Decorative icon before the text. Alone (no text), the badge is icon-only: give it a label. |
+| `iconEnd` | `ReactNode` |  | Decorative icon after the text. |
+| `image` | `string` |  | Small round picture before the text, e.g. a person or a country flag. Decorative. |
+| `onDismiss` | `(() => void)` |  | Shows a remove button that calls this, e.g. for a filter. |
+| `dismissLabel` | `string` |  | Accessible name of the remove button. Default "Remove {text}". |
+| `label` | `string` |  | Text for screen readers, e.g. "3 unread messages". Replaces what is shown; required for dots, icon-only badges and bare counts, whose meaning isn't in the text. |
+
+### BadgeGroup
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `badge` | `ReactNode` |  | The short badge text, e.g. "New". |
+| `children` | `ReactNode` |  | The message next to the badge, e.g. "We've just released a new feature". |
+| `tone` | `BadgeColor` | primary | Color of the whole group. Default primary. |
+| `badgePosition` | `"leading" \| "trailing"` | leading | `leading` (default): badge first. `trailing`: message first, badge last. |
+| `icon` | `ReactNode` |  | Icon after the message. Default an arrow when the group is a link; `null` hides it. |
 
 ## Guidelines
 - Do: Pair color with a word: “Overdue” in danger. Don’t: Use a red badge with no text to mean overdue. Why: Color alone isn’t seen by everyone (WCAG 1.4.1).
@@ -91,6 +122,34 @@ New activity.
 import { Badge } from '@ds/react';
 
 <Badge dot tone="primary" label="New activity" />
+```
+
+### Category label
+A modern badge with a colored dot, e.g. a team in a table.
+
+```tsx
+import { Badge } from '@ds/react';
+
+<Badge tone="indigo" shape="modern" withDot>Design</Badge>
+```
+
+### Trend
+A change with an arrow icon.
+
+```tsx
+import { Badge } from '@ds/react';
+import { ArrowUp } from 'lucide-react';
+
+<Badge tone="success" size="small" iconStart={<ArrowUp />}>12%</Badge>
+```
+
+### Announcement
+BadgeGroup links to news.
+
+```tsx
+import { BadgeGroup } from '@ds/react';
+
+<BadgeGroup badge="New" href="/changelog">Dashboards are here</BadgeGroup>
 ```
 
 Tokens: `--badge-*` (values per theme in ai/components/badge.json).

@@ -49,6 +49,34 @@
   ],
   "options": [
     {
+      "prop": "separator",
+      "title": "Separator",
+      "values": [
+        {
+          "value": "chevron",
+          "meaning": "Default."
+        },
+        {
+          "value": "slash",
+          "meaning": "A lighter look, e.g. in page headers."
+        }
+      ]
+    },
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "text",
+          "meaning": "Plain links. Default."
+        },
+        {
+          "value": "button",
+          "meaning": "Tinted pill on hover and on the current page."
+        }
+      ]
+    },
+    {
       "prop": "maxItems",
       "title": "Collapsing",
       "values": [
@@ -190,6 +218,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "separator, homeIcon and appearance."
+      ]
     }
   ],
   "components": [
@@ -215,6 +250,32 @@
           "required": false,
           "default": "Show all pages",
           "description": "Accessible name of the “…” button. Default \"Show all pages\"."
+        },
+        "separator": {
+          "type": "\"chevron\" | \"slash\"",
+          "values": [
+            "chevron",
+            "slash"
+          ],
+          "required": false,
+          "default": "chevron",
+          "description": "`chevron` (default) or `slash` between items."
+        },
+        "homeIcon": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows a home icon instead of the first item's text (its label stays the accessible name)."
+        },
+        "appearance": {
+          "type": "\"text\" | \"button\"",
+          "values": [
+            "text",
+            "button"
+          ],
+          "required": false,
+          "default": "text",
+          "description": "`text` (default) or `button`: items get a tinted background on hover and when current."
         },
         "aria-label": {
           "type": "string",
@@ -335,6 +396,62 @@
         "brand=amber,mode=light": "#a57a4b",
         "brand=amber,mode=dark": "#e5cfb7",
         "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--breadcrumb-home-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--breadcrumb-button-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--breadcrumb-button-padding-y": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--breadcrumb-button-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-md",
+      "default": "4px"
+    },
+    "--breadcrumb-button-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--breadcrumb-button-current-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--breadcrumb-button-current-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
         "brand=opal,mode=dark": "#abc9fb"
       }
     }

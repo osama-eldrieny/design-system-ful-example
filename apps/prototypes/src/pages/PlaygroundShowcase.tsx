@@ -1,5 +1,20 @@
 import { useId, useState, type Key, type ReactNode } from 'react';
 import {
+  ActivityFeed,
+  AreaChart,
+  BarChart,
+  BadgeGroup,
+  DatePicker,
+  DateRangePicker,
+  DonutChart,
+  FeaturedIcon,
+  FileUpload,
+  FileUploadItem,
+  MetricCard,
+  ProgressCircle,
+  Sparkline,
+  VerificationCodeInput,
+  datePresets,
   Accordion,
   AccordionItem,
   Alert,
@@ -66,6 +81,12 @@ import {
   ShoppingCart,
   Trash2,
   Users,
+  DollarSign as DashDollar,
+  Mail as DashMail,
+  ShoppingCart as DashCart,
+  Trash2 as DashTrash,
+  UserPlus as DashUserPlus,
+  Zap as DashZap,
 } from 'lucide-react';
 import { ar } from './playground-ar';
 
@@ -392,6 +413,166 @@ export function PlaygroundShowcase({
         </div>
       </Category>
 
+      <Category title={tx('Dashboard')}>
+        <Demo name={tx('Metric cards')} wide>
+          <div className="proto-metrics">
+            <MetricCard
+              label={tx('Revenue')}
+              value="$124,567"
+              change="12%"
+              trend="up"
+              comparison={tx('vs last month')}
+              icon={<DashDollar />}
+              chart={<Sparkline data={[4, 6, 5, 8, 7, 9, 12]} />}
+            />
+            <MetricCard
+              label={tx('Orders')}
+              value="1,284"
+              change="4%"
+              trend="down"
+              trendStyle="modern"
+              comparison={tx('vs last month')}
+              icon={<DashCart />}
+              iconTone="blue"
+              iconAppearance="light"
+            />
+            <MetricCard
+              label={tx('Conversion')}
+              value="3.4%"
+              change="0.2%"
+              trend="up"
+              trendStyle="simple"
+              size="small"
+            />
+          </div>
+        </Demo>
+        <Demo name={tx('Charts')} wide>
+          <AreaChart
+            title={tx('Revenue')}
+            data={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((m, i) => ({
+              month: tx(m),
+              revenue: [12, 15, 14, 18, 21, 24][i] * 1000,
+              costs: [8, 9, 9, 10, 12, 12][i] * 1000,
+            }))}
+            xKey="month"
+            series={[
+              { key: 'revenue', label: tx('Revenue') },
+              { key: 'costs', label: tx('Costs') },
+            ]}
+            height={220}
+          />
+        </Demo>
+        <Demo name={tx('Bar and donut charts')}>
+          <BarChart
+            title={tx('Orders')}
+            stacked
+            data={['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].map((d, i) => ({
+              day: tx(d),
+              online: [18, 20, 19, 22, 27][i],
+              store: [6, 7, 7, 8, 9][i],
+            }))}
+            xKey="day"
+            series={[
+              { key: 'online', label: tx('Online') },
+              { key: 'store', label: tx('In store'), color: 3 },
+            ]}
+            height={200}
+          />
+          <DonutChart
+            title={tx('Traffic')}
+            data={[
+              { label: tx('Direct'), value: 42 },
+              { label: tx('Search'), value: 31 },
+              { label: tx('Social'), value: 18 },
+            ]}
+            centerValue="91K"
+            centerLabel={tx('Visits')}
+            size={160}
+          />
+        </Demo>
+        <Demo name={tx('Progress rings')}>
+          <Inline gap="xl">
+            <ProgressCircle label={tx('Storage')} value={64} size="small" />
+            <ProgressCircle label={tx('Goal')} value={80} caption={tx('of target')} />
+            <ProgressCircle label={tx('Score')} value={72} shape="half" tone="success" />
+          </Inline>
+        </Demo>
+        <Demo name={tx('Badges and featured icons')}>
+          <Variant label={tx('Colors and shapes')}>
+            <Inline gap="xs">
+              {(['gray', 'blue', 'indigo', 'purple', 'pink', 'orange', 'teal'] as const).map(
+                (h) => (
+                  <Badge key={h} tone={h}>
+                    {tx(cap(h))}
+                  </Badge>
+                ),
+              )}
+              <Badge tone="success" shape="modern" withDot>
+                {tx('Active')}
+              </Badge>
+              <Badge tone="indigo" shape="rounded" onDismiss={() => {}}>
+                {tx('Design')}
+              </Badge>
+            </Inline>
+          </Variant>
+          <Variant label={tx('Badge group')}>
+            <BadgeGroup badge={tx('New')} href="#/demo">
+              {tx('Dashboards are here')}
+            </BadgeGroup>
+          </Variant>
+          <Variant label={tx('Featured icons')}>
+            <Inline gap="md">
+              <FeaturedIcon icon={<DashZap />} />
+              <FeaturedIcon icon={<DashMail />} tone="blue" appearance="solid" />
+              <FeaturedIcon icon={<DashTrash />} tone="danger" appearance="outline" />
+              <FeaturedIcon icon={<DashUserPlus />} appearance="modern" shape="square" />
+            </Inline>
+          </Variant>
+        </Demo>
+        <Demo name={tx('Activity feed')}>
+          <ActivityFeed
+            aria-label={tx('Activity feed')}
+            items={[
+              {
+                id: 1,
+                avatar: { name: 'Sarah Chen', src: 'assets/avatar-2.png' },
+                title: tx('Sarah Chen commented on the report'),
+                time: tx('2 min ago'),
+                content: tx('Looks great!'),
+              },
+              {
+                id: 2,
+                icon: <DashUserPlus />,
+                iconTone: 'success',
+                title: tx('A new member joined'),
+                time: tx('Yesterday'),
+              },
+            ]}
+          />
+        </Demo>
+        <Demo name={tx('Date pickers')}>
+          <Variant label={tx('Single date')}>
+            <DatePicker label={tx('Due date')} />
+          </Variant>
+          <Variant label={tx('Range with presets')}>
+            <DateRangePicker label={tx('Report period')} presets={datePresets()} />
+          </Variant>
+        </Demo>
+        <Demo name={tx('File upload')}>
+          <FileUpload hint={tx('PNG or JPG, up to 5 MB')} id="demo-upload">
+            <FileUploadItem name="report.pdf" size="200 KB" progress={45} />
+            <FileUploadItem name="logo.png" size="80 KB" />
+          </FileUpload>
+        </Demo>
+        <Demo name={tx('Verification code')}>
+          <VerificationCodeInput
+            label={tx('Verification code')}
+            size="small"
+            length={6}
+            separatorAfter={3}
+          />
+        </Demo>
+      </Category>
       <Category title={tx('Data display')}>
         <Demo name={tx('Table')} wide>
           <Table

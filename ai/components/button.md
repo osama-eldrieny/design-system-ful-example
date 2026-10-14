@@ -34,9 +34,11 @@ import { IconButton } from '@ds/react';
 - `text`: Lowest emphasis, link-like. Underlined text for inline actions.
 
 ## Size (`size`)
+- `xsmall`: Inside table rows, chips and tight toolbars.
 - `small`: Dense UI: tables, toolbars, cards.
 - `medium`: Default for forms and dialogs.
 - `large`: Prominent calls to action, e.g. on a landing page hero.
+- `xlarge`: The single hero call to action of a page.
 
 ## States
 - **Default**: Ready to use. (At rest.)
@@ -53,7 +55,11 @@ import { IconButton } from '@ds/react';
 | --- | --- | --- | --- |
 | `variant` | `ButtonVariant` | primary | What kind of action this is. `primary` for the main action on a screen, `secondary` for supporting actions, `success` to confirm a positive outcome, `danger` for destructive actions, `warning` for actions that need caution. |
 | `appearance` | `ButtonAppearance` | filled | Visual weight. `filled` for the most important action, `outline` for secondary emphasis, `ghost` for low emphasis in toolbars and dense UI, `text` for inline, link-like actions. |
-| `size` | `ButtonSize` | medium | `small` for dense UI, `medium` by default, `large` for prominent calls to action. |
+| `size` | `ButtonSize` | medium | `xsmall` for table rows and chips, `small` for dense UI, `medium` by default, `large` and `xlarge` for prominent calls to action. |
+| `href` | `string` |  | Makes it a link styled as a button (an `<a>`), for navigation that should look like an action, e.g. "View report". Disabled links are not followed. |
+| `target` | `string` |  | With href: where to open the link, e.g. `_blank`. |
+| `rel` | `string` |  | With href: link relationship, e.g. `noopener`. |
+| `loadingText` | `ReactNode` |  | Text shown next to the spinner while loading, e.g. "Saving…". Default: the label. |
 | `iconStart` | `ReactNode` |  | Icon before the label (after it in right-to-left languages). Hidden from screen readers. |
 | `iconEnd` | `ReactNode` |  | Icon after the label (before it in right-to-left languages). Hidden from screen readers. |
 | `loading` | `boolean` | false | Shows a spinner and ignores clicks while an action runs. The button stays focusable and is announced as busy. |
@@ -68,7 +74,11 @@ import { IconButton } from '@ds/react';
 | `label` | `string` |  | What the button does, e.g. "Delete message". Required: it is the accessible name screen readers announce and the tooltip sighted users see, since there is no visible text. |
 | `variant` | `ButtonVariant` |  | What kind of action this is. `primary` for the main action on a screen, `secondary` for supporting actions, `success` to confirm a positive outcome, `danger` for destructive actions, `warning` for actions that need caution. |
 | `appearance` | `ButtonAppearance` |  | Visual weight. `filled` for the most important action, `outline` for secondary emphasis, `ghost` for low emphasis in toolbars and dense UI, `text` for inline, link-like actions. |
-| `size` | `ButtonSize` |  | `small` for dense UI, `medium` by default, `large` for prominent calls to action. |
+| `size` | `ButtonSize` |  | `xsmall` for table rows and chips, `small` for dense UI, `medium` by default, `large` and `xlarge` for prominent calls to action. |
+| `href` | `string` |  | Makes it a link styled as a button (an `<a>`), for navigation that should look like an action, e.g. "View report". Disabled links are not followed. |
+| `target` | `string` |  | With href: where to open the link, e.g. `_blank`. |
+| `rel` | `string` |  | With href: link relationship, e.g. `noopener`. |
+| `loadingText` | `ReactNode` |  | Text shown next to the spinner while loading, e.g. "Saving…". Default: the label. |
 | `loading` | `boolean` |  | Shows a spinner and ignores clicks while an action runs. The button stays focusable and is announced as busy. |
 
 ## Guidelines
@@ -142,6 +152,15 @@ While saving, the button shows a spinner and ignores clicks.
 import { Button } from '@ds/react';
 
 <Button loading={isSaving} onClick={save}>Save changes</Button>
+```
+
+### Link styled as a button
+Navigation that should look like an action.
+
+```tsx
+import { Button } from '@ds/react';
+
+<Button href="/reports/q3" appearance="outline">View report</Button>
 ```
 
 ### Icon button

@@ -9,6 +9,10 @@
     {
       "name": "Progress",
       "from": "@ds/react"
+    },
+    {
+      "name": "ProgressCircle",
+      "from": "@ds/react"
     }
   ],
   "whenToUse": [
@@ -78,6 +82,38 @@
         {
           "value": "small",
           "meaning": "Thin; cards and tables."
+        }
+      ]
+    },
+    {
+      "prop": "valuePosition",
+      "title": "Value position",
+      "values": [
+        {
+          "value": "top",
+          "meaning": "Beside the label. Default."
+        },
+        {
+          "value": "end",
+          "meaning": "After the bar, for compact rows."
+        },
+        {
+          "value": "bottom",
+          "meaning": "Under the end of the bar."
+        }
+      ]
+    },
+    {
+      "prop": "shape",
+      "title": "ProgressCircle shape",
+      "values": [
+        {
+          "value": "circle",
+          "meaning": "A full ring. Default."
+        },
+        {
+          "value": "half",
+          "meaning": "A semicircle gauge, for scores and quotas."
         }
       ]
     }
@@ -161,6 +197,18 @@
   },
   "examples": [
     {
+      "id": "circle",
+      "title": "Ring",
+      "description": "ProgressCircle with a caption.",
+      "code": "import { ProgressCircle } from '@ds/react';\n\n<ProgressCircle label=\"Storage used\" value={64} caption=\"of 20 GB\" />"
+    },
+    {
+      "id": "gauge",
+      "title": "Gauge",
+      "description": "A half-ring for scores.",
+      "code": "import { ProgressCircle } from '@ds/react';\n\n<ProgressCircle label=\"Health score\" value={72} shape=\"half\" />"
+    },
+    {
       "id": "upload",
       "title": "Upload",
       "description": "With the value shown.",
@@ -198,6 +246,14 @@
       "date": "2026-09-29",
       "changes": [
         "New component."
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "valuePosition: top, end or bottom.",
+        "New ProgressCircle: a ring or half-ring gauge with the value inside."
       ]
     }
   ],
@@ -264,6 +320,93 @@
           "required": false,
           "default": "medium",
           "description": "`small` for a thin bar in cards and tables, `medium` by default."
+        },
+        "valuePosition": {
+          "type": "\"top\" | \"end\" | \"bottom\"",
+          "values": [
+            "top",
+            "end",
+            "bottom"
+          ],
+          "required": false,
+          "default": "top",
+          "description": "Where the value shows with showValue: `top` (default) beside the label, `end` after the\nbar, `bottom` under the bar's end."
+        }
+      }
+    },
+    {
+      "name": "ProgressCircle",
+      "import": "import { ProgressCircle } from '@ds/react';",
+      "description": "A ring or half-ring gauge showing how far along something is, with the value inside.",
+      "props": {
+        "label": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "What is measured, e.g. \"Storage used\". Names the progress bar; shown under the ring."
+        },
+        "hideLabel": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Hides the label visually; it is still announced."
+        },
+        "value": {
+          "type": "number",
+          "required": true,
+          "default": null,
+          "description": "Current value, 0 to max."
+        },
+        "max": {
+          "type": "number",
+          "required": false,
+          "default": 100,
+          "description": ""
+        },
+        "formatValue": {
+          "type": "((value: number, max: number) => string)",
+          "required": false,
+          "default": "(value: number, max: number) => `${Math.round((value / max) * 100)}%`",
+          "description": "Text in the middle. Default: the percentage."
+        },
+        "caption": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Small caption under the value inside the ring, e.g. \"Active users\"."
+        },
+        "shape": {
+          "type": "\"circle\" | \"half\"",
+          "values": [
+            "circle",
+            "half"
+          ],
+          "required": false,
+          "default": "circle",
+          "description": "`circle` (default) full ring, `half` a semicircle gauge."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\" | \"large\"",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` 64px, `medium` 120px (default), `large` 200px."
+        },
+        "tone": {
+          "type": "\"primary\" | \"success\" | \"warning\" | \"danger\"",
+          "values": [
+            "primary",
+            "success",
+            "warning",
+            "danger"
+          ],
+          "required": false,
+          "default": "primary",
+          "description": ""
         }
       }
     }
@@ -415,6 +558,88 @@
       "description": "Stroke widths in px.",
       "references": "--border-width-hairline",
       "default": "1px"
+    },
+    "--progress-value-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--progress-circle-small-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-2xl-plus",
+      "default": "64px"
+    },
+    "--progress-circle-medium-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-5xl",
+      "default": "120px"
+    },
+    "--progress-circle-large-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-6xl",
+      "default": "200px"
+    },
+    "--progress-circle-small-stroke-width": {
+      "description": null,
+      "references": null,
+      "default": "10"
+    },
+    "--progress-circle-medium-stroke-width": {
+      "description": null,
+      "references": null,
+      "default": "8"
+    },
+    "--progress-circle-large-stroke-width": {
+      "description": null,
+      "references": null,
+      "default": "6"
+    },
+    "--progress-circle-value-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--progress-circle-value-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--progress-circle-small-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--progress-circle-small-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--progress-circle-medium-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-2xl",
+      "default": "28px"
+    },
+    "--progress-circle-medium-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-2xl",
+      "default": "35px"
+    },
+    "--progress-circle-large-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-4xl",
+      "default": "36px"
+    },
+    "--progress-circle-large-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-4xl",
+      "default": "45px"
     }
   },
   "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-progress--docs"

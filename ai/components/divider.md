@@ -16,6 +16,11 @@ import { Divider } from '@ds/react';
 - To separate page sections. Use Spacing or headings.
 - Between every list item. Use List divided.
 
+## Label position (`labelAlign`)
+- `center`: Default, e.g. “or” between sign-in options.
+- `start`: A section title on the line.
+- `end`: An action at the end of the line.
+
 ## Orientation (`orientation`)
 - `horizontal`: Between stacked content. Default.
 - `vertical`: Between items in a row.
@@ -30,6 +35,7 @@ import { Divider } from '@ds/react';
 | --- | --- | --- | --- |
 | `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default) between stacked content; `vertical` between items in a row. |
 | `label` | `ReactNode` |  | Short text in the middle of a horizontal divider, e.g. “or”. |
+| `labelAlign` | `"start" \| "center" \| "end"` | center | Where the label sits on the line: `center` (default), `start` or `end`. |
 
 ## Guidelines
 - Do: Prefer spacing and headings. Don’t: Put a divider between every block. Why: Too many lines add noise.

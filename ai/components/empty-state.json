@@ -47,6 +47,24 @@
   ],
   "options": [
     {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Inside cards and tables."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "A whole page, e.g. first use."
+        }
+      ]
+    },
+    {
       "prop": "titleAs",
       "title": "Heading level",
       "values": [
@@ -163,6 +181,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "size and illustration."
+      ]
     }
   ],
   "components": [
@@ -205,6 +230,23 @@
           "required": false,
           "default": "h2",
           "description": "Heading level that fits the page. Default h2."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\" | \"large\"",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` inside cards and tables, `medium` (default), `large` for a whole page."
+        },
+        "illustration": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "An image or illustration shown instead of the icon. Decorative."
         }
       }
     }
@@ -326,6 +368,64 @@
       "description": "Fixed element sizes in px.",
       "references": "--sizing-8xl",
       "default": "calc(220px * 2)"
+    },
+    "--empty-state-small-icon-box-size": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--empty-state-small-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm-plus",
+      "default": "20px"
+    },
+    "--empty-state-small-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--empty-state-small-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--empty-state-small-padding": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--empty-state-large-icon-box-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-3xl",
+      "default": "80px"
+    },
+    "--empty-state-large-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xl-minus",
+      "default": "32px"
+    },
+    "--empty-state-large-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-2xl",
+      "default": "28px"
+    },
+    "--empty-state-large-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-2xl",
+      "default": "35px"
+    },
+    "--empty-state-large-padding": {
+      "description": "Extra-large layout spacing.",
+      "references": "--spacing-4xl",
+      "default": "36px"
+    },
+    "--empty-state-illustration-max-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 1.2)"
     }
   },
   "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-emptystate--docs"

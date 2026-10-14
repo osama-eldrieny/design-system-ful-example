@@ -16,6 +16,15 @@ import { Stepper } from '@ds/react';
 - For switching between independent views. Use Tabs.
 - For site location. Use Breadcrumb.
 
+## Marker (`marker`)
+- `number`: Step numbers; a check when complete. Default.
+- `icon`: Each step’s icon in a tile, for onboarding flows.
+- `dot`: Small dots, for compact progress.
+
+## Size (`size`)
+- `small`: Dialogs and narrow panels.
+- `medium`: Default.
+
 ## Orientation (`orientation`)
 - `horizontal`: A few short steps across the top. Default.
 - `vertical`: Many or long steps, or narrow screens.
@@ -34,6 +43,8 @@ import { Stepper } from '@ds/react';
 | `steps` | `StepperStep[]` |  | The steps, in order. |
 | `current` | `number` |  | Index of the current step (0-based). Earlier steps are complete. |
 | `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default) for a few short steps; `vertical` for many or long ones. |
+| `marker` | `"number" \| "icon" \| "dot"` | number | What marks each step: `number` (default), `icon` (each step's icon in a tile), `dot`. |
+| `size` | `"small" \| "medium"` | medium | `small` for compact flows and dialogs, `medium` (default). |
 | `onStepClick` | `((index: number) => void)` |  | Lets people go back to a completed step by clicking it. |
 | `statusLabels` | `Partial<Record<StepStatus, string>>` |  | Words announced for each status, for translation. |
 | `aria-label` | `string` |  | Names the list, e.g. "Checkout steps". |

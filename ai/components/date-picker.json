@@ -1,0 +1,897 @@
+{
+  "id": "date-picker",
+  "name": "DatePicker",
+  "category": "Forms",
+  "status": "stable",
+  "since": "1.1.0",
+  "description": "Pick a date or a date range from a month grid. DatePicker opens a Calendar from a button; DateRangePicker shows two months and presets such as \"Last 30 days\" and applies with Apply; Calendar is the grid on its own. Month and weekday names, and the first day of the week, follow the locale.",
+  "imports": [
+    {
+      "name": "DatePicker",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DateRangePicker",
+      "from": "@ds/react"
+    },
+    {
+      "name": "Calendar",
+      "from": "@ds/react"
+    },
+    {
+      "name": "datePresets",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "Choosing a due date, a delivery date or a booking.",
+    "Choosing a report period on a dashboard (DateRangePicker with presets)."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a birth date or a date far in the past.",
+      "alternative": "InputField with type=\"date\""
+    },
+    {
+      "text": "For a time of day.",
+      "alternative": "InputField with type=\"time\""
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Trigger",
+      "description": "Button showing the date or range."
+    },
+    {
+      "name": "Month header",
+      "description": "Month name and previous/next buttons."
+    },
+    {
+      "name": "Day grid",
+      "description": "Weekday headings and days."
+    },
+    {
+      "name": "Presets",
+      "description": "Quick ranges (range picker).",
+      "optional": true
+    },
+    {
+      "name": "Footer",
+      "description": "Selected range, Cancel and Apply (range picker).",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "mode",
+      "title": "Calendar mode",
+      "values": [
+        {
+          "value": "single",
+          "meaning": "One date. Default."
+        },
+        {
+          "value": "range",
+          "meaning": "A start and an end date."
+        }
+      ]
+    },
+    {
+      "prop": "months",
+      "title": "Months shown",
+      "values": [
+        {
+          "value": "1",
+          "meaning": "Default for single dates."
+        },
+        {
+          "value": "2",
+          "meaning": "Default for ranges."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "A day that can be picked.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "Pointer over a day.",
+      "trigger": ":hover"
+    },
+    {
+      "name": "Focus",
+      "meaning": "Keyboard focus on a day.",
+      "trigger": ":focus-visible"
+    },
+    {
+      "name": "Selected",
+      "meaning": "The picked date or range ends.",
+      "trigger": "value / range"
+    },
+    {
+      "name": "In range",
+      "meaning": "Between range start and end.",
+      "trigger": "range"
+    },
+    {
+      "name": "Today",
+      "meaning": "Dot under the date.",
+      "trigger": "today"
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Out of bounds or excluded.",
+      "trigger": "min, max, isDateDisabled"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Range picking",
+      "text": "First click sets the start, second the end; a click before the start starts again."
+    },
+    {
+      "topic": "Locale",
+      "text": "Pass locale (e.g. \"ar\") for names and the first weekday; RTL mirrors arrows."
+    },
+    {
+      "topic": "Apply",
+      "text": "DateRangePicker only changes the value when Apply is pressed."
+    }
+  ],
+  "content": [
+    "Label the trigger with what the date is for, e.g. \"Due date\".",
+    "Use presets people actually need, e.g. \"Last 30 days\" for reports."
+  ],
+  "guidelines": [
+    {
+      "do": "Limit dates with min, max and isDateDisabled.",
+      "dont": "Let people pick dates you will reject.",
+      "why": "Prevent errors instead of reporting them."
+    },
+    {
+      "do": "Offer presets for reporting periods.",
+      "dont": "Make people click two dates for \"last 7 days\".",
+      "why": "Presets cover the common cases in one click."
+    },
+    {
+      "do": "Use InputField type=\"date\" for dates far away, e.g. birthdays.",
+      "dont": "Make people page back decades.",
+      "why": "Typing is faster for distant dates."
+    }
+  ],
+  "accessibility": {
+    "role": "grid per month (table) of day buttons; the picker is a popover from a button.",
+    "keyboard": [
+      {
+        "keys": "Arrow keys",
+        "action": "Previous/next day and week."
+      },
+      {
+        "keys": "Page Up / Page Down",
+        "action": "Previous/next month; with Shift, year."
+      },
+      {
+        "keys": "Home / End",
+        "action": "Start or end of the week."
+      },
+      {
+        "keys": "Enter / Space",
+        "action": "Pick the focused day."
+      },
+      {
+        "keys": "Escape",
+        "action": "Close the picker."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label on days",
+        "when": "The full date, e.g. \"Friday, May 15, 2026\"."
+      },
+      {
+        "attribute": "aria-pressed",
+        "when": "Selected days."
+      },
+      {
+        "attribute": "aria-current=\"date\"",
+        "when": "Today."
+      }
+    ],
+    "focus": "One day is in the tab order; arrow keys move focus within the grid.",
+    "wcag": [
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Every day can be reached and picked with the keyboard."
+      },
+      {
+        "criterion": "1.4.3 Contrast (Minimum)",
+        "how": "Days and selection meet 4.5:1 in every theme."
+      }
+    ],
+    "notes": [
+      "The trigger’s name includes the current value, e.g. \"Due date: May 20, 2026\"."
+    ]
+  },
+  "examples": [
+    {
+      "id": "single",
+      "title": "Due date",
+      "description": "One date.",
+      "code": "import { DatePicker } from '@ds/react';\n\n<DatePicker label=\"Due date\" value={due} onValueChange={setDue} />"
+    },
+    {
+      "id": "range",
+      "title": "Report period",
+      "description": "Two months and presets.",
+      "code": "import { DateRangePicker, datePresets } from '@ds/react';\n\n<DateRangePicker label=\"Report period\" presets={datePresets()} value={range} onValueChange={setRange} />"
+    },
+    {
+      "id": "calendar",
+      "title": "Inline calendar",
+      "description": "The grid on its own.",
+      "code": "import { Calendar } from '@ds/react';\n\n<Calendar value={date} onValueChange={setDate} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--date-picker-"
+  ],
+  "related": [
+    {
+      "id": "popover",
+      "relation": "Holds the calendar."
+    },
+    {
+      "id": "input-field",
+      "relation": "For typed dates."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New components."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "DatePicker",
+      "import": "import { DatePicker } from '@ds/react';",
+      "description": "A button that opens a calendar to pick one date.",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Names the trigger, e.g. \"Due date\"."
+        },
+        "placeholder": {
+          "type": "string",
+          "required": false,
+          "default": "Select dates",
+          "description": "Text on the trigger with no date. Default \"Select date\"."
+        },
+        "formatDate": {
+          "type": "((date: Date) => string)",
+          "required": false,
+          "default": null,
+          "description": "Formats the date on the trigger."
+        },
+        "size": {
+          "type": "\"small\" | \"medium\"",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` or `medium` (default) trigger."
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "value": {
+          "type": "Date | null",
+          "required": false,
+          "default": null,
+          "description": "Selected date (single)."
+        },
+        "onValueChange": {
+          "type": "((value: Date) => void)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "defaultMonth": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": "Month shown first. Default: the selection or today."
+        },
+        "months": {
+          "type": "1 | 2",
+          "values": [
+            "1",
+            "2"
+          ],
+          "required": false,
+          "default": 2,
+          "description": "How many months side by side. Default 1; 2 suits ranges on wide screens."
+        },
+        "min": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": "Earliest and latest dates that can be picked."
+        },
+        "max": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "isDateDisabled": {
+          "type": "((date: Date) => boolean)",
+          "required": false,
+          "default": null,
+          "description": "Return true for dates that can't be picked, e.g. weekends."
+        },
+        "locale": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "BCP 47 locale for month and weekday names, e.g. \"ar\". Default: the browser’s."
+        },
+        "labels": {
+          "type": "{ previous?: string; next?: string; } | undefined",
+          "required": false,
+          "default": "{}",
+          "description": "Names for the month buttons, for translation."
+        },
+        "today": {
+          "type": "Date",
+          "required": false,
+          "default": "startOfDay(new Date())",
+          "description": "\"Today\" for the date that is today."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DateRangePicker",
+      "import": "import { DateRangePicker } from '@ds/react';",
+      "description": "A button that opens two months and optional presets to pick a date range; the range is\napplied with Apply.",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "value": {
+          "type": "DateRange",
+          "required": false,
+          "default": null,
+          "description": "Applied range."
+        },
+        "onValueChange": {
+          "type": "((range: DateRange) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called when people press Apply."
+        },
+        "presets": {
+          "type": "DatePreset[]",
+          "required": false,
+          "default": null,
+          "description": "Quick choices in a side list, e.g. \"Last 7 days\"."
+        },
+        "placeholder": {
+          "type": "string",
+          "required": false,
+          "default": "Select dates",
+          "description": ""
+        },
+        "formatDate": {
+          "type": "((date: Date) => string)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "size": {
+          "type": "\"small\" | \"medium\"",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": ""
+        },
+        "disabled": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "actionLabels": {
+          "type": "{ apply?: string; cancel?: string; } | undefined",
+          "required": false,
+          "default": "{}",
+          "description": "Button texts, for translation."
+        },
+        "defaultMonth": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": "Month shown first. Default: the selection or today."
+        },
+        "months": {
+          "type": "1 | 2",
+          "values": [
+            "1",
+            "2"
+          ],
+          "required": false,
+          "default": 2,
+          "description": "How many months side by side. Default 1; 2 suits ranges on wide screens."
+        },
+        "min": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": "Earliest and latest dates that can be picked."
+        },
+        "max": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "isDateDisabled": {
+          "type": "((date: Date) => boolean)",
+          "required": false,
+          "default": null,
+          "description": "Return true for dates that can't be picked, e.g. weekends."
+        },
+        "locale": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "BCP 47 locale for month and weekday names, e.g. \"ar\". Default: the browser’s."
+        },
+        "labels": {
+          "type": "{ previous?: string; next?: string; } | undefined",
+          "required": false,
+          "default": "{}",
+          "description": "Names for the month buttons, for translation."
+        },
+        "today": {
+          "type": "Date",
+          "required": false,
+          "default": "startOfDay(new Date())",
+          "description": "\"Today\" for the date that is today."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "Calendar",
+      "import": "import { Calendar } from '@ds/react';",
+      "description": "A month grid to pick a date or a range. Arrow keys move by day and week, Page Up/Down by\nmonth, Home/End to the week’s start and end.",
+      "props": {
+        "mode": {
+          "type": "\"single\" | \"range\"",
+          "values": [
+            "single",
+            "range"
+          ],
+          "required": false,
+          "default": "single",
+          "description": "`single` (default) picks one date, `range` a start and an end."
+        },
+        "value": {
+          "type": "Date | null",
+          "required": false,
+          "default": null,
+          "description": "Selected date (single)."
+        },
+        "onValueChange": {
+          "type": "((value: Date) => void)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "range": {
+          "type": "DateRange",
+          "required": false,
+          "default": null,
+          "description": "Selected range (range)."
+        },
+        "onRangeChange": {
+          "type": "((range: DateRange) => void)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "defaultMonth": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": "Month shown first. Default: the selection or today."
+        },
+        "months": {
+          "type": "1 | 2",
+          "values": [
+            "1",
+            "2"
+          ],
+          "required": false,
+          "default": 2,
+          "description": "How many months side by side. Default 1; 2 suits ranges on wide screens."
+        },
+        "min": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": "Earliest and latest dates that can be picked."
+        },
+        "max": {
+          "type": "Date",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "isDateDisabled": {
+          "type": "((date: Date) => boolean)",
+          "required": false,
+          "default": null,
+          "description": "Return true for dates that can't be picked, e.g. weekends."
+        },
+        "locale": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "BCP 47 locale for month and weekday names, e.g. \"ar\". Default: the browser’s."
+        },
+        "labels": {
+          "type": "{ previous?: string; next?: string; } | undefined",
+          "required": false,
+          "default": "{}",
+          "description": "Names for the month buttons, for translation."
+        },
+        "today": {
+          "type": "Date",
+          "required": false,
+          "default": "startOfDay(new Date())",
+          "description": "\"Today\" for the date that is today."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "datePresets",
+      "import": "import { datePresets } from '@ds/react';",
+      "description": "Common presets relative to today: last 7, 30 and 90 days, this month, this year.",
+      "props": {}
+    }
+  ],
+  "tokens": {
+    "--date-picker-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--date-picker-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--date-picker-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--date-picker-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--date-picker-months-gap": {
+      "description": "Padding of sections and cards.",
+      "references": "--spacing-xl",
+      "default": "24px"
+    },
+    "--date-picker-heading-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--date-picker-heading-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--date-picker-heading-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--date-picker-heading-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--date-picker-weekday-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--date-picker-weekday-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--date-picker-day-size": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--date-picker-day-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--date-picker-day-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--date-picker-day-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--date-picker-day-selected-bg-color": {
+      "description": "Fill of filled buttons; the accent in light mode, a darker step in dark mode.",
+      "references": "--color-bg-accent-primary-strong-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#8a663e",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#326fd1"
+      }
+    },
+    "--date-picker-day-selected-text-color": {
+      "description": "Text and icons on the matching strong fill (light text in dark mode).",
+      "references": "--color-fg-on-accent-primary-strong-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=amber,mode=light": "#1e140d"
+      }
+    },
+    "--date-picker-day-today-indicator-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--date-picker-day-today-indicator-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-4xs",
+      "default": "6px"
+    },
+    "--date-picker-day-outside-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--date-picker-day-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--date-picker-range-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--date-picker-range-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--date-picker-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--date-picker-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--date-picker-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--date-picker-panel-padding": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--date-picker-presets-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 0.72)"
+    },
+    "--date-picker-presets-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--date-picker-presets-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--date-picker-presets-item-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--date-picker-presets-item-selected-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--date-picker-presets-item-selected-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--date-picker-presets-item-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--date-picker-presets-item-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--date-picker-presets-item-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-md",
+      "default": "4px"
+    },
+    "--date-picker-footer-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-datepicker--docs"
+}

@@ -50,6 +50,20 @@
   ],
   "options": [
     {
+      "prop": "layout",
+      "title": "Layout",
+      "values": [
+        {
+          "value": "compact",
+          "meaning": "Everything together. Default."
+        },
+        {
+          "value": "spread",
+          "meaning": "Previous and next at the edges, e.g. under a table."
+        }
+      ]
+    },
+    {
       "prop": "appearance",
       "title": "Appearance",
       "values": [
@@ -210,6 +224,13 @@
   ],
   "changelog": [
     {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "showArrowLabels and layout=\"spread\" for table footers."
+      ]
+    },
+    {
       "version": "0.2.0",
       "date": "2026-09-29",
       "changes": [
@@ -258,6 +279,22 @@
           "required": false,
           "default": 1,
           "description": "How many pages to show on each side of the current page before “…”."
+        },
+        "showArrowLabels": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows \"Previous\" and \"Next\" as text beside the arrows."
+        },
+        "layout": {
+          "type": "\"compact\" | \"spread\"",
+          "values": [
+            "compact",
+            "spread"
+          ],
+          "required": false,
+          "default": "compact",
+          "description": "`compact` (default) keeps everything together. `spread` pushes previous and next to the\nedges with the pages centered, e.g. under a table."
         },
         "label": {
           "type": "string",
@@ -470,6 +507,33 @@
       "description": "Opacity from 0 to 1.",
       "references": "--opacity-medium",
       "default": "0.5"
+    },
+    "--pagination-arrow-label-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--pagination-arrow-label-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--pagination-arrow-label-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--pagination-arrow-label-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
     },
     "--pagination-gap": {
       "description": "Spacing steps in px (see --spacing-* in themes/density.css).",

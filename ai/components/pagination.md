@@ -16,6 +16,10 @@ import { Pagination } from '@ds/react';
 - For feeds people browse casually. Use Infinite scroll or a “Load more” button.
 - For steps in a process. Use Stepper.
 
+## Layout (`layout`)
+- `compact`: Everything together. Default.
+- `spread`: Previous and next at the edges, e.g. under a table.
+
 ## Appearance (`appearance`)
 - `full`: Page numbers with ellipses. Default.
 - `simple`: “Page 2 of 10” between the arrows, for narrow spaces.
@@ -37,6 +41,8 @@ import { Pagination } from '@ds/react';
 | `onPageChange` | `((page: number) => void)` |  | Called with the page to show. |
 | `appearance` | `PaginationAppearance` | full | `full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows “Page 2 of 10” between the arrows, for narrow spaces. |
 | `siblingCount` | `number` | 1 | How many pages to show on each side of the current page before “…”. |
+| `showArrowLabels` | `boolean` | false | Shows "Previous" and "Next" as text beside the arrows. |
+| `layout` | `"compact" \| "spread"` | compact | `compact` (default) keeps everything together. `spread` pushes previous and next to the edges with the pages centered, e.g. under a table. |
 | `label` | `string` | Pagination | Accessible name of the navigation landmark. Default "Pagination". |
 | `labels` | `{ previous?: string; next?: string; page?: ((page: number) => string) \| undefined; summary?: ((page: number, total: number) => string) \| undefined; } \| undefined` | {} | Accessible names and summary wording, for translation. |
 

@@ -1,0 +1,1242 @@
+{
+  "id": "charts",
+  "name": "Charts",
+  "category": "Data display",
+  "status": "beta",
+  "since": "1.1.0",
+  "description": "Dependency-free SVG charts styled by tokens: LineChart and AreaChart for trends, BarChart for comparing categories (grouped, stacked or horizontal), DonutChart for parts of a whole, RadarChart for several dimensions and Sparkline for a tiny trend next to a figure. Every chart is a named figure with a hidden data table, reads values with the keyboard and mirrors in right-to-left languages.",
+  "imports": [
+    {
+      "name": "LineChart",
+      "from": "@ds/react"
+    },
+    {
+      "name": "AreaChart",
+      "from": "@ds/react"
+    },
+    {
+      "name": "BarChart",
+      "from": "@ds/react"
+    },
+    {
+      "name": "DonutChart",
+      "from": "@ds/react"
+    },
+    {
+      "name": "RadarChart",
+      "from": "@ds/react"
+    },
+    {
+      "name": "Sparkline",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "LineChart / AreaChart: a value over time, e.g. monthly revenue; up to about four series.",
+    "BarChart: comparing categories, e.g. orders per region; stacked for totals made of parts.",
+    "DonutChart: parts of a whole with up to about six slices.",
+    "Sparkline: a trend next to a number, e.g. in a MetricCard or table row."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For exact values people need to look up or copy.",
+      "alternative": "Table"
+    },
+    {
+      "text": "For one key number.",
+      "alternative": "MetricCard"
+    },
+    {
+      "text": "For more than six parts of a whole.",
+      "alternative": "BarChart (horizontal)"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Title and description",
+      "description": "Name the chart and say what it shows."
+    },
+    {
+      "name": "Plot",
+      "description": "Gridlines, axes and marks (lines, areas, bars, slices)."
+    },
+    {
+      "name": "Tooltip",
+      "description": "Values at the hovered or keyboard-selected point.",
+      "optional": true
+    },
+    {
+      "name": "Legend",
+      "description": "Series colors and names.",
+      "optional": true
+    },
+    {
+      "name": "Data table",
+      "description": "Hidden table with every value, for screen readers."
+    }
+  ],
+  "options": [
+    {
+      "prop": "chart",
+      "title": "Chart type",
+      "values": [
+        {
+          "value": "LineChart",
+          "meaning": "Trends over an ordered axis. curved, showDots, area, stacked."
+        },
+        {
+          "value": "AreaChart",
+          "meaning": "LineChart with filled areas."
+        },
+        {
+          "value": "BarChart",
+          "meaning": "Categories. stacked; orientation vertical or horizontal."
+        },
+        {
+          "value": "DonutChart",
+          "meaning": "Shares. thickness 1 draws a pie; centerValue and centerLabel."
+        },
+        {
+          "value": "RadarChart",
+          "meaning": "Several series across several dimensions."
+        },
+        {
+          "value": "Sparkline",
+          "meaning": "A tiny trend; tone auto (green rising, red falling)."
+        }
+      ]
+    },
+    {
+      "prop": "series.color",
+      "title": "Series color",
+      "values": [
+        {
+          "value": "1",
+          "meaning": "The brand color; the first series by default."
+        },
+        {
+          "value": "2–8",
+          "meaning": "Category hues, assigned in order; set one to keep a series’ color fixed."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "At rest.",
+      "trigger": "—"
+    },
+    {
+      "name": "Active point",
+      "meaning": "Tooltip and crosshair at one point.",
+      "trigger": "Hover, or arrow keys while focused."
+    },
+    {
+      "name": "Focus",
+      "meaning": "The plot shows the focus ring.",
+      "trigger": "Tab (:focus-visible)."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Size",
+      "text": "Charts fill their container’s width and redraw as it resizes; height is a prop."
+    },
+    {
+      "topic": "Keyboard",
+      "text": "Each plot is one tab stop. Arrow keys, Home and End move between points; Escape clears."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "In Arabic the x axis runs right to left and the value axis moves to the right."
+    },
+    {
+      "topic": "Colors",
+      "text": "Series colors pass 3:1 against the surface in every brand and mode."
+    }
+  ],
+  "content": [
+    "Title: what is measured and over what, e.g. \"Revenue, last 12 months\".",
+    "Description: the takeaway, e.g. \"Revenue grew 38% over the year\".",
+    "Format values for reading with formatValue, e.g. currency and compact notation."
+  ],
+  "guidelines": [
+    {
+      "do": "Start bar charts at zero (they always do).",
+      "dont": "Compare bar lengths on a cut axis.",
+      "why": "Bar length must be proportional to the value."
+    },
+    {
+      "do": "Keep to four series on a line chart and six slices on a donut.",
+      "dont": "Plot a dozen series in one chart.",
+      "why": "Colors become hard to tell apart and the legend hard to match."
+    },
+    {
+      "do": "Say the takeaway in the description.",
+      "dont": "Leave people to work out what matters.",
+      "why": "The description helps everyone, and is the summary for screen readers."
+    }
+  ],
+  "accessibility": {
+    "role": "figure named by its title, containing a slider over the data points and a hidden table.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Focuses the plot."
+      },
+      {
+        "keys": "Arrow keys",
+        "action": "Move to the previous or next point; its values are announced."
+      },
+      {
+        "keys": "Home / End",
+        "action": "First or last point."
+      },
+      {
+        "keys": "Escape",
+        "action": "Clears the selection."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "role=\"slider\" + aria-valuetext",
+        "when": "The plot; announces the active point."
+      },
+      {
+        "attribute": "aria-hidden on the SVG",
+        "when": "Always; the table and slider carry the data."
+      },
+      {
+        "attribute": "Hidden <table>",
+        "when": "Every chart, with every value."
+      }
+    ],
+    "focus": "The plot shows the focus ring; the tooltip follows the active point.",
+    "wcag": [
+      {
+        "criterion": "1.1.1 Non-text Content",
+        "how": "Each chart has a name, a description and a data table."
+      },
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Series are also named in the legend, tooltip and table."
+      },
+      {
+        "criterion": "1.4.11 Non-text Contrast",
+        "how": "Series colors meet 3:1 on the surface (checked in CI)."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Every value is reachable with the arrow keys."
+      }
+    ],
+    "notes": [
+      "Sparklines are decorative unless you give them a label."
+    ]
+  },
+  "examples": [
+    {
+      "id": "line",
+      "title": "Revenue over a year",
+      "description": "Two series with currency values.",
+      "code": "import { LineChart } from '@ds/react';\n\n<LineChart\n  title=\"Revenue\"\n  data={months}\n  xKey=\"month\"\n  series={[{ key: 'revenue', label: 'Revenue' }, { key: 'expenses', label: 'Expenses' }]}\n/>"
+    },
+    {
+      "id": "bar",
+      "title": "Stacked bars",
+      "description": "Totals made of parts.",
+      "code": "import { BarChart } from '@ds/react';\n\n<BarChart title=\"Costs\" stacked data={rows} xKey=\"month\" series={[{ key: 'ads', label: 'Ads' }, { key: 'staff', label: 'Staff' }]} />"
+    },
+    {
+      "id": "donut",
+      "title": "Donut with a total",
+      "description": "Traffic sources.",
+      "code": "import { DonutChart } from '@ds/react';\n\n<DonutChart title=\"Traffic\" data={[{ label: 'Direct', value: 42 }, { label: 'Search', value: 31 }]} centerValue=\"73\" centerLabel=\"Visits\" />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--chart-"
+  ],
+  "related": [
+    {
+      "id": "metric-card",
+      "relation": "Shows a Sparkline beside its value."
+    },
+    {
+      "id": "table",
+      "relation": "For exact values."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New components."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "LineChart",
+      "import": "import { LineChart } from '@ds/react';",
+      "description": "Values over an ordered axis, usually time: trends and comparisons of a few series.",
+      "props": {
+        "area": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Fills the area under each line."
+        },
+        "stacked": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Stacks the areas on top of each other (with area)."
+        },
+        "curved": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Smooth curves instead of straight segments. Default true."
+        },
+        "showDots": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Dots on every point. Default: only the active one."
+        },
+        "title": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Names the chart; shown above it unless hideTitle. Also names its data table."
+        },
+        "hideTitle": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Hides the title visually; it still names the chart for screen readers."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "One sentence on what the chart shows."
+        },
+        "data": {
+          "type": "ChartRow[]",
+          "required": true,
+          "default": null,
+          "description": "One object per point on the x axis, e.g. `{ month: 'Jan', revenue: 12000 }`."
+        },
+        "xKey": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Field holding the x axis label, e.g. \"month\"."
+        },
+        "series": {
+          "type": "ChartSeries[]",
+          "required": true,
+          "default": null,
+          "description": "The series to draw."
+        },
+        "height": {
+          "type": "number",
+          "required": false,
+          "default": 48,
+          "description": "Plot height in px. Default 240."
+        },
+        "formatValue": {
+          "type": "((value: number) => string)",
+          "required": false,
+          "default": "(value: number) =>\n  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)",
+          "description": "Formats values on the axis and in the tooltip. Default compact numbers (12K)."
+        },
+        "showLegend": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows the legend under the chart. Default: when there are several series."
+        },
+        "showGrid": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows horizontal gridlines. Default true."
+        },
+        "hideYAxis": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Hides the value axis labels, e.g. in small cards."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "AreaChart",
+      "import": "import { AreaChart } from '@ds/react';",
+      "description": "LineChart with the area under each line filled.",
+      "props": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Names the chart; shown above it unless hideTitle. Also names its data table."
+        },
+        "hideTitle": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Hides the title visually; it still names the chart for screen readers."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "One sentence on what the chart shows."
+        },
+        "data": {
+          "type": "ChartRow[]",
+          "required": true,
+          "default": null,
+          "description": "One object per point on the x axis, e.g. `{ month: 'Jan', revenue: 12000 }`."
+        },
+        "xKey": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Field holding the x axis label, e.g. \"month\"."
+        },
+        "series": {
+          "type": "ChartSeries[]",
+          "required": true,
+          "default": null,
+          "description": "The series to draw."
+        },
+        "height": {
+          "type": "number",
+          "required": false,
+          "default": 48,
+          "description": "Plot height in px. Default 240."
+        },
+        "formatValue": {
+          "type": "((value: number) => string)",
+          "required": false,
+          "default": "(value: number) =>\n  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)",
+          "description": "Formats values on the axis and in the tooltip. Default compact numbers (12K)."
+        },
+        "showLegend": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows the legend under the chart. Default: when there are several series."
+        },
+        "showGrid": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows horizontal gridlines. Default true."
+        },
+        "hideYAxis": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Hides the value axis labels, e.g. in small cards."
+        },
+        "stacked": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Stacks the areas on top of each other (with area)."
+        },
+        "curved": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Smooth curves instead of straight segments. Default true."
+        },
+        "showDots": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Dots on every point. Default: only the active one."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "BarChart",
+      "import": "import { BarChart } from '@ds/react';",
+      "description": "Compares values across categories, side by side or stacked.",
+      "props": {
+        "stacked": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Stacks series in one bar instead of side by side."
+        },
+        "orientation": {
+          "type": "\"vertical\" | \"horizontal\"",
+          "values": [
+            "vertical",
+            "horizontal"
+          ],
+          "required": false,
+          "default": "vertical",
+          "description": "`vertical` (default) columns, `horizontal` bars, e.g. for long category names."
+        },
+        "title": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Names the chart; shown above it unless hideTitle. Also names its data table."
+        },
+        "hideTitle": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Hides the title visually; it still names the chart for screen readers."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "One sentence on what the chart shows."
+        },
+        "data": {
+          "type": "ChartRow[]",
+          "required": true,
+          "default": null,
+          "description": "One object per point on the x axis, e.g. `{ month: 'Jan', revenue: 12000 }`."
+        },
+        "xKey": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Field holding the x axis label, e.g. \"month\"."
+        },
+        "series": {
+          "type": "ChartSeries[]",
+          "required": true,
+          "default": null,
+          "description": "The series to draw."
+        },
+        "height": {
+          "type": "number",
+          "required": false,
+          "default": 48,
+          "description": "Plot height in px. Default 240."
+        },
+        "formatValue": {
+          "type": "((value: number) => string)",
+          "required": false,
+          "default": "(value: number) =>\n  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)",
+          "description": "Formats values on the axis and in the tooltip. Default compact numbers (12K)."
+        },
+        "showLegend": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows the legend under the chart. Default: when there are several series."
+        },
+        "showGrid": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows horizontal gridlines. Default true."
+        },
+        "hideYAxis": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Hides the value axis labels, e.g. in small cards."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "DonutChart",
+      "import": "import { DonutChart } from '@ds/react';",
+      "description": "Parts of a whole: a ring (or pie) of up to about six slices.",
+      "props": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "hideTitle": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "data": {
+          "type": "{ label: string; value: number; color?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | undefined; }[]",
+          "required": true,
+          "default": null,
+          "description": "One slice per item."
+        },
+        "size": {
+          "type": "number",
+          "required": false,
+          "default": 280,
+          "description": "Diameter in px. Default 200."
+        },
+        "thickness": {
+          "type": "number",
+          "required": false,
+          "default": 0.28,
+          "description": "Ring thickness as a share of the radius, 0–1. 1 draws a pie. Default 0.28."
+        },
+        "centerValue": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Big figure in the middle, e.g. the total."
+        },
+        "centerLabel": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Caption under the center figure, e.g. \"Total visits\"."
+        },
+        "formatValue": {
+          "type": "((value: number) => string)",
+          "required": false,
+          "default": "(value: number) =>\n  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)",
+          "description": ""
+        },
+        "showLegend": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Default true."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "RadarChart",
+      "import": "import { RadarChart } from '@ds/react';",
+      "description": "Compares a few series across several dimensions, e.g. skills or product scores.",
+      "props": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "hideTitle": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "data": {
+          "type": "ChartRow[]",
+          "required": true,
+          "default": null,
+          "description": "One object per axis, e.g. `{ skill: 'Design', alice: 8, bob: 5 }`."
+        },
+        "axisKey": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Field holding each axis name."
+        },
+        "series": {
+          "type": "ChartSeries[]",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "max": {
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Largest value on every axis. Default: the largest value in the data."
+        },
+        "size": {
+          "type": "number",
+          "required": false,
+          "default": 280,
+          "description": "Diameter in px. Default 280."
+        },
+        "showLegend": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": ""
+        },
+        "formatValue": {
+          "type": "((value: number) => string)",
+          "required": false,
+          "default": "(value: number) =>\n  new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value)",
+          "description": ""
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    },
+    {
+      "name": "Sparkline",
+      "import": "import { Sparkline } from '@ds/react';",
+      "description": "A tiny line chart without axes, to show a trend next to a figure.",
+      "props": {
+        "data": {
+          "type": "number[]",
+          "required": true,
+          "default": null,
+          "description": "The values, oldest first."
+        },
+        "tone": {
+          "type": "1 | \"auto\" | \"primary\" | \"positive\" | \"negative\" | 2 | 3 | 4 | 5 | 6 | 7 | 8",
+          "values": [
+            "1",
+            "auto",
+            "primary",
+            "positive",
+            "negative",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "required": false,
+          "default": "auto",
+          "description": "Line color: `auto` (default) green when the last value is higher than the first and red when\nlower, or a fixed `primary`, `positive`, `negative` or series 1–8."
+        },
+        "area": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Fills the area under the line. Default true."
+        },
+        "height": {
+          "type": "number",
+          "required": false,
+          "default": 48,
+          "description": "Height in px. Default 48. Width fills the container."
+        },
+        "label": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "What the sparkline shows, e.g. \"Revenue, last 12 months: rising\". Without it, decorative."
+        },
+        "className": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": ""
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--chart-series-1-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-1",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#8a663e",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#2a5caf",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--chart-series-2-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-2",
+      "default": "#3b82f6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#60a5fa",
+        "brand=amber,mode=dark": "#60a5fa",
+        "brand=opal,mode=dark": "#60a5fa"
+      }
+    },
+    "--chart-series-3-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-3",
+      "default": "#0d9488",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#2dd4bf",
+        "brand=amber,mode=dark": "#2dd4bf",
+        "brand=opal,mode=dark": "#2dd4bf"
+      }
+    },
+    "--chart-series-4-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-4",
+      "default": "#ea580c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fb923c",
+        "brand=amber,mode=dark": "#fb923c",
+        "brand=opal,mode=dark": "#fb923c"
+      }
+    },
+    "--chart-series-5-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-5",
+      "default": "#ec4899",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f472b6",
+        "brand=amber,mode=dark": "#f472b6",
+        "brand=opal,mode=dark": "#f472b6"
+      }
+    },
+    "--chart-series-6-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-6",
+      "default": "#0284c7",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#38bdf8",
+        "brand=amber,mode=dark": "#38bdf8",
+        "brand=opal,mode=dark": "#38bdf8"
+      }
+    },
+    "--chart-series-7-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-7",
+      "default": "#a855f7",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c084fc",
+        "brand=amber,mode=dark": "#c084fc",
+        "brand=opal,mode=dark": "#c084fc"
+      }
+    },
+    "--chart-series-8-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-8",
+      "default": "#71717a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a1a1aa",
+        "brand=amber,mode=dark": "#a1a1aa",
+        "brand=opal,mode=dark": "#a1a1aa"
+      }
+    },
+    "--chart-positive-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-positive",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--chart-negative-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-negative",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--chart-grid-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-grid",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--chart-grid-width": {
+      "description": null,
+      "references": null,
+      "default": "1"
+    },
+    "--chart-axis-text-color": {
+      "description": "Data series colors 1–8, in the order charts assign them; 1 is the brand.",
+      "references": "--color-chart-axis",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--chart-axis-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--chart-axis-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--chart-axis-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-xs",
+      "default": "12.5px"
+    },
+    "--chart-crosshair-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--chart-line-width": {
+      "description": null,
+      "references": null,
+      "default": "2"
+    },
+    "--chart-sparkline-line-width": {
+      "description": null,
+      "references": null,
+      "default": "2"
+    },
+    "--chart-area-opacity": {
+      "description": null,
+      "references": null,
+      "default": "0.16"
+    },
+    "--chart-dot-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-3xs",
+      "default": "8px"
+    },
+    "--chart-dot-ring-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--chart-bar-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-xs",
+      "default": "2px"
+    },
+    "--chart-donut-track-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--chart-donut-gap-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--chart-radar-fill-opacity": {
+      "description": null,
+      "references": null,
+      "default": "0.2"
+    },
+    "--chart-center-value-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--chart-center-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-2xl",
+      "default": "28px"
+    },
+    "--chart-center-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-2xl",
+      "default": "35px"
+    },
+    "--chart-center-value-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--chart-center-label-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--chart-legend-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--chart-legend-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--chart-legend-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--chart-legend-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--chart-legend-item-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--chart-legend-marker-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-3xs",
+      "default": "8px"
+    },
+    "--chart-tooltip-bg-color": {
+      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--chart-tooltip-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--chart-tooltip-label-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--chart-tooltip-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--chart-tooltip-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--chart-tooltip-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-lg",
+      "default": "8px"
+    },
+    "--chart-tooltip-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--chart-tooltip-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--chart-tooltip-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--chart-tooltip-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--chart-tooltip-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--chart-tooltip-shadow-y": {
+      "description": "Small offsets/blur for low elevation: cards resting on a page.",
+      "references": "--shadow-2xs",
+      "default": "4px"
+    },
+    "--chart-tooltip-shadow-blur": {
+      "description": "Small offsets/blur for low elevation: cards resting on a page.",
+      "references": "--shadow-xs",
+      "default": "8px"
+    },
+    "--chart-tooltip-shadow-color": {
+      "description": "Shadow color under raised surfaces.",
+      "references": "--color-shadow-surface",
+      "default": "#cecbdc",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=light": "#e2d7cc",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=light": "#dee2f4",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--chart-tooltip-z-index": {
+      "description": "Tooltips, above everything.",
+      "references": "--z-tooltip",
+      "default": "1600"
+    },
+    "--chart-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--chart-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--chart-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--chart-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--chart-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--chart-hidden-size": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--chart-transition-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--chart-transition-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-charts--docs"
+}

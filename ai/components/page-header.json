@@ -1,0 +1,394 @@
+{
+  "id": "page-header",
+  "name": "PageHeader",
+  "category": "Layout",
+  "status": "stable",
+  "since": "1.1.0",
+  "description": "The top of a page or section: breadcrumbs, a title with supporting text, actions, and a row for tabs, search or filters. Small size works as a section or card header.",
+  "imports": [
+    {
+      "name": "PageHeader",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "At the top of every app page, with the page title as h1.",
+    "Above a section or card, with size=\"small\" and titleAs=\"h2\"."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a person’s profile card.",
+      "alternative": "Header"
+    },
+    {
+      "text": "For the site’s top navigation.",
+      "alternative": "Navbar"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Breadcrumbs",
+      "description": "Where the page sits.",
+      "optional": true
+    },
+    {
+      "name": "Leading",
+      "description": "An avatar or icon before the title.",
+      "optional": true
+    },
+    {
+      "name": "Title",
+      "description": "h1 by default."
+    },
+    {
+      "name": "Description",
+      "description": "One line of supporting text.",
+      "optional": true
+    },
+    {
+      "name": "Actions",
+      "description": "The page’s main buttons.",
+      "optional": true
+    },
+    {
+      "name": "Content row",
+      "description": "Tabs, search or filters (children).",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "medium",
+          "meaning": "Page header. Default."
+        },
+        {
+          "value": "small",
+          "meaning": "Section or card header."
+        }
+      ]
+    },
+    {
+      "prop": "divider",
+      "title": "Divider",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "No line. Default."
+        },
+        {
+          "value": "true",
+          "meaning": "A line under the header."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Static",
+      "meaning": "The header itself is not interactive.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Wrapping",
+      "text": "Actions wrap under the title on narrow screens."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "The layout mirrors; actions move to the left."
+    }
+  ],
+  "content": [
+    "Title: the page’s name, matching the navigation item.",
+    "Description: one sentence on what people do here.",
+    "Keep to one primary action; put others in outline buttons or a menu."
+  ],
+  "guidelines": [
+    {
+      "do": "Use one h1 per page: the PageHeader title.",
+      "dont": "Use several page headers with h1 on one page.",
+      "why": "Headings form the page outline for screen readers."
+    },
+    {
+      "do": "Put the main action at the end of the title row.",
+      "dont": "Scatter page-level actions through the content.",
+      "why": "People look for page actions in the header."
+    },
+    {
+      "do": "Use children for tabs and filters that change the page’s content.",
+      "dont": "Put unrelated controls in the header.",
+      "why": "The header should frame what follows."
+    }
+  ],
+  "accessibility": {
+    "role": "A div with a heading; it adds no landmark, so several can share a page.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves through breadcrumbs, actions and children."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "Heading level",
+        "when": "titleAs sets h1, h2 or h3."
+      }
+    ],
+    "focus": "Only its interactive children are focusable.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "The title is a real heading."
+      },
+      {
+        "criterion": "2.4.6 Headings and Labels",
+        "how": "The title names the page."
+      }
+    ],
+    "notes": [
+      "Match the browser tab title to the page title."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Page header",
+      "description": "Title, description and actions.",
+      "code": "import { Button, PageHeader } from '@ds/react';\n\n<PageHeader title=\"Products\" description=\"Manage your catalog.\" actions={<Button>Add product</Button>} />"
+    },
+    {
+      "id": "breadcrumbs",
+      "title": "With breadcrumbs and tabs",
+      "description": "Children render under the title row.",
+      "code": "import { Breadcrumb, PageHeader, Tab, TabList, Tabs } from '@ds/react';\n\n<PageHeader title=\"Products\" breadcrumbs={<Breadcrumb items={trail} />}>\n  <Tabs appearance=\"line\" defaultValue=\"all\">…</Tabs>\n</PageHeader>"
+    },
+    {
+      "id": "section",
+      "title": "Section header",
+      "description": "Small, with an h2.",
+      "code": "import { PageHeader } from '@ds/react';\n\n<PageHeader size=\"small\" titleAs=\"h2\" title=\"Recent orders\" divider />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--page-header-"
+  ],
+  "related": [
+    {
+      "id": "breadcrumb",
+      "relation": "Above the title."
+    },
+    {
+      "id": "tabs",
+      "relation": "In the content row."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "PageHeader",
+      "import": "import { PageHeader } from '@ds/react';",
+      "description": "The top of a page or section: breadcrumbs, a title with supporting text, actions, and an\noptional row for tabs or filters.",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The page or section title."
+        },
+        "titleAs": {
+          "type": "\"h1\" | \"h2\" | \"h3\"",
+          "values": [
+            "h1",
+            "h2",
+            "h3"
+          ],
+          "required": false,
+          "default": "h1",
+          "description": "Heading level: h1 for a page (default), h2 or h3 for a section."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Supporting text under the title."
+        },
+        "breadcrumbs": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Above the title, e.g. a Breadcrumb."
+        },
+        "leading": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Before the title, e.g. an Avatar or FeaturedIcon."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Buttons at the end, e.g. \"Export\" and \"Add\"."
+        },
+        "children": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Under the title row, e.g. Tabs, a search field or filters."
+        },
+        "size": {
+          "type": "\"medium\" | \"small\"",
+          "values": [
+            "medium",
+            "small"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`medium` (default) for pages, `small` for sections and cards."
+        },
+        "divider": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "A line under the header."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--page-header-gap": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px"
+    },
+    "--page-header-row-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px"
+    },
+    "--page-header-text-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--page-header-actions-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px"
+    },
+    "--page-header-padding-y": {
+      "description": "No space.",
+      "references": "--spacing-none",
+      "default": "0"
+    },
+    "--page-header-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--page-header-title-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--page-header-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-3xl",
+      "default": "32px"
+    },
+    "--page-header-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-3xl",
+      "default": "40px"
+    },
+    "--page-header-title-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--page-header-small-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--page-header-small-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--page-header-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--page-header-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--page-header-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--page-header-small-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--page-header-small-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--page-header-divider-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--page-header-divider-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-layout-pageheader--docs"
+}

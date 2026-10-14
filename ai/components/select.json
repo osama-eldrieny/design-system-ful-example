@@ -226,6 +226,12 @@
   },
   "examples": [
     {
+      "id": "people",
+      "title": "People with avatars",
+      "description": "Options with an avatar and a username.",
+      "code": "import { Select, SelectItem } from '@ds/react';\n\n<Select label=\"Assignee\">\n  <SelectItem value=\"olivia\" avatar={{ name: 'Olivia Rhye' }} supportingText=\"@olivia\">Olivia Rhye</SelectItem>\n</Select>"
+    },
+    {
       "id": "basic",
       "title": "Select",
       "description": "Label, placeholder and options.",
@@ -267,6 +273,13 @@
       "date": "2026-09-29",
       "changes": [
         "New component."
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "SelectItem: icon, avatar, dot and supportingText, shown in the trigger too."
       ]
     }
   ],
@@ -401,6 +414,45 @@
           "required": true,
           "default": null,
           "description": "Option text; also used for typeahead."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Decorative icon before the text; also shown in the trigger when selected."
+        },
+        "avatar": {
+          "type": "{ name: string; src?: string; }",
+          "required": false,
+          "default": null,
+          "description": "A person's picture (with initials fallback) before the text."
+        },
+        "dot": {
+          "type": "BadgeColor",
+          "values": [
+            "success",
+            "primary",
+            "secondary",
+            "warning",
+            "danger",
+            "gray",
+            "blue",
+            "sky",
+            "indigo",
+            "purple",
+            "pink",
+            "orange",
+            "teal"
+          ],
+          "required": false,
+          "default": null,
+          "description": "A status dot before the text, in a meaning or category color."
+        },
+        "supportingText": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Secondary text after the label, e.g. a username or an email."
         }
       }
     },
@@ -879,6 +931,177 @@
       "description": "Opacity from 0 to 1.",
       "references": "--opacity-medium",
       "default": "0.5"
+    },
+    "--select-item-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--select-item-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--select-item-supporting-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--select-item-dot-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-3xs",
+      "default": "8px"
+    },
+    "--select-item-dot-primary-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-primary-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f2edff",
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--select-item-dot-secondary-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-secondary-default",
+      "default": "#76717f",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f1f1f2",
+        "brand=amber,mode=dark": "#f1f1f2",
+        "brand=opal,mode=dark": "#f1f1f2"
+      }
+    },
+    "--select-item-dot-success-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-success-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#e6faed",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#ecf1f1",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#f3fae8"
+      }
+    },
+    "--select-item-dot-warning-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-warning-default",
+      "default": "#f0be2e",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fdf7e6",
+        "brand=amber,mode=dark": "#fdf7e6",
+        "brand=opal,mode=light": "#eec133",
+        "brand=opal,mode=dark": "#fdf7e6"
+      }
+    },
+    "--select-item-dot-danger-bg-color": {
+      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
+      "references": "--color-bg-accent-danger-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fee9e9",
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#f4edef",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#feecef"
+      }
+    },
+    "--select-item-dot-gray-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-gray",
+      "default": "#71717a",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#a1a1aa",
+        "brand=amber,mode=dark": "#a1a1aa",
+        "brand=opal,mode=dark": "#a1a1aa"
+      }
+    },
+    "--select-item-dot-blue-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-blue",
+      "default": "#3b82f6",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#60a5fa",
+        "brand=amber,mode=dark": "#60a5fa",
+        "brand=opal,mode=dark": "#60a5fa"
+      }
+    },
+    "--select-item-dot-sky-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-sky",
+      "default": "#0284c7",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#38bdf8",
+        "brand=amber,mode=dark": "#38bdf8",
+        "brand=opal,mode=dark": "#38bdf8"
+      }
+    },
+    "--select-item-dot-indigo-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-indigo",
+      "default": "#6366f1",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#818cf8",
+        "brand=amber,mode=dark": "#818cf8",
+        "brand=opal,mode=dark": "#818cf8"
+      }
+    },
+    "--select-item-dot-purple-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-purple",
+      "default": "#a855f7",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c084fc",
+        "brand=amber,mode=dark": "#c084fc",
+        "brand=opal,mode=dark": "#c084fc"
+      }
+    },
+    "--select-item-dot-pink-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-pink",
+      "default": "#ec4899",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#f472b6",
+        "brand=amber,mode=dark": "#f472b6",
+        "brand=opal,mode=dark": "#f472b6"
+      }
+    },
+    "--select-item-dot-orange-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-orange",
+      "default": "#ea580c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fb923c",
+        "brand=amber,mode=dark": "#fb923c",
+        "brand=opal,mode=dark": "#fb923c"
+      }
+    },
+    "--select-item-dot-teal-bg-color": {
+      "description": "Status dots and legend markers.",
+      "references": "--color-dot-teal",
+      "default": "#0d9488",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#2dd4bf",
+        "brand=amber,mode=dark": "#2dd4bf",
+        "brand=opal,mode=dark": "#2dd4bf"
+      }
     },
     "--select-trigger-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

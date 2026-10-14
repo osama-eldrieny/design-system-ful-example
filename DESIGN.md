@@ -52,6 +52,7 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 ## Components
 
 - **Accordion** (Data display): An accordion stacks sections whose content shows and hides when their heading is pressed, such as an FAQ.
+- **ActivityFeed** (Data display): A list of recent events, newest first: who did what and when, with an avatar or icon, optional content such as a comment or file, and an unread dot.
 - **Alert** (Feedback): An alert shows a message about the page or the result of an action: information, success, a warning or an error.
 - **AppsNotifications** (Patterns): A settings panel with one switch per app, to turn each app’s notifications on or off.
 - **Avatar** (Data display): An avatar represents a person or team with their photo, or their initials when there’s no photo.
@@ -60,15 +61,20 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Button** (Actions): A button triggers an action in place: saving a form, opening a dialog, deleting an item.
 - **ButtonGroup** (Actions): A button group shows related buttons together, spaced or attached into one control.
 - **Card** (Data display): A card groups content and actions about one subject, such as an article, a product or a person, into a single container.
+- **Charts** (Data display): Dependency-free SVG charts styled by tokens: LineChart and AreaChart for trends, BarChart for comparing categories (grouped, stacked or horizontal), DonutChart for parts of a whole, RadarChart for several dimensions and Sparkline for a tiny trend next to a figure.
 - **Checkbox** (Forms): A checkbox turns one option on or off, or lets people pick any number of options from a list.
 - **ChooseCard** (Patterns): Choose cards are large radio buttons: each option is a card with a name, a description and an optional price, and people pick exactly one.
 - **Code** (Data display): Code shows code inline in text or as a block with a language label and a copy button.
 - **Combobox** (Forms): A combobox is a text field with a list of suggestions: people type to filter and pick one option, or several shown as removable chips.
+- **CommandMenu** (Overlays): A searchable list of pages and actions in a dialog, opened with ⌘K (Ctrl+K): type to filter, arrow keys to move, Enter to run.
 - **Container** (Layout): Container centers page content with a maximum width and page gutters that follow density, with smaller gutters on phones..
+- **DatePicker** (Forms): Pick a date or a date range from a month grid.
 - **Divider** (Layout): A divider is a thin line that separates groups of content, horizontally or vertically, optionally with a short label such as “or”..
 - **Drawer** (Overlays): A drawer is a panel that slides in from an edge of the screen for secondary tasks such as filters, settings or item details.
 - **DropdownMenu** (Overlays): A dropdown menu shows a list of actions or options when people press a button.
 - **EmptyState** (Feedback): An empty state fills a space that has nothing to show yet, like an empty list or no search results, and explains why and what to do next..
+- **FeaturedIcon** (Data display): An icon in a colored circle or tile that draws the eye and sets the tone of a block: the top of a modal, an empty state, an alert, a metric card or a feature list.
+- **FileUpload** (Forms): A drop zone to choose or drag files, with FileUploadItem rows that show each file’s progress, completion or error and a delete button.
 - **Footer** (Patterns): The page footer: a copyright line and secondary links such as Privacy, Terms and Help.
 - **FormField** (Forms): FormField puts a label, help text and an error or success message around a form control and wires them together, so screen readers announce the label, hint and error with the control.
 - **Grid** (Layout): Grid lays children out in equal columns: a fixed number, or as many as fit (auto), so it reflows on small screens..
@@ -81,8 +87,10 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **List** (Data display): A list shows related items one per row, with an optional icon or avatar, a second line and trailing meta such as a date.
 - **Logo** (Patterns): The logo shows the product’s mark and name, usually at the start of the navigation bar, linking to the home page.
 - **MeetingCard** (Patterns): A meeting card shows one event in an agenda or schedule: its name, time and attendees, with a color edge for its status.
+- **MetricCard** (Data display): A key figure in a card for dashboards: what is measured, the value, how it changed and against what, with an optional featured icon, a small chart, an actions menu and a footer link..
 - **Modal** (Overlays): A modal is a dialog over the page that people must deal with before going back: a short form, a confirmation or details.
 - **Navbar** (Patterns): The navigation bar at the top of a site or app: the logo, links to the main sections, and optional actions such as search.
+- **PageHeader** (Layout): The top of a page or section: breadcrumbs, a title with supporting text, actions, and a row for tabs, search or filters.
 - **Pagination** (Navigation): Pagination moves between pages of a long list or table.
 - **Popover** (Overlays): A popover shows interactive content anchored to a button, such as a small form, filters or details.
 - **ProductCard** (Patterns): A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions.
@@ -104,3 +112,4 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Textarea** (Forms): A multi-line text field for longer answers such as messages, comments or descriptions.
 - **Toast** (Feedback): A toast is a brief message about something that just happened, such as “Changes saved”, shown in a corner and dismissed automatically.
 - **Tooltip** (Overlays): A tooltip shows a short text hint for a control when it’s hovered or focused, such as the name of an icon button.
+- **VerificationCodeInput** (Forms): One box per character of a one-time code sent by email or SMS.

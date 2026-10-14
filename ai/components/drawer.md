@@ -21,6 +21,11 @@ import { DrawerClose } from '@ds/react';
 - For a short confirmation. Use Modal.
 - For the site’s main navigation on desktop. Use SideNav or Navbar.
 
+## Size (`size`)
+- `small`: Narrow, for short forms and filters.
+- `medium`: Default.
+- `large`: Wide, for a record’s detail panel.
+
 ## Side (`side`)
 - `end`: Right in LTR, left in RTL. Default; details and settings.
 - `start`: Left in LTR; navigation on small screens.
@@ -50,6 +55,7 @@ import { DrawerClose } from '@ds/react';
 | `title` | `ReactNode` |  | Heading; names the drawer. |
 | `description` | `ReactNode` |  | Short explanation under the title. |
 | `side` | `"start" \| "end" \| "top" \| "bottom"` | end | Edge it slides from: `end` (default; right in LTR, left in RTL), `start`, `top` or `bottom` (common on phones). |
+| `size` | `"small" \| "medium" \| "large"` | medium | Width of side drawers: `small`, `medium` (default) or `large`, e.g. for a detail panel. |
 | `closeLabel` | `string` | Close | Accessible name of the close button. Default "Close". |
 | `asChild` | `boolean` |  |  |
 

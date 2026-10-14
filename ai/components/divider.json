@@ -38,6 +38,24 @@
   ],
   "options": [
     {
+      "prop": "labelAlign",
+      "title": "Label position",
+      "values": [
+        {
+          "value": "center",
+          "meaning": "Default, e.g. “or” between sign-in options."
+        },
+        {
+          "value": "start",
+          "meaning": "A section title on the line."
+        },
+        {
+          "value": "end",
+          "meaning": "An action at the end of the line."
+        }
+      ]
+    },
+    {
       "prop": "orientation",
       "title": "Orientation",
       "values": [
@@ -148,6 +166,13 @@
       "changes": [
         "New component."
       ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "2026-10-15",
+      "changes": [
+        "labelAlign: start, center or end."
+      ]
     }
   ],
   "components": [
@@ -171,6 +196,17 @@
           "required": false,
           "default": null,
           "description": "Short text in the middle of a horizontal divider, e.g. “or”."
+        },
+        "labelAlign": {
+          "type": "\"start\" | \"center\" | \"end\"",
+          "values": [
+            "start",
+            "center",
+            "end"
+          ],
+          "required": false,
+          "default": "center",
+          "description": "Where the label sits on the line: `center` (default), `start` or `end`."
         }
       }
     }

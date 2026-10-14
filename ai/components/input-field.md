@@ -49,6 +49,11 @@ import { InputField } from '@ds/react';
 | `clearable` | `boolean` | false | Shows a clear button while the (controlled) value isn't empty. Use with onClear. |
 | `onClear` | `(() => void)` |  | Called when the clear button is pressed; set the value to '' here. |
 | `clearLabel` | `string` | Clear | Accessible name of the clear button. Default "Clear". |
+| `prefix` | `ReactNode` |  | A fixed part before the text, inside the border, e.g. "https://" or a country code. It is read with the label. Pass an element (e.g. a small select) for an interactive addon. |
+| `suffix` | `ReactNode` |  | A fixed part after the text, e.g. ".com", "USD" or a unit. |
+| `shortcut` | `string` |  | A keyboard shortcut hint at the end, e.g. "⌘K". Decorative. |
+| `hint` | `ReactNode` |  | Extra help shown in a tooltip from a ? icon at the end of the field. |
+| `hintLabel` | `string` | More information | Accessible name of the hint button. Default "More information". |
 
 ## Guidelines
 - Do: Always give the field a label. Don’t: Use the placeholder as the only label. Why: Placeholders vanish while typing and are not reliably announced.
@@ -78,6 +83,15 @@ import { InputField } from '@ds/react';
 - A visually hidden label is still announced; use hideLabel only when the purpose is obvious, e.g. search with a search icon.
 
 ## Examples
+### Prefix and suffix
+Fixed text inside the border, read with the field.
+
+```tsx
+import { InputField } from '@ds/react';
+
+<InputField label="Website" prefix="https://" suffix=".com" />
+```
+
 ### Labelled field
 A controlled field with help text.
 

@@ -51,6 +51,7 @@ import { ChooseCard } from '@ds/react';
 | `title` | `ReactNode` |  | Option name, e.g. "Pro plan". Names the radio. |
 | `description` | `ReactNode` |  | What the option includes. Read after the name. |
 | `price` | `ReactNode` |  | Price or other key figure, shown at the end, e.g. "$12 / month". |
+| `icon` | `ReactNode` |  | Decorative icon before the text, shown in a featured icon, e.g. a plan or method logo. |
 
 ## Guidelines
 - Do: Name the group with a visible heading via aria-labelledby. Don’t: Leave the group unnamed. Why: Screen reader users hear the group name before the options.

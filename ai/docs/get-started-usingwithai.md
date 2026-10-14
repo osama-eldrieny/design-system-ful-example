@@ -23,25 +23,23 @@ claude mcp add ds -- npx ds-mcp
 ```js
 // eslint.config.js
 
-export default [
-  { files: ['src/**/*.{ts,tsx}'], ...ds.configs.recommended },
-];
+export default [{ files: ['src/**/*.{ts,tsx}'], ...ds.configs.recommended }];
 ```
 
 **4. Optional: install the skill.** Copy `skills/ds-builder/` into your agent's skills folder (for Claude Code, `.claude/skills/`). It adds step-by-step procedures for building a screen, adding a variant or component, and auditing a screen.
 
 ## MCP tools
 
-| Tool | Returns |
-|---|---|
-| `list_components` | Every component with its purpose, category and status |
-| `get_component` | One component's contract: props and allowed values, options with meaning, states, accessibility, do/don't, examples |
-| `get_component_examples` | Runnable JSX examples |
-| `get_foundations` | Always-on rules, color roles, spacing, radius, type and motion scales, theme axes |
-| `get_tokens` | Tokens matching a filter, with description and value in every theme |
-| `search_docs` | Matches in the guides and component docs |
-| `validate_code` | Problems in a JSX/TSX snippet: raw HTML controls, undocumented props, missing accessible names, raw colors and sizes |
-| `get_changes` | Changelog entries since a version |
+| Tool                     | Returns                                                                                                              |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| `list_components`        | Every component with its purpose, category and status                                                                |
+| `get_component`          | One component's contract: props and allowed values, options with meaning, states, accessibility, do/don't, examples  |
+| `get_component_examples` | Runnable JSX examples                                                                                                |
+| `get_foundations`        | Always-on rules, color roles, spacing, radius, type and motion scales, theme axes                                    |
+| `get_tokens`             | Tokens matching a filter, with description and value in every theme                                                  |
+| `search_docs`            | Matches in the guides and component docs                                                                             |
+| `validate_code`          | Problems in a JSX/TSX snippet: raw HTML controls, undocumented props, missing accessible names, raw colors and sizes |
+| `get_changes`            | Changelog entries since a version                                                                                    |
 
 ## Validate anything
 
@@ -50,26 +48,26 @@ npx ds-validate src/            # readable report
 npx ds-validate src/ --json     # for agents and CI
 ```
 
-| Rule | Catches |
-|---|---|
-| `ds/no-raw-element` | `<button>`, `<input>`, `<select>`, `<table>`… where a component exists |
-| `ds/valid-props` | Prop values that aren't documented, e.g. `variant="destructive"` |
-| `ds/require-accessible-name` | Checkbox, Switch, IconButton or Popover without a name |
-| `ds/no-deprecated` | Imports of deprecated components |
-| `ds/no-raw-style-values` | Hex colors and px sizes in inline styles |
-| CSS | Raw colors and lengths instead of tokens |
+| Rule                         | Catches                                                                |
+| ---------------------------- | ---------------------------------------------------------------------- |
+| `ds/no-raw-element`          | `<button>`, `<input>`, `<select>`, `<table>`… where a component exists |
+| `ds/valid-props`             | Prop values that aren't documented, e.g. `variant="destructive"`       |
+| `ds/require-accessible-name` | Checkbox, Switch, IconButton or Popover without a name                 |
+| `ds/no-deprecated`           | Imports of deprecated components                                       |
+| `ds/no-raw-style-values`     | Hex colors and px sizes in inline styles                               |
+| CSS                          | Raw colors and lengths instead of tokens                               |
 
 ## Files for the web and other tools
 
-| File | What it's for |
-|---|---|
-| `/llms.txt` | Index in the [llms.txt](https://llmstxt.org) format |
-| `/llms-full.txt` | Every guide and component page in one file |
-| `/ai/components/{id}.json` · `.md` | One component's contract, and the same guidance as prose |
-| `/ai/components.json` | The component index |
-| `/ai/foundations.json` | The always-on rules and scales (small enough to load every time) |
-| `/ai/tokens.json` | Every token in every theme, with its purpose |
-| `DESIGN.md` | A portable summary of the default theme for design and prototyping tools |
+| File                               | What it's for                                                            |
+| ---------------------------------- | ------------------------------------------------------------------------ |
+| `/llms.txt`                        | Index in the [llms.txt](https://llmstxt.org) format                      |
+| `/llms-full.txt`                   | Every guide and component page in one file                               |
+| `/ai/components/{id}.json` · `.md` | One component's contract, and the same guidance as prose                 |
+| `/ai/components.json`              | The component index                                                      |
+| `/ai/foundations.json`             | The always-on rules and scales (small enough to load every time)         |
+| `/ai/tokens.json`                  | Every token in every theme, with its purpose                             |
+| `DESIGN.md`                        | A portable summary of the default theme for design and prototyping tools |
 
 While Storybook runs locally, its own MCP server at `http://localhost:6006/mcp` also lists stories and can run their tests.
 
