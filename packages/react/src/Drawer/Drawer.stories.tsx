@@ -47,6 +47,33 @@ export const Sides: Story = {
   ),
 };
 
+/** Side drawers come in three widths, e.g. large for a record’s detail panel. */
+export const Sizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+      {(['small', 'medium', 'large'] as const).map((size) => (
+        <Drawer key={size}>
+          <DrawerTrigger asChild>
+            <Button appearance="outline">{size}</Button>
+          </DrawerTrigger>
+          <DrawerContent
+            size={size}
+            title={`Order #1042 (${size})`}
+            description="Placed today by Olivia Rhye."
+          >
+            <p>Two items, paid by card.</p>
+            <DrawerFooter>
+              <DrawerClose asChild>
+                <Button>Done</Button>
+              </DrawerClose>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
+      ))}
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   render: () => (

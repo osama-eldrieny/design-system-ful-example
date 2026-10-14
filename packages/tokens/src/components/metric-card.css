@@ -1,0 +1,52 @@
+/**
+ * Component tokens: metric-card
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --metric-card-{part}-{state?}-{property}
+ *   part: label | value | trend | comparison | footer; trend state: up | down | neutral.
+ *   The trend badge styles (simple | badge | modern) and the icon reuse Badge and FeaturedIcon.
+ */
+
+:root,
+[data-theme] {
+  /* Container */
+  --metric-card-bg-color: var(--color-bg-surface);
+  --metric-card-border-color: var(--color-border-base);
+  --metric-card-border-width: var(--border-width-hairline);
+  --metric-card-border-radius: var(--radius-2xl);
+  --metric-card-padding-x: var(--spacing-xl);
+  --metric-card-padding-y: var(--spacing-lg);
+  --metric-card-gap: var(--spacing-md);
+  --metric-card-font-family: var(--font-family-body);
+
+  /* Label and value */
+  --metric-card-label-text-color: var(--color-fg-on-surface-secondary);
+  --metric-card-label-font-size: var(--font-size-sm);
+  --metric-card-label-font-line-height: var(--font-line-height-sm);
+  --metric-card-label-font-weight: var(--font-weight-medium);
+  --metric-card-value-text-color: var(--color-fg-on-surface-primary);
+  --metric-card-value-font-size: var(--font-size-3xl);
+  --metric-card-value-font-line-height: var(--font-line-height-3xl);
+  --metric-card-value-font-weight: var(--font-weight-semi-bold);
+  --metric-card-small-value-font-size: var(--font-size-2xl);
+  --metric-card-small-value-font-line-height: var(--font-line-height-2xl);
+
+  /* Trend (simple style: colored text with an arrow) */
+  --metric-card-trend-up-text-color: var(--color-fg-on-accent-success-text-default);
+  --metric-card-trend-down-text-color: var(--color-fg-on-accent-danger-text-default);
+  --metric-card-trend-neutral-text-color: var(--color-fg-on-surface-secondary);
+  --metric-card-trend-font-size: var(--font-size-sm);
+  --metric-card-trend-font-line-height: var(--font-line-height-sm);
+  --metric-card-trend-font-weight: var(--font-weight-medium);
+  --metric-card-trend-icon-size: var(--sizing-sm);
+  --metric-card-trend-gap: var(--spacing-3xs);
+  --metric-card-comparison-text-color: var(--color-fg-on-surface-secondary);
+  --metric-card-row-gap: var(--spacing-xs);
+
+  /* Chart slot and footer */
+  --metric-card-chart-width: var(--sizing-8xl);
+  --metric-card-chart-height: var(--sizing-2xl-plus);
+  --metric-card-footer-border-color: var(--color-border-base);
+  --metric-card-footer-padding-y: var(--spacing-sm);
+}

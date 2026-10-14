@@ -33,6 +33,15 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: 'Narrow, for short forms and filters.' },
+        { value: 'medium', meaning: 'Default.' },
+        { value: 'large', meaning: 'Wide, for a record’s detail panel.' },
+      ],
+    },
+    {
       prop: 'side',
       title: 'Side',
       values: [
@@ -138,5 +147,8 @@ export default defineMeta({
     { id: 'modal', relation: 'For focused tasks and confirmations.' },
     { id: 'popover', relation: 'For small, non-blocking content.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    { version: '1.1.0', date: '2026-10-15', changes: ['size: small, medium, large.'] },
+  ],
 });

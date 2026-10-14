@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { MetricCard } from '@ds/react';
+import { DollarSign } from 'lucide-react';
+import * as Stories from '../../../../packages/react/src/MetricCard/MetricCard.stories';
+import meta from '../../../../packages/react/src/MetricCard/MetricCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# MetricCard
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[MetricCard]}
+  anatomy={{
+    targets: [
+      '.ds-featured-icon',
+      '.ds-metric-card__label',
+      '.ds-metric-card__value',
+      '.ds-badge',
+      '.ds-metric-card__comparison',
+    ],
+    example: (
+      <MetricCard
+        icon={<DollarSign />}
+        label="Total revenue"
+        value="$124,567"
+        change="12%"
+        trend="up"
+        comparison="vs last month"
+      />
+    ),
+  }}
+  optionStories={{ trendStyle: 'TrendStyles', layout: 'Layouts', size: 'Layouts' }}
+  behaviorStory="RightToLeft"
+  matrix={<MetricCard label="Revenue" value="$124k" change="12%" trend="up" />}
+/>

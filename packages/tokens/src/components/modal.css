@@ -42,4 +42,9 @@
   --modal-edge-margin: var(--spacing-md);
   --modal-duration: var(--duration-slow);
   --modal-easing: var(--easing-enter);
+
+  /* Extra large size, featured icon, centered layout */
+  --modal-xlarge-width: calc(var(--sizing-8xl) * 5);
+  --modal-icon-gap: var(--spacing-sm);
+  --modal-close-inset: var(--spacing-md);
 }

@@ -33,12 +33,24 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'align',
+      title: 'Alignment',
+      values: [
+        { value: 'start', meaning: 'Text and icon at the start. Default.' },
+        {
+          value: 'center',
+          meaning: 'Centered, with full-width footer buttons; short confirmations.',
+        },
+      ],
+    },
+    {
       prop: 'size',
       title: 'Size',
       values: [
         { value: 'small', meaning: 'Confirmations.' },
         { value: 'medium', meaning: 'Forms. Default.' },
         { value: 'large', meaning: 'Rich or long content.' },
+        { value: 'xlarge', meaning: 'Wide content, e.g. a table or a multi-column form.' },
       ],
     },
     {
@@ -163,5 +175,12 @@ export default defineMeta({
     { id: 'popover', relation: 'For non-blocking content.' },
     { id: 'toast', relation: 'For brief confirmations.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: ['Size xlarge; icon (featured icon above the title), iconTone and align="center".'],
+    },
+  ],
 });

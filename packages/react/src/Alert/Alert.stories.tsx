@@ -95,6 +95,33 @@ export const States: Story = {
   parameters: { pseudo: { hover: ['.ds-alert__dismiss'] } },
 };
 
+/** Banner: full width with square corners and the actions in the same row. */
+export const Banner: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 12 }}>
+      <Alert
+        layout="banner"
+        variant="primary"
+        title="We’ve just released a new feature"
+        actions={
+          <Button size="small" variant="secondary" appearance="outline">
+            Learn more
+          </Button>
+        }
+        onDismiss={fn()}
+      >
+        Dashboards now support custom date ranges.
+      </Alert>
+      <Alert
+        layout="banner"
+        variant="warning"
+        appearance="solid"
+        title="Your trial ends in 3 days"
+      />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: {

@@ -31,6 +31,17 @@ export const NoResults: Story = {
   },
 };
 
+/** Small inside cards and tables, large for a whole page. */
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: 'grid', gap: 24 }}>
+      <EmptyState {...args} size="small" titleAs="h3" title="No invoices" />
+      <EmptyState {...args} titleAs="h3" />
+      <EmptyState {...args} size="large" titleAs="h3" title="Welcome to your dashboard" />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: {

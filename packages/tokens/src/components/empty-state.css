@@ -25,4 +25,17 @@
   --empty-state-actions-gap: var(--spacing-xs);
   --empty-state-padding: var(--spacing-2xl);
   --empty-state-max-width: calc(var(--sizing-8xl) * 2);
+
+  /* Small and large sizes, illustration */
+  --empty-state-small-icon-box-size: var(--control-height-medium);
+  --empty-state-small-icon-size: var(--sizing-sm-plus);
+  --empty-state-small-title-font-size: var(--font-size-md);
+  --empty-state-small-title-font-line-height: var(--font-line-height-md);
+  --empty-state-small-padding: var(--spacing-lg);
+  --empty-state-large-icon-box-size: var(--sizing-3xl);
+  --empty-state-large-icon-size: var(--sizing-xl-minus);
+  --empty-state-large-title-font-size: var(--font-size-2xl);
+  --empty-state-large-title-font-line-height: var(--font-line-height-2xl);
+  --empty-state-large-padding: var(--spacing-4xl);
+  --empty-state-illustration-max-width: calc(var(--sizing-8xl) * 1.2);
 }

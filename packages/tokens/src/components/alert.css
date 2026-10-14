@@ -92,4 +92,7 @@
   --alerts-focus-ring-color: var(--focus-ring-color);
   --alerts-transition-duration: var(--duration-fast);
   --alerts-transition-easing: var(--easing-standard);
+
+  /* Banner layout */
+  --alerts-banner-gap: var(--spacing-md);
 }

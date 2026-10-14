@@ -28,6 +28,11 @@ export interface AlertProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'
   onDismiss?: () => void;
   /** Accessible name of the dismiss button. Default "Dismiss". */
   dismissLabel?: string;
+  /**
+   * `inline` (default) a card within the content. `banner` full width with square corners and
+   * the text and actions in one row, e.g. at the top of the page.
+   */
+  layout?: 'inline' | 'banner';
 }
 
 const ICONS: Record<AlertVariant, ReactNode> = {
@@ -52,6 +57,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
       actions,
       onDismiss,
       dismissLabel = 'Dismiss',
+      layout = 'inline',
       className,
       ...props
     },
@@ -62,7 +68,13 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
       <div
         ref={ref}
         role={variant === 'danger' || variant === 'warning' ? 'alert' : 'status'}
-        className={['ds-alert', `ds-alert--${variant}`, `ds-alert--${appearance}`, className]
+        className={[
+          'ds-alert',
+          `ds-alert--${variant}`,
+          `ds-alert--${appearance}`,
+          layout === 'banner' && 'ds-alert--banner',
+          className,
+        ]
           .filter(Boolean)
           .join(' ')}
         {...props}

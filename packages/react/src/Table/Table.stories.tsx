@@ -1,8 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent } from 'storybook/test';
+import { Download, Plus, Search } from 'lucide-react';
+import { AvatarLabelGroup } from '../Avatar';
 import { Badge } from '../Badge';
+import { Button } from '../Button';
+import { ButtonGroup } from '../ButtonGroup';
+import { InputField } from '../InputField';
+import { Pagination } from '../Pagination';
+import { Progress } from '../Progress';
 import { ThemeProvider } from '../ThemeProvider';
-import { Table, type TableColumn } from './Table';
+import { Table, TableCard, type TableColumn } from './Table';
 
 interface Order {
   id: string;
@@ -87,6 +94,171 @@ export const StickyHeader: Story = {
         stickyHeader
       />
     </div>
+  ),
+};
+
+interface Member {
+  id: number;
+  name: string;
+  email: string;
+  role: string;
+  team: 'Design' | 'Product' | 'Engineering';
+  status: 'Active' | 'Away';
+  usage: number;
+}
+
+const members: Member[] = [
+  {
+    id: 1,
+    name: 'Olivia Rhye',
+    email: 'olivia@untitled.com',
+    role: 'Product Designer',
+    team: 'Design',
+    status: 'Active',
+    usage: 72,
+  },
+  {
+    id: 2,
+    name: 'Phoenix Baker',
+    email: 'phoenix@untitled.com',
+    role: 'Product Manager',
+    team: 'Product',
+    status: 'Active',
+    usage: 54,
+  },
+  {
+    id: 3,
+    name: 'Lana Steiner',
+    email: 'lana@untitled.com',
+    role: 'Frontend Developer',
+    team: 'Engineering',
+    status: 'Away',
+    usage: 31,
+  },
+  {
+    id: 4,
+    name: 'Demi Wilkinson',
+    email: 'demi@untitled.com',
+    role: 'Backend Developer',
+    team: 'Engineering',
+    status: 'Active',
+    usage: 88,
+  },
+];
+
+const teamTone = { Design: 'indigo', Product: 'blue', Engineering: 'teal' } as const;
+
+const memberColumns: TableColumn<Member>[] = [
+  {
+    key: 'name',
+    header: 'Name',
+    sortable: true,
+    render: (m) => <AvatarLabelGroup name={m.name} supportingText={m.email} size="small" />,
+  },
+  {
+    key: 'status',
+    header: 'Status',
+    render: (m) => (
+      <Badge tone={m.status === 'Active' ? 'success' : 'gray'} shape="modern" size="small" withDot>
+        {m.status}
+      </Badge>
+    ),
+  },
+  { key: 'role', header: 'Role', hideBelow: 'medium' },
+  {
+    key: 'team',
+    header: 'Team',
+    hideBelow: 'small',
+    render: (m) => (
+      <Badge tone={teamTone[m.team]} size="small">
+        {m.team}
+      </Badge>
+    ),
+  },
+  {
+    key: 'usage',
+    header: 'Usage',
+    hint: 'Share of the seat’s monthly quota used.',
+    sortable: true,
+    hideBelow: 'large',
+    width: 180,
+    render: (m) => (
+      <Progress
+        label={`${m.name} usage`}
+        hideLabel
+        value={m.usage}
+        showValue
+        valuePosition="end"
+        size="small"
+      />
+    ),
+  },
+];
+
+/**
+ * TableCard: a header with a title, badge, description and actions, a toolbar with tabs and
+ * search, and pagination in the footer. Cells show avatars, badges and progress; less
+ * important columns hide on narrow screens.
+ */
+export const InACard: Story = {
+  render: () => (
+    <TableCard
+      title="Team members"
+      badge="100 users"
+      description="Manage your team members and their account permissions here."
+      actions={
+        <>
+          <Button variant="secondary" appearance="outline" size="small" iconStart={<Download />}>
+            Export
+          </Button>
+          <Button size="small" iconStart={<Plus />}>
+            Add member
+          </Button>
+        </>
+      }
+      toolbar={
+        <>
+          <ButtonGroup aria-label="Filter members" attached defaultValue="all">
+            <Button value="all" variant="secondary" appearance="outline" size="small">
+              View all
+            </Button>
+            <Button value="design" variant="secondary" appearance="outline" size="small">
+              Design
+            </Button>
+            <Button value="eng" variant="secondary" appearance="outline" size="small">
+              Engineering
+            </Button>
+          </ButtonGroup>
+          <div style={{ marginInlineStart: 'auto', minInlineSize: 200 }}>
+            <InputField
+              label="Search members"
+              hideLabel
+              size="small"
+              iconStart={<Search />}
+              placeholder="Search"
+            />
+          </div>
+        </>
+      }
+      footer={
+        <Pagination
+          currentPage={1}
+          totalPages={10}
+          showArrowLabels
+          layout="spread"
+          label="Member pages"
+        />
+      }
+    >
+      <Table<Member>
+        caption="Team members"
+        hideCaption
+        columns={memberColumns}
+        rows={members}
+        selectable
+        rowLabel={(m) => `Select ${m.name}`}
+      />
+    </TableCard>
   ),
 };
 

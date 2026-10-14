@@ -31,6 +31,14 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'layout',
+      title: 'Layout',
+      values: [
+        { value: 'inline', meaning: 'A card within the content. Default.' },
+        { value: 'banner', meaning: 'Full width at the top of a page or section.' },
+      ],
+    },
+    {
       prop: 'variant',
       title: 'Variant',
       values: [
@@ -177,6 +185,7 @@ export default defineMeta({
     { id: 'dialog', relation: 'Use when people must respond before continuing.' },
   ],
   changelog: [
+    { version: '1.1.0', date: '2026-10-15', changes: ['layout="banner".'] },
     {
       version: '0.2.0',
       date: '2026-09-29',

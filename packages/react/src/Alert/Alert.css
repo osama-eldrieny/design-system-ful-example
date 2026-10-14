@@ -198,3 +198,21 @@
   --_icon: var(--alerts-danger-outline-text-color);
   --_dismiss-hover: var(--alerts-danger-dismiss-hover-bg-color);
 }
+
+/* Banner: full width, square corners, text and actions in one row on wide screens */
+.ds-alert--banner {
+  align-items: center;
+  border-inline-width: 0;
+  border-radius: 0;
+}
+
+.ds-alert--banner .ds-alert__content {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  column-gap: var(--alerts-banner-gap);
+}
+
+.ds-alert--banner .ds-alert__actions {
+  margin-inline-start: auto;
+}

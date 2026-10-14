@@ -8,7 +8,10 @@ export default defineMeta({
   since: '0.4.0',
   description:
     'A table shows rows and columns of data people compare: sortable columns, selectable rows with select-all, a sticky header, striped or compact rows, and loading and empty states. It is a real HTML table with a caption.',
-  imports: [{ name: 'Table', from: '@ds/react' }],
+  imports: [
+    { name: 'Table', from: '@ds/react' },
+    { name: 'TableCard', from: '@ds/react' },
+  ],
   whenToUse: ['For records people scan, compare and act on: orders, users, invoices.'],
   whenNotToUse: [
     { text: 'For page layout.', alternative: 'Grid or Stack' },
@@ -107,6 +110,12 @@ export default defineMeta({
   },
   examples: [
     {
+      id: 'card',
+      title: 'In a card with a toolbar',
+      description: 'TableCard with actions and pagination.',
+      code: `import { Button, Pagination, Table, TableCard } from '@ds/react';\n\n<TableCard\n  title="Team members"\n  badge="100 users"\n  actions={<Button size="small">Add member</Button>}\n  footer={<Pagination currentPage={1} totalPages={10} layout="spread" showArrowLabels />}\n>\n  <Table caption="Team members" hideCaption columns={columns} rows={rows} />\n</TableCard>`,
+    },
+    {
       id: 'basic',
       title: 'Orders',
       description: 'Sortable, with money aligned.',
@@ -148,6 +157,14 @@ export default defineMeta({
     { id: 'checkbox', relation: 'Row selection.' },
   ],
   changelog: [
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: [
+        'New TableCard: header with title, badge, description and actions; toolbar; footer.',
+        'Column hint (help tooltip) and hideBelow for narrow screens.',
+      ],
+    },
     { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
     {
       version: '1.1.0',

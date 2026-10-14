@@ -35,6 +35,7 @@ export * from '../AppsNotifications';
 export * from '../Badge';
 export * from '../FeaturedIcon';
 export * from '../VerificationCodeInput';
+export * from '../MetricCard';
 export * from '../Tag';
 export * from '../Spinner';
 export * from '../Progress';

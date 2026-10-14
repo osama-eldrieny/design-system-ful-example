@@ -39,4 +39,31 @@
   --table-focus-ring-width: var(--focus-ring-width);
   --table-focus-ring-offset: var(--focus-ring-offset);
   --table-focus-ring-color: var(--focus-ring-color);
+  --table-hint-gap: var(--spacing-2xs);
+
+  /* TableCard: a bordered card with a header, toolbar and footer around the table */
+  --table-card-bg-color: var(--color-bg-surface);
+  --table-card-border-color: var(--color-border-base);
+  --table-card-border-width: var(--border-width-hairline);
+  --table-card-border-radius: var(--radius-2xl);
+  --table-card-header-padding-x: var(--spacing-xl);
+  --table-card-header-padding-y: var(--spacing-lg);
+  --table-card-header-gap: var(--spacing-md);
+  --table-card-heading-gap: var(--spacing-2xs);
+  --table-card-actions-gap: var(--spacing-sm);
+  --table-card-toolbar-padding-y: var(--spacing-sm);
+  --table-card-footer-padding-y: var(--spacing-sm);
+  --table-card-title-text-color: var(--color-fg-on-surface-primary);
+  --table-card-title-font-size: var(--font-size-lg);
+  --table-card-title-font-weight: var(--font-weight-semi-bold);
+  --table-card-title-font-line-height: var(--font-line-height-lg);
+  --table-card-description-text-color: var(--color-fg-on-surface-secondary);
+  --table-card-description-font-size: var(--font-size-sm);
+  --table-card-description-font-line-height: var(--font-line-height-sm);
+  --table-card-badge-text-color: var(--color-fg-on-surface-primary);
+  --table-card-badge-padding-x: var(--spacing-xs);
+  --table-card-badge-border-radius: var(--radius-sm);
+  --table-card-badge-font-size: var(--font-size-xs);
+  --table-card-badge-font-weight: var(--font-weight-medium);
+  --table-card-badge-font-line-height: var(--font-line-height-sm);
 }

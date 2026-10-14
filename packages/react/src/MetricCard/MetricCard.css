@@ -1,0 +1,146 @@
+/**
+ * MetricCard. Styled only with --metric-card-* tokens. The icon, trend badges and actions
+ * are other components with their own tokens.
+ */
+
+.ds-metric-card {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  border: var(--metric-card-border-width) solid var(--metric-card-border-color);
+  border-radius: var(--metric-card-border-radius);
+  background-color: var(--metric-card-bg-color);
+  font-family: var(--metric-card-font-family);
+}
+
+.ds-metric-card__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--metric-card-gap);
+  padding-block: var(--metric-card-padding-y);
+  padding-inline: var(--metric-card-padding-x);
+}
+
+.ds-metric-card--horizontal .ds-metric-card__main {
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.ds-metric-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--metric-card-gap);
+}
+
+.ds-metric-card__actions {
+  margin-inline-start: auto;
+}
+
+.ds-metric-card__body {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--metric-card-gap);
+  min-inline-size: 0;
+}
+
+.ds-metric-card__stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--metric-card-row-gap);
+  margin: 0;
+  min-inline-size: 0;
+}
+
+.ds-metric-card__label {
+  color: var(--metric-card-label-text-color);
+  font-size: var(--metric-card-label-font-size);
+  font-weight: var(--metric-card-label-font-weight);
+  line-height: var(--metric-card-label-font-line-height);
+}
+
+.ds-metric-card__value-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--metric-card-row-gap);
+  margin: 0;
+}
+
+.ds-metric-card__value {
+  color: var(--metric-card-value-text-color);
+  font-size: var(--metric-card-value-font-size);
+  font-weight: var(--metric-card-value-font-weight);
+  line-height: var(--metric-card-value-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-metric-card--small .ds-metric-card__value {
+  font-size: var(--metric-card-small-value-font-size);
+  line-height: var(--metric-card-small-value-font-line-height);
+}
+
+.ds-metric-card__change {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--metric-card-row-gap);
+  margin: 0;
+  font-size: var(--metric-card-trend-font-size);
+  line-height: var(--metric-card-trend-font-line-height);
+}
+
+.ds-metric-card__trend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--metric-card-trend-gap);
+  font-weight: var(--metric-card-trend-font-weight);
+}
+
+.ds-metric-card__trend > svg {
+  inline-size: var(--metric-card-trend-icon-size);
+  block-size: var(--metric-card-trend-icon-size);
+}
+
+.ds-metric-card__trend--up {
+  color: var(--metric-card-trend-up-text-color);
+}
+
+.ds-metric-card__trend--down {
+  color: var(--metric-card-trend-down-text-color);
+}
+
+.ds-metric-card__trend--neutral {
+  color: var(--metric-card-trend-neutral-text-color);
+}
+
+.ds-metric-card__comparison {
+  color: var(--metric-card-comparison-text-color);
+}
+
+.ds-metric-card__chart {
+  flex: none;
+  inline-size: var(--metric-card-chart-width);
+  max-inline-size: 100%;
+  block-size: var(--metric-card-chart-height);
+}
+
+.ds-metric-card__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-block: var(--metric-card-footer-padding-y);
+  padding-inline: var(--metric-card-padding-x);
+  border-block-start: var(--metric-card-border-width) solid var(--metric-card-footer-border-color);
+}
+
+.ds-metric-card__hidden {
+  position: absolute;
+  inline-size: var(--metric-card-border-width);
+  block-size: var(--metric-card-border-width);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

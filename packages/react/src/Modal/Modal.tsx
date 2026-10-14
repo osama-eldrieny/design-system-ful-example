@@ -7,6 +7,7 @@ import {
 import * as Dialog from '@radix-ui/react-dialog';
 import { X } from 'lucide-react';
 import { usePortalThemeAttributes } from '../ThemeProvider';
+import { FeaturedIcon, type FeaturedIconColor } from '../FeaturedIcon';
 import './Modal.css';
 
 export type ModalProps = ComponentPropsWithoutRef<typeof Dialog.Root>;
@@ -32,7 +33,13 @@ export interface ModalContentProps extends Omit<
   /** Short explanation under the title; describes the dialog. */
   description?: ReactNode;
   /** `small` for confirmations, `medium` (default) for forms, `large` for rich content. */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  /** A featured icon above the title, e.g. a trash can for a delete confirmation. */
+  icon?: ReactNode;
+  /** Color of the featured icon. Default primary; danger for destructive dialogs. */
+  iconTone?: FeaturedIconColor;
+  /** `start` (default) or `center`: centers the icon, text and footer buttons. */
+  align?: 'start' | 'center';
   /**
    * `alertdialog` for urgent confirmations (e.g. delete): clicking outside doesn't close it
    * and there's no close icon, so people choose an action.
@@ -50,6 +57,9 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
       size = 'medium',
       role = 'dialog',
       closeLabel = 'Close',
+      icon,
+      iconTone = 'primary',
+      align = 'start',
       className,
       children,
       onPointerDownOutside,
@@ -65,7 +75,14 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
         <Dialog.Content
           ref={ref}
           role={role}
-          className={['ds-modal', `ds-modal--${size}`, className].filter(Boolean).join(' ')}
+          className={[
+            'ds-modal',
+            `ds-modal--${size}`,
+            align === 'center' && 'ds-modal--center',
+            className,
+          ]
+            .filter(Boolean)
+            .join(' ')}
           onPointerDownOutside={(event) => {
             if (alert) event.preventDefault();
             onPointerDownOutside?.(event);
@@ -74,6 +91,15 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
           {...themeAttrs}
           {...props}
         >
+          {icon && (
+            <FeaturedIcon
+              icon={icon}
+              tone={iconTone}
+              size="large"
+              appearance="outline"
+              className="ds-modal__icon"
+            />
+          )}
           <div className="ds-modal__header">
             <Dialog.Title className="ds-modal__title">{title}</Dialog.Title>
             {!alert && (

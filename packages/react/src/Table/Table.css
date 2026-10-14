@@ -125,3 +125,130 @@
   color: var(--table-header-text-color);
   text-align: center;
 }
+
+.ds-table__hint {
+  display: inline-flex;
+  margin-inline-start: var(--table-hint-gap);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--table-sort-icon-color);
+  vertical-align: middle;
+  cursor: help;
+}
+
+.ds-table__hint > svg {
+  inline-size: var(--table-icon-size);
+  block-size: var(--table-icon-size);
+}
+
+.ds-table__hint:focus-visible {
+  outline: var(--table-focus-ring-width) solid var(--table-focus-ring-color);
+  outline-offset: var(--table-focus-ring-offset);
+}
+
+@media (width < 40rem) {
+  .ds-table__cell--hide-below-small {
+    display: none;
+  }
+}
+
+@media (width < 48rem) {
+  .ds-table__cell--hide-below-medium {
+    display: none;
+  }
+}
+
+@media (width < 64rem) {
+  .ds-table__cell--hide-below-large {
+    display: none;
+  }
+}
+
+/* TableCard */
+.ds-table-card {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+  overflow: hidden;
+  border: var(--table-card-border-width) solid var(--table-card-border-color);
+  border-radius: var(--table-card-border-radius);
+  background-color: var(--table-card-bg-color);
+  font-family: var(--table-font-family);
+}
+
+.ds-table-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--table-card-header-gap);
+  padding-block: var(--table-card-header-padding-y);
+  padding-inline: var(--table-card-header-padding-x);
+}
+
+.ds-table-card__heading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--table-card-heading-gap);
+  min-inline-size: 0;
+}
+
+.ds-table-card__title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--table-card-heading-gap);
+}
+
+.ds-table-card__title {
+  margin: 0;
+  color: var(--table-card-title-text-color);
+  font-size: var(--table-card-title-font-size);
+  font-weight: var(--table-card-title-font-weight);
+  line-height: var(--table-card-title-font-line-height);
+}
+
+.ds-table-card__badge {
+  padding-inline: var(--table-card-badge-padding-x);
+  border: var(--table-card-border-width) solid var(--table-card-border-color);
+  border-radius: var(--table-card-badge-border-radius);
+  color: var(--table-card-badge-text-color);
+  font-size: var(--table-card-badge-font-size);
+  font-weight: var(--table-card-badge-font-weight);
+  line-height: var(--table-card-badge-font-line-height);
+}
+
+.ds-table-card__description {
+  margin: 0;
+  color: var(--table-card-description-text-color);
+  font-size: var(--table-card-description-font-size);
+  line-height: var(--table-card-description-font-line-height);
+}
+
+.ds-table-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--table-card-actions-gap);
+}
+
+.ds-table-card__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--table-card-actions-gap);
+  padding-block: var(--table-card-toolbar-padding-y);
+  padding-inline: var(--table-card-header-padding-x);
+  border-block-start: var(--table-card-border-width) solid var(--table-card-border-color);
+}
+
+.ds-table-card__body > .ds-table-wrap {
+  border-inline: 0;
+  border-block-end: 0;
+  border-radius: 0;
+}
+
+.ds-table-card__footer {
+  padding-block: var(--table-card-footer-padding-y);
+  padding-inline: var(--table-card-header-padding-x);
+}

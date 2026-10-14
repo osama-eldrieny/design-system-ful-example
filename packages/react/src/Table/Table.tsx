@@ -6,10 +6,14 @@ import {
   type Key,
   type ReactNode,
 } from 'react';
-import { ArrowDown, ArrowUp, ArrowUpDown } from 'lucide-react';
+import { ArrowDown, ArrowUp, ArrowUpDown, HelpCircle } from 'lucide-react';
 import { Checkbox } from '../Checkbox';
 import { Skeleton } from '../Skeleton';
+import { Tooltip } from '../Tooltip';
 import './Table.css';
+
+const hideClass = (column: { hideBelow?: string }) =>
+  column.hideBelow ? ` ds-table__cell--hide-below-${column.hideBelow}` : '';
 
 export interface TableColumn<Row> {
   /** Id of the column; also the default field to read from each row. */
@@ -26,6 +30,10 @@ export interface TableColumn<Row> {
   align?: 'start' | 'center' | 'end';
   /** Width, e.g. "30%" or 120. */
   width?: string | number;
+  /** Extra help about the column, shown in a tooltip from a ? icon in the heading. */
+  hint?: ReactNode;
+  /** Hides the column on screens narrower than this, so tables fit on phones. */
+  hideBelow?: 'small' | 'medium' | 'large';
 }
 
 export interface TableSort {
@@ -187,7 +195,7 @@ function TableInner<Row>(
                 <th
                   key={column.key}
                   scope="col"
-                  className={`ds-table__header ds-table__cell--${column.align ?? 'start'}`}
+                  className={`ds-table__header ds-table__cell--${column.align ?? 'start'}${hideClass(column)}`}
                   style={{ inlineSize: column.width }}
                   aria-sort={column.sortable ? (active ?? 'none') : undefined}
                 >
@@ -214,6 +222,21 @@ function TableInner<Row>(
                     </button>
                   ) : (
                     column.header
+                  )}
+                  {column.hint && (
+                    <Tooltip content={column.hint}>
+                      <button
+                        type="button"
+                        className="ds-table__hint"
+                        aria-label={
+                          typeof column.header === 'string'
+                            ? `About ${column.header}`
+                            : 'About this column'
+                        }
+                      >
+                        <HelpCircle aria-hidden="true" />
+                      </button>
+                    </Tooltip>
                   )}
                 </th>
               );
@@ -264,7 +287,7 @@ function TableInner<Row>(
                   {columns.map((column) => (
                     <td
                       key={column.key}
-                      className={`ds-table__cell ds-table__cell--${column.align ?? 'start'}`}
+                      className={`ds-table__cell ds-table__cell--${column.align ?? 'start'}${hideClass(column)}`}
                     >
                       {column.render ? column.render(row) : (read(row, column.key) as ReactNode)}
                     </td>
@@ -282,3 +305,65 @@ function TableInner<Row>(
 export const Table = forwardRef(TableInner) as <Row>(
   props: TableProps<Row> & { ref?: React.Ref<HTMLTableElement> },
 ) => ReturnType<typeof TableInner>;
+
+export interface TableCardProps extends Omit<HTMLAttributes<HTMLElement>, 'title'> {
+  /** Heading of the card, e.g. "Team members". */
+  title: ReactNode;
+  /** Heading level. Default h2. */
+  titleAs?: 'h2' | 'h3' | 'h4';
+  /** Small badge after the title, e.g. "100 users". */
+  badge?: ReactNode;
+  /** Supporting text under the title. */
+  description?: ReactNode;
+  /** Buttons at the end of the header, e.g. "Add member". */
+  actions?: ReactNode;
+  /** A row between the header and the table, e.g. tabs, search and filters. */
+  toolbar?: ReactNode;
+  /** Under the table, e.g. Pagination. */
+  footer?: ReactNode;
+  /** The Table. */
+  children: ReactNode;
+}
+
+/**
+ * A bordered card around a Table with a header (title, badge, description, actions), an
+ * optional toolbar for filters and a footer for pagination.
+ */
+export const TableCard = forwardRef<HTMLElement, TableCardProps>(
+  (
+    {
+      title,
+      titleAs: Heading = 'h2',
+      badge,
+      description,
+      actions,
+      toolbar,
+      footer,
+      className,
+      children,
+      ...props
+    },
+    ref,
+  ) => (
+    <section
+      ref={ref}
+      className={['ds-table-card', className].filter(Boolean).join(' ')}
+      {...props}
+    >
+      <header className="ds-table-card__header">
+        <div className="ds-table-card__heading">
+          <div className="ds-table-card__title-row">
+            <Heading className="ds-table-card__title">{title}</Heading>
+            {badge && <span className="ds-table-card__badge">{badge}</span>}
+          </div>
+          {description && <p className="ds-table-card__description">{description}</p>}
+        </div>
+        {actions && <div className="ds-table-card__actions">{actions}</div>}
+      </header>
+      {toolbar && <div className="ds-table-card__toolbar">{toolbar}</div>}
+      <div className="ds-table-card__body">{children}</div>
+      {footer && <footer className="ds-table-card__footer">{footer}</footer>}
+    </section>
+  ),
+);
+TableCard.displayName = 'TableCard';

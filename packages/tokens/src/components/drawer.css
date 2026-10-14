@@ -40,4 +40,8 @@
   --drawer-height: calc(var(--sizing-8xl) * 1.5);
   --drawer-duration: var(--duration-slow);
   --drawer-easing: var(--easing-enter);
+
+  /* Side drawer widths */
+  --drawer-small-width: calc(var(--sizing-8xl) * 1.5);
+  --drawer-large-width: calc(var(--sizing-8xl) * 3);
 }

@@ -29,13 +29,24 @@ export interface DrawerContentProps extends Omit<
    * `bottom` (common on phones).
    */
   side?: 'start' | 'end' | 'top' | 'bottom';
+  /** Width of side drawers: `small`, `medium` (default) or `large`, e.g. for a detail panel. */
+  size?: 'small' | 'medium' | 'large';
   /** Accessible name of the close button. Default "Close". */
   closeLabel?: string;
 }
 
 export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
   (
-    { title, description, side = 'end', closeLabel = 'Close', className, children, ...props },
+    {
+      title,
+      description,
+      side = 'end',
+      size = 'medium',
+      closeLabel = 'Close',
+      className,
+      children,
+      ...props
+    },
     ref,
   ) => {
     const themeAttrs = usePortalThemeAttributes();
@@ -44,7 +55,14 @@ export const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
         <Dialog.Overlay className="ds-drawer__scrim" {...themeAttrs} />
         <Dialog.Content
           ref={ref}
-          className={['ds-drawer', `ds-drawer--${side}`, className].filter(Boolean).join(' ')}
+          className={[
+            'ds-drawer',
+            `ds-drawer--${side}`,
+            size !== 'medium' && `ds-drawer--${size}`,
+            className,
+          ]
+            .filter(Boolean)
+            .join(' ')}
           {...(description ? {} : { 'aria-describedby': undefined })}
           {...themeAttrs}
           {...props}

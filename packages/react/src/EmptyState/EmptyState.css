@@ -1,13 +1,19 @@
 /** EmptyState. Styled only with --empty-state-* tokens. */
 
 .ds-empty-state {
+  --_box: var(--empty-state-icon-box-size);
+  --_icon: var(--empty-state-icon-size);
+  --_title-size: var(--empty-state-title-font-size);
+  --_title-line: var(--empty-state-title-font-line-height);
+  --_padding: var(--empty-state-padding);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--empty-state-gap);
   max-inline-size: var(--empty-state-max-width);
   margin-inline: auto;
-  padding: var(--empty-state-padding);
+  padding: var(--_padding);
   font-family: var(--empty-state-font-family);
   font-size: var(--empty-state-font-size);
   line-height: var(--empty-state-font-line-height);
@@ -17,24 +23,24 @@
 .ds-empty-state__icon {
   display: grid;
   place-items: center;
-  inline-size: var(--empty-state-icon-box-size);
-  block-size: var(--empty-state-icon-box-size);
+  inline-size: var(--_box);
+  block-size: var(--_box);
   border-radius: var(--empty-state-icon-border-radius);
   background-color: var(--empty-state-icon-bg-color);
   color: var(--empty-state-icon-color);
 }
 
 .ds-empty-state__icon > svg {
-  inline-size: var(--empty-state-icon-size);
-  block-size: var(--empty-state-icon-size);
+  inline-size: var(--_icon);
+  block-size: var(--_icon);
 }
 
 .ds-empty-state__title {
   margin: 0;
   color: var(--empty-state-title-text-color);
-  font-size: var(--empty-state-title-font-size);
+  font-size: var(--_title-size);
   font-weight: var(--empty-state-title-font-weight);
-  line-height: var(--empty-state-title-font-line-height);
+  line-height: var(--_title-line);
   text-wrap: balance;
 }
 
@@ -48,4 +54,31 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--empty-state-actions-gap);
+}
+
+.ds-empty-state--small {
+  --_box: var(--empty-state-small-icon-box-size);
+  --_icon: var(--empty-state-small-icon-size);
+  --_title-size: var(--empty-state-small-title-font-size);
+  --_title-line: var(--empty-state-small-title-font-line-height);
+  --_padding: var(--empty-state-small-padding);
+}
+
+.ds-empty-state--large {
+  --_box: var(--empty-state-large-icon-box-size);
+  --_icon: var(--empty-state-large-icon-size);
+  --_title-size: var(--empty-state-large-title-font-size);
+  --_title-line: var(--empty-state-large-title-font-line-height);
+  --_padding: var(--empty-state-large-padding);
+}
+
+.ds-empty-state__illustration {
+  display: block;
+  max-inline-size: var(--empty-state-illustration-max-width);
+}
+
+.ds-empty-state__illustration > * {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
 }

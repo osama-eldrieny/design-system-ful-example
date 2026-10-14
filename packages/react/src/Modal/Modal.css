@@ -48,6 +48,41 @@
   --_width: var(--modal-large-width);
 }
 
+.ds-modal--xlarge {
+  --_width: var(--modal-xlarge-width);
+}
+
+.ds-modal__icon {
+  margin-block-end: var(--modal-icon-gap);
+}
+
+/* The outline rings of the icon reach past it; keep them inside the dialog's padding */
+.ds-modal--center {
+  text-align: center;
+}
+
+.ds-modal--center .ds-modal__icon {
+  align-self: center;
+}
+
+.ds-modal--center .ds-modal__header {
+  justify-content: center;
+}
+
+.ds-modal--center .ds-modal__close {
+  position: absolute;
+  inset-block-start: var(--modal-close-inset);
+  inset-inline-end: var(--modal-close-inset);
+}
+
+.ds-modal--center .ds-modal__footer {
+  justify-content: stretch;
+}
+
+.ds-modal--center .ds-modal__footer > * {
+  flex: 1;
+}
+
 .ds-modal:focus-visible {
   outline: none;
 }

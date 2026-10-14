@@ -34,7 +34,7 @@
 .ds-drawer--start,
 .ds-drawer--end {
   inset-block: 0;
-  inline-size: min(var(--drawer-width), 100%);
+  inline-size: min(var(--_width, var(--drawer-width)), 100%);
 }
 
 .ds-drawer--start {
@@ -168,4 +168,12 @@
   .ds-drawer__scrim {
     animation: none;
   }
+}
+
+.ds-drawer--small {
+  --_width: var(--drawer-small-width);
+}
+
+.ds-drawer--large {
+  --_width: var(--drawer-large-width);
 }

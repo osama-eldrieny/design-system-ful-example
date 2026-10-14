@@ -25,6 +25,15 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: 'Inside cards and tables.' },
+        { value: 'medium', meaning: 'Default.' },
+        { value: 'large', meaning: 'A whole page, e.g. first use.' },
+      ],
+    },
+    {
       prop: 'titleAs',
       title: 'Heading level',
       values: [
@@ -89,5 +98,8 @@ export default defineMeta({
     { id: 'alert', relation: 'For errors.' },
     { id: 'skeleton', relation: 'While loading.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    { version: '1.1.0', date: '2026-10-15', changes: ['size and illustration.'] },
+  ],
 });
