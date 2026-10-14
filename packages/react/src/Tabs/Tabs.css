@@ -22,7 +22,27 @@
   box-shadow: inset 0 calc(-1 * var(--tabs-line-border-width)) 0 var(--tabs-line-border-color);
 }
 
+.ds-tabs__list--segmented {
+  padding: var(--tabs-segmented-padding);
+  border: var(--tabs-segmented-border-width) solid var(--tabs-segmented-border-color);
+  border-radius: var(--tabs-segmented-border-radius);
+  background-color: var(--tabs-segmented-bg-color);
+}
+
+.ds-tabs--full-width .ds-tabs__list {
+  display: flex;
+}
+
+.ds-tabs--full-width .ds-tabs__tab {
+  flex: 1;
+  justify-content: center;
+}
+
 .ds-tabs__tab {
+  --_px: var(--tabs-item-padding-x);
+  --_py: var(--tabs-item-padding-y);
+  --_font-size: var(--tabs-item-label-font-size);
+  --_line-height: var(--tabs-item-label-font-line-height);
   --_bg: var(--tabs-item-default-bg-color);
   --_fg: var(--tabs-item-default-font-color);
   --_bg-hover: var(--tabs-item-hover-bg-color);
@@ -33,15 +53,15 @@
   display: inline-flex;
   align-items: center;
   gap: var(--tabs-item-padding-gap);
-  padding-block: var(--tabs-item-padding-y);
-  padding-inline: var(--tabs-item-padding-x);
+  padding-block: var(--_py);
+  padding-inline: var(--_px);
   border: 0;
   border-radius: var(--tabs-item-border-radius);
   background-color: var(--_bg);
   color: var(--_fg);
   font-family: var(--tabs-item-label-font-family);
-  font-size: var(--tabs-item-label-font-size);
-  line-height: var(--tabs-item-label-font-line-height);
+  font-size: var(--_font-size);
+  line-height: var(--_line-height);
   font-weight: var(--tabs-item-label-font-weight);
   white-space: nowrap;
   cursor: pointer;
@@ -55,6 +75,54 @@
   --_fg: var(--tabs-pill-item-default-font-color);
   --_bg-hover: var(--tabs-pill-item-hover-bg-color);
   --_fg-hover: var(--tabs-pill-item-hover-font-color);
+}
+
+.ds-tabs--small .ds-tabs__tab {
+  --_px: var(--tabs-small-item-padding-x);
+  --_py: var(--tabs-small-item-padding-y);
+  --_font-size: var(--tabs-small-item-label-font-size);
+  --_line-height: var(--tabs-small-item-label-font-line-height);
+}
+
+.ds-tabs--segmented .ds-tabs__tab {
+  --_bg: transparent;
+  --_fg: var(--tabs-segmented-item-default-font-color);
+  --_bg-hover: var(--tabs-segmented-item-hover-bg-color);
+  --_fg-hover: var(--tabs-segmented-item-hover-font-color);
+  --_bg-active: var(--tabs-segmented-item-active-bg-color);
+  --_fg-active: var(--tabs-segmented-item-active-font-color);
+}
+
+.ds-tabs--segmented .ds-tabs__tab[data-state='active'] {
+  box-shadow: 0 0 0 var(--tabs-segmented-border-width)
+    var(--tabs-segmented-item-active-border-color);
+}
+
+.ds-tabs--subtle .ds-tabs__tab {
+  --_bg: transparent;
+  --_fg: var(--tabs-subtle-item-default-font-color);
+  --_bg-hover: var(--tabs-subtle-item-hover-bg-color);
+  --_fg-hover: var(--tabs-subtle-item-hover-font-color);
+  --_bg-active: var(--tabs-subtle-item-active-bg-color);
+  --_fg-active: var(--tabs-subtle-item-active-font-color);
+}
+
+.ds-tabs__count {
+  min-inline-size: var(--tabs-count-size);
+  padding-inline: var(--tabs-count-padding-x);
+  border-radius: var(--tabs-count-border-radius);
+  background-color: var(--tabs-count-bg-color);
+  color: var(--tabs-count-text-color);
+  font-size: var(--tabs-count-font-size);
+  line-height: var(--tabs-count-font-line-height);
+  font-weight: var(--tabs-count-font-weight);
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-tabs__tab[data-state='active'] > .ds-tabs__count {
+  background-color: var(--tabs-count-active-bg-color);
+  color: var(--tabs-count-active-text-color);
 }
 
 .ds-tabs--line .ds-tabs__tab {

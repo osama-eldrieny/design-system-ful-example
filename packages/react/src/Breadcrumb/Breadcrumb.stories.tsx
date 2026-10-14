@@ -27,6 +27,17 @@ export const Playground: Story = {};
 
 export const Collapsed: Story = { args: { items: trail, maxItems: 4 } };
 
+/** Slash separators, a home icon for the first item, and the button appearance. */
+export const Styles: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16 }}>
+      <Breadcrumb items={trail.slice(0, 4)} homeIcon aria-label="Chevron with home" />
+      <Breadcrumb items={trail.slice(0, 4)} separator="slash" aria-label="Slash" />
+      <Breadcrumb items={trail.slice(0, 4)} appearance="button" homeIcon aria-label="Button" />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: {

@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/addon-docs/blocks';
-import { Progress } from '@ds/react';
+import { Progress, ProgressCircle } from '@ds/react';
 import * as Stories from '../../../../packages/react/src/Progress/Progress.stories';
 import meta from '../../../../packages/react/src/Progress/Progress.meta';
 import { ComponentPage } from '../blocks';
@@ -11,7 +11,7 @@ import { ComponentPage } from '../blocks';
 <ComponentPage
   meta={meta}
   stories={Stories}
-  components={[Progress]}
+  components={[Progress, ProgressCircle]}
   anatomy={{
     targets: [
       '.ds-progress__label',
@@ -25,7 +25,12 @@ import { ComponentPage } from '../blocks';
       </div>
     ),
   }}
-  optionStories={{ tone: 'Tones', size: 'Sizes' }}
+  optionStories={{
+    tone: 'Tones',
+    size: 'Sizes',
+    valuePosition: 'ValuePositions',
+    shape: 'Circles',
+  }}
   extras={[{ title: 'Indeterminate', story: 'Indeterminate' }]}
   behaviorStory="RightToLeft"
   matrix={

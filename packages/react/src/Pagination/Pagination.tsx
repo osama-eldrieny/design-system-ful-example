@@ -18,6 +18,13 @@ export interface PaginationProps extends Omit<HTMLAttributes<HTMLElement>, 'onCh
   appearance?: PaginationAppearance;
   /** How many pages to show on each side of the current page before “…”. */
   siblingCount?: number;
+  /** Shows "Previous" and "Next" as text beside the arrows. */
+  showArrowLabels?: boolean;
+  /**
+   * `compact` (default) keeps everything together. `spread` pushes previous and next to the
+   * edges with the pages centered, e.g. under a table.
+   */
+  layout?: 'compact' | 'spread';
   /** Accessible name of the navigation landmark. Default "Pagination". */
   label?: string;
   /** Accessible names and summary wording, for translation. */
@@ -58,6 +65,8 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       onPageChange,
       appearance = 'full',
       siblingCount = 1,
+      showArrowLabels = false,
+      layout = 'compact',
       label = 'Pagination',
       labels = {},
       className,
@@ -77,7 +86,14 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       <nav
         ref={ref}
         aria-label={label}
-        className={['ds-pagination', className].filter(Boolean).join(' ')}
+        className={[
+          'ds-pagination',
+          layout === 'spread' && 'ds-pagination--spread',
+          showArrowLabels && 'ds-pagination--labelled',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
         {...props}
       >
         <ul className="ds-pagination__list">
@@ -85,16 +101,17 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
             <button
               type="button"
               className="ds-pagination__item ds-pagination__arrow"
-              aria-label={previous}
-              title={previous}
+              aria-label={showArrowLabels ? undefined : previous}
+              title={showArrowLabels ? undefined : previous}
               disabled={currentPage <= 1}
               onClick={() => go(currentPage - 1)}
             >
               <ChevronLeft className="ds-pagination__icon" aria-hidden="true" />
+              {showArrowLabels && <span>{labels.previous ?? 'Previous'}</span>}
             </button>
           </li>
           {appearance === 'simple' ? (
-            <li className="ds-pagination__summary" aria-live="polite">
+            <li className="ds-pagination__summary ds-pagination__middle" aria-live="polite">
               {summary(currentPage, totalPages)}
             </li>
           ) : (
@@ -122,11 +139,12 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
             <button
               type="button"
               className="ds-pagination__item ds-pagination__arrow"
-              aria-label={next}
-              title={next}
+              aria-label={showArrowLabels ? undefined : next}
+              title={showArrowLabels ? undefined : next}
               disabled={currentPage >= totalPages}
               onClick={() => go(currentPage + 1)}
             >
+              {showArrowLabels && <span>{labels.next ?? 'Next'}</span>}
               <ChevronRight className="ds-pagination__icon" aria-hidden="true" />
             </button>
           </li>

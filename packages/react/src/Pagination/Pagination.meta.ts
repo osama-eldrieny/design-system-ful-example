@@ -33,6 +33,14 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'layout',
+      title: 'Layout',
+      values: [
+        { value: 'compact', meaning: 'Everything together. Default.' },
+        { value: 'spread', meaning: 'Previous and next at the edges, e.g. under a table.' },
+      ],
+    },
+    {
       prop: 'appearance',
       title: 'Appearance',
       values: [
@@ -151,6 +159,11 @@ export default defineMeta({
   tokenPrefixes: ['--pagination-'],
   related: [{ id: 'table', relation: 'Often paired with a paginated table.' }],
   changelog: [
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: ['showArrowLabels and layout="spread" for table footers.'],
+    },
     {
       version: '0.2.0',
       date: '2026-09-29',

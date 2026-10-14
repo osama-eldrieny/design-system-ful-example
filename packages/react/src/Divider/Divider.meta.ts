@@ -23,6 +23,15 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'labelAlign',
+      title: 'Label position',
+      values: [
+        { value: 'center', meaning: 'Default, e.g. “or” between sign-in options.' },
+        { value: 'start', meaning: 'A section title on the line.' },
+        { value: 'end', meaning: 'An action at the end of the line.' },
+      ],
+    },
+    {
       prop: 'orientation',
       title: 'Orientation',
       values: [
@@ -92,5 +101,8 @@ export default defineMeta({
   ],
   tokenPrefixes: ['--divider-'],
   related: [{ id: 'list', relation: 'Lists can draw their own dividers.' }],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    { version: '1.1.0', date: '2026-10-15', changes: ['labelAlign: start, center or end.'] },
+  ],
 });

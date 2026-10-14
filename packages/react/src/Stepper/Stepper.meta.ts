@@ -23,6 +23,23 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'marker',
+      title: 'Marker',
+      values: [
+        { value: 'number', meaning: 'Step numbers; a check when complete. Default.' },
+        { value: 'icon', meaning: 'Each step’s icon in a tile, for onboarding flows.' },
+        { value: 'dot', meaning: 'Small dots, for compact progress.' },
+      ],
+    },
+    {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: 'Dialogs and narrow panels.' },
+        { value: 'medium', meaning: 'Default.' },
+      ],
+    },
+    {
       prop: 'orientation',
       title: 'Orientation',
       values: [
@@ -124,5 +141,8 @@ export default defineMeta({
     { id: 'progress', relation: 'For one operation.' },
     { id: 'tabs', relation: 'For independent views.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    { version: '1.1.0', date: '2026-10-15', changes: ['marker (number, icon, dot) and size.'] },
+  ],
 });

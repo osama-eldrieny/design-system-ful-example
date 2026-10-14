@@ -8,7 +8,10 @@ export default defineMeta({
   since: '0.4.0',
   description:
     'A progress bar shows how far a task has got, such as an upload or setup steps. Without a value it becomes an indeterminate, animated bar.',
-  imports: [{ name: 'Progress', from: '@ds/react' }],
+  imports: [
+    { name: 'Progress', from: '@ds/react' },
+    { name: 'ProgressCircle', from: '@ds/react' },
+  ],
   whenToUse: [
     'For tasks with measurable progress: uploads, downloads, processing.',
     'For completion, e.g. a profile 60% complete or storage used.',
@@ -40,6 +43,23 @@ export default defineMeta({
       values: [
         { value: 'medium', meaning: 'Default.' },
         { value: 'small', meaning: 'Thin; cards and tables.' },
+      ],
+    },
+    {
+      prop: 'valuePosition',
+      title: 'Value position',
+      values: [
+        { value: 'top', meaning: 'Beside the label. Default.' },
+        { value: 'end', meaning: 'After the bar, for compact rows.' },
+        { value: 'bottom', meaning: 'Under the end of the bar.' },
+      ],
+    },
+    {
+      prop: 'shape',
+      title: 'ProgressCircle shape',
+      values: [
+        { value: 'circle', meaning: 'A full ring. Default.' },
+        { value: 'half', meaning: 'A semicircle gauge, for scores and quotas.' },
       ],
     },
   ],
@@ -95,6 +115,18 @@ export default defineMeta({
   },
   examples: [
     {
+      id: 'circle',
+      title: 'Ring',
+      description: 'ProgressCircle with a caption.',
+      code: `import { ProgressCircle } from '@ds/react';\n\n<ProgressCircle label="Storage used" value={64} caption="of 20 GB" />`,
+    },
+    {
+      id: 'gauge',
+      title: 'Gauge',
+      description: 'A half-ring for scores.',
+      code: `import { ProgressCircle } from '@ds/react';\n\n<ProgressCircle label="Health score" value={72} shape="half" />`,
+    },
+    {
       id: 'upload',
       title: 'Upload',
       description: 'With the value shown.',
@@ -118,5 +150,15 @@ export default defineMeta({
     { id: 'spinner', relation: 'For unknown waits.' },
     { id: 'stepper', relation: 'For multi-step tasks.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: [
+        'valuePosition: top, end or bottom.',
+        'New ProgressCircle: a ring or half-ring gauge with the value inside.',
+      ],
+    },
+  ],
 });

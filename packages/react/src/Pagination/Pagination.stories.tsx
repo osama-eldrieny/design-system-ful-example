@@ -39,6 +39,23 @@ export const Appearances: Story = {
   ),
 };
 
+/** Labelled arrows, spread to the edges, e.g. in a table footer. */
+export const Layouts: Story = {
+  render: (args) => (
+    <div style={{ display: 'grid', gap: 24, maxInlineSize: 720 }}>
+      <Pagination {...args} showArrowLabels layout="spread" label="Table pages" />
+      <Pagination
+        {...args}
+        appearance="simple"
+        showArrowLabels
+        layout="spread"
+        label="Table pages (simple)"
+      />
+      <Pagination {...args} showArrowLabels label="Compact labelled" />
+    </div>
+  ),
+};
+
 export const Ranges: Story = {
   render: (args) => (
     <div style={{ display: 'grid', gap: 12 }}>

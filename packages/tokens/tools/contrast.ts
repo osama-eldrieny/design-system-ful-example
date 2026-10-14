@@ -109,6 +109,7 @@ export function contrastPairs(set: TokenSet): Pair[] {
  */
 const NOT_ON_COMPONENT_BG = [
   // Only enclosed tabs paint --tabs-bg-color; line and pill tabs sit on the page.
+  /^--tabs-(line|pill|segmented|subtle)-item-default/,
   /^--tabs-(line|pill)-/,
   // AvatarLabelGroup text sits on the page, not on the avatar's fallback fill.
   /^--avatar-label-group-/,

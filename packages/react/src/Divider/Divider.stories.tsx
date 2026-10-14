@@ -35,6 +35,18 @@ export const Variants: Story = {
   ),
 };
 
+/** The label can sit at the start or end of the line, or be any element, e.g. a button. */
+export const LabelAlign: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16 }}>
+      <Divider label="Start" labelAlign="start" />
+      <Divider label="Center" />
+      <Divider label="End" labelAlign="end" />
+      <Divider label={<button type="button">Show more</button>} />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = { globals: { language: 'ar' }, args: { label: 'أو' } };
 
 export const AllThemes: Story = {

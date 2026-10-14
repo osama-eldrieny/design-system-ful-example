@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 import { expect, userEvent } from 'storybook/test';
+import { CreditCard, ShoppingCart, Truck, UserRound } from 'lucide-react';
 import { ThemeProvider } from '../ThemeProvider';
 import { Stepper } from './Stepper';
 
@@ -44,6 +45,31 @@ export const States: Story = {
       { label: 'Upcoming' },
     ],
   },
+};
+
+const withIcons = [
+  { label: 'Your details', description: 'Name and email', icon: <UserRound /> },
+  { label: 'Cart', description: '3 items', icon: <ShoppingCart /> },
+  { label: 'Shipping', description: 'Address and speed', icon: <Truck /> },
+  { label: 'Payment', description: 'Card or wallet', icon: <CreditCard /> },
+];
+
+/** Numbers (default), each step's icon in a tile, or small dots; small size for dialogs. */
+export const Markers: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 32 }}>
+      <Stepper aria-label="Checkout (icons)" steps={withIcons} current={2} marker="icon" />
+      <Stepper aria-label="Checkout (dots)" steps={checkout} current={1} marker="dot" />
+      <Stepper aria-label="Checkout (small)" steps={checkout} current={2} size="small" />
+      <Stepper
+        aria-label="Onboarding (vertical icons)"
+        steps={withIcons}
+        current={1}
+        marker="icon"
+        orientation="vertical"
+      />
+    </div>
+  ),
 };
 
 const BackDemo = () => {

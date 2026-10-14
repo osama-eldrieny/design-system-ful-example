@@ -36,6 +36,44 @@
   --tabs-line-indicator-color: var(--color-bg-accent-primary-default);
   --tabs-line-indicator-width: var(--border-width-regular);
 
+  /* Segmented: a bordered bar; the selected tab is raised on the surface */
+  --tabs-segmented-bg-color: var(--color-bg-default);
+  --tabs-segmented-border-color: var(--color-border-base);
+  --tabs-segmented-border-width: var(--border-width-hairline);
+  --tabs-segmented-border-radius: var(--radius-lg);
+  --tabs-segmented-padding: var(--spacing-3xs);
+  --tabs-segmented-item-default-font-color: var(--color-fg-on-surface-secondary);
+  --tabs-segmented-item-hover-bg-color: var(--color-bg-surface);
+  --tabs-segmented-item-hover-font-color: var(--color-fg-on-surface-primary);
+  --tabs-segmented-item-active-bg-color: var(--color-bg-surface);
+  --tabs-segmented-item-active-font-color: var(--color-fg-on-surface-primary);
+  --tabs-segmented-item-active-border-color: var(--color-border-base);
+
+  /* Subtle: no container; the selected tab is tinted in the brand color */
+  --tabs-subtle-item-default-font-color: var(--color-fg-on-surface-secondary);
+  --tabs-subtle-item-hover-bg-color: var(--color-bg-default);
+  --tabs-subtle-item-hover-font-color: var(--color-fg-on-surface-primary);
+  --tabs-subtle-item-active-bg-color: var(--color-bg-primary-1);
+  --tabs-subtle-item-active-font-color: var(--color-fg-on-primary-high);
+
+  /* Count after the label */
+  --tabs-count-size: var(--sizing-sm-plus);
+  --tabs-count-padding-x: var(--spacing-2xs);
+  --tabs-count-border-radius: var(--radius-full);
+  --tabs-count-bg-color: var(--color-bg-default);
+  --tabs-count-text-color: var(--color-fg-on-surface-primary);
+  --tabs-count-active-bg-color: var(--color-bg-primary-1);
+  --tabs-count-active-text-color: var(--color-fg-on-primary-high);
+  --tabs-count-font-size: var(--font-size-xs);
+  --tabs-count-font-line-height: var(--font-line-height-sm);
+  --tabs-count-font-weight: var(--font-weight-medium);
+
+  /* Small size */
+  --tabs-small-item-padding-x: var(--spacing-xs);
+  --tabs-small-item-padding-y: var(--spacing-2xs);
+  --tabs-small-item-label-font-size: var(--font-size-sm);
+  --tabs-small-item-label-font-line-height: var(--font-line-height-sm);
+
   /* Tab label and icon */
   --tabs-item-padding-x: var(--spacing-sm);
   --tabs-item-padding-y: var(--spacing-xs);

@@ -4,7 +4,7 @@ import { expect, userEvent, waitFor } from 'storybook/test';
 import { ThemeProvider } from '../ThemeProvider';
 import { Tab, TabList, TabPanel, Tabs, type TabsAppearance } from './Tabs';
 
-const APPEARANCES: TabsAppearance[] = ['enclosed', 'pill', 'line'];
+const APPEARANCES: TabsAppearance[] = ['enclosed', 'pill', 'line', 'segmented', 'subtle'];
 
 const Example = (props: Partial<React.ComponentProps<typeof Tabs>>) => (
   <Tabs defaultValue="overview" {...props}>
@@ -41,6 +41,40 @@ export const Appearances: Story = {
       {APPEARANCES.map((a) => (
         <Example key={a} appearance={a} />
       ))}
+    </div>
+  ),
+};
+
+/** Small tabs, counts after labels, and a full-width segmented switcher. */
+export const SizesAndCounts: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 24, maxInlineSize: 480 }}>
+      {(['line', 'segmented', 'subtle'] as const).map((appearance) => (
+        <Tabs key={appearance} appearance={appearance} size="small" defaultValue="all">
+          <TabList label={`Orders (${appearance})`}>
+            <Tab value="all" count={128}>
+              All
+            </Tab>
+            <Tab value="open" count={12}>
+              Open
+            </Tab>
+            <Tab value="closed">Closed</Tab>
+          </TabList>
+          <TabPanel value="all">All orders</TabPanel>
+          <TabPanel value="open">Open orders</TabPanel>
+          <TabPanel value="closed">Closed orders</TabPanel>
+        </Tabs>
+      ))}
+      <Tabs appearance="segmented" fullWidth defaultValue="day">
+        <TabList label="Range">
+          <Tab value="day">Day</Tab>
+          <Tab value="week">Week</Tab>
+          <Tab value="month">Month</Tab>
+        </TabList>
+        <TabPanel value="day">Today</TabPanel>
+        <TabPanel value="week">This week</TabPanel>
+        <TabPanel value="month">This month</TabPanel>
+      </Tabs>
     </div>
   ),
 };

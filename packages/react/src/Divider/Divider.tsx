@@ -6,15 +6,18 @@ export interface DividerProps extends HTMLAttributes<HTMLElement> {
   orientation?: 'horizontal' | 'vertical';
   /** Short text in the middle of a horizontal divider, e.g. “or”. */
   label?: ReactNode;
+  /** Where the label sits on the line: `center` (default), `start` or `end`. */
+  labelAlign?: 'start' | 'center' | 'end';
 }
 
 /** A thin line that separates groups of content. */
 export const Divider = forwardRef<HTMLElement, DividerProps>(
-  ({ orientation = 'horizontal', label, className, ...props }, ref) => {
+  ({ orientation = 'horizontal', label, labelAlign = 'center', className, ...props }, ref) => {
     const classes = [
       'ds-divider',
       `ds-divider--${orientation}`,
       label && 'ds-divider--label',
+      label && labelAlign !== 'center' && `ds-divider--label-${labelAlign}`,
       className,
     ]
       .filter(Boolean)

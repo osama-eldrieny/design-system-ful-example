@@ -28,4 +28,21 @@
   --progress-loop-duration: var(--duration-loop);
   --progress-easing: var(--easing-standard);
   --progress-hidden-size: var(--border-width-hairline);
+  --progress-value-gap: var(--spacing-sm);
+
+  /* ProgressCircle: stroke widths are in viewBox units (the ring is 100 wide) */
+  --progress-circle-small-size: var(--sizing-2xl-plus);
+  --progress-circle-medium-size: var(--sizing-5xl);
+  --progress-circle-large-size: var(--sizing-6xl);
+  --progress-circle-small-stroke-width: 10;
+  --progress-circle-medium-stroke-width: 8;
+  --progress-circle-large-stroke-width: 6;
+  --progress-circle-value-text-color: var(--color-fg-on-surface-primary);
+  --progress-circle-value-font-weight: var(--font-weight-semi-bold);
+  --progress-circle-small-value-font-size: var(--font-size-sm);
+  --progress-circle-small-value-font-line-height: var(--font-line-height-sm);
+  --progress-circle-medium-value-font-size: var(--font-size-2xl);
+  --progress-circle-medium-value-font-line-height: var(--font-line-height-2xl);
+  --progress-circle-large-value-font-size: var(--font-size-4xl);
+  --progress-circle-large-value-font-line-height: var(--font-line-height-4xl);
 }

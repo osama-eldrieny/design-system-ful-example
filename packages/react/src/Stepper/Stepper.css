@@ -1,6 +1,10 @@
 /** Stepper. Styled only with --stepper-* tokens; each status sets the helpers. */
 
 .ds-stepper {
+  --_ind: var(--stepper-indicator-size);
+  --_icon: var(--stepper-icon-size);
+  --_radius: 50%;
+
   display: flex;
   gap: var(--stepper-step-gap);
   margin: 0;
@@ -13,6 +17,21 @@
 
 .ds-stepper--vertical {
   flex-direction: column;
+}
+
+.ds-stepper--small {
+  --_ind: var(--stepper-small-indicator-size);
+  --_icon: var(--stepper-small-icon-size);
+}
+
+.ds-stepper--icon {
+  --_ind: var(--stepper-icon-indicator-size);
+  --_icon: var(--stepper-icon-indicator-icon-size);
+  --_radius: var(--stepper-icon-indicator-border-radius);
+}
+
+.ds-stepper--dot {
+  --_ind: var(--stepper-dot-indicator-size);
 }
 
 .ds-stepper__step {
@@ -54,8 +73,8 @@
 .ds-stepper--horizontal .ds-stepper__step:not(:last-child)::after {
   content: '';
   position: absolute;
-  inset-block-start: calc(var(--stepper-indicator-size) / 2);
-  inset-inline: calc(var(--stepper-indicator-size) + var(--stepper-gap)) 0;
+  inset-block-start: calc(var(--_ind) / 2);
+  inset-inline: calc(var(--_ind) + var(--stepper-gap)) 0;
   block-size: var(--stepper-connector-width);
   margin-inline-end: calc(-1 * var(--stepper-step-gap) + var(--stepper-gap));
   background-color: var(--_connector);
@@ -65,8 +84,8 @@
 .ds-stepper--vertical .ds-stepper__step:not(:last-child)::after {
   content: '';
   position: absolute;
-  inset-inline-start: calc(var(--stepper-indicator-size) / 2);
-  inset-block: calc(var(--stepper-indicator-size) + var(--stepper-gap)) 0;
+  inset-inline-start: calc(var(--_ind) / 2);
+  inset-block: calc(var(--_ind) + var(--stepper-gap)) 0;
   inline-size: var(--stepper-connector-width);
   margin-block-end: calc(-1 * var(--stepper-step-gap) + var(--stepper-gap));
   background-color: var(--_connector);
@@ -103,10 +122,10 @@ button.ds-stepper__button:focus-visible {
   flex: none;
   place-items: center;
   box-sizing: border-box;
-  inline-size: var(--stepper-indicator-size);
-  block-size: var(--stepper-indicator-size);
+  inline-size: var(--_ind);
+  block-size: var(--_ind);
   border: var(--stepper-indicator-border-width) solid var(--_border);
-  border-radius: 50%;
+  border-radius: var(--_radius);
   background-color: var(--_bg);
   color: var(--_fg);
   font-size: var(--stepper-description-font-size);
@@ -114,8 +133,8 @@ button.ds-stepper__button:focus-visible {
 }
 
 .ds-stepper__indicator > svg {
-  inline-size: var(--stepper-icon-size);
-  block-size: var(--stepper-icon-size);
+  inline-size: var(--_icon);
+  block-size: var(--_icon);
 }
 
 .ds-stepper__text {

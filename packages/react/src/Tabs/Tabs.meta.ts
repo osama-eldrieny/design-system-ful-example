@@ -41,6 +41,23 @@ export default defineMeta({
           meaning: 'Filled pill on the selected tab, no container. Light filtering inside cards.',
         },
         { value: 'line', meaning: 'Underline under the selected tab. Page-level sections.' },
+        {
+          value: 'segmented',
+          meaning:
+            'Bordered bar with the selected tab raised. View switchers, e.g. Day / Week / Month.',
+        },
+        {
+          value: 'subtle',
+          meaning: 'No container; the selected tab tinted in the brand color. Settings sidebars.',
+        },
+      ],
+    },
+    {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: 'Toolbars, cards and table headers.' },
+        { value: 'medium', meaning: 'Default.' },
       ],
     },
     {
@@ -194,6 +211,11 @@ import { LayoutGrid, Laptop } from 'lucide-react';
     { id: 'radio-group', relation: 'Use to choose a form value.' },
   ],
   changelog: [
+    {
+      version: '1.1.0',
+      date: '2026-10-15',
+      changes: ['Appearances segmented and subtle; size small; fullWidth; Tab count.'],
+    },
     {
       version: '0.2.0',
       date: '2026-09-29',

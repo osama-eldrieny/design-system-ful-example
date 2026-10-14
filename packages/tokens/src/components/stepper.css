@@ -29,6 +29,12 @@
   --stepper-connector-width: var(--border-width-regular);
   --stepper-indicator-size: var(--sizing-lg);
   --stepper-indicator-border-width: var(--border-width-regular);
+  --stepper-small-indicator-size: var(--sizing-sm-plus);
+  --stepper-small-icon-size: var(--sizing-2xs);
+  --stepper-icon-indicator-size: var(--control-height-medium);
+  --stepper-icon-indicator-icon-size: var(--sizing-sm-plus);
+  --stepper-icon-indicator-border-radius: var(--radius-lg);
+  --stepper-dot-indicator-size: var(--sizing-2xs);
   --stepper-icon-size: var(--sizing-xs);
   --stepper-gap: var(--spacing-xs);
   --stepper-step-gap: var(--spacing-md);

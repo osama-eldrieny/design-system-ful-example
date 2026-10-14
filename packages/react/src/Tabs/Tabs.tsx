@@ -8,7 +8,7 @@ import {
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import './Tabs.css';
 
-export type TabsAppearance = 'enclosed' | 'pill' | 'line';
+export type TabsAppearance = 'enclosed' | 'pill' | 'line' | 'segmented' | 'subtle';
 
 const AppearanceContext = createContext<TabsAppearance>('enclosed');
 
@@ -25,8 +25,14 @@ export interface TabsProps extends Omit<
   /**
    * `enclosed` (default): tabs in a tinted container, for compact filters and toolbars.
    * `pill`: filled pill on the selected tab, no container. `line`: underline, for page sections.
+   * `segmented`: bordered bar, the selected tab raised on the surface, for view switchers.
+   * `subtle`: no container, the selected tab tinted in the brand color, for sidebars.
    */
   appearance?: TabsAppearance;
+  /** `small` for toolbars and cards, `medium` (default). */
+  size?: 'small' | 'medium';
+  /** Stretches the tab list to the full width, tabs sharing it equally. */
+  fullWidth?: boolean;
   /**
    * `horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a
    * column beside the panel, for settings pages with many sections; Up and Down arrows move
@@ -42,7 +48,18 @@ export interface TabsProps extends Omit<
  * time. Arrow keys move between tabs.
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
-  ({ appearance = 'enclosed', orientation = 'horizontal', className, children, ...props }, ref) => (
+  (
+    {
+      appearance = 'enclosed',
+      orientation = 'horizontal',
+      size = 'medium',
+      fullWidth = false,
+      className,
+      children,
+      ...props
+    },
+    ref,
+  ) => (
     <AppearanceContext.Provider value={appearance}>
       <TabsPrimitive.Root
         ref={ref}
@@ -51,6 +68,8 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
           'ds-tabs',
           `ds-tabs--${appearance}`,
           orientation === 'vertical' && 'ds-tabs--vertical',
+          size === 'small' && 'ds-tabs--small',
+          fullWidth && 'ds-tabs--full-width',
           className,
         ]
           .filter(Boolean)
@@ -104,11 +123,13 @@ export interface TabProps extends Omit<
   icon?: ReactNode;
   /** Tab label. */
   children: ReactNode;
+  /** A count after the label, e.g. unread items. */
+  count?: number;
 }
 
 /** One tab. */
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(
-  ({ icon, className, children, ...props }, ref) => (
+  ({ icon, count, className, children, ...props }, ref) => (
     <TabsPrimitive.Trigger
       ref={ref}
       className={['ds-tabs__tab', className].filter(Boolean).join(' ')}
@@ -120,6 +141,7 @@ export const Tab = forwardRef<HTMLButtonElement, TabProps>(
         </span>
       )}
       <span>{children}</span>
+      {count !== undefined && <span className="ds-tabs__count">{count}</span>}
     </TabsPrimitive.Trigger>
   ),
 );

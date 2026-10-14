@@ -34,3 +34,8 @@
   flex: 1;
   border-block-start: var(--divider-width) solid var(--divider-color);
 }
+
+.ds-divider--label-start::before,
+.ds-divider--label-end::after {
+  display: none;
+}

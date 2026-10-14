@@ -364,6 +364,8 @@
   --size-72: 72px;
   --size-80: 80px;
   --size-96: 96px;
+  --size-120: 120px;
+  --size-200: 200px;
   --size-220: 220px;
   --opacity-50: 0.5;
 
@@ -388,6 +390,8 @@
   --sizing-2xl-plus: var(--size-64);
   --sizing-3xl: var(--size-80);
   --sizing-4xl: var(--size-96);
+  --sizing-5xl: var(--size-120);
+  --sizing-6xl: var(--size-200);
   --sizing-8xl: var(--size-220);
   --opacity-medium: var(--opacity-50);
 

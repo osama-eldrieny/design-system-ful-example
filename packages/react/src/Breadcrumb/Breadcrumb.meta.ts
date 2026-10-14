@@ -25,6 +25,22 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'separator',
+      title: 'Separator',
+      values: [
+        { value: 'chevron', meaning: 'Default.' },
+        { value: 'slash', meaning: 'A lighter look, e.g. in page headers.' },
+      ],
+    },
+    {
+      prop: 'appearance',
+      title: 'Appearance',
+      values: [
+        { value: 'text', meaning: 'Plain links. Default.' },
+        { value: 'button', meaning: 'Tinted pill on hover and on the current page.' },
+      ],
+    },
+    {
       prop: 'maxItems',
       title: 'Collapsing',
       values: [
@@ -117,5 +133,8 @@ export default defineMeta({
     { id: 'navbar', relation: 'The main navigation.' },
     { id: 'side-nav', relation: 'For navigating many pages.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    { version: '1.1.0', date: '2026-10-15', changes: ['separator, homeIcon and appearance.'] },
+  ],
 });

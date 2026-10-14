@@ -86,3 +86,25 @@
   line-height: var(--pagination-number-font-line-height);
   font-variant-numeric: tabular-nums;
 }
+
+/* Labelled arrows: "Previous" and "Next" as text beside the icon */
+.ds-pagination--labelled .ds-pagination__arrow {
+  display: inline-flex;
+  gap: var(--pagination-arrow-label-gap);
+  padding-inline: var(--pagination-arrow-label-padding-x);
+  border: var(--pagination-arrow-label-border-width) solid
+    var(--pagination-arrow-label-border-color);
+}
+
+/* Spread: previous and next at the edges, pages in the middle */
+.ds-pagination--spread .ds-pagination__list {
+  flex-wrap: nowrap;
+}
+
+.ds-pagination--spread .ds-pagination__list > li:first-child {
+  margin-inline-end: auto;
+}
+
+.ds-pagination--spread .ds-pagination__list > li:last-child {
+  margin-inline-start: auto;
+}

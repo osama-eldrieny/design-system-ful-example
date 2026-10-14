@@ -61,3 +61,31 @@
 .ds-breadcrumb__separator:dir(rtl) {
   transform: scaleX(-1);
 }
+
+.ds-breadcrumb__slash {
+  color: var(--breadcrumb-separator-color);
+}
+
+.ds-breadcrumb__home {
+  display: block;
+  inline-size: var(--breadcrumb-home-icon-size);
+  block-size: var(--breadcrumb-home-icon-size);
+}
+
+/* Button appearance: items get a tinted pill on hover and when current */
+.ds-breadcrumb--button .ds-breadcrumb__link,
+.ds-breadcrumb--button .ds-breadcrumb__current {
+  padding-block: var(--breadcrumb-button-padding-y);
+  padding-inline: var(--breadcrumb-button-padding-x);
+  border-radius: var(--breadcrumb-button-border-radius);
+  text-decoration: none;
+}
+
+.ds-breadcrumb--button .ds-breadcrumb__link:hover {
+  background-color: var(--breadcrumb-button-hover-bg-color);
+}
+
+.ds-breadcrumb--button .ds-breadcrumb__current {
+  background-color: var(--breadcrumb-button-current-bg-color);
+  color: var(--breadcrumb-button-current-text-color);
+}

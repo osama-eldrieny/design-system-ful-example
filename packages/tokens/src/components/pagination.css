@@ -39,4 +39,10 @@
   --pagination-transition-duration: var(--duration-fast);
   --pagination-transition-easing: var(--easing-standard);
   --pagination-disabled-opacity: var(--opacity-medium);
+
+  /* Labelled arrows ("Previous" / "Next") */
+  --pagination-arrow-label-gap: var(--spacing-2xs);
+  --pagination-arrow-label-padding-x: var(--spacing-sm);
+  --pagination-arrow-label-border-width: var(--border-width-hairline);
+  --pagination-arrow-label-border-color: var(--color-border-base);
 }

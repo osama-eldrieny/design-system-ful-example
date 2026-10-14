@@ -24,4 +24,13 @@
   --breadcrumb-focus-ring-width: var(--focus-ring-width);
   --breadcrumb-focus-ring-offset: var(--focus-ring-offset);
   --breadcrumb-focus-ring-color: var(--focus-ring-color);
+
+  /* Home icon, button appearance */
+  --breadcrumb-home-icon-size: var(--sizing-sm);
+  --breadcrumb-button-padding-x: var(--spacing-xs);
+  --breadcrumb-button-padding-y: var(--spacing-3xs);
+  --breadcrumb-button-border-radius: var(--radius-md);
+  --breadcrumb-button-hover-bg-color: var(--color-bg-default);
+  --breadcrumb-button-current-bg-color: var(--color-bg-primary-1);
+  --breadcrumb-button-current-text-color: var(--color-fg-on-primary-high);
 }

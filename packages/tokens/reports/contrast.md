@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 371 | 371 | 0 |
-| diamond-dark | 371 | 371 | 0 |
-| amber-light | 371 | 371 | 0 |
-| amber-dark | 371 | 371 | 0 |
-| opal-light | 371 | 371 | 0 |
-| opal-dark | 371 | 371 | 0 |
+| diamond-light | 378 | 378 | 0 |
+| diamond-dark | 378 | 378 | 0 |
+| amber-light | 378 | 378 | 0 |
+| amber-dark | 378 | 378 | 0 |
+| opal-light | 378 | 378 | 0 |
+| opal-dark | 378 | 378 | 0 |
 
 ## Failures (0)
 
@@ -216,6 +216,7 @@ None.
 | diamond-light | `--badge-teal-solid-text-color` | `--badge-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 4.5:1 |
 | diamond-light | `--badge-teal-subtle-text-color` | `--badge-teal-subtle-bg-color` | #0f766e on #f0fdfa | 5.25:1 | 4.5:1 |
 | diamond-light | `--badge-modern-text-color` | `--badge-modern-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--breadcrumb-button-current-text-color` | `--breadcrumb-button-current-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-light | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #fff on #6741d9 | 6.30:1 | 4.5:1 |
 | diamond-light | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
@@ -357,6 +358,12 @@ None.
 | diamond-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #acadb2 | 5.57:1 | 4.5:1 |
 | diamond-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
+| diamond-light | `--tabs-segmented-item-hover-font-color` | `--tabs-segmented-item-hover-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--tabs-segmented-item-active-font-color` | `--tabs-segmented-item-active-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--tabs-subtle-item-hover-font-color` | `--tabs-subtle-item-hover-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
+| diamond-light | `--tabs-subtle-item-active-font-color` | `--tabs-subtle-item-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--tabs-count-text-color` | `--tabs-count-bg-color` | #24242c on #f8f7fb | 14.44:1 | 4.5:1 |
+| diamond-light | `--tabs-count-active-text-color` | `--tabs-count-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-light | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
@@ -587,6 +594,7 @@ None.
 | diamond-dark | `--badge-teal-solid-text-color` | `--badge-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 4.5:1 |
 | diamond-dark | `--badge-teal-subtle-text-color` | `--badge-teal-subtle-bg-color` | #5eead4 on #042f2e | 9.78:1 | 4.5:1 |
 | diamond-dark | `--badge-modern-text-color` | `--badge-modern-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--breadcrumb-button-current-text-color` | `--breadcrumb-button-current-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-dark | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #fff on #6741d9 | 6.30:1 | 4.5:1 |
 | diamond-dark | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #fff on #5637b5 | 8.05:1 | 4.5:1 |
@@ -728,6 +736,12 @@ None.
 | diamond-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #c4c2c8 on #363641 | 6.76:1 | 4.5:1 |
 | diamond-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #24202d on #c5b2ff | 8.48:1 | 4.5:1 |
+| diamond-dark | `--tabs-segmented-item-hover-font-color` | `--tabs-segmented-item-hover-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--tabs-segmented-item-active-font-color` | `--tabs-segmented-item-active-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--tabs-subtle-item-hover-font-color` | `--tabs-subtle-item-hover-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
+| diamond-dark | `--tabs-subtle-item-active-font-color` | `--tabs-subtle-item-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--tabs-count-text-color` | `--tabs-count-bg-color` | #ececed on #332e3c | 11.14:1 | 4.5:1 |
+| diamond-dark | `--tabs-count-active-text-color` | `--tabs-count-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #24202d on #f1f1f2 | 14.10:1 | 4.5:1 |
@@ -958,6 +972,7 @@ None.
 | amber-light | `--badge-teal-solid-text-color` | `--badge-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 4.5:1 |
 | amber-light | `--badge-teal-subtle-text-color` | `--badge-teal-subtle-bg-color` | #0f766e on #f0fdfa | 5.25:1 | 4.5:1 |
 | amber-light | `--badge-modern-text-color` | `--badge-modern-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--breadcrumb-button-current-text-color` | `--breadcrumb-button-current-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #1e140d on #c28f58 | 6.34:1 | 4.5:1 |
 | amber-light | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
@@ -1099,6 +1114,12 @@ None.
 | amber-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #54505a on #f3e8dc | 6.51:1 | 4.5:1 |
 | amber-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #a57a4b | 4.72:1 | 4.5:1 |
+| amber-light | `--tabs-segmented-item-hover-font-color` | `--tabs-segmented-item-hover-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--tabs-segmented-item-active-font-color` | `--tabs-segmented-item-active-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--tabs-subtle-item-hover-font-color` | `--tabs-subtle-item-hover-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
+| amber-light | `--tabs-subtle-item-active-font-color` | `--tabs-subtle-item-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--tabs-count-text-color` | `--tabs-count-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
+| amber-light | `--tabs-count-active-text-color` | `--tabs-count-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
@@ -1329,6 +1350,7 @@ None.
 | amber-dark | `--badge-teal-solid-text-color` | `--badge-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 4.5:1 |
 | amber-dark | `--badge-teal-subtle-text-color` | `--badge-teal-subtle-bg-color` | #5eead4 on #042f2e | 9.78:1 | 4.5:1 |
 | amber-dark | `--badge-modern-text-color` | `--badge-modern-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--breadcrumb-button-current-text-color` | `--breadcrumb-button-current-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #fff on #8a663e | 5.18:1 | 4.5:1 |
 | amber-dark | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #fff on #6f5232 | 7.17:1 | 4.5:1 |
 | amber-dark | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #fff on #574028 | 9.68:1 | 4.5:1 |
@@ -1470,6 +1492,12 @@ None.
 | amber-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
 | amber-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #1e140d on #e2d7cc | 12.77:1 | 4.5:1 |
+| amber-dark | `--tabs-segmented-item-hover-font-color` | `--tabs-segmented-item-hover-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--tabs-segmented-item-active-font-color` | `--tabs-segmented-item-active-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--tabs-subtle-item-hover-font-color` | `--tabs-subtle-item-hover-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
+| amber-dark | `--tabs-subtle-item-active-font-color` | `--tabs-subtle-item-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--tabs-count-text-color` | `--tabs-count-bg-color` | #fdfbf9 on #2a1f16 | 15.58:1 | 4.5:1 |
+| amber-dark | `--tabs-count-active-text-color` | `--tabs-count-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #1e140d on #f1f1f2 | 16.02:1 | 4.5:1 |
@@ -1700,6 +1728,7 @@ None.
 | opal-light | `--badge-teal-solid-text-color` | `--badge-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 4.5:1 |
 | opal-light | `--badge-teal-subtle-text-color` | `--badge-teal-subtle-bg-color` | #0f766e on #f0fdfa | 5.25:1 | 4.5:1 |
 | opal-light | `--badge-modern-text-color` | `--badge-modern-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--breadcrumb-button-current-text-color` | `--breadcrumb-button-current-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #fff on #2a5caf | 6.46:1 | 4.5:1 |
 | opal-light | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
@@ -1841,6 +1870,12 @@ None.
 | opal-light | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #353339 on #afb2be | 5.90:1 | 4.5:1 |
 | opal-light | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
+| opal-light | `--tabs-segmented-item-hover-font-color` | `--tabs-segmented-item-hover-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--tabs-segmented-item-active-font-color` | `--tabs-segmented-item-active-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--tabs-subtle-item-hover-font-color` | `--tabs-subtle-item-hover-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
+| opal-light | `--tabs-subtle-item-active-font-color` | `--tabs-subtle-item-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--tabs-count-text-color` | `--tabs-count-bg-color` | #282b3b on #f4f6fc | 12.97:1 | 4.5:1 |
+| opal-light | `--tabs-count-active-text-color` | `--tabs-count-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #fff on #76717f | 4.73:1 | 4.5:1 |
@@ -2071,6 +2106,7 @@ None.
 | opal-dark | `--badge-teal-solid-text-color` | `--badge-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 4.5:1 |
 | opal-dark | `--badge-teal-subtle-text-color` | `--badge-teal-subtle-bg-color` | #5eead4 on #042f2e | 9.78:1 | 4.5:1 |
 | opal-dark | `--badge-modern-text-color` | `--badge-modern-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--breadcrumb-button-current-text-color` | `--breadcrumb-button-current-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--button-primary-default-text-color` | `--button-primary-default-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-dark | `--button-primary-hover-text-color` | `--button-primary-hover-bg-color` | #fff on #2a5caf | 6.46:1 | 4.5:1 |
 | opal-dark | `--button-primary-focus-text-color` | `--button-primary-focus-bg-color` | #fff on #224a8c | 8.66:1 | 4.5:1 |
@@ -2212,6 +2248,12 @@ None.
 | opal-dark | `--tabs-item-default-font-color` | `--tabs-item-default-bg-color` | #dedde0 on #3c4058 | 7.51:1 | 4.5:1 |
 | opal-dark | `--tabs-item-hover-font-color` | `--tabs-item-hover-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--tabs-item-active-font-color` | `--tabs-item-active-bg-color` | #292d3e on #dee2f4 | 10.58:1 | 4.5:1 |
+| opal-dark | `--tabs-segmented-item-hover-font-color` | `--tabs-segmented-item-hover-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--tabs-segmented-item-active-font-color` | `--tabs-segmented-item-active-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--tabs-subtle-item-hover-font-color` | `--tabs-subtle-item-hover-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
+| opal-dark | `--tabs-subtle-item-active-font-color` | `--tabs-subtle-item-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--tabs-count-text-color` | `--tabs-count-bg-color` | #ededf0 on #3d4460 | 8.19:1 | 4.5:1 |
+| opal-dark | `--tabs-count-active-text-color` | `--tabs-count-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--tag-primary-solid-text-color` | `--tag-primary-solid-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--tag-primary-subtle-text-color` | `--tag-primary-subtle-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--tag-secondary-solid-text-color` | `--tag-secondary-solid-bg-color` | #292d3e on #f1f1f2 | 12.09:1 | 4.5:1 |
