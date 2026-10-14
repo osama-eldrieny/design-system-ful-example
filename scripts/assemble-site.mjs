@@ -28,7 +28,11 @@ const redirectFile = (file, target) => {
 <title>Redirecting…</title>
 <link rel="canonical" href="${target}">
 <meta http-equiv="refresh" content="0; url=${target}">
-<script>location.replace(${JSON.stringify(target)} + (${JSON.stringify(target)}.includes('#') ? '' : location.hash));</script>
+<script>
+  // Keep a route the link already carries (e.g. demo/#/admin); otherwise use the default.
+  var t = ${JSON.stringify(target)};
+  location.replace(location.hash ? t.split('#')[0] + location.hash : t);
+</script>
 </head>
 <body><a href="${target}">This page has moved.</a></body>
 </html>
