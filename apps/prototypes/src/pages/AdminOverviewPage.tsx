@@ -1,23 +1,22 @@
-import { useState, type ReactElement } from 'react';
+import { useState } from 'react';
 import {
   ActivityFeed,
   AreaChart,
   AvatarLabelGroup,
   Badge,
-  BarChart,
   Button,
   ButtonGroup,
   DateRangePicker,
-  DonutChart,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  FeaturedIcon,
   IconButton,
+  Link,
   MetricCard,
   PageHeader,
   Pagination,
-  ProgressCircle,
   Sparkline,
   Table,
   TableCard,
@@ -26,292 +25,106 @@ import {
   type DateRange,
   type TableColumn,
 } from '@ds/react';
+import { ArrowUpRight, Download, Filter, MoreVertical, PenLine, UserPlus } from 'lucide-react';
 import {
-  DollarSign,
-  Download,
-  FileText,
-  MoreVertical,
-  Package,
-  Percent,
-  RotateCcw,
-  ShoppingCart,
-  UserPlus,
-} from 'lucide-react';
-import { money, orders, people, statusTone, type Order } from '../data';
+  kpis,
+  members,
+  mrr,
+  periods,
+  posts,
+  purchases,
+  recentOrders,
+  salesCards,
+  type OrderStatus,
+  type Period,
+} from '../dashboard-data';
 import { AdminShell } from '../shell/AdminShell';
 
-type Period = '7d' | '30d' | '90d';
-
-const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const revenue = months.map((month, i) => ({
-  month,
-  revenue: Math.round(52000 + Math.sin(i / 1.6) * 9000 + i * 4200),
-  target: Math.round(56000 + i * 3600),
-}));
-const weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => ({
-  day,
-  online: [182, 204, 196, 221, 268, 312, 254][i],
-  store: [64, 71, 69, 73, 92, 140, 118][i],
-}));
-const channels = [
-  { label: 'Online store', value: 58 },
-  { label: 'Marketplace', value: 27 },
-  { label: 'Retail partners', value: 15 },
-];
-
-const metrics: Record<
-  Period,
-  {
-    label: string;
-    value: string;
-    change: string;
-    trend: 'up' | 'down';
-    positive?: boolean;
-    icon: ReactElement;
-    spark: number[];
-  }[]
-> = {
-  '7d': [
-    {
-      label: 'Revenue',
-      value: '$29,840',
-      change: '4.1%',
-      trend: 'up',
-      icon: <DollarSign />,
-      spark: [3, 4, 4, 5, 4, 6, 7],
-    },
-    {
-      label: 'Orders',
-      value: '312',
-      change: '2.6%',
-      trend: 'up',
-      icon: <ShoppingCart />,
-      spark: [40, 42, 39, 45, 47, 46, 53],
-    },
-    {
-      label: 'Refund rate',
-      value: '1.6%',
-      change: '0.2%',
-      trend: 'down',
-      positive: true,
-      icon: <RotateCcw />,
-      spark: [2.1, 2, 1.9, 1.8, 1.8, 1.7, 1.6],
-    },
-    {
-      label: 'Conversion',
-      value: '3.6%',
-      change: '0.1%',
-      trend: 'up',
-      icon: <Percent />,
-      spark: [3.4, 3.5, 3.4, 3.5, 3.6, 3.5, 3.6],
-    },
-  ],
-  '30d': [
-    {
-      label: 'Revenue',
-      value: '$124,567',
-      change: '12.5%',
-      trend: 'up',
-      icon: <DollarSign />,
-      spark: [8, 9, 11, 10, 12, 14, 15],
-    },
-    {
-      label: 'Orders',
-      value: '1,284',
-      change: '8.2%',
-      trend: 'up',
-      icon: <ShoppingCart />,
-      spark: [30, 34, 33, 38, 41, 40, 45],
-    },
-    {
-      label: 'Refund rate',
-      value: '1.8%',
-      change: '0.4%',
-      trend: 'up',
-      positive: false,
-      icon: <RotateCcw />,
-      spark: [1.4, 1.5, 1.5, 1.6, 1.7, 1.8, 1.8],
-    },
-    {
-      label: 'Conversion',
-      value: '3.4%',
-      change: '0.2%',
-      trend: 'down',
-      icon: <Percent />,
-      spark: [3.7, 3.6, 3.6, 3.5, 3.5, 3.4, 3.4],
-    },
-  ],
-  '90d': [
-    {
-      label: 'Revenue',
-      value: '$352,190',
-      change: '18.9%',
-      trend: 'up',
-      icon: <DollarSign />,
-      spark: [20, 24, 23, 28, 31, 33, 38],
-    },
-    {
-      label: 'Orders',
-      value: '3,702',
-      change: '11.4%',
-      trend: 'up',
-      icon: <ShoppingCart />,
-      spark: [90, 95, 99, 104, 110, 112, 121],
-    },
-    {
-      label: 'Refund rate',
-      value: '2.0%',
-      change: '0.3%',
-      trend: 'up',
-      positive: false,
-      icon: <RotateCcw />,
-      spark: [1.6, 1.7, 1.7, 1.8, 1.9, 2, 2],
-    },
-    {
-      label: 'Conversion',
-      value: '3.3%',
-      change: '0.4%',
-      trend: 'down',
-      icon: <Percent />,
-      spark: [3.8, 3.7, 3.6, 3.5, 3.5, 3.4, 3.3],
-    },
-  ],
+type Order = (typeof recentOrders)[number];
+const statusTone: Record<OrderStatus, 'success' | 'gray' | 'warning'> = {
+  Paid: 'success',
+  Refunded: 'gray',
+  Pending: 'warning',
 };
+const usd = (v: number) =>
+  new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    notation: 'compact',
+  }).format(v);
 
-const activity = [
-  {
-    id: 1,
-    avatar: { name: 'Lina Haddad' },
-    title: (
-      <>
-        <strong>Lina Haddad</strong> placed order <strong>#1059</strong>
-      </>
-    ),
-    time: '2 min ago',
-    unread: true,
-  },
-  {
-    id: 2,
-    avatar: { name: people[2].name, src: people[2].avatar },
-    title: (
-      <>
-        <strong>{people[2].name}</strong> updated the autumn sale banner
-      </>
-    ),
-    time: '1 hour ago',
-    content: '“Moved the headline above the fold and added the 20% badge.”',
-  },
-  {
-    id: 3,
-    icon: <Package />,
-    iconTone: 'warning' as const,
-    title: (
-      <>
-        Stock low: <strong>Webcam 4K</strong> (3 left)
-      </>
-    ),
-    time: 'Today, 09:12',
-  },
-  {
-    id: 4,
-    icon: <UserPlus />,
-    iconTone: 'success' as const,
-    title: (
-      <>
-        <strong>{people[3].name}</strong> joined the team
-      </>
-    ),
-    time: 'Yesterday',
-  },
-  {
-    id: 5,
-    icon: <FileText />,
-    iconTone: 'blue' as const,
-    title: 'September sales report is ready',
-    time: 'Mon',
-  },
-];
-
-const statusBadge: Record<Order['status'], Parameters<typeof Badge>[0]['tone']> = statusTone;
+const More = ({ label }: { label: string }) => (
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <IconButton
+        icon={<MoreVertical />}
+        label={label}
+        variant="secondary"
+        appearance="ghost"
+        size="small"
+      />
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end">
+      <DropdownMenuItem>View details</DropdownMenuItem>
+      <DropdownMenuItem>Export</DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
+);
 
 const orderColumns: TableColumn<Order>[] = [
   { key: 'id', header: 'Order', sortable: true },
-  {
-    key: 'customer',
-    header: 'Customer',
-    sortable: true,
-    render: (o) => <AvatarLabelGroup name={o.customer} supportingText={o.email} size="small" />,
-  },
   { key: 'date', header: 'Date', sortable: true, hideBelow: 'medium' },
   {
     key: 'status',
     header: 'Status',
     render: (o) => (
-      <Badge tone={statusBadge[o.status]} shape="modern" size="small" withDot>
+      <Badge tone={statusTone[o.status]} shape="modern" size="small" withDot>
         {o.status}
       </Badge>
     ),
   },
-  { key: 'items', header: 'Items', align: 'end', hideBelow: 'large' },
   {
-    key: 'total',
-    header: 'Total',
-    sortable: true,
+    key: 'amount',
+    header: 'Amount',
     align: 'end',
-    render: (o) => money(o.total),
+    sortable: true,
+    render: (o) => `$${o.amount.toFixed(2)}`,
+  },
+  {
+    key: 'customer',
+    header: 'Customer',
+    hideBelow: 'small',
+    render: (o) => (
+      <AvatarLabelGroup name={o.customer} src={o.src} supportingText={o.email} size="small" />
+    ),
   },
   {
     key: 'actions',
     header: <span className="proto-visually-hidden">Actions</span>,
-    align: 'end',
     width: 48,
-    render: (o) => (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <IconButton
-            icon={<MoreVertical />}
-            label={`Actions for order ${o.id}`}
-            variant="secondary"
-            appearance="ghost"
-            size="small"
-          />
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem>View order</DropdownMenuItem>
-          <DropdownMenuItem>Send invoice</DropdownMenuItem>
-          <DropdownMenuItem variant="danger">Refund</DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    ),
+    render: (o) => <More label={`Actions for order ${o.id}`} />,
   },
 ];
 
-const card = 'proto-card';
-
-/** Admin overview: key figures with trends, revenue, channels, weekly orders, goal, orders, activity. */
+/** Dashboard: MRR with members, quick actions, sales, orders, posts, activity and top members. */
 export default function AdminOverviewPage() {
   const toast = useToast();
-  const [period, setPeriod] = useState<Period>('30d');
-  const [range, setRange] = useState<DateRange>(() => datePresets()[2].range);
+  const [period, setPeriod] = useState<Period>('12m');
+  const [range, setRange] = useState<DateRange>(() => datePresets()[5].range);
+  const [filter, setFilter] = useState<'all' | OrderStatus>('all');
   const [page, setPage] = useState(1);
-  const pageSize = 6;
-  const shownOrders = orders.slice((page - 1) * pageSize, page * pageSize);
-  const usd = (v: number) =>
-    new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-      notation: 'compact',
-    }).format(v);
+  const k = kpis[period];
+  const shown = recentOrders.filter((o) => filter === 'all' || o.status === filter);
 
   return (
     <AdminShell
-      current="overview"
-      trail={[{ label: 'Admin', href: '#/admin' }, { label: 'Overview' }]}
+      current="dashboard"
+      trail={[{ label: 'Home', href: '#/admin' }, { label: 'Dashboard' }]}
     >
       <div className="proto-page">
         <PageHeader
-          title="Good morning, Sarah"
-          description="Here’s how the store is doing."
+          title="Welcome back, Olivia"
+          description="Your business summary for the period."
           actions={
             <>
               <DateRangePicker
@@ -320,6 +133,9 @@ export default function AdminOverviewPage() {
                 value={range}
                 onValueChange={setRange}
               />
+              <Button variant="secondary" appearance="outline" iconStart={<Filter />}>
+                Filters
+              </Button>
               <Button
                 variant="secondary"
                 appearance="outline"
@@ -332,159 +148,263 @@ export default function AdminOverviewPage() {
           }
         >
           <ButtonGroup
-            aria-label="Compare with"
+            className="proto-scroll-x"
+            aria-label="Period"
             attached
             value={period}
             onValueChange={(v) => setPeriod(v as Period)}
           >
-            <Button value="7d" variant="secondary" appearance="outline" size="small">
-              7 days
-            </Button>
-            <Button value="30d" variant="secondary" appearance="outline" size="small">
-              30 days
-            </Button>
-            <Button value="90d" variant="secondary" appearance="outline" size="small">
-              90 days
-            </Button>
+            {periods.map((p) => (
+              <Button
+                key={p.value}
+                value={p.value}
+                variant="secondary"
+                appearance="outline"
+                size="small"
+              >
+                {p.label}
+              </Button>
+            ))}
           </ButtonGroup>
         </PageHeader>
 
-        <section className="proto-metrics" aria-label="Key figures">
-          {metrics[period].map((m) => (
+        {/* Headline: MRR over the year, with member figures beside it */}
+        <section className="proto-card proto-hero-chart" aria-label="Monthly recurring revenue">
+          <div className="proto-hero-chart__main">
             <MetricCard
-              key={m.label}
-              label={m.label}
-              value={m.value}
-              change={m.change}
-              trend={m.trend}
-              positive={m.positive}
-              comparison={`vs previous ${period === '7d' ? 'week' : period === '30d' ? 'month' : 'quarter'}`}
-              icon={m.icon}
-              chart={
-                <Sparkline
-                  data={m.spark}
-                  tone={(m.positive ?? m.trend === 'up') ? 'positive' : 'negative'}
-                />
-              }
-              actions={
-                <IconButton
-                  icon={<MoreVertical />}
-                  label={`More options for ${m.label}`}
-                  variant="secondary"
-                  appearance="ghost"
-                  size="small"
-                />
-              }
+              className="proto-flat"
+              label="MRR"
+              value={k.mrr}
+              change={k.mrrChange}
+              trend="up"
+              trendStyle="simple"
+              comparison="vs last period"
+            />
+            <AreaChart
+              title="Monthly recurring revenue, this year and last year"
+              hideTitle
+              data={mrr}
+              xKey="month"
+              series={[
+                { key: 'mrr', label: 'This year' },
+                { key: 'last', label: 'Last year', color: 8 },
+              ]}
+              formatValue={usd}
+              height={240}
+            />
+          </div>
+          <div className="proto-hero-chart__side">
+            <MetricCard
+              className="proto-flat"
+              size="small"
+              label="Total members"
+              value={k.members}
+              change="9.2%"
+              trend="up"
+              trendStyle="simple"
+            />
+            <MetricCard
+              className="proto-flat"
+              size="small"
+              label="Paid members"
+              value={k.paid}
+              change="6.6%"
+              trend="up"
+              trendStyle="simple"
+            />
+            <MetricCard
+              className="proto-flat"
+              size="small"
+              label="Email open rate"
+              value={k.open}
+              change="8.1%"
+              trend="up"
+              trendStyle="simple"
+            />
+          </div>
+        </section>
+
+        {/* Quick actions */}
+        <section className="proto-section" aria-labelledby="start-title">
+          <h2 className="proto-subtitle" id="start-title">
+            Start creating content
+          </h2>
+          <div className="proto-actions-grid">
+            <Link
+              appearance="standalone"
+              variant="secondary"
+              className="proto-action-card"
+              href="#/settings/team"
+            >
+              <FeaturedIcon icon={<UserPlus />} appearance="modern" shape="square" />
+              <span className="proto-action-card__text">
+                <strong>Create your first member</strong>
+                <span className="proto-muted">Add yourself or import from CSV</span>
+              </span>
+            </Link>
+            <Link
+              appearance="standalone"
+              variant="secondary"
+              className="proto-action-card"
+              href="#/admin"
+            >
+              <FeaturedIcon icon={<PenLine />} appearance="modern" shape="square" />
+              <span className="proto-action-card__text">
+                <strong>Create a new post</strong>
+                <span className="proto-muted">Dive into the editor and start creating</span>
+              </span>
+            </Link>
+          </div>
+        </section>
+
+        {/* Sales cards */}
+        <section className="proto-metrics" aria-label="Sales">
+          {salesCards.map((c) => (
+            <MetricCard
+              key={c.label}
+              label={c.label}
+              value={c.value}
+              change={c.change}
+              trend={c.trend}
+              trendStyle="simple"
+              chart={<Sparkline data={c.spark} tone="primary" />}
+              actions={<More label={`More options for ${c.label}`} />}
             />
           ))}
         </section>
 
         <div className="proto-grid-2-1">
-          <section className={card}>
-            <PageHeader
-              size="small"
+          <div className="proto-page">
+            <TableCard
+              title="Orders"
               titleAs="h2"
-              title="Revenue"
-              description="This year against the monthly target."
-            />
-            <AreaChart
-              title="Revenue and target by month"
-              hideTitle
-              data={revenue}
-              xKey="month"
-              series={[
-                { key: 'revenue', label: 'Revenue' },
-                { key: 'target', label: 'Target', color: 8 },
-              ]}
-              formatValue={usd}
-              height={280}
-            />
-          </section>
-          <section className={card}>
-            <PageHeader size="small" titleAs="h2" title="Sales by channel" />
-            <DonutChart
-              title="Share of revenue by channel"
-              hideTitle
-              data={channels}
-              formatValue={(v) => `${v}%`}
-              centerValue="$124.5K"
-              centerLabel="Revenue"
-              size={190}
-            />
-          </section>
-        </div>
-
-        <div className="proto-grid-2-1">
-          <section className={card}>
-            <PageHeader
-              size="small"
-              titleAs="h2"
-              title="Orders by weekday"
-              description="Saturdays bring the most orders, online and in store."
-            />
-            <BarChart
-              title="Orders by weekday, online and in store"
-              hideTitle
-              stacked
-              data={weekdays}
-              xKey="day"
-              series={[
-                { key: 'online', label: 'Online' },
-                { key: 'store', label: 'In store', color: 3 },
-              ]}
-              height={240}
-            />
-          </section>
-          <section className={card}>
-            <PageHeader size="small" titleAs="h2" title="Monthly goal" />
-            <div className="proto-center">
-              <ProgressCircle
-                label="Revenue goal, $150K"
-                value={83}
-                shape="half"
-                size="large"
-                caption="of $150K"
+              badge={`${recentOrders.length} orders`}
+              description="Orders placed in the selected period."
+              actions={
+                <ButtonGroup
+                  className="proto-scroll-x"
+                  aria-label="Order status"
+                  attached
+                  value={filter}
+                  onValueChange={(v) => setFilter(v as typeof filter)}
+                >
+                  <Button value="all" variant="secondary" appearance="outline" size="small">
+                    All orders
+                  </Button>
+                  <Button value="Paid" variant="secondary" appearance="outline" size="small">
+                    Paid
+                  </Button>
+                  <Button value="Refunded" variant="secondary" appearance="outline" size="small">
+                    Refunded
+                  </Button>
+                </ButtonGroup>
+              }
+              footer={
+                <Pagination
+                  currentPage={page}
+                  totalPages={4}
+                  onPageChange={setPage}
+                  appearance="simple"
+                  showArrowLabels
+                  layout="spread"
+                  label="Order pages"
+                />
+              }
+            >
+              <Table<Order>
+                caption="Orders"
+                hideCaption
+                columns={orderColumns}
+                rows={shown}
+                selectable
+                rowLabel={(o) => `Select order ${o.id}`}
+                empty="No orders with this status."
               />
-              <p className="proto-muted">$25.4K to go with 15 days left.</p>
-            </div>
-          </section>
-        </div>
+            </TableCard>
 
-        <div className="proto-grid-2-1">
-          <TableCard
-            title="Recent orders"
-            titleAs="h2"
-            badge={`${orders.length} orders`}
-            description="Orders from the last 30 days."
-            actions={
-              <Button size="small" variant="secondary" appearance="outline" href="#/admin/orders">
-                View all
-              </Button>
-            }
-            footer={
-              <Pagination
-                currentPage={page}
-                totalPages={Math.ceil(orders.length / pageSize)}
-                onPageChange={setPage}
-                showArrowLabels
-                layout="spread"
-                label="Order pages"
+            <section className="proto-section" aria-labelledby="posts-title">
+              <h2 className="proto-subtitle" id="posts-title">
+                Recent posts
+              </h2>
+              <div className="proto-actions-grid">
+                {posts.map((p) => (
+                  <article key={p.title} className="proto-card proto-post">
+                    <div className="proto-post__media" aria-hidden="true" />
+                    <span className="proto-post__meta">
+                      {p.author} • {p.date}
+                    </span>
+                    <Link
+                      appearance="standalone"
+                      variant="secondary"
+                      className="proto-post__title"
+                      href="#/admin"
+                      icon={<ArrowUpRight />}
+                    >
+                      {p.title}
+                    </Link>
+                    <p className="proto-muted">{p.excerpt}</p>
+                    <div className="proto-tags">
+                      {p.tags.map((t) => (
+                        <Badge key={t.label} tone={t.tone} shape="modern" size="small" withDot>
+                          {t.label}
+                        </Badge>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+
+          <div className="proto-page">
+            <section className="proto-card" aria-labelledby="activity-title">
+              <PageHeader
+                size="small"
+                titleAs="h2"
+                title={<span id="activity-title">Activity</span>}
+                actions={
+                  <Button appearance="text" size="small" href="#/admin/orders">
+                    View all
+                  </Button>
+                }
               />
-            }
-          >
-            <Table<Order>
-              caption="Recent orders"
-              hideCaption
-              columns={orderColumns}
-              rows={shownOrders}
-              selectable
-              rowLabel={(o) => `Select order ${o.id}`}
-            />
-          </TableCard>
-          <section className={card}>
-            <PageHeader size="small" titleAs="h2" title="Activity" />
-            <ActivityFeed aria-label="Recent activity" items={activity} />
-          </section>
+              <ActivityFeed
+                aria-label="Recent purchases"
+                appearance="plain"
+                items={purchases.map((p, i) => ({
+                  id: i,
+                  avatar: { name: p.name, src: p.src },
+                  title: (
+                    <>
+                      <strong>{p.name}</strong> purchased <strong>{p.product}</strong>
+                    </>
+                  ),
+                  time: p.time,
+                  unread: p.unread,
+                }))}
+              />
+            </section>
+            <section className="proto-card" aria-labelledby="members-title">
+              <PageHeader
+                size="small"
+                titleAs="h2"
+                title={<span id="members-title">Top members</span>}
+              />
+              <ul className="proto-people">
+                {members.slice(0, 6).map((m) => (
+                  <li key={m.email}>
+                    <AvatarLabelGroup
+                      name={m.name}
+                      src={m.src}
+                      supportingText={`Member since ${m.since}`}
+                      status="online"
+                      size="small"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
         </div>
       </div>
     </AdminShell>

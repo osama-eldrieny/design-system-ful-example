@@ -27,7 +27,11 @@ const pages = [
     .map((e) => ({ name: e.id, url: `${base}/iframe.html?id=${e.id}&viewMode=docs` })),
   { name: 'prototype admin', url: `${base}/prototypes/#/admin` },
   { name: 'prototype admin/orders', url: `${base}/prototypes/#/admin/orders` },
-  { name: 'prototype admin/team', url: `${base}/prototypes/#/admin/team` },
+  { name: 'prototype analytics', url: `${base}/prototypes/#/admin/analytics` },
+  { name: 'prototype customers', url: `${base}/prototypes/#/admin/customers` },
+  { name: 'prototype finance', url: `${base}/prototypes/#/admin/finance` },
+  { name: 'prototype settings/team', url: `${base}/prototypes/#/settings/team` },
+  { name: 'prototype settings/billing', url: `${base}/prototypes/#/settings/billing` },
   { name: 'prototype settings', url: `${base}/prototypes/#/settings` },
   { name: 'prototype demo', url: `${base}/prototypes/#/demo` },
 ];

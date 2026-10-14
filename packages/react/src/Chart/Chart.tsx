@@ -708,11 +708,14 @@ export const RadarChart = ({
   axisKey,
   series,
   max,
-  size = 280,
+  size: sizeProp = 280,
   showLegend,
   formatValue = defaultFormat,
   className,
 }: RadarChartProps) => {
+  // Shrinks to fit narrow containers; never grows past `size`.
+  const [boxRef, boxWidth] = useWidth<HTMLDivElement>(sizeProp);
+  const size = Math.max(160, Math.min(sizeProp, boxWidth));
   const top =
     max ?? Math.max(...data.flatMap((row) => series.map((s) => Number(row[s.key]) || 0)), 1);
   const labelRoom = 56;
@@ -746,45 +749,47 @@ export const RadarChart = ({
         )
       }
     >
-      <div
-        className="ds-chart__plot ds-chart__plot--donut"
-        style={{ inlineSize: size, blockSize: size }}
-      >
-        <svg width={size} height={size} aria-hidden="true" className="ds-chart__svg">
-          {rings.map((k) => (
-            <polygon
-              key={k}
-              className="ds-chart__grid ds-chart__grid--polygon"
-              points={data.map((_, i) => at(i, top * k).join(',')).join(' ')}
-            />
-          ))}
-          {data.map((row, i) => {
-            const [x2, y2] = at(i, top);
-            const [lx, ly] = at(i, top * 1.18);
-            return (
-              <g key={i}>
-                <line className="ds-chart__grid" x1={c} y1={c} x2={x2} y2={y2} />
-                <text
-                  className="ds-chart__axis"
-                  x={lx}
-                  y={ly}
-                  dy="0.32em"
-                  textAnchor={Math.abs(lx - c) < 4 ? 'middle' : lx > c ? 'start' : 'end'}
-                >
-                  {String(row[axisKey])}
-                </text>
-              </g>
-            );
-          })}
-          {series.map((s, si) => (
-            <polygon
-              key={s.key}
-              className="ds-chart__radar"
-              style={{ color: seriesColor(s, si) }}
-              points={data.map((row, i) => at(i, Number(row[s.key]) || 0).join(',')).join(' ')}
-            />
-          ))}
-        </svg>
+      <div ref={boxRef} className="ds-chart__fit">
+        <div
+          className="ds-chart__plot ds-chart__plot--donut"
+          style={{ inlineSize: size, blockSize: size }}
+        >
+          <svg width={size} height={size} aria-hidden="true" className="ds-chart__svg">
+            {rings.map((k) => (
+              <polygon
+                key={k}
+                className="ds-chart__grid ds-chart__grid--polygon"
+                points={data.map((_, i) => at(i, top * k).join(',')).join(' ')}
+              />
+            ))}
+            {data.map((row, i) => {
+              const [x2, y2] = at(i, top);
+              const [lx, ly] = at(i, top * 1.18);
+              return (
+                <g key={i}>
+                  <line className="ds-chart__grid" x1={c} y1={c} x2={x2} y2={y2} />
+                  <text
+                    className="ds-chart__axis"
+                    x={lx}
+                    y={ly}
+                    dy="0.32em"
+                    textAnchor={Math.abs(lx - c) < 4 ? 'middle' : lx > c ? 'start' : 'end'}
+                  >
+                    {String(row[axisKey])}
+                  </text>
+                </g>
+              );
+            })}
+            {series.map((s, si) => (
+              <polygon
+                key={s.key}
+                className="ds-chart__radar"
+                style={{ color: seriesColor(s, si) }}
+                points={data.map((row, i) => at(i, Number(row[s.key]) || 0).join(',')).join(' ')}
+              />
+            ))}
+          </svg>
+        </div>
       </div>
     </ChartFrame>
   );

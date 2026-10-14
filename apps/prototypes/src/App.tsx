@@ -3,7 +3,9 @@ import { applyTheme, defaultTheme, ThemeProvider, ToastProvider, type Theme } fr
 import { useRoute } from './router';
 import AdminOrdersPage from './pages/AdminOrdersPage';
 import AdminOverviewPage from './pages/AdminOverviewPage';
-import AdminTeamPage from './pages/AdminTeamPage';
+import AnalyticsPage from './pages/AnalyticsPage';
+import CustomersPage from './pages/CustomersPage';
+import FinancePage from './pages/FinancePage';
 import DemoPage from './pages/DemoPage';
 import SettingsPage from './pages/SettingsPage';
 import './prototype.css';
@@ -27,9 +29,13 @@ function Page({
   setTheme: (t: Theme) => void;
 }) {
   if (route.startsWith('/admin/orders')) return <AdminOrdersPage />;
-  if (route.startsWith('/admin/team')) return <AdminTeamPage />;
+  if (route.startsWith('/admin/team')) return <SettingsPage section="team" />;
+  if (route.startsWith('/admin/analytics')) return <AnalyticsPage />;
+  if (route.startsWith('/admin/customers')) return <CustomersPage />;
+  if (route.startsWith('/admin/finance')) return <FinancePage />;
   if (route.startsWith('/admin')) return <AdminOverviewPage />;
-  if (route.startsWith('/settings')) return <SettingsPage />;
+  if (route.startsWith('/settings'))
+    return <SettingsPage section={route.split('/')[2] ?? 'details'} />;
   if (route.startsWith('/demo'))
     return (
       <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />

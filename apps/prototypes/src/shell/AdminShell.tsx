@@ -1,13 +1,11 @@
 import { useState, type ReactNode } from 'react';
 import {
   ActivityFeed,
-  Avatar,
   AvatarLabelGroup,
-  CommandMenu,
   Badge,
-  Button,
   Breadcrumb,
-  Container,
+  Button,
+  CommandMenu,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -20,6 +18,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
+  ProgressCircle,
   SideNav,
   Stack,
 } from '@ds/react';
@@ -27,19 +26,32 @@ import {
   BarChart3,
   Bell,
   ChartLine,
+  ChevronsUpDown,
   CreditCard,
   House,
+  LifeBuoy,
   LogOut,
   Package,
   Plus,
   Search,
   Settings,
-  UserPlus,
   User,
+  UserPlus,
   Users,
+  Wallet,
+  X,
 } from 'lucide-react';
-import { people } from '../data';
+import { members } from '../dashboard-data';
 import { go } from '../router';
+
+const pages = [
+  { id: 'dashboard', label: 'Dashboard', path: '/admin', icon: <House /> },
+  { id: 'analytics', label: 'Analytics', path: '/admin/analytics', icon: <BarChart3 /> },
+  { id: 'customers', label: 'Customers', path: '/admin/customers', icon: <Users /> },
+  { id: 'orders', label: 'Orders', path: '/admin/orders', icon: <Package /> },
+  { id: 'finance', label: 'Finance', path: '/admin/finance', icon: <Wallet /> },
+  { id: 'settings', label: 'Settings', path: '/settings', icon: <Settings /> },
+];
 
 /** Admin app layout: side navigation, top bar with breadcrumb, search, notifications, account. */
 export function AdminShell({
@@ -51,126 +63,186 @@ export function AdminShell({
   trail: { label: string; href?: string }[];
   children: ReactNode;
 }) {
-  const me = people[1];
+  const me = members[0];
   const [commandOpen, setCommandOpen] = useState(false);
+  const [promo, setPromo] = useState(true);
+  const nav = (id: string) => {
+    const page = pages.find((p) => p.id === id)!;
+    return { id, label: page.label, href: `#${page.path}`, icon: page.icon };
+  };
+
   return (
     <div className="proto proto-admin">
       <aside className="proto-admin__side">
-        <Stack gap="lg">
-          <Logo icon={<ChartLine />} name="TechHub Admin" href="#/admin" />
-          <SideNav
-            aria-label="Admin"
-            currentItem={current}
-            sections={[
-              {
-                items: [
-                  { id: 'overview', label: 'Overview', href: '#/admin', icon: <House /> },
-                  {
-                    id: 'orders',
-                    label: 'Orders',
-                    href: '#/admin/orders',
-                    icon: <Package />,
-                    badge: 12,
-                  },
-                  {
-                    id: 'reports',
-                    label: 'Reports',
-                    icon: <BarChart3 />,
-                    items: [
-                      { id: 'sales', label: 'Sales', href: '#/admin' },
-                      { id: 'traffic', label: 'Traffic', href: '#/admin' },
-                    ],
-                  },
-                ],
-              },
-              {
-                title: 'Workspace',
-                items: [
-                  { id: 'team', label: 'Team', href: '#/admin/team', icon: <Users /> },
-                  { id: 'settings', label: 'Settings', href: '#/settings', icon: <Settings /> },
-                ],
-              },
-            ]}
-            footer={
-              <AvatarLabelGroup
-                name={me.name}
-                src={me.avatar}
-                supportingText={me.role}
-                status={me.status}
+        <SideNav
+          aria-label="Admin"
+          currentItem={current}
+          header={
+            <Stack gap="md">
+              <Logo icon={<ChartLine />} name="Panda" href="#/admin" />
+              <Button
+                variant="secondary"
+                appearance="outline"
                 size="small"
-              />
-            }
-          />
-        </Stack>
+                fullWidth
+                iconStart={<Search />}
+                onClick={() => setCommandOpen(true)}
+                className="proto-search-button"
+              >
+                Search ⌘K
+              </Button>
+            </Stack>
+          }
+          sections={[
+            {
+              title: 'General',
+              items: [
+                nav('dashboard'),
+                nav('analytics'),
+                nav('customers'),
+                { ...nav('orders'), badge: 8 },
+                nav('finance'),
+              ],
+            },
+            {
+              title: 'Workspace',
+              items: [
+                nav('settings'),
+                { id: 'support', label: 'Support', href: '#/admin', icon: <LifeBuoy /> },
+              ],
+            },
+          ]}
+          footer={
+            <Stack gap="md">
+              {promo && (
+                <div className="proto-promo">
+                  <Inline justify="between" align="start">
+                    <ProgressCircle label="Storage used" hideLabel value={80} size="small" />
+                    <IconButton
+                      icon={<X />}
+                      label="Dismiss storage notice"
+                      variant="secondary"
+                      appearance="ghost"
+                      size="xsmall"
+                      onClick={() => setPromo(false)}
+                    />
+                  </Inline>
+                  <strong>Used space</strong>
+                  <span className="proto-muted">
+                    Your team has used 80% of the available space.
+                  </span>
+                  <Inline gap="sm">
+                    <Button
+                      appearance="text"
+                      variant="secondary"
+                      size="small"
+                      onClick={() => setPromo(false)}
+                    >
+                      Dismiss
+                    </Button>
+                    <Button appearance="text" size="small" href="#/settings">
+                      Upgrade plan
+                    </Button>
+                  </Inline>
+                </div>
+              )}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    className="proto-account"
+                    appearance="text"
+                    variant="secondary"
+                    fullWidth
+                    aria-label={`Account: ${me.name}`}
+                  >
+                    <AvatarLabelGroup
+                      name={me.name}
+                      src={me.src}
+                      supportingText={me.email}
+                      status="online"
+                      size="small"
+                    />
+                    <ChevronsUpDown aria-hidden="true" className="proto-account__icon" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" side="top">
+                  <DropdownMenuLabel>{me.name}</DropdownMenuLabel>
+                  <DropdownMenuItem icon={<User />} onSelect={() => go('/settings')}>
+                    Profile
+                  </DropdownMenuItem>
+                  <DropdownMenuItem icon={<CreditCard />} onSelect={() => go('/settings/billing')}>
+                    Billing
+                  </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem
+                    variant="danger"
+                    icon={<LogOut />}
+                    onSelect={() => go('/admin')}
+                  >
+                    Sign out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </Stack>
+          }
+        />
+        <CommandMenu
+          open={commandOpen}
+          onOpenChange={setCommandOpen}
+          label="Search the admin"
+          groups={[
+            {
+              label: 'Pages',
+              items: pages.map((p) => ({
+                id: p.id,
+                label: p.label,
+                icon: p.icon,
+                onSelect: () => go(p.path),
+              })),
+            },
+            {
+              label: 'Actions',
+              items: [
+                {
+                  id: 'new-order',
+                  label: 'Create order',
+                  icon: <Plus />,
+                  shortcut: ['⌘', 'N'],
+                  onSelect: () => go('/admin/orders'),
+                },
+                {
+                  id: 'invite',
+                  label: 'Invite team member',
+                  icon: <UserPlus />,
+                  onSelect: () => go('/settings/team'),
+                },
+                {
+                  id: 'billing',
+                  label: 'Change plan',
+                  icon: <CreditCard />,
+                  keywords: ['upgrade'],
+                  onSelect: () => go('/settings/billing'),
+                },
+              ],
+            },
+            {
+              label: 'People',
+              items: members.slice(0, 5).map((m) => ({
+                id: m.email,
+                label: m.name,
+                description: m.email,
+                icon: <User />,
+                onSelect: () => go('/settings/team'),
+              })),
+            },
+          ]}
+        />
       </aside>
 
       <div className="proto-admin__main">
         <header className="proto-admin__bar">
-          <Breadcrumb items={trail} />
+          <Breadcrumb items={trail} homeIcon />
           <Inline gap="xs" justify="end">
-            <Button
-              variant="secondary"
-              appearance="outline"
-              size="small"
-              iconStart={<Search />}
-              onClick={() => setCommandOpen(true)}
-            >
-              Search ⌘K
-            </Button>
-            <CommandMenu
-              open={commandOpen}
-              onOpenChange={setCommandOpen}
-              label="Search the admin"
-              groups={[
-                {
-                  label: 'Pages',
-                  items: [
-                    {
-                      id: 'overview',
-                      label: 'Overview',
-                      icon: <House />,
-                      onSelect: () => go('/admin'),
-                    },
-                    {
-                      id: 'orders',
-                      label: 'Orders',
-                      icon: <Package />,
-                      keywords: ['sales'],
-                      onSelect: () => go('/admin/orders'),
-                    },
-                    {
-                      id: 'team',
-                      label: 'Team',
-                      icon: <Users />,
-                      onSelect: () => go('/admin/team'),
-                    },
-                    {
-                      id: 'settings',
-                      label: 'Settings',
-                      icon: <Settings />,
-                      onSelect: () => go('/settings'),
-                    },
-                  ],
-                },
-                {
-                  label: 'Actions',
-                  items: [
-                    {
-                      id: 'order',
-                      label: 'Create order',
-                      icon: <Plus />,
-                      onSelect: () => go('/admin/orders'),
-                    },
-                    {
-                      id: 'invite',
-                      label: 'Invite member',
-                      icon: <UserPlus />,
-                      onSelect: () => go('/admin/team'),
-                    },
-                  ],
-                },
-              ]}
-            />
             <Popover>
               <PopoverTrigger asChild>
                 <span className="proto-badge-anchor">
@@ -195,10 +267,10 @@ export function AdminShell({
                   items={[
                     {
                       id: 1,
-                      avatar: { name: 'Lina Haddad' },
+                      avatar: { name: 'Demi Wilkinson', src: members[3].src },
                       title: (
                         <>
-                          <strong>New order</strong> #1059 from Lina Haddad
+                          <strong>Demi Wilkinson</strong> purchased Webflow 101
                         </>
                       ),
                       time: '2 min ago',
@@ -210,7 +282,7 @@ export function AdminShell({
                       iconTone: 'warning',
                       title: (
                         <>
-                          <strong>Refund requested</strong> for #1041
+                          <strong>Payment failed</strong> for Stack3d Lab
                         </>
                       ),
                       time: '1 h ago',
@@ -218,11 +290,11 @@ export function AdminShell({
                     },
                     {
                       id: 3,
-                      icon: <Package />,
-                      iconTone: 'danger',
+                      icon: <UserPlus />,
+                      iconTone: 'success',
                       title: (
                         <>
-                          <strong>Stock low:</strong> Webcam 4K
+                          <strong>Natali Craig</strong> joined the team
                         </>
                       ),
                       time: 'Today',
@@ -232,42 +304,9 @@ export function AdminShell({
                 />
               </PopoverContent>
             </Popover>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  appearance="text"
-                  variant="secondary"
-                  size="small"
-                  aria-label={`Account: ${me.name}`}
-                >
-                  <Avatar
-                    name={me.name}
-                    src={me.avatar}
-                    size="small"
-                    status={me.status}
-                    decorative
-                  />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>{me.name}</DropdownMenuLabel>
-                <DropdownMenuItem icon={<User />} onSelect={() => go('/settings')}>
-                  Profile
-                </DropdownMenuItem>
-                <DropdownMenuItem icon={<CreditCard />} onSelect={() => go('/settings')}>
-                  Billing
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem variant="danger" icon={<LogOut />} onSelect={() => go('/')}>
-                  Sign out
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
           </Inline>
         </header>
-        <main className="proto-admin__content">
-          <Container>{children}</Container>
-        </main>
+        <main className="proto-admin__content">{children}</main>
       </div>
     </div>
   );

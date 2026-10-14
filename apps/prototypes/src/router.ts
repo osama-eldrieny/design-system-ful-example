@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-/** Hash routes: #/admin, #/admin/orders, #/admin/team, #/settings, #/demo. */
+/** Hash routes: #/admin, #/admin/{analytics,customers,orders,finance}, #/settings/{section}, #/demo. */
 export const routeFromHash = () => {
   const path = window.location.hash.replace(/^#/, '') || '/';
   // Links from before the rebuild.

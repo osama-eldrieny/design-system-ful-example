@@ -65,6 +65,8 @@
 
 .ds-page-header__actions {
   display: flex;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--page-header-actions-gap);

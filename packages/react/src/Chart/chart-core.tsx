@@ -142,33 +142,35 @@ export const ChartFrame = ({
       </figcaption>
       {children}
       {legend}
-      <table className="ds-chart__hidden">
-        <caption>{title}</caption>
-        <thead>
-          <tr>
-            {table.columns.map((c) => (
-              <th key={c} scope="col">
-                {c}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {table.rows.map((row, i) => (
-            <tr key={i}>
-              {row.map((cell, j) =>
-                j === 0 ? (
-                  <th key={j} scope="row">
-                    {cell}
-                  </th>
-                ) : (
-                  <td key={j}>{cell}</td>
-                ),
-              )}
+      <div className="ds-chart__hidden">
+        <table>
+          <caption>{title}</caption>
+          <thead>
+            <tr>
+              {table.columns.map((c) => (
+                <th key={c} scope="col">
+                  {c}
+                </th>
+              ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {table.rows.map((row, i) => (
+              <tr key={i}>
+                {row.map((cell, j) =>
+                  j === 0 ? (
+                    <th key={j} scope="row">
+                      {cell}
+                    </th>
+                  ) : (
+                    <td key={j}>{cell}</td>
+                  ),
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </figure>
   );
 };

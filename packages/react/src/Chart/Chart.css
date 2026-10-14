@@ -4,6 +4,8 @@
  */
 
 .ds-chart {
+  /* Contains the visually hidden data table. */
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--chart-gap);
@@ -42,6 +44,12 @@
   min-inline-size: 0;
   border-radius: var(--chart-tooltip-border-radius);
   touch-action: pan-y;
+}
+
+.ds-chart__fit {
+  display: flex;
+  justify-content: center;
+  inline-size: 100%;
 }
 
 .ds-chart__plot--donut {
