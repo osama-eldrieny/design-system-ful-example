@@ -1,5 +1,47 @@
 # Changelog
 
+## 1.1.0 — 2026-10-15 (Phase 9: dashboard-grade components)
+
+More variants and new components so real dashboards can be built from the library, inspired
+by Untitled UI React. Every new property is a component token.
+
+### Tokens
+- Category palette: gray, blue, sky, indigo, purple, pink, orange, teal (`themes/palette.css`),
+  the same in every brand, light and dark.
+- Chart colors `--color-chart-1…8`, grid, axis, positive and negative.
+- Half-step sizing (`--sizing-4xs` … `--sizing-6xl`).
+- Contrast: 2,430 checked pairs, 0 failures.
+
+### New components
+FeaturedIcon, BadgeGroup, MetricCard, Charts (LineChart, AreaChart, BarChart, DonutChart,
+RadarChart, Sparkline), ProgressCircle, TableCard, AvatarLabelGroup, PageHeader, ActivityFeed,
+FileUpload / FileUploadItem, CommandMenu, Calendar / DatePicker / DateRangePicker,
+VerificationCodeInput.
+
+### New variants
+- **Badge:** 8 category hues, shapes (pill, rounded, modern), sizes, dot, icons, image,
+  dismiss, icon-only.
+- **Button:** xsmall and xlarge; `href` links; `loadingText`.
+- **Avatar:** xsmall, verified mark, add button in groups.
+- **Tag:** hues, sizes, count, image.
+- **InputField:** prefix and suffix, shortcut hint, hint tooltip.
+- **Select:** options with icon, avatar, dot and supporting text.
+- **Tabs:** segmented and subtle, small, full width, counts.
+- **Pagination:** labelled arrows, spread layout.
+- **Progress:** value position. **Stepper:** icon and dot markers, small.
+- **Breadcrumb:** slash, home icon, button style. **Divider:** label alignment.
+- **Table:** column hints, responsive columns, 14px cells. **SideNav:** badges, collapsed,
+  header and footer.
+- **Modal:** featured icon, centered, xlarge. **Drawer:** sizes. **EmptyState:** sizes,
+  illustration. **Alert:** banner. **Tooltip:** title and arrow. **Switch:** small.
+  **ChooseCard:** icon.
+
+### Prototypes
+- Admin overview rebuilt: metric cards with sparklines, revenue area chart, channel donut,
+  weekday bars, goal gauge, orders TableCard and an activity feed; ⌘K command menu and
+  notification feed in the shell.
+- The playground has a Dashboard section.
+
 ## 1.0.0 — 2026-09-29
 
 The first release of the rebuilt design system: code is the source of truth, and tokens,

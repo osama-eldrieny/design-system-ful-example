@@ -362,6 +362,16 @@ Each new component: design its component tokens first (aliasing semantic tokens,
 
 ---
 
+## Phase 9 — Dashboard-grade components (Untitled UI study) ✅
+
+Added category and chart colors, 15 new components and new variants on 20 existing ones, so
+dashboards, the demo and the docs can be built from the library (see CHANGELOG 1.1.0). The
+admin overview prototype was rebuilt with them.
+
+Later, if needed: Messaging (chat), InlineCTA, ColorPicker, CodeSnippet with tabs, TreeView,
+Rating; the Orders, Team and Settings prototypes could adopt TableCard, FileUpload and
+DatePicker.
+
 ## Reused from the current project
 
 | What | Where it goes |

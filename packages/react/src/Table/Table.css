@@ -1,6 +1,8 @@
 /** Table. Styled only with --table-* tokens. */
 
 .ds-table-wrap {
+  /* Contains absolutely positioned hidden text, so it scrolls with the table. */
+  position: relative;
   max-inline-size: 100%;
   overflow: auto;
   border: var(--table-border-width) solid var(--table-border-color);
