@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import { DollarSign, MoreVertical, ShoppingBag, Users } from 'lucide-react';
 import { expect } from 'storybook/test';
 import { Button, IconButton } from '../Button';
+import { Sparkline } from '../Chart';
 import { ThemeProvider } from '../ThemeProvider';
 import { MetricCard, type MetricTrendStyle } from './MetricCard';
 
@@ -11,17 +12,7 @@ const grid = {
   gap: 16,
 } as const;
 
-/** A tiny stand-in chart until the chart components are used. */
-const Spark = () => (
-  <svg viewBox="0 0 100 40" width="100%" height="100%" preserveAspectRatio="none">
-    <polyline
-      points="0,30 15,26 30,28 45,18 60,20 75,10 100,6"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-  </svg>
-);
+const Spark = () => <Sparkline data={[4, 6, 5, 8, 7, 9, 12]} />;
 
 const More = () => (
   <IconButton

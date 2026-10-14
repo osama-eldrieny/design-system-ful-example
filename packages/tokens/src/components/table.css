@@ -26,8 +26,8 @@
   --table-cell-padding-y: var(--spacing-sm);
   --table-compact-cell-padding-y: var(--spacing-2xs);
   --table-font-family: var(--font-family-body);
-  --table-font-size: var(--font-size-md);
-  --table-font-line-height: var(--font-line-height-md);
+  --table-font-size: var(--font-size-sm);
+  --table-font-line-height: var(--font-line-height-sm);
   --table-caption-text-color: var(--color-fg-on-surface-primary);
   --table-caption-font-size: var(--font-size-md);
   --table-caption-font-weight: var(--font-weight-bold);
