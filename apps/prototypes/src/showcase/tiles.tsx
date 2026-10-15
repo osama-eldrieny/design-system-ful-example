@@ -657,16 +657,15 @@ export const Breadcrumbs = ({ t }: { t: T }) => (
 );
 
 export const PaginationTile = ({ t }: { t: T }) => {
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(2);
   return (
     <Tile title={t('Pagination')}>
-      <Pagination currentPage={page} totalPages={5} onPageChange={setPage} label={t('Pages')} />
+      <Pagination currentPage={page} totalPages={3} onPageChange={setPage} label={t('Pages')} />
       <Pagination
         currentPage={page}
-        totalPages={10}
+        totalPages={3}
         onPageChange={setPage}
         appearance="simple"
-        showArrowLabels
         layout="spread"
         label={t('Simple pages')}
       />
