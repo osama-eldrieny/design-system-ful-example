@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { applyTheme, defaultTheme, ThemeProvider, ToastProvider, type Theme } from '@ds/react';
 import { useRoute } from './router';
-import DemoPage from './pages/DemoPage';
+import Showcase from './showcase/Showcase';
 import './prototype.css';
 
 const SaasApp = lazy(() => import('./saas/SaasApp'));
@@ -26,7 +26,7 @@ function Page({
 }) {
   if (route.startsWith('/demo'))
     return (
-      <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
+      <Showcase theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
     );
   // Orbit is the prototypes' home page.
   return (
@@ -36,7 +36,7 @@ function Page({
   );
 }
 
-/** The prototypes app: Orbit (SaaS), the theme playground, toasts and the saved theme. */
+/** The prototypes app: Orbit (SaaS), the theme showcase, toasts and the saved theme. */
 function App() {
   const route = useRoute();
   const [theme, setTheme] = useState<Theme>(savedTheme);

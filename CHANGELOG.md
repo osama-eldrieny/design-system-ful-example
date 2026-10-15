@@ -47,6 +47,9 @@ VerificationCodeInput.
 - **VerificationCodeInput:** boxes shrink evenly and stay square when the container is narrow.
 
 ### Prototypes
+- **Theme showcase** (`#/demo`) replaces the old theme playground: a sticky bar with the seven theme
+  axes (plus Reset and Copy attributes), a masonry wall of 18 component tiles on a dotted background,
+  and a side-by-side comparison of any three themes. Arabic flips the page and translates its labels.
 - **Panda removed.** The old dashboard, its app pages (projects, messages, calendar, orders,
   settings) and its frame are deleted; Orbit is the prototypes' home page. Old `#/dashboard`,
   `#/app/…` and `#/admin/…` links open the matching Orbit page.
