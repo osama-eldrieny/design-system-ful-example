@@ -502,26 +502,22 @@
       }
     },
     "--tabs-item-active-bg-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-primary-focus",
-      "default": "#5637b5",
+      "description": "Fill of filled buttons; the accent in light mode, a darker step in dark mode.",
+      "references": "--color-bg-accent-primary-strong-default",
+      "default": "#794dff",
       "byTheme": {
-        "brand=diamond,mode=dark": "#c5b2ff",
-        "brand=amber,mode=light": "#a57a4b",
-        "brand=amber,mode=dark": "#e2d7cc",
-        "brand=opal,mode=light": "#224a8c",
-        "brand=opal,mode=dark": "#dee2f4"
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#8a663e",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#326fd1"
       }
     },
     "--tabs-item-active-font-color": {
-      "description": "Text and icons on the matching --color-bg-accent fill.",
-      "references": "--color-fg-on-accent-primary-focus",
+      "description": "Text and icons on the matching strong fill (light text in dark mode).",
+      "references": "--color-fg-on-accent-primary-strong-default",
       "default": "#fff",
       "byTheme": {
-        "brand=diamond,mode=dark": "#24202d",
-        "brand=amber,mode=light": "#1e140d",
-        "brand=amber,mode=dark": "#1e140d",
-        "brand=opal,mode=dark": "#292d3e"
+        "brand=amber,mode=light": "#1e140d"
       }
     },
     "--tabs-pill-item-default-font-color": {
@@ -531,7 +527,7 @@
       "byTheme": {
         "brand=diamond,mode=dark": "#acadb2",
         "brand=amber,mode=light": "#6a625a",
-        "brand=amber,mode=dark": "#f7efe7",
+        "brand=amber,mode=dark": "#c9b9a9",
         "brand=opal,mode=light": "#676b83",
         "brand=opal,mode=dark": "#afb2be"
       }
@@ -589,7 +585,7 @@
       "byTheme": {
         "brand=diamond,mode=dark": "#acadb2",
         "brand=amber,mode=light": "#6a625a",
-        "brand=amber,mode=dark": "#f7efe7",
+        "brand=amber,mode=dark": "#c9b9a9",
         "brand=opal,mode=light": "#676b83",
         "brand=opal,mode=dark": "#afb2be"
       }
@@ -619,15 +615,14 @@
       }
     },
     "--tabs-line-indicator-color": {
-      "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
-      "references": "--color-bg-accent-primary-default",
+      "description": "Fill of filled buttons; the accent in light mode, a darker step in dark mode.",
+      "references": "--color-bg-accent-primary-strong-default",
       "default": "#794dff",
       "byTheme": {
-        "brand=diamond,mode=dark": "#f2edff",
         "brand=amber,mode=light": "#cda376",
-        "brand=amber,mode=dark": "#fff",
+        "brand=amber,mode=dark": "#8a663e",
         "brand=opal,mode=light": "#326fd1",
-        "brand=opal,mode=dark": "#fff"
+        "brand=opal,mode=dark": "#326fd1"
       }
     },
     "--tabs-line-indicator-width": {
@@ -681,19 +676,19 @@
       "byTheme": {
         "brand=diamond,mode=dark": "#acadb2",
         "brand=amber,mode=light": "#6a625a",
-        "brand=amber,mode=dark": "#f7efe7",
+        "brand=amber,mode=dark": "#c9b9a9",
         "brand=opal,mode=light": "#676b83",
         "brand=opal,mode=dark": "#afb2be"
       }
     },
     "--tabs-segmented-item-hover-bg-color": {
-      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
-      "references": "--color-bg-surface",
+      "description": "A surface lifted above its container in both modes, e.g. the selected",
+      "references": "--color-bg-raised",
       "default": "#fff",
       "byTheme": {
-        "brand=diamond,mode=dark": "#24202d",
-        "brand=amber,mode=dark": "#1e140d",
-        "brand=opal,mode=dark": "#292d3e"
+        "brand=diamond,mode=dark": "#3f404d",
+        "brand=amber,mode=dark": "#3d2e22",
+        "brand=opal,mode=dark": "#464b68"
       }
     },
     "--tabs-segmented-item-hover-font-color": {
@@ -709,13 +704,13 @@
       }
     },
     "--tabs-segmented-item-active-bg-color": {
-      "description": "Cards, panels, inputs and menus sitting on --color-bg-default.",
-      "references": "--color-bg-surface",
+      "description": "A surface lifted above its container in both modes, e.g. the selected",
+      "references": "--color-bg-raised",
       "default": "#fff",
       "byTheme": {
-        "brand=diamond,mode=dark": "#24202d",
-        "brand=amber,mode=dark": "#1e140d",
-        "brand=opal,mode=dark": "#292d3e"
+        "brand=diamond,mode=dark": "#3f404d",
+        "brand=amber,mode=dark": "#3d2e22",
+        "brand=opal,mode=dark": "#464b68"
       }
     },
     "--tabs-segmented-item-active-font-color": {
@@ -749,7 +744,7 @@
       "byTheme": {
         "brand=diamond,mode=dark": "#acadb2",
         "brand=amber,mode=light": "#6a625a",
-        "brand=amber,mode=dark": "#f7efe7",
+        "brand=amber,mode=dark": "#c9b9a9",
         "brand=opal,mode=light": "#676b83",
         "brand=opal,mode=dark": "#afb2be"
       }

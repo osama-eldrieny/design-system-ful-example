@@ -37,6 +37,14 @@ VerificationCodeInput.
   **ChooseCard:** icon.
 
 ### Fixes (from review comments)
+- **Tabs:** the selected pill and enclosed tab and the line indicator use the strong brand colour
+  (like the primary button) in every brand and mode; the selected segment uses the new
+  `--color-bg-raised`, so it's lifted in dark mode too.
+- **Colors:** new semantic `--color-bg-raised` (white in light mode, a step lighter than the page in
+  dark); new primitive `--color-amber-base-700`. Amber dark secondary text is now distinct from
+  primary text (`--color-amber-neutral-700`, at least 5:1 on every dark surface).
+- **MetricCard:** the chart grows to fill its row, beside the figures or below them.
+- **Theme showcase:** tiles are elevated Cards, so the shadow and radius themes show on the wall.
 - **Alert:** buttons in a solid alert's actions are inverted (new `--alerts-{variant}-solid-action-*`
   tokens) so they stay visible; text buttons take the alert's text colour.
 - **Modal:** every size is at least `--modal-min-width` (the medium width), so confirmations aren't

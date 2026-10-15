@@ -18,8 +18,8 @@
   --tabs-item-default-font-color: var(--color-fg-on-secondary-high);
   --tabs-item-hover-bg-color: var(--color-bg-primary-1);
   --tabs-item-hover-font-color: var(--color-fg-on-primary-high);
-  --tabs-item-active-bg-color: var(--color-bg-accent-primary-focus);
-  --tabs-item-active-font-color: var(--color-fg-on-accent-primary-focus);
+  --tabs-item-active-bg-color: var(--color-bg-accent-primary-strong-default);
+  --tabs-item-active-font-color: var(--color-fg-on-accent-primary-strong-default);
 
   /* Pill: no container; the selected tab is a filled pill */
   --tabs-pill-item-default-font-color: var(--color-fg-on-surface-secondary);
@@ -33,7 +33,7 @@
   --tabs-line-item-default-font-color: var(--color-fg-on-surface-secondary);
   --tabs-line-item-hover-font-color: var(--color-fg-on-accent-primary-text-hover);
   --tabs-line-item-active-font-color: var(--color-fg-on-accent-primary-text-default);
-  --tabs-line-indicator-color: var(--color-bg-accent-primary-default);
+  --tabs-line-indicator-color: var(--color-bg-accent-primary-strong-default);
   --tabs-line-indicator-width: var(--border-width-regular);
 
   /* Segmented: a bordered bar; the selected tab is raised on the surface */
@@ -43,9 +43,9 @@
   --tabs-segmented-border-radius: var(--radius-lg);
   --tabs-segmented-padding: var(--spacing-3xs);
   --tabs-segmented-item-default-font-color: var(--color-fg-on-surface-secondary);
-  --tabs-segmented-item-hover-bg-color: var(--color-bg-surface);
+  --tabs-segmented-item-hover-bg-color: var(--color-bg-raised);
   --tabs-segmented-item-hover-font-color: var(--color-fg-on-surface-primary);
-  --tabs-segmented-item-active-bg-color: var(--color-bg-surface);
+  --tabs-segmented-item-active-bg-color: var(--color-bg-raised);
   --tabs-segmented-item-active-font-color: var(--color-fg-on-surface-primary);
   --tabs-segmented-item-active-border-color: var(--color-border-base);
 

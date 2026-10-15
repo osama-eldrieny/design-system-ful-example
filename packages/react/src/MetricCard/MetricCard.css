@@ -122,9 +122,9 @@
 }
 
 .ds-metric-card__chart {
-  flex: none;
-  inline-size: var(--metric-card-chart-width);
-  max-inline-size: 100%;
+  /* Starts at the chart width and grows to fill the row, beside the figures or below them. */
+  flex: 1 1 var(--metric-card-chart-width);
+  min-inline-size: 0;
   block-size: var(--metric-card-chart-height);
 }
 

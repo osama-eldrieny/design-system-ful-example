@@ -12,6 +12,8 @@
  *   --color-bg-base: Outermost page background.
  *   --color-bg-default: App background behind cards and panels.
  *   --color-bg-surface: Cards, panels, inputs and menus sitting on --color-bg-default.
+ *   --color-bg-raised: A surface lifted above its container in both modes, e.g. the selected
+ *     segment of a segmented control (white in light mode, a step lighter than the page in dark).
  *   --color-bg-accent-{tone}-{state}: Solid fill for emphasized actions of a tone, e.g. filled buttons.
  *   --color-fg-on-accent-{tone}-{state}: Text and icons on the matching --color-bg-accent fill.
  *   --color-fg-on-accent-{tone}-text-{state}: Tone-colored text directly on surfaces, e.g. text buttons and links.
@@ -46,6 +48,7 @@
   --color-bg-base: var(--color-diamond-base-100);
   --color-bg-default: var(--color-diamond-base-200);
   --color-bg-surface: var(--color-diamond-base-100);
+  --color-bg-raised: var(--color-diamond-base-100);
   --color-bg-accent-primary-default: var(--color-diamond-primary-600);
   --color-bg-accent-primary-hover: var(--color-diamond-primary-700);
   --color-bg-accent-primary-focus: var(--color-diamond-primary-800);
@@ -230,6 +233,7 @@
   --color-bg-base: var(--color-diamond-base-900);
   --color-bg-default: var(--color-diamond-base-800);
   --color-bg-surface: var(--color-diamond-base-900);
+  --color-bg-raised: var(--color-diamond-neutral-600);
   --color-bg-accent-primary-default: var(--color-diamond-primary-100);
   --color-bg-accent-primary-hover: var(--color-diamond-primary-200);
   --color-bg-accent-primary-focus: var(--color-diamond-primary-300);
@@ -430,6 +434,7 @@
   --color-bg-base: var(--color-amber-base-100);
   --color-bg-default: var(--color-amber-base-200);
   --color-bg-surface: var(--color-amber-base-100);
+  --color-bg-raised: var(--color-amber-base-100);
   --color-bg-accent-primary-default: var(--color-amber-primary-500);
   --color-bg-accent-primary-hover: var(--color-amber-primary-600);
   --color-bg-accent-primary-focus: var(--color-amber-primary-700);
@@ -614,6 +619,7 @@
   --color-bg-base: var(--color-amber-base-900);
   --color-bg-default: var(--color-amber-base-800);
   --color-bg-surface: var(--color-amber-base-900);
+  --color-bg-raised: var(--color-amber-base-700);
   --color-bg-accent-primary-default: var(--color-amber-base-100);
   --color-bg-accent-primary-hover: var(--color-amber-base-200);
   --color-bg-accent-primary-focus: var(--color-amber-base-400);
@@ -684,7 +690,7 @@
   --color-fg-on-accent-secondary-text-hover: var(--color-amber-secondary-400);
   --color-fg-on-accent-secondary-text-focus: var(--color-amber-secondary-300);
   --color-fg-on-surface-primary: var(--color-amber-neutral-100);
-  --color-fg-on-surface-secondary: var(--color-amber-neutral-300);
+  --color-fg-on-surface-secondary: var(--color-amber-neutral-700);
   --color-fg-on-primary-high: var(--color-amber-primary-200);
   --color-fg-on-primary-medium: var(--color-amber-primary-400);
   --color-fg-on-primary-low: var(--color-amber-primary-100);
@@ -798,6 +804,7 @@
   --color-bg-base: var(--color-opal-base-100);
   --color-bg-default: var(--color-opal-base-200);
   --color-bg-surface: var(--color-opal-base-100);
+  --color-bg-raised: var(--color-opal-base-100);
   --color-bg-accent-primary-default: var(--color-opal-primary-700);
   --color-bg-accent-primary-hover: var(--color-opal-primary-800);
   --color-bg-accent-primary-focus: var(--color-opal-primary-900);
@@ -982,6 +989,7 @@
   --color-bg-base: var(--color-opal-base-900);
   --color-bg-default: var(--color-opal-base-800);
   --color-bg-surface: var(--color-opal-base-900);
+  --color-bg-raised: var(--color-opal-neutral-600);
   --color-bg-accent-primary-default: var(--color-opal-base-100);
   --color-bg-accent-primary-hover: var(--color-opal-base-200);
   --color-bg-accent-primary-focus: var(--color-opal-base-400);

@@ -12,6 +12,7 @@ import {
   Button,
   ButtonGroup,
   Calendar,
+  Card,
   Checkbox,
   DropdownMenu,
   DropdownMenuContent,
@@ -79,10 +80,16 @@ export function Tile({
   wide?: boolean;
 }) {
   return (
-    <section className={wide ? 'sc-tile sc-tile--wide' : 'sc-tile'} aria-label={title}>
+    // An elevated Card, so tiles follow the shadow and radius themes.
+    <Card
+      as="section"
+      appearance="elevated"
+      aria-label={title}
+      className={wide ? 'sc-tile sc-tile--wide' : 'sc-tile'}
+    >
       <h2 className="sc-tile__title">{title}</h2>
       <div className="sc-tile__body">{children}</div>
-    </section>
+    </Card>
   );
 }
 

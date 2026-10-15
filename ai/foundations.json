@@ -57,6 +57,7 @@
     "--color-bg-base": "Outermost page background.",
     "--color-bg-default": "App background behind cards and panels.",
     "--color-bg-surface": "Cards, panels, inputs and menus sitting on --color-bg-default.",
+    "--color-bg-raised": "A surface lifted above its container in both modes, e.g. the selected",
     "--color-bg-accent-primary-default": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
     "--color-bg-accent-primary-hover": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
     "--color-bg-accent-primary-focus": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
