@@ -3,6 +3,7 @@ import { FileText, Image } from 'lucide-react';
 import { expect } from 'storybook/test';
 import { Avatar } from '../Avatar';
 import { Badge } from '../Badge';
+import { Checkbox } from '../Checkbox';
 import { List, ListItem } from './List';
 import { ThemeProvider } from '../ThemeProvider';
 
@@ -99,4 +100,38 @@ export const Semantics: Story = {
       '#1',
     );
   },
+};
+
+/** An inbox: a checkbox before each row, unread messages in bold. */
+export const Inbox: Story = {
+  render: () => (
+    <List divided style={{ maxInlineSize: 520 }}>
+      <ListItem
+        unread
+        start={<Checkbox aria-label="Select “Quarterly report”" />}
+        title="Lana Steiner"
+        description="Quarterly report · Numbers are in, take a look."
+        meta="9:41"
+        href="#"
+      />
+      <ListItem
+        selected
+        start={<Checkbox aria-label="Select “Design review”" defaultChecked />}
+        title="Omar Haddad"
+        description="Design review · Notes from today’s session."
+        meta="Yesterday"
+        href="#"
+      />
+    </List>
+  ),
+};
+
+/** A task list: done tasks are struck through. */
+export const Tasks: Story = {
+  render: () => (
+    <List divided style={{ maxInlineSize: 420 }}>
+      <ListItem start={<Checkbox aria-label="Write brief" defaultChecked />} done title="Write brief" meta="Mon" />
+      <ListItem start={<Checkbox aria-label="Review designs" />} title="Review designs" meta="Wed" />
+    </List>
+  ),
 };

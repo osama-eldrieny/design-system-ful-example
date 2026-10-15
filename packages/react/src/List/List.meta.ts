@@ -21,6 +21,11 @@ export default defineMeta({
     { text: 'For site navigation.', alternative: 'SideNav' },
   ],
   anatomy: [
+    {
+      name: 'Start',
+      description: 'Controls before the row, e.g. a Checkbox or a star button (ListItem start).',
+      optional: true,
+    },
     { name: 'Icon', description: 'Or an Avatar.', optional: true },
     { name: 'Title', description: 'Main text.' },
     { name: 'Description', description: 'Second line.', optional: true },
@@ -47,6 +52,9 @@ export default defineMeta({
   states: [
     { name: 'Hover', meaning: 'Interactive rows are tinted.', trigger: ':hover' },
     { name: 'Focus', meaning: 'Focus ring on the row.', trigger: ':focus-visible' },
+    { name: 'Unread', meaning: 'Bold title on a tinted row, e.g. a new message.', trigger: 'ListItem unread.' },
+    { name: 'Selected', meaning: 'Tinted row, e.g. while its checkbox is checked.', trigger: 'ListItem selected.' },
+    { name: 'Done', meaning: 'Title struck through, e.g. a completed task.', trigger: 'ListItem done.' },
   ],
   behavior: [
     {
@@ -112,6 +120,11 @@ export default defineMeta({
     { id: 'apps-notifications', relation: 'A pattern built on the same idea.' },
   ],
   changelog: [
+    {
+      version: '1.3.0',
+      date: '2026-10-15',
+      changes: ['ListItem start slot (checkbox, star), unread, selected and done states.'],
+    },
     { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
     {
       version: '1.1.0',

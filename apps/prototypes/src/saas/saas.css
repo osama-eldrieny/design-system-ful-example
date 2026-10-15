@@ -400,15 +400,6 @@
   inline-size: 7rem;
 }
 
-.orbit-ticker {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-lg);
-  border: var(--border-width-hairline) solid var(--color-border-base);
-  border-radius: var(--radius-2xl);
-  background-color: var(--color-bg-surface);
-}
 
 .orbit-toolbar {
   display: flex;
@@ -755,66 +746,14 @@
   gap: var(--spacing-lg);
 }
 
-.orbit-mails {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
-.orbit-mails__item {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-2xs);
-  padding: var(--spacing-2xs) var(--spacing-lg);
-  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
-}
 
-.orbit-mails__item--unread {
-  background-color: var(--color-bg-default);
-}
 
-.orbit-mails__open {
-  flex: 1;
-  min-inline-size: 0;
-  font-weight: var(--font-weight-regular);
-  text-align: start;
-  text-decoration: none;
-}
 
-.orbit-mails__open > .ds-button__label {
-  display: grid;
-  flex: 1;
-  grid-template-columns: 10rem minmax(0, 1fr) auto;
-  gap: var(--spacing-md);
-  min-inline-size: 0;
-}
 
-@media (width < 48rem) {
-  .orbit-mails__open > .ds-button__label {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
 
-  .orbit-mails__subject {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
-}
 
-.orbit-mails__from {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
-.orbit-mails__item--unread .orbit-mails__from {
-  font-weight: var(--font-weight-semi-bold);
-}
-
-.orbit-mails__subject {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
 
 .orbit-star--on svg {
   fill: currentcolor;
@@ -926,14 +865,6 @@
 }
 
 .orbit-board__cards,
-.orbit-tasklist {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
 .orbit-card {
   display: flex;
@@ -980,33 +911,6 @@
   gap: var(--spacing-md);
 }
 
-.orbit-tasklist__row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
-  gap: var(--spacing-md);
-  align-items: center;
-  padding-block: var(--spacing-xs);
-  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
-}
-
-.orbit-tasklist__row:last-child {
-  border-block-end: 0;
-}
-
-@media (width < 48rem) {
-  .orbit-tasklist__row {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .orbit-tasklist__row > .orbit-task__meta {
-    grid-row: 2;
-  }
-}
-
-.orbit-done {
-  color: var(--color-fg-on-surface-secondary);
-  text-decoration: line-through;
-}
 
 /* Calendar */
 .orbit-cal {

@@ -24,6 +24,7 @@ import {
   SelectItem,
   Sparkline,
   Stepper,
+  Card,
 } from '@ds/react';
 import {
   Box,
@@ -816,7 +817,7 @@ const tickers = [
 
 function Ticker({ t, actions }: { t: (typeof tickers)[number]; actions?: boolean }) {
   return (
-    <article className="orbit-ticker">
+    <Card>
       <div className="row row--between">
         <span className="row">
           <Avatar name={t.sym} size="small" />
@@ -836,7 +837,7 @@ function Ticker({ t, actions }: { t: (typeof tickers)[number]; actions?: boolean
           <Button size="small">Buy</Button>
         </span>
       )}
-    </article>
+    </Card>
   );
 }
 

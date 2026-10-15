@@ -32,6 +32,8 @@ import {
   Textarea,
   useToast,
   type BadgeColor,
+  List,
+  ListItem,
 } from '@ds/react';
 import {
   ArrowUpDown,
@@ -437,25 +439,30 @@ function Tasks({ view }: { view: 'list' | 'kanban' }) {
                 {counts[s]}
               </Badge>
             </h2>
-            <ul className="orbit-tasklist">
+            <List divided>
               {sorted(tasks.filter((t) => t.status === s)).map((t) => (
-                <li key={t.id} className="orbit-tasklist__row">
-                  <Checkbox
-                    label={
-                      <span className={checked.includes(t.id) ? 'orbit-done' : undefined}>
-                        {t.title}
-                      </span>
-                    }
-                    checked={checked.includes(t.id)}
-                    onCheckedChange={(v) =>
-                      setChecked((c) => (v ? [...c, t.id] : c.filter((x) => x !== t.id)))
-                    }
-                  />
-                  <TaskMeta t={t} />
-                  <MoveMenu t={t} onMove={(to) => move(t.id, to)} />
-                </li>
+                <ListItem
+                  key={t.id}
+                  done={checked.includes(t.id)}
+                  start={
+                    <Checkbox
+                      aria-label={t.title}
+                      checked={checked.includes(t.id)}
+                      onCheckedChange={(v) =>
+                        setChecked((c) => (v ? [...c, t.id] : c.filter((x) => x !== t.id)))
+                      }
+                    />
+                  }
+                  title={t.title}
+                  meta={
+                    <>
+                      <TaskMeta t={t} />
+                      <MoveMenu t={t} onMove={(to) => move(t.id, to)} />
+                    </>
+                  }
+                />
               ))}
-            </ul>
+            </List>
           </section>
         ))
       )}

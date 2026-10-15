@@ -22,7 +22,11 @@ import { ComponentPage } from '../blocks';
     ),
   }}
   optionStories={{ divided: 'Divided', ordered: 'Divided' }}
-  extras={[{ title: 'People', story: 'People' }]}
+  extras={[
+    { title: 'People', story: 'People' },
+    { title: 'Inbox: checkboxes and unread rows', story: 'Inbox' },
+    { title: 'Tasks: done rows', story: 'Tasks' },
+  ]}
   behaviorStory="RightToLeft"
   matrix={
     <List divided style={{ inlineSize: 240 }}>

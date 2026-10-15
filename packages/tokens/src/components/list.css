@@ -35,4 +35,12 @@
   --list-focus-ring-width: var(--focus-ring-width);
   --list-focus-ring-offset: var(--focus-ring-offset);
   --list-focus-ring-color: var(--focus-ring-color);
+
+  /* Item states: unread, selected, done; controls before the row */
+  --list-start-gap: var(--spacing-3xs);
+  --list-meta-gap: var(--spacing-xs);
+  --list-item-unread-bg-color: var(--color-bg-default);
+  --list-item-unread-font-weight: var(--font-weight-semi-bold);
+  --list-item-selected-bg-color: var(--color-bg-primary-1);
+  --list-item-done-text-color: var(--color-fg-on-surface-secondary);
 }

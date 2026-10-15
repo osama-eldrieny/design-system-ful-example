@@ -25,6 +25,7 @@ import {
   Switch,
   Textarea,
   useToast,
+  Card,
 } from '@ds/react';
 import {
   AppWindow,
@@ -364,7 +365,7 @@ function Files() {
     >
       <section className="orbit-grid orbit-grid--5" aria-label="Storage by type">
         {kinds.map((k) => (
-          <article key={k.label} className="orbit-ticker">
+          <Card key={k.label}>
             <div className="row row--between">
               <FeaturedIcon icon={k.icon} appearance="modern" shape="square" />
               <span className="muted text-sm">{k.used}% used</span>
@@ -380,7 +381,7 @@ function Files() {
             <span className="muted text-sm">
               {k.files} files · {k.size}
             </span>
-          </article>
+          </Card>
         ))}
       </section>
       <div className="orbit-row">
@@ -395,7 +396,7 @@ function Files() {
               ['Product shots', 812, '48.0 GB'],
               ['Exports', 96, '5.7 GB'],
             ].map(([name, files, size]) => (
-              <article key={name as string} className="orbit-ticker">
+              <Card key={name as string}>
                 <div className="row row--between">
                   <FeaturedIcon
                     icon={<Folder />}
@@ -409,7 +410,7 @@ function Files() {
                 <span className="muted text-sm">
                   {files} files · {size}
                 </span>
-              </article>
+              </Card>
             ))}
           </div>
         </section>

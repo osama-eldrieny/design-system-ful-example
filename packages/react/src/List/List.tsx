@@ -44,11 +44,22 @@ export interface ListItemProps extends Omit<HTMLAttributes<HTMLLIElement>, 'titl
   href?: string;
   /** Makes the item a button (when there is no href). */
   onClick?: (event: MouseEvent<HTMLElement>) => void;
+  /** Controls before the row, e.g. a Checkbox to select it or a star button. Kept outside the link. */
+  start?: ReactNode;
+  /** Bold title on a tinted row, e.g. an unread message. */
+  unread?: boolean;
+  /** Strikes the title through, e.g. a completed task. */
+  done?: boolean;
+  /** Highlights the row, e.g. while its checkbox is checked. */
+  selected?: boolean;
 }
 
 /** One item of a List. With href or onClick, the whole row is the target. */
 export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
-  ({ title, description, icon, meta, href, onClick, className, ...props }, ref) => {
+  (
+    { title, description, icon, meta, href, onClick, start, unread, done, selected, className, ...props },
+    ref,
+  ) => {
     const content = (
       <>
         {icon && (
@@ -63,7 +74,20 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
       </>
     );
     return (
-      <li ref={ref} className={['ds-list__item', className].filter(Boolean).join(' ')} {...props}>
+      <li
+        ref={ref}
+        className={[
+          'ds-list__item',
+          unread && 'ds-list__item--unread',
+          done && 'ds-list__item--done',
+          selected && 'ds-list__item--selected',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        {...props}
+      >
+        {start && <span className="ds-list__start">{start}</span>}
         {href ? (
           <a className="ds-list__row ds-list__row--interactive" href={href} onClick={onClick}>
             {content}

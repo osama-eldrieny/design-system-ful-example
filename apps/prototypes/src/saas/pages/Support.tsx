@@ -25,6 +25,8 @@ import {
   Tabs,
   Textarea,
   useToast,
+  List,
+  ListItem,
 } from '@ds/react';
 import {
   Archive,
@@ -674,46 +676,39 @@ function Inbox() {
             </span>
             <span className="muted text-sm">1–{rows.length} of 159</span>
           </div>
-          <ul className="orbit-mails">
+          <List divided>
             {rows.map((m) => (
-              <li
+              <ListItem
                 key={m.id}
-                className={
-                  m.unread ? 'orbit-mails__item orbit-mails__item--unread' : 'orbit-mails__item'
+                unread={m.unread}
+                selected={selected.includes(m.id)}
+                start={
+                  <>
+                    <Checkbox
+                      aria-label={`Select “${m.subject}”`}
+                      checked={selected.includes(m.id)}
+                      onCheckedChange={(v) =>
+                        setSelected((s) => (v ? [...s, m.id] : s.filter((x) => x !== m.id)))
+                      }
+                    />
+                    <IconButton
+                      icon={<Star />}
+                      label={m.starred ? 'Starred' : 'Star'}
+                      variant="secondary"
+                      appearance="ghost"
+                      size="small"
+                      aria-pressed={m.starred}
+                      className={m.starred ? 'orbit-star orbit-star--on' : 'orbit-star'}
+                    />
+                  </>
                 }
-              >
-                <Checkbox
-                  aria-label={`Select “${m.subject}”`}
-                  checked={selected.includes(m.id)}
-                  onCheckedChange={(v) =>
-                    setSelected((s) => (v ? [...s, m.id] : s.filter((x) => x !== m.id)))
-                  }
-                />
-                <IconButton
-                  icon={<Star />}
-                  label={m.starred ? 'Starred' : 'Star'}
-                  variant="secondary"
-                  appearance="ghost"
-                  size="small"
-                  aria-pressed={m.starred}
-                  className={m.starred ? 'orbit-star orbit-star--on' : 'orbit-star'}
-                />
-                <Button
-                  appearance="text"
-                  variant="secondary"
-                  className="orbit-mails__open"
-                  href={to('/support/message')}
-                >
-                  <span className="orbit-mails__from">{m.from.name}</span>
-                  <span className="orbit-mails__subject">
-                    <strong>{m.subject}</strong>
-                    <span className="muted"> · {m.preview}</span>
-                  </span>
-                  <span className="muted text-sm orbit-mails__time">{m.time}</span>
-                </Button>
-              </li>
+                title={m.from.name}
+                description={`${m.subject} · ${m.preview}`}
+                meta={m.time}
+                href={to('/support/message')}
+              />
             ))}
-          </ul>
+          </List>
         </section>
       </div>
     </Page>

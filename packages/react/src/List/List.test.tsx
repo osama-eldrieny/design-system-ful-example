@@ -35,3 +35,16 @@ describe('List', () => {
     expect(screen.getByRole('list')).not.toHaveClass('ds-list--ordered');
   });
 });
+
+describe('ListItem states', () => {
+  it('renders start controls outside the link and state classes', () => {
+    const { container } = render(
+      <List>
+        <ListItem unread done selected start={<input type="checkbox" aria-label="Pick" />} title="Row" href="#" />
+      </List>,
+    );
+    const item = container.querySelector('.ds-list__item')!;
+    expect(item).toHaveClass('ds-list__item--unread', 'ds-list__item--done', 'ds-list__item--selected');
+    expect(container.querySelector('a')).not.toContainElement(container.querySelector('input'));
+  });
+});
