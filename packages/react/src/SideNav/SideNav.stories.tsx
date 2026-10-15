@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { BarChart3, House, Package, Settings, Users } from 'lucide-react';
+import { BarChart3, House, MoreHorizontal, Package, Settings, Users } from 'lucide-react';
+import { IconButton } from '../Button';
 import { expect, userEvent } from 'storybook/test';
 import { AvatarLabelGroup } from '../Avatar';
 import { ThemeProvider } from '../ThemeProvider';
@@ -116,5 +117,34 @@ export const Groups: Story = {
     await userEvent.click(reports);
     await expect(reports).toHaveAttribute('aria-expanded', 'false');
     await expect(canvas.queryByRole('link', { name: 'Sales' })).toBeNull();
+  },
+};
+
+/** Items with a menu beside them, e.g. chats in a history list. */
+export const ItemActions: Story = {
+  args: {
+    sections: [
+      {
+        title: 'Starred',
+        items: [
+          {
+            id: 'chat-1',
+            label: 'Design system audit',
+            href: '#',
+            actions: (
+              <IconButton
+                icon={<MoreHorizontal />}
+                label="Options for Design system audit"
+                variant="secondary"
+                appearance="ghost"
+                size="xsmall"
+              />
+            ),
+          },
+          { id: 'chat-2', label: 'Q4 launch plan', href: '#' },
+        ],
+      },
+    ],
+    currentItem: 'chat-1',
   },
 };

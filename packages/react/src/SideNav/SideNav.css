@@ -158,3 +158,39 @@
     transition: none;
   }
 }
+
+/* Item actions: a row with the link and a small control, shown on hover or focus. */
+.ds-side-nav__row {
+  display: flex;
+  align-items: center;
+  gap: var(--side-nav-actions-gap);
+}
+
+.ds-side-nav__row > .ds-side-nav__item {
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.ds-side-nav__actions {
+  display: inline-flex;
+  flex: none;
+  opacity: 0;
+  transition: opacity var(--side-nav-duration) var(--side-nav-easing);
+}
+
+.ds-side-nav__row:hover .ds-side-nav__actions,
+.ds-side-nav__row:focus-within .ds-side-nav__actions {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .ds-side-nav__actions {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-side-nav__actions {
+    transition: none;
+  }
+}

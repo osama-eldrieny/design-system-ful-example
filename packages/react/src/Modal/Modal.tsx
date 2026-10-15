@@ -1,5 +1,6 @@
 import {
   forwardRef,
+  useId,
   type ComponentPropsWithoutRef,
   type HTMLAttributes,
   type ReactNode,
@@ -47,6 +48,11 @@ export interface ModalContentProps extends Omit<
   role?: 'dialog' | 'alertdialog';
   /** Accessible name of the close button. Default "Close". */
   closeLabel?: string;
+  /**
+   * Draws the dialog in place instead of over the page, with no scrim or focus trap. Use it for
+   * previews, docs and static mockups; real dialogs should open as a modal.
+   */
+  inline?: boolean;
 }
 
 export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
@@ -63,12 +69,49 @@ export const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
       className,
       children,
       onPointerDownOutside,
+      inline = false,
       ...props
     },
     ref,
   ) => {
     const themeAttrs = usePortalThemeAttributes();
+    const titleId = useId();
     const alert = role === 'alertdialog';
+    if (inline)
+      return (
+        <div
+          ref={ref}
+          role={role}
+          aria-labelledby={titleId}
+          className={[
+            'ds-modal',
+            'ds-modal--inline',
+            `ds-modal--${size}`,
+            align === 'center' && 'ds-modal--center',
+            className,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+          {...themeAttrs}
+        >
+          {icon && (
+            <FeaturedIcon
+              icon={icon}
+              tone={iconTone}
+              size="large"
+              appearance="outline"
+              className="ds-modal__icon"
+            />
+          )}
+          <div className="ds-modal__header">
+            <h2 id={titleId} className="ds-modal__title">
+              {title}
+            </h2>
+          </div>
+          {description && <p className="ds-modal__description">{description}</p>}
+          {children}
+        </div>
+      );
     return (
       <Dialog.Portal>
         <Dialog.Overlay className="ds-modal__scrim" {...themeAttrs} />

@@ -24,3 +24,17 @@ describe('SideNav', () => {
     expect(screen.getByRole('link', { name: 'B' })).toHaveAttribute('aria-current', 'page');
   });
 });
+
+describe('SideNav item actions', () => {
+  it('renders an action beside the link without nesting it inside the link', () => {
+    render(
+      <SideNav
+        sections={[{ items: [{ id: 'a', label: 'Alpha', href: '#', actions: <button type="button">Menu</button> }] }]}
+        currentItem="a"
+      />,
+    );
+    const link = screen.getByRole('link', { name: /Alpha/ });
+    expect(link).not.toContainElement(screen.getByRole('button', { name: 'Menu' }));
+    expect(link).toHaveAttribute('aria-current', 'page');
+  });
+});

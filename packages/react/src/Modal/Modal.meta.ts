@@ -73,6 +73,14 @@ export default defineMeta({
         { value: 'secondary | gray … teal', meaning: 'Neutral or a category hue.' },
       ],
     },
+    {
+      prop: 'inline',
+      title: 'Placement',
+      values: [
+        { value: 'false', meaning: 'Default. Opens over the page with a scrim and a focus trap.' },
+        { value: 'true', meaning: 'Drawn in place, for previews, docs and static mockups. Not for real dialogs.' },
+      ],
+    },
   ],
   states: [
     { name: 'Open', meaning: 'Shown over a scrim; focus inside.', trigger: 'open' },
@@ -188,6 +196,7 @@ export default defineMeta({
     { id: 'toast', relation: 'For brief confirmations.' },
   ],
   changelog: [
+    { version: '1.3.0', date: '2026-10-15', changes: ['inline: draws the dialog in place for previews.'] },
     { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
     {
       version: '1.1.0',

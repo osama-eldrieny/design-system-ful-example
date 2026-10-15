@@ -23,6 +23,8 @@ export interface SideNavItem {
   items?: SideNavItem[];
   /** A count or short tag after the label, e.g. unread items or "New". */
   badge?: ReactNode;
+  /** Small controls beside the item, e.g. a ••• menu. Shown on hover or focus, always on touch. */
+  actions?: ReactNode;
 }
 
 export interface SideNavSection {
@@ -121,20 +123,25 @@ function Item({
       </li>
     );
   }
+  const link = (
+    <a
+      className="ds-side-nav__item"
+      style={style}
+      href={item.href}
+      aria-current={idOf(item) === current ? 'page' : undefined}
+      aria-label={collapsed && depth === 0 ? item.label : undefined}
+      onClick={item.onClick}
+    >
+      {content}
+    </a>
+  );
+  if (!item.actions || collapsed) return <li>{tip(link)}</li>;
   return (
-    <li>
-      {tip(
-        <a
-          className="ds-side-nav__item"
-          style={style}
-          href={item.href}
-          aria-current={idOf(item) === current ? 'page' : undefined}
-          aria-label={collapsed && depth === 0 ? item.label : undefined}
-          onClick={item.onClick}
-        >
-          {content}
-        </a>,
-      )}
+    <li className="ds-side-nav__entry">
+      <div className="ds-side-nav__row">
+        {link}
+        <span className="ds-side-nav__actions">{item.actions}</span>
+      </div>
     </li>
   );
 }

@@ -55,4 +55,7 @@
   --side-nav-footer-border-color: var(--color-border-base);
   --side-nav-footer-border-width: var(--border-width-hairline);
   --side-nav-collapsed-width: var(--sizing-3xl);
+
+  /* Item actions (SideNavItem actions) */
+  --side-nav-actions-gap: var(--spacing-3xs);
 }

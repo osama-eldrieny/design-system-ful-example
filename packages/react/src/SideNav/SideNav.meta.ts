@@ -17,6 +17,7 @@ export default defineMeta({
   anatomy: [
     { name: 'Section title', description: 'Names a group of links.', optional: true },
     { name: 'Item', description: 'A link; icon optional.' },
+    { name: 'Item actions', description: 'Small controls, e.g. a ••• menu, shown on hover or focus.', optional: true },
     { name: 'Group', description: 'A button that shows its nested items.', optional: true },
     { name: 'Current item', description: 'Tinted with an edge bar.' },
   ],
@@ -131,6 +132,7 @@ export default defineMeta({
     { id: 'breadcrumb', relation: 'Shows location in deep hierarchies.' },
   ],
   changelog: [
+    { version: '1.3.0', date: '2026-10-15', changes: ['Item actions: a control beside an item, shown on hover or focus.'] },
     { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
     {
       version: '1.2.0',

@@ -219,3 +219,25 @@ export const Focus: Story = {
     await expect(trigger).toHaveFocus();
   },
 };
+
+/** The dialog drawn in place, as in a settings page preview or in docs. */
+export const Inline: Story = {
+  render: () => (
+    <ModalContent
+      inline
+      role="alertdialog"
+      size="small"
+      icon={<Trash2 />}
+      iconTone="danger"
+      title="Delete project?"
+      description="This removes it for everyone. It can’t be undone."
+    >
+      <ModalFooter>
+        <Button appearance="outline" variant="secondary">
+          Cancel
+        </Button>
+        <Button variant="danger">Delete</Button>
+      </ModalFooter>
+    </ModalContent>
+  ),
+};

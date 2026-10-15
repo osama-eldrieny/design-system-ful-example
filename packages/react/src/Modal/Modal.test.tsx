@@ -28,3 +28,15 @@ describe('Modal', () => {
     expect(screen.queryByRole('button', { name: 'Close' })).toBeNull();
   });
 });
+
+describe('ModalContent inline', () => {
+  it('draws the dialog in place with its title and footer', () => {
+    render(
+      <ModalContent inline title="Delete project?" description="Can’t be undone.">
+        <button type="button">Cancel</button>
+      </ModalContent>,
+    );
+    expect(screen.getByRole('dialog', { name: 'Delete project?' })).toHaveClass('ds-modal--inline');
+    expect(screen.getByRole('button', { name: 'Cancel' })).toBeInTheDocument();
+  });
+});
