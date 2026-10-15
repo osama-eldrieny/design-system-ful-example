@@ -362,7 +362,6 @@ html {
   margin-inline-start: auto;
 }
 
-
 .proto-two {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));

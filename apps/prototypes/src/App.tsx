@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactElement } from 'react';
+import { lazy, Suspense, useEffect, useState, type ReactElement } from 'react';
 import { applyTheme, defaultTheme, ThemeProvider, ToastProvider, type Theme } from '@ds/react';
 import { useRoute } from './router';
 import CalendarPage from './pages/CalendarPage';
@@ -9,6 +9,8 @@ import { Dashboard } from './dashboards/Dashboard';
 import ProjectPage from './pages/ProjectPage';
 import SettingsPage from './pages/SettingsPage';
 import './prototype.css';
+
+const SaasApp = lazy(() => import('./saas/SaasApp'));
 
 const STORAGE_KEY = 'ds-prototype-theme';
 const savedTheme = (): Theme => {
@@ -41,6 +43,12 @@ function Page({
       />
     ),
   };
+  if (route.startsWith('/saas'))
+    return (
+      <Suspense fallback={null}>
+        <SaasApp route={route} theme={theme} setTheme={setTheme} />
+      </Suspense>
+    );
   const appPage = app[route.split('/')[2]];
   if (route.startsWith('/app/') && appPage) return appPage();
   if (route.startsWith('/demo'))

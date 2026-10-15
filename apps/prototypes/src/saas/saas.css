@@ -1,0 +1,399 @@
+/**
+ * Orbit, the SaaS prototype: frame and page layouts. Tokens only; components style themselves.
+ */
+
+.orbit {
+  display: grid;
+  grid-template:
+    'bar' auto
+    'main' 1fr / minmax(0, 1fr);
+  min-block-size: 100dvh;
+  background-color: var(--color-bg-default);
+}
+
+.orbit--side {
+  grid-template-areas:
+    'side bar'
+    'side main';
+  grid-template-columns: calc(var(--sizing-8xl) * 1.3) minmax(0, 1fr);
+}
+
+.orbit--slim {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+
+.orbit--rail {
+  grid-template-areas:
+    'side bar bar'
+    'side main rail';
+  grid-template-columns: calc(var(--sizing-8xl) * 1.3) minmax(0, 1fr) calc(var(--sizing-8xl) * 1.4);
+}
+
+.orbit--rail.orbit--slim {
+  grid-template-columns: auto minmax(0, 1fr) calc(var(--sizing-8xl) * 1.4);
+}
+
+.orbit:has(.orbit__tier) {
+  grid-template-areas:
+    'bar'
+    'tier'
+    'main';
+  grid-template-rows: auto auto 1fr;
+}
+
+.orbit__side {
+  position: sticky;
+  inset-block-start: 0;
+  grid-area: side;
+  block-size: 100dvh;
+  overflow-y: auto;
+  border-inline-end: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-surface);
+}
+
+.orbit__side > .ds-side-nav,
+.orbit__drawer > .ds-side-nav {
+  box-sizing: border-box;
+  min-block-size: 100%;
+  background-color: transparent;
+}
+
+.orbit__bar {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  grid-area: bar;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-2xl);
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-surface);
+}
+
+.orbit__menu {
+  display: none;
+}
+
+.orbit__search {
+  flex: 0 1 26rem;
+  justify-content: flex-start;
+  min-inline-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.orbit__search > :last-child {
+  margin-inline-start: auto;
+}
+
+.orbit__bar-end {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-inline-start: auto;
+}
+
+.orbit__bell {
+  position: relative;
+  display: inline-flex;
+}
+
+.orbit__count {
+  position: absolute;
+  inset-block-start: calc(-1 * var(--spacing-2xs));
+  inset-inline-end: calc(-1 * var(--spacing-2xs));
+  pointer-events: none;
+}
+
+.orbit__account {
+  gap: var(--spacing-xs);
+  padding-inline: var(--spacing-2xs);
+  text-decoration: none;
+}
+
+.orbit__tier {
+  display: flex;
+  grid-area: tier;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-2xl);
+  overflow-x: auto;
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-surface);
+}
+
+.orbit__main {
+  grid-area: main;
+  min-inline-size: 0;
+  padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-4xl);
+}
+
+.orbit--boxed .orbit__main {
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 80rem;
+  margin-inline: auto;
+}
+
+.orbit__rail {
+  grid-area: rail;
+  min-inline-size: 0;
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  border-inline-start: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-surface);
+}
+
+@media (width < 64rem) {
+  .orbit,
+  .orbit--side,
+  .orbit--slim,
+  .orbit--rail,
+  .orbit--rail.orbit--slim {
+    grid-template:
+      'bar' auto
+      'main' 1fr
+      'rail' auto / minmax(0, 1fr);
+  }
+
+  .orbit__side,
+  .orbit__collapse {
+    display: none;
+  }
+
+  .orbit__menu {
+    display: inline-flex;
+  }
+
+  .orbit__bar,
+  .orbit__tier {
+    padding-inline: var(--spacing-md);
+  }
+
+  .orbit__main {
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-3xl);
+  }
+
+  .orbit__rail {
+    border-block-start: var(--border-width-hairline) solid var(--color-border-base);
+    border-inline-start: 0;
+  }
+}
+
+@media (width < 48rem) {
+  .orbit__search {
+    flex: 0 0 auto;
+  }
+
+  .orbit__account-name,
+  .orbit__search-text,
+  .orbit__bar-logo {
+    display: none;
+  }
+}
+
+/* Pages */
+
+.orbit-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.orbit-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--spacing-md);
+}
+
+.orbit-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--spacing-md);
+  align-items: stretch;
+}
+
+.orbit-row--even {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.orbit-row--1-2 {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+}
+
+@media (width < 72rem) {
+  .orbit-row,
+  .orbit-row--even,
+  .orbit-row--1-2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.orbit-figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xl);
+}
+
+.orbit-figure {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xs);
+}
+
+.orbit-figure__value {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--color-fg-on-surface-primary);
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semi);
+  line-height: var(--font-line-height-2xl);
+}
+
+.orbit-funnel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orbit-funnel > li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xs);
+}
+
+.orbit-loading {
+  display: grid;
+  place-items: center;
+  min-block-size: 40vh;
+}
+
+.orbit-bare {
+  min-block-size: 100dvh;
+}
+
+.orbit-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-inline-size: 0;
+}
+
+.orbit-grid--5 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+}
+
+.orbit-grid--3 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+.orbit-h2 {
+  margin: 0;
+  color: var(--color-fg-on-surface-primary);
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-lg);
+  line-height: var(--font-line-height-lg);
+}
+
+.orbit-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+
+.orbit-center__note {
+  max-inline-size: 22rem;
+  margin: 0;
+}
+
+.orbit-figures--split {
+  justify-content: space-around;
+  padding-block-start: var(--spacing-md);
+  border-block-start: var(--border-width-hairline) solid var(--color-border-base);
+}
+
+.orbit-figures--column {
+  flex-direction: column;
+}
+
+.orbit-split {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--spacing-lg);
+}
+
+.orbit-bars,
+.orbit-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orbit-end {
+  align-items: flex-end;
+}
+
+.orbit-cell-bar {
+  display: inline-grid;
+  grid-template-columns: 6rem auto;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+.orbit-map {
+  position: relative;
+  min-block-size: 10rem;
+  border-radius: var(--radius-lg);
+  background-image: radial-gradient(var(--color-border-field) 1px, transparent 1.5px);
+  background-size: var(--spacing-xs) var(--spacing-xs);
+}
+
+.orbit-map__pin {
+  position: absolute;
+  inline-size: var(--sizing-xs);
+  block-size: var(--sizing-xs);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-accent-primary-default);
+  box-shadow: 0 0 0 var(--spacing-2xs) var(--color-bg-primary-1);
+}
+
+.orbit-event {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+
+.orbit-event__when {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  inline-size: 7rem;
+}
+
+.orbit-ticker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-surface);
+}
+
+.orbit-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
