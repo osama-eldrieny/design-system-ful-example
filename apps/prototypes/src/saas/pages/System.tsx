@@ -44,9 +44,8 @@ function AuthFrame({
   footer?: ReactNode;
 }) {
   return (
-    <div className="orbit-auth">
-      <main className="orbit-auth__form">
-        <Logo icon={<Orbit />} name="Orbit" href={to('')} />
+    <section className="orbit-auth" aria-label={title}>
+      <div className="orbit-auth__form">
         <div className="orbit-auth__card">
           <div className="stack-text">
             <h1 className="orbit-auth__title">{title}</h1>
@@ -55,14 +54,14 @@ function AuthFrame({
           {children}
           {footer && <p className="muted text-sm orbit-auth__text">{footer}</p>}
         </div>
-      </main>
+      </div>
       <aside className="orbit-auth__art" aria-hidden="true">
         <div className="orbit-auth__quote">
           <strong>“Orbit replaced four tools and gave us one number everyone trusts.”</strong>
           <span>Jenny Wilson · Head of Revenue, Northwind</span>
         </div>
       </aside>
-    </div>
+    </section>
   );
 }
 

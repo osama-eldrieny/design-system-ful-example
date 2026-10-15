@@ -256,4 +256,4 @@ export const allPages: (NavPage & { group: string; icon: ReactNode })[] = navSec
 export const pageFor = (path: string) => allPages.find((pg) => pg.path === path);
 
 /** Pages shown without the app frame. */
-export const isBare = (path: string) => path.startsWith('/auth/') || path === '/pages/coming-soon';
+export const isBare = (path: string) => path === '/pages/coming-soon';
