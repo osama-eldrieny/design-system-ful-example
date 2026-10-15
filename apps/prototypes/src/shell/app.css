@@ -368,3 +368,9 @@
     display: none;
   }
 }
+
+/* Content width: capped and centred on very wide screens. */
+.app__main > * {
+  max-inline-size: calc(var(--sizing-8xl) * 7.5);
+  margin-inline: auto;
+}

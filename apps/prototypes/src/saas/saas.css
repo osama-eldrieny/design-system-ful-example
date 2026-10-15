@@ -1583,3 +1583,9 @@
   gap: var(--spacing-xs);
   inline-size: 100%;
 }
+
+/* Content width: capped and centred on very wide screens (boxed layout stays narrower). */
+.orbit__main > * {
+  max-inline-size: calc(var(--sizing-8xl) * 7.5);
+  margin-inline: auto;
+}
