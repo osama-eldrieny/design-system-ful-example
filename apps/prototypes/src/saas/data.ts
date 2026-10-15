@@ -1,9 +1,57 @@
 /**
  * Sample data for Orbit, the SaaS prototype. Every figure is made up.
  */
-import { avatars, months } from '../dashboard-data';
+export const avatars = [
+  'assets/avatar-1.png',
+  'assets/avatar-2.png',
+  'assets/avatar-3.png',
+  'assets/avatar-4.png',
+];
 
-export { months };
+export const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+export const traffic = Array.from({ length: 24 }, (_, i) => ({
+  week: i % 2 === 0 ? months[Math.floor(i / 2)] : `${months[Math.floor(i / 2)]} 15`,
+  users: Math.round(6200 + Math.sin(i / 2.2) * 1400 + i * 120 + (i % 3) * 300),
+  sessions: Math.round(7600 + Math.sin(i / 2) * 1600 + i * 150 + (i % 4) * 280),
+}));
+
+export const weekdayTraffic = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, i) => ({
+  day,
+  desktop: [820, 760, 640, 690, 580, 420, 380][i],
+  mobile: [540, 610, 520, 580, 640, 880, 790][i],
+  tablet: [220, 260, 240, 210, 190, 310, 280][i],
+}));
+
+export const countries = [
+  { label: 'United States', value: 38 },
+  { label: 'India', value: 21 },
+  { label: 'United Kingdom', value: 14 },
+  { label: 'Germany', value: 11 },
+  { label: 'Canada', value: 9 },
+  { label: 'Other', value: 7 },
+];
+
+export const topPages = [
+  { path: '/pricing', views: 18240, change: 12.4 },
+  { path: '/blog/ux-review', views: 12410, change: 8.1 },
+  { path: '/docs/getting-started', views: 9880, change: -2.3 },
+  { path: '/features', views: 7420, change: 4.6 },
+  { path: '/changelog', views: 3910, change: 21.9 },
+];
 
 export const me = {
   name: 'Maya Okafor',

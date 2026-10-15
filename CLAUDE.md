@@ -21,7 +21,7 @@ packages/tokens/    token CSS (the source of truth): primitives, foundations, th
 packages/react/     component library (@ds/react): components/, styles/, icons/, ThemeProvider
 packages/lint/      Stylelint rule ds/component-tokens-only
 apps/docs/          Storybook docs (served at the site root)
-apps/prototypes/    Vite app: #/landing, #/dashboard and #/demo (theme playground), importing @ds/react
+apps/prototypes/    Vite app: #/saas (Orbit, the SaaS prototype) and #/demo (theme playground), importing @ds/react
 packages/mcp/       local MCP server for AI agents (ds-mcp)
 scripts/            build helpers (assemble-site.mjs builds site/)
 docs/ROADMAP.md     the plan

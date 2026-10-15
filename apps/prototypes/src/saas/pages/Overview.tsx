@@ -20,7 +20,7 @@ import {
   type TableColumn,
 } from '@ds/react';
 import { DollarSign, Filter, HeartHandshake, Megaphone, Users } from 'lucide-react';
-import { More, Panel, Trend } from '../../dashboards/kit';
+import { More, Panel, Trend } from '../kit';
 import {
   activities,
   churn,

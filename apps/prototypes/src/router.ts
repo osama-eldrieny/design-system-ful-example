@@ -1,32 +1,25 @@
 import { useEffect, useState } from 'react';
 
-/** Hash routes: #/dashboard, #/app/{projects,messages,calendar,orders,…}, #/app/settings/{section}, #/demo. Old #/admin… links still work. */
+/** Old Panda and admin addresses → the Orbit page that replaced them. */
+const moved: [RegExp, string][] = [
+  [/^\/app\/settings\/billing/, '/saas/commerce/billing'],
+  [/^\/(app\/)?settings/, '/saas/profile'],
+  [/^\/(app|admin)\/messages/, '/saas/support/chat'],
+  [/^\/(app|admin)\/calendar/, '/saas/calendar'],
+  [/^\/(app|admin)\/orders/, '/saas/commerce/invoices'],
+  [/^\/(app|admin)\/projects/, '/saas/tasks/kanban'],
+  [/^\/(app|admin)\/analytics/, '/saas/dashboards/analytics'],
+  [/^\/(app|admin)\/finance/, '/saas/dashboards/finance'],
+];
+
+/**
+ * Hash routes: #/saas/… (Orbit, the SaaS prototype and home page) and #/demo (theme
+ * playground). Anything else, including links to the removed Panda dashboard, opens Orbit.
+ */
 export const routeFromHash = () => {
   const path = window.location.hash.replace(/^#/, '') || '/';
-  // Links from before the rebuild.
-  // Pages that no longer exist open the admin overview.
-  if (/^\/(landing|store|checkout)/.test(path)) return '/dashboard';
-  if (
-    path === '/' ||
-    path === '/app' ||
-    path === '/dashboard' ||
-    path.startsWith('/admin/overview') ||
-    path === '/admin'
-  )
-    return '/dashboard';
-  if (path.startsWith('/dashboards')) return '/dashboard';
-  if (path.startsWith('/admin/team')) return '/app/settings/team';
-  const moved: Record<string, string> = {
-    analytics: '17',
-    customers: '06',
-    finance: '12',
-    profile: '19',
-  };
-  const section = path.split('/')[2];
-  if (/^\/(admin|app)\//.test(path) && moved[section]) return '/dashboard';
-  if (path.startsWith('/admin/')) return path.replace('/admin/', '/app/');
-  if (path.startsWith('/settings')) return `/app${path}`;
-  return path;
+  if (path.startsWith('/saas') || path.startsWith('/demo')) return path;
+  return moved.find(([re]) => re.test(path))?.[1] ?? '/saas';
 };
 
 export function useRoute() {

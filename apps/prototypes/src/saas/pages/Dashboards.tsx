@@ -40,9 +40,8 @@ import {
   Users,
   Wallet,
 } from 'lucide-react';
-import { BankCard } from '../../dashboards/kit';
-import { countries, months, topPages, traffic, weekdayTraffic } from '../../dashboard-data';
-import { people } from '../data';
+import { BankCard } from '../kit';
+import { countries, months, people, topPages, traffic, weekdayTraffic } from '../data';
 import { Page, to } from '../Shell';
 import { DataTable, Figure, More, Panel, RowMenu, Status, Toggle, Trend } from '../ui';
 

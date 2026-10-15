@@ -1,13 +1,7 @@
-import { lazy, Suspense, useEffect, useState, type ReactElement } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { applyTheme, defaultTheme, ThemeProvider, ToastProvider, type Theme } from '@ds/react';
 import { useRoute } from './router';
-import CalendarPage from './pages/CalendarPage';
 import DemoPage from './pages/DemoPage';
-import MessagesPage from './pages/MessagesPage';
-import OrdersPage from './pages/OrdersPage';
-import { Dashboard } from './dashboards/Dashboard';
-import ProjectPage from './pages/ProjectPage';
-import SettingsPage from './pages/SettingsPage';
 import './prototype.css';
 
 const SaasApp = lazy(() => import('./saas/SaasApp'));
@@ -30,36 +24,19 @@ function Page({
   theme: Theme;
   setTheme: (t: Theme) => void;
 }) {
-  const app: Record<string, () => ReactElement> = {
-    projects: () => <ProjectPage />,
-    messages: () => <MessagesPage />,
-    calendar: () => <CalendarPage />,
-    orders: () => <OrdersPage />,
-    settings: () => (
-      <SettingsPage
-        section={route.split('/')[3] ?? 'details'}
-        theme={theme}
-        onThemeChange={setTheme}
-      />
-    ),
-  };
-  if (route.startsWith('/saas'))
-    return (
-      <Suspense fallback={null}>
-        <SaasApp route={route} theme={theme} setTheme={setTheme} />
-      </Suspense>
-    );
-  const appPage = app[route.split('/')[2]];
-  if (route.startsWith('/app/') && appPage) return appPage();
   if (route.startsWith('/demo'))
     return (
       <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
     );
-  // The dashboard is the prototypes' home page.
-  return <Dashboard />;
+  // Orbit is the prototypes' home page.
+  return (
+    <Suspense fallback={null}>
+      <SaasApp route={route} theme={theme} setTheme={setTheme} />
+    </Suspense>
+  );
 }
 
-/** The prototypes app: the TechHub admin, the theme playground, toasts and the saved theme. */
+/** The prototypes app: Orbit (SaaS), the theme playground, toasts and the saved theme. */
 function App() {
   const route = useRoute();
   const [theme, setTheme] = useState<Theme>(savedTheme);

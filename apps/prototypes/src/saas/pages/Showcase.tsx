@@ -92,8 +92,7 @@ import {
   Underline,
   User,
 } from 'lucide-react';
-import { months } from '../../dashboard-data';
-import { people } from '../data';
+import { months, people } from '../data';
 import { Page, to } from '../Shell';
 import { DataTable, Panel, RowMenu, Status } from '../ui';
 import { CountryBars, WorldMap } from './Dashboards';

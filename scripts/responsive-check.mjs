@@ -25,14 +25,6 @@ const pages = [
   ...Object.values(index)
     .filter((e) => e.type === 'docs')
     .map((e) => ({ name: e.id, url: `${base}/iframe.html?id=${e.id}&viewMode=docs` })),
-  { name: 'dashboard', url: `${base}/prototypes/#/dashboard` },
-  { name: 'app projects', url: `${base}/prototypes/#/app/projects` },
-  { name: 'app messages', url: `${base}/prototypes/#/app/messages` },
-  { name: 'app calendar', url: `${base}/prototypes/#/app/calendar` },
-  { name: 'app orders', url: `${base}/prototypes/#/app/orders` },
-  { name: 'app settings', url: `${base}/prototypes/#/app/settings` },
-  { name: 'app settings/team', url: `${base}/prototypes/#/app/settings/team` },
-  { name: 'app settings/billing', url: `${base}/prototypes/#/app/settings/billing` },
   { name: 'prototype demo', url: `${base}/prototypes/#/demo` },
   // Orbit, the SaaS prototype: one page per layout pattern.
   ...[

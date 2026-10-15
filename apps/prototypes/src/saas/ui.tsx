@@ -18,9 +18,9 @@ import {
   type TableColumn,
 } from '@ds/react';
 import { Eye, MoreHorizontal, Trash2 } from 'lucide-react';
-import { Trend } from '../dashboards/kit';
+import { Trend } from './kit';
 
-export { More, Panel, Trend } from '../dashboards/kit';
+export { More, Panel, Trend } from './kit';
 
 const tones: Record<string, BadgeColor> = {
   active: 'success',

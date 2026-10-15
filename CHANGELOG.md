@@ -37,7 +37,10 @@ VerificationCodeInput.
   **ChooseCard:** icon.
 
 ### Prototypes
-- **One Panda dashboard** (`#/dashboard`), drawing on the layouts and content of Untitled UI's
+- **Panda removed.** The old dashboard, its app pages (projects, messages, calendar, orders,
+  settings) and its frame are deleted; Orbit is the prototypes' home page. Old `#/dashboard`,
+  `#/app/…` and `#/admin/…` links open the matching Orbit page.
+- **One Panda dashboard** (since removed) (`#/dashboard`), drawing on the layouts and content of Untitled UI's
   19 dashboard examples: sparkline KPIs; a performance chart with tabbed figures; sales by
   channel; customer acquisition; a monthly goal gauge; recent orders with status filters; live
   purchases; top pages; active users by country. Full width.
