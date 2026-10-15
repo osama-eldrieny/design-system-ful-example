@@ -824,6 +824,29 @@
 }
 
 /* Integrations */
+.orbit-apps {
+  display: grid;
+
+  /* At most four cards per row; fewer when each would drop below 15rem. */
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(15rem, calc((100% - 3 * var(--spacing-md)) / 4)), 1fr)
+  );
+  gap: var(--spacing-md);
+}
+
+@media (width < 40rem) {
+  .orbit-apps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.orbit-app__state {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
 .orbit-app {
   display: flex;
   flex-direction: column;
@@ -850,7 +873,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: var(--spacing-xs);
   padding-block-start: var(--spacing-sm);
   border-block-start: var(--border-width-hairline) solid var(--color-border-base);

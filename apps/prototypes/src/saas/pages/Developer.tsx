@@ -365,21 +365,23 @@ function Integrations() {
         </Modal>
       }
     >
-      <div className="orbit-grid orbit-grid--3">
+      <div className="orbit-apps">
         {apps.map((a) => (
           <article key={a.id} className="orbit-app">
             <div className="row row--between">
               <FeaturedIcon icon={a.icon} appearance="modern" shape="square" />
-              <Switch
-                aria-label={`Connect ${a.name}`}
-                checked={on[a.id]}
-                onCheckedChange={(v) => setOn((s) => ({ ...s, [a.id]: v }))}
-              />
+              <span className="orbit-app__state">
+                <Status>{on[a.id] ? 'Connected' : 'Inactive'}</Status>
+                <Switch
+                  aria-label={`Connect ${a.name}`}
+                  checked={on[a.id]}
+                  onCheckedChange={(v) => setOn((s) => ({ ...s, [a.id]: v }))}
+                />
+              </span>
             </div>
             <h2 className="orbit-app__name">{a.name}</h2>
             <p className="muted text-sm orbit-app__text">{a.description}</p>
             <div className="orbit-app__foot">
-              <Status>{on[a.id] ? 'Connected' : 'Inactive'}</Status>
               <span className="row">
                 <Button
                   appearance="text"
