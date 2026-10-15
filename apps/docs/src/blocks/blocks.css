@@ -587,7 +587,7 @@
   border-block-end: 1px solid var(--docs-line);
 
   /* One solid light blue behind every preview. */
-  background: #eff6ff;
+  background: #f5f9ff;
   color: var(--color-fg-on-surface-primary);
   pointer-events: none;
   box-sizing: border-box;
