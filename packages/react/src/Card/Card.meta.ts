@@ -12,6 +12,7 @@ export default defineMeta({
     { name: 'Card', from: '@ds/react' },
     { name: 'CardMedia', from: '@ds/react' },
     { name: 'CardBody', from: '@ds/react' },
+    { name: 'CardHeader', from: '@ds/react' },
     { name: 'CardTitle', from: '@ds/react' },
     { name: 'CardDescription', from: '@ds/react' },
     { name: 'CardFooter', from: '@ds/react' },
@@ -35,9 +36,18 @@ export default defineMeta({
       description: 'Optional image; the theme’s placeholder shows without one.',
       optional: true,
     },
+    {
+      name: 'Header',
+      description: 'Optional CardHeader: title and description with actions or a menu at the end.',
+      optional: true,
+    },
     { name: 'Title', description: 'Names the subject; becomes the link in a clickable card.' },
     { name: 'Description', description: 'Optional supporting text.', optional: true },
-    { name: 'Footer', description: 'Optional actions or metadata.', optional: true },
+    {
+      name: 'Footer',
+      description: 'Optional actions or metadata; `divided` adds a line above and aligns actions to the end.',
+      optional: true,
+    },
   ],
   options: [
     {
@@ -61,6 +71,14 @@ export default defineMeta({
       values: [
         { value: 'vertical', meaning: 'Media above the body. Default for grids.' },
         { value: 'horizontal', meaning: 'Media beside the body, for lists.' },
+      ],
+    },
+    {
+      prop: 'padding',
+      title: 'Padding',
+      values: [
+        { value: 'default', meaning: 'Padding from the density theme. Default.' },
+        { value: 'none', meaning: 'No padding, for content that runs edge to edge, like a table.' },
       ],
     },
   ],
@@ -184,6 +202,11 @@ export default defineMeta({
   tokenPrefixes: ['--card-'],
   related: [{ id: 'product-card', relation: 'Pattern for products, built from Card.' }],
   changelog: [
+    {
+      version: '1.3.0',
+      date: '2026-10-15',
+      changes: ['CardHeader (title, description, actions), CardFooter divided, padding none.'],
+    },
     {
       version: '0.2.0',
       date: '2026-09-29',

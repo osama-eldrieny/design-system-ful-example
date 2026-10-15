@@ -5,9 +5,13 @@ export {
   CardTitle,
   CardDescription,
   CardFooter,
+  CardHeader,
   type CardProps,
   type CardMediaProps,
   type CardTitleProps,
   type CardAppearance,
   type CardOrientation,
+  type CardPadding,
+  type CardHeaderProps,
+  type CardFooterProps,
 } from './Card';

@@ -59,6 +59,13 @@
   --card-horizontal-media-width: var(--sizing-8xl);
   --card-horizontal-media-min-height: calc(var(--sizing-8xl) * 0.7);
 
+  /* Header (CardHeader) and divided footer (CardFooter divided) */
+  --card-header-gap: var(--spacing-md);
+  --card-header-title-min-width: 12rem;
+  --card-header-actions-gap: var(--spacing-xs);
+  --card-footer-divider-color: var(--color-border-base);
+  --card-footer-divided-padding-top: var(--spacing-md);
+
   /* Clickable card */
   --card-hover-border-color: var(--color-border-primary-strong);
   --card-focus-ring-width: var(--focus-ring-width);

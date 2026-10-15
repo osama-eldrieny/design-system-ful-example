@@ -9,8 +9,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  Card,
+  CardFooter,
+  CardHeader,
   IconButton,
-  PageHeader,
 } from '@ds/react';
 import { ArrowDownRight, ArrowUpRight, MoreVertical, Wifi } from 'lucide-react';
 import './kit.css';
@@ -34,7 +36,7 @@ export const More = ({ label }: { label: string }) => (
   </DropdownMenu>
 );
 
-/** A titled card. `flush` removes the padding, e.g. around a table. */
+/** A titled card: the library's Card with CardHeader and a divided CardFooter. */
 export function Panel({
   title,
   description,
@@ -53,10 +55,9 @@ export function Panel({
   children: ReactNode;
 }) {
   return (
-    <section className={['kit-panel', className].filter(Boolean).join(' ')}>
+    <Card as="section" className={className}>
       {title && (
-        <PageHeader
-          size="small"
+        <CardHeader
           titleAs="h2"
           title={title}
           description={description}
@@ -73,8 +74,8 @@ export function Panel({
         />
       )}
       {children}
-      {footer && <div className="kit-panel__footer">{footer}</div>}
-    </section>
+      {footer && <CardFooter divided>{footer}</CardFooter>}
+    </Card>
   );
 }
 

@@ -41,8 +41,11 @@ import { ComponentPage } from '../blocks';
       </Card>
     ),
   }}
-  optionStories={{ appearance: 'Appearances', orientation: 'Orientation' }}
-  extras={[{ title: 'Clickable card', story: 'Clickable' }]}
+  optionStories={{ appearance: 'Appearances', orientation: 'Orientation', padding: 'Padding' }}
+  extras={[
+    { title: 'Clickable card', story: 'Clickable' },
+    { title: 'Header and divided footer', story: 'WithHeader' },
+  ]}
   behaviorStory="RightToLeft"
   matrix={
     <Card appearance="outlined" style={{ maxInlineSize: 260 }}>

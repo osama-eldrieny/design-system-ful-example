@@ -11,6 +11,7 @@ import './Card.css';
 
 export type CardAppearance = 'elevated' | 'outlined' | 'filled';
 export type CardOrientation = 'vertical' | 'horizontal';
+export type CardPadding = 'default' | 'none';
 
 const CardLinkContext = createContext<string | undefined>(undefined);
 
@@ -27,6 +28,8 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
    * covers the card, so there's one clear, accessible target.
    */
   href?: string;
+  /** `none` removes the padding, e.g. around a table that runs edge to edge. */
+  padding?: CardPadding;
   /** Element to render: `article` (default) for standalone content, `div` or `li` otherwise. */
   as?: ElementType;
   children: ReactNode;
@@ -42,6 +45,7 @@ export const Card = forwardRef<HTMLElement, CardProps>(
       appearance = 'elevated',
       orientation = 'vertical',
       href,
+      padding = 'default',
       as: Component = 'article',
       className,
       children,
@@ -57,6 +61,7 @@ export const Card = forwardRef<HTMLElement, CardProps>(
           `ds-card--${appearance}`,
           `ds-card--${orientation}`,
           href && 'ds-card--interactive',
+          padding === 'none' && 'ds-card--flush',
           className,
         ]
           .filter(Boolean)
@@ -137,12 +142,44 @@ export const CardDescription = forwardRef<
 ));
 CardDescription.displayName = 'CardDescription';
 
+export interface CardHeaderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+  /** The card's heading. */
+  title: ReactNode;
+  /** Heading level that fits the page outline. Default h3. */
+  titleAs?: CardTitleProps['as'];
+  /** Supporting text under the title. */
+  description?: ReactNode;
+  /** Buttons or a menu at the end of the header. */
+  actions?: ReactNode;
+}
+
+/** A header row: title and description at the start, actions at the end. */
+export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
+  ({ title, titleAs, description, actions, className, ...props }, ref) => (
+    <div ref={ref} className={['ds-card__header', className].filter(Boolean).join(' ')} {...props}>
+      <div className="ds-card__heading">
+        <CardTitle as={titleAs}>{title}</CardTitle>
+        {description && <CardDescription>{description}</CardDescription>}
+      </div>
+      {actions && <div className="ds-card__actions">{actions}</div>}
+    </div>
+  ),
+);
+CardHeader.displayName = 'CardHeader';
+
+export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {
+  /** Draws a line above the footer and aligns its content to the end, like a dialog's buttons. */
+  divided?: boolean;
+}
+
 /** Actions or metadata at the bottom of the card. Buttons here stay clickable in link cards. */
-export const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  ({ className, ...props }, ref) => (
+export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
+  ({ divided = false, className, ...props }, ref) => (
     <div
       ref={ref}
-      className={['ds-card__footer', className].filter(Boolean).join(' ')}
+      className={['ds-card__footer', divided && 'ds-card__footer--divided', className]
+        .filter(Boolean)
+        .join(' ')}
       {...props}
     />
   ),

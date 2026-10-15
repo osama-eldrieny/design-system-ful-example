@@ -1,12 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect } from 'storybook/test';
-import { Button } from '../Button';
+import { MoreVertical } from 'lucide-react';
+import { Button, IconButton } from '../Button';
 import { ThemeProvider } from '../ThemeProvider';
 import {
   Card,
   CardBody,
   CardDescription,
   CardFooter,
+  CardHeader,
   CardMedia,
   CardTitle,
   type CardAppearance,
@@ -27,7 +29,7 @@ const Article = (props: Partial<React.ComponentProps<typeof Card>>) => (
 const meta = {
   title: 'Components/Data display/Card',
   component: Card,
-  subcomponents: { CardMedia, CardBody, CardTitle, CardDescription, CardFooter },
+  subcomponents: { CardMedia, CardBody, CardTitle, CardDescription, CardFooter, CardHeader },
   tags: ['!autodocs'],
   args: { appearance: 'elevated', orientation: 'vertical', children: null },
   argTypes: { children: { control: false } },
@@ -130,4 +132,47 @@ export const LinkName: Story = {
     await expect(links).toHaveLength(1);
     await expect(links[0]).toHaveAccessibleName('Design tokens in practice');
   },
+};
+
+/** A dashboard panel: header with actions and a menu, content, and a divided footer. */
+export const WithHeader: Story = {
+  render: () => (
+    <Card appearance="outlined" style={{ maxInlineSize: 420 }}>
+      <CardHeader
+        titleAs="h2"
+        title="Monthly target"
+        description="Target you’ve set for each month."
+        actions={
+          <>
+            <Button size="small" variant="secondary" appearance="outline">
+              Export
+            </Button>
+            <IconButton icon={<MoreVertical />} label="Options" variant="secondary" appearance="ghost" size="small" />
+          </>
+        }
+      />
+      <CardBody>
+        <CardDescription>You earned $3,287 today, higher than last month.</CardDescription>
+      </CardBody>
+      <CardFooter divided>
+        <Button size="small" variant="secondary" appearance="outline">
+          Cancel
+        </Button>
+        <Button size="small">Save</Button>
+      </CardFooter>
+    </Card>
+  ),
+};
+
+export const Padding: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16, maxInlineSize: 420 }}>
+      <Card appearance="outlined">
+        <CardHeader title="Default padding" />
+      </Card>
+      <Card appearance="outlined" padding="none">
+        <CardHeader title="No padding" description="Content runs to the edge." />
+      </Card>
+    </div>
+  ),
 };
