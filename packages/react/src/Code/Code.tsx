@@ -1,5 +1,6 @@
 import { forwardRef, useState, type HTMLAttributes } from 'react';
 import { Check, Copy } from 'lucide-react';
+import { Tab, TabList, TabPanel, Tabs } from '../Tabs';
 import './Code.css';
 
 export interface CodeProps extends HTMLAttributes<HTMLElement> {
@@ -87,3 +88,39 @@ export const Code = forwardRef<HTMLElement, CodeProps>(
   },
 );
 Code.displayName = 'Code';
+
+export interface CodeTabsProps extends HTMLAttributes<HTMLDivElement> {
+  /** One tab per variant, e.g. npm / pnpm / yarn, or one per file. */
+  tabs: { label: string; code: string; language?: string }[];
+  /** What the tabs switch between, e.g. "Package manager". Names the tab list. */
+  label: string;
+  /** Tab shown first. Default the first. */
+  defaultTab?: string;
+  /** Accessible name of each copy button. Default "Copy code". */
+  copyLabel?: string;
+}
+
+/** The same snippet in a few variants, e.g. per package manager or per file, one tab each. */
+export const CodeTabs = forwardRef<HTMLDivElement, CodeTabsProps>(
+  ({ tabs, label, defaultTab, copyLabel, className, ...props }, ref) => (
+    <div ref={ref} className={['ds-code-tabs', className].filter(Boolean).join(' ')} {...props}>
+      <Tabs appearance="line" size="small" defaultValue={defaultTab ?? tabs[0]?.label}>
+        <TabList label={label}>
+          {tabs.map((t) => (
+            <Tab key={t.label} value={t.label}>
+              {t.label}
+            </Tab>
+          ))}
+        </TabList>
+        {tabs.map((t) => (
+          <TabPanel key={t.label} value={t.label} className="ds-code-tabs__panel">
+            <Code block language={t.language} copyLabel={copyLabel}>
+              {t.code}
+            </Code>
+          </TabPanel>
+        ))}
+      </Tabs>
+    </div>
+  ),
+);
+CodeTabs.displayName = 'CodeTabs';

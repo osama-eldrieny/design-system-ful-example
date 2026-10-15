@@ -35,6 +35,8 @@ export const Appearances: Story = {
     <div style={{ display: 'grid', gap: 16 }}>
       <Pagination {...args} appearance="full" label="Full pagination" />
       <Pagination {...args} appearance="simple" label="Simple pagination" />
+      <Pagination {...args} appearance="card" label="Card pagination" />
+      <Pagination {...args} appearance="dots" label="Dot pagination" />
     </div>
   ),
 };
@@ -119,5 +121,17 @@ export const Navigate: Story = {
     );
     await userEvent.click(canvas.getByRole('button', { name: 'Page 12' }));
     await expect(canvas.getByRole('button', { name: 'Next page' })).toBeDisabled();
+  },
+};
+
+/** Dots: each dot is a named button; the current one is marked and wider. */
+export const Dots: Story = {
+  tags: ['test'],
+  args: { appearance: 'dots', currentPage: 1, totalPages: 4, label: 'Slides' },
+  play: async ({ canvas, args }) => {
+    const third = canvas.getByRole('button', { name: 'Page 3' });
+    await userEvent.click(third);
+    await expect(args.onPageChange).toHaveBeenCalledWith(3);
+    await expect(third).toHaveAttribute('aria-current', 'page');
   },
 };

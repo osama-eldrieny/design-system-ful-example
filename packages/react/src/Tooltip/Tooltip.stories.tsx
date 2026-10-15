@@ -27,6 +27,27 @@ export const Playground: Story = {};
 
 export const Open: Story = { args: { defaultOpen: true } };
 
+/** Top (default), end, bottom and start; arrows point at the trigger. */
+export const Placements: Story = {
+  render: () => (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, auto)',
+        gap: 96,
+        padding: 64,
+        justifyContent: 'center',
+      }}
+    >
+      {(['top', 'right', 'bottom', 'left'] as const).map((side) => (
+        <Tooltip key={side} content={`On the ${side}`} side={side} arrow defaultOpen>
+          <button type="button">{side}</button>
+        </Tooltip>
+      ))}
+    </div>
+  ),
+};
+
 /** A bold title above supporting text, with an arrow pointing at the trigger. */
 export const WithTitle: Story = {
   args: {

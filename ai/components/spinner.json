@@ -36,6 +36,24 @@
   ],
   "options": [
     {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "ring",
+          "meaning": "A turning circle. Default."
+        },
+        {
+          "value": "dots",
+          "meaning": "Three pulsing dots, e.g. while someone is typing."
+        },
+        {
+          "value": "line",
+          "meaning": "A thin bar sliding across, e.g. at the top of a panel."
+        }
+      ]
+    },
+    {
       "prop": "size",
       "title": "Size",
       "values": [
@@ -159,6 +177,13 @@
   ],
   "changelog": [
     {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New appearances: dots and line."
+      ]
+    },
+    {
       "version": "0.4.0",
       "date": "2026-09-29",
       "changes": [
@@ -172,6 +197,17 @@
       "import": "import { Spinner } from '@ds/react';",
       "description": "A spinning indicator for loading that takes an unknown time. Announced once as a status.\nFor known progress, use Progress.",
       "props": {
+        "appearance": {
+          "type": "SpinnerAppearance",
+          "values": [
+            "ring",
+            "dots",
+            "line"
+          ],
+          "required": false,
+          "default": "ring",
+          "description": "`ring` (default) a turning circle. `dots` three pulsing dots, e.g. while someone types.\n`line` a thin bar sliding across, e.g. at the top of a panel."
+        },
         "size": {
           "type": "\"small\" | \"medium\" | \"large\"",
           "values": [
@@ -241,6 +277,31 @@
       "description": "Stroke widths in px.",
       "references": "--border-width-hairline",
       "default": "1px"
+    },
+    "--spinner-dots-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--spinner-dots-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--spinner-line-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "220px"
+    },
+    "--spinner-line-height": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-strong",
+      "default": "5px"
+    },
+    "--spinner-line-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
     }
   },
   "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-feedback-spinner--docs"

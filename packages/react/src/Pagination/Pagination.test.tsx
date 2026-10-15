@@ -60,4 +60,19 @@ describe('Pagination', () => {
     render(<Pagination appearance="simple" currentPage={2} totalPages={10} />);
     expect(screen.getByText('Page 2 of 10')).toBeInTheDocument();
   });
+
+  it('card: shows the summary and labelled buttons', async () => {
+    const onChange = vi.fn();
+    render(<Pagination appearance="card" currentPage={1} totalPages={5} onPageChange={onChange} />);
+    expect(screen.getByText('Page 1 of 5')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Previous' })).toBeDisabled();
+    await userEvent.click(screen.getByRole('button', { name: 'Next' }));
+    expect(onChange).toHaveBeenCalledWith(2);
+  });
+
+  it('dots: one named button per page, the current one marked', () => {
+    render(<Pagination appearance="dots" currentPage={2} totalPages={3} />);
+    expect(screen.getAllByRole('button')).toHaveLength(3);
+    expect(screen.getByRole('button', { name: 'Page 2' })).toHaveAttribute('aria-current', 'page');
+  });
 });

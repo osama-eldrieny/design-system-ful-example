@@ -6,6 +6,7 @@ Status: stable · Category: Data display · Since 0.4.0
 
 ```tsx
 import { Code } from '@ds/react';
+import { CodeTabs } from '@ds/react';
 ```
 
 ## When to use
@@ -35,6 +36,15 @@ import { Code } from '@ds/react';
 | `copyLabel` | `string` | Copy code | Accessible name of the copy button. Default "Copy code". |
 | `copiedLabel` | `string` | Copied | Announced after copying. Default "Copied". |
 
+### CodeTabs
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `tabs` | `{ label: string; code: string; language?: string \| undefined; }[]` |  | One tab per variant, e.g. npm / pnpm / yarn, or one per file. |
+| `label` | `string` |  | What the tabs switch between, e.g. "Package manager". Names the tab list. |
+| `defaultTab` | `string` |  | Tab shown first. Default the first. |
+| `copyLabel` | `string` | Copy code | Accessible name of each copy button. Default "Copy code". |
+
 ## Guidelines
 - Do: Use blocks for multi-line code. Don’t: Put long code inline. Why: Inline code wraps awkwardly.
 - Do: Name the language. Don’t: Leave readers guessing. Why: The label helps people and tools.
@@ -55,6 +65,22 @@ import { Code } from '@ds/react';
 - WCAG 1.4.10 Reflow: Wide code scrolls in its own area.
 
 ## Examples
+### Tabs
+The same command per package manager, one tab each.
+
+```tsx
+import { CodeTabs } from '@ds/react';
+
+<CodeTabs
+  label="Package manager"
+  tabs={[
+    { label: 'npm', code: 'npm install @ds/react', language: 'sh' },
+    { label: 'pnpm', code: 'pnpm add @ds/react', language: 'sh' },
+    { label: 'yarn', code: 'yarn add @ds/react', language: 'sh' },
+  ]}
+/>
+```
+
 ### Inline
 In text.
 

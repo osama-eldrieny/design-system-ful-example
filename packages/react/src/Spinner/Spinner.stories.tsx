@@ -26,6 +26,26 @@ export const Sizes: Story = {
   ),
 };
 
+/** A ring (default), pulsing dots and a sliding line, each in three sizes. */
+export const Appearances: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 24 }}>
+      {(['ring', 'dots', 'line'] as const).map((appearance) => (
+        <div key={appearance} style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+          {(['small', 'medium', 'large'] as const).map((size) => (
+            <Spinner
+              key={size}
+              appearance={appearance}
+              size={size}
+              label={`Loading, ${appearance} ${size}`}
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = { globals: { language: 'ar' }, args: { label: 'جارٍ التحميل' } };
 
 export const AllThemes: Story = {

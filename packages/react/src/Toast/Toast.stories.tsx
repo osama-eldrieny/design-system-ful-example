@@ -73,6 +73,32 @@ export const Tones: Story = {
   ),
 };
 
+const PHOTO =
+  'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><rect width="40" height="40" fill="%2393c5fd"/><circle cx="28" cy="12" r="5" fill="%23fef3c7"/><path d="M0 32l12-12 10 10 6-6 12 12v4H0z" fill="%233b82f6"/></svg>';
+
+/** A person in place of the icon, and a thumbnail after the text. */
+export const Media: Story = {
+  render: () => (
+    <ToastProvider>
+      <ShowOnMount
+        list={[
+          {
+            title: 'Olivia Rhye mentioned you',
+            description: '“Can you check the Q4 numbers?”',
+            avatar: { name: 'Olivia Rhye' },
+          },
+          {
+            title: 'Photo uploaded',
+            description: 'hero-image.png · 840 KB',
+            tone: 'success',
+            image: PHOTO,
+          },
+        ]}
+      />
+    </ToastProvider>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   render: () => (

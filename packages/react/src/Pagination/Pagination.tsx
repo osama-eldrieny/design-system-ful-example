@@ -2,7 +2,7 @@ import { forwardRef, type HTMLAttributes } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './Pagination.css';
 
-export type PaginationAppearance = 'full' | 'simple';
+export type PaginationAppearance = 'full' | 'simple' | 'card' | 'dots';
 
 export interface PaginationProps extends Omit<HTMLAttributes<HTMLElement>, 'onChange'> {
   /** The page being shown, starting at 1. */
@@ -13,7 +13,9 @@ export interface PaginationProps extends Omit<HTMLAttributes<HTMLElement>, 'onCh
   onPageChange?: (page: number) => void;
   /**
    * `full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows
-   * “Page 2 of 10” between the arrows, for narrow spaces.
+   * “Page 2 of 10” between the arrows, for narrow spaces. `card` is a bordered bar with the
+   * summary on the start side and labelled Previous / Next on the end, under tables and cards.
+   * `dots` shows one dot per page and no arrows, for carousels and onboarding steps.
    */
   appearance?: PaginationAppearance;
   /** How many pages to show on each side of the current page before “…”. */
@@ -81,6 +83,62 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
     const go = (page: number) => {
       if (page >= 1 && page <= totalPages && page !== currentPage) onPageChange?.(page);
     };
+
+    if (appearance === 'dots')
+      return (
+        <nav
+          ref={ref}
+          aria-label={label}
+          className={['ds-pagination', 'ds-pagination--dots', className].filter(Boolean).join(' ')}
+          {...props}
+        >
+          <ul className="ds-pagination__list">
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((item) => (
+              <li key={item}>
+                <button
+                  type="button"
+                  className="ds-pagination__dot"
+                  aria-label={pageLabel(item)}
+                  aria-current={item === currentPage ? 'page' : undefined}
+                  onClick={() => go(item)}
+                />
+              </li>
+            ))}
+          </ul>
+        </nav>
+      );
+
+    if (appearance === 'card')
+      return (
+        <nav
+          ref={ref}
+          aria-label={label}
+          className={['ds-pagination', 'ds-pagination--card', className].filter(Boolean).join(' ')}
+          {...props}
+        >
+          <span className="ds-pagination__summary" aria-live="polite">
+            {summary(currentPage, totalPages)}
+          </span>
+          <span className="ds-pagination__card-actions">
+            <button
+              type="button"
+              className="ds-pagination__item ds-pagination__arrow ds-pagination__card-button"
+              disabled={currentPage <= 1}
+              onClick={() => go(currentPage - 1)}
+            >
+              {labels.previous ?? 'Previous'}
+            </button>
+            <button
+              type="button"
+              className="ds-pagination__item ds-pagination__arrow ds-pagination__card-button"
+              disabled={currentPage >= totalPages}
+              onClick={() => go(currentPage + 1)}
+            >
+              {labels.next ?? 'Next'}
+            </button>
+          </span>
+        </nav>
+      );
 
     return (
       <nav

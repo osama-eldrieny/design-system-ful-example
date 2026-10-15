@@ -23,6 +23,8 @@ import { Pagination } from '@ds/react';
 ## Appearance (`appearance`)
 - `full`: Page numbers with ellipses. Default.
 - `simple`: “Page 2 of 10” between the arrows, for narrow spaces.
+- `card`: A bordered bar: summary on the start side, labelled Previous / Next on the end.
+- `dots`: One dot per page, no arrows; for carousels and onboarding.
 
 ## States
 - **Default**: A page people can go to. (At rest.)
@@ -39,7 +41,7 @@ import { Pagination } from '@ds/react';
 | `currentPage` | `number` |  | The page being shown, starting at 1. |
 | `totalPages` | `number` |  | Number of pages. |
 | `onPageChange` | `((page: number) => void)` |  | Called with the page to show. |
-| `appearance` | `PaginationAppearance` | full | `full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows “Page 2 of 10” between the arrows, for narrow spaces. |
+| `appearance` | `PaginationAppearance` | full | `full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows “Page 2 of 10” between the arrows, for narrow spaces. `card` is a bordered bar with the summary on the start side and labelled Previous / Next on the end, under tables and cards. `dots` shows one dot per page and no arrows, for carousels and onboarding steps. |
 | `siblingCount` | `number` | 1 | How many pages to show on each side of the current page before “…”. |
 | `showArrowLabels` | `boolean` | false | Shows "Previous" and "Next" as text beside the arrows. |
 | `layout` | `"compact" \| "spread"` | compact | `compact` (default) keeps everything together. `spread` pushes previous and next to the edges with the pages centered, e.g. under a table. |

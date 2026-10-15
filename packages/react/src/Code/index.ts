@@ -1,1 +1,1 @@
-export { Code, type CodeProps } from './Code';
+export { Code, CodeTabs, type CodeProps, type CodeTabsProps } from './Code';

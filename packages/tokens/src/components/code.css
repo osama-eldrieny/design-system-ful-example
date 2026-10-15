@@ -25,4 +25,7 @@
   --code-focus-ring-width: var(--focus-ring-width);
   --code-focus-ring-offset: var(--focus-ring-offset);
   --code-focus-ring-color: var(--focus-ring-color);
+
+  /* CodeTabs */
+  --code-tabs-panel-padding-y: var(--spacing-xs);
 }

@@ -57,6 +57,16 @@
       "optional": true
     },
     {
+      "name": "Avatar",
+      "description": "A person in place of the icon, for messages from someone.",
+      "optional": true
+    },
+    {
+      "name": "Image",
+      "description": "A thumbnail after the text, e.g. an upload.",
+      "optional": true
+    },
+    {
       "name": "Close",
       "description": "Dismisses it."
     }
@@ -81,6 +91,24 @@
         {
           "value": "danger",
           "meaning": "Something failed; announced assertively."
+        }
+      ]
+    },
+    {
+      "prop": "media",
+      "title": "Media",
+      "values": [
+        {
+          "value": "icon",
+          "meaning": "The tone icon. Default."
+        },
+        {
+          "value": "avatar",
+          "meaning": "A person, e.g. “Olivia mentioned you”."
+        },
+        {
+          "value": "image",
+          "meaning": "A thumbnail after the text, e.g. “Photo uploaded”."
         }
       ]
     }
@@ -209,6 +237,13 @@
     }
   ],
   "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "avatar and image options for messages from people and uploads."
+      ]
+    },
     {
       "version": "0.4.0",
       "date": "2026-09-29",
@@ -506,6 +541,20 @@
       "description": "Fixed element sizes in px.",
       "references": "--sizing-md",
       "default": "22px"
+    },
+    "--toast-image-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-2xl",
+      "default": "56px"
+    },
+    "--toast-image-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-md",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "8px"
+      }
     },
     "--toast-padding": {
       "description": "Default gap and control padding.",

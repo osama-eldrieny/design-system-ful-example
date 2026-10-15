@@ -41,6 +41,8 @@
   --toast-danger-accent-color: var(--color-bg-accent-danger-default);
   --toast-accent-width: var(--border-width-strong);
   --toast-icon-size: var(--sizing-md);
+  --toast-image-size: var(--sizing-2xl);
+  --toast-image-border-radius: var(--radius-md);
   --toast-padding: var(--spacing-md);
   --toast-gap: var(--spacing-sm);
   --toast-width: calc(var(--sizing-8xl) * 1.6);

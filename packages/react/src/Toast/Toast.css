@@ -72,6 +72,18 @@
   block-size: var(--toast-icon-size);
 }
 
+.ds-toast__avatar {
+  flex: none;
+}
+
+.ds-toast__image {
+  flex: none;
+  inline-size: var(--toast-image-size);
+  block-size: var(--toast-image-size);
+  border-radius: var(--toast-image-border-radius);
+  object-fit: cover;
+}
+
 .ds-toast__text {
   flex: 1;
   min-inline-size: 0;

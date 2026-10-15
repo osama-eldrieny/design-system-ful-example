@@ -46,6 +46,12 @@ export default defineMeta({
       values: [
         { value: 'full', meaning: 'Page numbers with ellipses. Default.' },
         { value: 'simple', meaning: '“Page 2 of 10” between the arrows, for narrow spaces.' },
+        {
+          value: 'card',
+          meaning:
+            'A bordered bar: summary on the start side, labelled Previous / Next on the end.',
+        },
+        { value: 'dots', meaning: 'One dot per page, no arrows; for carousels and onboarding.' },
       ],
     },
   ],
@@ -159,6 +165,11 @@ export default defineMeta({
   tokenPrefixes: ['--pagination-'],
   related: [{ id: 'table', relation: 'Often paired with a paginated table.' }],
   changelog: [
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: ['New appearances: card (bordered bar) and dots (carousels).'],
+    },
     {
       version: '1.1.0',
       date: '2026-10-15',

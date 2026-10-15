@@ -2409,6 +2409,7 @@ Status: stable · Category: Data display · Since 0.4.0
 
 ```tsx
 import { Code } from '@ds/react';
+import { CodeTabs } from '@ds/react';
 ```
 
 ## When to use
@@ -2438,6 +2439,15 @@ import { Code } from '@ds/react';
 | `copyLabel` | `string` | Copy code | Accessible name of the copy button. Default "Copy code". |
 | `copiedLabel` | `string` | Copied | Announced after copying. Default "Copied". |
 
+### CodeTabs
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `tabs` | `{ label: string; code: string; language?: string \| undefined; }[]` |  | One tab per variant, e.g. npm / pnpm / yarn, or one per file. |
+| `label` | `string` |  | What the tabs switch between, e.g. "Package manager". Names the tab list. |
+| `defaultTab` | `string` |  | Tab shown first. Default the first. |
+| `copyLabel` | `string` | Copy code | Accessible name of each copy button. Default "Copy code". |
+
 ## Guidelines
 - Do: Use blocks for multi-line code. Don’t: Put long code inline. Why: Inline code wraps awkwardly.
 - Do: Name the language. Don’t: Leave readers guessing. Why: The label helps people and tools.
@@ -2458,6 +2468,22 @@ import { Code } from '@ds/react';
 - WCAG 1.4.10 Reflow: Wide code scrolls in its own area.
 
 ## Examples
+### Tabs
+The same command per package manager, one tab each.
+
+```tsx
+import { CodeTabs } from '@ds/react';
+
+<CodeTabs
+  label="Package manager"
+  tabs={[
+    { label: 'npm', code: 'npm install @ds/react', language: 'sh' },
+    { label: 'pnpm', code: 'pnpm add @ds/react', language: 'sh' },
+    { label: 'yarn', code: 'yarn add @ds/react', language: 'sh' },
+  ]}
+/>
+```
+
 ### Inline
 In text.
 
@@ -5489,6 +5515,8 @@ import { Pagination } from '@ds/react';
 ## Appearance (`appearance`)
 - `full`: Page numbers with ellipses. Default.
 - `simple`: “Page 2 of 10” between the arrows, for narrow spaces.
+- `card`: A bordered bar: summary on the start side, labelled Previous / Next on the end.
+- `dots`: One dot per page, no arrows; for carousels and onboarding.
 
 ## States
 - **Default**: A page people can go to. (At rest.)
@@ -5505,7 +5533,7 @@ import { Pagination } from '@ds/react';
 | `currentPage` | `number` |  | The page being shown, starting at 1. |
 | `totalPages` | `number` |  | Number of pages. |
 | `onPageChange` | `((page: number) => void)` |  | Called with the page to show. |
-| `appearance` | `PaginationAppearance` | full | `full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows “Page 2 of 10” between the arrows, for narrow spaces. |
+| `appearance` | `PaginationAppearance` | full | `full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows “Page 2 of 10” between the arrows, for narrow spaces. `card` is a bordered bar with the summary on the start side and labelled Previous / Next on the end, under tables and cards. `dots` shows one dot per page and no arrows, for carousels and onboarding steps. |
 | `siblingCount` | `number` | 1 | How many pages to show on each side of the current page before “…”. |
 | `showArrowLabels` | `boolean` | false | Shows "Previous" and "Next" as text beside the arrows. |
 | `layout` | `"compact" \| "spread"` | compact | `compact` (default) keeps everything together. `spread` pushes previous and next to the edges with the pages centered, e.g. under a table. |
@@ -6695,6 +6723,11 @@ import { Spinner } from '@ds/react';
 - When progress is known, e.g. uploads. Use Progress.
 - When the page layout is known. Use Skeleton.
 
+## Appearance (`appearance`)
+- `ring`: A turning circle. Default.
+- `dots`: Three pulsing dots, e.g. while someone is typing.
+- `line`: A thin bar sliding across, e.g. at the top of a panel.
+
 ## Size (`size`)
 - `small`: Inside buttons and fields.
 - `medium`: Default.
@@ -6708,6 +6741,7 @@ import { Spinner } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
+| `appearance` | `SpinnerAppearance` | ring | `ring` (default) a turning circle. `dots` three pulsing dots, e.g. while someone types. `line` a thin bar sliding across, e.g. at the top of a panel. |
 | `size` | `"small" \| "medium" \| "large"` | medium | `small` inside buttons and fields, `medium` (default), `large` for page areas. |
 | `label` | `string` | Loading | What is loading, announced politely, e.g. "Loading orders". Default "Loading". |
 
@@ -7728,6 +7762,11 @@ import { useToast } from '@ds/react';
 - `success`: Something succeeded.
 - `warning`: Something needs attention.
 - `danger`: Something failed; announced assertively.
+
+## Media (`media`)
+- `icon`: The tone icon. Default.
+- `avatar`: A person, e.g. “Olivia mentioned you”.
+- `image`: A thumbnail after the text, e.g. “Photo uploaded”.
 
 ## States
 - **Shown**: Slides in; pauses on hover or focus. (toast(…))

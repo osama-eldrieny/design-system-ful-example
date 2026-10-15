@@ -9,6 +9,10 @@
     {
       "name": "Code",
       "from": "@ds/react"
+    },
+    {
+      "name": "CodeTabs",
+      "from": "@ds/react"
     }
   ],
   "whenToUse": [
@@ -130,6 +134,12 @@
   },
   "examples": [
     {
+      "id": "tabs",
+      "title": "Tabs",
+      "description": "The same command per package manager, one tab each.",
+      "code": "import { CodeTabs } from '@ds/react';\n\n<CodeTabs\n  label=\"Package manager\"\n  tabs={[\n    { label: 'npm', code: 'npm install @ds/react', language: 'sh' },\n    { label: 'pnpm', code: 'pnpm add @ds/react', language: 'sh' },\n    { label: 'yarn', code: 'yarn add @ds/react', language: 'sh' },\n  ]}\n/>"
+    },
+    {
       "id": "inline",
       "title": "Inline",
       "description": "In text.",
@@ -163,6 +173,13 @@
       "date": "2026-09-29",
       "changes": [
         "New component."
+      ]
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New CodeTabs: the same snippet in a few variants, one tab each."
       ]
     }
   ],
@@ -207,6 +224,37 @@
           "required": false,
           "default": "Copied",
           "description": "Announced after copying. Default \"Copied\"."
+        }
+      }
+    },
+    {
+      "name": "CodeTabs",
+      "import": "import { CodeTabs } from '@ds/react';",
+      "description": "The same snippet in a few variants, e.g. per package manager or per file, one tab each.",
+      "props": {
+        "tabs": {
+          "type": "{ label: string; code: string; language?: string | undefined; }[]",
+          "required": true,
+          "default": null,
+          "description": "One tab per variant, e.g. npm / pnpm / yarn, or one per file."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "What the tabs switch between, e.g. \"Package manager\". Names the tab list."
+        },
+        "defaultTab": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Tab shown first. Default the first."
+        },
+        "copyLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Copy code",
+          "description": "Accessible name of each copy button. Default \"Copy code\"."
         }
       }
     }
@@ -349,6 +397,11 @@
         "brand=opal,mode=light": "#326fd1",
         "brand=opal,mode=dark": "#abc9fb"
       }
+    },
+    "--code-tabs-panel-padding-y": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
     }
   },
   "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-code--docs"

@@ -4,7 +4,11 @@
  * Style this component only with these tokens.
  *
  * Grammar: --pagination-{part}-{state?}-{property}
- *   part: item | number | arrow | ellipsis | summary; state: default | hover | active (current page)
+ *   part: item | number | arrow | ellipsis | summary | card | dot; state: default | hover | active (current page)
+ *
+ * Token reference (appearances):
+ *   --pagination-card-*: the bordered bar of appearance="card" and its Previous / Next buttons.
+ *   --pagination-dot-*: the dots of appearance="dots"; the current dot is wider and filled.
  */
 
 :root,
@@ -45,4 +49,23 @@
   --pagination-arrow-label-padding-x: var(--spacing-sm);
   --pagination-arrow-label-border-width: var(--border-width-hairline);
   --pagination-arrow-label-border-color: var(--color-border-base);
+
+  /* Card: a bordered bar with the summary and labelled Previous / Next */
+  --pagination-card-padding-x: var(--spacing-md);
+  --pagination-card-padding-y: var(--spacing-sm);
+  --pagination-card-gap: var(--spacing-md);
+  --pagination-card-border-width: var(--border-width-hairline);
+  --pagination-card-border-color: var(--color-border-base);
+  --pagination-card-border-radius: var(--radius-xl);
+  --pagination-card-bg-color: var(--color-bg-surface);
+  --pagination-card-button-gap: var(--spacing-xs);
+
+  /* Dots: one per page; the current dot is wider and filled */
+  --pagination-dot-size: var(--sizing-3xs);
+  --pagination-dot-active-width: calc(var(--sizing-3xs) * 3);
+  --pagination-dot-gap: var(--spacing-xs);
+  --pagination-dot-border-radius: var(--radius-full);
+  --pagination-dot-default-bg-color: var(--color-border-field);
+  --pagination-dot-hover-bg-color: var(--color-fg-on-surface-secondary);
+  --pagination-dot-active-bg-color: var(--color-bg-accent-primary-strong-default);
 }

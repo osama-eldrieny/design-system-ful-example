@@ -8,7 +8,10 @@ export default defineMeta({
   since: '0.4.0',
   description:
     'Code shows code inline in text or as a block with a language label and a copy button. Blocks scroll horizontally and can be scrolled from the keyboard.',
-  imports: [{ name: 'Code', from: '@ds/react' }],
+  imports: [
+    { name: 'Code', from: '@ds/react' },
+    { name: 'CodeTabs', from: '@ds/react' },
+  ],
   whenToUse: [
     'For code, commands, file names and values in text.',
     'For copyable snippets in docs.',
@@ -83,6 +86,21 @@ export default defineMeta({
   },
   examples: [
     {
+      id: 'tabs',
+      title: 'Tabs',
+      description: 'The same command per package manager, one tab each.',
+      code: `import { CodeTabs } from '@ds/react';
+
+<CodeTabs
+  label="Package manager"
+  tabs={[
+    { label: 'npm', code: 'npm install @ds/react', language: 'sh' },
+    { label: 'pnpm', code: 'pnpm add @ds/react', language: 'sh' },
+    { label: 'yarn', code: 'yarn add @ds/react', language: 'sh' },
+  ]}
+/>`,
+    },
+    {
       id: 'inline',
       title: 'Inline',
       description: 'In text.',
@@ -103,5 +121,12 @@ export default defineMeta({
   ],
   tokenPrefixes: ['--code-'],
   related: [{ id: 'kbd', relation: 'For keyboard keys.' }],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: ['New CodeTabs: the same snippet in a few variants, one tab each.'],
+    },
+  ],
 });

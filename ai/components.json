@@ -164,7 +164,8 @@
       "id": "code",
       "name": "Code",
       "exports": [
-        "Code"
+        "Code",
+        "CodeTabs"
       ],
       "category": "Data display",
       "status": "stable",

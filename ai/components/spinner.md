@@ -15,6 +15,11 @@ import { Spinner } from '@ds/react';
 - When progress is known, e.g. uploads. Use Progress.
 - When the page layout is known. Use Skeleton.
 
+## Appearance (`appearance`)
+- `ring`: A turning circle. Default.
+- `dots`: Three pulsing dots, e.g. while someone is typing.
+- `line`: A thin bar sliding across, e.g. at the top of a panel.
+
 ## Size (`size`)
 - `small`: Inside buttons and fields.
 - `medium`: Default.
@@ -28,6 +33,7 @@ import { Spinner } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
+| `appearance` | `SpinnerAppearance` | ring | `ring` (default) a turning circle. `dots` three pulsing dots, e.g. while someone types. `line` a thin bar sliding across, e.g. at the top of a panel. |
 | `size` | `"small" \| "medium" \| "large"` | medium | `small` inside buttons and fields, `medium` (default), `large` for page areas. |
 | `label` | `string` | Loading | What is loading, announced politely, e.g. "Loading orders". Default "Loading". |
 

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { expect, userEvent, waitFor } from 'storybook/test';
-import { Code } from './Code';
+import { Code, CodeTabs } from './Code';
 import { ThemeProvider } from '../ThemeProvider';
 
 const meta = {
@@ -32,6 +32,20 @@ export const Inline: Story = {
     >
       Run <Code>npm install</Code>, then open <Code>src/App.tsx</Code>.
     </p>
+  ),
+};
+
+/** CodeTabs: the same snippet per package manager; each tab is a copyable block. */
+export const Tabs: Story = {
+  render: () => (
+    <CodeTabs
+      label="Package manager"
+      tabs={[
+        { label: 'npm', code: 'npm install @ds/react', language: 'sh' },
+        { label: 'pnpm', code: 'pnpm add @ds/react', language: 'sh' },
+        { label: 'yarn', code: 'yarn add @ds/react', language: 'sh' },
+      ]}
+    />
   ),
 };
 

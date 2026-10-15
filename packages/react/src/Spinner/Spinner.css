@@ -41,8 +41,83 @@
   white-space: nowrap;
 }
 
+/* Dots: three dots pulsing one after another */
+.ds-spinner__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spinner-dots-gap);
+  block-size: var(--_size);
+}
+
+.ds-spinner__dots > span {
+  inline-size: calc(var(--_size) / 4);
+  block-size: calc(var(--_size) / 4);
+  border-radius: var(--spinner-dots-border-radius);
+  background-color: var(--spinner-color);
+  animation: ds-spinner-pulse var(--spinner-duration) ease-in-out infinite;
+}
+
+.ds-spinner__dots > span:nth-child(2) {
+  animation-delay: calc(var(--spinner-duration) / 6);
+}
+
+.ds-spinner__dots > span:nth-child(3) {
+  animation-delay: calc(var(--spinner-duration) / 3);
+}
+
+@keyframes ds-spinner-pulse {
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Line: a bar sliding across a track */
+.ds-spinner__line {
+  position: relative;
+  display: block;
+  inline-size: var(--spinner-line-width);
+  max-inline-size: 100%;
+  block-size: var(--spinner-line-height);
+  overflow: hidden;
+  border-radius: var(--spinner-line-border-radius);
+  background-color: var(--spinner-track-color);
+}
+
+.ds-spinner--line {
+  display: flex;
+}
+
+.ds-spinner__line > span {
+  position: absolute;
+  inset-block: 0;
+  inline-size: 40%;
+  border-radius: var(--spinner-line-border-radius);
+  background-color: var(--spinner-color);
+  animation: ds-spinner-slide var(--spinner-duration) ease-in-out infinite;
+}
+
+@keyframes ds-spinner-slide {
+  from {
+    inset-inline-start: -40%;
+  }
+
+  to {
+    inset-inline-start: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .ds-spinner__circle {
+  .ds-spinner__circle,
+  .ds-spinner__dots > span,
+  .ds-spinner__line > span {
     animation-duration: calc(var(--spinner-duration) * 3);
   }
 }

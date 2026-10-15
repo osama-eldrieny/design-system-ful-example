@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from 'react';
 import * as ToastPrimitive from '@radix-ui/react-toast';
 import { CircleAlert, CircleCheck, Info, TriangleAlert, X } from 'lucide-react';
+import { Avatar } from '../Avatar';
 import { usePortalThemeAttributes } from '../ThemeProvider';
 import './Toast.css';
 
@@ -17,6 +18,10 @@ export interface ToastOptions {
   action?: { label: string; onClick: () => void; altText: string };
   /** Time before it disappears, in ms. Default 5000; Infinity keeps it until dismissed. */
   duration?: number;
+  /** A person's picture in place of the icon, for messages from someone, e.g. a mention. */
+  avatar?: { name: string; src?: string };
+  /** A thumbnail after the text, e.g. the photo that was uploaded. Decorative. */
+  image?: string;
 }
 
 interface ToastItem extends ToastOptions {
@@ -68,39 +73,61 @@ export const ToastProvider = ({
     <ToastContext.Provider value={value}>
       <ToastPrimitive.Provider label={label} swipeDirection="right">
         {children}
-        {toasts.map(({ id, title, description, tone = 'primary', action, duration = 5000 }) => (
-          <ToastPrimitive.Root
-            key={id}
-            className={`ds-toast ds-toast--${tone}`}
-            type={tone === 'danger' ? 'foreground' : 'background'}
-            duration={duration}
-            onOpenChange={(open) => !open && remove(id)}
-          >
-            <span className="ds-toast__icon" aria-hidden="true">
-              {icons[tone]}
-            </span>
-            <div className="ds-toast__text">
-              <ToastPrimitive.Title className="ds-toast__title">{title}</ToastPrimitive.Title>
-              {description && (
-                <ToastPrimitive.Description className="ds-toast__description">
-                  {description}
-                </ToastPrimitive.Description>
+        {toasts.map(
+          ({
+            id,
+            title,
+            description,
+            tone = 'primary',
+            action,
+            duration = 5000,
+            avatar,
+            image,
+          }) => (
+            <ToastPrimitive.Root
+              key={id}
+              className={`ds-toast ds-toast--${tone}`}
+              type={tone === 'danger' ? 'foreground' : 'background'}
+              duration={duration}
+              onOpenChange={(open) => !open && remove(id)}
+            >
+              {avatar ? (
+                <Avatar
+                  name={avatar.name}
+                  src={avatar.src}
+                  size="small"
+                  decorative
+                  className="ds-toast__avatar"
+                />
+              ) : (
+                <span className="ds-toast__icon" aria-hidden="true">
+                  {icons[tone]}
+                </span>
               )}
-            </div>
-            {action && (
-              <ToastPrimitive.Action
-                className="ds-toast__action"
-                altText={action.altText}
-                onClick={action.onClick}
-              >
-                {action.label}
-              </ToastPrimitive.Action>
-            )}
-            <ToastPrimitive.Close className="ds-toast__close" aria-label={closeLabel}>
-              <X aria-hidden="true" />
-            </ToastPrimitive.Close>
-          </ToastPrimitive.Root>
-        ))}
+              <div className="ds-toast__text">
+                <ToastPrimitive.Title className="ds-toast__title">{title}</ToastPrimitive.Title>
+                {description && (
+                  <ToastPrimitive.Description className="ds-toast__description">
+                    {description}
+                  </ToastPrimitive.Description>
+                )}
+              </div>
+              {image && <img className="ds-toast__image" src={image} alt="" />}
+              {action && (
+                <ToastPrimitive.Action
+                  className="ds-toast__action"
+                  altText={action.altText}
+                  onClick={action.onClick}
+                >
+                  {action.label}
+                </ToastPrimitive.Action>
+              )}
+              <ToastPrimitive.Close className="ds-toast__close" aria-label={closeLabel}>
+                <X aria-hidden="true" />
+              </ToastPrimitive.Close>
+            </ToastPrimitive.Root>
+          ),
+        )}
         <ToastPrimitive.Viewport
           className="ds-toast__viewport"
           label={`${label} ({hotkey})`}

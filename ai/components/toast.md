@@ -24,6 +24,11 @@ import { useToast } from '@ds/react';
 - `warning`: Something needs attention.
 - `danger`: Something failed; announced assertively.
 
+## Media (`media`)
+- `icon`: The tone icon. Default.
+- `avatar`: A person, e.g. “Olivia mentioned you”.
+- `image`: A thumbnail after the text, e.g. “Photo uploaded”.
+
 ## States
 - **Shown**: Slides in; pauses on hover or focus. (toast(…))
 - **Dismissed**: After duration, swipe, close or Escape. (—)

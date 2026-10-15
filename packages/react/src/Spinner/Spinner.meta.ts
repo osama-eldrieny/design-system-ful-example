@@ -20,6 +20,15 @@ export default defineMeta({
   ],
   options: [
     {
+      prop: 'appearance',
+      title: 'Appearance',
+      values: [
+        { value: 'ring', meaning: 'A turning circle. Default.' },
+        { value: 'dots', meaning: 'Three pulsing dots, e.g. while someone is typing.' },
+        { value: 'line', meaning: 'A thin bar sliding across, e.g. at the top of a panel.' },
+      ],
+    },
+    {
       prop: 'size',
       title: 'Size',
       values: [
@@ -89,5 +98,8 @@ export default defineMeta({
     { id: 'progress', relation: 'For known progress.' },
     { id: 'skeleton', relation: 'For loading known layouts.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '1.2.0', date: '2026-10-15', changes: ['New appearances: dots and line.'] },
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+  ],
 });

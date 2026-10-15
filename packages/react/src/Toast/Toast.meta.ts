@@ -30,6 +30,12 @@ export default defineMeta({
     { name: 'Title', description: 'The message.' },
     { name: 'Description', description: 'Extra detail.', optional: true },
     { name: 'Action', description: 'One action, e.g. Undo.', optional: true },
+    {
+      name: 'Avatar',
+      description: 'A person in place of the icon, for messages from someone.',
+      optional: true,
+    },
+    { name: 'Image', description: 'A thumbnail after the text, e.g. an upload.', optional: true },
     { name: 'Close', description: 'Dismisses it.' },
   ],
   options: [
@@ -41,6 +47,15 @@ export default defineMeta({
         { value: 'success', meaning: 'Something succeeded.' },
         { value: 'warning', meaning: 'Something needs attention.' },
         { value: 'danger', meaning: 'Something failed; announced assertively.' },
+      ],
+    },
+    {
+      prop: 'media',
+      title: 'Media',
+      values: [
+        { value: 'icon', meaning: 'The tone icon. Default.' },
+        { value: 'avatar', meaning: 'A person, e.g. “Olivia mentioned you”.' },
+        { value: 'image', meaning: 'A thumbnail after the text, e.g. “Photo uploaded”.' },
       ],
     },
   ],
@@ -139,5 +154,12 @@ toast({
     { id: 'alert', relation: 'For persistent messages and errors.' },
     { id: 'modal', relation: 'For decisions.' },
   ],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: ['avatar and image options for messages from people and uploads.'],
+    },
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
+  ],
 });

@@ -74,6 +74,14 @@
         {
           "value": "simple",
           "meaning": "“Page 2 of 10” between the arrows, for narrow spaces."
+        },
+        {
+          "value": "card",
+          "meaning": "A bordered bar: summary on the start side, labelled Previous / Next on the end."
+        },
+        {
+          "value": "dots",
+          "meaning": "One dot per page, no arrows; for carousels and onboarding."
         }
       ]
     }
@@ -224,6 +232,13 @@
   ],
   "changelog": [
     {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New appearances: card (bordered bar) and dots (carousels)."
+      ]
+    },
+    {
       "version": "1.1.0",
       "date": "2026-10-15",
       "changes": [
@@ -268,11 +283,13 @@
           "type": "PaginationAppearance",
           "values": [
             "full",
-            "simple"
+            "simple",
+            "card",
+            "dots"
           ],
           "required": false,
           "default": "full",
-          "description": "`full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows\n“Page 2 of 10” between the arrows, for narrow spaces."
+          "description": "`full` (default) lists page numbers, shortening long ranges with “…”. `simple` shows\n“Page 2 of 10” between the arrows, for narrow spaces. `card` is a bordered bar with the\nsummary on the start side and labelled Previous / Next on the end, under tables and cards.\n`dots` shows one dot per page and no arrows, for carousels and onboarding steps."
         },
         "siblingCount": {
           "type": "number",
@@ -548,6 +565,122 @@
         "brand=amber,mode=dark": "#2a1f16",
         "brand=opal,mode=light": "#f4f6fc",
         "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--pagination-card-padding-x": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--pagination-card-padding-y": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--spacing-sm",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--pagination-card-gap": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--pagination-card-border-width": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--pagination-card-border-color": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--pagination-card-border-radius": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--radius-xl",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "16px"
+      }
+    },
+    "--pagination-card-bg-color": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--color-bg-surface",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--pagination-card-button-gap": {
+      "description": "the bordered bar of appearance=\"card\" and its Previous / Next buttons.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--pagination-dot-size": {
+      "description": "the dots of appearance=\"dots\"; the current dot is wider and filled.",
+      "references": "--sizing-3xs",
+      "default": "8px"
+    },
+    "--pagination-dot-active-width": {
+      "description": "the dots of appearance=\"dots\"; the current dot is wider and filled.",
+      "references": "--sizing-3xs",
+      "default": "calc(8px * 3)"
+    },
+    "--pagination-dot-gap": {
+      "description": "the dots of appearance=\"dots\"; the current dot is wider and filled.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--pagination-dot-border-radius": {
+      "description": "the dots of appearance=\"dots\"; the current dot is wider and filled.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--pagination-dot-default-bg-color": {
+      "description": "the dots of appearance=\"dots\"; the current dot is wider and filled.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--pagination-dot-hover-bg-color": {
+      "description": "the dots of appearance=\"dots\"; the current dot is wider and filled.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--pagination-dot-active-bg-color": {
+      "description": "the dots of appearance=\"dots\"; the current dot is wider and filled.",
+      "references": "--color-bg-accent-primary-strong-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#8a663e",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#326fd1"
       }
     },
     "--pagination-gap": {

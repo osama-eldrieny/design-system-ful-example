@@ -73,3 +73,8 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+/* CodeTabs: a tab per variant, each panel a code block */
+.ds-code-tabs__panel {
+  padding-block: var(--code-tabs-panel-padding-y);
+}

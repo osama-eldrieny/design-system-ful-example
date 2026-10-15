@@ -3,7 +3,8 @@
  *
  * Style this component only with these tokens.
  *
- * Grammar: --spinner-{size?}-{property}; size: small | large (medium is the base).
+ * Grammar: --spinner-{appearance?}-{size?}-{property}; size: small | large (medium is the base);
+ *   appearance: ring (omitted) | dots | line.
  */
 
 :root,
@@ -15,4 +16,13 @@
   --spinner-large-size: var(--sizing-xl);
   --spinner-duration: var(--duration-loop);
   --spinner-hidden-size: var(--border-width-hairline);
+
+  /* Dots: three pulsing dots, sized from the spinner size */
+  --spinner-dots-gap: var(--spacing-2xs);
+  --spinner-dots-border-radius: var(--radius-full);
+
+  /* Line: a thin bar sliding across its track */
+  --spinner-line-width: var(--sizing-8xl);
+  --spinner-line-height: var(--border-width-strong);
+  --spinner-line-border-radius: var(--radius-full);
 }

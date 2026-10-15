@@ -401,6 +401,11 @@
     "component": "code",
     "props": {}
   },
+  "CodeTabs": {
+    "status": "stable",
+    "component": "code",
+    "props": {}
+  },
   "Combobox": {
     "status": "stable",
     "component": "combobox",
@@ -949,7 +954,9 @@
     "props": {
       "appearance": [
         "full",
-        "simple"
+        "simple",
+        "card",
+        "dots"
       ],
       "layout": [
         "compact",
@@ -1127,6 +1134,11 @@
     "status": "stable",
     "component": "spinner",
     "props": {
+      "appearance": [
+        "ring",
+        "dots",
+        "line"
+      ],
       "size": [
         "small",
         "medium",

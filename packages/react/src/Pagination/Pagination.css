@@ -116,3 +116,67 @@
     display: none;
   }
 }
+
+/* Card: a bordered bar, summary on the start side, labelled buttons on the end */
+.ds-pagination--card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pagination-card-gap);
+  padding-block: var(--pagination-card-padding-y);
+  padding-inline: var(--pagination-card-padding-x);
+  border: var(--pagination-card-border-width) solid var(--pagination-card-border-color);
+  border-radius: var(--pagination-card-border-radius);
+  background-color: var(--pagination-card-bg-color);
+}
+
+.ds-pagination__card-actions {
+  display: flex;
+  gap: var(--pagination-card-button-gap);
+}
+
+.ds-pagination__card-button {
+  padding-inline: var(--pagination-arrow-label-padding-x);
+  border: var(--pagination-arrow-label-border-width) solid
+    var(--pagination-arrow-label-border-color);
+}
+
+/* Dots: one per page, the current one wider and filled */
+.ds-pagination--dots .ds-pagination__list {
+  gap: var(--pagination-dot-gap);
+}
+
+.ds-pagination__dot {
+  display: block;
+  inline-size: var(--pagination-dot-size);
+  block-size: var(--pagination-dot-size);
+  padding: 0;
+  border: 0;
+  border-radius: var(--pagination-dot-border-radius);
+  background-color: var(--pagination-dot-default-bg-color);
+  cursor: pointer;
+  transition-property: inline-size, background-color;
+  transition-duration: var(--pagination-transition-duration);
+  transition-timing-function: var(--pagination-transition-easing);
+}
+
+.ds-pagination__dot:hover:not([aria-current='page']) {
+  background-color: var(--pagination-dot-hover-bg-color);
+}
+
+.ds-pagination__dot[aria-current='page'] {
+  inline-size: var(--pagination-dot-active-width);
+  background-color: var(--pagination-dot-active-bg-color);
+}
+
+.ds-pagination__dot:focus-visible {
+  outline: var(--pagination-focus-ring-width) solid var(--pagination-focus-ring-color);
+  outline-offset: var(--pagination-focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-pagination__dot {
+    transition: none;
+  }
+}
