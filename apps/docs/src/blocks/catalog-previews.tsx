@@ -454,7 +454,7 @@ export const previews: Record<string, ReactNode> = {
     </div>
   ),
   pagination: (
-    <Pagination currentPage={2} totalPages={8} onPageChange={() => {}} label="Example pagination" />
+    <Pagination currentPage={2} totalPages={4} onPageChange={() => {}} label="Example pagination" />
   ),
   popover: (
     <Panel>

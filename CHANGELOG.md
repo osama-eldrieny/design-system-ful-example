@@ -44,8 +44,9 @@ VerificationCodeInput.
   docs and prototypes is migrated.
 
 ### Fixes (from review comments)
-- **Docs Introduction:** the component catalog is a grid of cards, each with a live preview on a
-  faint grid, the name and "N components + M variants" (from each component's metadata).
+- **Docs Introduction:** the component catalog is grouped by category (with a one-line description
+  and count); each card has a live preview on a soft surface tinted by its category, the name with
+  an arrow, and chips for its variants and parts (from each component's metadata).
 - **Radius:** section surfaces (cards, sections, containers, choose cards, `--radius-2xl`) are
   16px in round and 24px in pills (new primitive `--radius-24`). The segmented tab bar's corner is
   concentric with its selected tab (tab radius + padding + border) in every radius style.
