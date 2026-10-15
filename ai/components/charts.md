@@ -36,6 +36,16 @@ import { Sparkline } from '@ds/react';
 - `1`: The brand color; the first series by default.
 - `2–8`: Category hues, assigned in order; set one to keep a series’ color fixed.
 
+## BarChart orientation (`orientation`)
+- `vertical`: Columns. Default.
+- `horizontal`: Bars, for long category names or many categories.
+
+## Sparkline tone (`tone`)
+- `auto`: Green when the trend rises, red when it falls. Default.
+- `positive / negative`: Force green or red.
+- `primary`: The brand color, for neutral metrics.
+- `1–8`: A chart color, to match a series elsewhere.
+
 ## States
 - **Default**: At rest. (—)
 - **Active point**: Tooltip and crosshair at one point. (Hover, or arrow keys while focused.)

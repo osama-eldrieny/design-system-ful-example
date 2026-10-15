@@ -23,6 +23,12 @@ import { Inline } from '@ds/react';
 - `center / end`: Aligned.
 - `between`: Spread to both ends.
 
+## Vertical alignment (`align`)
+- `center`: Items centered on one line. Default.
+- `start / end`: Top or bottom edges line up.
+- `baseline`: Text baselines line up, e.g. labels of different sizes.
+- `stretch`: Items fill the row height.
+
 ## States
 - **Static**: Layout only; not interactive. (—)
 

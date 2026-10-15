@@ -44,6 +44,10 @@ import { BadgeGroup } from '@ds/react';
 - `false`: Shows text or a count. Default.
 - `true`: A small dot, e.g. “new activity”; needs label.
 
+## BadgeGroup badge position (`badgePosition`)
+- `leading`: Badge before the message, e.g. “New · Feature shipped”. Default.
+- `trailing`: Badge after the message, e.g. “Feature shipped · Read more”.
+
 ## States
 - **Static**: Badges are not interactive. (—)
 

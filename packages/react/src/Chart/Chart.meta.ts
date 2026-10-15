@@ -68,6 +68,24 @@ export default defineMeta({
         },
       ],
     },
+    {
+      prop: 'orientation',
+      title: 'BarChart orientation',
+      values: [
+        { value: 'vertical', meaning: 'Columns. Default.' },
+        { value: 'horizontal', meaning: 'Bars, for long category names or many categories.' },
+      ],
+    },
+    {
+      prop: 'tone',
+      title: 'Sparkline tone',
+      values: [
+        { value: 'auto', meaning: 'Green when the trend rises, red when it falls. Default.' },
+        { value: 'positive / negative', meaning: 'Force green or red.' },
+        { value: 'primary', meaning: 'The brand color, for neutral metrics.' },
+        { value: '1–8', meaning: 'A chart color, to match a series elsewhere.' },
+      ],
+    },
   ],
   states: [
     { name: 'Default', meaning: 'At rest.', trigger: '—' },

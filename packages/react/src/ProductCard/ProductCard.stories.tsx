@@ -46,6 +46,23 @@ export const States: Story = {
   parameters: { pseudo: { hover: ['#product-hover'] } },
 };
 
+/** Photo above (default) or beside the details. */
+export const Orientations: Story = {
+  render: (args) => (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 260px) minmax(0, 1fr)',
+        gap: 24,
+        alignItems: 'start',
+      }}
+    >
+      <ProductCard {...args} orientation="vertical" />
+      <ProductCard {...args} orientation="horizontal" />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: {

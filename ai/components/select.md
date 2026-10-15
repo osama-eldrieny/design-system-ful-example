@@ -26,6 +26,11 @@ import { SelectSeparator } from '@ds/react';
 - `medium`: Default; matches InputField.
 - `large`: Prominent forms.
 
+## SelectItem dot (`dot`)
+- `success | warning | danger`: A status, e.g. Online, Away, Offline.
+- `primary | secondary`: Brand or neutral.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: A category, e.g. a label color.
+
 ## States
 - **Placeholder**: Nothing chosen yet; secondary text color. (no value)
 - **Hover**: Darker border. (:hover)

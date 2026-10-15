@@ -53,6 +53,14 @@ export default defineMeta({
         { value: '2', meaning: 'Default for ranges.' },
       ],
     },
+    {
+      prop: 'size',
+      title: 'Trigger size',
+      values: [
+        { value: 'medium', meaning: 'Default; forms.' },
+        { value: 'small', meaning: 'Toolbars and filter bars.' },
+      ],
+    },
   ],
   states: [
     { name: 'Default', meaning: 'A day that can be picked.', trigger: '—' },

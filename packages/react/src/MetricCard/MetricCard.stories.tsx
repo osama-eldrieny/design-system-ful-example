@@ -121,6 +121,55 @@ export const Layouts: Story = {
   ),
 };
 
+/** Rising, falling and neutral; positive flips the color for metrics where down is good. */
+export const Trends: Story = {
+  render: () => (
+    <div style={grid}>
+      <MetricCard label="Revenue" value="$124k" change="12%" trend="up" icon={<DollarSign />} />
+      <MetricCard label="Churn" value="2.1%" change="0.4%" trend="down" positive icon={<Users />} />
+      <MetricCard
+        label="Refunds"
+        value="$3.2k"
+        change="8%"
+        trend="up"
+        positive={false}
+        icon={<ShoppingBag />}
+      />
+      <MetricCard label="Sessions" value="526" change="0%" trend="neutral" icon={<Users />} />
+    </div>
+  ),
+};
+
+/** Icon styles and colors. */
+export const IconStyles: Story = {
+  render: () => (
+    <div style={grid}>
+      <MetricCard label="Modern" value="526" icon={<Users />} iconAppearance="modern" />
+      <MetricCard
+        label="Light, blue"
+        value="526"
+        icon={<Users />}
+        iconAppearance="light"
+        iconTone="blue"
+      />
+      <MetricCard
+        label="Solid, success"
+        value="526"
+        icon={<Users />}
+        iconAppearance="solid"
+        iconTone="success"
+      />
+      <MetricCard
+        label="Outline, pink"
+        value="526"
+        icon={<Users />}
+        iconAppearance="outline"
+        iconTone="pink"
+      />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: { label: 'إجمالي الإيرادات', comparison: 'مقارنة بالشهر الماضي', icon: <DollarSign /> },

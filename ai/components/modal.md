@@ -35,6 +35,11 @@ import { ModalClose } from '@ds/react';
 - `dialog`: Default; clicking outside closes it.
 - `alertdialog`: Urgent; no outside-click close and no close icon.
 
+## Icon color (`iconTone`)
+- `primary`: Brand. Default; invitations and announcements.
+- `success | warning | danger`: Outcome or risk, e.g. danger for delete.
+- `secondary | gray … teal`: Neutral or a category hue.
+
 ## States
 - **Open**: Shown over a scrim; focus inside. (open)
 - **Closed**: Focus back on the trigger. (—)

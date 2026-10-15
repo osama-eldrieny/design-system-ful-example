@@ -27,6 +27,10 @@ import { datePresets } from '@ds/react';
 - `1`: Default for single dates.
 - `2`: Default for ranges.
 
+## Trigger size (`size`)
+- `medium`: Default; forms.
+- `small`: Toolbars and filter bars.
+
 ## States
 - **Default**: A day that can be picked. (—)
 - **Hover**: Pointer over a day. (:hover)

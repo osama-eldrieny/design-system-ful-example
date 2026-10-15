@@ -127,6 +127,28 @@ export const RichOptions: Story = {
   ),
 };
 
+/** A colored dot before each option, for statuses and categories. */
+export const StatusDots: Story = {
+  render: () => (
+    <div style={{ maxInlineSize: 260 }}>
+      <Select label="Status" defaultValue="online">
+        <SelectItem value="online" dot="success">
+          Online
+        </SelectItem>
+        <SelectItem value="away" dot="warning">
+          Away
+        </SelectItem>
+        <SelectItem value="busy" dot="danger">
+          Do not disturb
+        </SelectItem>
+        <SelectItem value="offline" dot="gray">
+          Offline
+        </SelectItem>
+      </Select>
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: {

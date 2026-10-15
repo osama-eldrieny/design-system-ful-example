@@ -2,7 +2,7 @@
 
     ),
   }}
-  optionStories={{ appearance: 'Appearances' }}
+  optionStories={{ appearance: 'Appearances', orientation: 'Orientations' }}
   extras={[{ title: 'With an action', story: 'WithAction' }]}
   behaviorStory="RightToLeft"
   matrix={

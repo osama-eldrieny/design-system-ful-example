@@ -36,6 +36,11 @@ import { ProgressCircle } from '@ds/react';
 - `circle`: A full ring. Default.
 - `half`: A semicircle gauge, for scores and quotas.
 
+## ProgressCircle size (`circleSize`)
+- `small`: 64px, in tables and lists.
+- `medium`: 120px. Default, in cards.
+- `large`: 200px, as the focus of a card or page.
+
 ## States
 - **Determinate**: Bar length shows value/max. (value)
 - **Indeterminate**: Animated bar; unknown progress. (no value)

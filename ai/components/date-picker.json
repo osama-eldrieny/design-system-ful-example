@@ -89,6 +89,20 @@
           "meaning": "Default for ranges."
         }
       ]
+    },
+    {
+      "prop": "size",
+      "title": "Trigger size",
+      "values": [
+        {
+          "value": "medium",
+          "meaning": "Default; forms."
+        },
+        {
+          "value": "small",
+          "meaning": "Toolbars and filter bars."
+        }
+      ]
     }
   ],
   "states": [

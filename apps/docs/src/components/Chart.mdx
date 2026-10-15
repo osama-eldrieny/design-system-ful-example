@@ -32,7 +32,12 @@ import { ComponentPage } from '../blocks';
       />
     ),
   }}
-  optionStories={{ chart: 'Bars', 'series.color': 'Area' }}
+  optionStories={{
+    chart: 'Bars',
+    'series.color': 'Area',
+    orientation: 'HorizontalBars',
+    tone: 'SparklineTones',
+  }}
   behaviorStory="RightToLeft"
   matrix={<Sparkline data={[3, 5, 4, 7, 6, 9]} />}
 />

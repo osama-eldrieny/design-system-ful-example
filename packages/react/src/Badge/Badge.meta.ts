@@ -79,6 +79,20 @@ export default defineMeta({
         { value: 'true', meaning: 'A small dot, e.g. “new activity”; needs label.' },
       ],
     },
+    {
+      prop: 'badgePosition',
+      title: 'BadgeGroup badge position',
+      values: [
+        {
+          value: 'leading',
+          meaning: 'Badge before the message, e.g. “New · Feature shipped”. Default.',
+        },
+        {
+          value: 'trailing',
+          meaning: 'Badge after the message, e.g. “Feature shipped · Read more”.',
+        },
+      ],
+    },
   ],
   states: [{ name: 'Static', meaning: 'Badges are not interactive.', trigger: '—' }],
   behavior: [

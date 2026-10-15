@@ -20,6 +20,10 @@ import { ProductCard } from '@ds/react';
 - `outlined`: As Card.
 - `filled`: As Card.
 
+## Orientation (`orientation`)
+- `vertical`: Photo above the details. Default; product grids.
+- `horizontal`: Photo beside the details; carts and lists.
+
 ## States
 - **Default**: At rest. (—)
 - **On sale**: Has a lower current price. (oldPrice is set.)

@@ -41,6 +41,18 @@ export default defineMeta({
         { value: 'large', meaning: 'Prominent forms.' },
       ],
     },
+    {
+      prop: 'dot',
+      title: 'SelectItem dot',
+      values: [
+        { value: 'success | warning | danger', meaning: 'A status, e.g. Online, Away, Offline.' },
+        { value: 'primary | secondary', meaning: 'Brand or neutral.' },
+        {
+          value: 'gray | blue | sky | indigo | purple | pink | orange | teal',
+          meaning: 'A category, e.g. a label color.',
+        },
+      ],
+    },
   ],
   states: [
     {

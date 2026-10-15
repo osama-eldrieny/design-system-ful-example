@@ -628,7 +628,7 @@ While Storybook runs locally, its own MCP server at `http://localhost:6006/mcp` 
 
     ),
   }}
-  optionStories={{ appearance: 'Appearances' }}
+  optionStories={{ appearance: 'Appearances', orientation: 'Orientations' }}
   extras={[{ title: 'With an action', story: 'WithAction' }]}
   behaviorStory="RightToLeft"
   matrix={
@@ -1260,6 +1260,10 @@ import { BadgeGroup } from '@ds/react';
 ## Dot (`dot`)
 - `false`: Shows text or a count. Default.
 - `true`: A small dot, e.g. “new activity”; needs label.
+
+## BadgeGroup badge position (`badgePosition`)
+- `leading`: Badge before the message, e.g. “New · Feature shipped”. Default.
+- `trailing`: Badge after the message, e.g. “Feature shipped · Read more”.
 
 ## States
 - **Static**: Badges are not interactive. (—)
@@ -1937,6 +1941,16 @@ import { Sparkline } from '@ds/react';
 ## Series color (`series.color`)
 - `1`: The brand color; the first series by default.
 - `2–8`: Category hues, assigned in order; set one to keep a series’ color fixed.
+
+## BarChart orientation (`orientation`)
+- `vertical`: Columns. Default.
+- `horizontal`: Bars, for long category names or many categories.
+
+## Sparkline tone (`tone`)
+- `auto`: Green when the trend rises, red when it falls. Default.
+- `positive / negative`: Force green or red.
+- `primary`: The brand color, for neutral metrics.
+- `1–8`: A chart color, to match a series elsewhere.
 
 ## States
 - **Default**: At rest. (—)
@@ -2822,6 +2836,10 @@ import { datePresets } from '@ds/react';
 ## Months shown (`months`)
 - `1`: Default for single dates.
 - `2`: Default for ranges.
+
+## Trigger size (`size`)
+- `medium`: Default; forms.
+- `small`: Toolbars and filter bars.
 
 ## States
 - **Default**: A day that can be picked. (—)
@@ -4222,6 +4240,12 @@ import { Inline } from '@ds/react';
 - `center / end`: Aligned.
 - `between`: Spread to both ends.
 
+## Vertical alignment (`align`)
+- `center`: Items centered on one line. Default.
+- `start / end`: Top or bottom edges line up.
+- `baseline`: Text baselines line up, e.g. labels of different sizes.
+- `stretch`: Items fill the row height.
+
 ## States
 - **Static**: Layout only; not interactive. (—)
 
@@ -4966,6 +4990,22 @@ import { MetricCard } from '@ds/react';
 - `small`: Smaller value, for dense dashboards.
 - `medium`: Default.
 
+## Trend (`trend`)
+- `up`: Rising; green unless positive is false (e.g. costs).
+- `down`: Falling; red unless positive is true (e.g. churn).
+- `neutral`: No direction. Default.
+
+## Icon style (`iconAppearance`)
+- `modern`: Neutral tile with a border. Default.
+- `light`: Tinted background.
+- `solid`: Filled, for the strongest emphasis.
+- `outline`: Concentric rings.
+
+## Icon color (`iconTone`)
+- `primary`: Brand. Default.
+- `secondary | success | warning | danger`: A meaning.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: One hue per metric.
+
 ## States
 - **Static**: The card itself is not interactive; its actions are. (—)
 
@@ -5088,6 +5128,11 @@ import { ModalClose } from '@ds/react';
 ## Role (`role`)
 - `dialog`: Default; clicking outside closes it.
 - `alertdialog`: Urgent; no outside-click close and no close icon.
+
+## Icon color (`iconTone`)
+- `primary`: Brand. Default; invitations and announcements.
+- `success | warning | danger`: Outcome or risk, e.g. danger for delete.
+- `secondary | gray … teal`: Neutral or a category hue.
 
 ## States
 - **Open**: Shown over a scrim; focus inside. (open)
@@ -5673,6 +5718,10 @@ import { ProductCard } from '@ds/react';
 - `outlined`: As Card.
 - `filled`: As Card.
 
+## Orientation (`orientation`)
+- `vertical`: Photo above the details. Default; product grids.
+- `horizontal`: Photo beside the details; carts and lists.
+
 ## States
 - **Default**: At rest. (—)
 - **On sale**: Has a lower current price. (oldPrice is set.)
@@ -5796,6 +5845,11 @@ import { ProgressCircle } from '@ds/react';
 ## ProgressCircle shape (`shape`)
 - `circle`: A full ring. Default.
 - `half`: A semicircle gauge, for scores and quotas.
+
+## ProgressCircle size (`circleSize`)
+- `small`: 64px, in tables and lists.
+- `medium`: 120px. Default, in cards.
+- `large`: 200px, as the focus of a card or page.
 
 ## States
 - **Determinate**: Bar length shows value/max. (value)
@@ -6158,6 +6212,11 @@ import { SelectSeparator } from '@ds/react';
 - `small`: Dense UI, filters and tables.
 - `medium`: Default; matches InputField.
 - `large`: Prominent forms.
+
+## SelectItem dot (`dot`)
+- `success | warning | danger`: A status, e.g. Online, Away, Offline.
+- `primary | secondary`: Brand or neutral.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: A category, e.g. a label color.
 
 ## States
 - **Placeholder**: Nothing chosen yet; secondary text color. (no value)

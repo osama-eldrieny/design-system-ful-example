@@ -139,6 +139,35 @@ export const WithIcon: Story = {
   ),
 };
 
+/** The featured icon takes a meaning color: success, warning or danger. */
+export const IconTones: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+      {(['primary', 'success', 'warning', 'danger'] as const).map((tone) => (
+        <Modal key={tone}>
+          <ModalTrigger asChild>
+            <Button variant="secondary" appearance="outline">
+              {tone}
+            </Button>
+          </ModalTrigger>
+          <ModalContent
+            icon={<UserPlus />}
+            iconTone={tone}
+            title={`${tone} dialog`}
+            description="The icon color carries the meaning."
+          >
+            <ModalFooter>
+              <ModalClose asChild>
+                <Button>Close</Button>
+              </ModalClose>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      ))}
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   render: () => (

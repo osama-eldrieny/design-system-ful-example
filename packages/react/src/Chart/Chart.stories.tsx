@@ -156,6 +156,38 @@ export const Radar: Story = {
 };
 
 /** Axes mirror in right-to-left languages: time runs from right to left. */
+/** Bars instead of columns, for long category names. */
+export const HorizontalBars: Story = {
+  render: () => (
+    <BarChart
+      title="Visitors by channel"
+      orientation="horizontal"
+      data={[
+        { channel: 'Organic search', visitors: 4700 },
+        { channel: 'Direct', visitors: 3400 },
+        { channel: 'LinkedIn', visitors: 2900 },
+        { channel: 'Newsletter', visitors: 1500 },
+      ]}
+      xKey="channel"
+      series={[{ key: 'visitors', label: 'Visitors' }]}
+    />
+  ),
+};
+
+/** Sparkline tones: automatic, forced, brand and chart colors. */
+export const SparklineTones: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+      <Sparkline data={[4, 6, 5, 8, 7, 9, 12]} tone="auto" label="Auto, rising" />
+      <Sparkline data={[12, 10, 11, 8, 9, 6, 5]} tone="auto" label="Auto, falling" />
+      <Sparkline data={[4, 6, 5, 8, 7, 9, 12]} tone="negative" label="Negative" />
+      <Sparkline data={[4, 6, 5, 8, 7, 9, 12]} tone="primary" label="Primary" />
+      <Sparkline data={[4, 6, 5, 8, 7, 9, 12]} tone={3} label="Chart color 3" />
+      <Sparkline data={[4, 6, 5, 8, 7, 9, 12]} tone={6} label="Chart color 6" />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   args: { title: 'الإيرادات', description: 'نمت الإيرادات بنسبة 38٪.' },

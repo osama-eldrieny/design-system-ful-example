@@ -62,6 +62,22 @@ export const Constraints: Story = {
   },
 };
 
+/** Medium (default) and small triggers, for forms and toolbars. */
+export const TriggerSizes: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, alignItems: 'center' }}>
+      <DatePicker label="Due date" size="medium" today={today} defaultMonth={today} />
+      <DatePicker label="Due date" size="small" today={today} defaultMonth={today} />
+      <DateRangePicker
+        label="Report period"
+        size="small"
+        presets={datePresets(today)}
+        today={today}
+      />
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   render: () => (

@@ -61,6 +61,18 @@ export default defineMeta({
         { value: 'alertdialog', meaning: 'Urgent; no outside-click close and no close icon.' },
       ],
     },
+    {
+      prop: 'iconTone',
+      title: 'Icon color',
+      values: [
+        { value: 'primary', meaning: 'Brand. Default; invitations and announcements.' },
+        {
+          value: 'success | warning | danger',
+          meaning: 'Outcome or risk, e.g. danger for delete.',
+        },
+        { value: 'secondary | gray … teal', meaning: 'Neutral or a category hue.' },
+      ],
+    },
   ],
   states: [
     { name: 'Open', meaning: 'Shown over a scrim; focus inside.', trigger: 'open' },

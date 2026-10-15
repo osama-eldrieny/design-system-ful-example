@@ -29,6 +29,22 @@ import { MetricCard } from '@ds/react';
 - `small`: Smaller value, for dense dashboards.
 - `medium`: Default.
 
+## Trend (`trend`)
+- `up`: Rising; green unless positive is false (e.g. costs).
+- `down`: Falling; red unless positive is true (e.g. churn).
+- `neutral`: No direction. Default.
+
+## Icon style (`iconAppearance`)
+- `modern`: Neutral tile with a border. Default.
+- `light`: Tinted background.
+- `solid`: Filled, for the strongest emphasis.
+- `outline`: Concentric rings.
+
+## Icon color (`iconTone`)
+- `primary`: Brand. Default.
+- `secondary | success | warning | danger`: A meaning.
+- `gray | blue | sky | indigo | purple | pink | orange | teal`: One hue per metric.
+
 ## States
 - **Static**: The card itself is not interactive; its actions are. (—)
 

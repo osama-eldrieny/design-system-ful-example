@@ -62,6 +62,15 @@ export default defineMeta({
         { value: 'half', meaning: 'A semicircle gauge, for scores and quotas.' },
       ],
     },
+    {
+      prop: 'circleSize',
+      title: 'ProgressCircle size',
+      values: [
+        { value: 'small', meaning: '64px, in tables and lists.' },
+        { value: 'medium', meaning: '120px. Default, in cards.' },
+        { value: 'large', meaning: '200px, as the focus of a card or page.' },
+      ],
+    },
   ],
   states: [
     { name: 'Determinate', meaning: 'Bar length shows value/max.', trigger: 'value' },

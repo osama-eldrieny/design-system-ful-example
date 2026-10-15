@@ -154,6 +154,20 @@ export const CountsAndDots: Story = {
   ),
 };
 
+/** The badge sits before (default) or after the message. */
+export const GroupPositions: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 12, justifyItems: 'start' }}>
+      <BadgeGroup badge="New" badgePosition="leading" href="#">
+        We’ve just released a new feature
+      </BadgeGroup>
+      <BadgeGroup badge="Read more" badgePosition="trailing" href="#" tone="success">
+        Invoices are now automatic
+      </BadgeGroup>
+    </div>
+  ),
+};
+
 export const RightToLeft: Story = { globals: { language: 'ar' }, args: { children: 'مدفوع' } };
 
 export const AllThemes: Story = {

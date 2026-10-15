@@ -35,6 +35,16 @@ export default defineMeta({
         { value: 'between', meaning: 'Spread to both ends.' },
       ],
     },
+    {
+      prop: 'align',
+      title: 'Vertical alignment',
+      values: [
+        { value: 'center', meaning: 'Items centered on one line. Default.' },
+        { value: 'start / end', meaning: 'Top or bottom edges line up.' },
+        { value: 'baseline', meaning: 'Text baselines line up, e.g. labels of different sizes.' },
+        { value: 'stretch', meaning: 'Items fill the row height.' },
+      ],
+    },
   ],
   states: [{ name: 'Static', meaning: 'Layout only; not interactive.', trigger: '—' }],
   behavior: [

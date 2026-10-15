@@ -53,6 +53,37 @@ export default defineMeta({
         { value: 'medium', meaning: 'Default.' },
       ],
     },
+    {
+      prop: 'trend',
+      title: 'Trend',
+      values: [
+        { value: 'up', meaning: 'Rising; green unless positive is false (e.g. costs).' },
+        { value: 'down', meaning: 'Falling; red unless positive is true (e.g. churn).' },
+        { value: 'neutral', meaning: 'No direction. Default.' },
+      ],
+    },
+    {
+      prop: 'iconAppearance',
+      title: 'Icon style',
+      values: [
+        { value: 'modern', meaning: 'Neutral tile with a border. Default.' },
+        { value: 'light', meaning: 'Tinted background.' },
+        { value: 'solid', meaning: 'Filled, for the strongest emphasis.' },
+        { value: 'outline', meaning: 'Concentric rings.' },
+      ],
+    },
+    {
+      prop: 'iconTone',
+      title: 'Icon color',
+      values: [
+        { value: 'primary', meaning: 'Brand. Default.' },
+        { value: 'secondary | success | warning | danger', meaning: 'A meaning.' },
+        {
+          value: 'gray | blue | sky | indigo | purple | pink | orange | teal',
+          meaning: 'One hue per metric.',
+        },
+      ],
+    },
   ],
   states: [
     {

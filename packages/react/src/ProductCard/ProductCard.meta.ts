@@ -31,6 +31,14 @@ export default defineMeta({
         { value: 'filled', meaning: 'As Card.' },
       ],
     },
+    {
+      prop: 'orientation',
+      title: 'Orientation',
+      values: [
+        { value: 'vertical', meaning: 'Photo above the details. Default; product grids.' },
+        { value: 'horizontal', meaning: 'Photo beside the details; carts and lists.' },
+      ],
+    },
   ],
   states: [
     { name: 'Default', meaning: 'At rest.', trigger: '—' },
