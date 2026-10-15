@@ -1,0 +1,23 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Rating } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Rating/Rating.stories';
+import meta from '../../../../packages/react/src/Rating/Rating.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Rating
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Rating]}
+  optionStories={{ size: 'Sizes', readOnly: 'ReadOnly', showValue: 'ShowValue' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ display: 'flex', gap: 20 }}>
+      <Rating label="Rate" defaultValue={3} />
+      <Rating label="Average" value={4.5} readOnly showValue />
+    </div>
+  }
+/>

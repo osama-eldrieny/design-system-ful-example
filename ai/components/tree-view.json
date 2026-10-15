@@ -1,0 +1,538 @@
+{
+  "id": "tree-view",
+  "name": "TreeView",
+  "category": "Navigation",
+  "status": "stable",
+  "since": "1.2.0",
+  "description": "A hierarchy of items, such as files in folders or pages in sections, that people expand, collapse and select. Follows the WAI-ARIA tree pattern.",
+  "imports": [
+    {
+      "name": "TreeView",
+      "from": "@ds/react"
+    },
+    {
+      "name": "TreeItem",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To browse nested content more than two levels deep, e.g. a file explorer.",
+    "To pick one item from a hierarchy, e.g. a folder to move a file into."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a site’s main navigation with one or two levels.",
+      "alternative": "SideNav"
+    },
+    {
+      "text": "To show and hide sections of a page.",
+      "alternative": "Accordion"
+    },
+    {
+      "text": "For a flat list of items.",
+      "alternative": "List"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Row",
+      "description": "One item: chevron, optional icon and label, indented by level."
+    },
+    {
+      "name": "Chevron",
+      "description": "Shows whether a branch is open; only on items with children."
+    },
+    {
+      "name": "Icon",
+      "description": "Identifies the kind of item, e.g. folder or file.",
+      "optional": true
+    },
+    {
+      "name": "Guide",
+      "description": "Lines connecting children to their parent.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dense sidebars and panels."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        }
+      ]
+    },
+    {
+      "prop": "guides",
+      "title": "Guides",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. Indentation alone shows the levels."
+        },
+        {
+          "value": "true",
+          "meaning": "Adds lines down each open branch, for deep trees."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Collapsed",
+      "meaning": "A branch whose children are hidden.",
+      "trigger": "Id not in expanded."
+    },
+    {
+      "name": "Expanded",
+      "meaning": "A branch whose children show.",
+      "trigger": "Id in expanded."
+    },
+    {
+      "name": "Hover",
+      "meaning": "Highlights the row under the pointer.",
+      "trigger": ":hover."
+    },
+    {
+      "name": "Focus",
+      "meaning": "Shows which row the keyboard is on.",
+      "trigger": ":focus-visible."
+    },
+    {
+      "name": "Selected",
+      "meaning": "The chosen item.",
+      "trigger": "selected matches the id."
+    },
+    {
+      "name": "Disabled",
+      "meaning": "Cannot be selected.",
+      "trigger": "disabled on the item."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Clicking",
+      "text": "Clicking a row selects it; clicking a branch also opens or closes it."
+    },
+    {
+      "topic": "Controlled or not",
+      "text": "Pass expanded / selected with their change handlers to control them, or the default props to let the tree manage them."
+    },
+    {
+      "topic": "One tab stop",
+      "text": "The tree is a single tab stop; arrow keys move between rows."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "Indentation and chevrons flip, and Left / Right arrows swap meaning."
+    }
+  ],
+  "content": [
+    "Keep labels short; long labels are truncated with an ellipsis.",
+    "Use icons consistently: the same icon for every item of the same kind.",
+    "Name the tree with label, e.g. \"Files\" or \"Pages\"."
+  ],
+  "guidelines": [
+    {
+      "do": "Open the branch that holds the selected item.",
+      "dont": "Start with the selected item hidden in a closed branch.",
+      "why": "People need to see where they are."
+    },
+    {
+      "do": "Use guides for trees deeper than three levels.",
+      "dont": "Rely on indentation alone in deep trees.",
+      "why": "Lines make it clear which parent a row belongs to."
+    },
+    {
+      "do": "Use a tree for real hierarchies.",
+      "dont": "Use a tree for a flat list or for page navigation.",
+      "why": "Tree keyboard behavior is unexpected where there is no hierarchy."
+    }
+  ],
+  "accessibility": {
+    "role": "tree, with treeitem rows and group for each branch’s children.",
+    "keyboard": [
+      {
+        "keys": "Up / Down",
+        "action": "Move to the previous or next visible row."
+      },
+      {
+        "keys": "Right",
+        "action": "Opens a closed branch, or moves to its first child."
+      },
+      {
+        "keys": "Left",
+        "action": "Closes an open branch, or moves to the parent."
+      },
+      {
+        "keys": "Home / End",
+        "action": "Move to the first or last visible row."
+      },
+      {
+        "keys": "Enter",
+        "action": "Selects the row and opens or closes a branch."
+      },
+      {
+        "keys": "Space",
+        "action": "Selects the row."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label",
+        "when": "From label, on the tree."
+      },
+      {
+        "attribute": "aria-expanded",
+        "when": "On branches: whether they are open."
+      },
+      {
+        "attribute": "aria-selected",
+        "when": "On every row: whether it is selected."
+      },
+      {
+        "attribute": "aria-level",
+        "when": "On every row: its depth, starting at 1."
+      }
+    ],
+    "focus": "One row is focusable at a time (roving tabindex); a ring outlines the focused row.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Levels and nesting are exposed with tree roles and aria-level."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Every action works with the arrow keys, Enter and Space."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Expanded and selected states are exposed on each row."
+      }
+    ],
+    "notes": [
+      "Selection is shown by background and weight, not color alone."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "File tree",
+      "description": "Folders with icons, one branch open.",
+      "code": "import { TreeView } from '@ds/react';\n\n<TreeView\n  label=\"Files\"\n  defaultExpanded={['src']}\n  items={[\n    { id: 'src', label: 'src', children: [{ id: 'app', label: 'App.tsx' }] },\n    { id: 'readme', label: 'README.md' },\n  ]}\n/>"
+    },
+    {
+      "id": "controlled",
+      "title": "Controlled selection",
+      "description": "Shows the selected page elsewhere.",
+      "code": "import { TreeView } from '@ds/react';\n\n<TreeView label=\"Pages\" items={pages} selected={page} onSelect={setPage} />"
+    },
+    {
+      "id": "guides",
+      "title": "Deep tree with guides",
+      "description": "Small rows with connecting lines.",
+      "code": "import { TreeView } from '@ds/react';\n\n<TreeView label=\"Components\" items={items} size=\"small\" guides />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--tree-view-"
+  ],
+  "related": [
+    {
+      "id": "side-nav",
+      "relation": "Use for app navigation with one or two levels."
+    },
+    {
+      "id": "accordion",
+      "relation": "Use to show and hide page sections."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "TreeView",
+      "import": "import { TreeView } from '@ds/react';",
+      "description": "A hierarchy of items, like files in folders, that people expand, collapse and select.\nImplements the WAI-ARIA tree pattern with a single tab stop and arrow-key navigation.",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Names the tree, e.g. \"Files\"."
+        },
+        "items": {
+          "type": "TreeItem[]",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "expanded": {
+          "type": "string[]",
+          "required": false,
+          "default": null,
+          "description": "Ids of open branches (controlled)."
+        },
+        "defaultExpanded": {
+          "type": "string[]",
+          "required": false,
+          "default": "[]",
+          "description": "Ids of branches open at first."
+        },
+        "onExpandedChange": {
+          "type": "((ids: string[]) => void)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "selected": {
+          "type": "string | null",
+          "required": false,
+          "default": null,
+          "description": "Id of the selected item (controlled)."
+        },
+        "defaultSelected": {
+          "type": "string | null",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "onSelect": {
+          "type": "((id: string) => void)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "size": {
+          "type": "TreeViewSize",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` for dense sidebars, `medium` (default)."
+        },
+        "guides": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Draws lines that connect children to their parent."
+        }
+      }
+    },
+    {
+      "name": "TreeItem",
+      "import": "import { TreeItem } from '@ds/react';",
+      "description": "",
+      "props": {}
+    }
+  ],
+  "tokens": {
+    "--tree-view-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--tree-view-indent": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
+    },
+    "--tree-view-level": {
+      "description": null,
+      "references": null,
+      "default": "0"
+    },
+    "--tree-view-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--tree-view-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--tree-view-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--tree-view-small-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--tree-view-duration": {
+      "description": "Elements changing size or position: accordions, tabs.",
+      "references": "--duration-normal",
+      "default": "200ms"
+    },
+    "--tree-view-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--tree-view-item-padding-x": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--tree-view-medium-item-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tree-view-small-item-padding-y": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--tree-view-item-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--tree-view-item-border-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-sm",
+      "default": "3px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "4px"
+      }
+    },
+    "--tree-view-item-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--tree-view-item-default-bg-color": {
+      "description": null,
+      "references": null,
+      "default": "transparent"
+    },
+    "--tree-view-item-hover-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--tree-view-item-selected-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--tree-view-item-selected-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--tree-view-item-selected-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--tree-view-item-disabled-opacity": {
+      "description": "Opacity from 0 to 1.",
+      "references": "--opacity-medium",
+      "default": "0.5"
+    },
+    "--tree-view-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--tree-view-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--tree-view-guide-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--tree-view-guide-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--tree-view-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--tree-view-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-navigation-treeview--docs"
+}

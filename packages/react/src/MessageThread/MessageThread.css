@@ -1,0 +1,138 @@
+/**
+ * MessageThread. Styled only with --message-thread-* tokens. Other people's bubbles sit at the
+ * start; your own (.ds-message-thread__group--own) sit at the end in the accent color.
+ */
+
+.ds-message-thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--message-thread-group-gap);
+  font-family: var(--message-thread-font-family);
+}
+
+.ds-message-thread__group {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--message-thread-avatar-gap);
+  max-inline-size: var(--message-thread-bubble-max-width);
+}
+
+.ds-message-thread__group--own {
+  align-self: flex-end;
+}
+
+.ds-message-thread__avatar {
+  flex: none;
+}
+
+.ds-message-thread__messages {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--message-thread-message-gap);
+  min-inline-size: 0;
+}
+
+.ds-message-thread__group--own .ds-message-thread__messages {
+  align-items: flex-end;
+}
+
+.ds-message-thread__author {
+  padding-inline: var(--message-thread-bubble-padding-x);
+  color: var(--message-thread-author-text-color);
+  font-size: var(--message-thread-author-font-size);
+  font-weight: var(--message-thread-author-font-weight);
+  line-height: var(--message-thread-author-font-line-height);
+}
+
+.ds-message-thread__message {
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
+  gap: var(--message-thread-meta-gap);
+  min-inline-size: 0;
+}
+
+.ds-message-thread__group--own .ds-message-thread__message {
+  align-items: flex-end;
+}
+
+.ds-message-thread__bubble {
+  padding-block: var(--message-thread-bubble-padding-y);
+  padding-inline: var(--message-thread-bubble-padding-x);
+  border: var(--message-thread-bubble-border-width) solid var(--message-thread-incoming-border-color);
+  border-radius: var(--message-thread-bubble-border-radius);
+  background: var(--message-thread-incoming-bg-color);
+  color: var(--message-thread-incoming-text-color);
+  font-size: var(--message-thread-font-size);
+  line-height: var(--message-thread-font-line-height);
+  overflow-wrap: anywhere;
+}
+
+.ds-message-thread__group:not(.ds-message-thread__group--own) .ds-message-thread__message:last-child .ds-message-thread__bubble {
+  border-end-start-radius: var(--message-thread-bubble-tail-radius);
+}
+
+.ds-message-thread__group--own .ds-message-thread__bubble {
+  border-color: var(--message-thread-outgoing-border-color);
+  background: var(--message-thread-outgoing-bg-color);
+  color: var(--message-thread-outgoing-text-color);
+}
+
+.ds-message-thread__group--own .ds-message-thread__message:last-child .ds-message-thread__bubble {
+  border-end-end-radius: var(--message-thread-bubble-tail-radius);
+}
+
+.ds-message-thread__meta {
+  padding-inline: var(--message-thread-bubble-padding-x);
+  color: var(--message-thread-meta-text-color);
+  font-size: var(--message-thread-meta-font-size);
+  line-height: var(--message-thread-meta-font-line-height);
+}
+
+/* Typing: three pulsing dots */
+.ds-message-thread__typing {
+  display: inline-flex;
+  gap: var(--message-thread-dot-gap);
+  align-items: center;
+  min-block-size: var(--message-thread-typing-height);
+}
+
+.ds-message-thread__dot {
+  inline-size: var(--message-thread-dot-size);
+  block-size: var(--message-thread-dot-size);
+  border-radius: var(--message-thread-dot-border-radius);
+  background: var(--message-thread-dot-color);
+  animation: ds-message-thread-pulse var(--message-thread-dot-duration) var(--message-thread-dot-easing) infinite;
+}
+
+.ds-message-thread__dot:nth-child(2) {
+  animation-delay: calc(var(--message-thread-dot-duration) / 6);
+}
+
+.ds-message-thread__dot:nth-child(3) {
+  animation-delay: calc(var(--message-thread-dot-duration) / 3);
+}
+
+@keyframes ds-message-thread-pulse {
+  0%,
+  60%,
+  100% {
+    opacity: var(--message-thread-dot-dim-opacity);
+  }
+
+  30% {
+    opacity: 1;
+  }
+}
+
+.ds-message-thread--compact .ds-message-thread__group {
+  max-inline-size: var(--message-thread-compact-bubble-max-width);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-message-thread__dot {
+    animation: none;
+  }
+}
+

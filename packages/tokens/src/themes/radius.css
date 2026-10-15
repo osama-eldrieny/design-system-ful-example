@@ -64,6 +64,7 @@
   --tag-border-radius: var(--radius-4);
   --checkbox-border-radius: var(--radius-4);
   --input-field-border-radius: var(--radius-8);
+  --filter-bar-trigger-border-radius: var(--radius-8);
   --textarea-border-radius: var(--radius-8);
   --pagination-item-border-radius: var(--radius-8);
   --alerts-border-radius: var(--radius-8);
@@ -130,6 +131,7 @@
   --tag-border-radius: var(--radius-2);
   --checkbox-border-radius: var(--radius-2);
   --input-field-border-radius: var(--radius-4);
+  --filter-bar-trigger-border-radius: var(--radius-4);
   --textarea-border-radius: var(--radius-4);
   --pagination-item-border-radius: var(--radius-4);
   --alerts-border-radius: var(--radius-4);
@@ -196,6 +198,7 @@
   --tag-border-radius: var(--radius-999);
   --checkbox-border-radius: var(--radius-4);
   --input-field-border-radius: var(--radius-999);
+  --filter-bar-trigger-border-radius: var(--radius-999);
   --textarea-border-radius: var(--radius-16);
   --pagination-item-border-radius: var(--radius-999);
   --alerts-border-radius: var(--radius-12);

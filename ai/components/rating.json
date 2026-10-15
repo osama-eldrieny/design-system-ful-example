@@ -1,0 +1,440 @@
+{
+  "id": "rating",
+  "name": "Rating",
+  "category": "Forms",
+  "status": "stable",
+  "since": "1.2.0",
+  "description": "Stars for giving a score, such as rating a template, or for showing one, such as an average of 4.5 out of 5. Interactive ratings are a radio group; read-only ratings can show halves.",
+  "imports": [
+    {
+      "name": "Rating",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To let people score something on a short scale, e.g. \"Rate this template\".",
+    "To show an average score next to products, reviews or templates."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To pick a number from a wide range.",
+      "alternative": "Slider"
+    },
+    {
+      "text": "For a yes / no reaction.",
+      "alternative": "Button"
+    },
+    {
+      "text": "To show progress toward a goal.",
+      "alternative": "ProgressBar"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Stars",
+      "description": "One star per score; filled stars show the rating."
+    },
+    {
+      "name": "Value",
+      "description": "The number after the stars, e.g. \"4.5\".",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "In lists, cards and table rows."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "For a dedicated rating form or review dialog."
+        }
+      ]
+    },
+    {
+      "prop": "readOnly",
+      "title": "Read only",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. People choose a score."
+        },
+        {
+          "value": "true",
+          "meaning": "Shows a score, including halves, without letting people change it."
+        }
+      ]
+    },
+    {
+      "prop": "showValue",
+      "title": "Show value",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. Stars only."
+        },
+        {
+          "value": "true",
+          "meaning": "Adds the number after the stars."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Not rated",
+      "meaning": "No score chosen yet; all stars are empty.",
+      "trigger": "value is 0."
+    },
+    {
+      "name": "Rated",
+      "meaning": "Stars up to the score are filled.",
+      "trigger": "value is 1 to max."
+    },
+    {
+      "name": "Hover",
+      "meaning": "Previews the score up to the star under the pointer.",
+      "trigger": ":hover."
+    },
+    {
+      "name": "Focus",
+      "meaning": "Shows keyboard focus on the current star.",
+      "trigger": ":focus-visible."
+    },
+    {
+      "name": "Read only",
+      "meaning": "Shows a score that cannot be changed.",
+      "trigger": "readOnly prop."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Choosing",
+      "text": "Clicking a star sets the score to it. Arrow keys move the score up and down."
+    },
+    {
+      "topic": "Controlled or not",
+      "text": "Pass value and onValueChange to control it, or defaultValue to let it manage its own state."
+    },
+    {
+      "topic": "Halves",
+      "text": "Read-only ratings fill stars partly, so 4.5 shows four and a half stars."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "Stars run from the right in Arabic, and partial stars fill from the right."
+    }
+  ],
+  "content": [
+    "Name what is rated in the label: \"Rate this template\", not \"Rating\".",
+    "Show the number next to read-only stars when exact values matter.",
+    "Translate starLabel and summaryLabel in other languages."
+  ],
+  "guidelines": [
+    {
+      "do": "Give the rating a label that says what is rated.",
+      "dont": "Leave stars without a name.",
+      "why": "Screen readers announce the label as the group name."
+    },
+    {
+      "do": "Use read-only stars with the value for averages.",
+      "dont": "Use interactive stars to show someone else’s score.",
+      "why": "Interactive stars invite a click that would change the score."
+    },
+    {
+      "do": "Keep the scale at five stars.",
+      "dont": "Use ten or more stars.",
+      "why": "Long scales are slow to scan and hard to hit on touch screens."
+    }
+  ],
+  "accessibility": {
+    "role": "radiogroup of native radio inputs; read-only ratings are role=\"img\" with a summary.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves focus to the chosen star (or the first one)."
+      },
+      {
+        "keys": "Arrow keys",
+        "action": "Change the score."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label",
+        "when": "From label on the group; each star is named \"N stars\"."
+      },
+      {
+        "attribute": "role=\"img\"",
+        "when": "Read-only ratings, named \"Label: Rated 4.5 out of 5\"."
+      }
+    ],
+    "focus": "A focus ring appears around the focused star.",
+    "wcag": [
+      {
+        "criterion": "1.1.1 Non-text Content",
+        "how": "Read-only stars have a text summary of the score."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Native radio inputs: Tab to the group, arrows to change."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "A named radio group whose checked star is the value."
+      }
+    ],
+    "notes": [
+      "Filled and empty stars differ in shape fill as well as color."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Rate something",
+      "description": "A controlled rating.",
+      "code": "import { Rating } from '@ds/react';\n\n<Rating label=\"Rate this template\" value={score} onValueChange={setScore} />"
+    },
+    {
+      "id": "average",
+      "title": "Average score",
+      "description": "Read-only, with a half star and the number.",
+      "code": "import { Rating } from '@ds/react';\n\n<Rating label=\"Customer rating\" value={4.5} readOnly showValue size=\"small\" />"
+    },
+    {
+      "id": "arabic",
+      "title": "Translated",
+      "description": "Custom words for each star.",
+      "code": "import { Rating } from '@ds/react';\n\n<Rating label=\"قيّم القالب\" starLabel={(n) => `${n} من 5`} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--rating-"
+  ],
+  "related": [
+    {
+      "id": "radio-group",
+      "relation": "Use for scores that need words, e.g. \"Poor\" to \"Great\"."
+    },
+    {
+      "id": "slider",
+      "relation": "Use for a wide numeric range."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Rating",
+      "import": "import { Rating } from '@ds/react';",
+      "description": "Stars for giving or showing a rating. Interactive ratings are a radio group (arrow keys move\nbetween scores); read-only ratings are a single image with a spoken summary.",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "What is rated, e.g. \"Rate this template\". Names the group."
+        },
+        "value": {
+          "type": "number",
+          "required": false,
+          "default": null,
+          "description": "Rating shown (controlled). 0 means not rated. Halves show in read-only mode."
+        },
+        "defaultValue": {
+          "type": "number",
+          "required": false,
+          "default": 0,
+          "description": "Initial rating when uncontrolled. Default 0."
+        },
+        "onValueChange": {
+          "type": "((value: number) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called with the chosen rating."
+        },
+        "max": {
+          "type": "number",
+          "required": false,
+          "default": 5,
+          "description": "Number of stars. Default 5."
+        },
+        "readOnly": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows a rating without letting people change it, e.g. an average of 4.5."
+        },
+        "size": {
+          "type": "RatingSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` in lists and cards, `medium` (default), `large` for a rating form."
+        },
+        "showValue": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Shows the number after the stars, e.g. \"4.5\"."
+        },
+        "starLabel": {
+          "type": "((n: number, max: number) => string)",
+          "required": false,
+          "default": "(n) => `${n} star${n === 1 ? '' : 's'}`",
+          "description": "Words for each star, for translation. Default \"1 star\", \"2 stars\"…"
+        },
+        "summaryLabel": {
+          "type": "((value: number, max: number) => string)",
+          "required": false,
+          "default": "(v, m) => `Rated ${v} out of ${m}`",
+          "description": "Words for the read-only summary. Default \"Rated 4.5 out of 5\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--rating-full-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-default",
+      "default": "#876400",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c99600",
+        "brand=amber,mode=dark": "#c99600",
+        "brand=opal,mode=light": "#856603",
+        "brand=opal,mode=dark": "#eab306"
+      }
+    },
+    "--rating-empty-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--rating-hover-color": {
+      "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",
+      "references": "--color-fg-on-accent-warning-text-hover",
+      "default": "#6b4f00",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#edb000",
+        "brand=amber,mode=dark": "#edb000",
+        "brand=opal,mode=light": "#695103",
+        "brand=opal,mode=dark": "#eec133"
+      }
+    },
+    "--rating-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--rating-small-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--rating-medium-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-md",
+      "default": "22px"
+    },
+    "--rating-large-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xl",
+      "default": "38px"
+    },
+    "--rating-value-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--rating-value-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--rating-value-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--rating-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--rating-value-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--rating-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--rating-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--rating-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--rating-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--rating-focus-ring-radius": {
+      "description": "Small rounding for tiny elements: checkboxes, tags.",
+      "references": "--radius-xs",
+      "default": "2px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "1px",
+        "brand=diamond,mode=light,radius=pills": "3px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-rating--docs"
+}

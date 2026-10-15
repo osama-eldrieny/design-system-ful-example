@@ -1,0 +1,33 @@
+/**
+ * Component tokens: rating
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --rating-{size?}-{part?}-{property}
+ *   size: small | medium | large; part: value (the number after the stars)
+ */
+
+:root,
+[data-theme] {
+  --rating-full-color: var(--color-fg-on-accent-warning-text-default);
+  --rating-empty-color: var(--color-border-field);
+  --rating-hover-color: var(--color-fg-on-accent-warning-text-hover);
+  --rating-gap: var(--spacing-3xs);
+  --rating-small-size: var(--sizing-sm);
+  --rating-medium-size: var(--sizing-md);
+  --rating-large-size: var(--sizing-xl);
+
+  /* The number after the stars */
+  --rating-value-gap: var(--spacing-xs);
+  --rating-value-color: var(--color-fg-on-surface-primary);
+  --rating-value-font-family: var(--font-family-body);
+  --rating-value-font-size: var(--font-size-sm);
+  --rating-value-font-weight: var(--font-weight-semi-bold);
+  --rating-value-font-line-height: var(--font-line-height-sm);
+
+  /* Focus */
+  --rating-focus-ring-width: var(--focus-ring-width);
+  --rating-focus-ring-offset: var(--focus-ring-offset);
+  --rating-focus-ring-color: var(--focus-ring-color);
+  --rating-focus-ring-radius: var(--radius-xs);
+}

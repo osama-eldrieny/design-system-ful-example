@@ -574,6 +574,11 @@ While Storybook runs locally, its own MCP server at `http://localhost:6006/mcp` 
 
 ---
 
+# InlineCTA
+
+
+---
+
 # Logo
 
 
@@ -2516,6 +2521,121 @@ Tokens: `--code-*` (values per theme in ai/components/code.json).
 
 ---
 
+# ColorPicker
+
+> A row of color swatches to choose one from, such as a label or calendar color, with an optional custom color from the system picker.
+
+Status: stable · Category: Forms · Since 1.2.0
+
+```tsx
+import { ColorPicker } from '@ds/react';
+import { ColorSwatch } from '@ds/react';
+```
+
+## When to use
+- To pick a color for something people own, e.g. a tag, project or calendar.
+- When a short, curated set of colors covers most needs.
+
+## When not to use
+- To choose between options that only happen to have colors. Use RadioGroup.
+- To change the product’s theme. Use ThemeProvider.
+
+## Size (`size`)
+- `small`: In menus, popovers and toolbars.
+- `medium`: Default.
+
+## Custom color (`allowCustom`)
+- `false`: Default. Only the given swatches.
+- `true`: Adds a swatch that opens the system color picker.
+
+## States
+- **Default**: A color that can be chosen. (—)
+- **Hover**: The swatch grows slightly. (:hover.)
+- **Focus**: Shows which swatch the keyboard is on. (:focus-visible.)
+- **Selected**: The chosen color, with a ring and check. (value matches.)
+- **Disabled**: The color cannot be changed. (disabled prop.)
+
+## Props
+### ColorPicker
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the choice, e.g. "Label color". Shown as the legend. |
+| `swatches` | `ColorSwatch[]` |  | Colors to choose from. |
+| `value` | `string` |  | The chosen color (controlled). |
+| `defaultValue` | `string` |  |  |
+| `onValueChange` | `((value: string) => void)` |  |  |
+| `allowCustom` | `boolean` | false | Adds a "Custom" swatch that opens the system color picker. |
+| `customLabel` | `string` | Custom color | Words for the custom swatch. Default "Custom color". |
+| `hideLabel` | `boolean` | false | Hides the legend visually (it is still announced). |
+| `size` | `ColorPickerSize` | medium | `small` in menus and toolbars, `medium` (default). |
+| `disabled` | `boolean` |  |  |
+
+### ColorSwatch
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Give each swatch a name. Don’t: Leave screen-reader users with hex codes or nothing. Why: The name is what people hear and see in the tooltip.
+- Do: Offer a curated set that works in light and dark themes. Don’t: Offer any color by default. Why: Curated colors keep text on them readable.
+- Do: Show the chosen color wherever it is used right away. Don’t: Hide the result until a Save button is pressed. Why: Seeing the color in place helps people decide.
+
+## Content
+- Name every swatch in plain words: "Blue", not "#2563eb".
+- Keep the set short, eight to twelve colors.
+- Use a legend that says what the color is for.
+
+## Accessibility
+- Role: group (a fieldset with a legend) of native radio inputs.
+- Tab: Moves to the chosen swatch, then to the custom swatch.
+- Arrow keys: Choose the previous or next swatch.
+- Enter / Space: On the custom swatch, opens the system picker.
+- `aria-label`: On each swatch, from its name.
+- Focus: A focus ring appears outside the selection ring.
+- WCAG 1.4.1 Use of Color: Every swatch has a name; the chosen one has a ring and check, not just color.
+- WCAG 2.1.1 Keyboard: Native radio keyboard behavior.
+- WCAG 4.1.2 Name, Role, Value: Radios named by color, grouped by the legend.
+- The check has an outline so it reads on light and dark swatches.
+
+## Examples
+### Label color
+A controlled picker.
+
+```tsx
+import { ColorPicker } from '@ds/react';
+
+<ColorPicker
+  label="Label color"
+  swatches={[{ value: '#2563eb', name: 'Blue' }, { value: '#16a34a', name: 'Green' }]}
+  value={color}
+  onValueChange={setColor}
+/>
+```
+
+### With a custom color
+Adds the system color picker.
+
+```tsx
+import { ColorPicker } from '@ds/react';
+
+<ColorPicker label="Project color" swatches={swatches} allowCustom />
+```
+
+### In a menu
+Small, with the legend hidden because the menu already says it.
+
+```tsx
+import { ColorPicker } from '@ds/react';
+
+<ColorPicker label="Highlight" swatches={swatches} size="small" hideLabel />
+```
+
+Tokens: `--color-picker-*` (values per theme in ai/components/color-picker.json).
+
+
+---
+
 # Combobox
 
 > A combobox is a text field with a list of suggestions: people type to filter and pick one option, or several shown as removable chips. It works with local options or results fetched as people type.
@@ -3749,6 +3869,132 @@ Tokens: `--file-upload-*` (values per theme in ai/components/file-upload.json).
 
 ---
 
+# FilterBar
+
+> A toolbar for narrowing a list or table: an optional search, one menu per filter with checkable options, and the chosen values as removable chips with Clear all.
+
+Status: stable · Category: Forms · Since 1.2.0
+
+```tsx
+import { FilterBar } from '@ds/react';
+import { FilterDefinition } from '@ds/react';
+import { FilterValue } from '@ds/react';
+```
+
+## When to use
+- Above a table or list that people narrow by a few attributes, e.g. status and owner.
+- When several values of the same filter can apply at once.
+
+## When not to use
+- To switch between a few fixed views. Use Tabs.
+- For a single filter with two or three values. Use SegmentedControl.
+- For search alone. Use SearchField.
+
+## Chips (`showChips`)
+- `true`: Default. Chosen values show as removable chips under the bar.
+- `false`: Counts on the triggers only, for tight spaces.
+
+## States
+- **Default**: No values chosen for the filter. (—)
+- **Hover**: The trigger responds to the pointer. (:hover.)
+- **Focus**: Shows keyboard focus on a trigger. (:focus-visible.)
+- **Open**: The filter’s menu is open; the chevron flips. (Click or Enter.)
+- **Active**: The filter has chosen values; tinted with a count. (value has entries.)
+
+## Props
+### FilterBar
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the toolbar, e.g. "Filter invoices". |
+| `filters` | `FilterDefinition[]` |  |  |
+| `value` | `FilterValue` |  | Chosen values (controlled). |
+| `defaultValue` | `FilterValue` | {} |  |
+| `onValueChange` | `((value: FilterValue) => void)` |  |  |
+| `search` | `ReactNode` |  | Content at the start of the bar, usually a SearchField. |
+| `end` | `ReactNode` |  | Content at the end, e.g. a result count or a sort menu. |
+| `showChips` | `boolean` | true | Shows the chosen values as removable chips under the bar. Default true. |
+| `clearLabel` | `string` | Clear all | Words for the clear button. Default "Clear all". |
+| `selectedLabel` | `((filter: string, count: number) => string)` | (f, n) => `${f}, ${n} selected` | Spoken name of a trigger with chosen values. Default "{filter}, {count} selected". |
+| `removeLabel` | `((filter: string, option: string) => string)` | (f, o) => `Remove ${f}: ${o}` | Words for a chip's remove button. Default "Remove {filter}: {option}". |
+
+### FilterDefinition
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+### FilterValue
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Show the result count next to the filters. Don’t: Leave people guessing whether a filter changed anything. Why: Immediate feedback confirms the filter applied.
+- Do: Keep to three to five filters. Don’t: Put every column of the table in the bar. Why: Too many triggers wrap into a wall of buttons.
+- Do: Keep chips on when filters can be combined. Don’t: Hide what is filtered in narrow layouts without a count. Why: People forget active filters and think data is missing.
+
+## Content
+- Name filters with nouns: "Status", "Owner".
+- Chips read "Filter: value" so they make sense on their own.
+- Show the number of results in end so people see the effect.
+
+## Accessibility
+- Role: toolbar, named by label; each filter is a menu button with checkbox items.
+- Tab: Moves between search, triggers, chips and Clear all.
+- Enter / Space / Down: Opens a filter’s menu.
+- Up / Down: Move between options in the menu.
+- Enter / Space: Checks or unchecks an option.
+- Escape: Closes the menu and returns focus to its trigger.
+- `aria-label`: On the toolbar, from label.
+- `aria-expanded`: On each trigger, set by the menu.
+- `menuitemcheckbox`: Each option, with aria-checked.
+- Focus: Triggers show a focus ring; focus returns to the trigger when its menu closes.
+- WCAG 1.3.1 Info and Relationships: Counts are announced with the trigger name, e.g. "Status, 2 selected".
+- WCAG 2.1.1 Keyboard: Menus and chips work fully from the keyboard.
+- WCAG 4.1.2 Name, Role, Value: Options expose their checked state.
+- Active filters are shown by count and chips, not only by tint.
+
+## Examples
+### Invoice filters
+Search, two filters and a result count.
+
+```tsx
+import { FilterBar, SearchField } from '@ds/react';
+
+<FilterBar
+  label="Filter invoices"
+  search={<SearchField placeholder="Search invoices" />}
+  filters={[
+    { id: 'status', label: 'Status', options: [{ value: 'paid', label: 'Paid' }, { value: 'due', label: 'Due' }] },
+    { id: 'owner', label: 'Owner', options: [{ value: 'lana', label: 'Lana' }, { value: 'omar', label: 'Omar' }] },
+  ]}
+  end={<span>24 results</span>}
+/>
+```
+
+### Controlled
+Keeps filters in state, e.g. to sync them with the URL.
+
+```tsx
+import { FilterBar } from '@ds/react';
+
+<FilterBar label="Filter" filters={filters} value={value} onValueChange={setValue} />
+```
+
+### Without chips
+Counts on the triggers only.
+
+```tsx
+import { FilterBar } from '@ds/react';
+
+<FilterBar label="Filter" filters={filters} showChips={false} />
+```
+
+Tokens: `--filter-bar-*` (values per theme in ai/components/filter-bar.json).
+
+
+---
+
 # Footer
 
 > The page footer: a copyright line and secondary links such as Privacy, Terms and Help. It is the page’s content-info landmark.
@@ -4334,6 +4580,109 @@ import { Inline, Button } from '@ds/react';
 ```
 
 Tokens: `--inline-*` (values per theme in ai/components/inline.json).
+
+
+---
+
+# InlineCTA
+
+> A call to action placed inside page content, such as between dashboard sections or at the end of an article: a title, a short description and one or two actions.
+
+Status: stable · Category: Patterns · Since 1.2.0
+
+```tsx
+import { InlineCTA } from '@ds/react';
+```
+
+## When to use
+- To suggest a next step in context, e.g. "Invite your team" under an empty member list.
+- To promote an upgrade or feature within a page without interrupting it.
+
+## When not to use
+- For warnings, errors or system status. Use Alert.
+- For a page-wide announcement at the top. Use PageHeader.
+- When there is nothing yet on the page. Use EmptyState.
+
+## Appearance (`appearance`)
+- `subtle`: Default. A grey panel that sits quietly in content.
+- `brand`: A brand-colored border and icon tile, for upgrades and new features.
+- `outline`: Bordered, on the page background, for cards and dense layouts.
+
+## Layout (`layout`)
+- `horizontal`: Default. Actions at the end; they wrap below on narrow screens.
+- `stacked`: Actions under the text, for sidebars and narrow columns.
+
+## States
+- **Default**: A static panel; its buttons have their own states. (—)
+
+## Props
+### InlineCTA
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `ReactNode` |  | The offer in a few words, e.g. "Upgrade to Pro". |
+| `description` | `ReactNode` |  | One or two sentences on why. |
+| `icon` | `ReactNode` |  | Icon or illustration at the start. |
+| `actions` | `ReactNode` |  | One or two Buttons or Links. |
+| `appearance` | `InlineCTAAppearance` | subtle | `subtle` (default) grey panel, `brand` tinted with the brand color, `outline` bordered. |
+| `layout` | `InlineCTALayout` | horizontal | `horizontal` (default) puts actions at the end; `stacked` puts them under the text. Narrow screens always stack. |
+| `headingLevel` | `2 \| 3 \| 4 \| 5 \| 6` | 3 | Heading level for the title. Default 3. |
+
+## Guidelines
+- Do: Use one InlineCTA per screen. Don’t: Stack several calls to action on the same page. Why: Competing offers dilute each other.
+- Do: Pair one primary button with an optional secondary. Don’t: Add three or more actions. Why: A single clear next step converts better.
+- Do: Use brand appearance for upgrades and new features. Don’t: Use the CTA to report errors. Why: Status messages belong in an Alert so they are announced and colored by tone.
+
+## Content
+- Write the title as the benefit or the action: "Invite your team".
+- Use a verb on the primary button that matches the title.
+- Keep the description to two lines.
+
+## Accessibility
+- Role: region-less section with a real heading, so it appears in the heading outline.
+- Tab: Moves through the actions.
+- `aria-hidden`: On the icon, which is decorative.
+- Focus: Only the actions take focus.
+- WCAG 1.3.1 Info and Relationships: The title is a heading at a configurable level.
+- WCAG 1.4.3 Contrast: Text passes AA on every appearance in every theme.
+- WCAG 1.4.10 Reflow: Actions wrap under the text at narrow widths.
+- Use Buttons or Links for actions so they keep their own focus and states.
+
+## Examples
+### Invite your team
+Subtle, with an icon and two actions.
+
+```tsx
+import { Button, InlineCTA } from '@ds/react';
+import { Users } from 'lucide-react';
+
+<InlineCTA
+  icon={<Users />}
+  title="Invite your team"
+  description="Projects move faster together. Invite up to 5 people for free."
+  actions={<><Button variant="secondary" appearance="outline">Later</Button><Button>Invite</Button></>}
+/>
+```
+
+### Upgrade
+Brand-tinted for an upgrade offer.
+
+```tsx
+import { Button, InlineCTA } from '@ds/react';
+
+<InlineCTA appearance="brand" title="Unlock advanced reports" actions={<Button>Upgrade</Button>} />
+```
+
+### In a sidebar
+Stacked layout for narrow columns.
+
+```tsx
+import { Button, InlineCTA } from '@ds/react';
+
+<InlineCTA layout="stacked" appearance="outline" title="Need help?" description="Our team replies within an hour." actions={<Button>Contact support</Button>} />
+```
+
+Tokens: `--inline-cta-*` (values per theme in ai/components/inline-cta.json).
 
 
 ---
@@ -4981,6 +5330,110 @@ import { MeetingCard } from '@ds/react';
 ```
 
 Tokens: `--meeting-card-*` (values per theme in ai/components/meeting-card.json).
+
+
+---
+
+# MessageThread
+
+> A conversation shown as chat bubbles: other people’s messages at the start with their avatar and name, yours at the end in the accent color, with an optional typing indicator.
+
+Status: stable · Category: Data display · Since 1.2.0
+
+```tsx
+import { MessageThread } from '@ds/react';
+import { ThreadMessage } from '@ds/react';
+```
+
+## When to use
+- For direct messages, support chats and comment conversations.
+- To show an AI assistant conversation.
+
+## When not to use
+- For a timeline of events, not messages. Use ActivityFeed.
+- For a one-off notice. Use Toast.
+
+## Density (`density`)
+- `comfortable`: Default. Avatars beside other people’s messages.
+- `compact`: No avatars, wider bubbles, for narrow side panels.
+
+## States
+- **Incoming**: Someone else’s message. (own is false.)
+- **Outgoing**: Your message. (own is true.)
+- **Typing**: Someone is writing a reply. (typing prop.)
+
+## Props
+### MessageThread
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the conversation, e.g. "Conversation with Lana". |
+| `messages` | `ThreadMessage[]` |  |  |
+| `typing` | `ThreadAuthor` |  | Shows a "… is typing" bubble for this person. |
+| `typingLabel` | `((name: string) => string)` | (name) => `${name} is typing` | Words for the typing bubble. Default "{name} is typing". |
+| `density` | `MessageThreadDensity` | comfortable | `comfortable` (default) shows avatars and names; `compact` hides avatars for narrow panels. |
+
+### ThreadMessage
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Put the reply box directly under the thread. Don’t: Separate the composer from the conversation. Why: People read the last message and answer right below it.
+- Do: Give status only to the latest own message. Don’t: Show "Read" under every message. Why: Repeating it adds noise without new information.
+- Do: Use compact density in narrow panels. Don’t: Squeeze avatars into a 280px drawer. Why: Bubbles need the width more than the avatars.
+
+## Content
+- Show times in the reader’s own format, e.g. "9:41" or "Yesterday".
+- Show delivery status only under your last message.
+- Name the thread after the other people, e.g. "Conversation with Lana".
+
+## Accessibility
+- Role: log, named by label; the typing indicator is a status.
+- Tab: Moves through links and buttons inside messages.
+- `role="log"`: Always; new messages are announced politely.
+- `aria-label`: From label, e.g. "Conversation with Lana".
+- Focus: The thread itself takes no focus; interactive content inside messages does.
+- WCAG 1.3.1 Info and Relationships: Authors are named in text, not shown only by side or color.
+- WCAG 1.4.3 Contrast: Bubble text meets AA on both bubble colors in every theme.
+- WCAG 4.1.3 Status Messages: New messages and typing are announced without moving focus.
+- Avatars are decorative because the author name is in the text.
+
+## Examples
+### Direct message
+Two people with times and a read status.
+
+```tsx
+import { MessageThread } from '@ds/react';
+
+<MessageThread
+  label="Conversation with Lana"
+  messages={[
+    { id: '1', author: { name: 'Lana Steiner' }, content: 'Is the report ready?', time: '9:40' },
+    { id: '2', author: { name: 'You' }, own: true, content: 'Sending it now.', time: '9:41', status: 'Read' },
+  ]}
+/>
+```
+
+### Typing
+Shows that the other person is writing.
+
+```tsx
+import { MessageThread } from '@ds/react';
+
+<MessageThread label="Support chat" messages={messages} typing={{ name: 'Support' }} />
+```
+
+### In a side panel
+Compact density without avatars.
+
+```tsx
+import { MessageThread } from '@ds/react';
+
+<MessageThread label="Comments" messages={messages} density="compact" />
+```
+
+Tokens: `--message-thread-*` (values per theme in ai/components/message-thread.json).
 
 
 ---
@@ -6102,6 +6555,116 @@ import { RadioGroup, Radio } from '@ds/react';
 ```
 
 Tokens: `--radio-*` (values per theme in ai/components/radio-group.json).
+
+
+---
+
+# Rating
+
+> Stars for giving a score, such as rating a template, or for showing one, such as an average of 4.5 out of 5. Interactive ratings are a radio group; read-only ratings can show halves.
+
+Status: stable · Category: Forms · Since 1.2.0
+
+```tsx
+import { Rating } from '@ds/react';
+```
+
+## When to use
+- To let people score something on a short scale, e.g. "Rate this template".
+- To show an average score next to products, reviews or templates.
+
+## When not to use
+- To pick a number from a wide range. Use Slider.
+- For a yes / no reaction. Use Button.
+- To show progress toward a goal. Use ProgressBar.
+
+## Size (`size`)
+- `small`: In lists, cards and table rows.
+- `medium`: Default.
+- `large`: For a dedicated rating form or review dialog.
+
+## Read only (`readOnly`)
+- `false`: Default. People choose a score.
+- `true`: Shows a score, including halves, without letting people change it.
+
+## Show value (`showValue`)
+- `false`: Default. Stars only.
+- `true`: Adds the number after the stars.
+
+## States
+- **Not rated**: No score chosen yet; all stars are empty. (value is 0.)
+- **Rated**: Stars up to the score are filled. (value is 1 to max.)
+- **Hover**: Previews the score up to the star under the pointer. (:hover.)
+- **Focus**: Shows keyboard focus on the current star. (:focus-visible.)
+- **Read only**: Shows a score that cannot be changed. (readOnly prop.)
+
+## Props
+### Rating
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | What is rated, e.g. "Rate this template". Names the group. |
+| `value` | `number` |  | Rating shown (controlled). 0 means not rated. Halves show in read-only mode. |
+| `defaultValue` | `number` | 0 | Initial rating when uncontrolled. Default 0. |
+| `onValueChange` | `((value: number) => void)` |  | Called with the chosen rating. |
+| `max` | `number` | 5 | Number of stars. Default 5. |
+| `readOnly` | `boolean` | false | Shows a rating without letting people change it, e.g. an average of 4.5. |
+| `size` | `RatingSize` | medium | `small` in lists and cards, `medium` (default), `large` for a rating form. |
+| `showValue` | `boolean` | false | Shows the number after the stars, e.g. "4.5". |
+| `starLabel` | `((n: number, max: number) => string)` | (n) => `${n} star${n === 1 ? '' : 's'}` | Words for each star, for translation. Default "1 star", "2 stars"… |
+| `summaryLabel` | `((value: number, max: number) => string)` | (v, m) => `Rated ${v} out of ${m}` | Words for the read-only summary. Default "Rated 4.5 out of 5". |
+
+## Guidelines
+- Do: Give the rating a label that says what is rated. Don’t: Leave stars without a name. Why: Screen readers announce the label as the group name.
+- Do: Use read-only stars with the value for averages. Don’t: Use interactive stars to show someone else’s score. Why: Interactive stars invite a click that would change the score.
+- Do: Keep the scale at five stars. Don’t: Use ten or more stars. Why: Long scales are slow to scan and hard to hit on touch screens.
+
+## Content
+- Name what is rated in the label: "Rate this template", not "Rating".
+- Show the number next to read-only stars when exact values matter.
+- Translate starLabel and summaryLabel in other languages.
+
+## Accessibility
+- Role: radiogroup of native radio inputs; read-only ratings are role="img" with a summary.
+- Tab: Moves focus to the chosen star (or the first one).
+- Arrow keys: Change the score.
+- `aria-label`: From label on the group; each star is named "N stars".
+- `role="img"`: Read-only ratings, named "Label: Rated 4.5 out of 5".
+- Focus: A focus ring appears around the focused star.
+- WCAG 1.1.1 Non-text Content: Read-only stars have a text summary of the score.
+- WCAG 2.1.1 Keyboard: Native radio inputs: Tab to the group, arrows to change.
+- WCAG 4.1.2 Name, Role, Value: A named radio group whose checked star is the value.
+- Filled and empty stars differ in shape fill as well as color.
+
+## Examples
+### Rate something
+A controlled rating.
+
+```tsx
+import { Rating } from '@ds/react';
+
+<Rating label="Rate this template" value={score} onValueChange={setScore} />
+```
+
+### Average score
+Read-only, with a half star and the number.
+
+```tsx
+import { Rating } from '@ds/react';
+
+<Rating label="Customer rating" value={4.5} readOnly showValue size="small" />
+```
+
+### Translated
+Custom words for each star.
+
+```tsx
+import { Rating } from '@ds/react';
+
+<Rating label="قيّم القالب" starLabel={(n) => `${n} من 5`} />
+```
+
+Tokens: `--rating-*` (values per theme in ai/components/rating.json).
 
 
 ---
@@ -7936,6 +8499,131 @@ import { Tooltip, IconButton } from '@ds/react';
 ```
 
 Tokens: `--tooltip-*` (values per theme in ai/components/tooltip.json).
+
+
+---
+
+# TreeView
+
+> A hierarchy of items, such as files in folders or pages in sections, that people expand, collapse and select. Follows the WAI-ARIA tree pattern.
+
+Status: stable · Category: Navigation · Since 1.2.0
+
+```tsx
+import { TreeView } from '@ds/react';
+import { TreeItem } from '@ds/react';
+```
+
+## When to use
+- To browse nested content more than two levels deep, e.g. a file explorer.
+- To pick one item from a hierarchy, e.g. a folder to move a file into.
+
+## When not to use
+- For a site’s main navigation with one or two levels. Use SideNav.
+- To show and hide sections of a page. Use Accordion.
+- For a flat list of items. Use List.
+
+## Size (`size`)
+- `small`: Dense sidebars and panels.
+- `medium`: Default.
+
+## Guides (`guides`)
+- `false`: Default. Indentation alone shows the levels.
+- `true`: Adds lines down each open branch, for deep trees.
+
+## States
+- **Collapsed**: A branch whose children are hidden. (Id not in expanded.)
+- **Expanded**: A branch whose children show. (Id in expanded.)
+- **Hover**: Highlights the row under the pointer. (:hover.)
+- **Focus**: Shows which row the keyboard is on. (:focus-visible.)
+- **Selected**: The chosen item. (selected matches the id.)
+- **Disabled**: Cannot be selected. (disabled on the item.)
+
+## Props
+### TreeView
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the tree, e.g. "Files". |
+| `items` | `TreeItem[]` |  |  |
+| `expanded` | `string[]` |  | Ids of open branches (controlled). |
+| `defaultExpanded` | `string[]` | [] | Ids of branches open at first. |
+| `onExpandedChange` | `((ids: string[]) => void)` |  |  |
+| `selected` | `string \| null` |  | Id of the selected item (controlled). |
+| `defaultSelected` | `string \| null` |  |  |
+| `onSelect` | `((id: string) => void)` |  |  |
+| `size` | `TreeViewSize` | medium | `small` for dense sidebars, `medium` (default). |
+| `guides` | `boolean` | false | Draws lines that connect children to their parent. |
+
+### TreeItem
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Open the branch that holds the selected item. Don’t: Start with the selected item hidden in a closed branch. Why: People need to see where they are.
+- Do: Use guides for trees deeper than three levels. Don’t: Rely on indentation alone in deep trees. Why: Lines make it clear which parent a row belongs to.
+- Do: Use a tree for real hierarchies. Don’t: Use a tree for a flat list or for page navigation. Why: Tree keyboard behavior is unexpected where there is no hierarchy.
+
+## Content
+- Keep labels short; long labels are truncated with an ellipsis.
+- Use icons consistently: the same icon for every item of the same kind.
+- Name the tree with label, e.g. "Files" or "Pages".
+
+## Accessibility
+- Role: tree, with treeitem rows and group for each branch’s children.
+- Up / Down: Move to the previous or next visible row.
+- Right: Opens a closed branch, or moves to its first child.
+- Left: Closes an open branch, or moves to the parent.
+- Home / End: Move to the first or last visible row.
+- Enter: Selects the row and opens or closes a branch.
+- Space: Selects the row.
+- `aria-label`: From label, on the tree.
+- `aria-expanded`: On branches: whether they are open.
+- `aria-selected`: On every row: whether it is selected.
+- `aria-level`: On every row: its depth, starting at 1.
+- Focus: One row is focusable at a time (roving tabindex); a ring outlines the focused row.
+- WCAG 1.3.1 Info and Relationships: Levels and nesting are exposed with tree roles and aria-level.
+- WCAG 2.1.1 Keyboard: Every action works with the arrow keys, Enter and Space.
+- WCAG 4.1.2 Name, Role, Value: Expanded and selected states are exposed on each row.
+- Selection is shown by background and weight, not color alone.
+
+## Examples
+### File tree
+Folders with icons, one branch open.
+
+```tsx
+import { TreeView } from '@ds/react';
+
+<TreeView
+  label="Files"
+  defaultExpanded={['src']}
+  items={[
+    { id: 'src', label: 'src', children: [{ id: 'app', label: 'App.tsx' }] },
+    { id: 'readme', label: 'README.md' },
+  ]}
+/>
+```
+
+### Controlled selection
+Shows the selected page elsewhere.
+
+```tsx
+import { TreeView } from '@ds/react';
+
+<TreeView label="Pages" items={pages} selected={page} onSelect={setPage} />
+```
+
+### Deep tree with guides
+Small rows with connecting lines.
+
+```tsx
+import { TreeView } from '@ds/react';
+
+<TreeView label="Components" items={items} size="small" guides />
+```
+
+Tokens: `--tree-view-*` (values per theme in ai/components/tree-view.json).
 
 
 ---

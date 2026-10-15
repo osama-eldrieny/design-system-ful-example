@@ -1,0 +1,56 @@
+/**
+ * Component tokens: message-thread
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --message-thread-{direction?}-{part?}-{property}
+ *   direction: incoming (other people) | outgoing (your own messages);
+ *   part: bubble | author | meta (time and status) | avatar | dot (typing indicator).
+ */
+
+:root,
+[data-theme] {
+  --message-thread-font-family: var(--font-family-body);
+  --message-thread-font-size: var(--font-size-md);
+  --message-thread-font-line-height: var(--font-line-height-md);
+  --message-thread-group-gap: var(--spacing-md);
+  --message-thread-message-gap: var(--spacing-3xs);
+  --message-thread-avatar-gap: var(--spacing-xs);
+
+  /* Bubbles */
+  --message-thread-bubble-padding-x: var(--spacing-sm);
+  --message-thread-bubble-padding-y: var(--spacing-xs);
+  --message-thread-bubble-border-radius: var(--radius-lg);
+  --message-thread-bubble-tail-radius: var(--radius-xs);
+  --message-thread-bubble-max-width: 80%;
+  --message-thread-compact-bubble-max-width: 90%;
+  --message-thread-incoming-bg-color: var(--color-bg-base);
+  --message-thread-incoming-border-color: var(--color-border-base);
+  --message-thread-bubble-border-width: var(--border-width-hairline);
+  --message-thread-incoming-text-color: var(--color-fg-on-surface-primary);
+  --message-thread-outgoing-bg-color: var(--color-bg-accent-primary-strong-default);
+  --message-thread-outgoing-text-color: var(--color-fg-on-accent-primary-strong-default);
+  --message-thread-outgoing-border-color: var(--color-bg-accent-primary-strong-default);
+
+  /* Author name */
+  --message-thread-author-text-color: var(--color-fg-on-surface-secondary);
+  --message-thread-author-font-size: var(--font-size-sm);
+  --message-thread-author-font-weight: var(--font-weight-medium);
+  --message-thread-author-font-line-height: var(--font-line-height-sm);
+
+  /* Time and status */
+  --message-thread-meta-gap: var(--spacing-3xs);
+  --message-thread-meta-text-color: var(--color-fg-on-surface-secondary);
+  --message-thread-meta-font-size: var(--font-size-xs);
+  --message-thread-meta-font-line-height: var(--font-line-height-sm);
+
+  /* Typing dots */
+  --message-thread-dot-size: var(--sizing-4xs);
+  --message-thread-dot-gap: var(--spacing-3xs);
+  --message-thread-dot-border-radius: var(--radius-full);
+  --message-thread-dot-color: var(--color-fg-on-surface-secondary);
+  --message-thread-dot-duration: var(--duration-slow);
+  --message-thread-dot-easing: var(--easing-standard);
+  --message-thread-dot-dim-opacity: var(--opacity-medium);
+  --message-thread-typing-height: var(--sizing-lg);
+}

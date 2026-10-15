@@ -1,0 +1,53 @@
+/**
+ * Component tokens: inline-cta
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --inline-cta-{appearance?}-{part?}-{property}
+ *   appearance: subtle | brand | outline; part: icon | title | description | text | actions.
+ *   Corners come from the radius theme.
+ */
+
+:root,
+[data-theme] {
+  --inline-cta-gap: var(--spacing-md);
+  --inline-cta-padding-x: var(--spacing-lg);
+  --inline-cta-padding-y: var(--spacing-md);
+  --inline-cta-border-width: var(--border-width-hairline);
+  --inline-cta-border-radius: var(--radius-lg);
+  --inline-cta-font-family: var(--font-family-body);
+
+  /* Appearances */
+  --inline-cta-subtle-bg-color: var(--color-bg-default);
+  --inline-cta-subtle-border-color: var(--color-bg-default);
+
+  /* Brand keeps the page background so any Button on it stays readable; the border and icon carry the color. */
+  --inline-cta-brand-bg-color: var(--color-bg-base);
+  --inline-cta-brand-border-color: var(--color-border-primary-medium);
+  --inline-cta-brand-border-width: var(--border-width-regular);
+  --inline-cta-brand-icon-bg-color: var(--color-bg-primary-1);
+  --inline-cta-outline-bg-color: var(--color-bg-base);
+  --inline-cta-outline-border-color: var(--color-border-base);
+  --inline-cta-outline-icon-bg-color: var(--color-bg-default);
+
+  /* Icon tile */
+  --inline-cta-icon-size: var(--sizing-xl);
+  --inline-cta-icon-glyph-size: var(--sizing-sm);
+  --inline-cta-icon-border-radius: var(--radius-md);
+  --inline-cta-icon-bg-color: var(--color-bg-base);
+  --inline-cta-icon-color: var(--color-fg-on-primary-high);
+
+  /* Text */
+  --inline-cta-text-gap: var(--spacing-3xs);
+  --inline-cta-text-min-width: 16rem;
+  --inline-cta-title-text-color: var(--color-fg-on-surface-primary);
+  --inline-cta-title-font-size: var(--font-size-lg);
+  --inline-cta-title-font-weight: var(--font-weight-semi-bold);
+  --inline-cta-title-font-line-height: var(--font-line-height-lg);
+  --inline-cta-description-text-color: var(--color-fg-on-surface-secondary);
+  --inline-cta-description-font-size: var(--font-size-md);
+  --inline-cta-description-font-line-height: var(--font-line-height-md);
+
+  /* Actions */
+  --inline-cta-actions-gap: var(--spacing-xs);
+}

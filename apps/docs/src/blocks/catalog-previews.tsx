@@ -57,6 +57,12 @@ import {
   Tag,
   Textarea,
   VerificationCodeInput,
+  ColorPicker,
+  FilterBar,
+  InlineCTA,
+  MessageThread,
+  Rating,
+  TreeView,
 } from '@ds/react';
 import {
   Bell,
@@ -65,6 +71,7 @@ import {
   ChevronDown,
   Copy,
   FileText,
+  Folder,
   Home,
   Italic,
   LayoutDashboard,
@@ -615,5 +622,73 @@ export const previews: Record<string, ReactNode> = {
   ),
   'verification-code-input': (
     <VerificationCodeInput label="Code" length={4} size="small" defaultValue="12" />
+  ),
+  rating: <Rating label="Average rating" value={4.5} readOnly showValue />,
+  'tree-view': (
+    <TreeView
+      label="Files"
+      size="small"
+      defaultExpanded={['src']}
+      defaultSelected="app"
+      style={{ inlineSize: 180 }}
+      items={[
+        {
+          id: 'src',
+          label: 'src',
+          icon: <Folder />,
+          children: [
+            { id: 'app', label: 'App.tsx', icon: <FileText /> },
+            { id: 'main', label: 'main.tsx', icon: <FileText /> },
+          ],
+        },
+        { id: 'readme', label: 'README.md', icon: <FileText /> },
+      ]}
+    />
+  ),
+  'color-picker': (
+    <ColorPicker
+      label="Label color"
+      size="small"
+      allowCustom
+      defaultValue="#2563eb"
+      swatches={[
+        { value: '#2563eb', name: 'Blue' },
+        { value: '#7c3aed', name: 'Purple' },
+        { value: '#db2777', name: 'Pink' },
+        { value: '#16a34a', name: 'Green' },
+        { value: '#facc15', name: 'Yellow' },
+      ]}
+    />
+  ),
+  'message-thread': (
+    <MessageThread
+      label="Conversation"
+      density="compact"
+      style={{ inlineSize: 240 }}
+      messages={[
+        { id: '1', author: { name: 'Lana' }, content: 'Is the report ready?' },
+        { id: '2', author: { name: 'You' }, own: true, content: 'Sending it now.', status: 'Read' },
+      ]}
+    />
+  ),
+  'inline-cta': (
+    <InlineCTA
+      appearance="brand"
+      layout="stacked"
+      icon={<Sparkles />}
+      title="Upgrade to Pro"
+      actions={<Button size="small">Upgrade</Button>}
+      style={{ inlineSize: 220 }}
+    />
+  ),
+  'filter-bar': (
+    <FilterBar
+      label="Filters"
+      defaultValue={{ status: ['paid'] }}
+      filters={[
+        { id: 'status', label: 'Status', options: [{ value: 'paid', label: 'Paid' }] },
+        { id: 'owner', label: 'Owner', options: [{ value: 'lana', label: 'Lana' }] },
+      ]}
+    />
   ),
 };

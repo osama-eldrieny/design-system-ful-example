@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Button, InlineCTA } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/InlineCTA/InlineCTA.stories';
+import meta from '../../../../packages/react/src/InlineCTA/InlineCTA.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# InlineCTA
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[InlineCTA]}
+  optionStories={{ appearance: 'Appearances', layout: 'Layout' }}
+  behaviorStory="RightToLeft"
+  matrix={<InlineCTA appearance="brand" title="Unlock advanced reports" description="Compare any two periods." actions={<Button>Upgrade</Button>} />}
+/>

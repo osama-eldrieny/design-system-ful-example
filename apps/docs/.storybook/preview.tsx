@@ -82,7 +82,14 @@ const preview: Preview = {
   parameters: {
     layout: 'padded',
     controls: { expanded: true, sort: 'requiredFirst' },
-    docs: { theme: docsTheme(), toc: { headingSelector: 'h2, h3', title: 'On this page' } },
+    docs: {
+      theme: docsTheme(),
+      toc: {
+        headingSelector: 'h2, h3',
+        ignoreSelector: '.docs-story *, .skip-toc, .docs-catalog__preview *',
+        title: 'On this page',
+      },
+    },
     // Existing components move to 'error' as Phase 3 fixes them; new components start there.
     a11y: { test: 'todo' },
     options: {

@@ -173,6 +173,18 @@
       "contract": "ai/components/code.json"
     },
     {
+      "id": "color-picker",
+      "name": "ColorPicker",
+      "exports": [
+        "ColorPicker",
+        "ColorSwatch"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A row of color swatches to choose one from, such as a label or calendar color, with an optional custom color from the system picker..",
+      "contract": "ai/components/color-picker.json"
+    },
+    {
       "id": "combobox",
       "name": "Combobox",
       "exports": [
@@ -302,6 +314,19 @@
       "contract": "ai/components/file-upload.json"
     },
     {
+      "id": "filter-bar",
+      "name": "FilterBar",
+      "exports": [
+        "FilterBar",
+        "FilterDefinition",
+        "FilterValue"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A toolbar for narrowing a list or table: an optional search, one menu per filter with checkable options, and the chosen values as removable chips with Clear all..",
+      "contract": "ai/components/filter-bar.json"
+    },
+    {
       "id": "footer",
       "name": "Footer",
       "exports": [
@@ -371,6 +396,17 @@
       "contract": "ai/components/inline.json"
     },
     {
+      "id": "inline-cta",
+      "name": "InlineCTA",
+      "exports": [
+        "InlineCTA"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "A call to action placed inside page content, such as between dashboard sections or at the end of an article: a title, a short description and one or two actions..",
+      "contract": "ai/components/inline-cta.json"
+    },
+    {
       "id": "input-field",
       "name": "InputField",
       "exports": [
@@ -436,6 +472,18 @@
       "status": "stable",
       "purpose": "A meeting card shows one event in an agenda or schedule: its name, time and attendees, with a color edge for its status.",
       "contract": "ai/components/meeting-card.json"
+    },
+    {
+      "id": "message-thread",
+      "name": "MessageThread",
+      "exports": [
+        "MessageThread",
+        "ThreadMessage"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A conversation shown as chat bubbles: other people’s messages at the start with their avatar and name, yours at the end in the accent color, with an optional typing indicator..",
+      "contract": "ai/components/message-thread.json"
     },
     {
       "id": "metric-card",
@@ -544,6 +592,17 @@
       "status": "stable",
       "purpose": "A radio group lets people pick exactly one option from a short list, with every option visible at once.",
       "contract": "ai/components/radio-group.json"
+    },
+    {
+      "id": "rating",
+      "name": "Rating",
+      "exports": [
+        "Rating"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "Stars for giving a score, such as rating a template, or for showing one, such as an average of 4.5 out of 5.",
+      "contract": "ai/components/rating.json"
     },
     {
       "id": "search-field",
@@ -728,6 +787,18 @@
       "status": "stable",
       "purpose": "A tooltip shows a short text hint for a control when it’s hovered or focused, such as the name of an icon button.",
       "contract": "ai/components/tooltip.json"
+    },
+    {
+      "id": "tree-view",
+      "name": "TreeView",
+      "exports": [
+        "TreeView",
+        "TreeItem"
+      ],
+      "category": "Navigation",
+      "status": "stable",
+      "purpose": "A hierarchy of items, such as files in folders or pages in sections, that people expand, collapse and select.",
+      "contract": "ai/components/tree-view.json"
     },
     {
       "id": "verification-code-input",

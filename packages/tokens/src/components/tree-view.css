@@ -1,0 +1,48 @@
+/**
+ * Component tokens: tree-view
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --tree-view-{size?}-{part?}-{state?}-{property}
+ *   size: small | medium; part: item (a row) | icon | guide (lines in guides mode);
+ *   state: default | hover | selected | disabled.
+ */
+
+:root,
+[data-theme] {
+  --tree-view-gap: var(--spacing-3xs);
+  --tree-view-indent: var(--spacing-lg);
+  --tree-view-level: 0; /* set per row by the component */
+  --tree-view-font-family: var(--font-family-body);
+  --tree-view-font-size: var(--font-size-md);
+  --tree-view-font-line-height: var(--font-line-height-md);
+  --tree-view-small-font-size: var(--font-size-sm);
+  --tree-view-duration: var(--duration-normal);
+  --tree-view-easing: var(--easing-standard);
+
+  /* Rows */
+  --tree-view-item-padding-x: var(--spacing-xs);
+  --tree-view-medium-item-padding-y: var(--spacing-2xs);
+  --tree-view-small-item-padding-y: var(--spacing-3xs);
+  --tree-view-item-gap: var(--spacing-2xs);
+  --tree-view-item-border-radius: var(--radius-sm);
+  --tree-view-item-default-text-color: var(--color-fg-on-surface-primary);
+  --tree-view-item-default-bg-color: transparent;
+  --tree-view-item-hover-bg-color: var(--color-bg-primary-1);
+  --tree-view-item-selected-bg-color: var(--color-bg-primary-1);
+  --tree-view-item-selected-text-color: var(--color-fg-on-primary-high);
+  --tree-view-item-selected-font-weight: var(--font-weight-medium);
+  --tree-view-item-disabled-opacity: var(--opacity-medium);
+
+  /* Chevron and item icon */
+  --tree-view-icon-size: var(--sizing-sm);
+  --tree-view-icon-color: var(--color-fg-on-surface-secondary);
+
+  /* Guides */
+  --tree-view-guide-width: var(--border-width-hairline);
+  --tree-view-guide-color: var(--color-border-field);
+
+  /* Focus */
+  --tree-view-focus-ring-width: var(--focus-ring-width);
+  --tree-view-focus-ring-color: var(--focus-ring-color);
+}

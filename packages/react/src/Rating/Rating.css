@@ -1,0 +1,111 @@
+/**
+ * Rating. Styled only with --rating-* tokens. Interactive stars are radio inputs; hovering a
+ * star previews the score up to it.
+ */
+
+.ds-rating {
+  --_size: var(--rating-medium-size);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--rating-value-gap);
+}
+
+.ds-rating--small {
+  --_size: var(--rating-small-size);
+}
+
+.ds-rating--large {
+  --_size: var(--rating-large-size);
+}
+
+.ds-rating__stars {
+  display: inline-flex;
+  gap: var(--rating-gap);
+}
+
+.ds-rating__star {
+  position: relative;
+  display: inline-flex;
+  inline-size: var(--_size);
+  block-size: var(--_size);
+}
+
+.ds-rating__icon {
+  inline-size: var(--_size);
+  block-size: var(--_size);
+}
+
+.ds-rating__icon--empty {
+  color: var(--rating-empty-color);
+  fill: var(--rating-empty-color);
+}
+
+.ds-rating__icon--full {
+  color: var(--rating-full-color);
+  fill: var(--rating-full-color);
+}
+
+/* Read-only: a full star clipped to the fraction filled, over an empty star. */
+.ds-rating__fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  overflow: hidden;
+}
+
+.ds-rating__fill:dir(rtl) {
+  transform: scaleX(-1);
+  transform-origin: center;
+}
+
+/* Interactive */
+.ds-rating__option {
+  cursor: pointer;
+}
+
+.ds-rating__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ds-rating__option:has(.ds-rating__input:focus-visible) {
+  border-radius: var(--rating-focus-ring-radius);
+  outline: var(--rating-focus-ring-width) solid var(--rating-focus-ring-color);
+  outline-offset: var(--rating-focus-ring-offset);
+}
+
+/* Hover previews the score: stars up to the hovered one fill. */
+.ds-rating__stars:has(.ds-rating__option:hover) .ds-rating__icon {
+  color: var(--rating-empty-color);
+  fill: var(--rating-empty-color);
+}
+
+.ds-rating__stars:has(.ds-rating__option:hover) .ds-rating__option:has(~ .ds-rating__option:hover) .ds-rating__icon,
+.ds-rating__stars .ds-rating__option:hover .ds-rating__icon {
+  color: var(--rating-hover-color);
+  fill: var(--rating-hover-color);
+}
+
+.ds-rating__value {
+  color: var(--rating-value-color);
+  font-family: var(--rating-value-font-family);
+  font-size: var(--rating-value-font-size);
+  font-weight: var(--rating-value-font-weight);
+  line-height: var(--rating-value-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (forced-colors: active) {
+  .ds-rating__icon--full {
+    color: CanvasText;
+    fill: CanvasText;
+  }
+
+  .ds-rating__icon--empty {
+    fill: Canvas;
+  }
+}

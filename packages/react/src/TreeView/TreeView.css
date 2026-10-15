@@ -1,0 +1,134 @@
+/**
+ * TreeView. Styled only with --tree-view-* tokens. Rows indent by level through --tree-view-level.
+ */
+
+.ds-tree-view,
+.ds-tree-view__group {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-tree-view {
+  --_row-padding-y: var(--tree-view-medium-item-padding-y);
+
+  display: grid;
+  gap: var(--tree-view-gap);
+  color: var(--tree-view-item-default-text-color);
+  font-family: var(--tree-view-font-family);
+  font-size: var(--tree-view-font-size);
+  line-height: var(--tree-view-font-line-height);
+}
+
+.ds-tree-view--small {
+  --_row-padding-y: var(--tree-view-small-item-padding-y);
+
+  font-size: var(--tree-view-small-font-size);
+}
+
+.ds-tree-view__group {
+  display: grid;
+  gap: var(--tree-view-gap);
+  margin-block-start: var(--tree-view-gap);
+}
+
+.ds-tree-view__item {
+  outline: none;
+}
+
+.ds-tree-view__row {
+  display: flex;
+  align-items: center;
+  gap: var(--tree-view-item-gap);
+  padding-block: var(--_row-padding-y);
+  padding-inline: calc(var(--tree-view-item-padding-x) + var(--tree-view-level) * var(--tree-view-indent))
+    var(--tree-view-item-padding-x);
+  border-radius: var(--tree-view-item-border-radius);
+  background: var(--tree-view-item-default-bg-color);
+  cursor: pointer;
+  transition: background-color var(--tree-view-duration) var(--tree-view-easing);
+}
+
+.ds-tree-view__row:hover {
+  background: var(--tree-view-item-hover-bg-color);
+}
+
+.ds-tree-view__row--selected,
+.ds-tree-view__row--selected:hover {
+  background: var(--tree-view-item-selected-bg-color);
+  color: var(--tree-view-item-selected-text-color);
+  font-weight: var(--tree-view-item-selected-font-weight);
+}
+
+.ds-tree-view__row--disabled {
+  opacity: var(--tree-view-item-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-tree-view__row--disabled:hover {
+  background: var(--tree-view-item-default-bg-color);
+}
+
+.ds-tree-view__item:focus-visible > .ds-tree-view__row {
+  outline: var(--tree-view-focus-ring-width) solid var(--tree-view-focus-ring-color);
+  outline-offset: calc(-1 * var(--tree-view-focus-ring-width));
+}
+
+.ds-tree-view__toggle,
+.ds-tree-view__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--tree-view-icon-size);
+  block-size: var(--tree-view-icon-size);
+  color: var(--tree-view-icon-color);
+}
+
+.ds-tree-view__icon > svg,
+.ds-tree-view__chevron {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.ds-tree-view__chevron {
+  transition: transform var(--tree-view-duration) var(--tree-view-easing);
+}
+
+.ds-tree-view__chevron:dir(rtl) {
+  transform: scaleX(-1);
+}
+
+.ds-tree-view__chevron--open,
+.ds-tree-view__chevron--open:dir(rtl) {
+  transform: rotate(90deg);
+}
+
+.ds-tree-view__label {
+  min-inline-size: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Guides: a line down the side of each open group, under its parent's chevron. */
+.ds-tree-view--guides .ds-tree-view__group {
+  position: relative;
+}
+
+.ds-tree-view--guides .ds-tree-view__group::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: calc(
+    var(--tree-view-item-padding-x) + var(--tree-view-level) * var(--tree-view-indent) + var(--tree-view-icon-size) / 2
+  );
+  border-inline-start: var(--tree-view-guide-width) solid var(--tree-view-guide-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-tree-view__row,
+  .ds-tree-view__chevron {
+    transition: none;
+  }
+}

@@ -65,6 +65,7 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Checkbox** (Forms): A checkbox turns one option on or off, or lets people pick any number of options from a list.
 - **ChooseCard** (Patterns): Choose cards are large radio buttons: each option is a card with a name, a description and an optional price, and people pick exactly one.
 - **Code** (Data display): Code shows code inline in text or as a block with a language label and a copy button.
+- **ColorPicker** (Forms): A row of color swatches to choose one from, such as a label or calendar color, with an optional custom color from the system picker..
 - **Combobox** (Forms): A combobox is a text field with a list of suggestions: people type to filter and pick one option, or several shown as removable chips.
 - **CommandMenu** (Overlays): A searchable list of pages and actions in a dialog, opened with ⌘K (Ctrl+K): type to filter, arrow keys to move, Enter to run.
 - **Container** (Layout): Container centers page content with a maximum width and page gutters that follow density, with smaller gutters on phones..
@@ -75,18 +76,21 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **EmptyState** (Feedback): An empty state fills a space that has nothing to show yet, like an empty list or no search results, and explains why and what to do next..
 - **FeaturedIcon** (Data display): An icon in a colored circle or tile that draws the eye and sets the tone of a block: the top of a modal, an empty state, an alert, a metric card or a feature list.
 - **FileUpload** (Forms): A drop zone to choose or drag files, with FileUploadItem rows that show each file’s progress, completion or error and a delete button.
+- **FilterBar** (Forms): A toolbar for narrowing a list or table: an optional search, one menu per filter with checkable options, and the chosen values as removable chips with Clear all..
 - **Footer** (Patterns): The page footer: a copyright line and secondary links such as Privacy, Terms and Help.
 - **FormField** (Forms): FormField puts a label, help text and an error or success message around a form control and wires them together, so screen readers announce the label, hint and error with the control.
 - **Grid** (Layout): Grid lays children out in equal columns: a fixed number, or as many as fit (auto), so it reflows on small screens..
 - **Header** (Patterns): A page header that introduces a person and their page: avatar, name, job title and the page heading.
 - **HoverCard** (Overlays): A hover card previews what a link points to, such as a person’s profile, when a mouse user points at it or a keyboard user focuses it.
 - **Inline** (Layout): Inline lays its children out in a row that wraps onto more lines, e.g.
+- **InlineCTA** (Patterns): A call to action placed inside page content, such as between dashboard sections or at the end of an article: a title, a short description and one or two actions..
 - **InputField** (Forms): An input field lets people enter a single line of text: a name, an email address, a search term.
 - **Kbd** (Data display): Kbd shows a keyboard key or a shortcut, such as Ctrl + K, in text, menus and tooltips..
 - **Link** (Actions): A link takes people to another page or place.
 - **List** (Data display): A list shows related items one per row, with an optional icon or avatar, a second line and trailing meta such as a date.
 - **Logo** (Patterns): The logo shows the product’s mark and name, usually at the start of the navigation bar, linking to the home page.
 - **MeetingCard** (Patterns): A meeting card shows one event in an agenda or schedule: its name, time and attendees, with a color edge for its status.
+- **MessageThread** (Data display): A conversation shown as chat bubbles: other people’s messages at the start with their avatar and name, yours at the end in the accent color, with an optional typing indicator..
 - **MetricCard** (Data display): A key figure in a card for dashboards: what is measured, the value, how it changed and against what, with an optional featured icon, a small chart, an actions menu and a footer link..
 - **Modal** (Overlays): A modal is a dialog over the page that people must deal with before going back: a short form, a confirmation or details.
 - **Navbar** (Patterns): The navigation bar at the top of a site or app: the logo, links to the main sections, and optional actions such as search.
@@ -96,6 +100,7 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **ProductCard** (Patterns): A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions.
 - **Progress** (Feedback): A progress bar shows how far a task has got, such as an upload or setup steps.
 - **RadioGroup** (Forms): A radio group lets people pick exactly one option from a short list, with every option visible at once.
+- **Rating** (Forms): Stars for giving a score, such as rating a template, or for showing one, such as an average of 4.5 out of 5.
 - **SearchField** (Forms): A search field has a search icon, a clear button and an optional keyboard shortcut that focuses it from anywhere on the page.
 - **Select** (Forms): A select lets people pick one option from a list that opens below the field.
 - **SideNav** (Navigation): A side navigation lists the pages of an app or docs site in sections, with icons and nested groups that expand and collapse.
@@ -112,4 +117,5 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Textarea** (Forms): A multi-line text field for longer answers such as messages, comments or descriptions.
 - **Toast** (Feedback): A toast is a brief message about something that just happened, such as “Changes saved”, shown in a corner and dismissed automatically.
 - **Tooltip** (Overlays): A tooltip shows a short text hint for a control when it’s hovered or focused, such as the name of an icon button.
+- **TreeView** (Navigation): A hierarchy of items, such as files in folders or pages in sections, that people expand, collapse and select.
 - **VerificationCodeInput** (Forms): One box per character of a one-time code sent by email or SMS.

@@ -1,0 +1,52 @@
+/**
+ * Component tokens: filter-bar
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --filter-bar-{part?}-{state?}-{property}
+ *   part: trigger (a filter's menu button) | count (number chosen) | chips (row of active
+ *   filters); state: default | hover | active (the filter has values).
+ *   Trigger corners come from the radius theme (themes/radius.css), matching input fields.
+ *   The menus, chips and Clear all button are DropdownMenu, Tag and Button.
+ */
+
+:root,
+[data-theme] {
+  --filter-bar-gap: var(--spacing-xs);
+  --filter-bar-chips-gap: var(--spacing-xs);
+  --filter-bar-search-width: 16rem;
+
+  /* Trigger */
+  --filter-bar-trigger-height: var(--control-height-medium);
+  --filter-bar-trigger-padding-x: var(--spacing-sm);
+  --filter-bar-trigger-gap: var(--spacing-2xs);
+  --filter-bar-trigger-border-width: var(--border-width-hairline);
+  --filter-bar-trigger-default-bg-color: var(--color-bg-base);
+  --filter-bar-trigger-default-border-color: var(--color-border-field);
+  --filter-bar-trigger-default-text-color: var(--color-fg-on-surface-primary);
+  --filter-bar-trigger-hover-bg-color: var(--color-bg-default);
+  --filter-bar-trigger-active-bg-color: var(--color-bg-primary-1);
+  --filter-bar-trigger-active-border-color: var(--color-border-primary-medium);
+  --filter-bar-trigger-active-text-color: var(--color-fg-on-primary-high);
+  --filter-bar-trigger-font-family: var(--font-family-body);
+  --filter-bar-trigger-font-size: var(--font-size-sm);
+  --filter-bar-trigger-font-weight: var(--font-weight-medium);
+  --filter-bar-trigger-font-line-height: var(--font-line-height-sm);
+  --filter-bar-trigger-icon-size: var(--sizing-xs);
+  --filter-bar-trigger-icon-color: var(--color-fg-on-surface-secondary);
+  --filter-bar-duration: var(--duration-fast);
+  --filter-bar-easing: var(--easing-standard);
+
+  /* Count of chosen values on the trigger */
+  --filter-bar-count-min-size: var(--sizing-sm);
+  --filter-bar-count-padding-x: var(--spacing-3xs);
+  --filter-bar-count-border-radius: var(--radius-full);
+  --filter-bar-count-bg-color: var(--color-bg-accent-primary-strong-default);
+  --filter-bar-count-text-color: var(--color-fg-on-accent-primary-strong-default);
+  --filter-bar-count-font-size: var(--font-size-xs);
+
+  /* Focus */
+  --filter-bar-focus-ring-width: var(--focus-ring-width);
+  --filter-bar-focus-ring-offset: var(--focus-ring-offset);
+  --filter-bar-focus-ring-color: var(--focus-ring-color);
+}

@@ -1,0 +1,61 @@
+/**
+ * Component tokens: color-picker
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --color-picker-{size?}-{part?}-{state?}-{property}
+ *   size: small | medium; part: swatch | legend | check | custom (the custom-color swatch);
+ *   state: hover | selected | disabled. Swatch fills are the colors themselves.
+ */
+
+:root,
+[data-theme] {
+  --color-picker-gap: var(--spacing-xs);
+  --color-picker-small-size: var(--sizing-sm);
+  --color-picker-medium-size: var(--sizing-lg);
+  --color-picker-current-size: var(--color-picker-medium-size); /* set per size by the component */
+  --color-picker-duration: var(--duration-fast);
+  --color-picker-easing: var(--easing-standard);
+  --color-picker-hover-scale: 1.1;
+  --color-picker-disabled-opacity: var(--opacity-medium);
+  --color-picker-hidden-size: var(--border-width-hairline);
+
+  /* Swatch */
+  --color-picker-swatch-border-radius: var(--radius-full);
+  --color-picker-swatch-border-width: var(--border-width-hairline);
+  --color-picker-swatch-border-color: var(--color-border-base);
+
+  /* Selected: a gap in the page color, then a ring */
+  --color-picker-selected-gap: var(--border-width-regular);
+  --color-picker-selected-gap-color: var(--color-bg-base);
+  --color-picker-selected-ring-width: var(--border-width-regular);
+  --color-picker-selected-ring-color: var(--color-fg-on-surface-primary);
+
+  /* Check mark */
+  --color-picker-check-color: var(--color-fg-on-accent-primary-strong-default);
+  --color-picker-check-shadow-blur: var(--border-width-regular);
+  --color-picker-check-shadow-color: var(--color-fg-on-surface-primary);
+
+  /* Custom swatch: a color wheel until a custom color is chosen */
+  --color-picker-custom-bg: conic-gradient(
+    var(--color-pink-500),
+    var(--color-orange-500),
+    var(--color-teal-500),
+    var(--color-blue-500),
+    var(--color-purple-500),
+    var(--color-pink-500)
+  );
+
+  /* Legend */
+  --color-picker-legend-gap: var(--spacing-xs);
+  --color-picker-legend-text-color: var(--color-fg-on-surface-primary);
+  --color-picker-legend-font-family: var(--font-family-body);
+  --color-picker-legend-font-size: var(--font-size-sm);
+  --color-picker-legend-font-weight: var(--font-weight-medium);
+  --color-picker-legend-font-line-height: var(--font-line-height-sm);
+
+  /* Focus */
+  --color-picker-focus-ring-width: var(--focus-ring-width);
+  --color-picker-focus-ring-offset: var(--focus-ring-offset);
+  --color-picker-focus-ring-color: var(--focus-ring-color);
+}

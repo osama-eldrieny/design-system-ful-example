@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { TreeView } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/TreeView/TreeView.stories';
+import meta from '../../../../packages/react/src/TreeView/TreeView.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# TreeView
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[TreeView]}
+  optionStories={{ size: 'Sizes', guides: 'Guides' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 240 }}>
+      <TreeView
+        label="Files"
+        defaultExpanded={['src']}
+        defaultSelected="app"
+        items={[
+          { id: 'src', label: 'src', children: [{ id: 'app', label: 'App.tsx' }, { id: 'main', label: 'main.tsx' }] },
+          { id: 'readme', label: 'README.md' },
+        ]}
+      />
+    </div>
+  }
+/>

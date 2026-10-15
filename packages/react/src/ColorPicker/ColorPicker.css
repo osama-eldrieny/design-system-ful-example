@@ -1,0 +1,122 @@
+/**
+ * ColorPicker. Styled only with --color-picker-* tokens. The swatch fill is the color itself
+ * (data, set inline); the chosen swatch gets a ring and a check mark.
+ */
+
+.ds-color-picker {
+  --color-picker-current-size: var(--color-picker-medium-size);
+
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.ds-color-picker--small {
+  --color-picker-current-size: var(--color-picker-small-size);
+}
+
+.ds-color-picker__legend {
+  margin-block-end: var(--color-picker-legend-gap);
+  padding: 0;
+  color: var(--color-picker-legend-text-color);
+  font-family: var(--color-picker-legend-font-family);
+  font-size: var(--color-picker-legend-font-size);
+  font-weight: var(--color-picker-legend-font-weight);
+  line-height: var(--color-picker-legend-font-line-height);
+}
+
+.ds-color-picker__legend--hidden {
+  position: absolute;
+  inline-size: var(--color-picker-hidden-size);
+  block-size: var(--color-picker-hidden-size);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ds-color-picker__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--color-picker-gap);
+}
+
+.ds-color-picker__swatch {
+  position: relative;
+  display: inline-flex;
+  border-radius: var(--color-picker-swatch-border-radius);
+  cursor: pointer;
+}
+
+.ds-color-picker__input {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ds-color-picker__color {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--color-picker-current-size);
+  block-size: var(--color-picker-current-size);
+  border: var(--color-picker-swatch-border-width) solid var(--color-picker-swatch-border-color);
+  border-radius: var(--color-picker-swatch-border-radius);
+  transition: transform var(--color-picker-duration) var(--color-picker-easing);
+}
+
+.ds-color-picker__swatch:hover .ds-color-picker__color {
+  transform: scale(var(--color-picker-hover-scale));
+}
+
+.ds-color-picker__swatch:has(:checked) .ds-color-picker__color,
+.ds-color-picker__color:has(.ds-color-picker__check) {
+  box-shadow:
+    0 0 0 var(--color-picker-selected-gap) var(--color-picker-selected-gap-color),
+    0 0 0 calc(var(--color-picker-selected-gap) + var(--color-picker-selected-ring-width))
+      var(--color-picker-selected-ring-color);
+}
+
+/* A check readable on light and dark swatches: white with a dark outline. */
+.ds-color-picker__check {
+  inline-size: 60%;
+  block-size: 60%;
+  color: var(--color-picker-check-color);
+  filter: drop-shadow(0 0 var(--color-picker-check-shadow-blur) var(--color-picker-check-shadow-color));
+  stroke-width: 3;
+}
+
+.ds-color-picker__color--custom {
+  background: var(--color-picker-custom-bg);
+}
+
+.ds-color-picker__swatch:has(.ds-color-picker__input:focus-visible) {
+  outline: var(--color-picker-focus-ring-width) solid var(--color-picker-focus-ring-color);
+  outline-offset: calc(var(--color-picker-focus-ring-offset) + var(--color-picker-selected-gap) + var(--color-picker-selected-ring-width));
+}
+
+.ds-color-picker:disabled .ds-color-picker__swatch {
+  opacity: var(--color-picker-disabled-opacity);
+  cursor: not-allowed;
+}
+
+.ds-color-picker:disabled .ds-color-picker__color {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-color-picker__color {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .ds-color-picker__swatch:has(:checked) .ds-color-picker__color {
+    outline: var(--color-picker-selected-ring-width) solid Highlight;
+    outline-offset: var(--color-picker-selected-gap);
+  }
+}

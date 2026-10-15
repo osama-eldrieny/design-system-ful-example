@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { MessageThread } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/MessageThread/MessageThread.stories';
+import meta from '../../../../packages/react/src/MessageThread/MessageThread.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# MessageThread
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[MessageThread]}
+  optionStories={{ density: 'Density' }}
+  extras={[{ title: 'Typing', story: 'Typing' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <div style={{ maxInlineSize: 360 }}>
+      <MessageThread
+        label="Conversation"
+        messages={[
+          { id: '1', author: { name: 'Lana Steiner' }, content: 'Is the report ready?', time: '9:40' },
+          { id: '2', author: { name: 'You' }, own: true, content: 'Sending it now.', time: '9:41', status: 'Read' },
+        ]}
+      />
+    </div>
+  }
+/>

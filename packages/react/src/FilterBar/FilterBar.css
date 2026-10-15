@@ -1,0 +1,109 @@
+/**
+ * FilterBar. Styled only with --filter-bar-* tokens. The bar wraps on narrow screens; menus,
+ * chips and the Clear all button are DropdownMenu, Tag and Button and style themselves.
+ */
+
+.ds-filter-bar {
+  display: grid;
+  gap: var(--filter-bar-chips-gap);
+}
+
+.ds-filter-bar__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--filter-bar-gap);
+}
+
+.ds-filter-bar__search {
+  flex: 1 1 var(--filter-bar-search-width);
+  max-inline-size: var(--filter-bar-search-width);
+}
+
+.ds-filter-bar__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--filter-bar-gap);
+}
+
+.ds-filter-bar__end {
+  display: flex;
+  align-items: center;
+  gap: var(--filter-bar-gap);
+  margin-inline-start: auto;
+}
+
+.ds-filter-bar__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--filter-bar-trigger-gap);
+  block-size: var(--filter-bar-trigger-height);
+  margin: 0;
+  padding-inline: var(--filter-bar-trigger-padding-x);
+  border: var(--filter-bar-trigger-border-width) solid var(--filter-bar-trigger-default-border-color);
+  border-radius: var(--filter-bar-trigger-border-radius);
+  background: var(--filter-bar-trigger-default-bg-color);
+  color: var(--filter-bar-trigger-default-text-color);
+  font-family: var(--filter-bar-trigger-font-family);
+  font-size: var(--filter-bar-trigger-font-size);
+  font-weight: var(--filter-bar-trigger-font-weight);
+  line-height: var(--filter-bar-trigger-font-line-height);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color var(--filter-bar-duration) var(--filter-bar-easing);
+}
+
+.ds-filter-bar__trigger:hover {
+  background: var(--filter-bar-trigger-hover-bg-color);
+}
+
+.ds-filter-bar__trigger:focus-visible {
+  outline: var(--filter-bar-focus-ring-width) solid var(--filter-bar-focus-ring-color);
+  outline-offset: var(--filter-bar-focus-ring-offset);
+}
+
+.ds-filter-bar__trigger--active,
+.ds-filter-bar__trigger--active:hover {
+  border-color: var(--filter-bar-trigger-active-border-color);
+  background: var(--filter-bar-trigger-active-bg-color);
+  color: var(--filter-bar-trigger-active-text-color);
+}
+
+.ds-filter-bar__chevron {
+  inline-size: var(--filter-bar-trigger-icon-size);
+  block-size: var(--filter-bar-trigger-icon-size);
+  color: var(--filter-bar-trigger-icon-color);
+  transition: transform var(--filter-bar-duration) var(--filter-bar-easing);
+}
+
+.ds-filter-bar__trigger[data-state='open'] .ds-filter-bar__chevron {
+  transform: rotate(180deg);
+}
+
+.ds-filter-bar__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--filter-bar-count-min-size);
+  block-size: var(--filter-bar-count-min-size);
+  padding-inline: var(--filter-bar-count-padding-x);
+  border-radius: var(--filter-bar-count-border-radius);
+  background: var(--filter-bar-count-bg-color);
+  color: var(--filter-bar-count-text-color);
+  font-size: var(--filter-bar-count-font-size);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-filter-bar__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--filter-bar-chips-gap);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-filter-bar__trigger,
+  .ds-filter-bar__chevron {
+    transition: none;
+  }
+}

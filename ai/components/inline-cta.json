@@ -1,0 +1,523 @@
+{
+  "id": "inline-cta",
+  "name": "InlineCTA",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "1.2.0",
+  "description": "A call to action placed inside page content, such as between dashboard sections or at the end of an article: a title, a short description and one or two actions.",
+  "imports": [
+    {
+      "name": "InlineCTA",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To suggest a next step in context, e.g. \"Invite your team\" under an empty member list.",
+    "To promote an upgrade or feature within a page without interrupting it."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For warnings, errors or system status.",
+      "alternative": "Alert"
+    },
+    {
+      "text": "For a page-wide announcement at the top.",
+      "alternative": "PageHeader"
+    },
+    {
+      "text": "When there is nothing yet on the page.",
+      "alternative": "EmptyState"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Icon",
+      "description": "A tile with an icon that hints at the offer.",
+      "optional": true
+    },
+    {
+      "name": "Title",
+      "description": "The offer in a few words; a real heading."
+    },
+    {
+      "name": "Description",
+      "description": "One or two sentences on the benefit.",
+      "optional": true
+    },
+    {
+      "name": "Actions",
+      "description": "One primary and at most one secondary action."
+    }
+  ],
+  "options": [
+    {
+      "prop": "appearance",
+      "title": "Appearance",
+      "values": [
+        {
+          "value": "subtle",
+          "meaning": "Default. A grey panel that sits quietly in content."
+        },
+        {
+          "value": "brand",
+          "meaning": "A brand-colored border and icon tile, for upgrades and new features."
+        },
+        {
+          "value": "outline",
+          "meaning": "Bordered, on the page background, for cards and dense layouts."
+        }
+      ]
+    },
+    {
+      "prop": "layout",
+      "title": "Layout",
+      "values": [
+        {
+          "value": "horizontal",
+          "meaning": "Default. Actions at the end; they wrap below on narrow screens."
+        },
+        {
+          "value": "stacked",
+          "meaning": "Actions under the text, for sidebars and narrow columns."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "A static panel; its buttons have their own states.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Responsive",
+      "text": "In horizontal layout, actions wrap under the text when there is no room beside it."
+    },
+    {
+      "topic": "Headings",
+      "text": "The title is an h3 by default; set headingLevel to fit the page outline."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "The icon sits on the right and actions on the left in Arabic."
+    }
+  ],
+  "content": [
+    "Write the title as the benefit or the action: \"Invite your team\".",
+    "Use a verb on the primary button that matches the title.",
+    "Keep the description to two lines."
+  ],
+  "guidelines": [
+    {
+      "do": "Use one InlineCTA per screen.",
+      "dont": "Stack several calls to action on the same page.",
+      "why": "Competing offers dilute each other."
+    },
+    {
+      "do": "Pair one primary button with an optional secondary.",
+      "dont": "Add three or more actions.",
+      "why": "A single clear next step converts better."
+    },
+    {
+      "do": "Use brand appearance for upgrades and new features.",
+      "dont": "Use the CTA to report errors.",
+      "why": "Status messages belong in an Alert so they are announced and colored by tone."
+    }
+  ],
+  "accessibility": {
+    "role": "region-less section with a real heading, so it appears in the heading outline.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves through the actions."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-hidden",
+        "when": "On the icon, which is decorative."
+      }
+    ],
+    "focus": "Only the actions take focus.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "The title is a heading at a configurable level."
+      },
+      {
+        "criterion": "1.4.3 Contrast",
+        "how": "Text passes AA on every appearance in every theme."
+      },
+      {
+        "criterion": "1.4.10 Reflow",
+        "how": "Actions wrap under the text at narrow widths."
+      }
+    ],
+    "notes": [
+      "Use Buttons or Links for actions so they keep their own focus and states."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Invite your team",
+      "description": "Subtle, with an icon and two actions.",
+      "code": "import { Button, InlineCTA } from '@ds/react';\nimport { Users } from 'lucide-react';\n\n<InlineCTA\n  icon={<Users />}\n  title=\"Invite your team\"\n  description=\"Projects move faster together. Invite up to 5 people for free.\"\n  actions={<><Button variant=\"secondary\" appearance=\"outline\">Later</Button><Button>Invite</Button></>}\n/>"
+    },
+    {
+      "id": "brand",
+      "title": "Upgrade",
+      "description": "Brand-tinted for an upgrade offer.",
+      "code": "import { Button, InlineCTA } from '@ds/react';\n\n<InlineCTA appearance=\"brand\" title=\"Unlock advanced reports\" actions={<Button>Upgrade</Button>} />"
+    },
+    {
+      "id": "stacked",
+      "title": "In a sidebar",
+      "description": "Stacked layout for narrow columns.",
+      "code": "import { Button, InlineCTA } from '@ds/react';\n\n<InlineCTA layout=\"stacked\" appearance=\"outline\" title=\"Need help?\" description=\"Our team replies within an hour.\" actions={<Button>Contact support</Button>} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--inline-cta-"
+  ],
+  "related": [
+    {
+      "id": "alert",
+      "relation": "Use for status and errors."
+    },
+    {
+      "id": "empty-state",
+      "relation": "Use when the page has no content yet."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New pattern."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "InlineCTA",
+      "import": "import { InlineCTA } from '@ds/react';",
+      "description": "A call to action placed inside page content, between sections or at the end of an article:\na title, a short description and one or two actions.",
+      "props": {
+        "title": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The offer in a few words, e.g. \"Upgrade to Pro\"."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "One or two sentences on why."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Icon or illustration at the start."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "One or two Buttons or Links."
+        },
+        "appearance": {
+          "type": "InlineCTAAppearance",
+          "values": [
+            "subtle",
+            "brand",
+            "outline"
+          ],
+          "required": false,
+          "default": "subtle",
+          "description": "`subtle` (default) grey panel, `brand` tinted with the brand color, `outline` bordered."
+        },
+        "layout": {
+          "type": "InlineCTALayout",
+          "values": [
+            "horizontal",
+            "stacked"
+          ],
+          "required": false,
+          "default": "horizontal",
+          "description": "`horizontal` (default) puts actions at the end; `stacked` puts them under the text. Narrow screens always stack."
+        },
+        "headingLevel": {
+          "type": "2 | 3 | 4 | 5 | 6",
+          "values": [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "required": false,
+          "default": 3,
+          "description": "Heading level for the title. Default 3."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--inline-cta-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--inline-cta-padding-x": {
+      "description": "Gap between groups inside a section.",
+      "references": "--spacing-lg",
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
+    },
+    "--inline-cta-padding-y": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--inline-cta-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--inline-cta-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-lg",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "12px"
+      }
+    },
+    "--inline-cta-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--inline-cta-subtle-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--inline-cta-subtle-border-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--inline-cta-brand-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--inline-cta-brand-border-color": {
+      "description": "Regular tone outline, e.g. alert borders.",
+      "references": "--color-border-primary-medium",
+      "default": "#c5b2ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5637b5",
+        "brand=amber,mode=light": "#e5cfb7",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#abc9fb",
+        "brand=opal,mode=dark": "#2a5caf"
+      }
+    },
+    "--inline-cta-brand-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-regular",
+      "default": "2px"
+    },
+    "--inline-cta-brand-icon-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--inline-cta-outline-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--inline-cta-outline-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--inline-cta-outline-icon-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--inline-cta-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xl",
+      "default": "38px"
+    },
+    "--inline-cta-icon-glyph-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--inline-cta-icon-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-md",
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "8px"
+      }
+    },
+    "--inline-cta-icon-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--inline-cta-icon-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--inline-cta-text-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--inline-cta-text-min-width": {
+      "description": null,
+      "references": null,
+      "default": "16rem"
+    },
+    "--inline-cta-title-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--inline-cta-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--inline-cta-title-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--inline-cta-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--inline-cta-description-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--inline-cta-description-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--inline-cta-description-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--inline-cta-actions-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-inlinecta--docs"
+}

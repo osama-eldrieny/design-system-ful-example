@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 409 | 409 | 0 |
-| diamond-dark | 409 | 409 | 0 |
-| amber-light | 409 | 409 | 0 |
-| amber-dark | 409 | 409 | 0 |
-| opal-light | 409 | 409 | 0 |
-| opal-dark | 409 | 409 | 0 |
+| diamond-light | 415 | 415 | 0 |
+| diamond-dark | 415 | 415 | 0 |
+| amber-light | 415 | 415 | 0 |
+| amber-dark | 415 | 415 | 0 |
+| opal-light | 415 | 415 | 0 |
+| opal-dark | 415 | 415 | 0 |
 
 ## Failures (0)
 
@@ -257,9 +257,6 @@ None.
 | diamond-light | `--button-danger-ghost-focus-text-color` | `--button-danger-ghost-focus-bg-color` | #6d1212 on #fee9e9 | 10.34:1 | 4.5:1 |
 | diamond-light | `--button-warning-ghost-hover-text-color` | `--button-warning-ghost-hover-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
 | diamond-light | `--button-warning-ghost-focus-text-color` | `--button-warning-ghost-focus-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
-| diamond-light | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
-| diamond-light | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
-| diamond-light | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--card-title-font-color` | `--card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--card-desc-font-color` | `--card-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--card-review-font-color` | `--card-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
@@ -287,6 +284,9 @@ None.
 | diamond-light | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #62626d on #f8f7fb | 5.65:1 | 4.5:1 |
+| diamond-light | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
+| diamond-light | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--drawer-text-color` | `--drawer-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--drawer-description-text-color` | `--drawer-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--drawer-close-icon-color` | `--drawer-bg-color` | #62626d on #fff | 6.02:1 | 3:1 |
@@ -324,6 +324,9 @@ None.
 | diamond-light | `--featured-icon-teal-light-icon-color` | `--featured-icon-teal-light-bg-color` | #0f766e on #f0fdfa | 5.25:1 | 3:1 |
 | diamond-light | `--featured-icon-teal-solid-icon-color` | `--featured-icon-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 3:1 |
 | diamond-light | `--featured-icon-modern-icon-color` | `--featured-icon-modern-bg-color` | #24242c on #fff | 15.40:1 | 3:1 |
+| diamond-light | `--filter-bar-trigger-default-text-color` | `--filter-bar-trigger-default-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--filter-bar-trigger-active-text-color` | `--filter-bar-trigger-active-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
+| diamond-light | `--filter-bar-count-text-color` | `--filter-bar-count-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-light | `--footer-text-color` | `--footer-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--footer-link-default-text-color` | `--footer-bg-color` | #64606c on #fff | 6.12:1 | 4.5:1 |
 | diamond-light | `--footer-link-hover-text-color` | `--footer-bg-color` | #54505a on #fff | 7.86:1 | 4.5:1 |
@@ -343,6 +346,8 @@ None.
 | diamond-light | `--meeting-card-warning-time-text-color` | `--meeting-card-warning-bg-color` | #876400 on #fdf7e6 | 5.09:1 | 4.5:1 |
 | diamond-light | `--meeting-card-danger-title-text-color` | `--meeting-card-danger-bg-color` | #ad1c1c on #fee9e9 | 6.10:1 | 4.5:1 |
 | diamond-light | `--meeting-card-danger-time-text-color` | `--meeting-card-danger-bg-color` | #cf2121 on #fee9e9 | 4.64:1 | 4.5:1 |
+| diamond-light | `--message-thread-incoming-text-color` | `--message-thread-incoming-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
+| diamond-light | `--message-thread-outgoing-text-color` | `--message-thread-outgoing-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-light | `--metric-card-label-text-color` | `--metric-card-bg-color` | #62626d on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--metric-card-value-text-color` | `--metric-card-bg-color` | #24242c on #fff | 15.40:1 | 4.5:1 |
 | diamond-light | `--metric-card-trend-up-text-color` | `--metric-card-bg-color` | #00732b on #fff | 6.02:1 | 4.5:1 |
@@ -432,6 +437,7 @@ None.
 | diamond-light | `--toast-danger-icon-color` | `--toast-bg-color` | #ad1c1c on #fff | 7.10:1 | 3:1 |
 | diamond-light | `--tooltip-text-color` | `--tooltip-bg-color` | #fff on #24242c | 15.40:1 | 4.5:1 |
 | diamond-light | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #f8f7fb on #24242c | 14.44:1 | 4.5:1 |
+| diamond-light | `--tree-view-item-selected-text-color` | `--tree-view-item-selected-bg-color` | #5637b5 on #f2edff | 7.03:1 | 4.5:1 |
 | diamond-light | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #794dff on #fff | 4.86:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
 | diamond-dark | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #794dff | 4.86:1 | 4.5:1 |
@@ -666,9 +672,6 @@ None.
 | diamond-dark | `--button-danger-ghost-focus-text-color` | `--button-danger-ghost-focus-bg-color` | #fee9e9 on #332e3c | 11.30:1 | 4.5:1 |
 | diamond-dark | `--button-warning-ghost-hover-text-color` | `--button-warning-ghost-hover-bg-color` | #f7dd91 on #332e3c | 9.84:1 | 4.5:1 |
 | diamond-dark | `--button-warning-ghost-focus-text-color` | `--button-warning-ghost-focus-bg-color` | #fdf7e6 on #332e3c | 12.29:1 | 4.5:1 |
-| diamond-dark | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
-| diamond-dark | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
-| diamond-dark | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--card-title-font-color` | `--card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--card-desc-font-color` | `--card-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--card-review-font-color` | `--card-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
@@ -696,6 +699,9 @@ None.
 | diamond-dark | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #acadb2 on #332e3c | 5.87:1 | 4.5:1 |
+| diamond-dark | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
+| diamond-dark | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--drawer-text-color` | `--drawer-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--drawer-description-text-color` | `--drawer-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--drawer-close-icon-color` | `--drawer-bg-color` | #acadb2 on #24202d | 7.10:1 | 3:1 |
@@ -733,6 +739,9 @@ None.
 | diamond-dark | `--featured-icon-teal-light-icon-color` | `--featured-icon-teal-light-bg-color` | #5eead4 on #042f2e | 9.78:1 | 3:1 |
 | diamond-dark | `--featured-icon-teal-solid-icon-color` | `--featured-icon-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 3:1 |
 | diamond-dark | `--featured-icon-modern-icon-color` | `--featured-icon-modern-bg-color` | #ececed on #24202d | 13.48:1 | 3:1 |
+| diamond-dark | `--filter-bar-trigger-default-text-color` | `--filter-bar-trigger-default-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--filter-bar-trigger-active-text-color` | `--filter-bar-trigger-active-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
+| diamond-dark | `--filter-bar-count-text-color` | `--filter-bar-count-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-dark | `--footer-text-color` | `--footer-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--footer-link-default-text-color` | `--footer-bg-color` | #a9a6ae on #24202d | 6.63:1 | 4.5:1 |
 | diamond-dark | `--footer-link-hover-text-color` | `--footer-bg-color` | #c4c2c8 on #24202d | 9.02:1 | 4.5:1 |
@@ -752,6 +761,8 @@ None.
 | diamond-dark | `--meeting-card-warning-time-text-color` | `--meeting-card-warning-bg-color` | #f4cd5e on #332e3c | 8.61:1 | 4.5:1 |
 | diamond-dark | `--meeting-card-danger-title-text-color` | `--meeting-card-danger-bg-color` | #faa2a2 on #332e3c | 6.74:1 | 4.5:1 |
 | diamond-dark | `--meeting-card-danger-time-text-color` | `--meeting-card-danger-bg-color` | #f77777 on #332e3c | 4.92:1 | 4.5:1 |
+| diamond-dark | `--message-thread-incoming-text-color` | `--message-thread-incoming-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
+| diamond-dark | `--message-thread-outgoing-text-color` | `--message-thread-outgoing-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
 | diamond-dark | `--metric-card-label-text-color` | `--metric-card-bg-color` | #acadb2 on #24202d | 7.10:1 | 4.5:1 |
 | diamond-dark | `--metric-card-value-text-color` | `--metric-card-bg-color` | #ececed on #24202d | 13.48:1 | 4.5:1 |
 | diamond-dark | `--metric-card-trend-up-text-color` | `--metric-card-bg-color` | #00ca4b on #24202d | 7.24:1 | 4.5:1 |
@@ -841,6 +852,7 @@ None.
 | diamond-dark | `--toast-danger-icon-color` | `--toast-bg-color` | #faa2a2 on #24202d | 8.15:1 | 3:1 |
 | diamond-dark | `--tooltip-text-color` | `--tooltip-bg-color` | #24202d on #ececed | 13.48:1 | 4.5:1 |
 | diamond-dark | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #332e3c on #ececed | 11.14:1 | 4.5:1 |
+| diamond-dark | `--tree-view-item-selected-text-color` | `--tree-view-item-selected-bg-color` | #c5b2ff on #332e3c | 7.01:1 | 4.5:1 |
 | diamond-dark | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #ab8fff on #24202d | 6.14:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
@@ -1075,9 +1087,6 @@ None.
 | amber-light | `--button-danger-ghost-focus-text-color` | `--button-danger-ghost-focus-bg-color` | #42222a on #f4edef | 12.19:1 | 4.5:1 |
 | amber-light | `--button-warning-ghost-hover-text-color` | `--button-warning-ghost-hover-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
 | amber-light | `--button-warning-ghost-focus-text-color` | `--button-warning-ghost-focus-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
-| amber-light | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
-| amber-light | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
-| amber-light | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--card-title-font-color` | `--card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--card-desc-font-color` | `--card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--card-review-font-color` | `--card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
@@ -1105,6 +1114,9 @@ None.
 | amber-light | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #6a625a on #f9f5f1 | 5.52:1 | 4.5:1 |
+| amber-light | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
+| amber-light | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--drawer-text-color` | `--drawer-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--drawer-description-text-color` | `--drawer-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--drawer-close-icon-color` | `--drawer-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
@@ -1142,6 +1154,9 @@ None.
 | amber-light | `--featured-icon-teal-light-icon-color` | `--featured-icon-teal-light-bg-color` | #0f766e on #f0fdfa | 5.25:1 | 3:1 |
 | amber-light | `--featured-icon-teal-solid-icon-color` | `--featured-icon-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 3:1 |
 | amber-light | `--featured-icon-modern-icon-color` | `--featured-icon-modern-bg-color` | #6a625a on #fff | 5.99:1 | 3:1 |
+| amber-light | `--filter-bar-trigger-default-text-color` | `--filter-bar-trigger-default-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--filter-bar-trigger-active-text-color` | `--filter-bar-trigger-active-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
+| amber-light | `--filter-bar-count-text-color` | `--filter-bar-count-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--footer-text-color` | `--footer-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--footer-link-default-text-color` | `--footer-bg-color` | #64606c on #fff | 6.12:1 | 4.5:1 |
 | amber-light | `--footer-link-hover-text-color` | `--footer-bg-color` | #54505a on #fff | 7.86:1 | 4.5:1 |
@@ -1161,6 +1176,8 @@ None.
 | amber-light | `--meeting-card-warning-time-text-color` | `--meeting-card-warning-bg-color` | #876400 on #fdf7e6 | 5.09:1 | 4.5:1 |
 | amber-light | `--meeting-card-danger-title-text-color` | `--meeting-card-danger-bg-color` | #7d4150 on #f4edef | 6.64:1 | 4.5:1 |
 | amber-light | `--meeting-card-danger-time-text-color` | `--meeting-card-danger-bg-color` | #934c5e on #f4edef | 5.30:1 | 4.5:1 |
+| amber-light | `--message-thread-incoming-text-color` | `--message-thread-incoming-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
+| amber-light | `--message-thread-outgoing-text-color` | `--message-thread-outgoing-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
 | amber-light | `--metric-card-label-text-color` | `--metric-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--metric-card-value-text-color` | `--metric-card-bg-color` | #6a625a on #fff | 5.99:1 | 4.5:1 |
 | amber-light | `--metric-card-trend-up-text-color` | `--metric-card-bg-color` | #447571 on #fff | 5.21:1 | 4.5:1 |
@@ -1250,6 +1267,7 @@ None.
 | amber-light | `--toast-danger-icon-color` | `--toast-bg-color` | #7d4150 on #fff | 7.65:1 | 3:1 |
 | amber-light | `--tooltip-text-color` | `--tooltip-bg-color` | #fff on #6a625a | 5.99:1 | 4.5:1 |
 | amber-light | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #f9f5f1 on #6a625a | 5.52:1 | 4.5:1 |
+| amber-light | `--tree-view-item-selected-text-color` | `--tree-view-item-selected-bg-color` | #6f5232 on #f9f4ee | 6.56:1 | 4.5:1 |
 | amber-light | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #8a663e on #fff | 5.18:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #1e140d on #fff | 18.09:1 | 4.5:1 |
 | amber-dark | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #8a663e | 5.18:1 | 4.5:1 |
@@ -1484,9 +1502,6 @@ None.
 | amber-dark | `--button-danger-ghost-focus-text-color` | `--button-danger-ghost-focus-bg-color` | #f4edef on #542b36 | 10.25:1 | 4.5:1 |
 | amber-dark | `--button-warning-ghost-hover-text-color` | `--button-warning-ghost-hover-bg-color` | #f7dd91 on #2a1f16 | 12.03:1 | 4.5:1 |
 | amber-dark | `--button-warning-ghost-focus-text-color` | `--button-warning-ghost-focus-bg-color` | #fdf7e6 on #2a1f16 | 15.03:1 | 4.5:1 |
-| amber-dark | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #8a663e | 5.18:1 | 4.5:1 |
-| amber-dark | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
-| amber-dark | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--card-title-font-color` | `--card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--card-desc-font-color` | `--card-bg-color` | #c9b9a9 on #1e140d | 9.47:1 | 4.5:1 |
 | amber-dark | `--card-review-font-color` | `--card-bg-color` | #c9b9a9 on #1e140d | 9.47:1 | 4.5:1 |
@@ -1514,6 +1529,9 @@ None.
 | amber-dark | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #c9b9a9 on #1e140d | 9.47:1 | 4.5:1 |
 | amber-dark | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #c9b9a9 on #1e140d | 9.47:1 | 4.5:1 |
 | amber-dark | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #c9b9a9 on #2a1f16 | 8.42:1 | 4.5:1 |
+| amber-dark | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #8a663e | 5.18:1 | 4.5:1 |
+| amber-dark | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--drawer-text-color` | `--drawer-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--drawer-description-text-color` | `--drawer-bg-color` | #c9b9a9 on #1e140d | 9.47:1 | 4.5:1 |
 | amber-dark | `--drawer-close-icon-color` | `--drawer-bg-color` | #c9b9a9 on #1e140d | 9.47:1 | 3:1 |
@@ -1551,6 +1569,9 @@ None.
 | amber-dark | `--featured-icon-teal-light-icon-color` | `--featured-icon-teal-light-bg-color` | #5eead4 on #042f2e | 9.78:1 | 3:1 |
 | amber-dark | `--featured-icon-teal-solid-icon-color` | `--featured-icon-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 3:1 |
 | amber-dark | `--featured-icon-modern-icon-color` | `--featured-icon-modern-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 3:1 |
+| amber-dark | `--filter-bar-trigger-default-text-color` | `--filter-bar-trigger-default-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--filter-bar-trigger-active-text-color` | `--filter-bar-trigger-active-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
+| amber-dark | `--filter-bar-count-text-color` | `--filter-bar-count-bg-color` | #fff on #8a663e | 5.18:1 | 4.5:1 |
 | amber-dark | `--footer-text-color` | `--footer-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--footer-link-default-text-color` | `--footer-bg-color` | #8f8b96 on #1e140d | 5.43:1 | 4.5:1 |
 | amber-dark | `--footer-link-hover-text-color` | `--footer-bg-color` | #a9a6ae on #1e140d | 7.54:1 | 4.5:1 |
@@ -1570,6 +1591,8 @@ None.
 | amber-dark | `--meeting-card-warning-time-text-color` | `--meeting-card-warning-bg-color` | #f4cd5e on #2a1f16 | 10.52:1 | 4.5:1 |
 | amber-dark | `--meeting-card-danger-title-text-color` | `--meeting-card-danger-bg-color` | #e5d4d8 on #542b36 | 8.30:1 | 4.5:1 |
 | amber-dark | `--meeting-card-danger-time-text-color` | `--meeting-card-danger-bg-color` | #d1b2ba on #542b36 | 6.08:1 | 4.5:1 |
+| amber-dark | `--message-thread-incoming-text-color` | `--message-thread-incoming-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
+| amber-dark | `--message-thread-outgoing-text-color` | `--message-thread-outgoing-bg-color` | #fff on #8a663e | 5.18:1 | 4.5:1 |
 | amber-dark | `--metric-card-label-text-color` | `--metric-card-bg-color` | #c9b9a9 on #1e140d | 9.47:1 | 4.5:1 |
 | amber-dark | `--metric-card-value-text-color` | `--metric-card-bg-color` | #fdfbf9 on #1e140d | 17.52:1 | 4.5:1 |
 | amber-dark | `--metric-card-trend-up-text-color` | `--metric-card-bg-color` | #89a8a6 on #1e140d | 7.08:1 | 4.5:1 |
@@ -1659,6 +1682,7 @@ None.
 | amber-dark | `--toast-danger-icon-color` | `--toast-bg-color` | #e5d4d8 on #1e140d | 12.70:1 | 3:1 |
 | amber-dark | `--tooltip-text-color` | `--tooltip-bg-color` | #1e140d on #fdfbf9 | 17.52:1 | 4.5:1 |
 | amber-dark | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #2a1f16 on #fdfbf9 | 15.58:1 | 4.5:1 |
+| amber-dark | `--tree-view-item-selected-text-color` | `--tree-view-item-selected-bg-color` | #f0e4d7 on #574028 | 7.74:1 | 4.5:1 |
 | amber-dark | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #cda376 on #1e140d | 7.83:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
@@ -1893,9 +1917,6 @@ None.
 | opal-light | `--button-danger-ghost-focus-text-color` | `--button-danger-ghost-focus-bg-color` | #6e1c2a on #feecef | 9.91:1 | 4.5:1 |
 | opal-light | `--button-warning-ghost-hover-text-color` | `--button-warning-ghost-hover-bg-color` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
 | opal-light | `--button-warning-ghost-focus-text-color` | `--button-warning-ghost-focus-bg-color` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
-| opal-light | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
-| opal-light | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
-| opal-light | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--card-title-font-color` | `--card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--card-desc-font-color` | `--card-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--card-review-font-color` | `--card-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
@@ -1923,6 +1944,9 @@ None.
 | opal-light | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #676b83 on #f4f6fc | 4.85:1 | 4.5:1 |
+| opal-light | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
+| opal-light | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--drawer-text-color` | `--drawer-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--drawer-description-text-color` | `--drawer-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--drawer-close-icon-color` | `--drawer-bg-color` | #676b83 on #fff | 5.24:1 | 3:1 |
@@ -1960,6 +1984,9 @@ None.
 | opal-light | `--featured-icon-teal-light-icon-color` | `--featured-icon-teal-light-bg-color` | #0f766e on #f0fdfa | 5.25:1 | 3:1 |
 | opal-light | `--featured-icon-teal-solid-icon-color` | `--featured-icon-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 3:1 |
 | opal-light | `--featured-icon-modern-icon-color` | `--featured-icon-modern-bg-color` | #282b3b on #fff | 14.01:1 | 3:1 |
+| opal-light | `--filter-bar-trigger-default-text-color` | `--filter-bar-trigger-default-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--filter-bar-trigger-active-text-color` | `--filter-bar-trigger-active-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
+| opal-light | `--filter-bar-count-text-color` | `--filter-bar-count-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--footer-text-color` | `--footer-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--footer-link-default-text-color` | `--footer-bg-color` | #64606c on #fff | 6.12:1 | 4.5:1 |
 | opal-light | `--footer-link-hover-text-color` | `--footer-bg-color` | #54505a on #fff | 7.86:1 | 4.5:1 |
@@ -1979,6 +2006,8 @@ None.
 | opal-light | `--meeting-card-warning-time-text-color` | `--meeting-card-warning-bg-color` | #856603 on #fdf7e6 | 5.03:1 | 4.5:1 |
 | opal-light | `--meeting-card-danger-title-text-color` | `--meeting-card-danger-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
 | opal-light | `--meeting-card-danger-time-text-color` | `--meeting-card-danger-bg-color` | #ad2d43 on #feecef | 5.71:1 | 4.5:1 |
+| opal-light | `--message-thread-incoming-text-color` | `--message-thread-incoming-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
+| opal-light | `--message-thread-outgoing-text-color` | `--message-thread-outgoing-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-light | `--metric-card-label-text-color` | `--metric-card-bg-color` | #676b83 on #fff | 5.24:1 | 4.5:1 |
 | opal-light | `--metric-card-value-text-color` | `--metric-card-bg-color` | #282b3b on #fff | 14.01:1 | 4.5:1 |
 | opal-light | `--metric-card-trend-up-text-color` | `--metric-card-bg-color` | #4b740d on #fff | 5.52:1 | 4.5:1 |
@@ -2068,6 +2097,7 @@ None.
 | opal-light | `--toast-danger-icon-color` | `--toast-bg-color` | #8b2436 on #fff | 8.74:1 | 3:1 |
 | opal-light | `--tooltip-text-color` | `--tooltip-bg-color` | #fff on #282b3b | 14.01:1 | 4.5:1 |
 | opal-light | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #f4f6fc on #282b3b | 12.97:1 | 4.5:1 |
+| opal-light | `--tree-view-item-selected-text-color` | `--tree-view-item-selected-bg-color` | #224a8c on #ebf3fe | 7.74:1 | 4.5:1 |
 | opal-light | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #2a5caf on #fff | 6.46:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-default` | `--color-bg-accent-primary-default` | #292d3e on #fff | 13.64:1 | 4.5:1 |
 | opal-dark | `--color-fg-on-accent-primary-strong-default` | `--color-bg-accent-primary-strong-default` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
@@ -2302,9 +2332,6 @@ None.
 | opal-dark | `--button-danger-ghost-focus-text-color` | `--button-danger-ghost-focus-bg-color` | #feecef on #6e1c2a | 9.91:1 | 4.5:1 |
 | opal-dark | `--button-warning-ghost-hover-text-color` | `--button-warning-ghost-hover-bg-color` | #f6de94 on #695103 | 5.68:1 | 4.5:1 |
 | opal-dark | `--button-warning-ghost-focus-text-color` | `--button-warning-ghost-focus-bg-color` | #fdf7e6 on #695103 | 7.06:1 | 4.5:1 |
-| opal-dark | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
-| opal-dark | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
-| opal-dark | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--card-title-font-color` | `--card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--card-desc-font-color` | `--card-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--card-review-font-color` | `--card-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
@@ -2332,6 +2359,9 @@ None.
 | opal-dark | `--command-menu-item-description-text-color` | `--command-menu-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--command-menu-empty-text-color` | `--command-menu-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--command-menu-footer-text-color` | `--command-menu-footer-bg-color` | #afb2be on #3d4460 | 4.53:1 | 4.5:1 |
+| opal-dark | `--date-picker-day-selected-text-color` | `--date-picker-day-selected-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
+| opal-dark | `--date-picker-range-text-color` | `--date-picker-range-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--date-picker-presets-item-selected-text-color` | `--date-picker-presets-item-selected-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--drawer-text-color` | `--drawer-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--drawer-description-text-color` | `--drawer-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--drawer-close-icon-color` | `--drawer-bg-color` | #afb2be on #292d3e | 6.45:1 | 3:1 |
@@ -2369,6 +2399,9 @@ None.
 | opal-dark | `--featured-icon-teal-light-icon-color` | `--featured-icon-teal-light-bg-color` | #5eead4 on #042f2e | 9.78:1 | 3:1 |
 | opal-dark | `--featured-icon-teal-solid-icon-color` | `--featured-icon-teal-solid-bg-color` | #fff on #0f766e | 5.47:1 | 3:1 |
 | opal-dark | `--featured-icon-modern-icon-color` | `--featured-icon-modern-bg-color` | #ededf0 on #292d3e | 11.68:1 | 3:1 |
+| opal-dark | `--filter-bar-trigger-default-text-color` | `--filter-bar-trigger-default-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--filter-bar-trigger-active-text-color` | `--filter-bar-trigger-active-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
+| opal-dark | `--filter-bar-count-text-color` | `--filter-bar-count-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-dark | `--footer-text-color` | `--footer-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--footer-link-default-text-color` | `--footer-bg-color` | #c4c2c8 on #292d3e | 7.73:1 | 4.5:1 |
 | opal-dark | `--footer-link-hover-text-color` | `--footer-bg-color` | #dedde0 on #292d3e | 10.09:1 | 4.5:1 |
@@ -2388,6 +2421,8 @@ None.
 | opal-dark | `--meeting-card-warning-time-text-color` | `--meeting-card-warning-bg-color` | #f2cf62 on #695103 | 4.99:1 | 4.5:1 |
 | opal-dark | `--meeting-card-danger-title-text-color` | `--meeting-card-danger-bg-color` | #faacba on #6e1c2a | 6.27:1 | 4.5:1 |
 | opal-dark | `--meeting-card-danger-time-text-color` | `--meeting-card-danger-bg-color` | #f8869a on #6e1c2a | 4.76:1 | 4.5:1 |
+| opal-dark | `--message-thread-incoming-text-color` | `--message-thread-incoming-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
+| opal-dark | `--message-thread-outgoing-text-color` | `--message-thread-outgoing-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
 | opal-dark | `--metric-card-label-text-color` | `--metric-card-bg-color` | #afb2be on #292d3e | 6.45:1 | 4.5:1 |
 | opal-dark | `--metric-card-value-text-color` | `--metric-card-bg-color` | #ededf0 on #292d3e | 11.68:1 | 4.5:1 |
 | opal-dark | `--metric-card-trend-up-text-color` | `--metric-card-bg-color` | #84cc17 on #292d3e | 6.91:1 | 4.5:1 |
@@ -2477,4 +2512,5 @@ None.
 | opal-dark | `--toast-danger-icon-color` | `--toast-bg-color` | #faacba on #292d3e | 7.59:1 | 3:1 |
 | opal-dark | `--tooltip-text-color` | `--tooltip-bg-color` | #292d3e on #ededf0 | 11.68:1 | 4.5:1 |
 | opal-dark | `--tooltip-supporting-text-color` | `--tooltip-bg-color` | #3d4460 on #ededf0 | 8.19:1 | 4.5:1 |
+| opal-dark | `--tree-view-item-selected-text-color` | `--tree-view-item-selected-bg-color` | #abc9fb on #1b3a6f | 6.63:1 | 4.5:1 |
 | opal-dark | `--verification-code-input-default-text-color` | `--verification-code-input-default-bg-color` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |

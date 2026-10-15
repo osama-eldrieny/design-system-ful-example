@@ -406,6 +406,21 @@
     "component": "code",
     "props": {}
   },
+  "ColorPicker": {
+    "status": "stable",
+    "component": "color-picker",
+    "props": {
+      "size": [
+        "small",
+        "medium"
+      ]
+    }
+  },
+  "ColorSwatch": {
+    "status": "stable",
+    "component": "color-picker",
+    "props": {}
+  },
   "Combobox": {
     "status": "stable",
     "component": "combobox",
@@ -667,6 +682,21 @@
       ]
     }
   },
+  "FilterBar": {
+    "status": "stable",
+    "component": "filter-bar",
+    "props": {}
+  },
+  "FilterDefinition": {
+    "status": "stable",
+    "component": "filter-bar",
+    "props": {}
+  },
+  "FilterValue": {
+    "status": "stable",
+    "component": "filter-bar",
+    "props": {}
+  },
   "Footer": {
     "status": "stable",
     "component": "footer",
@@ -759,6 +789,28 @@
       ]
     }
   },
+  "InlineCTA": {
+    "status": "stable",
+    "component": "inline-cta",
+    "props": {
+      "appearance": [
+        "subtle",
+        "brand",
+        "outline"
+      ],
+      "layout": [
+        "horizontal",
+        "stacked"
+      ],
+      "headingLevel": [
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    }
+  },
   "InputField": {
     "status": "stable",
     "component": "input-field",
@@ -827,6 +879,21 @@
         "h6"
       ]
     }
+  },
+  "MessageThread": {
+    "status": "stable",
+    "component": "message-thread",
+    "props": {
+      "density": [
+        "comfortable",
+        "compact"
+      ]
+    }
+  },
+  "ThreadMessage": {
+    "status": "stable",
+    "component": "message-thread",
+    "props": {}
   },
   "MetricCard": {
     "status": "stable",
@@ -1055,6 +1122,17 @@
     "status": "stable",
     "component": "radio-group",
     "props": {}
+  },
+  "Rating": {
+    "status": "stable",
+    "component": "rating",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
   },
   "SearchField": {
     "status": "stable",
@@ -1319,6 +1397,21 @@
   "Tooltip": {
     "status": "stable",
     "component": "tooltip",
+    "props": {}
+  },
+  "TreeView": {
+    "status": "stable",
+    "component": "tree-view",
+    "props": {
+      "size": [
+        "small",
+        "medium"
+      ]
+    }
+  },
+  "TreeItem": {
+    "status": "stable",
+    "component": "tree-view",
     "props": {}
   },
   "VerificationCodeInput": {

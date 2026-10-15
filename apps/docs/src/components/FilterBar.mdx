@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { FilterBar } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/FilterBar/FilterBar.stories';
+import meta from '../../../../packages/react/src/FilterBar/FilterBar.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# FilterBar
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[FilterBar]}
+  optionStories={{ showChips: 'Chips' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <FilterBar
+      label="Filter"
+      defaultValue={{ status: ['paid'] }}
+      filters={[
+        { id: 'status', label: 'Status', options: [{ value: 'paid', label: 'Paid' }, { value: 'due', label: 'Due' }] },
+        { id: 'owner', label: 'Owner', options: [{ value: 'lana', label: 'Lana' }] },
+      ]}
+    />
+  }
+/>

@@ -1,0 +1,581 @@
+{
+  "id": "filter-bar",
+  "name": "FilterBar",
+  "category": "Forms",
+  "status": "stable",
+  "since": "1.2.0",
+  "description": "A toolbar for narrowing a list or table: an optional search, one menu per filter with checkable options, and the chosen values as removable chips with Clear all.",
+  "imports": [
+    {
+      "name": "FilterBar",
+      "from": "@ds/react"
+    },
+    {
+      "name": "FilterDefinition",
+      "from": "@ds/react"
+    },
+    {
+      "name": "FilterValue",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "Above a table or list that people narrow by a few attributes, e.g. status and owner.",
+    "When several values of the same filter can apply at once."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "To switch between a few fixed views.",
+      "alternative": "Tabs"
+    },
+    {
+      "text": "For a single filter with two or three values.",
+      "alternative": "SegmentedControl"
+    },
+    {
+      "text": "For search alone.",
+      "alternative": "SearchField"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Search",
+      "description": "A SearchField at the start of the bar.",
+      "optional": true
+    },
+    {
+      "name": "Trigger",
+      "description": "Opens a filter’s menu; shows how many values are chosen."
+    },
+    {
+      "name": "Menu",
+      "description": "Checkable options for one filter (a DropdownMenu)."
+    },
+    {
+      "name": "End",
+      "description": "A result count or sort menu at the end.",
+      "optional": true
+    },
+    {
+      "name": "Chips",
+      "description": "One removable Tag per chosen value, then Clear all.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "showChips",
+      "title": "Chips",
+      "values": [
+        {
+          "value": "true",
+          "meaning": "Default. Chosen values show as removable chips under the bar."
+        },
+        {
+          "value": "false",
+          "meaning": "Counts on the triggers only, for tight spaces."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "No values chosen for the filter.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "The trigger responds to the pointer.",
+      "trigger": ":hover."
+    },
+    {
+      "name": "Focus",
+      "meaning": "Shows keyboard focus on a trigger.",
+      "trigger": ":focus-visible."
+    },
+    {
+      "name": "Open",
+      "meaning": "The filter’s menu is open; the chevron flips.",
+      "trigger": "Click or Enter."
+    },
+    {
+      "name": "Active",
+      "meaning": "The filter has chosen values; tinted with a count.",
+      "trigger": "value has entries."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Choosing",
+      "text": "Menus stay open while options are checked, so several values can be chosen at once."
+    },
+    {
+      "topic": "Controlled or not",
+      "text": "Pass value and onValueChange to control the filters (e.g. to sync with the URL), or defaultValue."
+    },
+    {
+      "topic": "Removing",
+      "text": "Each chip removes its value; Clear all removes every value."
+    },
+    {
+      "topic": "Narrow screens",
+      "text": "The bar wraps; search takes the first row."
+    }
+  ],
+  "content": [
+    "Name filters with nouns: \"Status\", \"Owner\".",
+    "Chips read \"Filter: value\" so they make sense on their own.",
+    "Show the number of results in end so people see the effect."
+  ],
+  "guidelines": [
+    {
+      "do": "Show the result count next to the filters.",
+      "dont": "Leave people guessing whether a filter changed anything.",
+      "why": "Immediate feedback confirms the filter applied."
+    },
+    {
+      "do": "Keep to three to five filters.",
+      "dont": "Put every column of the table in the bar.",
+      "why": "Too many triggers wrap into a wall of buttons."
+    },
+    {
+      "do": "Keep chips on when filters can be combined.",
+      "dont": "Hide what is filtered in narrow layouts without a count.",
+      "why": "People forget active filters and think data is missing."
+    }
+  ],
+  "accessibility": {
+    "role": "toolbar, named by label; each filter is a menu button with checkbox items.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves between search, triggers, chips and Clear all."
+      },
+      {
+        "keys": "Enter / Space / Down",
+        "action": "Opens a filter’s menu."
+      },
+      {
+        "keys": "Up / Down",
+        "action": "Move between options in the menu."
+      },
+      {
+        "keys": "Enter / Space",
+        "action": "Checks or unchecks an option."
+      },
+      {
+        "keys": "Escape",
+        "action": "Closes the menu and returns focus to its trigger."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label",
+        "when": "On the toolbar, from label."
+      },
+      {
+        "attribute": "aria-expanded",
+        "when": "On each trigger, set by the menu."
+      },
+      {
+        "attribute": "menuitemcheckbox",
+        "when": "Each option, with aria-checked."
+      }
+    ],
+    "focus": "Triggers show a focus ring; focus returns to the trigger when its menu closes.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Counts are announced with the trigger name, e.g. \"Status, 2 selected\"."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Menus and chips work fully from the keyboard."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "Options expose their checked state."
+      }
+    ],
+    "notes": [
+      "Active filters are shown by count and chips, not only by tint."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Invoice filters",
+      "description": "Search, two filters and a result count.",
+      "code": "import { FilterBar, SearchField } from '@ds/react';\n\n<FilterBar\n  label=\"Filter invoices\"\n  search={<SearchField placeholder=\"Search invoices\" />}\n  filters={[\n    { id: 'status', label: 'Status', options: [{ value: 'paid', label: 'Paid' }, { value: 'due', label: 'Due' }] },\n    { id: 'owner', label: 'Owner', options: [{ value: 'lana', label: 'Lana' }, { value: 'omar', label: 'Omar' }] },\n  ]}\n  end={<span>24 results</span>}\n/>"
+    },
+    {
+      "id": "controlled",
+      "title": "Controlled",
+      "description": "Keeps filters in state, e.g. to sync them with the URL.",
+      "code": "import { FilterBar } from '@ds/react';\n\n<FilterBar label=\"Filter\" filters={filters} value={value} onValueChange={setValue} />"
+    },
+    {
+      "id": "no-chips",
+      "title": "Without chips",
+      "description": "Counts on the triggers only.",
+      "code": "import { FilterBar } from '@ds/react';\n\n<FilterBar label=\"Filter\" filters={filters} showChips={false} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--filter-bar-"
+  ],
+  "related": [
+    {
+      "id": "dropdown-menu",
+      "relation": "Each filter’s menu."
+    },
+    {
+      "id": "tag",
+      "relation": "The removable chips."
+    },
+    {
+      "id": "search-field",
+      "relation": "The search at the start."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.2.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "FilterBar",
+      "import": "import { FilterBar } from '@ds/react';",
+      "description": "A toolbar for narrowing a list or table: an optional search, one menu per filter with\ncheckable options, and the chosen values as removable chips.",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Names the toolbar, e.g. \"Filter invoices\"."
+        },
+        "filters": {
+          "type": "FilterDefinition[]",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "value": {
+          "type": "FilterValue",
+          "required": false,
+          "default": null,
+          "description": "Chosen values (controlled)."
+        },
+        "defaultValue": {
+          "type": "FilterValue",
+          "required": false,
+          "default": "{}",
+          "description": ""
+        },
+        "onValueChange": {
+          "type": "((value: FilterValue) => void)",
+          "required": false,
+          "default": null,
+          "description": ""
+        },
+        "search": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Content at the start of the bar, usually a SearchField."
+        },
+        "end": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Content at the end, e.g. a result count or a sort menu."
+        },
+        "showChips": {
+          "type": "boolean",
+          "required": false,
+          "default": true,
+          "description": "Shows the chosen values as removable chips under the bar. Default true."
+        },
+        "clearLabel": {
+          "type": "string",
+          "required": false,
+          "default": "Clear all",
+          "description": "Words for the clear button. Default \"Clear all\"."
+        },
+        "selectedLabel": {
+          "type": "((filter: string, count: number) => string)",
+          "required": false,
+          "default": "(f, n) => `${f}, ${n} selected`",
+          "description": "Spoken name of a trigger with chosen values. Default \"{filter}, {count} selected\"."
+        },
+        "removeLabel": {
+          "type": "((filter: string, option: string) => string)",
+          "required": false,
+          "default": "(f, o) => `Remove ${f}: ${o}`",
+          "description": "Words for a chip's remove button. Default \"Remove {filter}: {option}\"."
+        }
+      }
+    },
+    {
+      "name": "FilterDefinition",
+      "import": "import { FilterDefinition } from '@ds/react';",
+      "description": "",
+      "props": {}
+    },
+    {
+      "name": "FilterValue",
+      "import": "import { FilterValue } from '@ds/react';",
+      "description": "",
+      "props": {}
+    }
+  ],
+  "tokens": {
+    "--filter-bar-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--filter-bar-chips-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--filter-bar-search-width": {
+      "description": null,
+      "references": null,
+      "default": "16rem"
+    },
+    "--filter-bar-trigger-height": {
+      "description": "Height of medium (default) buttons, fields and selects.",
+      "references": "--control-height-medium",
+      "default": "40px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "36px"
+      }
+    },
+    "--filter-bar-trigger-padding-x": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--filter-bar-trigger-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--filter-bar-trigger-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--filter-bar-trigger-default-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--filter-bar-trigger-default-border-color": {
+      "description": "Outline of text fields, selects and comboboxes; the lightest gray with 3:1 contrast.",
+      "references": "--color-border-field",
+      "default": "#8f8b96",
+      "byTheme": {
+        "brand=opal,mode=dark": "#a9a6ae"
+      }
+    },
+    "--filter-bar-trigger-default-text-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--filter-bar-trigger-hover-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--filter-bar-trigger-active-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--filter-bar-trigger-active-border-color": {
+      "description": "Regular tone outline, e.g. alert borders.",
+      "references": "--color-border-primary-medium",
+      "default": "#c5b2ff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#5637b5",
+        "brand=amber,mode=light": "#e5cfb7",
+        "brand=amber,mode=dark": "#a57a4b",
+        "brand=opal,mode=light": "#abc9fb",
+        "brand=opal,mode=dark": "#2a5caf"
+      }
+    },
+    "--filter-bar-trigger-active-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-primary-high",
+      "default": "#5637b5",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#6f5232",
+        "brand=amber,mode=dark": "#f0e4d7",
+        "brand=opal,mode=light": "#224a8c",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--filter-bar-trigger-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--filter-bar-trigger-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--filter-bar-trigger-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--filter-bar-trigger-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--filter-bar-trigger-icon-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-xs",
+      "default": "14px"
+    },
+    "--filter-bar-trigger-icon-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--filter-bar-duration": {
+      "description": "Small state changes: hover, press, toggle.",
+      "references": "--duration-fast",
+      "default": "120ms"
+    },
+    "--filter-bar-easing": {
+      "description": "Moving between two states on screen.",
+      "references": "--easing-standard",
+      "default": "cubic-bezier(0.2, 0, 0, 1)"
+    },
+    "--filter-bar-count-min-size": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
+    "--filter-bar-count-padding-x": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--filter-bar-count-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--filter-bar-count-bg-color": {
+      "description": "Fill of filled buttons; the accent in light mode, a darker step in dark mode.",
+      "references": "--color-bg-accent-primary-strong-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#8a663e",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#326fd1"
+      }
+    },
+    "--filter-bar-count-text-color": {
+      "description": "Text and icons on the matching strong fill (light text in dark mode).",
+      "references": "--color-fg-on-accent-primary-strong-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=amber,mode=light": "#1e140d"
+      }
+    },
+    "--filter-bar-count-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--filter-bar-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--filter-bar-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--filter-bar-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--filter-bar-trigger-border-radius": {
+      "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
+      "references": "--radius-8",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "999px"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-forms-filterbar--docs"
+}

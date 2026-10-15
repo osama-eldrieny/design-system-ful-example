@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { ColorPicker } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/ColorPicker/ColorPicker.stories';
+import meta from '../../../../packages/react/src/ColorPicker/ColorPicker.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# ColorPicker
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[ColorPicker]}
+  optionStories={{ size: 'Sizes', allowCustom: 'CustomColor' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <ColorPicker
+      label="Label color"
+      allowCustom
+      swatches={[
+        { value: '#2563eb', name: 'Blue' },
+        { value: '#16a34a', name: 'Green' },
+        { value: '#dc2626', name: 'Red' },
+        { value: '#facc15', name: 'Yellow' },
+      ]}
+    />
+  }
+/>

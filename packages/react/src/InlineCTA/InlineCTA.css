@@ -1,0 +1,91 @@
+/**
+ * InlineCTA. Styled only with --inline-cta-* tokens. The row wraps, so actions drop under the
+ * text when the panel is narrow.
+ */
+
+.ds-inline-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--inline-cta-gap);
+  padding-block: var(--inline-cta-padding-y);
+  padding-inline: var(--inline-cta-padding-x);
+  border: var(--inline-cta-border-width) solid var(--inline-cta-subtle-border-color);
+  border-radius: var(--inline-cta-border-radius);
+  background: var(--inline-cta-subtle-bg-color);
+  font-family: var(--inline-cta-font-family);
+}
+
+.ds-inline-cta--brand {
+  border-color: var(--inline-cta-brand-border-color);
+  border-width: var(--inline-cta-brand-border-width);
+  background: var(--inline-cta-brand-bg-color);
+}
+
+.ds-inline-cta--brand .ds-inline-cta__icon {
+  background: var(--inline-cta-brand-icon-bg-color);
+}
+
+.ds-inline-cta--outline {
+  border-color: var(--inline-cta-outline-border-color);
+  background: var(--inline-cta-outline-bg-color);
+}
+
+.ds-inline-cta--outline .ds-inline-cta__icon {
+  background: var(--inline-cta-outline-icon-bg-color);
+}
+
+.ds-inline-cta__icon {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--inline-cta-icon-size);
+  block-size: var(--inline-cta-icon-size);
+  border-radius: var(--inline-cta-icon-border-radius);
+  background: var(--inline-cta-icon-bg-color);
+  color: var(--inline-cta-icon-color);
+}
+
+.ds-inline-cta__icon > svg {
+  inline-size: var(--inline-cta-icon-glyph-size);
+  block-size: var(--inline-cta-icon-glyph-size);
+}
+
+.ds-inline-cta__text {
+  display: grid;
+  flex: 1 1 var(--inline-cta-text-min-width);
+  gap: var(--inline-cta-text-gap);
+  min-inline-size: 0;
+}
+
+.ds-inline-cta__title {
+  margin: 0;
+  color: var(--inline-cta-title-text-color);
+  font-size: var(--inline-cta-title-font-size);
+  font-weight: var(--inline-cta-title-font-weight);
+  line-height: var(--inline-cta-title-font-line-height);
+}
+
+.ds-inline-cta__description {
+  margin: 0;
+  color: var(--inline-cta-description-text-color);
+  font-size: var(--inline-cta-description-font-size);
+  line-height: var(--inline-cta-description-font-line-height);
+}
+
+.ds-inline-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--inline-cta-actions-gap);
+}
+
+/* Stacked: icon and text on top, actions below. */
+.ds-inline-cta--stacked {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ds-inline-cta--stacked .ds-inline-cta__text {
+  flex: none;
+}

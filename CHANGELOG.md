@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.2.0 — 2026-10-15 (missing components and variants)
+
+A recheck of the library against common design systems found components and variants that
+were missing or built but undocumented.
+
+### New components
+- **Rating** (Forms): stars for giving a score (a radio group) or showing one, with halves
+  in read-only mode; small, medium and large sizes; optional value.
+- **TreeView** (Navigation): files-in-folders hierarchy following the WAI-ARIA tree pattern
+  (one tab stop, arrow keys, Home/End); small and medium sizes; optional guide lines.
+- **ColorPicker** (Forms): named swatches as a radio group, with an optional custom color
+  from the system picker; small and medium sizes.
+- **MessageThread** (Data display): chat bubbles grouped by author, own messages at the end,
+  times and delivery status, a typing indicator; comfortable and compact density.
+- **InlineCTA** (Patterns): a call to action inside page content with an icon, title,
+  description and actions; subtle, brand and outline appearances; horizontal or stacked.
+- **FilterBar** (Forms): search, one checkable menu per filter, active filters as removable
+  chips with Clear all, and a slot for a result count.
+- **CodeTabs** (Code): one snippet in several languages.
+
+### New variants
+- Pagination `card` and `dots` appearances; Spinner `dots` and `line`; Toast `avatar` and
+  `image`.
+
+### Docs
+- Documented variants the code already supported: BadgeGroup position, horizontal BarChart,
+  Sparkline tones, DatePicker sizes, MetricCard trend and icon styles, Modal icon color,
+  ProductCard orientation, ProgressCircle sizes, Select dots, Inline alignment, Tooltip
+  placements.
+- The Introduction catalog shows 68 components; the "On this page" list no longer picks up
+  headings inside previews.
+
+### Tokens
+- New component token files: `rating`, `tree-view`, `color-picker`, `message-thread`,
+  `inline-cta`, `filter-bar`; the FilterBar trigger radius follows the radius theme.
+- Contrast: 2,490 checked pairs, 0 failures.
+
 ## 1.1.0 — 2026-10-15 (Phase 9: dashboard-grade components)
 
 More variants and new components so real dashboards can be built from the library, inspired
