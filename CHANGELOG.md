@@ -51,14 +51,14 @@ VerificationCodeInput.
   with a section list beside the selected section's cards (each with Cancel/Save) and a working
   Appearance section. Support removed from the sidebar.
 - **Orbit, a SaaS prototype** (`#/saas`), separate from Panda. Its content and structure follow
-  TailAdmin's page list; everything is built from `@ds/react`. 86 pages:
+  TailAdmin's page list; everything is built from `@ds/react`. 84 pages:
   - Dashboards: SaaS (home), eCommerce, Analytics, Marketing, CRM, Stocks, Logistics, AI, Sales,
     Finance.
   - AI assistant: text, image, code and video generators (one chat layout), AI settings.
   - E-commerce: products, add product, billing, invoices, single and create invoice,
     transactions, single transaction.
   - Calendar (month, week, day; add and edit events), profile, tasks (list and kanban).
-  - Pages: file manager, pricing, FAQ, API keys, integrations, blank, 404, 500, 503, coming
+  - Pages: file manager, pricing, FAQ, API keys, integrations, blank, 404, coming
     soon, maintenance, success.
   - Support: chat, tickets and reply, inbox and message.
   - Reference pages: forms, tables, charts, maps and 22 UI-element pages; six layout variants

@@ -1,6 +1,6 @@
 /**
  * Orbit's pages without the app frame: authentication (sign in, sign up, reset password,
- * two-step verification) and system pages (404, 500, 503, coming soon, maintenance, success).
+ * two-step verification) and system pages (404, coming soon, maintenance, success).
  */
 import { useState, type ReactNode } from 'react';
 import {
@@ -23,9 +23,7 @@ import {
   Mail,
   Orbit,
   Rocket,
-  ServerCrash,
   ShieldCheck,
-  Unplug,
   Wrench,
   SearchX,
 } from 'lucide-react';
@@ -293,6 +291,7 @@ function SystemPage({
   title,
   text,
   children,
+  framed = true,
 }: {
   icon: ReactNode;
   tone?: 'primary' | 'danger' | 'warning' | 'success';
@@ -300,10 +299,16 @@ function SystemPage({
   title: string;
   text: string;
   children?: ReactNode;
+  /** Inside the app frame (sidebar and top bar), like any other page. */
+  framed?: boolean;
 }) {
+  const Root = framed ? 'section' : 'main';
   return (
-    <main className="orbit-system">
-      <Logo icon={<Orbit />} name="Orbit" href={to('')} />
+    <Root
+      className={framed ? 'panel orbit-system orbit-system--framed' : 'orbit-system'}
+      aria-label={framed ? title : undefined}
+    >
+      {!framed && <Logo icon={<Orbit />} name="Orbit" href={to('')} />}
       <div className="orbit-system__body">
         <FeaturedIcon icon={icon} size="xlarge" tone={tone} />
         {code && <p className="orbit-system__code">{code}</p>}
@@ -323,8 +328,8 @@ function SystemPage({
           </span>
         )}
       </div>
-      <p className="muted text-sm">© 2026 Orbit Labs</p>
-    </main>
+      {!framed && <p className="muted text-sm">© 2026 Orbit Labs</p>}
+    </Root>
   );
 }
 
@@ -382,24 +387,6 @@ const pages: Record<string, () => ReactNode> = {
       text="The page you’re looking for doesn’t exist or has moved."
     />
   ),
-  '/pages/500': () => (
-    <SystemPage
-      icon={<ServerCrash />}
-      tone="danger"
-      code="500"
-      title="Something went wrong"
-      text="We hit an error on our side. Our team has been notified; please try again in a moment."
-    />
-  ),
-  '/pages/503': () => (
-    <SystemPage
-      icon={<Unplug />}
-      tone="warning"
-      code="503"
-      title="Service unavailable"
-      text="Orbit is temporarily overloaded. Check the status page for updates."
-    />
-  ),
   '/pages/coming-soon': () => (
     <SystemPage
       icon={<Rocket />}
@@ -420,7 +407,9 @@ const pages: Record<string, () => ReactNode> = {
       <span className="row muted text-sm">
         <Clock aria-hidden="true" className="orbit-inline-icon" /> About 40 minutes left
       </span>
-      <Progress label="Maintenance progress" hideLabel value={62} />
+      <div className="orbit-system__progress">
+        <Progress label="Maintenance progress" hideLabel value={62} />
+      </div>
     </SystemPage>
   ),
   '/pages/success': () => (

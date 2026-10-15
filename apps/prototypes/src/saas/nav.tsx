@@ -132,8 +132,6 @@ export const navSections: { title: string; groups: NavGroup[] }[] = [
           ['integrations', 'Integrations'],
           ['blank', 'Blank page'],
           ['404', '404 error'],
-          ['500', '500 error'],
-          ['503', '503 error'],
           ['coming-soon', 'Coming soon'],
           ['maintenance', 'Maintenance'],
           ['success', 'Success'],
@@ -258,13 +256,4 @@ export const allPages: (NavPage & { group: string; icon: ReactNode })[] = navSec
 export const pageFor = (path: string) => allPages.find((pg) => pg.path === path);
 
 /** Pages shown without the app frame. */
-export const isBare = (path: string) =>
-  path.startsWith('/auth/') ||
-  [
-    '/pages/404',
-    '/pages/500',
-    '/pages/503',
-    '/pages/coming-soon',
-    '/pages/maintenance',
-    '/pages/success',
-  ].includes(path);
+export const isBare = (path: string) => path.startsWith('/auth/') || path === '/pages/coming-soon';

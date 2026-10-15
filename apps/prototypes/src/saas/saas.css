@@ -1612,3 +1612,12 @@
   max-inline-size: calc(var(--sizing-8xl) * 7.5);
   margin-inline: auto;
 }
+
+.orbit-system--framed {
+  min-block-size: calc(100dvh - 12rem);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+}
+
+.orbit-system__progress {
+  inline-size: min(100%, 24rem);
+}

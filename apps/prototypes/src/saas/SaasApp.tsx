@@ -1,10 +1,12 @@
 import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 'react';
-import { Alert, Button, EmptyState, Link, Spinner, type Theme } from '@ds/react';
-import { Construction } from 'lucide-react';
+import { Alert, Link, Spinner, type Theme } from '@ds/react';
 import { isBare, pageFor } from './nav';
-import { Page, Shell, ThemeContext, to, type ShellLayout } from './Shell';
+import { Shell, ThemeContext, to, type ShellLayout } from './Shell';
 
 type PageModule = LazyExoticComponent<ComponentType<{ path: string }>>;
+
+/** Sign-in and system pages; also the 404 for any unknown address. */
+const System = lazy(() => import('./pages/System'));
 
 /** Path inside Orbit → its page, loaded on demand. Patterns match a path prefix. */
 const routes: [RegExp, PageModule][] = [
@@ -15,10 +17,7 @@ const routes: [RegExp, PageModule][] = [
   [/^\/pages\/(api-keys|integrations)$/, lazy(() => import('./pages/Developer'))],
   [/^\/ai\//, lazy(() => import('./pages/Ai'))],
   [/^\/(forms|tables|charts|maps|ui)\//, lazy(() => import('./pages/Showcase'))],
-  [
-    /^\/(auth\/|pages\/(404|500|503|coming-soon|maintenance|success)$)/,
-    lazy(() => import('./pages/System')),
-  ],
+  [/^\/(auth\/|pages\/(404|coming-soon|maintenance|success)$)/, System],
   [/^\/(tasks\/|calendar$)/, lazy(() => import('./pages/Work'))],
   [/^\/(profile|pages\/(files|pricing|faq|blank))$/, lazy(() => import('./pages/Content'))],
 ];
@@ -32,24 +31,6 @@ const layouts: Record<string, ShellLayout> = {
   '5': 'boxed',
   '6': 'rail',
 };
-
-function NotYet({ path }: { path: string }) {
-  const pg = pageFor(path);
-  return (
-    <Page path={path}>
-      <EmptyState
-        icon={<Construction />}
-        title={pg ? `${pg.label} is on its way` : 'Page not found'}
-        description={
-          pg
-            ? 'This page is part of the Orbit build plan and arrives in a later batch.'
-            : 'There’s no Orbit page at this address.'
-        }
-        actions={<Button href={to('')}>Back to overview</Button>}
-      />
-    </Page>
-  );
-}
 
 /** Orbit, the SaaS prototype at #/saas. */
 export default function SaasApp({
@@ -92,7 +73,7 @@ export default function SaasApp({
           </span>
         </Alert>
       )}
-      {Found ? <Found path={path} /> : <NotYet path={path} />}
+      {Found ? <Found path={path} /> : <System path="/pages/404" />}
     </Suspense>
   );
 
