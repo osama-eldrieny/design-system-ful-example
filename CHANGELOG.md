@@ -46,6 +46,27 @@ VerificationCodeInput.
 - Apps: Projects, Messages, Calendar, Orders and Settings. Old `#/admin…`, `#/app` and
   `#/dashboards/…` links redirect.
 - InputField shrinks inside narrow flex and grid layouts (it overflowed phones).
+- Panda header: a top bar with breadcrumbs, search, upgrade, settings, notifications and account;
+  the dashboard header has actions, section tabs, periods, dates and filters. Settings rebuilt
+  with a section list beside the selected section's cards (each with Cancel/Save) and a working
+  Appearance section. Support removed from the sidebar.
+- **Orbit, a SaaS prototype** (`#/saas`), separate from Panda. Its content and structure follow
+  TailAdmin's page list; everything is built from `@ds/react`. 86 pages:
+  - Dashboards: SaaS (home), eCommerce, Analytics, Marketing, CRM, Stocks, Logistics, AI, Sales,
+    Finance.
+  - AI assistant: text, image, code and video generators (one chat layout), AI settings.
+  - E-commerce: products, add product, billing, invoices, single and create invoice,
+    transactions, single transaction.
+  - Calendar (month, week, day; add and edit events), profile, tasks (list and kanban).
+  - Pages: file manager, pricing, FAQ, API keys, integrations, blank, 404, 500, 503, coming
+    soon, maintenance, success.
+  - Support: chat, tickets and reply, inbox and message.
+  - Reference pages: forms, tables, charts, maps and 22 UI-element pages; six layout variants
+    (full, slim, top navigation, dual-tier, boxed, side panel); sign in, sign up, reset
+    password, two-step verification.
+  - Shell: grouped sidebar that opens the current group, a drawer on small screens, ⌘K search
+    over every page, a dark-mode toggle, notifications, and an account menu with language.
+- `check:responsive` covers 19 Orbit pages.
 
 ## 1.0.0 — 2026-09-29
 

@@ -15,6 +15,10 @@ const routes: [RegExp, PageModule][] = [
   [/^\/pages\/(api-keys|integrations)$/, lazy(() => import('./pages/Developer'))],
   [/^\/ai\//, lazy(() => import('./pages/Ai'))],
   [/^\/(forms|tables|charts|maps|ui)\//, lazy(() => import('./pages/Showcase'))],
+  [
+    /^\/(auth\/|pages\/(404|500|503|coming-soon|maintenance|success)$)/,
+    lazy(() => import('./pages/System')),
+  ],
   [/^\/(tasks\/|calendar$)/, lazy(() => import('./pages/Work'))],
   [/^\/(profile|pages\/(files|pricing|faq|blank))$/, lazy(() => import('./pages/Content'))],
 ];

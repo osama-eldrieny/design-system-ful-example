@@ -34,6 +34,28 @@ const pages = [
   { name: 'app settings/team', url: `${base}/prototypes/#/app/settings/team` },
   { name: 'app settings/billing', url: `${base}/prototypes/#/app/settings/billing` },
   { name: 'prototype demo', url: `${base}/prototypes/#/demo` },
+  // Orbit, the SaaS prototype: one page per layout pattern.
+  ...[
+    '',
+    '/dashboards/analytics',
+    '/dashboards/finance',
+    '/commerce/products',
+    '/commerce/create-invoice',
+    '/commerce/transaction',
+    '/support/chat',
+    '/support/inbox',
+    '/tasks/kanban',
+    '/calendar',
+    '/profile',
+    '/pages/pricing',
+    '/ai/text',
+    '/ai/settings',
+    '/forms/elements',
+    '/ui/buttons',
+    '/layouts/4',
+    '/auth/sign-in',
+    '/pages/coming-soon',
+  ].map((path) => ({ name: `orbit ${path || 'home'}`, url: `${base}/prototypes/#/saas${path}` })),
 ];
 
 const browser = await chromium.launch();

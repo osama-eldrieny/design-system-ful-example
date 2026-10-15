@@ -7,10 +7,6 @@ import {
   ButtonGroup,
   ChooseCard,
   ChooseCardGroup,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
   FeaturedIcon,
   FileUpload,
   FileUploadItem,
@@ -21,18 +17,14 @@ import {
   Select,
   SelectItem,
   Switch,
-  Tab,
-  TabList,
-  TabPanel,
   Table,
-  TableCard,
-  Tabs,
   Textarea,
   useToast,
   type TableColumn,
   type Theme,
 } from '@ds/react';
 import {
+  Bell,
   Building2,
   Calendar,
   Check,
@@ -44,124 +36,167 @@ import {
   Layers,
   Mail,
   MessageSquare,
-  MoreVertical,
+  Palette,
+  Plug,
   Plus,
+  Trash2,
+  User,
+  Users,
   Zap,
 } from 'lucide-react';
 import { integrations, invoices, members } from '../dashboard-data';
-import { go } from '../router';
 import { AppShell } from '../shell/AppShell';
 import { TopBar } from '../shell/TopBar';
 import './settings.css';
 
 const sections = [
-  { id: 'details', label: 'My details' },
-  { id: 'password', label: 'Password' },
-  { id: 'team', label: 'Team' },
-  { id: 'appearance', label: 'Appearance' },
-  { id: 'billing', label: 'Billing' },
-  { id: 'notifications', label: 'Notifications', count: 2 },
-  { id: 'integrations', label: 'Integrations' },
+  {
+    id: 'details',
+    label: 'My details',
+    icon: <User />,
+    description: 'Your name, photo and profile.',
+  },
+  {
+    id: 'password',
+    label: 'Password',
+    icon: <KeyRound />,
+    description: 'Change your password and sign-in security.',
+  },
+  {
+    id: 'team',
+    label: 'Team',
+    icon: <Users />,
+    description: 'Invite people and manage their roles.',
+  },
+  {
+    id: 'appearance',
+    label: 'Appearance',
+    icon: <Palette />,
+    description: 'How Panda looks for you.',
+  },
+  {
+    id: 'billing',
+    label: 'Billing',
+    icon: <CreditCard />,
+    description: 'Your plan, payment method and invoices.',
+  },
+  {
+    id: 'notifications',
+    label: 'Notifications',
+    icon: <Bell />,
+    count: 2,
+    description: 'When and how we reach you.',
+  },
+  {
+    id: 'integrations',
+    label: 'Integrations',
+    icon: <Plug />,
+    description: 'Tools connected to your workspace.',
+  },
 ];
 
-/** A settings row: what it is on the start side, its controls on the end side. */
-function Row({
+/** A settings card: title and description, the fields, then Cancel/Save. */
+function Card({
   title,
   description,
   children,
+  actions,
+  save = true,
 }: {
   title: string;
   description?: string;
   children: ReactNode;
+  actions?: ReactNode;
+  save?: boolean;
 }) {
+  const toast = useToast();
   return (
-    <div className="set-row">
-      <div className="set-row__label">
-        <strong>{title}</strong>
-        {description && <span className="muted">{description}</span>}
-      </div>
-      <div className="set-row__control">{children}</div>
-    </div>
+    <section className="set-card" aria-label={title}>
+      <PageHeader
+        size="small"
+        titleAs="h2"
+        title={title}
+        description={description}
+        actions={actions}
+      />
+      <div className="set-card__body">{children}</div>
+      {save && (
+        <footer className="set-card__footer">
+          <Button variant="secondary" appearance="outline" size="small">
+            Cancel
+          </Button>
+          <Button size="small" onClick={() => toast({ title: `${title} saved`, tone: 'success' })}>
+            Save changes
+          </Button>
+        </footer>
+      )}
+    </section>
   );
 }
-
-/** The heading of a section, with optional actions. */
-const Section = ({
-  title,
-  description,
-  actions,
-}: {
-  title: string;
-  description: string;
-  actions?: ReactNode;
-}) => (
-  <PageHeader
-    size="small"
-    titleAs="h2"
-    title={title}
-    description={description}
-    actions={actions}
-    divider
-  />
-);
 
 /* ------------------------------------------------------------------ sections */
 
 function Details() {
+  const me = members[0];
   return (
-    <div className="set-form">
-      <div className="set-two">
-        <InputField label="First name" required defaultValue="Olivia" />
-        <InputField label="Last name" required defaultValue="Rhye" />
-      </div>
-      <InputField
-        label="Email address"
-        required
-        type="email"
-        iconStart={<Mail />}
-        defaultValue={members[0].email}
-      />
-      <div className="set-photo">
-        <Avatar name={members[0].name} src={members[0].src} size="large" decorative />
-        <FileUpload id="photo" accept="image/*" hint="SVG, PNG, JPG or GIF (max. 800×400px)" />
-      </div>
-      <InputField label="Role" required defaultValue="Product Designer" />
-      <Select label="Country" defaultValue="au">
-        <SelectItem value="au" supportingText="AU">
-          Australia
-        </SelectItem>
-        <SelectItem value="ae" supportingText="AE">
-          United Arab Emirates
-        </SelectItem>
-        <SelectItem value="gb" supportingText="GB">
-          United Kingdom
-        </SelectItem>
-        <SelectItem value="us" supportingText="US">
-          United States
-        </SelectItem>
-      </Select>
-      <Select label="Timezone" defaultValue="pst">
-        <SelectItem value="pst" icon={<Clock />} supportingText="UTC−08:00">
-          Pacific Standard Time
-        </SelectItem>
-        <SelectItem value="gmt" icon={<Clock />} supportingText="UTC±00:00">
-          Greenwich Mean Time
-        </SelectItem>
-        <SelectItem value="gst" icon={<Clock />} supportingText="UTC+04:00">
-          Gulf Standard Time
-        </SelectItem>
-      </Select>
-      <Textarea
-        label="Your bio"
-        description="Write a short introduction."
-        maxLength={400}
-        showCount
-        rows={5}
-        defaultValue="I'm a Product Designer based in Melbourne, Australia. I specialize in UX/UI design, brand strategy and design systems."
-      />
-      <div className="set-field">
-        <strong className="set-field__label">Portfolio projects</strong>
-        <span className="muted text-sm">Share a few snippets of your work.</span>
+    <>
+      <Card title="Personal info" description="Update your photo and personal details.">
+        <div className="set-photo">
+          <Avatar name={me.name} src={me.src} size="xlarge" />
+          <FileUpload id="photo" accept="image/*" hint="SVG, PNG, JPG or GIF (max. 800×400px)" />
+        </div>
+        <div className="set-two">
+          <InputField label="First name" required defaultValue="Olivia" />
+          <InputField label="Last name" required defaultValue="Rhye" />
+        </div>
+        <InputField
+          label="Email address"
+          required
+          type="email"
+          iconStart={<Mail />}
+          defaultValue={me.email}
+        />
+        <div className="set-two">
+          <InputField label="Role" defaultValue="Product Designer" />
+          <Select label="Country" defaultValue="au">
+            <SelectItem value="au" supportingText="AU">
+              Australia
+            </SelectItem>
+            <SelectItem value="ae" supportingText="AE">
+              United Arab Emirates
+            </SelectItem>
+            <SelectItem value="gb" supportingText="GB">
+              United Kingdom
+            </SelectItem>
+            <SelectItem value="us" supportingText="US">
+              United States
+            </SelectItem>
+          </Select>
+        </div>
+        <Select label="Timezone" defaultValue="pst">
+          <SelectItem value="pst" icon={<Clock />} supportingText="UTC−08:00">
+            Pacific Standard Time
+          </SelectItem>
+          <SelectItem value="gmt" icon={<Clock />} supportingText="UTC±00:00">
+            Greenwich Mean Time
+          </SelectItem>
+          <SelectItem value="gst" icon={<Clock />} supportingText="UTC+04:00">
+            Gulf Standard Time
+          </SelectItem>
+        </Select>
+      </Card>
+      <Card title="Profile" description="This shows on your public profile.">
+        <InputField label="Username" prefix="panda.io/" defaultValue="olivia" />
+        <Textarea
+          label="Bio"
+          description="Write a short introduction."
+          maxLength={400}
+          showCount
+          rows={4}
+          defaultValue="I'm a Product Designer based in Melbourne, Australia. I specialise in UX/UI design, brand strategy and design systems."
+        />
+      </Card>
+      <Card title="Portfolio projects" description="Share a few snippets of your work.">
         <FileUpload id="portfolio" multiple hint="SVG, PNG, JPG or GIF (max. 800×400px)">
           <FileUploadItem
             name="Tech design requirements.pdf"
@@ -182,8 +217,8 @@ function Details() {
             onRemove={() => {}}
           />
         </FileUpload>
-      </div>
-    </div>
+      </Card>
+    </>
   );
 }
 
@@ -196,15 +231,12 @@ function Password() {
   ];
   return (
     <>
-      <Section title="Password" description="Please enter your current password to change it." />
-      <Row title="Current password">
-        <InputField label="Current password" hideLabel type="password" iconStart={<KeyRound />} />
-      </Row>
-      <Row title="New password" description="Your new password must meet these rules.">
+      <Card title="Change password" description="Enter your current password, then a new one.">
+        <InputField label="Current password" type="password" autoComplete="current-password" />
         <InputField
           label="New password"
-          hideLabel
           type="password"
+          autoComplete="new-password"
           value={pw}
           onChange={(e) => setPw(e.target.value)}
         />
@@ -217,10 +249,32 @@ function Password() {
             </li>
           ))}
         </ul>
-      </Row>
-      <Row title="Confirm new password">
-        <InputField label="Confirm new password" hideLabel type="password" />
-      </Row>
+        <InputField label="Confirm new password" type="password" autoComplete="new-password" />
+      </Card>
+      <Card
+        title="Two-factor authentication"
+        description="Ask for a code from your phone when you sign in."
+        save={false}
+      >
+        <ul className="set-list">
+          <li>
+            <span className="stack-text">
+              <strong>Authenticator app</strong>
+              <span className="muted text-sm">
+                Use an app like 1Password or Google Authenticator.
+              </span>
+            </span>
+            <Switch aria-label="Authenticator app" defaultChecked />
+          </li>
+          <li>
+            <span className="stack-text">
+              <strong>Text message</strong>
+              <span className="muted text-sm">Send a code to •••• 4821.</span>
+            </span>
+            <Switch aria-label="Text message codes" />
+          </li>
+        </ul>
+      </Card>
     </>
   );
 }
@@ -229,7 +283,7 @@ type Member = (typeof members)[number];
 
 function Team() {
   const toast = useToast();
-  const [invites, setInvites] = useState(['', '', '']);
+  const [invites, setInvites] = useState(['', '']);
   const columns: TableColumn<Member>[] = [
     {
       key: 'name',
@@ -247,37 +301,28 @@ function Team() {
         </Badge>
       ),
     },
-    { key: 'active', header: 'Last active', hideBelow: 'medium' },
+    { key: 'active', header: 'Last active', hideBelow: 'large' },
     {
       key: 'actions',
       header: <span className="visually-hidden">Actions</span>,
-      align: 'end',
+      width: 48,
       render: (m) => (
-        <span className="row">
-          <Button
-            appearance="text"
-            variant="secondary"
-            size="small"
-            aria-label={`Delete ${m.name}`}
-          >
-            Delete
-          </Button>
-          <Button appearance="text" size="small" aria-label={`Edit ${m.name}`}>
-            Edit
-          </Button>
-        </span>
+        <IconButton
+          icon={<Trash2 />}
+          label={`Remove ${m.name}`}
+          variant="secondary"
+          appearance="ghost"
+          size="small"
+        />
       ),
     },
   ];
   return (
     <>
-      <Section
-        title="Team management"
-        description="Manage your team members and their account permissions."
-      />
-      <Row
+      <Card
         title="Invite team members"
-        description="Get your projects up and running faster by inviting your team."
+        description="Get your projects moving faster by inviting your team."
+        save={false}
       >
         {invites.map((v, i) => (
           <div key={i} className="set-invite">
@@ -303,32 +348,37 @@ function Team() {
           <Button
             appearance="text"
             variant="secondary"
+            size="small"
             iconStart={<Plus />}
             onClick={() => setInvites((l) => [...l, ''])}
           >
             Add another
           </Button>
-          <Button onClick={() => toast({ title: 'Invites sent', tone: 'success' })}>
+          <Button
+            size="small"
+            iconStart={<Mail />}
+            onClick={() => toast({ title: 'Invites sent', tone: 'success' })}
+          >
             Send invites
           </Button>
         </div>
-      </Row>
-      <Row
+      </Card>
+      <Card
         title="Team members"
-        description="Manage your existing team and change roles and permissions."
+        description="People with access to this workspace."
+        save={false}
+        actions={<Badge tone="gray" shape="modern">{`${members.length} people`}</Badge>}
       >
-        <TableCard title="Members" titleAs="h3" badge={`${members.length} people`}>
+        <div className="set-table">
           <Table<Member>
             caption="Team members"
             hideCaption
             columns={columns}
             rows={members}
             getRowId={(m) => m.email}
-            selectable
-            rowLabel={(m) => `Select ${m.name}`}
           />
-        </TableCard>
-      </Row>
+        </div>
+      </Card>
     </>
   );
 }
@@ -336,83 +386,92 @@ function Team() {
 function Appearance({ theme, onThemeChange }: { theme: Theme; onThemeChange: (t: Theme) => void }) {
   const set = (patch: Partial<Theme>) => onThemeChange({ ...theme, ...patch });
   return (
-    <>
-      <Section
-        title="Appearance"
-        description="Change how Panda looks and feels. Changes apply right away."
-      />
-      <Row title="Brand" description="Pick the brand palette.">
-        <ChooseCardGroup
-          aria-label="Brand"
-          orientation="horizontal"
-          value={theme.brand}
-          onValueChange={(v) => set({ brand: v as Theme['brand'] })}
-        >
-          <ChooseCard value="diamond" title="Diamond" description="Violet" />
-          <ChooseCard value="amber" title="Amber" description="Warm" />
-          <ChooseCard value="opal" title="Opal" description="Cool" />
-        </ChooseCardGroup>
-      </Row>
-      <Row title="Display preference" description="Switch between light and dark mode.">
-        <ChooseCardGroup
-          aria-label="Mode"
-          orientation="horizontal"
-          value={theme.mode}
-          onValueChange={(v) => set({ mode: v as Theme['mode'] })}
-        >
-          <ChooseCard value="light" title="Light mode" description="Bright surfaces" />
-          <ChooseCard value="dark" title="Dark mode" description="Easy on the eyes at night" />
-        </ChooseCardGroup>
-      </Row>
-      <Row title="Density" description="Compact fits more on screen.">
-        <ButtonGroup
-          aria-label="Density"
-          attached
-          value={theme.density}
-          onValueChange={(v) => set({ density: v as Theme['density'] })}
-        >
-          <Button value="comfortable" variant="secondary" appearance="outline">
-            Comfortable
-          </Button>
-          <Button value="compact" variant="secondary" appearance="outline">
-            Compact
-          </Button>
-        </ButtonGroup>
-      </Row>
-      <Row title="Corners" description="How rounded buttons, cards and fields are.">
-        <ButtonGroup
-          aria-label="Corners"
-          attached
-          value={theme.radius}
-          onValueChange={(v) => set({ radius: v as Theme['radius'] })}
-        >
-          <Button value="square" variant="secondary" appearance="outline">
-            Square
-          </Button>
-          <Button value="round" variant="secondary" appearance="outline">
-            Round
-          </Button>
-          <Button value="pills" variant="secondary" appearance="outline">
-            Pills
-          </Button>
-        </ButtonGroup>
-      </Row>
-      <Row title="Language" description="Arabic switches the layout to right-to-left.">
-        <Select
-          label="Language"
-          hideLabel
-          value={theme.language}
-          onValueChange={(v) => set({ language: v as Theme['language'] })}
-        >
-          <SelectItem value="en" supportingText="LTR">
-            English
-          </SelectItem>
-          <SelectItem value="ar" supportingText="RTL">
-            العربية
-          </SelectItem>
-        </Select>
-      </Row>
-    </>
+    <Card
+      title="Theme"
+      description="Changes apply straight away, across the whole app."
+      save={false}
+    >
+      <strong className="set-label">Brand</strong>
+      <ChooseCardGroup
+        aria-label="Brand"
+        orientation="horizontal"
+        value={theme.brand}
+        onValueChange={(v) => set({ brand: v as Theme['brand'] })}
+      >
+        <ChooseCard value="diamond" title="Diamond" description="Violet" />
+        <ChooseCard value="amber" title="Amber" description="Warm" />
+        <ChooseCard value="opal" title="Opal" description="Cool" />
+      </ChooseCardGroup>
+      <strong className="set-label">Mode</strong>
+      <ChooseCardGroup
+        aria-label="Mode"
+        orientation="horizontal"
+        value={theme.mode}
+        onValueChange={(v) => set({ mode: v as Theme['mode'] })}
+      >
+        <ChooseCard value="light" title="Light" description="Bright surfaces" />
+        <ChooseCard value="dark" title="Dark" description="Easy on the eyes at night" />
+      </ChooseCardGroup>
+      <ul className="set-list">
+        <li>
+          <span className="stack-text">
+            <strong>Density</strong>
+            <span className="muted text-sm">Compact fits more on screen.</span>
+          </span>
+          <ButtonGroup
+            aria-label="Density"
+            attached
+            value={theme.density}
+            onValueChange={(v) => set({ density: v as Theme['density'] })}
+          >
+            <Button value="comfortable" variant="secondary" appearance="outline" size="small">
+              Comfortable
+            </Button>
+            <Button value="compact" variant="secondary" appearance="outline" size="small">
+              Compact
+            </Button>
+          </ButtonGroup>
+        </li>
+        <li>
+          <span className="stack-text">
+            <strong>Corners</strong>
+            <span className="muted text-sm">How round buttons, cards and fields are.</span>
+          </span>
+          <ButtonGroup
+            aria-label="Corners"
+            attached
+            value={theme.radius}
+            onValueChange={(v) => set({ radius: v as Theme['radius'] })}
+          >
+            <Button value="square" variant="secondary" appearance="outline" size="small">
+              Square
+            </Button>
+            <Button value="round" variant="secondary" appearance="outline" size="small">
+              Round
+            </Button>
+            <Button value="pills" variant="secondary" appearance="outline" size="small">
+              Pills
+            </Button>
+          </ButtonGroup>
+        </li>
+        <li>
+          <span className="stack-text">
+            <strong>Language</strong>
+            <span className="muted text-sm">Arabic switches the layout to right-to-left.</span>
+          </span>
+          <Select
+            label="Language"
+            hideLabel
+            size="small"
+            value={theme.language}
+            onValueChange={(v) => set({ language: v as Theme['language'] })}
+          >
+            <SelectItem value="en">English</SelectItem>
+            <SelectItem value="ar">العربية</SelectItem>
+          </Select>
+        </li>
+      </ul>
+    </Card>
   );
 }
 
@@ -420,7 +479,7 @@ type Invoice = (typeof invoices)[number];
 
 function Billing() {
   const columns: TableColumn<Invoice>[] = [
-    { key: 'plan', header: 'Invoice', sortable: true },
+    { key: 'plan', header: 'Invoice' },
     { key: 'amount', header: 'Amount', hideBelow: 'small' },
     { key: 'date', header: 'Date', hideBelow: 'medium' },
     {
@@ -454,27 +513,26 @@ function Billing() {
   ];
   return (
     <>
-      <Section title="Billing" description="Manage your plan, payment details and invoices." />
-      <Row title="Current plan" description="Billed monthly. Change any time.">
+      <Card title="Plan" description="Billed monthly. Change any time.">
         <ChooseCardGroup aria-label="Plan" defaultValue="business">
           <ChooseCard
             value="basic"
             icon={<Layers />}
-            title="Basic plan"
-            description="Up to 10 users, 20 GB data and every feature."
+            title="Basic"
+            description="Up to 10 users and 20 GB."
             price="$10/mo"
           />
           <ChooseCard
             value="business"
             icon={<Zap />}
-            title="Business plan"
-            description="Up to 20 users, 40 GB data and every feature."
+            title="Business"
+            description="Up to 20 users and 40 GB."
             price="$20/mo"
           />
           <ChooseCard
             value="enterprise"
             icon={<Building2 />}
-            title="Enterprise plan"
+            title="Enterprise"
             description="Unlimited users and data."
             price="$40/mo"
           />
@@ -486,37 +544,32 @@ function Billing() {
           showValue
           formatValue={(v, m) => `${v} of ${m}`}
         />
-      </Row>
-      <Row title="Payment method" description="Charged on the 1st of each month.">
-        <div className="set-card">
+      </Card>
+      <Card title="Payment method" description="Charged on the 1st of each month." save={false}>
+        <div className="set-method">
           <FeaturedIcon icon={<CreditCard />} appearance="modern" shape="square" />
           <span className="stack-text">
             <strong>Visa ending in 1234</strong>
-            <span className="muted text-sm">Expires 06/2028 · Updated Jan 22, 2026</span>
+            <span className="muted text-sm">Expires 06/2028</span>
           </span>
           <Button variant="secondary" appearance="outline" size="small">
             Edit
           </Button>
         </div>
-      </Row>
-      <TableCard
+      </Card>
+      <Card
         title="Billing history"
-        titleAs="h3"
+        save={false}
         actions={
           <Button variant="secondary" appearance="outline" size="small" iconStart={<Download />}>
             Download all
           </Button>
         }
       >
-        <Table<Invoice>
-          caption="Billing history"
-          hideCaption
-          columns={columns}
-          rows={invoices}
-          selectable
-          rowLabel={(i) => `Select ${i.plan}`}
-        />
-      </TableCard>
+        <div className="set-table">
+          <Table<Invoice> caption="Billing history" hideCaption columns={columns} rows={invoices} />
+        </div>
+      </Card>
     </>
   );
 }
@@ -524,31 +577,35 @@ function Billing() {
 function Notifications() {
   const groups = [
     {
-      title: 'General notifications',
+      title: 'Activity',
       description: 'When something changes that involves you.',
       rows: [
         "I'm mentioned in a message",
-        'Someone replies to any message',
+        'Someone replies to my message',
         "I'm assigned a task",
         'A task is overdue',
       ],
     },
     {
       title: 'Summaries',
-      description: 'When summaries and reports are ready.',
-      rows: ['Daily summary', 'Weekly summary', 'Monthly summary'],
+      description: 'Regular digests of your workspace.',
+      rows: ['Daily summary', 'Weekly summary', 'Monthly report'],
     },
   ];
   return (
     <>
-      <Section title="Notifications" description="Choose when and how you’re notified." />
       {groups.map((g) => (
-        <Row key={g.title} title={g.title} description={g.description}>
-          <ul className="set-choices">
+        <Card key={g.title} title={g.title} description={g.description}>
+          <ul className="set-list">
             {g.rows.map((label, i) => (
               <li key={label}>
                 <span>{label}</span>
-                <ButtonGroup aria-label={label} attached defaultValue={i % 2 ? 'email' : 'app'}>
+                <ButtonGroup
+                  aria-label={label}
+                  attached
+                  defaultValue={i % 2 ? 'email' : 'app'}
+                  className="scroll-x"
+                >
                   <Button value="none" variant="secondary" appearance="outline" size="small">
                     None
                   </Button>
@@ -562,7 +619,7 @@ function Notifications() {
               </li>
             ))}
           </ul>
-        </Row>
+        </Card>
       ))}
     </>
   );
@@ -577,51 +634,36 @@ function Integrations() {
     crm: <Building2 />,
   };
   return (
-    <>
-      <Section title="Integrations" description="Connect the tools your team already uses." />
-      <div className="set-grid">
+    <Card
+      title="Connected apps"
+      description="Turn an integration on to sync it with Panda."
+      save={false}
+    >
+      <ul className="set-list">
         {integrations.map((i) => (
-          <article key={i.id} className="set-integration">
-            <div className="row row--between">
+          <li key={i.id}>
+            <span className="set-app">
               <FeaturedIcon icon={icon[i.id]} appearance="modern" shape="square" />
-              <Switch
-                aria-label={`Connect ${i.name}`}
-                checked={on[i.id]}
-                onCheckedChange={(v) => setOn((s) => ({ ...s, [i.id]: v }))}
-              />
-            </div>
-            <strong>{i.name}</strong>
-            <span className="muted text-sm">{i.description}</span>
-            <div className="row row--between">
-              <Badge tone={on[i.id] ? 'success' : 'gray'} shape="modern" size="small" withDot>
-                {on[i.id] ? 'Connected' : 'Not connected'}
-              </Badge>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <IconButton
-                    icon={<MoreVertical />}
-                    label={`Options for ${i.name}`}
-                    variant="secondary"
-                    appearance="ghost"
-                    size="small"
-                  />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem>Configure</DropdownMenuItem>
-                  <DropdownMenuItem variant="danger">Remove</DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </article>
+              <span className="stack-text">
+                <strong>{i.name}</strong>
+                <span className="muted text-sm">{i.description}</span>
+              </span>
+            </span>
+            <Switch
+              aria-label={`Connect ${i.name}`}
+              checked={on[i.id]}
+              onCheckedChange={(v) => setOn((s) => ({ ...s, [i.id]: v }))}
+            />
+          </li>
         ))}
-      </div>
-    </>
+      </ul>
+    </Card>
   );
 }
 
 /* --------------------------------------------------------------------- page */
 
-/** Settings: a profile cover, section tabs and one section at a time. */
+/** Settings: a list of sections on the start side, the selected section's cards beside it. */
 export default function SettingsPage({
   section = 'details',
   theme,
@@ -631,11 +673,8 @@ export default function SettingsPage({
   theme: Theme;
   onThemeChange: (t: Theme) => void;
 }) {
-  const toast = useToast();
-  const me = members[0];
-  const current = sections.some((s) => s.id === section) ? section : 'details';
-  const label = sections.find((s) => s.id === current)!.label;
-  const panels: Record<string, ReactNode> = {
+  const current = sections.find((s) => s.id === section) ?? sections[0];
+  const body: Record<string, ReactNode> = {
     details: <Details />,
     password: <Password />,
     team: <Team />,
@@ -652,47 +691,46 @@ export default function SettingsPage({
           trail={[
             { label: 'Home', href: '#/dashboard' },
             { label: 'Settings', href: '#/app/settings' },
-            { label },
+            { label: current.label },
           ]}
         />
-
-        <div className="settings__cover" aria-hidden="true" />
-        <div className="settings__head">
-          <Avatar name={me.name} src={me.src} size="xlarge" verified className="settings__avatar" />
-          <PageHeader
-            title={me.name}
-            description="@olivia · Product Designer"
-            actions={
-              <>
-                <Button variant="secondary" appearance="outline">
-                  Cancel
-                </Button>
-                <Button onClick={() => toast({ title: 'Settings saved', tone: 'success' })}>
-                  Save
-                </Button>
-              </>
-            }
-          />
+        <PageHeader title="Settings" description="Manage your account, team and workspace." />
+        <div className="settings__layout">
+          <nav className="settings__nav" aria-label="Settings sections">
+            <ul>
+              {sections.map((s) => (
+                <li key={s.id}>
+                  <Button
+                    appearance="text"
+                    variant="secondary"
+                    iconStart={s.icon}
+                    href={s.id === 'details' ? '#/app/settings' : `#/app/settings/${s.id}`}
+                    aria-current={s.id === current.id ? 'page' : undefined}
+                    className="settings__link"
+                  >
+                    <span className="settings__label">{s.label}</span>
+                    {s.count && (
+                      <Badge
+                        tone="primary"
+                        size="small"
+                        shape="modern"
+                        count={s.count}
+                        label={`${s.count} new`}
+                      />
+                    )}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <div className="settings__content">
+            <div className="stack-text">
+              <h2 className="settings__title">{current.label}</h2>
+              <span className="muted text-sm">{current.description}</span>
+            </div>
+            {body[current.id]}
+          </div>
         </div>
-
-        <Tabs
-          appearance="line"
-          value={current}
-          onValueChange={(v) => go(v === 'details' ? '/app/settings' : `/app/settings/${v}`)}
-        >
-          <TabList label="Settings sections" className="settings__tabs">
-            {sections.map((s) => (
-              <Tab key={s.id} value={s.id} count={s.count}>
-                {s.label}
-              </Tab>
-            ))}
-          </TabList>
-          {sections.map((s) => (
-            <TabPanel key={s.id} value={s.id}>
-              <div className="set-section">{s.id === current && panels[s.id]}</div>
-            </TabPanel>
-          ))}
-        </Tabs>
       </div>
     </AppShell>
   );

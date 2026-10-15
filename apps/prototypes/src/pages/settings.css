@@ -1,59 +1,128 @@
-/** Settings page. Tokens only. */
+/** Settings page: section list beside the selected section's cards. Tokens only. */
 
 .settings {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
 }
 
-.settings__cover {
-  block-size: calc(var(--sizing-8xl) * 0.8);
-  margin-block-start: var(--spacing-lg);
+.settings__layout {
+  display: grid;
+  grid-template-columns: minmax(12rem, 15rem) minmax(0, 1fr);
+  gap: var(--spacing-2xl);
+  align-items: start;
+}
+
+.settings__nav {
+  position: sticky;
+  inset-block-start: calc(var(--sizing-3xl) * 1.6);
+}
+
+.settings__nav > ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.settings__link {
+  justify-content: flex-start;
+  inline-size: 100%;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+}
+
+.settings__link > .ds-button__label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+}
+
+.settings__link[aria-current='page'] {
+  background-color: var(--color-bg-primary-1);
+  color: var(--color-fg-on-surface-primary);
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.settings__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  min-inline-size: 0;
+  max-inline-size: 52rem;
+}
+
+.settings__title {
+  margin: 0;
+  color: var(--color-fg-on-surface-primary);
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-xl);
+  line-height: var(--font-line-height-xl);
+}
+
+@media (width < 56rem) {
+  .settings__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .settings__nav {
+    /* Relative, so absolutely positioned hidden labels scroll inside it. */
+    position: relative;
+    inset-block-start: auto;
+    min-inline-size: 0;
+    overflow-x: auto;
+  }
+
+  .settings__nav > ul {
+    flex-direction: row;
+  }
+
+  .settings__link {
+    white-space: nowrap;
+  }
+}
+
+/* Cards */
+.set-card {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-width-hairline) solid var(--color-border-base);
   border-radius: var(--radius-2xl);
-  background-image: linear-gradient(
-    160deg,
-    var(--color-bg-sky-2),
-    var(--color-bg-primary-1),
-    var(--color-bg-pink-2)
-  );
+  background-color: var(--color-bg-surface);
 }
 
-.settings__head {
+.set-card > .ds-page-header {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+}
+
+.set-card__body {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
+  flex-direction: column;
   gap: var(--spacing-lg);
-  margin-block-start: calc(-1 * var(--sizing-3xl) / 1.6);
-  padding-inline: var(--spacing-xl);
+  padding: var(--spacing-xl);
 }
 
-.settings__head > .ds-page-header {
-  flex: 1 1 20rem;
-}
-
-.settings__avatar {
-  border-radius: var(--radius-full);
-  box-shadow: 0 0 0 var(--border-width-strong) var(--color-bg-default);
-}
-
-.settings__tabs {
-  max-inline-size: 100%;
-  overflow-x: auto;
-}
-
-.set-section {
+.set-card__footer {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-block-start: var(--border-width-hairline) solid var(--color-border-base);
 }
 
-/* My details: one centered column, like a form card */
-.set-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
-  max-inline-size: 40rem;
-  margin-inline: auto;
+@media (width < 40rem) {
+  .set-card > .ds-page-header,
+  .set-card__body,
+  .set-card__footer {
+    padding-inline: var(--spacing-md);
+  }
 }
 
 .set-two {
@@ -73,59 +142,14 @@
   min-inline-size: 0;
 }
 
-.set-field {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-}
-
-.set-field__label {
-  color: var(--color-fg-on-surface-primary);
-}
-
-/* Rows: label column, control column */
-.set-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: var(--spacing-xl);
-  padding-block-end: var(--spacing-xl);
-  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
-}
-
-@media (width < 56rem) {
-  .set-row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--spacing-sm);
+@media (width < 40rem) {
+  .set-photo {
+    flex-direction: column;
   }
-}
 
-.set-row__label {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3xs);
-  font-size: var(--font-size-sm);
-  line-height: var(--font-line-height-sm);
-}
-
-.set-row__control {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  min-inline-size: 0;
-  max-inline-size: 44rem;
-}
-
-.set-invite {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: var(--spacing-sm);
-}
-
-.set-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--spacing-sm);
+  .set-photo > :last-child {
+    align-self: stretch;
+  }
 }
 
 .set-rules {
@@ -154,21 +178,7 @@
   color: var(--color-fg-on-accent-success-text-default);
 }
 
-.set-card {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-md);
-  padding: var(--spacing-md);
-  border: var(--border-width-hairline) solid var(--color-border-base);
-  border-radius: var(--radius-xl);
-  background-color: var(--color-bg-surface);
-}
-
-.set-card > .stack-text {
-  flex: 1;
-}
-
-.set-choices {
+.set-list {
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -176,33 +186,63 @@
   list-style: none;
 }
 
-.set-choices > li {
+.set-list > li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-sm);
-  padding-block: var(--spacing-sm);
+  gap: var(--spacing-md);
+  padding-block: var(--spacing-md);
   border-block-end: var(--border-width-hairline) solid var(--color-border-base);
   font-size: var(--font-size-sm);
 }
 
-.set-choices > li:last-child {
+.set-list > li:first-child {
+  padding-block-start: 0;
+}
+
+.set-list > li:last-child {
+  padding-block-end: 0;
   border-block-end: 0;
 }
 
-.set-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+.set-app {
+  display: flex;
+  flex: 1 1 14rem;
+  align-items: center;
   gap: var(--spacing-md);
 }
 
-.set-integration {
+.set-invite {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.set-actions {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-lg);
-  border: var(--border-width-hairline) solid var(--color-border-base);
-  border-radius: var(--radius-2xl);
-  background-color: var(--color-bg-surface);
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+}
+
+.set-method {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.set-method > .stack-text {
+  flex: 1;
+}
+
+.set-table {
+  margin: calc(-1 * var(--spacing-xl));
+  overflow-x: auto;
+}
+
+.set-label {
+  margin-block-end: calc(-1 * var(--spacing-sm));
+  color: var(--color-fg-on-surface-primary);
+  font-size: var(--font-size-sm);
 }
