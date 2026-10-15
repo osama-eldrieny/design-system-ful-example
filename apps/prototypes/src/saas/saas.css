@@ -524,3 +524,334 @@
   justify-content: space-between;
   gap: var(--spacing-xl);
 }
+
+/* Chat */
+.orbit-chat {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) minmax(0, 2.4fr);
+  gap: var(--spacing-md);
+  block-size: calc(100dvh - 15rem);
+  min-block-size: 32rem;
+}
+
+.orbit-chat__list,
+.orbit-chat__thread {
+  min-block-size: 0;
+  padding: var(--spacing-lg);
+}
+
+.orbit-chat__list {
+  gap: var(--spacing-md);
+  overflow-y: auto;
+}
+
+.orbit-chat__thread {
+  gap: var(--spacing-md);
+}
+
+@media (width < 56rem) {
+  .orbit-chat {
+    grid-template-columns: minmax(0, 1fr);
+    block-size: auto;
+  }
+
+  .orbit-chat__list {
+    max-block-size: 18rem;
+  }
+
+  .orbit-chat__thread {
+    min-block-size: 30rem;
+  }
+}
+
+.orbit-pick {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orbit-pick__item {
+  justify-content: space-between;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-lg);
+  text-align: start;
+  text-decoration: none;
+}
+
+.orbit-pick__item[aria-current] {
+  background-color: var(--color-bg-primary-1);
+}
+
+.orbit-pick__item > .ds-button__label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  min-inline-size: 0;
+}
+
+.orbit-pick__label {
+  flex: 1;
+}
+
+.orbit-pick__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-3xs);
+}
+
+.orbit-messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-block-size: 0;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.orbit-msg {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--spacing-xs);
+  max-inline-size: min(36rem, 85%);
+}
+
+.orbit-msg--me {
+  align-self: flex-end;
+  text-align: end;
+}
+
+.orbit-msg__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3xs);
+}
+
+.orbit-msg--me .orbit-msg__body {
+  align-items: flex-end;
+}
+
+.orbit-msg__bubble {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-xl);
+  border-end-start-radius: var(--radius-xs);
+  background-color: var(--color-bg-default);
+  color: var(--color-fg-on-surface-primary);
+  text-align: start;
+}
+
+.orbit-msg--me .orbit-msg__bubble {
+  border-end-start-radius: var(--radius-xl);
+  border-end-end-radius: var(--radius-xs);
+  background-color: var(--color-bg-accent-primary-default);
+  color: var(--color-fg-on-accent-primary-default);
+}
+
+.orbit-attachment {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.orbit-attachment svg {
+  inline-size: var(--sizing-sm);
+  block-size: var(--sizing-sm);
+}
+
+.orbit-composer {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: var(--spacing-xs);
+  align-items: center;
+}
+
+/* Tickets */
+.orbit-thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orbit-thread > li {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding-block-end: var(--spacing-lg);
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+}
+
+.orbit-thread p,
+.orbit-prose p {
+  margin: 0;
+  color: var(--color-fg-on-surface-primary);
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-height-md);
+}
+
+/* Mail */
+.orbit-mail {
+  display: grid;
+  grid-template-columns: minmax(14rem, 1fr) minmax(0, 3.4fr);
+  gap: var(--spacing-md);
+  align-items: start;
+}
+
+@media (width < 56rem) {
+  .orbit-mail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.orbit-mail__list {
+  min-inline-size: 0;
+}
+
+.orbit-mail__side {
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg);
+}
+
+.orbit-mail__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+}
+
+.orbit-mail__read {
+  gap: var(--spacing-lg);
+}
+
+.orbit-mails {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orbit-mails__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2xs);
+  padding: var(--spacing-2xs) var(--spacing-lg);
+  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+}
+
+.orbit-mails__item--unread {
+  background-color: var(--color-bg-default);
+}
+
+.orbit-mails__open {
+  flex: 1;
+  min-inline-size: 0;
+  font-weight: var(--font-weight-regular);
+  text-align: start;
+  text-decoration: none;
+}
+
+.orbit-mails__open > .ds-button__label {
+  display: grid;
+  flex: 1;
+  grid-template-columns: 10rem minmax(0, 1fr) auto;
+  gap: var(--spacing-md);
+  min-inline-size: 0;
+}
+
+@media (width < 48rem) {
+  .orbit-mails__open > .ds-button__label {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .orbit-mails__subject {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+.orbit-mails__from {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orbit-mails__item--unread .orbit-mails__from {
+  font-weight: var(--font-weight-semi);
+}
+
+.orbit-mails__subject {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orbit-star--on svg {
+  fill: currentcolor;
+  color: var(--color-fg-on-accent-warning-text-default);
+}
+
+.orbit-prose {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.orbit-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.orbit-file {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-lg);
+}
+
+/* Integrations */
+.orbit-app {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-lg);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-surface);
+}
+
+.orbit-app__name {
+  margin: var(--spacing-xs) 0 0;
+  color: var(--color-fg-on-surface-primary);
+  font-size: var(--font-size-md);
+  line-height: var(--font-line-height-md);
+}
+
+.orbit-app__text {
+  flex: 1;
+  margin: 0;
+}
+
+.orbit-app__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  padding-block-start: var(--spacing-sm);
+  border-block-start: var(--border-width-hairline) solid var(--color-border-base);
+}

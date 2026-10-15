@@ -11,6 +11,8 @@ const routes: [RegExp, PageModule][] = [
   [/^$/, lazy(() => import('./pages/Overview'))],
   [/^\/dashboards\//, lazy(() => import('./pages/Dashboards'))],
   [/^\/commerce\//, lazy(() => import('./pages/Commerce'))],
+  [/^\/support\//, lazy(() => import('./pages/Support'))],
+  [/^\/pages\/(api-keys|integrations)$/, lazy(() => import('./pages/Developer'))],
 ];
 
 /** Layout demos reuse the overview inside a different frame. */
