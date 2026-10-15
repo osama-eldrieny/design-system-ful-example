@@ -632,7 +632,7 @@ function Invoices() {
         title="Invoices"
         toolbar={
           <div className="orbit-toolbar">
-            <Tabs appearance="line" value={tab} onValueChange={setTab}>
+            <Tabs panels={false} appearance="line" value={tab} onValueChange={setTab}>
               <TabList label="Invoice status">
                 <Tab value="all">All invoices</Tab>
                 <Tab value="unpaid">Unpaid</Tab>

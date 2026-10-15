@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import {
   Button,
-  ButtonGroup,
   Logo,
   Select,
   SelectItem,
@@ -37,6 +36,7 @@ import {
   type T,
 } from './tiles';
 import './showcase.css';
+import { Segmented } from '../Segmented';
 
 const axisLabels: Record<ThemeAxis, string> = {
   brand: 'Brand',
@@ -113,18 +113,14 @@ function ThemeBar({
           <span className="sc-axis__label" aria-hidden="true">
             {t(axisLabels[axis])}
           </span>
-          <ButtonGroup
-            aria-label={t(axisLabels[axis])}
-            attached
-            value={theme[axis]}
-            onValueChange={(v) => onChange({ ...theme, [axis]: v })}
-          >
-            {themeOptions[axis].map((v) => (
-              <Button key={v} value={v} size="xsmall" variant="secondary" appearance="outline">
-                {axis === 'language' ? valueLabel(v) : t(valueLabel(v))}
-              </Button>
-            ))}
-          </ButtonGroup>
+          <Segmented
+            label={t(axisLabels[axis])}
+            options={themeOptions[axis].map(
+              (v) => [v, axis === 'language' ? valueLabel(v) : t(valueLabel(v))] as const,
+            )}
+            value={theme[axis] as string}
+            onChange={(v) => onChange({ ...theme, [axis]: v })}
+          />
         </div>
       ))}
       <div className="sc-axis sc-axis--actions">

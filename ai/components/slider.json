@@ -22,7 +22,7 @@
     },
     {
       "text": "For a few named choices.",
-      "alternative": "RadioGroup or ButtonGroup"
+      "alternative": "RadioGroup or segmented Tabs"
     }
   ],
   "anatomy": [

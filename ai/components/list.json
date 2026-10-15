@@ -369,22 +369,35 @@
     "--list-item-padding-x": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--list-item-padding-y": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--list-item-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--list-item-border-radius": {
       "description": "Controls and small surfaces: inputs, buttons, menu items.",
       "references": "--radius-md",
-      "default": "4px"
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "8px"
+      }
     },
     "--list-font-family": {
       "description": "Body text and most UI text.",

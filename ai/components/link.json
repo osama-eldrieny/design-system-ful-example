@@ -467,7 +467,11 @@
     "--link-focus-border-radius": {
       "description": "Small rounding for tiny elements: checkboxes, tags.",
       "references": "--radius-2xs",
-      "default": "1px"
+      "default": "1px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "0",
+        "brand=diamond,mode=light,radius=pills": "2px"
+      }
     },
     "--link-transition-duration": {
       "description": "Small state changes: hover, press, toggle.",

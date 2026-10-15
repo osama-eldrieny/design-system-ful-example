@@ -55,6 +55,7 @@ import { TabPanel } from '@ds/react';
 | `size` | `"small" \| "medium"` | medium | `small` for toolbars and cards, `medium` (default). |
 | `fullWidth` | `boolean` | false | Stretches the tab list to the full width, tabs sharing it equally. |
 | `orientation` | `"horizontal" \| "vertical"` | horizontal | `horizontal` (default): tabs in a row above the panel. `vertical`: tabs stacked in a column beside the panel, for settings pages with many sections; Up and Down arrows move between tabs. On narrow screens vertical tabs sit above the panel. |
+| `panels` | `boolean` | true | `true` (default): each Tab shows a TabPanel. Set `false` to use the tabs as a selector for content you render yourself, e.g. a Day / Week / Month switcher with the segmented appearance; tabs then don't reference panels (no aria-controls). |
 | `children` | `ReactNode` |  | TabList and TabPanels. |
 
 ### TabList

@@ -31,7 +31,7 @@
     },
     {
       "text": "To pick one option from a small set of views.",
-      "alternative": "Tabs or ButtonGroup"
+      "alternative": "Tabs (segmented)"
     },
     {
       "text": "For an icon whose meaning is not obvious without text.",
@@ -1937,7 +1937,10 @@
     "--button-xlarge-padding-y": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--button-xlarge-font-size": {
       "description": "Type scale.",
@@ -1952,7 +1955,10 @@
     "--button-xlarge-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--button-xlarge-icon-size": {
       "description": "Fixed element sizes in px.",

@@ -553,12 +553,18 @@
     "--table-cell-padding-x": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--table-cell-padding-y": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--table-compact-cell-padding-y": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",
@@ -702,22 +708,35 @@
     "--table-card-border-radius": {
       "description": "Large surfaces: cards, sections, modals.",
       "references": "--radius-2xl",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "4px",
+        "brand=diamond,mode=light,radius=pills": "20px"
+      }
     },
     "--table-card-header-padding-x": {
       "description": "Padding of sections and cards.",
       "references": "--spacing-xl",
-      "default": "24px"
+      "default": "24px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "20px"
+      }
     },
     "--table-card-header-padding-y": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--table-card-header-gap": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--table-card-heading-gap": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",
@@ -727,17 +746,26 @@
     "--table-card-actions-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--table-card-toolbar-padding-y": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--table-card-footer-padding-y": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--table-card-title-text-color": {
       "description": "Main text on surfaces.",
@@ -808,7 +836,11 @@
     "--table-card-badge-border-radius": {
       "description": "Small rounding for tiny elements: checkboxes, tags.",
       "references": "--radius-sm",
-      "default": "3px"
+      "default": "3px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "4px"
+      }
     },
     "--table-card-badge-font-size": {
       "description": "Type scale.",

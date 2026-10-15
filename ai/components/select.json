@@ -616,7 +616,10 @@
     "--select-padding-x": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--select-padding-y": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",
@@ -660,7 +663,10 @@
     "--select-small-padding-x": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--select-small-padding-y": {
       "description": "No space.",
@@ -680,7 +686,10 @@
     "--select-large-padding-x": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--select-large-padding-y": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",
@@ -829,7 +838,10 @@
     "--select-item-padding-x": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--select-item-padding-y": {
       "description": "Small gap inside compact controls.",

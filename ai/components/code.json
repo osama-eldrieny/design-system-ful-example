@@ -256,7 +256,11 @@
     "--code-border-radius": {
       "description": "Small rounding for tiny elements: checkboxes, tags.",
       "references": "--radius-xs",
-      "default": "2px"
+      "default": "2px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "1px",
+        "brand=diamond,mode=light,radius=pills": "3px"
+      }
     },
     "--code-padding-x": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",
@@ -266,12 +270,19 @@
     "--code-block-padding": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--code-block-border-radius": {
       "description": "Controls and small surfaces: inputs, buttons, menu items.",
       "references": "--radius-md",
-      "default": "4px"
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "8px"
+      }
     },
     "--code-font-family": {
       "description": "Code and keyboard keys; the same in every theme.",

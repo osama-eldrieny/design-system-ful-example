@@ -4,7 +4,7 @@ import { Download, Plus, Search } from 'lucide-react';
 import { AvatarLabelGroup } from '../Avatar';
 import { Badge } from '../Badge';
 import { Button } from '../Button';
-import { ButtonGroup } from '../ButtonGroup';
+import { Tab, TabList, Tabs } from '../Tabs';
 import { InputField } from '../InputField';
 import { Pagination } from '../Pagination';
 import { Progress } from '../Progress';
@@ -218,17 +218,13 @@ export const InACard: Story = {
       }
       toolbar={
         <>
-          <ButtonGroup aria-label="Filter members" attached defaultValue="all">
-            <Button value="all" variant="secondary" appearance="outline" size="small">
-              View all
-            </Button>
-            <Button value="design" variant="secondary" appearance="outline" size="small">
-              Design
-            </Button>
-            <Button value="eng" variant="secondary" appearance="outline" size="small">
-              Engineering
-            </Button>
-          </ButtonGroup>
+          <Tabs appearance="segmented" size="small" defaultValue="all" panels={false}>
+            <TabList label="Filter members">
+              <Tab value="all">View all</Tab>
+              <Tab value="design">Design</Tab>
+              <Tab value="eng">Engineering</Tab>
+            </TabList>
+          </Tabs>
           <div style={{ marginInlineStart: 'auto', minInlineSize: 200 }}>
             <InputField
               label="Search members"

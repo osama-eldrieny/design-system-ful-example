@@ -224,7 +224,10 @@
     "--footer-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--footer-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
@@ -346,7 +349,10 @@
     "--footer-link-padding-x": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--footer-link-padding-y": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",

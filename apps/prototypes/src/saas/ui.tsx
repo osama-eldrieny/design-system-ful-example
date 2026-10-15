@@ -4,8 +4,6 @@
 import { useState, type ReactNode } from 'react';
 import {
   Badge,
-  Button,
-  ButtonGroup,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -19,6 +17,7 @@ import {
 } from '@ds/react';
 import { Eye, MoreHorizontal, Trash2 } from 'lucide-react';
 import { Trend } from './kit';
+import { Segmented } from '../Segmented';
 
 export { More, Panel, Trend } from './kit';
 
@@ -125,22 +124,7 @@ export function Toggle({
   value?: string;
   onChange?: (v: string) => void;
 }) {
-  const [own, setOwn] = useState(options[0]);
-  return (
-    <ButtonGroup
-      className="scroll-x"
-      aria-label={label}
-      attached
-      value={value ?? own}
-      onValueChange={(v) => (onChange ?? setOwn)(v)}
-    >
-      {options.map((o) => (
-        <Button key={o} value={o} variant="secondary" appearance="outline" size="small">
-          {o}
-        </Button>
-      ))}
-    </ButtonGroup>
-  );
+  return <Segmented label={label} options={options} value={value} onChange={onChange} />;
 }
 
 /** A table in a card with simple pagination, paging the rows it's given. */

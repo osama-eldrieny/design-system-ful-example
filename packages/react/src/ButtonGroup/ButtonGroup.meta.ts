@@ -7,14 +7,17 @@ export default defineMeta({
   status: 'stable',
   since: '0.3.0',
   description:
-    'A button group shows related buttons together, spaced or attached into one control. With a value it becomes a segmented control where exactly one button is pressed, such as a list/grid view switcher.',
+    'A button group shows related action buttons together, spaced or attached into one control. It holds actions only; to pick one of a few options or views, use Tabs with the segmented appearance.',
   imports: [{ name: 'ButtonGroup', from: '@ds/react' }],
   whenToUse: [
     'For two to five related actions, e.g. Previous / Next or Bold / Italic / Underline.',
-    'For switching between a few views or modes of the same content (segmented).',
   ],
   whenNotToUse: [
     { text: 'To switch between panels of content.', alternative: 'Tabs' },
+    {
+      text: 'To pick one of a few options or views, e.g. Day / Week / Month.',
+      alternative: 'Tabs (appearance="segmented")',
+    },
     { text: 'To pick a value for a form.', alternative: 'RadioGroup' },
     { text: 'For many actions.', alternative: 'DropdownMenu' },
   ],
@@ -22,7 +25,7 @@ export default defineMeta({
     { name: 'Group', description: 'Named by aria-label.' },
     {
       name: 'Buttons',
-      description: 'Regular Buttons; the pressed one is filled in segmented mode.',
+      description: 'Regular Buttons, each with its own action.',
     },
   ],
   options: [
@@ -44,18 +47,9 @@ export default defineMeta({
     },
   ],
   states: [
-    {
-      name: 'Pressed',
-      meaning: 'Segmented: the selected button is filled and aria-pressed.',
-      trigger: 'value',
-    },
     { name: 'Button states', meaning: 'Hover, focus and disabled come from Button.', trigger: '—' },
   ],
   behavior: [
-    {
-      topic: 'Segmented',
-      text: 'Give each Button a value and the group a value/defaultValue or onValueChange. Clicking a button presses it and releases the others.',
-    },
     {
       topic: 'Focus',
       text: 'Every button is a Tab stop; in attached groups the focus ring stays above neighbours.',
@@ -74,30 +68,20 @@ export default defineMeta({
       why: 'The name tells screen reader users what the buttons control.',
     },
     {
-      do: 'Use Tabs to switch content panels.',
-      dont: 'Use a segmented group to replace tabs.',
-      why: 'Tabs have panel semantics and arrow-key navigation.',
+      do: 'Use segmented Tabs to pick one of a few options.',
+      dont: 'Use a button group as a selector.',
+      why: 'Tabs expose the selection and support arrow-key navigation.',
     },
   ],
   accessibility: {
-    role: 'group of buttons; segmented buttons are toggle buttons (aria-pressed).',
+    role: 'group of buttons.',
     keyboard: [
       { keys: 'Tab', action: 'Moves between buttons.' },
-      { keys: 'Enter / Space', action: 'Activates or presses a button.' },
+      { keys: 'Enter / Space', action: 'Activates a button.' },
     ],
-    aria: [
-      { attribute: 'role="group" + aria-label', when: 'Always.' },
-      { attribute: 'aria-pressed', when: 'Segmented mode.' },
-    ],
+    aria: [{ attribute: 'role="group" + aria-label', when: 'Always.' }],
     focus: 'Each button shows its focus ring.',
-    wcag: [
-      { criterion: '1.3.1 Info and Relationships', how: 'A named group.' },
-      {
-        criterion: '1.4.1 Use of Color',
-        how: 'Pressed is filled vs outlined, not a color change alone.',
-      },
-      { criterion: '4.1.2 Name, Role, Value', how: 'aria-pressed exposes the selection.' },
-    ],
+    wcag: [{ criterion: '1.3.1 Info and Relationships', how: 'A named group.' }],
     notes: [],
   },
   examples: [
@@ -125,21 +109,35 @@ export default defineMeta({
 </ButtonGroup>`,
     },
     {
-      id: 'segmented',
-      title: 'Segmented',
-      description: 'One pressed button switches the view.',
-      code: `import { ButtonGroup, Button } from '@ds/react';
+      id: 'icons',
+      title: 'Icon buttons',
+      description: 'A toolbar of related icon actions, each named with a label.',
+      code: `import { ButtonGroup, IconButton } from '@ds/react';
+import { Bold, Italic, Underline } from 'lucide-react';
 
-<ButtonGroup aria-label="View" attached value={view} onValueChange={setView}>
-  <Button value="list">List</Button>
-  <Button value="grid">Grid</Button>
+<ButtonGroup aria-label="Text style" attached>
+  <IconButton icon={<Bold />} label="Bold" variant="secondary" appearance="outline" />
+  <IconButton icon={<Italic />} label="Italic" variant="secondary" appearance="outline" />
+  <IconButton icon={<Underline />} label="Underline" variant="secondary" appearance="outline" />
 </ButtonGroup>`,
     },
   ],
   tokenPrefixes: ['--button-group-'],
   related: [
     { id: 'button', relation: 'The buttons inside.' },
-    { id: 'tabs', relation: 'For switching content panels.' },
+    {
+      id: 'tabs',
+      relation: 'For switching content panels, and (segmented) for picking one option.',
+    },
   ],
-  changelog: [{ version: '0.3.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '0.3.0', date: '2026-09-29', changes: ['New component.'] },
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: [
+        'Breaking: segmented selection (value, defaultValue, onValueChange) removed. Use Tabs with appearance="segmented".',
+      ],
+    },
+  ],
 });

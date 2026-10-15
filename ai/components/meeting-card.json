@@ -499,12 +499,18 @@
     "--meeting-card-padding": {
       "description": "Padding of sections and cards.",
       "references": "--spacing-xl",
-      "default": "24px"
+      "default": "24px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "20px"
+      }
     },
     "--meeting-card-title-margin-bottom": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--meeting-card-time-font-size": {
       "description": "Type scale.",

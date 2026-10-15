@@ -16,21 +16,14 @@ describe('ButtonGroup', () => {
     expect(screen.getByRole('button', { name: 'Next' })).not.toHaveAttribute('aria-pressed');
   });
 
-  it('presses one segment at a time and keeps each button’s own onClick', async () => {
-    const onValueChange = vi.fn();
+  it('keeps each button’s own onClick', async () => {
     const onClick = vi.fn();
     render(
-      <ButtonGroup aria-label="View" defaultValue="list" onValueChange={onValueChange}>
-        <Button value="list">List</Button>
-        <Button value="grid" onClick={onClick}>
-          Grid
-        </Button>
+      <ButtonGroup aria-label="Zoom" attached>
+        <Button onClick={onClick}>Zoom in</Button>
       </ButtonGroup>,
     );
-    await userEvent.click(screen.getByRole('button', { name: 'Grid' }));
-    expect(screen.getByRole('button', { name: 'Grid' })).toHaveAttribute('aria-pressed', 'true');
-    expect(screen.getByRole('button', { name: 'List' })).toHaveAttribute('aria-pressed', 'false');
-    expect(onValueChange).toHaveBeenCalledWith('grid');
+    await userEvent.click(screen.getByRole('button', { name: 'Zoom in' }));
     expect(onClick).toHaveBeenCalled();
   });
 });

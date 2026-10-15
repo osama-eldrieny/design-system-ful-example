@@ -528,12 +528,18 @@
     "--radio-group-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--radio-group-horizontal-gap": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--radio-group-error-text-color": {
       "description": "Tone-colored text directly on surfaces, e.g. text buttons and links.",

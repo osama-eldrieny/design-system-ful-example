@@ -5,7 +5,6 @@ import {
   Badge,
   BarChart,
   Button,
-  ButtonGroup,
   Link,
   LineChart,
   MetricCard,
@@ -32,6 +31,7 @@ import {
   type Range,
 } from '../data';
 import { Page, to } from '../Shell';
+import { Segmented } from '../../Segmented';
 
 type Invoice = (typeof recentInvoices)[number];
 
@@ -76,22 +76,16 @@ export default function Overview() {
       description="Revenue, users and retention across your subscription business."
       actions={
         <>
-          <ButtonGroup
-            aria-label="Range"
-            attached
+          <Segmented
+            label="Range"
+            options={[
+              ['weekly', 'Weekly'],
+              ['monthly', 'Monthly'],
+              ['yearly', 'Yearly'],
+            ]}
             value={range}
-            onValueChange={(v) => setRange(v as Range)}
-          >
-            <Button value="weekly" variant="secondary" appearance="outline" size="small">
-              Weekly
-            </Button>
-            <Button value="monthly" variant="secondary" appearance="outline" size="small">
-              Monthly
-            </Button>
-            <Button value="yearly" variant="secondary" appearance="outline" size="small">
-              Yearly
-            </Button>
-          </ButtonGroup>
+            onChange={setRange}
+          />
           <Button variant="secondary" appearance="outline" size="small" iconStart={<Filter />}>
             Filter
           </Button>

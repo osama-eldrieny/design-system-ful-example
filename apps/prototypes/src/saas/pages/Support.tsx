@@ -283,7 +283,7 @@ function Tickets() {
         title="Tickets"
         toolbar={
           <div className="orbit-toolbar">
-            <Tabs appearance="line" value={tab} onValueChange={setTab}>
+            <Tabs panels={false} appearance="line" value={tab} onValueChange={setTab}>
               <TabList label="Ticket status">
                 <Tab value="all">All</Tab>
                 <Tab value="solved">Solved</Tab>
@@ -646,7 +646,7 @@ function Inbox() {
                 indeterminate={selected.length > 0 && selected.length < rows.length}
                 onCheckedChange={(v) => setSelected(v ? rows.map((r) => r.id) : [])}
               />
-              <Tabs appearance="segmented" value={filter} onValueChange={setFilter}>
+              <Tabs panels={false} appearance="segmented" value={filter} onValueChange={setFilter}>
                 <TabList label="Show">
                   <Tab value="all">All</Tab>
                   <Tab value="read">Read</Tab>

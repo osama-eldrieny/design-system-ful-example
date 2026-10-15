@@ -86,6 +86,10 @@ export default defineMeta({
   ],
   behavior: [
     {
+      topic: 'Selector without panels',
+      text: 'To pick one of a few options for content you render yourself (e.g. Day / Week / Month), use appearance="segmented" with panels={false} and no TabPanels. This replaces the old segmented ButtonGroup.',
+    },
+    {
       topic: 'Keyboard',
       text: 'The tab list is one Tab stop. Arrow keys move between tabs and select them; Home and End jump to the first and last; Tab moves into the panel.',
     },
@@ -211,6 +215,14 @@ import { LayoutGrid, Laptop } from 'lucide-react';
     { id: 'radio-group', relation: 'Use to choose a form value.' },
   ],
   changelog: [
+    {
+      version: '1.2.0',
+      date: '2026-10-15',
+      changes: [
+        'New panels={false} for using tabs as a selector without TabPanels (replaces segmented ButtonGroup).',
+        'Selected pill and enclosed tabs and the line indicator use the strong brand colour; the selected segment is raised in dark mode.',
+      ],
+    },
     {
       version: '1.1.0',
       date: '2026-10-15',

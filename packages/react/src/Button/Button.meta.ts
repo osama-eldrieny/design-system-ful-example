@@ -20,7 +20,7 @@ export default defineMeta({
   whenNotToUse: [
     { text: 'To navigate to another page or URL.', alternative: 'Link' },
     { text: 'To switch a setting on or off.', alternative: 'Switch' },
-    { text: 'To pick one option from a small set of views.', alternative: 'Tabs or ButtonGroup' },
+    { text: 'To pick one option from a small set of views.', alternative: 'Tabs (segmented)' },
     {
       text: 'For an icon whose meaning is not obvious without text.',
       alternative: 'Button with iconStart and a label',

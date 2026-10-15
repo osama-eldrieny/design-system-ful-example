@@ -528,7 +528,11 @@
     "--stepper-icon-indicator-border-radius": {
       "description": "Controls and small surfaces: inputs, buttons, menu items.",
       "references": "--radius-lg",
-      "default": "8px"
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "12px"
+      }
     },
     "--stepper-dot-indicator-size": {
       "description": "Fixed element sizes in px.",
@@ -548,7 +552,10 @@
     "--stepper-step-gap": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--stepper-font-family": {
       "description": "Body text and most UI text.",

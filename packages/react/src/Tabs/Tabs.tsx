@@ -11,6 +11,8 @@ import './Tabs.css';
 export type TabsAppearance = 'enclosed' | 'pill' | 'line' | 'segmented' | 'subtle';
 
 const AppearanceContext = createContext<TabsAppearance>('enclosed');
+/** False when the tabs have no TabPanels (a selector), so tabs don't point at panels. */
+const PanelsContext = createContext(true);
 
 export interface TabsProps extends Omit<
   ComponentPropsWithoutRef<typeof TabsPrimitive.Root>,
@@ -39,6 +41,12 @@ export interface TabsProps extends Omit<
    * between tabs. On narrow screens vertical tabs sit above the panel.
    */
   orientation?: 'horizontal' | 'vertical';
+  /**
+   * `true` (default): each Tab shows a TabPanel. Set `false` to use the tabs as a selector for
+   * content you render yourself, e.g. a Day / Week / Month switcher with the segmented
+   * appearance; tabs then don't reference panels (no aria-controls).
+   */
+  panels?: boolean;
   /** TabList and TabPanels. */
   children: ReactNode;
 }
@@ -54,6 +62,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       orientation = 'horizontal',
       size = 'medium',
       fullWidth = false,
+      panels = true,
       className,
       children,
       ...props
@@ -61,23 +70,25 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
     ref,
   ) => (
     <AppearanceContext.Provider value={appearance}>
-      <TabsPrimitive.Root
-        ref={ref}
-        orientation={orientation}
-        className={[
-          'ds-tabs',
-          `ds-tabs--${appearance}`,
-          orientation === 'vertical' && 'ds-tabs--vertical',
-          size === 'small' && 'ds-tabs--small',
-          fullWidth && 'ds-tabs--full-width',
-          className,
-        ]
-          .filter(Boolean)
-          .join(' ')}
-        {...props}
-      >
-        {children}
-      </TabsPrimitive.Root>
+      <PanelsContext.Provider value={panels}>
+        <TabsPrimitive.Root
+          ref={ref}
+          orientation={orientation}
+          className={[
+            'ds-tabs',
+            `ds-tabs--${appearance}`,
+            orientation === 'vertical' && 'ds-tabs--vertical',
+            size === 'small' && 'ds-tabs--small',
+            fullWidth && 'ds-tabs--full-width',
+            className,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+          {...props}
+        >
+          {children}
+        </TabsPrimitive.Root>
+      </PanelsContext.Provider>
     </AppearanceContext.Provider>
   ),
 );
@@ -129,21 +140,25 @@ export interface TabProps extends Omit<
 
 /** One tab. */
 export const Tab = forwardRef<HTMLButtonElement, TabProps>(
-  ({ icon, count, className, children, ...props }, ref) => (
-    <TabsPrimitive.Trigger
-      ref={ref}
-      className={['ds-tabs__tab', className].filter(Boolean).join(' ')}
-      {...props}
-    >
-      {icon && (
-        <span className="ds-tabs__icon" aria-hidden="true">
-          {icon}
-        </span>
-      )}
-      <span>{children}</span>
-      {count !== undefined && <span className="ds-tabs__count">{count}</span>}
-    </TabsPrimitive.Trigger>
-  ),
+  ({ icon, count, className, children, ...props }, ref) => {
+    const panels = useContext(PanelsContext);
+    return (
+      <TabsPrimitive.Trigger
+        ref={ref}
+        className={['ds-tabs__tab', className].filter(Boolean).join(' ')}
+        {...props}
+        {...(panels ? {} : { 'aria-controls': undefined })}
+      >
+        {icon && (
+          <span className="ds-tabs__icon" aria-hidden="true">
+            {icon}
+          </span>
+        )}
+        <span>{children}</span>
+        {count !== undefined && <span className="ds-tabs__count">{count}</span>}
+      </TabsPrimitive.Trigger>
+    );
+  },
 );
 Tab.displayName = 'Tab';
 

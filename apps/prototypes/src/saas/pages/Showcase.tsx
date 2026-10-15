@@ -919,32 +919,20 @@ function Ui({ kind }: { kind: string }) {
     'button-groups': (
       <>
         <Row>
-          <ButtonGroup aria-label="Range" attached defaultValue="week">
-            {['Day', 'Week', 'Month'].map((v) => (
-              <Button key={v} value={v.toLowerCase()} variant="secondary" appearance="outline">
-                {v}
-              </Button>
-            ))}
+          <ButtonGroup aria-label="Pages">
+            <Button variant="secondary" appearance="outline" iconStart={<ChevronLeft />}>
+              Previous
+            </Button>
+            <Button variant="secondary" appearance="outline" iconEnd={<ChevronRight />}>
+              Next
+            </Button>
           </ButtonGroup>
         </Row>
         <Row>
-          <ButtonGroup aria-label="Text style" attached defaultValue="bold">
+          <ButtonGroup aria-label="Text style" attached>
+            <IconButton icon={<Bold />} label="Bold" variant="secondary" appearance="outline" />
+            <IconButton icon={<Italic />} label="Italic" variant="secondary" appearance="outline" />
             <IconButton
-              value="bold"
-              icon={<Bold />}
-              label="Bold"
-              variant="secondary"
-              appearance="outline"
-            />
-            <IconButton
-              value="italic"
-              icon={<Italic />}
-              label="Italic"
-              variant="secondary"
-              appearance="outline"
-            />
-            <IconButton
-              value="underline"
               icon={<Underline />}
               label="Underline"
               variant="secondary"

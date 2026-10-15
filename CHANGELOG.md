@@ -36,7 +36,19 @@ VerificationCodeInput.
   illustration. **Alert:** banner. **Tooltip:** title and arrow. **Switch:** small.
   **ChooseCard:** icon.
 
+### Breaking
+- **ButtonGroup:** segmented selection (`value`, `defaultValue`, `onValueChange`) is removed;
+  ButtonGroup groups actions only. To pick one of a few options, use
+  `<Tabs appearance="segmented" panels={false}>`. Every usage in the docs and prototypes is migrated.
+
 ### Fixes (from review comments)
+- **Theme coverage:** the named spacing and radius scales now change with density and radius, so
+  every component built on them follows (before, only components with explicit overrides did).
+  Compact makes `--spacing-sm` … `--spacing-5xl` one step smaller; square and pills reshape
+  `--radius-2xs` … `--radius-4xl`. `--radius-full` stays round.
+- **Tabs:** new `panels={false}` for using tabs as a selector without TabPanels (no aria-controls).
+- **Theme showcase:** the product card is its own section on the wall (shadow and radius on the
+  section, not on a card inside it); shorter title.
 - **Tabs:** the selected pill and enclosed tab and the line indicator use the strong brand colour
   (like the primary button) in every brand and mode; the selected segment uses the new
   `--color-bg-raised`, so it's lifted in dark mode too.

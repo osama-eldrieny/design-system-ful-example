@@ -375,7 +375,11 @@
     "--breadcrumb-border-radius": {
       "description": "Small rounding for tiny elements: checkboxes, tags.",
       "references": "--radius-xs",
-      "default": "2px"
+      "default": "2px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "1px",
+        "brand=diamond,mode=light,radius=pills": "3px"
+      }
     },
     "--breadcrumb-focus-ring-width": {
       "description": "Thickness of the keyboard focus ring.",
@@ -417,7 +421,11 @@
     "--breadcrumb-button-border-radius": {
       "description": "Controls and small surfaces: inputs, buttons, menu items.",
       "references": "--radius-md",
-      "default": "4px"
+      "default": "4px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "8px"
+      }
     },
     "--breadcrumb-button-hover-bg-color": {
       "description": "App background behind cards and panels.",

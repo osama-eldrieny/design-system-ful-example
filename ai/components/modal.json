@@ -571,17 +571,26 @@
     "--modal-padding": {
       "description": "Padding of sections and cards.",
       "references": "--spacing-xl",
-      "default": "24px"
+      "default": "24px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "20px"
+      }
     },
     "--modal-gap": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--modal-footer-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--modal-small-width": {
       "description": "Fixed element sizes in px.",
@@ -606,7 +615,10 @@
     "--modal-edge-margin": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--modal-duration": {
       "description": "Elements entering or leaving: modals, drawers, toasts.",
@@ -626,12 +638,18 @@
     "--modal-icon-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--modal-close-inset": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--modal-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",

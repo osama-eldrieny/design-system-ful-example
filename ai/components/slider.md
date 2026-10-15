@@ -14,7 +14,7 @@ import { Slider } from '@ds/react';
 
 ## When not to use
 - When people need an exact number. Use InputField with type="number".
-- For a few named choices. Use RadioGroup or ButtonGroup.
+- For a few named choices. Use RadioGroup or segmented Tabs.
 
 ## Values (`value`)
 - `[n]`: One thumb: a single value. Default.

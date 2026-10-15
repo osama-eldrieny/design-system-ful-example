@@ -2,7 +2,9 @@
  * Theme: radius
  *
  * Corner rounding per radius style. Set data-radius (square | round | pills). Square
- * gives sharp corners, round the default soft corners, pills fully rounded controls.
+ * gives sharp corners, round the default soft corners, pills fully rounded controls. The named
+ * scale (--radius-2xs … --radius-4xl) changes with the style too, so every component built on it
+ * follows; --radius-full stays fully round in all three (avatars, dots, switches).
  *
  * Token reference:
  *   --radius-none: Sharp corners.
@@ -82,15 +84,15 @@
 /* radius: square */
 [data-radius='square'] {
   --radius-none: var(--radius-0);
-  --radius-2xs: var(--radius-1);
-  --radius-xs: var(--radius-2);
-  --radius-sm: var(--radius-3);
-  --radius-md: var(--radius-4);
-  --radius-lg: var(--radius-8);
-  --radius-xl: var(--radius-12);
-  --radius-2xl: var(--radius-16);
-  --radius-3xl: var(--radius-20);
-  --radius-4xl: var(--radius-40);
+  --radius-2xs: var(--radius-0);
+  --radius-xs: var(--radius-1);
+  --radius-sm: var(--radius-2);
+  --radius-md: var(--radius-2);
+  --radius-lg: var(--radius-3);
+  --radius-xl: var(--radius-4);
+  --radius-2xl: var(--radius-4);
+  --radius-3xl: var(--radius-8);
+  --radius-4xl: var(--radius-8);
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-4);
   --card-border-radius: var(--radius-4);
@@ -148,14 +150,14 @@
 /* radius: pills */
 [data-radius='pills'] {
   --radius-none: var(--radius-0);
-  --radius-2xs: var(--radius-1);
-  --radius-xs: var(--radius-2);
-  --radius-sm: var(--radius-3);
-  --radius-md: var(--radius-4);
-  --radius-lg: var(--radius-8);
-  --radius-xl: var(--radius-12);
-  --radius-2xl: var(--radius-16);
-  --radius-3xl: var(--radius-20);
+  --radius-2xs: var(--radius-2);
+  --radius-xs: var(--radius-3);
+  --radius-sm: var(--radius-4);
+  --radius-md: var(--radius-8);
+  --radius-lg: var(--radius-12);
+  --radius-xl: var(--radius-16);
+  --radius-2xl: var(--radius-20);
+  --radius-3xl: var(--radius-40);
   --radius-4xl: var(--radius-40);
   --radius-full: var(--radius-999);
   --section-border-radius: var(--radius-40);

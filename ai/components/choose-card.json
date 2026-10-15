@@ -391,17 +391,26 @@
     "--choose-card-padding-y": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--choose-card-horizontal-gap": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--choose-card-vertical-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--choose-card-title-font-family": {
       "description": "Body text and most UI text.",
@@ -488,7 +497,10 @@
     "--choose-card-padding-x": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--choose-card-hover-border-color": {
       "description": "Solid fill for emphasized actions of a tone, e.g. filled buttons.",
@@ -565,7 +577,10 @@
     "--choose-card-group-gap": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--choose-card-group-item-min-width": {
       "description": "Fixed element sizes in px.",

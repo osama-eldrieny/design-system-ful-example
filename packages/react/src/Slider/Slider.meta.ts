@@ -15,7 +15,7 @@ export default defineMeta({
   ],
   whenNotToUse: [
     { text: 'When people need an exact number.', alternative: 'InputField with type="number"' },
-    { text: 'For a few named choices.', alternative: 'RadioGroup or ButtonGroup' },
+    { text: 'For a few named choices.', alternative: 'RadioGroup or segmented Tabs' },
   ],
   anatomy: [
     { name: 'Label and value', description: 'From FormField; the value shows with showValue.' },

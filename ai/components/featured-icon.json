@@ -1121,7 +1121,11 @@
     "--featured-icon-square-border-radius": {
       "description": "Controls and small surfaces: inputs, buttons, menu items.",
       "references": "--radius-lg",
-      "default": "8px"
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "12px"
+      }
     },
     "--featured-icon-small-size": {
       "description": "Fixed element sizes in px.",

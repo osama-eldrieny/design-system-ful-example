@@ -6,7 +6,6 @@ import {
   Avatar,
   Badge,
   Button,
-  ButtonGroup,
   Code,
   DropdownMenu,
   DropdownMenuContent,
@@ -56,6 +55,7 @@ import {
 import { me } from '../data';
 import { Page, useOrbitTheme } from '../Shell';
 import { Panel } from '../ui';
+import { Segmented } from '../../Segmented';
 
 type Kind = 'text' | 'image' | 'code' | 'video';
 
@@ -474,19 +474,15 @@ function AiSettings() {
       <Panel key="g" title="General">
         <ul className="orbit-settings">
           <Row title="Theme">
-            <ButtonGroup
-              aria-label="Theme"
-              attached
+            <Segmented
+              label="Theme"
+              options={[
+                ['light', 'Light'],
+                ['dark', 'Dark'],
+              ]}
               value={theme.mode}
-              onValueChange={(v) => setTheme({ ...theme, mode: v as typeof theme.mode })}
-            >
-              <Button value="light" size="small" variant="secondary" appearance="outline">
-                Light
-              </Button>
-              <Button value="dark" size="small" variant="secondary" appearance="outline">
-                Dark
-              </Button>
-            </ButtonGroup>
+              onChange={(mode) => setTheme({ ...theme, mode })}
+            />
           </Row>
           <Row title="Language">
             <Select

@@ -8,7 +8,6 @@ import {
   Avatar,
   Badge,
   Button,
-  ButtonGroup,
   DonutChart,
   EmptyState,
   FeaturedIcon,
@@ -50,6 +49,7 @@ import {
 import { me } from '../data';
 import { Page, to } from '../Shell';
 import { DataTable, Panel, RowMenu } from '../ui';
+import { Segmented } from '../../Segmented';
 
 /* ---------------------------------------------------------------- profile */
 
@@ -561,19 +561,15 @@ function Pricing() {
           <h2 id="recurring" className="orbit-h2">
             Subscriptions
           </h2>
-          <ButtonGroup
-            aria-label="Billing period"
-            attached
+          <Segmented
+            label="Billing period"
+            options={[
+              ['monthly', 'Monthly'],
+              ['annual', 'Annually · save 17%'],
+            ]}
             value={annual ? 'annual' : 'monthly'}
-            onValueChange={(v) => setAnnual(v === 'annual')}
-          >
-            <Button value="monthly" variant="secondary" appearance="outline" size="small">
-              Monthly
-            </Button>
-            <Button value="annual" variant="secondary" appearance="outline" size="small">
-              Annually · save 17%
-            </Button>
-          </ButtonGroup>
+            onChange={(v) => setAnnual(v === 'annual')}
+          />
         </div>
         <div className="orbit-grid orbit-grid--3">
           <PlanCard

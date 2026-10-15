@@ -59,4 +59,21 @@ describe('Tabs', () => {
     await userEvent.click(screen.getByRole('tab', { name: 'Gamma' }));
     expect(onChange).not.toHaveBeenCalled();
   });
+
+  it('works as a selector without panels (no aria-controls)', async () => {
+    const onChange = vi.fn();
+    render(
+      <Tabs appearance="segmented" panels={false} defaultValue="day" onValueChange={onChange}>
+        <TabList label="Range">
+          <Tab value="day">Day</Tab>
+          <Tab value="week">Week</Tab>
+        </TabList>
+      </Tabs>,
+    );
+    const week = screen.getByRole('tab', { name: 'Week' });
+    expect(week).not.toHaveAttribute('aria-controls');
+    await userEvent.click(week);
+    expect(onChange).toHaveBeenCalledWith('week');
+    expect(week).toHaveAttribute('aria-selected', 'true');
+  });
 });

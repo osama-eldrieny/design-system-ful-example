@@ -638,7 +638,10 @@
     "--checkbox-group-horizontal-gap": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--checkbox-focus-ring-width": {
       "description": "Thickness of the keyboard focus ring.",

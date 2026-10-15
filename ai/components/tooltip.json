@@ -294,7 +294,11 @@
     "--tooltip-border-radius": {
       "description": "Small rounding for tiny elements: checkboxes, tags.",
       "references": "--radius-xs",
-      "default": "2px"
+      "default": "2px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "1px",
+        "brand=diamond,mode=light,radius=pills": "3px"
+      }
     },
     "--tooltip-duration": {
       "description": "Small state changes: hover, press, toggle.",
@@ -314,7 +318,10 @@
     "--tooltip-rich-padding-x": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--tooltip-rich-padding-y": {
       "description": "Small gap inside compact controls.",

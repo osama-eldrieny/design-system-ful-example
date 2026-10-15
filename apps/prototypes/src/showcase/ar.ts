@@ -142,8 +142,12 @@ export const ar: Record<string, string> = {
   Off: 'إيقاف',
   On: 'تشغيل',
   Small: 'صغير',
+  Actions: 'الإجراءات',
+  Previous: 'السابق',
+  Next: 'التالي',
   'Product card': 'بطاقة المنتج',
-  'AirPods Max 2, Experience Sound Differently': 'إيربودز ماكس 2، اختبر الصوت بشكل مختلف',
+  'AirPods Max 2': 'إيربودز ماكس 2',
+  'Noise cancelling · 20 h battery': 'عزل الضوضاء · بطارية 20 ساعة',
   '420 reviews': '420 مراجعة',
   'Add to cart': 'أضف إلى السلة',
 };

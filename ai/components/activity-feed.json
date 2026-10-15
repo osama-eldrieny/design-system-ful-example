@@ -230,12 +230,18 @@
     "--activity-feed-gap": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--activity-feed-item-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--activity-feed-text-gap": {
       "description": "Hairline gap (2px), e.g. between rating stars.",
@@ -376,12 +382,19 @@
     "--activity-feed-content-border-radius": {
       "description": "Controls and small surfaces: inputs, buttons, menu items.",
       "references": "--radius-lg",
-      "default": "8px"
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "12px"
+      }
     },
     "--activity-feed-content-padding-x": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--activity-feed-content-padding-y": {
       "description": "Small gap inside compact controls.",

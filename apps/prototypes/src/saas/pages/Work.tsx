@@ -6,7 +6,6 @@ import {
   Avatar,
   Badge,
   Button,
-  ButtonGroup,
   Checkbox,
   DropdownMenu,
   DropdownMenuContent,
@@ -46,6 +45,7 @@ import {
 } from 'lucide-react';
 import { people } from '../data';
 import { Page } from '../Shell';
+import { Segmented } from '../../Segmented';
 
 /* ----------------------------------------------------------------- tasks */
 
@@ -375,6 +375,7 @@ function Tasks({ view }: { view: 'list' | 'kanban' }) {
       header={
         <div className="orbit-toolbar">
           <Tabs
+            panels={false}
             appearance="segmented"
             value={filter}
             onValueChange={(v) => setFilter(v as typeof filter)}
@@ -589,17 +590,16 @@ function CalendarPage() {
           <h2 className="orbit-h2" aria-live="polite">
             {label}
           </h2>
-          <ButtonGroup aria-label="View" attached value={view} onValueChange={setView}>
-            <Button value="month" variant="secondary" appearance="outline" size="small">
-              Month
-            </Button>
-            <Button value="week" variant="secondary" appearance="outline" size="small">
-              Week
-            </Button>
-            <Button value="day" variant="secondary" appearance="outline" size="small">
-              Day
-            </Button>
-          </ButtonGroup>
+          <Segmented
+            label="View"
+            options={[
+              ['month', 'Month'],
+              ['week', 'Week'],
+              ['day', 'Day'],
+            ]}
+            value={view}
+            onChange={setView}
+          />
         </div>
         {view === 'day' ? (
           <ul className="orbit-agenda">

@@ -17,7 +17,7 @@ import { IconButton } from '@ds/react';
 ## When not to use
 - To navigate to another page or URL. Use Link.
 - To switch a setting on or off. Use Switch.
-- To pick one option from a small set of views. Use Tabs or ButtonGroup.
+- To pick one option from a small set of views. Use Tabs (segmented).
 - For an icon whose meaning is not obvious without text. Use Button with iconStart and a label.
 
 ## Variant (`variant`)

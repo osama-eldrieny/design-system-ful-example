@@ -362,7 +362,11 @@
     "--search-field-shortcut-border-radius": {
       "description": "Small rounding for tiny elements: checkboxes, tags.",
       "references": "--radius-xs",
-      "default": "2px"
+      "default": "2px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "1px",
+        "brand=diamond,mode=light,radius=pills": "3px"
+      }
     },
     "--search-field-shortcut-padding-x": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",

@@ -122,6 +122,19 @@ export const States: Story = {
   parameters: { pseudo: { hover: ['#tab-hover'], focusVisible: ['#tab-focus'] } },
 };
 
+/** Segmented tabs as a selector (no panels): the replacement for the old segmented ButtonGroup. */
+export const AsSelector: Story = {
+  render: () => (
+    <Tabs appearance="segmented" size="small" panels={false} defaultValue="week">
+      <TabList label="Range">
+        <Tab value="day">Day</Tab>
+        <Tab value="week">Week</Tab>
+        <Tab value="month">Month</Tab>
+      </TabList>
+    </Tabs>
+  ),
+};
+
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   render: () => (

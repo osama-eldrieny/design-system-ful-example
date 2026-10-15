@@ -675,7 +675,10 @@
     "--avatar-label-group-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--avatar-label-group-name-text-color": {
       "description": "Main text on surfaces.",

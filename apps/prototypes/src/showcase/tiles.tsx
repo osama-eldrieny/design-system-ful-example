@@ -394,7 +394,7 @@ export const Navigation = ({ t }: { t: T }) => (
 export const TabsTile = ({ t }: { t: T }) => (
   <Tile title={t('Tabs')}>
     {(['line', 'pill', 'segmented'] as const).map((a) => (
-      <Tabs key={a} appearance={a} defaultValue="overview">
+      <Tabs panels={false} key={a} appearance={a} defaultValue="overview">
         <TabList label={`${a} ${t('tabs')}`} className="sc-scroll">
           <Tab value="overview">{t('Overview')}</Tab>
           <Tab value="activity" count={4}>
@@ -404,18 +404,13 @@ export const TabsTile = ({ t }: { t: T }) => (
         </TabList>
       </Tabs>
     ))}
-    <ButtonGroup aria-label={t('Range')} attached defaultValue="week" className="sc-scroll">
-      {['Day', 'Week', 'Month'].map((r) => (
-        <Button
-          key={r}
-          value={r.toLowerCase()}
-          size="small"
-          variant="secondary"
-          appearance="outline"
-        >
-          {t(r)}
-        </Button>
-      ))}
+    <ButtonGroup aria-label={t('Actions')} attached>
+      <Button size="small" variant="secondary" appearance="outline">
+        {t('Previous')}
+      </Button>
+      <Button size="small" variant="secondary" appearance="outline">
+        {t('Next')}
+      </Button>
     </ButtonGroup>
   </Tile>
 );
@@ -615,18 +610,20 @@ export const Overlays = ({ t }: { t: T }) => {
   );
 };
 
+/** The product card is itself the section on the wall, so it carries the shadow and radius themes. */
 export const Product = ({ t }: { t: T }) => (
-  <Tile title={t('Product card')}>
-    <ProductCard
-      title={t('AirPods Max 2, Experience Sound Differently')}
-      rating={4.5}
-      reviews={t('420 reviews')}
-      price="$500"
-      actions={
-        <Button size="small" iconStart={<ShoppingCart />}>
-          {t('Add to cart')}
-        </Button>
-      }
-    />
-  </Tile>
+  <ProductCard
+    className="sc-tile"
+    aria-label={t('Product card')}
+    title={t('AirPods Max 2')}
+    description={t('Noise cancelling · 20 h battery')}
+    rating={4.5}
+    reviews={t('420 reviews')}
+    price="$500"
+    actions={
+      <Button size="small" iconStart={<ShoppingCart />}>
+        {t('Add to cart')}
+      </Button>
+    }
+  />
 );

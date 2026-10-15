@@ -416,7 +416,10 @@
     "--popover-padding": {
       "description": "Default gap and control padding.",
       "references": "--spacing-md",
-      "default": "16px"
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
     },
     "--popover-gap": {
       "description": "Small gap inside compact controls.",

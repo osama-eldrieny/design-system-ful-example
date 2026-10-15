@@ -352,7 +352,10 @@
     "--empty-state-gap": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--empty-state-actions-gap": {
       "description": "Small gap inside compact controls.",
@@ -362,7 +365,10 @@
     "--empty-state-padding": {
       "description": "Large section padding.",
       "references": "--spacing-2xl",
-      "default": "28px"
+      "default": "28px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "24px"
+      }
     },
     "--empty-state-max-width": {
       "description": "Fixed element sizes in px.",
@@ -395,7 +401,10 @@
     "--empty-state-small-padding": {
       "description": "Gap between groups inside a section.",
       "references": "--spacing-lg",
-      "default": "20px"
+      "default": "20px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "16px"
+      }
     },
     "--empty-state-large-icon-box-size": {
       "description": "Fixed element sizes in px.",
@@ -420,7 +429,10 @@
     "--empty-state-large-padding": {
       "description": "Extra-large layout spacing.",
       "references": "--spacing-4xl",
-      "default": "36px"
+      "default": "36px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "32px"
+      }
     },
     "--empty-state-illustration-max-width": {
       "description": "Fixed element sizes in px.",

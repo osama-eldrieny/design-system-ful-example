@@ -15,19 +15,26 @@ import { ComponentPage } from '../blocks';
   anatomy={{
     targets: [{ selector: '.ds-button-group', at: 'start' }, '.ds-button-group > :first-child'],
     example: (
-      <ButtonGroup aria-label="View" attached defaultValue="list">
-        <Button value="list">List</Button>
-        <Button value="grid">Grid</Button>
+      <ButtonGroup aria-label="Pages" attached>
+        <Button variant="secondary" appearance="outline">
+          Previous
+        </Button>
+        <Button variant="secondary" appearance="outline">
+          Next
+        </Button>
       </ButtonGroup>
     ),
   }}
   optionStories={{ attached: 'Layouts', orientation: 'Layouts' }}
-  extras={[{ title: 'Segmented', story: 'Segmented' }]}
   behaviorStory="RightToLeft"
   matrix={
-    <ButtonGroup aria-label="View" attached defaultValue="list">
-      <Button value="list">List</Button>
-      <Button value="grid">Grid</Button>
+    <ButtonGroup aria-label="Pages" attached>
+      <Button variant="secondary" appearance="outline">
+        Previous
+      </Button>
+      <Button variant="secondary" appearance="outline">
+        Next
+      </Button>
     </ButtonGroup>
   }
 />

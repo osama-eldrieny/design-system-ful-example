@@ -937,7 +937,10 @@
     "--tag-large-padding-x": {
       "description": "Gap between related items in a group.",
       "references": "--spacing-sm",
-      "default": "12px"
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
     },
     "--tag-large-padding-y": {
       "description": "Tightest gap between tightly related items, e.g. icon and label.",
@@ -984,7 +987,11 @@
     "--tag-count-border-radius": {
       "description": "Small rounding for tiny elements: checkboxes, tags.",
       "references": "--radius-sm",
-      "default": "3px"
+      "default": "3px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "2px",
+        "brand=diamond,mode=light,radius=pills": "4px"
+      }
     },
     "--tag-image-size": {
       "description": "Fixed element sizes in px.",
