@@ -1,10 +1,6 @@
-import { useState } from 'react';
 import {
   Button,
   Logo,
-  Select,
-  SelectItem,
-  ThemeProvider,
   themeAttributes,
   themeOptions,
   useToast,
@@ -15,7 +11,10 @@ import { Copy, Orbit, RotateCcw } from 'lucide-react';
 import { ar } from './ar';
 import {
   AiPrompt,
+  AccordionTile,
+  Activity,
   Alerts,
+  Breadcrumbs,
   Avatars,
   Badges,
   Buttons,
@@ -27,12 +26,17 @@ import {
   Navigation,
   Notification,
   Overlays,
+  PaginationTile,
   PeoplePicker,
   Product,
   ProgressTile,
   Selection,
+  Sliders,
+  Steps,
   TableTile,
   TabsTile,
+  TagsEmpty,
+  Upload,
   type T,
 } from './tiles';
 import './showcase.css';
@@ -49,52 +53,6 @@ const axisLabels: Record<ThemeAxis, string> = {
 };
 const valueLabel = (v: string) =>
   ({ en: 'English', ar: 'العربية' })[v] ?? v[0].toUpperCase() + v.slice(1);
-
-/** Ready-made themes for the side-by-side comparison. */
-const presets: Record<string, Partial<Theme>> = {
-  'Diamond · light': {
-    brand: 'diamond',
-    mode: 'light',
-    radius: 'round',
-    density: 'comfortable',
-    shadow: 'subtle',
-  },
-  'Amber · dark': {
-    brand: 'amber',
-    mode: 'dark',
-    radius: 'round',
-    density: 'comfortable',
-    shadow: 'subtle',
-  },
-  'Opal · pills': {
-    brand: 'opal',
-    mode: 'light',
-    radius: 'pills',
-    density: 'comfortable',
-    shadow: 'raised',
-  },
-  'Diamond · dark, square': {
-    brand: 'diamond',
-    mode: 'dark',
-    radius: 'square',
-    density: 'comfortable',
-    shadow: 'flat',
-  },
-  'Amber · serif': {
-    brand: 'amber',
-    mode: 'light',
-    typeface: 'serif',
-    radius: 'round',
-    shadow: 'default',
-  },
-  'Opal · dark, compact': {
-    brand: 'opal',
-    mode: 'dark',
-    radius: 'round',
-    density: 'compact',
-    shadow: 'raised',
-  },
-};
 
 function ThemeBar({
   theme,
@@ -168,8 +126,6 @@ export default function Showcase({
 }) {
   const t: T = (s) => (theme.language === 'ar' ? (ar[s] ?? s) : s);
   const locale = theme.language === 'ar' ? 'ar' : 'en';
-  const names = Object.keys(presets);
-  const [compare, setCompare] = useState([names[0], names[1], names[2]]);
 
   return (
     <div className="proto sc">
@@ -209,47 +165,15 @@ export default function Showcase({
           <TableTile t={t} />
           <DialogTile t={t} />
           <Overlays t={t} />
+          <Breadcrumbs t={t} />
+          <PaginationTile t={t} />
+          <Steps t={t} />
+          <Sliders t={t} />
+          <Upload t={t} />
+          <AccordionTile t={t} />
+          <TagsEmpty t={t} />
+          <Activity t={t} />
         </div>
-
-        <section className="sc-compare" aria-labelledby="compare-title">
-          <div className="sc-compare__head">
-            <h2 id="compare-title">{t('Compare themes')}</h2>
-            <p>
-              {t('The same components in three themes at once. Pick any theme for each column.')}
-            </p>
-          </div>
-          <div className="sc-compare__cols">
-            {compare.map((name, i) => (
-              <div key={i} className="sc-compare__col">
-                <Select
-                  label={`${t('Theme')} ${i + 1}`}
-                  hideLabel
-                  size="small"
-                  value={name}
-                  onValueChange={(v) => setCompare((c) => c.map((x, j) => (j === i ? v : x)))}
-                >
-                  {names.map((n) => (
-                    <SelectItem key={n} value={n}>
-                      {n}
-                    </SelectItem>
-                  ))}
-                </Select>
-                <ThemeProvider
-                  theme={{ ...presets[name], language: theme.language }}
-                  className="sc-compare__frame"
-                >
-                  <div className="sc-compare__stack">
-                    <Product t={t} />
-                    <Buttons t={t} />
-                    <Metrics t={t} />
-                    <Selection t={t} />
-                    <Alerts t={t} />
-                  </div>
-                </ThemeProvider>
-              </div>
-            ))}
-          </div>
-        </section>
       </main>
     </div>
   );

@@ -4,13 +4,15 @@
  */
 import { useState, type ReactNode } from 'react';
 import {
+  Accordion,
+  AccordionItem,
+  ActivityFeed,
   Alert,
   Avatar,
   AvatarGroup,
   AvatarLabelGroup,
   Badge,
   Button,
-  ButtonGroup,
   Calendar,
   Card,
   Checkbox,
@@ -42,6 +44,15 @@ import {
   Textarea,
   Tooltip,
   useToast,
+  Breadcrumb,
+  EmptyState,
+  FileUpload,
+  FileUploadItem,
+  Pagination,
+  Skeleton,
+  Slider,
+  Stepper,
+  VerificationCodeInput,
   type TableColumn,
 } from '@ds/react';
 import {
@@ -404,14 +415,6 @@ export const TabsTile = ({ t }: { t: T }) => (
         </TabList>
       </Tabs>
     ))}
-    <ButtonGroup aria-label={t('Actions')}>
-      <Button size="small" variant="secondary" appearance="outline">
-        {t('Previous')}
-      </Button>
-      <Button size="small" variant="secondary" appearance="outline">
-        {t('Next')}
-      </Button>
-    </ButtonGroup>
   </Tile>
 );
 
@@ -626,4 +629,190 @@ export const Product = ({ t }: { t: T }) => (
       </Button>
     }
   />
+);
+
+export const Breadcrumbs = ({ t }: { t: T }) => (
+  <Tile title={t('Breadcrumbs')}>
+    <Breadcrumb
+      items={[
+        { label: t('Home'), href: '#/demo' },
+        { label: t('Projects'), href: '#/demo' },
+        { label: t('Billing') },
+      ]}
+    />
+    <Breadcrumb
+      homeIcon
+      separator="slash"
+      items={[
+        { label: t('Home'), href: '#/demo' },
+        { label: t('Settings'), href: '#/demo' },
+        { label: t('Team') },
+      ]}
+    />
+    <Breadcrumb
+      appearance="button"
+      items={[{ label: t('Workspace'), href: '#/demo' }, { label: t('Reports') }]}
+    />
+  </Tile>
+);
+
+export const PaginationTile = ({ t }: { t: T }) => {
+  const [page, setPage] = useState(3);
+  return (
+    <Tile title={t('Pagination')}>
+      <Pagination currentPage={page} totalPages={5} onPageChange={setPage} label={t('Pages')} />
+      <Pagination
+        currentPage={page}
+        totalPages={10}
+        onPageChange={setPage}
+        appearance="simple"
+        showArrowLabels
+        layout="spread"
+        label={t('Simple pages')}
+      />
+    </Tile>
+  );
+};
+
+export const Steps = ({ t }: { t: T }) => (
+  <Tile title={t('Steps')}>
+    <Stepper
+      aria-label={t('Checkout')}
+      current={1}
+      size="small"
+      steps={[{ label: t('Details') }, { label: t('Billing') }, { label: t('Done') }]}
+    />
+    <Stepper
+      aria-label={t('Setup')}
+      orientation="vertical"
+      marker="dot"
+      size="small"
+      current={1}
+      steps={[
+        { label: t('Create workspace'), description: t('Done') },
+        { label: t('Invite your team'), description: t('In progress') },
+        { label: t('Connect billing') },
+      ]}
+    />
+  </Tile>
+);
+
+export const Sliders = ({ t }: { t: T }) => {
+  const [v, setV] = useState([25, 75]);
+  return (
+    <Tile title={t('Slider and code')}>
+      <Slider
+        label={t('Price range')}
+        value={v}
+        onValueChange={setV}
+        description={`$${v[0]} – $${v[1]}`}
+      />
+      <Slider label={t('Volume')} defaultValue={[60]} />
+      <VerificationCodeInput
+        label={t('Verification code')}
+        length={4}
+        size="small"
+        defaultValue="12"
+      />
+    </Tile>
+  );
+};
+
+export const Upload = ({ t }: { t: T }) => (
+  <Tile title={t('File upload')}>
+    <FileUpload id="sc-upload" multiple hint={t('PNG, JPG or PDF, up to 10 MB')}>
+      <FileUploadItem
+        name="Brand-guidelines.pdf"
+        size="2.4 MB"
+        progress={100}
+        onRemove={() => {}}
+      />
+      <FileUploadItem name="Hero-image.png" size="840 KB" progress={60} onRemove={() => {}} />
+    </FileUpload>
+  </Tile>
+);
+
+export const AccordionTile = ({ t }: { t: T }) => (
+  <Tile title={t('Accordion')}>
+    <Accordion type="single" collapsible defaultValue="a">
+      <AccordionItem value="a" title={t('Do I get free updates?')} headingLevel={3}>
+        {t('Yes, every plan includes them.')}
+      </AccordionItem>
+      <AccordionItem value="b" title={t('Can I change plans later?')} headingLevel={3}>
+        {t('Any time, from Billing.')}
+      </AccordionItem>
+      <AccordionItem value="c" title={t('Is there an Arabic version?')} headingLevel={3}>
+        {t('Yes, with right-to-left layout.')}
+      </AccordionItem>
+    </Accordion>
+  </Tile>
+);
+
+export const TagsEmpty = ({ t }: { t: T }) => (
+  <Tile title={t('Tags and empty state')}>
+    <Row>
+      <Tag tone="primary" count={12}>
+        {t('Design')}
+      </Tag>
+      <Tag icon={<Sparkles />}>{t('AI')}</Tag>
+      <Tag image={people[0].src} onRemove={() => {}}>
+        {people[0].name}
+      </Tag>
+    </Row>
+    <EmptyState
+      size="small"
+      titleAs="h3"
+      title={t('No projects yet')}
+      description={t('Create one to get started.')}
+      actions={<Button size="small">{t('New project')}</Button>}
+    />
+  </Tile>
+);
+
+export const Activity = ({ t }: { t: T }) => (
+  <Tile title={t('Activity and loading')}>
+    <ActivityFeed
+      aria-label={t('Activity')}
+      items={[
+        {
+          id: 1,
+          avatar: { name: people[0].name, src: people[0].src },
+          title: (
+            <>
+              <strong>{people[0].name}</strong> {t('invited Lana')}
+            </>
+          ),
+          time: '2m',
+          unread: true,
+        },
+        {
+          id: 2,
+          icon: <FileText />,
+          title: (
+            <>
+              <strong>Report.pdf</strong> {t('uploaded')}
+            </>
+          ),
+          time: '1h',
+        },
+        {
+          id: 3,
+          icon: <Check />,
+          iconTone: 'success',
+          title: (
+            <>
+              <strong>#3120</strong> {t('paid')}
+            </>
+          ),
+          time: t('Yesterday'),
+        },
+      ]}
+    />
+    <Row>
+      <Skeleton variant="circle" width={36} height={36} />
+      <div className="sc-grow">
+        <Skeleton lines={2} />
+      </div>
+    </Row>
+  </Tile>
 );
