@@ -63,6 +63,22 @@
   margin-block-start: var(--alerts-content-gap);
 }
 
+/* On a solid alert, buttons in the actions slot are inverted so they stay visible. */
+.ds-alert--solid .ds-alert__actions .ds-button:not(.ds-button--text) {
+  border-color: var(--_action-bg);
+  background-color: var(--_action-bg);
+  color: var(--_action-text);
+}
+
+.ds-alert--solid .ds-alert__actions .ds-button:not(.ds-button--text):hover {
+  border-color: var(--_action-hover);
+  background-color: var(--_action-hover);
+}
+
+.ds-alert--solid .ds-alert__actions .ds-button--text {
+  color: var(--_text);
+}
+
 .ds-alert__dismiss {
   display: inline-grid;
   place-items: center;
@@ -104,6 +120,9 @@
   --_text: var(--alerts-primary-solid-text-color);
   --_icon: var(--alerts-primary-solid-text-color);
   --_dismiss-hover: var(--alerts-primary-solid-dismiss-hover-bg-color);
+  --_action-bg: var(--alerts-primary-solid-action-bg-color);
+  --_action-text: var(--alerts-primary-solid-action-text-color);
+  --_action-hover: var(--alerts-primary-solid-action-hover-bg-color);
 }
 
 .ds-alert--primary.ds-alert--outline {
@@ -132,6 +151,9 @@
   --_text: var(--alerts-success-solid-text-color);
   --_icon: var(--alerts-success-solid-text-color);
   --_dismiss-hover: var(--alerts-success-solid-dismiss-hover-bg-color);
+  --_action-bg: var(--alerts-success-solid-action-bg-color);
+  --_action-text: var(--alerts-success-solid-action-text-color);
+  --_action-hover: var(--alerts-success-solid-action-hover-bg-color);
 }
 
 .ds-alert--success.ds-alert--outline {
@@ -160,6 +182,9 @@
   --_text: var(--alerts-warning-solid-text-color);
   --_icon: var(--alerts-warning-solid-text-color);
   --_dismiss-hover: var(--alerts-warning-solid-dismiss-hover-bg-color);
+  --_action-bg: var(--alerts-warning-solid-action-bg-color);
+  --_action-text: var(--alerts-warning-solid-action-text-color);
+  --_action-hover: var(--alerts-warning-solid-action-hover-bg-color);
 }
 
 .ds-alert--warning.ds-alert--outline {
@@ -188,6 +213,9 @@
   --_text: var(--alerts-danger-solid-text-color);
   --_icon: var(--alerts-danger-solid-text-color);
   --_dismiss-hover: var(--alerts-danger-solid-dismiss-hover-bg-color);
+  --_action-bg: var(--alerts-danger-solid-action-bg-color);
+  --_action-text: var(--alerts-danger-solid-action-text-color);
+  --_action-hover: var(--alerts-danger-solid-action-hover-bg-color);
 }
 
 .ds-alert--danger.ds-alert--outline {

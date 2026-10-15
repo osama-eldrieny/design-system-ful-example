@@ -588,6 +588,11 @@
       "references": "--sizing-8xl",
       "default": "220px"
     },
+    "--modal-min-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--modal-medium-width",
+      "default": "calc(220px * 2.5)"
+    },
     "--modal-medium-width": {
       "description": "Fixed element sizes in px.",
       "references": "--sizing-8xl",

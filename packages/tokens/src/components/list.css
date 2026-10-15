@@ -15,6 +15,11 @@
   --list-meta-text-color: var(--color-fg-on-surface-secondary);
   --list-icon-color: var(--color-fg-on-surface-secondary);
   --list-icon-size: var(--sizing-md);
+
+  /* Numbers in an ordered list */
+  --list-number-text-color: var(--color-fg-on-surface-secondary);
+  --list-number-font-weight: var(--font-weight-medium);
+  --list-number-min-width: var(--sizing-sm);
   --list-divider-color: var(--color-bg-secondary-200);
   --list-divider-width: var(--border-width-hairline);
   --list-item-padding-x: var(--spacing-sm);

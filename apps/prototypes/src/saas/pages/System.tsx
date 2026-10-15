@@ -263,16 +263,14 @@ function Verify() {
           go('/saas');
         }}
       >
-        <div className="scroll-x">
-          <VerificationCodeInput
-            label="Verification code"
-            value={code}
-            onValueChange={setCode}
-            separatorAfter={3}
-            size="small"
-            onComplete={() => go('/saas')}
-          />
-        </div>
+        <VerificationCodeInput
+          label="Verification code"
+          value={code}
+          onValueChange={setCode}
+          separatorAfter={3}
+          size="small"
+          onComplete={() => go('/saas')}
+        />
         <Button type="submit" fullWidth disabled={code.length < 6}>
           Verify and continue
         </Button>

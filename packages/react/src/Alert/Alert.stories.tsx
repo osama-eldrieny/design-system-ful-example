@@ -72,6 +72,35 @@ export const WithActions: Story = {
   },
 };
 
+/** On solid alerts, action buttons are inverted so they stay visible on the coloured background. */
+export const SolidWithActions: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16 }}>
+      {(['primary', 'success', 'warning', 'danger'] as AlertVariant[]).map((variant) => (
+        <Alert
+          key={variant}
+          variant={variant}
+          appearance="solid"
+          title="Your trial ends in 3 days."
+          actions={
+            <>
+              <Button size="small" variant="secondary" appearance="outline">
+                Upgrade
+              </Button>
+              <Button size="small" appearance="text">
+                Remind me later
+              </Button>
+            </>
+          }
+          onDismiss={() => {}}
+        >
+          Upgrade to keep your dashboards and history.
+        </Alert>
+      ))}
+    </div>
+  ),
+};
+
 export const Dismissible: Story = {
   render: function Render(args) {
     const [visible, setVisible] = useState(true);

@@ -19,4 +19,19 @@ describe('List', () => {
     expect(onClick).toHaveBeenCalled();
     expect(screen.getByText('Today')).toBeInTheDocument();
   });
+
+  it('marks ordered lists so they show numbers', () => {
+    const { rerender } = render(
+      <List ordered>
+        <ListItem title="First" />
+      </List>,
+    );
+    expect(screen.getByRole('list')).toHaveClass('ds-list--ordered');
+    rerender(
+      <List>
+        <ListItem title="First" />
+      </List>,
+    );
+    expect(screen.getByRole('list')).not.toHaveClass('ds-list--ordered');
+  });
 });

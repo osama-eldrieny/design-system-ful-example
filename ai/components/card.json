@@ -693,6 +693,11 @@
       "references": "--sizing-8xl",
       "default": "220px"
     },
+    "--card-horizontal-media-min-height": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-8xl",
+      "default": "calc(220px * 0.7)"
+    },
     "--card-hover-border-color": {
       "description": "Emphasized tone outline, e.g. a selected card.",
       "references": "--color-border-primary-strong",

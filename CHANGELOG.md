@@ -36,6 +36,16 @@ VerificationCodeInput.
   illustration. **Alert:** banner. **Tooltip:** title and arrow. **Switch:** small.
   **ChooseCard:** icon.
 
+### Fixes (from review comments)
+- **Alert:** buttons in a solid alert's actions are inverted (new `--alerts-{variant}-solid-action-*`
+  tokens) so they stay visible; text buttons take the alert's text colour.
+- **Modal:** every size is at least `--modal-min-width` (the medium width), so confirmations aren't
+  cramped; phones still fit the screen.
+- **Card:** the theme placeholder image shows whole (contain); horizontal cards keep a minimum media
+  height (`--card-horizontal-media-min-height`).
+- **List:** ordered lists now show their numbers (`--list-number-*` tokens).
+- **VerificationCodeInput:** boxes shrink evenly and stay square when the container is narrow.
+
 ### Prototypes
 - **Panda removed.** The old dashboard, its app pages (projects, messages, calendar, orders,
   settings) and its frame are deleted; Orbit is the prototypes' home page. Old `#/dashboard`,

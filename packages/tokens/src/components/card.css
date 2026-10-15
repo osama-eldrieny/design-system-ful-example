@@ -57,6 +57,7 @@
   --card-shadow-color: var(--color-shadow-surface);
   --card-gap: var(--spacing-md);
   --card-horizontal-media-width: var(--sizing-8xl);
+  --card-horizontal-media-min-height: calc(var(--sizing-8xl) * 0.7);
 
   /* Clickable card */
   --card-hover-border-color: var(--color-border-primary-strong);

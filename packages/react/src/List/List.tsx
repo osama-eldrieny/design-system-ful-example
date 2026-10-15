@@ -16,7 +16,14 @@ export const List = forwardRef<HTMLUListElement, ListProps>(
     return (
       <Tag
         ref={ref as Ref<HTMLUListElement & HTMLOListElement>}
-        className={['ds-list', divided && 'ds-list--divided', className].filter(Boolean).join(' ')}
+        className={[
+          'ds-list',
+          divided && 'ds-list--divided',
+          ordered && 'ds-list--ordered',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
         {...props}
       />
     );

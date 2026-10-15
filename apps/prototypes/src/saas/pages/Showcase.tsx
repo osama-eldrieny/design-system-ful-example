@@ -79,6 +79,7 @@ import {
   Copy,
   Download,
   Eye,
+  FileText,
   Info,
   Italic,
   Lock,
@@ -211,9 +212,7 @@ function FormElements() {
               max={100}
               description={`$${range[0]} – $${range[1]}`}
             />
-            <div className="scroll-x">
-              <VerificationCodeInput label="Verification code" separatorAfter={3} size="small" />
-            </div>
+            <VerificationCodeInput label="Verification code" separatorAfter={3} size="small" />
           </Demo>
         </div>
       </Grid>
@@ -701,24 +700,80 @@ function Ui({ kind }: { kind: string }) {
   const blocks: Record<string, ReactNode> = {
     alerts: (
       <>
-        {tones.map((t) => (
-          <Alert key={t} variant={t} title={`${t[0].toUpperCase()}${t.slice(1)} message`}>
-            A short explanation with what to do next.
-          </Alert>
+        {(['subtle', 'solid', 'outline'] as const).map((appearance) => (
+          <Demo
+            key={appearance}
+            title={`${appearance[0].toUpperCase()}${appearance.slice(1)}`}
+            description={
+              appearance === 'subtle'
+                ? 'The default: tinted background.'
+                : appearance === 'solid'
+                  ? 'Strongest: for the most important messages.'
+                  : 'Lightest: a coloured border on the surface.'
+            }
+          >
+            {tones.map((t) => (
+              <Alert
+                key={t}
+                variant={t}
+                appearance={appearance}
+                title={`${t[0].toUpperCase()}${t.slice(1)} message`}
+                actions={
+                  <>
+                    <Button
+                      size="small"
+                      variant={t === 'primary' ? 'primary' : t}
+                      appearance="outline"
+                    >
+                      Take action
+                    </Button>
+                    <Button size="small" variant="secondary" appearance="text">
+                      Learn more
+                    </Button>
+                  </>
+                }
+                onDismiss={() => toast({ title: 'Alert dismissed' })}
+              >
+                A short explanation with what to do next.
+              </Alert>
+            ))}
+          </Demo>
         ))}
-        <Alert
-          variant="primary"
-          appearance="solid"
-          title="Solid alert"
-          actions={
-            <Button size="small" variant="secondary" appearance="outline">
-              Learn more
-            </Button>
-          }
-          onDismiss={() => {}}
+        <Demo
+          title="Banner layout"
+          description="Full width with square corners, e.g. at the top of a page."
         >
-          With an action and a dismiss button.
-        </Alert>
+          {tones.map((t) => (
+            <Alert
+              key={t}
+              variant={t}
+              appearance="solid"
+              layout="banner"
+              title="Scheduled maintenance on Sunday."
+              actions={
+                <Button size="small" variant="secondary" appearance="outline">
+                  Details
+                </Button>
+              }
+              onDismiss={() => {}}
+            >
+              Orbit is read-only from 02:00 to 03:00 UTC.
+            </Alert>
+          ))}
+        </Demo>
+        <Demo title="Content options">
+          <Alert variant="success" title="Title only." />
+          <Alert variant="primary" title="Short title">
+            With a longer description under it that can wrap onto a second line when the message
+            needs more room to explain what happened and what to do next.
+          </Alert>
+          <Alert variant="warning" icon={<Bell />} title="Custom icon">
+            Any icon can replace the default.
+          </Alert>
+          <Alert variant="danger" icon={null} title="No icon">
+            Pass null to hide the icon.
+          </Alert>
+        </Demo>
       </>
     ),
     avatars: (
@@ -913,35 +968,140 @@ function Ui({ kind }: { kind: string }) {
       </>
     ),
     cards: (
-      <div className="orbit-grid orbit-grid--3">
-        {[
-          'Design systems that scale',
-          'Pricing pages that convert',
-          'Onboarding that activates',
-        ].map((t, i) => (
-          <Card key={t} appearance={i === 1 ? 'outlined' : 'elevated'}>
-            <CardMedia alt="" />
-            <CardBody>
-              <CardTitle>{t}</CardTitle>
-              <CardDescription>
-                A practical guide with examples from teams using Orbit every day.
-              </CardDescription>
-            </CardBody>
-            <CardFooter>
-              <Button size="small" variant="secondary" appearance="outline">
-                Read more
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-        <Card orientation="horizontal" appearance="outlined">
-          <CardMedia alt="" />
-          <CardBody>
-            <CardTitle>Horizontal card</CardTitle>
-            <CardDescription>Media beside the body.</CardDescription>
-          </CardBody>
-        </Card>
-      </div>
+      <>
+        <Demo
+          title="Appearances"
+          description="Elevated (default) uses the shadow theme; outlined draws a border; filled tints the surface."
+        >
+          <div className="orbit-cards">
+            {(['elevated', 'outlined', 'filled'] as const).map((a) => (
+              <Card key={a} appearance={a}>
+                <CardMedia alt="" />
+                <CardBody>
+                  <CardTitle>{`${a[0].toUpperCase()}${a.slice(1)} card`}</CardTitle>
+                  <CardDescription>
+                    A practical guide with examples from teams using Orbit.
+                  </CardDescription>
+                </CardBody>
+                <CardFooter>
+                  <Button size="small" variant="secondary" appearance="outline">
+                    Read more
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </Demo>
+        <Demo
+          title="Horizontal"
+          description="Media beside the body, for lists of articles or products."
+        >
+          <div className="orbit-cards orbit-cards--wide">
+            {['Design systems that scale', 'Pricing pages that convert'].map((t, i) => (
+              <Card key={t} orientation="horizontal" appearance={i ? 'outlined' : 'elevated'}>
+                <CardMedia alt="" />
+                <CardBody>
+                  <Badge size="small" shape="modern" color={i ? 'pink' : 'blue'}>
+                    {i ? 'Growth' : 'Design'}
+                  </Badge>
+                  <CardTitle>{t}</CardTitle>
+                  <CardDescription>
+                    Eight minutes read · a practical guide with real examples.
+                  </CardDescription>
+                  <AvatarLabelGroup
+                    name={people[i].name}
+                    src={people[i].src}
+                    supportingText="12 Oct 2026"
+                    size="small"
+                  />
+                </CardBody>
+              </Card>
+            ))}
+          </div>
+        </Demo>
+        <Demo
+          title="Body content"
+          description="The body takes any content: people, figures, progress, prices and actions."
+        >
+          <div className="orbit-cards">
+            <Card appearance="outlined">
+              <CardBody>
+                <AvatarLabelGroup
+                  name={people[2].name}
+                  src={people[2].src}
+                  supportingText="Engineer · Globex"
+                />
+                <CardDescription>
+                  “Orbit replaced four tools and gave us one number everyone trusts.”
+                </CardDescription>
+              </CardBody>
+              <CardFooter>
+                <Button size="small" appearance="text">
+                  View profile
+                </Button>
+              </CardFooter>
+            </Card>
+            <Card appearance="outlined">
+              <CardBody>
+                <CardDescription>Monthly recurring revenue</CardDescription>
+                <CardTitle>$48,210</CardTitle>
+                <Badge size="small" shape="modern" tone="success" iconStart={<ArrowRight />}>
+                  12% vs last month
+                </Badge>
+              </CardBody>
+            </Card>
+            <Card appearance="outlined">
+              <CardBody>
+                <CardTitle>Onboarding revamp</CardTitle>
+                <CardDescription>7 of 10 tasks done · due Friday</CardDescription>
+                <Progress label="Onboarding revamp progress" hideLabel value={70} />
+                <AvatarGroup label="Assignees" size="xsmall" max={3}>
+                  {people.slice(0, 5).map((p) => (
+                    <Avatar key={p.email} name={p.name} src={p.src} />
+                  ))}
+                </AvatarGroup>
+              </CardBody>
+            </Card>
+            <Card>
+              <CardMedia alt="" />
+              <CardBody>
+                <div className="row row--between">
+                  <CardTitle>Studio headphones</CardTitle>
+                  <Badge size="small" shape="modern" tone="danger">
+                    −20%
+                  </Badge>
+                </div>
+                <CardDescription>Noise cancelling · 30 h battery</CardDescription>
+                <strong className="orbit-h2">$279</strong>
+              </CardBody>
+              <CardFooter>
+                <Button size="small">Add to cart</Button>
+                <Button size="small" variant="secondary" appearance="outline">
+                  Save
+                </Button>
+              </CardFooter>
+            </Card>
+            <Card appearance="filled">
+              <CardBody>
+                <Tag tone="primary">Webinar</Tag>
+                <CardTitle>Activation that sticks</CardTitle>
+                <CardDescription>Thu, 22 Oct · 17:00 UTC · 45 min</CardDescription>
+              </CardBody>
+              <CardFooter>
+                <Button size="small" iconStart={<Bell />}>
+                  Remind me
+                </Button>
+              </CardFooter>
+            </Card>
+            <Card appearance="outlined" href={to('/pages/faq')}>
+              <CardBody>
+                <CardTitle>Whole card is a link</CardTitle>
+                <CardDescription>Hover or focus anywhere on it. Opens the FAQ.</CardDescription>
+              </CardBody>
+            </Card>
+          </div>
+        </Demo>
+      </>
     ),
     carousel: <Carousel />,
     dropdowns: (
@@ -1000,78 +1160,207 @@ function Ui({ kind }: { kind: string }) {
       </>
     ),
     lists: (
-      <Grid>
-        <List divided aria-label="Team">
-          {people.slice(0, 4).map((p) => (
-            <ListItem
-              key={p.email}
-              icon={<Avatar name={p.name} src={p.src} size="small" decorative />}
-              title={p.name}
-              description={p.email}
-              meta={<Badge size="small">{p.company}</Badge>}
-            />
-          ))}
-        </List>
-        <List ordered aria-label="Setup steps">
-          {[
-            'Create a workspace',
-            'Connect billing',
-            'Invite your team',
-            'Pick your key metric',
-          ].map((t) => (
-            <ListItem key={t} title={t} />
-          ))}
-        </List>
-      </Grid>
+      <div className="orbit-row orbit-row--even">
+        <Demo title="Simple" description="Title only, no dividers.">
+          <List aria-label="Simple list">
+            {['Dashboards', 'Reports', 'Integrations', 'Billing'].map((t) => (
+              <ListItem key={t} title={t} />
+            ))}
+          </List>
+        </Demo>
+        <Demo title="Divided, with descriptions">
+          <List divided aria-label="Plans">
+            {[
+              ['Starter', 'For individuals getting started'],
+              ['Growth', 'For small teams shipping weekly'],
+              ['Scale', 'For companies with many workspaces'],
+            ].map(([t, d]) => (
+              <ListItem key={t} title={t} description={d} />
+            ))}
+          </List>
+        </Demo>
+        <Demo title="With icons and dates" description="Files: each row is a link.">
+          <List divided aria-label="Files">
+            {[
+              ['Q3 board deck.pdf', '12 MB', 'Today'],
+              ['Pricing research.docx', '640 KB', 'Yesterday'],
+              ['Launch video.mp4', '89 MB', 'Mon'],
+            ].map(([t, d, m]) => (
+              <ListItem
+                key={t}
+                icon={<FileText />}
+                title={t}
+                description={d}
+                meta={m}
+                href={to('/pages/files')}
+              />
+            ))}
+          </List>
+        </Demo>
+        <Demo title="With avatars and badges" description="People.">
+          <List divided aria-label="Team">
+            {people.slice(0, 4).map((p, i) => (
+              <ListItem
+                key={p.email}
+                icon={<Avatar name={p.name} src={p.src} size="small" decorative />}
+                title={p.name}
+                description={p.email}
+                meta={
+                  <Badge size="small" shape="modern" tone={i === 0 ? 'primary' : 'gray'}>
+                    {i === 0 ? 'Owner' : 'Member'}
+                  </Badge>
+                }
+              />
+            ))}
+          </List>
+        </Demo>
+        <Demo title="With switches" description="Settings: the control sits in meta.">
+          <List divided aria-label="Notification settings">
+            {['Email updates', 'Push notifications', 'Weekly digest'].map((t, i) => (
+              <ListItem
+                key={t}
+                title={t}
+                description={i === 2 ? 'Every Monday at 09:00' : undefined}
+                meta={<Switch aria-label={t} defaultChecked={i !== 1} />}
+              />
+            ))}
+          </List>
+        </Demo>
+        <Demo title="With actions" description="Rows as buttons, plus a trailing button.">
+          <List divided aria-label="Invites">
+            {people.slice(4, 7).map((p) => (
+              <ListItem
+                key={p.email}
+                icon={<Avatar name={p.name} src={p.src} size="small" decorative />}
+                title={p.name}
+                description="Invited 2 days ago"
+                meta={
+                  <Button
+                    size="small"
+                    variant="secondary"
+                    appearance="outline"
+                    onClick={() => toast({ title: `Invite resent to ${p.name}` })}
+                  >
+                    Resend
+                  </Button>
+                }
+              />
+            ))}
+          </List>
+        </Demo>
+        <Demo title="Clickable rows" description="Hover and focus tint the row.">
+          <List divided aria-label="Quick actions">
+            {[
+              [<User key="u" />, 'Edit profile'],
+              [<Settings key="s" />, 'Workspace settings'],
+              [<Share2 key="h" />, 'Share workspace'],
+            ].map(([icon, t]) => (
+              <ListItem
+                key={t as string}
+                icon={icon}
+                title={t}
+                meta={<ChevronRight aria-hidden="true" className="orbit-inline-icon" />}
+                onClick={() => toast({ title: t as string })}
+              />
+            ))}
+          </List>
+        </Demo>
+        <Demo title="Ordered" description="Numbered, for steps.">
+          <List ordered divided aria-label="Setup steps">
+            {[
+              'Create a workspace',
+              'Connect billing',
+              'Invite your team',
+              'Pick your key metric',
+            ].map((t) => (
+              <ListItem key={t} title={t} />
+            ))}
+          </List>
+        </Demo>
+      </div>
     ),
     modals: (
-      <Row>
-        <Modal>
-          <ModalTrigger asChild>
-            <Button>Open modal</Button>
-          </ModalTrigger>
-          <ModalContent title="Invite a teammate" description="They’ll get an email with a link.">
-            <InputField label="Email" type="email" />
-            <ModalFooter>
-              <ModalClose asChild>
-                <Button variant="secondary" appearance="outline">
-                  Cancel
+      <>
+        <Demo
+          title="Dialogs"
+          description="Every dialog is at least the same minimum width, even the small confirmation."
+        >
+          <Row>
+            <Modal>
+              <ModalTrigger asChild>
+                <Button>Open modal</Button>
+              </ModalTrigger>
+              <ModalContent
+                title="Invite a teammate"
+                description="They’ll get an email with a link."
+              >
+                <InputField label="Email" type="email" />
+                <ModalFooter>
+                  <ModalClose asChild>
+                    <Button variant="secondary" appearance="outline">
+                      Cancel
+                    </Button>
+                  </ModalClose>
+                  <ModalClose asChild>
+                    <Button>Send invite</Button>
+                  </ModalClose>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+            <Modal>
+              <ModalTrigger asChild>
+                <Button variant="danger" appearance="outline">
+                  Confirm delete
                 </Button>
-              </ModalClose>
-              <ModalClose asChild>
-                <Button>Send invite</Button>
-              </ModalClose>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-        <Modal>
-          <ModalTrigger asChild>
-            <Button variant="danger" appearance="outline">
-              Confirm delete
-            </Button>
-          </ModalTrigger>
-          <ModalContent
-            role="alertdialog"
-            size="small"
-            icon={<Trash2 />}
-            iconTone="danger"
-            align="center"
-            title="Delete project?"
-            description="This can’t be undone."
-          >
-            <ModalFooter>
-              <ModalClose asChild>
-                <Button variant="secondary" appearance="outline">
-                  Cancel
-                </Button>
-              </ModalClose>
-              <ModalClose asChild>
-                <Button variant="danger">Delete</Button>
-              </ModalClose>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Row>
+              </ModalTrigger>
+              <ModalContent
+                role="alertdialog"
+                size="small"
+                icon={<Trash2 />}
+                iconTone="danger"
+                align="center"
+                title="Delete project?"
+                description="This can’t be undone."
+              >
+                <ModalFooter>
+                  <ModalClose asChild>
+                    <Button variant="secondary" appearance="outline">
+                      Cancel
+                    </Button>
+                  </ModalClose>
+                  <ModalClose asChild>
+                    <Button variant="danger">Delete</Button>
+                  </ModalClose>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </Row>
+        </Demo>
+        <Demo title="Sizes" description="small · medium (default) · large · xlarge">
+          <Row>
+            {(['small', 'medium', 'large', 'xlarge'] as const).map((size) => (
+              <Modal key={size}>
+                <ModalTrigger asChild>
+                  <Button variant="secondary" appearance="outline">
+                    {size[0].toUpperCase() + size.slice(1)}
+                  </Button>
+                </ModalTrigger>
+                <ModalContent
+                  size={size}
+                  title={`${size[0].toUpperCase() + size.slice(1)} dialog`}
+                  description="Width follows the size, never narrower than the shared minimum."
+                >
+                  <ModalFooter>
+                    <ModalClose asChild>
+                      <Button>Close</Button>
+                    </ModalClose>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            ))}
+          </Row>
+        </Demo>
+      </>
     ),
     notifications: (
       <Row>

@@ -19,7 +19,7 @@
   flex-direction: column;
   gap: var(--modal-gap);
   box-sizing: border-box;
-  inline-size: min(var(--_width), 100% - 2 * var(--modal-edge-margin));
+  inline-size: min(max(var(--_width), var(--modal-min-width)), 100% - 2 * var(--modal-edge-margin));
   max-block-size: calc(100% - 2 * var(--modal-edge-margin));
   padding: var(--modal-padding);
   overflow-y: auto;

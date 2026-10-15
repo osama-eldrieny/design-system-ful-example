@@ -12,6 +12,24 @@
   line-height: var(--list-font-line-height);
 }
 
+.ds-list--ordered {
+  counter-reset: ds-list;
+}
+
+.ds-list--ordered > .ds-list__item {
+  counter-increment: ds-list;
+}
+
+/* The visible number; ordered lists drop the browser marker so it lines up with the rows. */
+.ds-list--ordered > .ds-list__item > .ds-list__row::before {
+  content: counter(ds-list) '.';
+  flex: none;
+  min-inline-size: var(--list-number-min-width);
+  color: var(--list-number-text-color);
+  font-weight: var(--list-number-font-weight);
+  font-variant-numeric: tabular-nums;
+}
+
 .ds-list--divided > .ds-list__item + .ds-list__item {
   border-block-start: var(--list-divider-width) solid var(--list-divider-color);
 }

@@ -9,12 +9,12 @@ Each theme is checked with its brand and mode; other theme axes don't change col
 
 | Theme | Pairs | Pass | Fail |
 |---|---|---|---|
-| diamond-light | 405 | 405 | 0 |
-| diamond-dark | 405 | 405 | 0 |
-| amber-light | 405 | 405 | 0 |
-| amber-dark | 405 | 405 | 0 |
-| opal-light | 405 | 405 | 0 |
-| opal-dark | 405 | 405 | 0 |
+| diamond-light | 409 | 409 | 0 |
+| diamond-dark | 409 | 409 | 0 |
+| amber-light | 409 | 409 | 0 |
+| amber-dark | 409 | 409 | 0 |
+| opal-light | 409 | 409 | 0 |
+| opal-dark | 409 | 409 | 0 |
 
 ## Failures (0)
 
@@ -180,9 +180,13 @@ None.
 | diamond-light | `--alerts-warning-description-text-color` | `--alerts-warning-bg-color` | #876400 on #fdf7e6 | 5.09:1 | 4.5:1 |
 | diamond-light | `--alerts-danger-description-text-color` | `--alerts-danger-bg-color` | #cf2121 on #fee9e9 | 4.64:1 | 4.5:1 |
 | diamond-light | `--alerts-primary-solid-text-color` | `--alerts-primary-solid-bg-color` | #fff on #794dff | 4.86:1 | 4.5:1 |
+| diamond-light | `--alerts-primary-solid-action-text-color` | `--alerts-primary-solid-action-bg-color` | #794dff on #fff | 4.86:1 | 4.5:1 |
 | diamond-light | `--alerts-success-solid-text-color` | `--alerts-success-solid-bg-color` | #24202d on #2ed46b | 8.14:1 | 4.5:1 |
+| diamond-light | `--alerts-success-solid-action-text-color` | `--alerts-success-solid-action-bg-color` | #2ed46b on #24202d | 8.14:1 | 4.5:1 |
 | diamond-light | `--alerts-warning-solid-text-color` | `--alerts-warning-solid-bg-color` | #24202d on #f0be2e | 9.18:1 | 4.5:1 |
+| diamond-light | `--alerts-warning-solid-action-text-color` | `--alerts-warning-solid-action-bg-color` | #f0be2e on #24202d | 9.18:1 | 4.5:1 |
 | diamond-light | `--alerts-danger-solid-text-color` | `--alerts-danger-solid-bg-color` | #fee9e9 on #cf2121 | 4.64:1 | 4.5:1 |
+| diamond-light | `--alerts-danger-solid-action-text-color` | `--alerts-danger-solid-action-bg-color` | #cf2121 on #fee9e9 | 4.64:1 | 4.5:1 |
 | diamond-light | `--alerts-primary-outline-text-color` | `--alerts-primary-outline-bg-color` | #794dff on #fff | 4.86:1 | 4.5:1 |
 | diamond-light | `--alerts-success-outline-text-color` | `--alerts-success-outline-bg-color` | #00732b on #fff | 6.02:1 | 4.5:1 |
 | diamond-light | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #876400 on #fff | 5.45:1 | 4.5:1 |
@@ -585,9 +589,13 @@ None.
 | diamond-dark | `--alerts-warning-description-text-color` | `--alerts-warning-bg-color` | #f4cd5e on #332e3c | 8.61:1 | 4.5:1 |
 | diamond-dark | `--alerts-danger-description-text-color` | `--alerts-danger-bg-color` | #f77777 on #332e3c | 4.92:1 | 4.5:1 |
 | diamond-dark | `--alerts-primary-solid-text-color` | `--alerts-primary-solid-bg-color` | #24202d on #f2edff | 13.89:1 | 4.5:1 |
+| diamond-dark | `--alerts-primary-solid-action-text-color` | `--alerts-primary-solid-action-bg-color` | #f2edff on #24202d | 13.89:1 | 4.5:1 |
 | diamond-dark | `--alerts-success-solid-text-color` | `--alerts-success-solid-bg-color` | #005b22 on #e6faed | 7.64:1 | 4.5:1 |
+| diamond-dark | `--alerts-success-solid-action-text-color` | `--alerts-success-solid-action-bg-color` | #e6faed on #005b22 | 7.64:1 | 4.5:1 |
 | diamond-dark | `--alerts-warning-solid-text-color` | `--alerts-warning-solid-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
+| diamond-dark | `--alerts-warning-solid-action-text-color` | `--alerts-warning-solid-action-bg-color` | #fdf7e6 on #6b4f00 | 7.15:1 | 4.5:1 |
 | diamond-dark | `--alerts-danger-solid-text-color` | `--alerts-danger-solid-bg-color` | #8b1616 on #fee9e9 | 8.11:1 | 4.5:1 |
+| diamond-dark | `--alerts-danger-solid-action-text-color` | `--alerts-danger-solid-action-bg-color` | #fee9e9 on #8b1616 | 8.11:1 | 4.5:1 |
 | diamond-dark | `--alerts-primary-outline-text-color` | `--alerts-primary-outline-bg-color` | #ab8fff on #24202d | 6.14:1 | 4.5:1 |
 | diamond-dark | `--alerts-success-outline-text-color` | `--alerts-success-outline-bg-color` | #00ca4b on #24202d | 7.24:1 | 4.5:1 |
 | diamond-dark | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #c99600 on #24202d | 5.95:1 | 4.5:1 |
@@ -990,9 +998,13 @@ None.
 | amber-light | `--alerts-warning-description-text-color` | `--alerts-warning-bg-color` | #876400 on #fdf7e6 | 5.09:1 | 4.5:1 |
 | amber-light | `--alerts-danger-description-text-color` | `--alerts-danger-bg-color` | #934c5e on #f4edef | 5.30:1 | 4.5:1 |
 | amber-light | `--alerts-primary-solid-text-color` | `--alerts-primary-solid-bg-color` | #1e140d on #cda376 | 7.83:1 | 4.5:1 |
+| amber-light | `--alerts-primary-solid-action-text-color` | `--alerts-primary-solid-action-bg-color` | #cda376 on #1e140d | 7.83:1 | 4.5:1 |
 | amber-light | `--alerts-success-solid-text-color` | `--alerts-success-solid-bg-color` | #ecf1f1 on #447571 | 4.57:1 | 4.5:1 |
+| amber-light | `--alerts-success-solid-action-text-color` | `--alerts-success-solid-action-bg-color` | #447571 on #ecf1f1 | 4.57:1 | 4.5:1 |
 | amber-light | `--alerts-warning-solid-text-color` | `--alerts-warning-solid-bg-color` | #1e140d on #f0be2e | 10.43:1 | 4.5:1 |
+| amber-light | `--alerts-warning-solid-action-text-color` | `--alerts-warning-solid-action-bg-color` | #f0be2e on #1e140d | 10.43:1 | 4.5:1 |
 | amber-light | `--alerts-danger-solid-text-color` | `--alerts-danger-solid-bg-color` | #f4edef on #934c5e | 5.30:1 | 4.5:1 |
+| amber-light | `--alerts-danger-solid-action-text-color` | `--alerts-danger-solid-action-bg-color` | #934c5e on #f4edef | 5.30:1 | 4.5:1 |
 | amber-light | `--alerts-primary-outline-text-color` | `--alerts-primary-outline-bg-color` | #8a663e on #fff | 5.18:1 | 4.5:1 |
 | amber-light | `--alerts-success-outline-text-color` | `--alerts-success-outline-bg-color` | #447571 on #fff | 5.21:1 | 4.5:1 |
 | amber-light | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #876400 on #fff | 5.45:1 | 4.5:1 |
@@ -1395,9 +1407,13 @@ None.
 | amber-dark | `--alerts-warning-description-text-color` | `--alerts-warning-bg-color` | #f4cd5e on #2a1f16 | 10.52:1 | 4.5:1 |
 | amber-dark | `--alerts-danger-description-text-color` | `--alerts-danger-bg-color` | #d1b2ba on #542b36 | 6.08:1 | 4.5:1 |
 | amber-dark | `--alerts-primary-solid-text-color` | `--alerts-primary-solid-bg-color` | #1e140d on #fff | 18.09:1 | 4.5:1 |
+| amber-dark | `--alerts-primary-solid-action-text-color` | `--alerts-primary-solid-action-bg-color` | #fff on #1e140d | 18.09:1 | 4.5:1 |
 | amber-dark | `--alerts-success-solid-text-color` | `--alerts-success-solid-bg-color` | #305350 on #ecf1f1 | 7.43:1 | 4.5:1 |
+| amber-dark | `--alerts-success-solid-action-text-color` | `--alerts-success-solid-action-bg-color` | #ecf1f1 on #305350 | 7.43:1 | 4.5:1 |
 | amber-dark | `--alerts-warning-solid-text-color` | `--alerts-warning-solid-bg-color` | #6b4f00 on #fdf7e6 | 7.15:1 | 4.5:1 |
+| amber-dark | `--alerts-warning-solid-action-text-color` | `--alerts-warning-solid-action-bg-color` | #fdf7e6 on #6b4f00 | 7.15:1 | 4.5:1 |
 | amber-dark | `--alerts-danger-solid-text-color` | `--alerts-danger-solid-bg-color` | #683643 on #f4edef | 8.29:1 | 4.5:1 |
+| amber-dark | `--alerts-danger-solid-action-text-color` | `--alerts-danger-solid-action-bg-color` | #f4edef on #683643 | 8.29:1 | 4.5:1 |
 | amber-dark | `--alerts-primary-outline-text-color` | `--alerts-primary-outline-bg-color` | #cda376 on #1e140d | 7.83:1 | 4.5:1 |
 | amber-dark | `--alerts-success-outline-text-color` | `--alerts-success-outline-bg-color` | #89a8a6 on #1e140d | 7.08:1 | 4.5:1 |
 | amber-dark | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #c99600 on #1e140d | 6.76:1 | 4.5:1 |
@@ -1800,9 +1816,13 @@ None.
 | opal-light | `--alerts-warning-description-text-color` | `--alerts-warning-bg-color` | #856603 on #fdf7e6 | 5.03:1 | 4.5:1 |
 | opal-light | `--alerts-danger-description-text-color` | `--alerts-danger-bg-color` | #ad2d43 on #feecef | 5.71:1 | 4.5:1 |
 | opal-light | `--alerts-primary-solid-text-color` | `--alerts-primary-solid-bg-color` | #fff on #326fd1 | 4.85:1 | 4.5:1 |
+| opal-light | `--alerts-primary-solid-action-text-color` | `--alerts-primary-solid-action-bg-color` | #326fd1 on #fff | 4.85:1 | 4.5:1 |
 | opal-light | `--alerts-success-solid-text-color` | `--alerts-success-solid-bg-color` | #292d3e on #9ad541 | 7.78:1 | 4.5:1 |
+| opal-light | `--alerts-success-solid-action-text-color` | `--alerts-success-solid-action-bg-color` | #9ad541 on #292d3e | 7.78:1 | 4.5:1 |
 | opal-light | `--alerts-warning-solid-text-color` | `--alerts-warning-solid-bg-color` | #292d3e on #eec133 | 8.00:1 | 4.5:1 |
+| opal-light | `--alerts-warning-solid-action-text-color` | `--alerts-warning-solid-action-bg-color` | #eec133 on #292d3e | 8.00:1 | 4.5:1 |
 | opal-light | `--alerts-danger-solid-text-color` | `--alerts-danger-solid-bg-color` | #feecef on #ad2d43 | 5.71:1 | 4.5:1 |
+| opal-light | `--alerts-danger-solid-action-text-color` | `--alerts-danger-solid-action-bg-color` | #ad2d43 on #feecef | 5.71:1 | 4.5:1 |
 | opal-light | `--alerts-primary-outline-text-color` | `--alerts-primary-outline-bg-color` | #2a5caf on #fff | 6.46:1 | 4.5:1 |
 | opal-light | `--alerts-success-outline-text-color` | `--alerts-success-outline-bg-color` | #4b740d on #fff | 5.52:1 | 4.5:1 |
 | opal-light | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #856603 on #fff | 5.39:1 | 4.5:1 |
@@ -2205,9 +2225,13 @@ None.
 | opal-dark | `--alerts-warning-description-text-color` | `--alerts-warning-bg-color` | #f2cf62 on #695103 | 4.99:1 | 4.5:1 |
 | opal-dark | `--alerts-danger-description-text-color` | `--alerts-danger-bg-color` | #f8869a on #6e1c2a | 4.76:1 | 4.5:1 |
 | opal-dark | `--alerts-primary-solid-text-color` | `--alerts-primary-solid-bg-color` | #292d3e on #fff | 13.64:1 | 4.5:1 |
+| opal-dark | `--alerts-primary-solid-action-text-color` | `--alerts-primary-solid-action-bg-color` | #fff on #292d3e | 13.64:1 | 4.5:1 |
 | opal-dark | `--alerts-success-solid-text-color` | `--alerts-success-solid-bg-color` | #3b5c0a on #f3fae8 | 7.22:1 | 4.5:1 |
+| opal-dark | `--alerts-success-solid-action-text-color` | `--alerts-success-solid-action-bg-color` | #f3fae8 on #3b5c0a | 7.22:1 | 4.5:1 |
 | opal-dark | `--alerts-warning-solid-text-color` | `--alerts-warning-solid-bg-color` | #695103 on #fdf7e6 | 7.06:1 | 4.5:1 |
+| opal-dark | `--alerts-warning-solid-action-text-color` | `--alerts-warning-solid-action-bg-color` | #fdf7e6 on #695103 | 7.06:1 | 4.5:1 |
 | opal-dark | `--alerts-danger-solid-text-color` | `--alerts-danger-solid-bg-color` | #8b2436 on #feecef | 7.68:1 | 4.5:1 |
+| opal-dark | `--alerts-danger-solid-action-text-color` | `--alerts-danger-solid-action-bg-color` | #feecef on #8b2436 | 7.68:1 | 4.5:1 |
 | opal-dark | `--alerts-primary-outline-text-color` | `--alerts-primary-outline-bg-color` | #abc9fb on #292d3e | 8.11:1 | 4.5:1 |
 | opal-dark | `--alerts-success-outline-text-color` | `--alerts-success-outline-bg-color` | #84cc17 on #292d3e | 6.91:1 | 4.5:1 |
 | opal-dark | `--alerts-warning-outline-text-color` | `--alerts-warning-outline-bg-color` | #eab306 on #292d3e | 7.11:1 | 4.5:1 |

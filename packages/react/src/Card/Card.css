@@ -59,13 +59,17 @@
   background-color: var(--card-image-bg-color);
   background-image: var(--card-image-name);
   background-position: center;
-  background-size: cover;
+  background-repeat: no-repeat;
+
+  /* The theme placeholder shows whole; a real image (.ds-card__image) still covers the area. */
+  background-size: contain;
   overflow: hidden;
 }
 
 .ds-card--horizontal .ds-card__media {
   inline-size: var(--card-horizontal-media-width);
   block-size: auto;
+  min-block-size: var(--card-horizontal-media-min-height);
 }
 
 .ds-card__image {

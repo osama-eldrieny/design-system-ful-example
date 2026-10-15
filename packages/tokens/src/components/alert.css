@@ -6,6 +6,10 @@
  * Grammar: --alerts-{variant}-{appearance?}-{property}
  *   variant: primary | success | warning | danger
  *   appearance: subtle (omitted) | solid | outline
+ *
+ * Token reference (solid only):
+ *   --alerts-{variant}-solid-action-{bg-color,text-color,hover-bg-color}: buttons in the actions
+ *     slot of a solid alert, inverted so they stand out on the coloured background.
  */
 
 :root,
@@ -49,15 +53,27 @@
   --alerts-primary-solid-bg-color: var(--color-bg-accent-primary-default);
   --alerts-primary-solid-text-color: var(--color-fg-on-accent-primary-default);
   --alerts-primary-solid-dismiss-hover-bg-color: var(--color-bg-accent-primary-hover);
+  --alerts-primary-solid-action-bg-color: var(--color-fg-on-accent-primary-default);
+  --alerts-primary-solid-action-text-color: var(--color-bg-accent-primary-default);
+  --alerts-primary-solid-action-hover-bg-color: var(--color-bg-primary-100);
   --alerts-success-solid-bg-color: var(--color-bg-accent-success-default);
   --alerts-success-solid-text-color: var(--color-fg-on-accent-success-default);
   --alerts-success-solid-dismiss-hover-bg-color: var(--color-bg-accent-success-hover);
+  --alerts-success-solid-action-bg-color: var(--color-fg-on-accent-success-default);
+  --alerts-success-solid-action-text-color: var(--color-bg-accent-success-default);
+  --alerts-success-solid-action-hover-bg-color: var(--color-bg-success-100);
   --alerts-warning-solid-bg-color: var(--color-bg-accent-warning-default);
   --alerts-warning-solid-text-color: var(--color-fg-on-accent-warning-default);
   --alerts-warning-solid-dismiss-hover-bg-color: var(--color-bg-accent-warning-hover);
+  --alerts-warning-solid-action-bg-color: var(--color-fg-on-accent-warning-default);
+  --alerts-warning-solid-action-text-color: var(--color-bg-accent-warning-default);
+  --alerts-warning-solid-action-hover-bg-color: var(--color-bg-warning-100);
   --alerts-danger-solid-bg-color: var(--color-bg-accent-danger-default);
   --alerts-danger-solid-text-color: var(--color-fg-on-accent-danger-default);
   --alerts-danger-solid-dismiss-hover-bg-color: var(--color-bg-accent-danger-hover);
+  --alerts-danger-solid-action-bg-color: var(--color-fg-on-accent-danger-default);
+  --alerts-danger-solid-action-text-color: var(--color-bg-accent-danger-default);
+  --alerts-danger-solid-action-hover-bg-color: var(--color-bg-danger-100);
 
   /* Outline appearance: surface background, tone border and text */
   --alerts-primary-outline-bg-color: var(--color-bg-surface);

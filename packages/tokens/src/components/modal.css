@@ -37,6 +37,9 @@
   --modal-gap: var(--spacing-md);
   --modal-footer-gap: var(--spacing-sm);
   --modal-small-width: var(--sizing-8xl);
+
+  /* Every size is at least this wide (screen permitting), so short dialogs don't look cramped. */
+  --modal-min-width: var(--modal-medium-width);
   --modal-medium-width: calc(var(--sizing-8xl) * 2.5);
   --modal-large-width: calc(var(--sizing-8xl) * 4);
   --modal-edge-margin: var(--spacing-md);

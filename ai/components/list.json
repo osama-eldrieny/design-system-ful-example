@@ -329,6 +329,28 @@
       "references": "--sizing-md",
       "default": "22px"
     },
+    "--list-number-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#f7efe7",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--list-number-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--list-number-min-width": {
+      "description": "Fixed element sizes in px.",
+      "references": "--sizing-sm",
+      "default": "16px"
+    },
     "--list-divider-color": {
       "description": "Tone ramp for palettes and data; flips in dark mode so 100 is always the subtlest.",
       "references": "--color-bg-secondary-200",
