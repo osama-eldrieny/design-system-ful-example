@@ -1168,3 +1168,172 @@
 .orbit-checks--column {
   grid-template-columns: minmax(0, 1fr);
 }
+
+/* AI assistant */
+.orbit-ai {
+  display: grid;
+  grid-template-columns: minmax(15rem, 1fr) minmax(0, 3fr);
+  gap: var(--spacing-md);
+  block-size: calc(100dvh - 15rem);
+  min-block-size: 36rem;
+}
+
+.orbit-ai__history {
+  gap: var(--spacing-md);
+  min-block-size: 0;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+}
+
+.orbit-ai__chat {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3xs);
+}
+
+.orbit-ai__chat > .orbit-pick__item {
+  flex: 1;
+  min-inline-size: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.orbit-ai__main {
+  gap: var(--spacing-md);
+  min-block-size: 0;
+  padding: var(--spacing-lg);
+}
+
+.orbit-ai__thread {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  min-block-size: 0;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.orbit-ai__empty {
+  margin-block: auto;
+}
+
+.orbit-ai__msg {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  max-inline-size: 48rem;
+}
+
+.orbit-ai__msg--me {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.orbit-ai__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  min-inline-size: 0;
+  color: var(--color-fg-on-surface-primary);
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-height-md);
+}
+
+.orbit-ai__msg--me .orbit-ai__body {
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-default);
+}
+
+.orbit-ai__body p,
+.orbit-ai__body ol {
+  margin: 0;
+}
+
+.orbit-ai__body > div {
+  align-self: stretch;
+}
+
+.orbit-ai__composer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-xl);
+}
+
+@media (width < 56rem) {
+  .orbit-ai {
+    grid-template-columns: minmax(0, 1fr);
+    block-size: auto;
+  }
+
+  .orbit-ai__history {
+    max-block-size: 16rem;
+  }
+
+  .orbit-ai__main {
+    min-block-size: 36rem;
+  }
+}
+
+.orbit-gen-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--spacing-sm);
+}
+
+.orbit-gen {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  background-image: linear-gradient(
+    180deg,
+    var(--color-bg-sky-2),
+    var(--color-bg-primary-1) 55%,
+    var(--color-bg-success-1)
+  );
+}
+
+.orbit-gen--b {
+  background-image: linear-gradient(
+    200deg,
+    var(--color-bg-blue-1),
+    var(--color-bg-pink-2) 60%,
+    var(--color-bg-warning-1)
+  );
+}
+
+.orbit-gen--video {
+  max-inline-size: 32rem;
+  background-image: linear-gradient(
+    135deg,
+    var(--color-bg-orange-1),
+    var(--color-bg-warning-1) 50%,
+    var(--color-bg-pink-2)
+  );
+}
+
+.orbit-vtabs {
+  display: grid;
+  grid-template-columns: minmax(12rem, 1fr) minmax(0, 4fr);
+  gap: var(--spacing-lg);
+  align-items: start;
+}
+
+@media (width < 56rem) {
+  .orbit-vtabs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .orbit-vtabs > [role='tablist'] {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+}
