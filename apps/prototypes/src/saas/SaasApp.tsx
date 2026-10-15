@@ -10,6 +10,7 @@ type PageModule = LazyExoticComponent<ComponentType<{ path: string }>>;
 const routes: [RegExp, PageModule][] = [
   [/^$/, lazy(() => import('./pages/Overview'))],
   [/^\/dashboards\//, lazy(() => import('./pages/Dashboards'))],
+  [/^\/commerce\//, lazy(() => import('./pages/Commerce'))],
 ];
 
 /** Layout demos reuse the overview inside a different frame. */
