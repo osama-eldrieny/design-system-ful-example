@@ -129,7 +129,10 @@ export default function OrdersPage() {
       <div className="page">
         <PageHeader
           breadcrumbs={
-            <Breadcrumb homeIcon items={[{ label: 'Home', href: '#/app' }, { label: 'Orders' }]} />
+            <Breadcrumb
+              homeIcon
+              items={[{ label: 'Home', href: '#/dashboard' }, { label: 'Orders' }]}
+            />
           }
           title="Orders"
           description="Every invoice, its status and the customer."

@@ -21,8 +21,6 @@ import {
   type SideNavItem,
 } from '@ds/react';
 import {
-  BarChart3,
-  Building2,
   Calendar,
   ChevronsUpDown,
   Copy,
@@ -37,31 +35,19 @@ import {
   QrCode,
   Search,
   Settings,
-  ShoppingBag,
   Sparkles,
   User,
-  Users,
-  Wallet,
   X,
   Zap,
 } from 'lucide-react';
 import { members } from '../dashboard-data';
-import { dashboards } from '../dashboards/registry';
 import { go } from '../router';
 import './app.css';
 
 export type Promo = 'verify' | 'refer' | 'upgrade' | 'workshop' | 'none';
 
-const groupIcon: Record<string, ReactNode> = {
-  Analytics: <BarChart3 />,
-  Customers: <Users />,
-  Vendors: <Building2 />,
-  Sales: <ShoppingBag />,
-  Finance: <Wallet />,
-  Profile: <User />,
-};
-
-const apps: SideNavItem[] = [
+const pages: SideNavItem[] = [
+  { id: 'dashboard', label: 'Dashboard', href: '#/dashboard', icon: <LayoutDashboard /> },
   { id: 'projects', label: 'Projects', href: '#/app/projects', icon: <FolderKanban />, badge: 4 },
   { id: 'messages', label: 'Messages', href: '#/app/messages', icon: <MessagesSquare />, badge: 3 },
   { id: 'calendar', label: 'Calendar', href: '#/app/calendar', icon: <Calendar /> },
@@ -133,34 +119,21 @@ function PromoCard({ kind, onClose }: { kind: Promo; onClose: () => void }) {
     return (
       <div className="app__promo">
         {close}
-        <AvatarGroup label="Attendees" max={4} size="xsmall" onAdd={() => {}} addLabel="Invite">
+        <AvatarGroup label="Attendees" max={4} size="xsmall">
           {members.slice(0, 7).map((m) => (
             <Avatar key={m.email} name={m.name} src={m.src} />
           ))}
         </AvatarGroup>
-        <strong>
-          Join our workshop{' '}
-          <Badge tone="success" shape="modern" size="small" withDot>
-            Live
-          </Badge>
-        </strong>
-        <span className="muted">Learn how to get more out of your dashboards.</span>
-        <span className="row">
-          <Button appearance="text" variant="secondary" size="small" onClick={onClose}>
-            Dismiss
-          </Button>
-          <Button appearance="text" size="small">
-            Join now!
-          </Button>
-        </span>
+        <strong>Join our workshop</strong>
+        <span className="muted">Learn how to get more out of your dashboard.</span>
       </div>
     );
   return null;
 }
 
 /**
- * The demo frame: sidebar (full or slim) with search, dashboards and apps, a promo card and
- * the account; the page in the middle; an optional rail on the end side.
+ * The app frame: sidebar (full or slim) with search, pages, a promo card and the account;
+ * the page fills the rest; an optional rail on the end side.
  */
 export function AppShell({
   current,
@@ -175,45 +148,15 @@ export function AppShell({
   slim?: boolean;
   /** Which card sits above the account. */
   promo?: Promo;
-  /** A panel on the end side, e.g. cards or a chat. */
+  /** A panel on the end side. */
   rail?: ReactNode;
 }) {
   const me = members[0];
   const [search, setSearch] = useState(false);
   const [showPromo, setShowPromo] = useState(true);
-  const groups = [...new Set(dashboards.map((d) => d.group))];
   const sections = [
-    {
-      title: 'Dashboards',
-      items: groups.map((g) => ({
-        id: `group-${g}`,
-        label: g,
-        icon: groupIcon[g],
-        items: dashboards
-          .filter((d) => d.group === g)
-          .map((d) => ({ id: d.id, label: d.title, href: `#/dashboards/${d.id}` })),
-      })),
-    },
-    { title: 'Apps', items: apps },
-    { items: [{ id: 'support', label: 'Support', href: '#/dashboards/01', icon: <LifeBuoy /> }] },
-  ];
-  // The slim rail shows one icon per group, linking to its first dashboard.
-  const currentGroup = dashboards.find((d) => d.id === current)?.group;
-  const slimSections = [
-    {
-      items: [
-        ...groups.map((g) => {
-          const first = dashboards.find((d) => d.group === g)!;
-          return {
-            id: currentGroup === g ? current : `slim-${g}`,
-            label: g,
-            icon: groupIcon[g],
-            href: `#/dashboards/${first.id}`,
-          };
-        }),
-        ...apps,
-      ],
-    },
+    { title: slim ? undefined : 'General', items: pages },
+    { items: [{ id: 'support', label: 'Support', href: '#/dashboard', icon: <LifeBuoy /> }] },
   ];
 
   return (
@@ -227,10 +170,10 @@ export function AppShell({
           currentItem={current}
           header={
             slim ? (
-              <Logo icon={<Sparkles />} name="Panda" hideName href="#/dashboards/01" />
+              <Logo icon={<Sparkles />} name="Panda" hideName href="#/dashboard" />
             ) : (
               <div className="app__brand">
-                <Logo icon={<Sparkles />} name="Panda" href="#/dashboards/01" />
+                <Logo icon={<Sparkles />} name="Panda" href="#/dashboard" />
                 <Button
                   variant="secondary"
                   appearance="outline"
@@ -246,7 +189,7 @@ export function AppShell({
               </div>
             )
           }
-          sections={slim ? slimSections : sections}
+          sections={sections}
           footer={
             slim ? (
               <DropdownMenu>
@@ -296,22 +239,12 @@ export function AppShell({
           label="Search Panda"
           groups={[
             {
-              label: 'Dashboards',
-              items: dashboards.map((d) => ({
-                id: d.id,
-                label: d.title,
-                description: d.group,
-                icon: <LayoutDashboard />,
-                onSelect: () => go(`/dashboards/${d.id}`),
-              })),
-            },
-            {
-              label: 'Apps',
-              items: apps.map((a) => ({
-                id: a.id!,
-                label: a.label,
-                icon: a.icon,
-                onSelect: () => go(a.href!.slice(1)),
+              label: 'Pages',
+              items: pages.map((p) => ({
+                id: p.id!,
+                label: p.label,
+                icon: p.icon,
+                onSelect: () => go(p.href!.slice(1)),
               })),
             },
             {
@@ -321,7 +254,7 @@ export function AppShell({
                 label: m.name,
                 description: m.role,
                 icon: <User />,
-                onSelect: () => go('/dashboards/19'),
+                onSelect: () => go('/app/settings/team'),
               })),
             },
           ]}
@@ -337,17 +270,14 @@ function AccountMenu() {
   return (
     <DropdownMenuContent align="end" side="top">
       <DropdownMenuLabel>{members[0].name}</DropdownMenuLabel>
-      <DropdownMenuItem icon={<User />} onSelect={() => go('/dashboards/19')}>
-        View profile
+      <DropdownMenuItem icon={<User />} onSelect={() => go('/app/settings')}>
+        Profile
       </DropdownMenuItem>
       <DropdownMenuItem icon={<CreditCard />} onSelect={() => go('/app/settings/billing')}>
         Billing
       </DropdownMenuItem>
-      <DropdownMenuItem icon={<Settings />} onSelect={() => go('/app/settings')}>
-        Settings
-      </DropdownMenuItem>
       <DropdownMenuSeparator />
-      <DropdownMenuItem variant="danger" icon={<LogOut />} onSelect={() => go('/dashboards/01')}>
+      <DropdownMenuItem variant="danger" icon={<LogOut />} onSelect={() => go('/dashboard')}>
         Sign out
       </DropdownMenuItem>
     </DropdownMenuContent>

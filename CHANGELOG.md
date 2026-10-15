@@ -37,18 +37,14 @@ VerificationCodeInput.
   **ChooseCard:** icon.
 
 ### Prototypes
-- **19 dashboards** (`#/dashboards/01`–`19`), each recreating one of Untitled UI's dashboard
-  examples with this library's components and tokens, grouped in the sidebar:
-  Analytics (membership, site traffic, store revenue, recently active, website analytics, ad
-  performance), Customers (growth, health), Vendors (organization overview, monitoring), Sales
-  (ecommerce, sales overview, sales activity), Finance (personal finance, banking, card spending,
-  card receipts, savings goals) and Profile (creator stats).
-- Shared kit: panels, period switchers, bank cards, concentric rings, transaction, company,
-  vendor and people tables.
-- Shell variants: full or slim (icon-only) sidebar, four promo cards (verify device, refer a
-  friend, upgrade, workshop), and an optional end rail for cards or a chat.
-- Apps: Projects, Messages, Calendar, Orders and Settings. Old `#/admin…` and `#/app…` links
-  redirect.
+- **One Panda dashboard** (`#/dashboard`), drawing on the layouts and content of Untitled UI's
+  19 dashboard examples: sparkline KPIs; a performance chart with tabbed figures; sales by
+  channel; customer acquisition; a monthly goal gauge; recent orders with status filters; live
+  purchases; top pages; active users by country. Full width.
+- Shell: sidebar with ⌘K search, pages with badges, a promo card and the account menu; a slim
+  (icon-only) variant and an optional end rail.
+- Apps: Projects, Messages, Calendar, Orders and Settings. Old `#/admin…`, `#/app` and
+  `#/dashboards/…` links redirect.
 - InputField shrinks inside narrow flex and grid layouts (it overflowed phones).
 
 ## 1.0.0 — 2026-09-29

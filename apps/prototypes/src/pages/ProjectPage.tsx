@@ -59,7 +59,7 @@ export default function ProjectPage() {
             <Breadcrumb
               homeIcon
               items={[
-                { label: 'Home', href: '#/app' },
+                { label: 'Home', href: '#/dashboard' },
                 { label: 'Projects', href: '#/app/projects' },
                 { label: project.name },
               ]}

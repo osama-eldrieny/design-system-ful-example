@@ -65,11 +65,6 @@
   padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-4xl);
 }
 
-.app__main > * {
-  max-inline-size: calc(var(--sizing-8xl) * 6.5);
-  margin-inline: auto;
-}
-
 @media (width < 64rem) {
   .app {
     grid-template-columns: minmax(0, 1fr);

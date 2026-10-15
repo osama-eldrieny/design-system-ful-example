@@ -5,7 +5,7 @@ import CalendarPage from './pages/CalendarPage';
 import DemoPage from './pages/DemoPage';
 import MessagesPage from './pages/MessagesPage';
 import OrdersPage from './pages/OrdersPage';
-import { dashboardPages } from './dashboards';
+import { Dashboard } from './dashboards/Dashboard';
 import ProjectPage from './pages/ProjectPage';
 import SettingsPage from './pages/SettingsPage';
 import './prototype.css';
@@ -35,19 +35,14 @@ function Page({
     orders: () => <OrdersPage />,
     settings: () => <SettingsPage section={route.split('/')[3] ?? 'details'} />,
   };
-  if (route.startsWith('/dashboards/')) {
-    const Page = dashboardPages[route.split('/')[2]] ?? dashboardPages['01'];
-    return <Page />;
-  }
   const appPage = app[route.split('/')[2]];
   if (route.startsWith('/app/') && appPage) return appPage();
   if (route.startsWith('/demo'))
     return (
       <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
     );
-  // The first dashboard is the prototypes' home page.
-  const Home = dashboardPages['01'];
-  return <Home />;
+  // The dashboard is the prototypes' home page.
+  return <Dashboard />;
 }
 
 /** The prototypes app: the TechHub admin, the theme playground, toasts and the saved theme. */

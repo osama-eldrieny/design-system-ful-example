@@ -90,10 +90,10 @@
 
 .kit-panel__footer {
   display: flex;
+  margin-block: auto calc(-1 * var(--spacing-md));
   justify-content: flex-end;
   gap: var(--spacing-sm);
   margin-inline: calc(-1 * var(--spacing-xl));
-  margin-block-end: calc(-1 * var(--spacing-md));
   padding: var(--spacing-md) var(--spacing-xl) 0;
   border-block-start: var(--border-width-hairline) solid var(--color-border-base);
 }
