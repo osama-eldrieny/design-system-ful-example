@@ -7,7 +7,7 @@ export default defineMeta({
   status: 'stable',
   since: '0.3.0',
   description:
-    'A button group shows related action buttons together, spaced or attached into one control. It holds actions only; to pick one of a few options or views, use Tabs with the segmented appearance.',
+    'A button group shows related action buttons together, evenly spaced, in a row or a column. It holds actions only; to pick one of a few options or views, use Tabs with the segmented appearance.',
   imports: [{ name: 'ButtonGroup', from: '@ds/react' }],
   whenToUse: [
     'For two to five related actions, e.g. Previous / Next or Bold / Italic / Underline.',
@@ -30,14 +30,6 @@ export default defineMeta({
   ],
   options: [
     {
-      prop: 'attached',
-      title: 'Layout',
-      values: [
-        { value: 'false', meaning: 'Spaced buttons. Default.' },
-        { value: 'true', meaning: 'Joined into one control; inner corners squared.' },
-      ],
-    },
-    {
       prop: 'orientation',
       title: 'Orientation',
       values: [
@@ -52,15 +44,15 @@ export default defineMeta({
   behavior: [
     {
       topic: 'Focus',
-      text: 'Every button is a Tab stop; in attached groups the focus ring stays above neighbours.',
+      text: 'Every button is a Tab stop and shows its own focus ring.',
     },
   ],
   content: ['Use short, parallel labels, or icons with aria-labels (IconButton).'],
   guidelines: [
     {
       do: 'Group only closely related actions.',
-      dont: 'Put Save and Delete in one attached group.',
-      why: 'Attached buttons read as one control; a destructive action needs space.',
+      dont: 'Put Save and Delete in one group.',
+      why: 'A destructive action needs to stand apart from safe ones.',
     },
     {
       do: 'Name the group with aria-label.',
@@ -97,15 +89,14 @@ export default defineMeta({
 </ButtonGroup>`,
     },
     {
-      id: 'attached',
-      title: 'Attached',
-      description: 'Joined into one control.',
+      id: 'vertical',
+      title: 'Vertical',
+      description: 'Stacked full width, e.g. in a narrow panel.',
       code: `import { ButtonGroup, Button } from '@ds/react';
 
-<ButtonGroup aria-label="Zoom" attached>
-  <Button appearance="outline">−</Button>
-  <Button appearance="outline">100%</Button>
-  <Button appearance="outline">+</Button>
+<ButtonGroup aria-label="Export" orientation="vertical">
+  <Button appearance="outline" variant="secondary">Export as CSV</Button>
+  <Button appearance="outline" variant="secondary">Export as PDF</Button>
 </ButtonGroup>`,
     },
     {
@@ -115,7 +106,7 @@ export default defineMeta({
       code: `import { ButtonGroup, IconButton } from '@ds/react';
 import { Bold, Italic, Underline } from 'lucide-react';
 
-<ButtonGroup aria-label="Text style" attached>
+<ButtonGroup aria-label="Text style">
   <IconButton icon={<Bold />} label="Bold" variant="secondary" appearance="outline" />
   <IconButton icon={<Italic />} label="Italic" variant="secondary" appearance="outline" />
   <IconButton icon={<Underline />} label="Underline" variant="secondary" appearance="outline" />
@@ -137,6 +128,7 @@ import { Bold, Italic, Underline } from 'lucide-react';
       date: '2026-10-15',
       changes: [
         'Breaking: segmented selection (value, defaultValue, onValueChange) removed. Use Tabs with appearance="segmented".',
+        'Breaking: the attached layout is removed; buttons are always spaced (--button-group-border-width token removed).',
       ],
     },
   ],

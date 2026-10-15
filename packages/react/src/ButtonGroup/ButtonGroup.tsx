@@ -4,8 +4,6 @@ import './ButtonGroup.css';
 export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
   /** Names the group for screen readers, e.g. "Text alignment". */
   'aria-label': string;
-  /** Joins the buttons into one control instead of spacing them. */
-  attached?: boolean;
   /** `horizontal` (default) or `vertical`. */
   orientation?: 'horizontal' | 'vertical';
   /** Button elements. */
@@ -13,21 +11,16 @@ export interface ButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Related action buttons shown together, spaced or attached. To pick one of a few options or
+ * Related action buttons shown together, spaced apart. To pick one of a few options or
  * views, use Tabs with the segmented appearance instead.
  */
 export const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>(
-  ({ attached = false, orientation = 'horizontal', className, children, ...props }, ref) => {
+  ({ orientation = 'horizontal', className, children, ...props }, ref) => {
     return (
       <div
         ref={ref}
         role="group"
-        className={[
-          'ds-button-group',
-          `ds-button-group--${orientation}`,
-          attached && 'ds-button-group--attached',
-          className,
-        ]
+        className={['ds-button-group', `ds-button-group--${orientation}`, className]
           .filter(Boolean)
           .join(' ')}
         {...props}

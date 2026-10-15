@@ -101,7 +101,7 @@
       ],
       "category": "Actions",
       "status": "stable",
-      "purpose": "A button group shows related action buttons together, spaced or attached into one control.",
+      "purpose": "A button group shows related action buttons together, evenly spaced, in a row or a column.",
       "contract": "ai/components/button-group.json"
     },
     {

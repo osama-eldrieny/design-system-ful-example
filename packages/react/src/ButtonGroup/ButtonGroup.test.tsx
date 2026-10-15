@@ -19,7 +19,7 @@ describe('ButtonGroup', () => {
   it('keeps each button’s own onClick', async () => {
     const onClick = vi.fn();
     render(
-      <ButtonGroup aria-label="Zoom" attached>
+      <ButtonGroup aria-label="Zoom">
         <Button onClick={onClick}>Zoom in</Button>
       </ButtonGroup>,
     );

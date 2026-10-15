@@ -929,7 +929,7 @@ function Ui({ kind }: { kind: string }) {
           </ButtonGroup>
         </Row>
         <Row>
-          <ButtonGroup aria-label="Text style" attached>
+          <ButtonGroup aria-label="Text style">
             <IconButton icon={<Bold />} label="Bold" variant="secondary" appearance="outline" />
             <IconButton icon={<Italic />} label="Italic" variant="secondary" appearance="outline" />
             <IconButton
@@ -941,7 +941,7 @@ function Ui({ kind }: { kind: string }) {
           </ButtonGroup>
         </Row>
         <Row>
-          <ButtonGroup aria-label="Actions" attached className="scroll-x">
+          <ButtonGroup aria-label="Actions">
             <Button variant="secondary" appearance="outline" iconStart={<Eye />}>
               View
             </Button>

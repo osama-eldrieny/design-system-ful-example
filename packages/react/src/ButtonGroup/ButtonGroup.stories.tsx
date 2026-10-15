@@ -7,7 +7,7 @@ const meta = {
   title: 'Components/Actions/ButtonGroup',
   component: ButtonGroup,
   tags: ['!autodocs'],
-  args: { 'aria-label': 'Pages', attached: false, orientation: 'horizontal', children: null },
+  args: { 'aria-label': 'Pages', orientation: 'horizontal', children: null },
   argTypes: { children: { control: false } },
   parameters: { a11y: { test: 'error' } },
   render: (args) => (
@@ -35,12 +35,7 @@ export const Layouts: Story = {
         <Button appearance="outline">Paste</Button>
         <Button appearance="outline">Cut</Button>
       </ButtonGroup>
-      <ButtonGroup aria-label="Attached" attached>
-        <Button appearance="outline">Copy</Button>
-        <Button appearance="outline">Paste</Button>
-        <Button appearance="outline">Cut</Button>
-      </ButtonGroup>
-      <ButtonGroup aria-label="Vertical" attached orientation="vertical">
+      <ButtonGroup aria-label="Vertical" orientation="vertical">
         <Button appearance="outline">Copy</Button>
         <Button appearance="outline">Paste</Button>
         <Button appearance="outline">Cut</Button>
@@ -52,7 +47,7 @@ export const Layouts: Story = {
 export const RightToLeft: Story = {
   globals: { language: 'ar' },
   render: () => (
-    <ButtonGroup aria-label="الصفحات" attached>
+    <ButtonGroup aria-label="الصفحات">
       <Button variant="secondary" appearance="outline">
         السابق
       </Button>
@@ -70,7 +65,7 @@ export const AllThemes: Story = {
       {(['diamond', 'amber', 'opal'] as const).flatMap((brand) =>
         (['light', 'dark'] as const).map((mode) => (
           <ThemeProvider key={`${brand}-${mode}`} theme={{ brand, mode }} className="ds-canvas">
-            <ButtonGroup aria-label={`${brand} ${mode}`} attached>
+            <ButtonGroup aria-label={`${brand} ${mode}`}>
               <Button>Primary</Button>
               <Button variant="secondary" appearance="outline">
                 Secondary

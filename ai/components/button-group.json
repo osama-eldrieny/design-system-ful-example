@@ -4,7 +4,7 @@
   "category": "Actions",
   "status": "stable",
   "since": "0.3.0",
-  "description": "A button group shows related action buttons together, spaced or attached into one control. It holds actions only; to pick one of a few options or views, use Tabs with the segmented appearance.",
+  "description": "A button group shows related action buttons together, evenly spaced, in a row or a column. It holds actions only; to pick one of a few options or views, use Tabs with the segmented appearance.",
   "imports": [
     {
       "name": "ButtonGroup",
@@ -44,20 +44,6 @@
   ],
   "options": [
     {
-      "prop": "attached",
-      "title": "Layout",
-      "values": [
-        {
-          "value": "false",
-          "meaning": "Spaced buttons. Default."
-        },
-        {
-          "value": "true",
-          "meaning": "Joined into one control; inner corners squared."
-        }
-      ]
-    },
-    {
       "prop": "orientation",
       "title": "Orientation",
       "values": [
@@ -82,7 +68,7 @@
   "behavior": [
     {
       "topic": "Focus",
-      "text": "Every button is a Tab stop; in attached groups the focus ring stays above neighbours."
+      "text": "Every button is a Tab stop and shows its own focus ring."
     }
   ],
   "content": [
@@ -91,8 +77,8 @@
   "guidelines": [
     {
       "do": "Group only closely related actions.",
-      "dont": "Put Save and Delete in one attached group.",
-      "why": "Attached buttons read as one control; a destructive action needs space."
+      "dont": "Put Save and Delete in one group.",
+      "why": "A destructive action needs to stand apart from safe ones."
     },
     {
       "do": "Name the group with aria-label.",
@@ -140,16 +126,16 @@
       "code": "import { ButtonGroup, Button } from '@ds/react';\n\n<ButtonGroup aria-label=\"Pages\">\n  <Button appearance=\"outline\" variant=\"secondary\">Previous</Button>\n  <Button appearance=\"outline\" variant=\"secondary\">Next</Button>\n</ButtonGroup>"
     },
     {
-      "id": "attached",
-      "title": "Attached",
-      "description": "Joined into one control.",
-      "code": "import { ButtonGroup, Button } from '@ds/react';\n\n<ButtonGroup aria-label=\"Zoom\" attached>\n  <Button appearance=\"outline\">−</Button>\n  <Button appearance=\"outline\">100%</Button>\n  <Button appearance=\"outline\">+</Button>\n</ButtonGroup>"
+      "id": "vertical",
+      "title": "Vertical",
+      "description": "Stacked full width, e.g. in a narrow panel.",
+      "code": "import { ButtonGroup, Button } from '@ds/react';\n\n<ButtonGroup aria-label=\"Export\" orientation=\"vertical\">\n  <Button appearance=\"outline\" variant=\"secondary\">Export as CSV</Button>\n  <Button appearance=\"outline\" variant=\"secondary\">Export as PDF</Button>\n</ButtonGroup>"
     },
     {
       "id": "icons",
       "title": "Icon buttons",
       "description": "A toolbar of related icon actions, each named with a label.",
-      "code": "import { ButtonGroup, IconButton } from '@ds/react';\nimport { Bold, Italic, Underline } from 'lucide-react';\n\n<ButtonGroup aria-label=\"Text style\" attached>\n  <IconButton icon={<Bold />} label=\"Bold\" variant=\"secondary\" appearance=\"outline\" />\n  <IconButton icon={<Italic />} label=\"Italic\" variant=\"secondary\" appearance=\"outline\" />\n  <IconButton icon={<Underline />} label=\"Underline\" variant=\"secondary\" appearance=\"outline\" />\n</ButtonGroup>"
+      "code": "import { ButtonGroup, IconButton } from '@ds/react';\nimport { Bold, Italic, Underline } from 'lucide-react';\n\n<ButtonGroup aria-label=\"Text style\">\n  <IconButton icon={<Bold />} label=\"Bold\" variant=\"secondary\" appearance=\"outline\" />\n  <IconButton icon={<Italic />} label=\"Italic\" variant=\"secondary\" appearance=\"outline\" />\n  <IconButton icon={<Underline />} label=\"Underline\" variant=\"secondary\" appearance=\"outline\" />\n</ButtonGroup>"
     }
   ],
   "tokenPrefixes": [
@@ -177,7 +163,8 @@
       "version": "1.2.0",
       "date": "2026-10-15",
       "changes": [
-        "Breaking: segmented selection (value, defaultValue, onValueChange) removed. Use Tabs with appearance=\"segmented\"."
+        "Breaking: segmented selection (value, defaultValue, onValueChange) removed. Use Tabs with appearance=\"segmented\".",
+        "Breaking: the attached layout is removed; buttons are always spaced (--button-group-border-width token removed)."
       ]
     }
   ],
@@ -185,19 +172,13 @@
     {
       "name": "ButtonGroup",
       "import": "import { ButtonGroup } from '@ds/react';",
-      "description": "Related action buttons shown together, spaced or attached. To pick one of a few options or\nviews, use Tabs with the segmented appearance instead.",
+      "description": "Related action buttons shown together, spaced apart. To pick one of a few options or\nviews, use Tabs with the segmented appearance instead.",
       "props": {
         "aria-label": {
           "type": "string",
           "required": true,
           "default": null,
           "description": "Names the group for screen readers, e.g. \"Text alignment\"."
-        },
-        "attached": {
-          "type": "boolean",
-          "required": false,
-          "default": false,
-          "description": "Joins the buttons into one control instead of spacing them."
         },
         "orientation": {
           "type": "\"horizontal\" | \"vertical\"",
@@ -223,11 +204,6 @@
       "description": "Small gap inside compact controls.",
       "references": "--spacing-xs",
       "default": "8px"
-    },
-    "--button-group-border-width": {
-      "description": "Stroke widths in px.",
-      "references": "--border-width-regular",
-      "default": "2px"
     }
   },
   "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-actions-buttongroup--docs"

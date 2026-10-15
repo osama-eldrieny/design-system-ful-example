@@ -15,7 +15,7 @@ import { ComponentPage } from '../blocks';
   anatomy={{
     targets: [{ selector: '.ds-button-group', at: 'start' }, '.ds-button-group > :first-child'],
     example: (
-      <ButtonGroup aria-label="Pages" attached>
+      <ButtonGroup aria-label="Pages">
         <Button variant="secondary" appearance="outline">
           Previous
         </Button>
@@ -25,10 +25,10 @@ import { ComponentPage } from '../blocks';
       </ButtonGroup>
     ),
   }}
-  optionStories={{ attached: 'Layouts', orientation: 'Layouts' }}
+  optionStories={{ orientation: 'Layouts' }}
   behaviorStory="RightToLeft"
   matrix={
-    <ButtonGroup aria-label="Pages" attached>
+    <ButtonGroup aria-label="Pages">
       <Button variant="secondary" appearance="outline">
         Previous
       </Button>

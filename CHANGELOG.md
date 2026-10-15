@@ -39,7 +39,9 @@ VerificationCodeInput.
 ### Breaking
 - **ButtonGroup:** segmented selection (`value`, `defaultValue`, `onValueChange`) is removed;
   ButtonGroup groups actions only. To pick one of a few options, use
-  `<Tabs appearance="segmented" panels={false}>`. Every usage in the docs and prototypes is migrated.
+  `<Tabs appearance="segmented" panels={false}>`. The attached (joined) layout is removed too:
+  buttons in a group are always spaced (`--button-group-border-width` removed). Every usage in the
+  docs and prototypes is migrated.
 
 ### Fixes (from review comments)
 - **Radius:** section surfaces (cards, sections, containers, choose cards, `--radius-2xl`) are

@@ -59,7 +59,7 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Badge** (Feedback): A badge is a small, non-interactive label for a status (“Paid”, “New”) or a count (3 unread).
 - **Breadcrumb** (Navigation): A breadcrumb shows where the current page sits in the site’s hierarchy, with links back up each level.
 - **Button** (Actions): A button triggers an action in place: saving a form, opening a dialog, deleting an item.
-- **ButtonGroup** (Actions): A button group shows related action buttons together, spaced or attached into one control.
+- **ButtonGroup** (Actions): A button group shows related action buttons together, evenly spaced, in a row or a column.
 - **Card** (Data display): A card groups content and actions about one subject, such as an article, a product or a person, into a single container.
 - **Charts** (Data display): Dependency-free SVG charts styled by tokens: LineChart and AreaChart for trends, BarChart for comparing categories (grouped, stacked or horizontal), DonutChart for parts of a whole, RadarChart for several dimensions and Sparkline for a tiny trend next to a figure.
 - **Checkbox** (Forms): A checkbox turns one option on or off, or lets people pick any number of options from a list.

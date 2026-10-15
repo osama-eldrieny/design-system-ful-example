@@ -404,7 +404,7 @@ export const TabsTile = ({ t }: { t: T }) => (
         </TabList>
       </Tabs>
     ))}
-    <ButtonGroup aria-label={t('Actions')} attached>
+    <ButtonGroup aria-label={t('Actions')}>
       <Button size="small" variant="secondary" appearance="outline">
         {t('Previous')}
       </Button>
