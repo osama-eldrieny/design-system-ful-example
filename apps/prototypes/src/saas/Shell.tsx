@@ -74,9 +74,16 @@ function sideSections(): SideNavSection[] {
   }));
 }
 
+/** The group holding a page; the sidebar remounts per group so that group opens. */
+const groupOf = (path: string) =>
+  navSections
+    .flatMap((s) => s.groups)
+    .find((g) => g.path === path || g.pages?.some((pg) => pg.path === path))?.id;
+
 function Sidebar({ current, slim }: { current: string; slim?: boolean }) {
   return (
     <SideNav
+      key={groupOf(current)}
       aria-label="Orbit"
       collapsed={slim}
       currentItem={current || 'home'}
@@ -265,7 +272,7 @@ export function Shell({
           {navSections[0].groups.slice(0, 6).map((g) => (
             <Button
               key={g.id}
-              appearance="text"
+              appearance="ghost"
               variant="secondary"
               size="small"
               iconStart={g.icon}

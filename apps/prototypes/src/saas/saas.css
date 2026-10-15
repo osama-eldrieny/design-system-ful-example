@@ -1337,3 +1337,105 @@
     overflow-x: auto;
   }
 }
+
+/* Showcase */
+.orbit-demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.orbit-map-lg > .orbit-map {
+  min-block-size: 20rem;
+}
+
+.orbit-map-lg--vector > .orbit-map {
+  background-image: radial-gradient(var(--color-border-primary-subtle) 2px, transparent 2.5px);
+}
+
+.orbit-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.orbit-carousel__slide {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 21 / 9;
+  border-radius: var(--radius-2xl);
+  background-image: linear-gradient(135deg, var(--color-bg-primary-1), var(--color-bg-sky-2));
+}
+
+.orbit-carousel__slide--1 {
+  background-image: linear-gradient(135deg, var(--color-bg-success-1), var(--color-bg-blue-1));
+}
+
+.orbit-carousel__slide--2 {
+  background-image: linear-gradient(135deg, var(--color-bg-pink-2), var(--color-bg-warning-1));
+}
+
+.orbit-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+}
+
+.orbit-figure-img {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  margin: 0;
+}
+
+.orbit-video {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-xl);
+  background-image: linear-gradient(135deg, var(--color-bg-indigo-1), var(--color-bg-purple-1));
+}
+
+.orbit-ribbon-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.orbit-ribbon {
+  position: absolute;
+  inset-block-start: var(--spacing-md);
+  inset-inline-end: calc(-1 * var(--spacing-2xl));
+  inline-size: 8rem;
+  padding-block: var(--spacing-3xs);
+  background-color: var(--color-bg-accent-primary-default);
+  color: var(--color-fg-on-accent-primary-default);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi-bold);
+  text-align: center;
+  transform: rotate(45deg);
+}
+
+[dir='rtl'] .orbit-ribbon {
+  transform: rotate(-45deg);
+}
+
+.orbit-ribbon--1 {
+  background-color: var(--color-bg-accent-success-default);
+  color: var(--color-fg-on-accent-success-default);
+}
+
+.orbit-ribbon--2 {
+  background-color: var(--color-bg-accent-danger-default);
+  color: var(--color-fg-on-accent-danger-default);
+}
+
+.orbit-layout-note {
+  margin-block-end: var(--spacing-xl);
+}
+
+.orbit-layout-note__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-2xs) var(--spacing-md);
+}

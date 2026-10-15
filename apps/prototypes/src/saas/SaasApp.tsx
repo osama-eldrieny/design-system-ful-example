@@ -1,5 +1,5 @@
 import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 'react';
-import { Button, EmptyState, Spinner, type Theme } from '@ds/react';
+import { Alert, Button, EmptyState, Link, Spinner, type Theme } from '@ds/react';
 import { Construction } from 'lucide-react';
 import { isBare, pageFor } from './nav';
 import { Page, Shell, ThemeContext, to, type ShellLayout } from './Shell';
@@ -14,6 +14,7 @@ const routes: [RegExp, PageModule][] = [
   [/^\/support\//, lazy(() => import('./pages/Support'))],
   [/^\/pages\/(api-keys|integrations)$/, lazy(() => import('./pages/Developer'))],
   [/^\/ai\//, lazy(() => import('./pages/Ai'))],
+  [/^\/(forms|tables|charts|maps|ui)\//, lazy(() => import('./pages/Showcase'))],
   [/^\/(tasks\/|calendar$)/, lazy(() => import('./pages/Work'))],
   [/^\/(profile|pages\/(files|pricing|faq|blank))$/, lazy(() => import('./pages/Content'))],
 ];
@@ -67,6 +68,26 @@ export default function SaasApp({
         </div>
       }
     >
+      {layout && (
+        <Alert
+          variant="primary"
+          title={`Layout ${layout}: ${pageFor(path)?.label}`}
+          className="orbit-layout-note"
+        >
+          <span className="orbit-layout-note__links">
+            The same overview inside a different app frame. Try:
+            {Object.keys(layouts).map((n) => (
+              <Link
+                key={n}
+                href={to(`/layouts/${n}`)}
+                aria-current={n === layout ? 'page' : undefined}
+              >
+                {pageFor(`/layouts/${n}`)?.label}
+              </Link>
+            ))}
+          </span>
+        </Alert>
+      )}
       {Found ? <Found path={path} /> : <NotYet path={path} />}
     </Suspense>
   );
