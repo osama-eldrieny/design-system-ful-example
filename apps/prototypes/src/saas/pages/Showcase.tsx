@@ -96,7 +96,7 @@ import { months } from '../../dashboard-data';
 import { people } from '../data';
 import { Page, to } from '../Shell';
 import { DataTable, Panel, RowMenu, Status } from '../ui';
-import { CountryBars, WorldDots } from './Dashboards';
+import { CountryBars, WorldMap } from './Dashboards';
 
 const Demo = ({
   title,
@@ -636,11 +636,14 @@ function Maps({ vector }: { vector?: boolean }) {
       <Demo
         title={vector ? 'Users by region' : 'Live sessions'}
         description={
-          vector ? 'Hover a region for its share.' : 'Each dot is a market with active sessions.'
+          vector ? 'Markers show your largest markets; bigger means more users.' : 'Each dot is a market with active sessions.'
         }
       >
-        <div className={vector ? 'orbit-map-lg orbit-map-lg--vector' : 'orbit-map-lg'}>
-          <WorldDots label={vector ? 'Map of users by region' : 'Map of live sessions'} />
+        <div>
+          <WorldMap
+            label={vector ? 'Map of users by region' : 'Map of live sessions'}
+            variant={vector ? 'vector' : 'dots'}
+          />
         </div>
       </Demo>
       <Demo title="Regions">

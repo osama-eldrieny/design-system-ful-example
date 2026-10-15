@@ -211,7 +211,7 @@ function Ecommerce() {
       </Panel>
       <div className="orbit-row orbit-row--1-2">
         <Panel title="Customers demographic" description="Number of customers by country." menu>
-          <WorldDots />
+          <WorldMap />
           <CountryBars
             rows={[
               { label: 'USA', value: 79, note: '2,379 customers' },
@@ -259,25 +259,52 @@ function Ecommerce() {
   );
 }
 
-/** A decorative dot map with a few highlighted markets. */
-export const WorldDots = ({ label = 'Customers by region' }: { label?: string }) => (
-  <div className="orbit-map" role="img" aria-label={label}>
-    {[
-      [22, 34],
-      [48, 28],
-      [52, 36],
-      [70, 44],
-      [80, 62],
-      [30, 68],
-    ].map(([x, y], i) => (
-      <span
-        key={i}
-        className="orbit-map__pin"
-        style={{ insetInlineStart: `${x}%`, insetBlockStart: `${y}%` }}
-      />
-    ))}
-  </div>
-);
+/** Markets shown on the maps: name, longitude, latitude and relative size. */
+const markets: [string, number, number, number][] = [
+  ['San Francisco', -122.4, 37.8, 3],
+  ['New York', -74, 40.7, 3],
+  ['São Paulo', -46.6, -23.5, 2],
+  ['London', -0.1, 51.5, 3],
+  ['Lisbon', -9.1, 38.7, 2],
+  ['Dubai', 55.3, 25.2, 2],
+  ['Lagos', 3.4, 6.5, 1],
+  ['Mumbai', 72.9, 19.1, 2],
+  ['Singapore', 103.8, 1.35, 2],
+  ['Tokyo', 139.7, 35.7, 3],
+  ['Sydney', 151.2, -33.9, 2],
+];
+
+/**
+ * A world map (land as dots, or filled outlines) with market markers. The map is a mask, so it
+ * takes its color from tokens and follows the theme.
+ */
+export const WorldMap = ({
+  label = 'Customers by region',
+  variant = 'dots',
+}: {
+  label?: string;
+  variant?: 'dots' | 'vector';
+}) => {
+  const src = `url(assets/${variant === 'dots' ? 'world-dots' : 'world'}.svg)`;
+  return (
+    // Geography doesn't mirror in right-to-left languages, so markers use physical left/top.
+    <div
+      className={`orbit-map orbit-map--${variant}`}
+      dir="ltr"
+      role="img"
+      aria-label={`${label}: ${markets.map((m) => m[0]).join(', ')}`}
+    >
+      <span className="orbit-map__land" style={{ maskImage: src, WebkitMaskImage: src }} />
+      {markets.map(([name, lon, lat, size]) => (
+        <span
+          key={name}
+          className={`orbit-map__pin orbit-map__pin--${size}`}
+          style={{ left: `${((lon + 180) / 360) * 100}%`, top: `${((84 - lat) / 142) * 100}%` }}
+        />
+      ))}
+    </div>
+  );
+};
 
 /** Countries (or sources) with a share bar each. */
 export const CountryBars = ({

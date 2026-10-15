@@ -353,10 +353,20 @@
 
 .orbit-map {
   position: relative;
-  min-block-size: 10rem;
-  border-radius: var(--radius-lg);
-  background-image: radial-gradient(var(--color-border-field) 1px, transparent 1.5px);
-  background-size: var(--spacing-xs) var(--spacing-xs);
+  aspect-ratio: 1000 / 394;
+  inline-size: 100%;
+}
+
+.orbit-map__land {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-border-field);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+.orbit-map--vector .orbit-map__land {
+  background-color: var(--color-bg-primary-200);
 }
 
 .orbit-map__pin {
@@ -366,6 +376,17 @@
   border-radius: var(--radius-full);
   background-color: var(--color-bg-accent-primary-default);
   box-shadow: 0 0 0 var(--spacing-2xs) var(--color-bg-primary-1);
+  transform: translate(-50%, -50%);
+}
+
+.orbit-map__pin--1 {
+  inline-size: var(--spacing-xs);
+  block-size: var(--spacing-xs);
+}
+
+.orbit-map__pin--3 {
+  inline-size: var(--sizing-sm);
+  block-size: var(--sizing-sm);
 }
 
 .orbit-event {
@@ -1367,14 +1388,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--spacing-md);
-}
-
-.orbit-map-lg > .orbit-map {
-  min-block-size: 20rem;
-}
-
-.orbit-map-lg--vector > .orbit-map {
-  background-image: radial-gradient(var(--color-border-primary-subtle) 2px, transparent 2.5px);
 }
 
 .orbit-carousel {
