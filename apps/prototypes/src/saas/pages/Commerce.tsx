@@ -28,6 +28,8 @@ import {
   Textarea,
   useToast,
   type TableColumn,
+  List,
+  ListItem,
 } from '@ds/react';
 import {
   AlarmClock,
@@ -494,26 +496,30 @@ function Billing() {
             </Button>
           }
         >
-          <ul className="orbit-list">
+          <List divided>
             {cards.map((c) => (
-              <li key={c.id} className="orbit-method">
-                <FeaturedIcon
-                  icon={c.id === 'pp' ? <Wallet /> : <CreditCard />}
-                  appearance="modern"
-                  shape="square"
-                />
-                <span className="stack-text">
-                  <strong>
+              <ListItem
+                key={c.id}
+                icon={
+                  <FeaturedIcon
+                    icon={c.id === 'pp' ? <Wallet /> : <CreditCard />}
+                    appearance="modern"
+                    shape="square"
+                  />
+                }
+                title={
+                  <>
                     {c.brand}{' '}
                     {primary === c.id && (
                       <Badge tone="success" shape="modern" size="small">
                         Default
                       </Badge>
                     )}
-                  </strong>
-                  <span className="muted text-sm">{c.detail}</span>
-                </span>
-                <span className="row">
+                  </>
+                }
+                description={c.detail}
+                meta={
+                  <>
                   {primary !== c.id && (
                     <Button appearance="text" size="small" onClick={() => setPrimary(c.id)}>
                       Make default
@@ -538,10 +544,11 @@ function Billing() {
                       toast({ title: `${c.brand} removed` });
                     }}
                   />
-                </span>
-              </li>
+                  </>
+                }
+              />
             ))}
-          </ul>
+          </List>
         </Panel>
       </div>
       <DataTable

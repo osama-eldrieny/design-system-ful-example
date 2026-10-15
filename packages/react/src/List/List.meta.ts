@@ -54,6 +54,7 @@ export default defineMeta({
     { name: 'Focus', meaning: 'Focus ring on the row.', trigger: ':focus-visible' },
     { name: 'Unread', meaning: 'Bold title on a tinted row, e.g. a new message.', trigger: 'ListItem unread.' },
     { name: 'Selected', meaning: 'Tinted row, e.g. while its checkbox is checked.', trigger: 'ListItem selected.' },
+    { name: 'Current', meaning: 'The open item, e.g. the active chat; tinted and announced.', trigger: 'ListItem current (aria-current).' },
     { name: 'Done', meaning: 'Title struck through, e.g. a completed task.', trigger: 'ListItem done.' },
   ],
   behavior: [
@@ -123,7 +124,7 @@ export default defineMeta({
     {
       version: '1.3.0',
       date: '2026-10-15',
-      changes: ['ListItem start slot (checkbox, star), unread, selected and done states.'],
+      changes: ['ListItem start slot (checkbox, star), unread, selected, current and done states; meta lays out as a row.'],
     },
     { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] },
     {

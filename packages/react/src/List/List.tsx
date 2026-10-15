@@ -52,12 +52,28 @@ export interface ListItemProps extends Omit<HTMLAttributes<HTMLLIElement>, 'titl
   done?: boolean;
   /** Highlights the row, e.g. while its checkbox is checked. */
   selected?: boolean;
+  /** Marks the open item in a list of links or buttons, e.g. the current chat (aria-current). */
+  current?: boolean;
 }
 
 /** One item of a List. With href or onClick, the whole row is the target. */
 export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
   (
-    { title, description, icon, meta, href, onClick, start, unread, done, selected, className, ...props },
+    {
+      title,
+      description,
+      icon,
+      meta,
+      href,
+      onClick,
+      start,
+      unread,
+      done,
+      selected,
+      current,
+      className,
+      ...props
+    },
     ref,
   ) => {
     const content = (
@@ -80,7 +96,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
           'ds-list__item',
           unread && 'ds-list__item--unread',
           done && 'ds-list__item--done',
-          selected && 'ds-list__item--selected',
+          (selected || current) && 'ds-list__item--selected',
           className,
         ]
           .filter(Boolean)
@@ -89,7 +105,12 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
       >
         {start && <span className="ds-list__start">{start}</span>}
         {href ? (
-          <a className="ds-list__row ds-list__row--interactive" href={href} onClick={onClick}>
+          <a
+            className="ds-list__row ds-list__row--interactive"
+            href={href}
+            onClick={onClick}
+            aria-current={current ? 'page' : undefined}
+          >
             {content}
           </a>
         ) : onClick ? (
@@ -97,6 +118,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
             type="button"
             className="ds-list__row ds-list__row--interactive"
             onClick={onClick}
+            aria-current={current ? 'true' : undefined}
           >
             {content}
           </button>

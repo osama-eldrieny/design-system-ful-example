@@ -135,30 +135,30 @@ function Chat() {
             onChange={(e) => setQuery(e.target.value)}
             size="small"
           />
-          <ul className="orbit-pick">
+          <List>
             {contacts
               .filter((x) => x.name.toLowerCase().includes(query.toLowerCase()))
               .map((x) => {
                 const i = contacts.indexOf(x);
                 return (
-                  <li key={x.email}>
-                    <Button
-                      appearance="text"
-                      variant="secondary"
-                      fullWidth
-                      className="orbit-pick__item"
-                      aria-current={i === active ? 'true' : undefined}
-                      onClick={() => setActive(i)}
-                    >
-                      <AvatarLabelGroup
+                  <ListItem
+                    key={x.email}
+                    current={i === active}
+                    onClick={() => setActive(i)}
+                    icon={
+                      <Avatar
                         name={x.name}
                         src={x.src}
-                        supportingText={x.title}
                         status={x.online ? 'online' : 'offline'}
                         size="small"
+                        decorative
                       />
-                      <span className="orbit-pick__meta">
-                        <span className="muted text-sm">{x.last}</span>
+                    }
+                    title={x.name}
+                    description={x.title}
+                    meta={
+                      <>
+                        {x.last}
                         {x.unread > 0 && (
                           <Badge
                             appearance="solid"
@@ -168,12 +168,12 @@ function Chat() {
                             label={`${x.unread} unread`}
                           />
                         )}
-                      </span>
-                    </Button>
-                  </li>
+                      </>
+                    }
+                  />
                 );
               })}
-          </ul>
+          </List>
         </aside>
         <section className="panel orbit-chat__thread" aria-label={`Conversation with ${c.name}`}>
           <header className="row row--between">
@@ -575,20 +575,16 @@ function MailSide({ current }: { current: string }) {
         </ModalContent>
       </Modal>
       <nav aria-label="Folders">
-        <ul className="orbit-pick">
+        <List>
           {folders.map((f) => (
-            <li key={f.id}>
-              <Button
-                appearance="text"
-                variant="secondary"
-                fullWidth
-                iconStart={f.icon}
-                className="orbit-pick__item"
-                aria-current={f.id === current ? 'page' : undefined}
-                href={to('/support/inbox')}
-              >
-                <span className="orbit-pick__label">{f.label}</span>
-                {f.count && (
+            <ListItem
+              key={f.id}
+              current={f.id === current}
+              icon={f.icon}
+              title={f.label}
+              href={to('/support/inbox')}
+              meta={
+                f.count && (
                   <Badge
                     size="small"
                     shape="modern"
@@ -596,11 +592,11 @@ function MailSide({ current }: { current: string }) {
                     count={f.count}
                     label={`${f.count} unread`}
                   />
-                )}
-              </Button>
-            </li>
+                )
+              }
+            />
           ))}
-        </ul>
+        </List>
       </nav>
       <Divider />
       <span className="muted text-sm">Filters</span>

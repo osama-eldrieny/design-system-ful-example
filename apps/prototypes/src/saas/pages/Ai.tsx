@@ -32,6 +32,8 @@ import {
   Tabs,
   Textarea,
   useToast,
+  List,
+  ListItem,
 } from '@ds/react';
 import {
   Bot,
@@ -224,39 +226,36 @@ function Generator({ kind }: { kind: Kind }) {
               {group === 'Starred' && <Star aria-hidden="true" className="orbit-inline-icon" />}{' '}
               {group}
             </span>
-            <ul className="orbit-pick">
+            <List>
               {items.map((t, i) => (
-                <li key={t} className="orbit-ai__chat">
-                  <Button
-                    appearance="text"
-                    variant="secondary"
-                    size="small"
-                    className="orbit-pick__item"
-                    aria-current={group === 'Starred' && i === 0 ? 'true' : undefined}
-                  >
-                    {t}
-                  </Button>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <IconButton
-                        icon={<MoreHorizontal />}
-                        label={`Options for ${t}`}
-                        variant="secondary"
-                        appearance="ghost"
-                        size="xsmall"
-                      />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem icon={<Pencil />}>Rename</DropdownMenuItem>
-                      <DropdownMenuItem icon={<Star />}>Star</DropdownMenuItem>
-                      <DropdownMenuItem icon={<Trash2 />} variant="danger">
-                        Delete
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </li>
+                <ListItem
+                  key={t}
+                  title={t}
+                  current={group === 'Starred' && i === 0}
+                  onClick={() => {}}
+                  meta={
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <IconButton
+                          icon={<MoreHorizontal />}
+                          label={`Options for ${t}`}
+                          variant="secondary"
+                          appearance="ghost"
+                          size="xsmall"
+                        />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem icon={<Pencil />}>Rename</DropdownMenuItem>
+                        <DropdownMenuItem icon={<Star />}>Star</DropdownMenuItem>
+                        <DropdownMenuItem icon={<Trash2 />} variant="danger">
+                          Delete
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  }
+                />
               ))}
-            </ul>
+            </List>
           </section>
         ))}
       </aside>

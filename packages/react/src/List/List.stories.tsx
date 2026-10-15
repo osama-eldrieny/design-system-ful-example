@@ -135,3 +135,13 @@ export const Tasks: Story = {
     </List>
   ),
 };
+
+/** Clickable rows with the open one marked current, e.g. a chat list. */
+export const Current: Story = {
+  render: () => (
+    <List style={{ maxInlineSize: 320 }}>
+      <ListItem current title="Design system audit" onClick={() => {}} meta="2h" />
+      <ListItem title="Q4 launch plan" onClick={() => {}} meta="Mon" />
+    </List>
+  ),
+};

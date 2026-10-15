@@ -505,23 +505,8 @@
   color: var(--color-fg-on-accent-success-text-default);
 }
 
-.orbit-method {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--spacing-md);
-  padding-block-end: var(--spacing-md);
-  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
-}
 
-.orbit-method > .stack-text {
-  flex: 1 1 10rem;
-}
 
-.orbit-method:last-child {
-  padding-block-end: 0;
-  border-block-end: 0;
-}
 
 .orbit-document {
   gap: var(--spacing-xl);
@@ -574,46 +559,11 @@
   }
 }
 
-.orbit-pick {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3xs);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
-.orbit-pick__item {
-  justify-content: space-between;
-  padding: var(--spacing-xs);
-  border-radius: var(--radius-lg);
-  text-align: start;
-  text-decoration: none;
-}
 
-.orbit-pick__item[aria-current] {
-  background-color: var(--color-bg-primary-1);
-}
 
-.orbit-pick__item > .ds-button__label {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-sm);
-  min-inline-size: 0;
-}
 
-.orbit-pick__label {
-  flex: 1;
-}
 
-.orbit-pick__meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--spacing-3xs);
-}
 
 .orbit-messages {
   display: flex;
@@ -1131,18 +1081,6 @@
   overflow-y: auto;
 }
 
-.orbit-ai__chat {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-3xs);
-}
-
-.orbit-ai__chat > .orbit-pick__item {
-  flex: 1;
-  min-inline-size: 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
 
 .orbit-ai__main {
   gap: var(--spacing-md);
