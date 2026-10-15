@@ -66,11 +66,11 @@ const presets: Record<string, Partial<Theme>> = {
     density: 'comfortable',
     shadow: 'subtle',
   },
-  'Opal · pills, compact': {
+  'Opal · pills': {
     brand: 'opal',
     mode: 'light',
     radius: 'pills',
-    density: 'compact',
+    density: 'comfortable',
     shadow: 'raised',
   },
   'Diamond · dark, square': {
