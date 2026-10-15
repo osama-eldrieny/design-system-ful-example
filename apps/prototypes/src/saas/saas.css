@@ -107,9 +107,21 @@
 }
 
 .orbit__account {
-  gap: var(--spacing-xs);
   padding-inline: var(--spacing-2xs);
   text-decoration: none;
+}
+
+/* AvatarLabelGroup supplies the avatar–name spacing; the chevron sits after it. */
+.orbit__account > .ds-button__label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.orbit__account-icon {
+  inline-size: var(--sizing-xs);
+  block-size: var(--sizing-xs);
+  color: var(--color-fg-on-surface-secondary);
 }
 
 .orbit__tier {
@@ -184,7 +196,8 @@
     flex: 0 0 auto;
   }
 
-  .orbit__account-name,
+  .orbit__account .ds-avatar-label-group__text,
+  .orbit__account-icon,
   .orbit__search-text,
   .orbit__bar-logo {
     display: none;
