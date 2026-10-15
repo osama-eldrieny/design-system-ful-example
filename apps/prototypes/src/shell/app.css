@@ -45,16 +45,6 @@
   gap: var(--spacing-md);
 }
 
-.app__trial {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md);
-  border: var(--border-width-hairline) solid var(--color-border-base);
-  border-radius: var(--radius-xl);
-  background-color: var(--color-bg-default);
-}
-
 .app__account {
   justify-content: space-between;
   padding: var(--spacing-xs);
@@ -147,6 +137,8 @@
 }
 
 .scroll-x {
+  /* Contains absolutely positioned hidden labels, so they scroll with it. */
+  position: relative;
   max-inline-size: 100%;
   overflow-x: auto;
 }
@@ -221,4 +213,102 @@
   justify-content: space-between;
   gap: var(--spacing-xs);
   min-inline-size: 0;
+}
+
+/* Slim sidebar and end rail */
+.app--slim {
+  grid-template-columns: var(--sizing-3xl) minmax(0, 1fr);
+}
+
+.app--rail {
+  grid-template-columns: calc(var(--sizing-8xl) * 1.25) minmax(0, 1fr) calc(
+      var(--sizing-8xl) * 1.75
+    );
+}
+
+.app--slim.app--rail {
+  grid-template-columns: var(--sizing-3xl) minmax(0, 1fr) calc(var(--sizing-8xl) * 1.75);
+}
+
+.app__rail {
+  position: sticky;
+  inset-block-start: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  box-sizing: border-box;
+  block-size: 100dvh;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+  border-inline-start: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-surface);
+}
+
+@media (width < 80rem) {
+  .app--rail,
+  .app--slim.app--rail {
+    grid-template-columns: calc(var(--sizing-8xl) * 1.25) minmax(0, 1fr);
+  }
+
+  .app--slim.app--rail {
+    grid-template-columns: var(--sizing-3xl) minmax(0, 1fr);
+  }
+
+  .app__rail {
+    position: static;
+    grid-column: 2;
+    block-size: auto;
+    border-inline-start: 0;
+    border-block-start: var(--border-width-hairline) solid var(--color-border-base);
+  }
+}
+
+@media (width < 64rem) {
+  .app--slim,
+  .app--rail,
+  .app--slim.app--rail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app__rail {
+    grid-column: 1;
+  }
+}
+
+.app__avatar-button {
+  padding: 0;
+  text-decoration: none;
+}
+
+.app__promo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-default);
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-height-sm);
+}
+
+.app__promo-close {
+  position: absolute;
+  inset-block-start: var(--spacing-xs);
+  inset-inline-end: var(--spacing-xs);
+}
+
+.app__qr {
+  display: grid;
+  place-items: center;
+  align-self: stretch;
+  padding: var(--spacing-md);
+  color: var(--color-fg-on-surface-primary);
+}
+
+.app__qr > svg {
+  inline-size: var(--sizing-3xl);
+  block-size: var(--sizing-3xl);
 }

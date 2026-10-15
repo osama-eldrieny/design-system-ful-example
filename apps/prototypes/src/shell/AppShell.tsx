@@ -1,6 +1,9 @@
 import { useState, type ReactNode } from 'react';
 import {
+  Avatar,
+  AvatarGroup,
   AvatarLabelGroup,
+  Badge,
   Button,
   CommandMenu,
   DropdownMenu,
@@ -9,155 +12,282 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  FeaturedIcon,
+  IconButton,
+  InputField,
   Kbd,
   Logo,
-  Progress,
   SideNav,
+  type SideNavItem,
 } from '@ds/react';
 import {
   BarChart3,
+  Building2,
   Calendar,
   ChevronsUpDown,
+  Copy,
   CreditCard,
   FolderKanban,
-  House,
+  LayoutDashboard,
   LifeBuoy,
+  Link2,
   LogOut,
   MessagesSquare,
   Package,
-  Plus,
+  QrCode,
   Search,
   Settings,
+  ShoppingBag,
   Sparkles,
   User,
-  UserPlus,
   Users,
   Wallet,
+  X,
+  Zap,
 } from 'lucide-react';
 import { members } from '../dashboard-data';
+import { dashboards } from '../dashboards/registry';
 import { go } from '../router';
 import './app.css';
 
-const pages = [
-  { id: 'overview', label: 'Overview', path: '/app', icon: <House /> },
-  { id: 'analytics', label: 'Analytics', path: '/app/analytics', icon: <BarChart3 /> },
-  { id: 'projects', label: 'Projects', path: '/app/projects', icon: <FolderKanban />, badge: 4 },
-  { id: 'messages', label: 'Messages', path: '/app/messages', icon: <MessagesSquare />, badge: 3 },
-  { id: 'calendar', label: 'Calendar', path: '/app/calendar', icon: <Calendar /> },
-  { id: 'orders', label: 'Orders', path: '/app/orders', icon: <Package /> },
-  { id: 'customers', label: 'Customers', path: '/app/customers', icon: <Users /> },
-  { id: 'finance', label: 'Finance', path: '/app/finance', icon: <Wallet /> },
-  { id: 'settings', label: 'Settings', path: '/app/settings', icon: <Settings /> },
-];
+export type Promo = 'verify' | 'refer' | 'upgrade' | 'workshop' | 'none';
 
-const item = (id: string) => {
-  const p = pages.find((page) => page.id === id)!;
-  return { id: p.id, label: p.label, href: `#${p.path}`, icon: p.icon, badge: p.badge };
+const groupIcon: Record<string, ReactNode> = {
+  Analytics: <BarChart3 />,
+  Customers: <Users />,
+  Vendors: <Building2 />,
+  Sales: <ShoppingBag />,
+  Finance: <Wallet />,
+  Profile: <User />,
 };
 
-/** The app frame: sidebar with search, navigation, trial card and account; the page fills the rest. */
-export function AppShell({ current, children }: { current: string; children: ReactNode }) {
+const apps: SideNavItem[] = [
+  { id: 'projects', label: 'Projects', href: '#/app/projects', icon: <FolderKanban />, badge: 4 },
+  { id: 'messages', label: 'Messages', href: '#/app/messages', icon: <MessagesSquare />, badge: 3 },
+  { id: 'calendar', label: 'Calendar', href: '#/app/calendar', icon: <Calendar /> },
+  { id: 'orders', label: 'Orders', href: '#/app/orders', icon: <Package /> },
+  { id: 'settings', label: 'Settings', href: '#/app/settings', icon: <Settings /> },
+];
+
+function PromoCard({ kind, onClose }: { kind: Promo; onClose: () => void }) {
+  const close = (
+    <IconButton
+      icon={<X />}
+      label="Dismiss"
+      variant="secondary"
+      appearance="ghost"
+      size="xsmall"
+      onClick={onClose}
+      className="app__promo-close"
+    />
+  );
+  if (kind === 'verify')
+    return (
+      <div className="app__promo">
+        {close}
+        <strong>Verify this device</strong>
+        <span className="muted">Open the app and scan the code below to verify this device.</span>
+        <div className="app__qr" aria-hidden="true">
+          <QrCode />
+        </div>
+        <Button variant="secondary" appearance="outline" size="small" fullWidth>
+          Verify another way
+        </Button>
+      </div>
+    );
+  if (kind === 'refer')
+    return (
+      <div className="app__promo">
+        {close}
+        <FeaturedIcon icon={<Link2 />} appearance="modern" size="small" shape="square" />
+        <strong>Refer a friend</strong>
+        <span className="muted">Earn 50% back for 12 months when someone uses your link.</span>
+        <InputField
+          label="Your referral link"
+          hideLabel
+          size="small"
+          readOnly
+          defaultValue="panda.io/4060020"
+          iconEnd={<Copy />}
+        />
+      </div>
+    );
+  if (kind === 'upgrade')
+    return (
+      <div className="app__promo">
+        {close}
+        <FeaturedIcon icon={<Zap />} appearance="modern" size="small" shape="square" />
+        <strong>
+          Upgrade to PRO{' '}
+          <Badge tone="gray" shape="modern" size="small">
+            20% off
+          </Badge>
+        </strong>
+        <span className="muted">Unlock 20+ integrations, 40 GB data and advanced reporting.</span>
+        <Button size="small" fullWidth href="#/app/settings/billing">
+          Upgrade now
+        </Button>
+      </div>
+    );
+  if (kind === 'workshop')
+    return (
+      <div className="app__promo">
+        {close}
+        <AvatarGroup label="Attendees" max={4} size="xsmall" onAdd={() => {}} addLabel="Invite">
+          {members.slice(0, 7).map((m) => (
+            <Avatar key={m.email} name={m.name} src={m.src} />
+          ))}
+        </AvatarGroup>
+        <strong>
+          Join our workshop{' '}
+          <Badge tone="success" shape="modern" size="small" withDot>
+            Live
+          </Badge>
+        </strong>
+        <span className="muted">Learn how to get more out of your dashboards.</span>
+        <span className="row">
+          <Button appearance="text" variant="secondary" size="small" onClick={onClose}>
+            Dismiss
+          </Button>
+          <Button appearance="text" size="small">
+            Join now!
+          </Button>
+        </span>
+      </div>
+    );
+  return null;
+}
+
+/**
+ * The demo frame: sidebar (full or slim) with search, dashboards and apps, a promo card and
+ * the account; the page in the middle; an optional rail on the end side.
+ */
+export function AppShell({
+  current,
+  children,
+  slim = false,
+  promo = 'none',
+  rail,
+}: {
+  current: string;
+  children: ReactNode;
+  /** Icon-only sidebar. */
+  slim?: boolean;
+  /** Which card sits above the account. */
+  promo?: Promo;
+  /** A panel on the end side, e.g. cards or a chat. */
+  rail?: ReactNode;
+}) {
   const me = members[0];
   const [search, setSearch] = useState(false);
+  const [showPromo, setShowPromo] = useState(true);
+  const groups = [...new Set(dashboards.map((d) => d.group))];
+  const sections = [
+    {
+      title: 'Dashboards',
+      items: groups.map((g) => ({
+        id: `group-${g}`,
+        label: g,
+        icon: groupIcon[g],
+        items: dashboards
+          .filter((d) => d.group === g)
+          .map((d) => ({ id: d.id, label: d.title, href: `#/dashboards/${d.id}` })),
+      })),
+    },
+    { title: 'Apps', items: apps },
+    { items: [{ id: 'support', label: 'Support', href: '#/dashboards/01', icon: <LifeBuoy /> }] },
+  ];
+  // The slim rail shows one icon per group, linking to its first dashboard.
+  const currentGroup = dashboards.find((d) => d.id === current)?.group;
+  const slimSections = [
+    {
+      items: [
+        ...groups.map((g) => {
+          const first = dashboards.find((d) => d.group === g)!;
+          return {
+            id: currentGroup === g ? current : `slim-${g}`,
+            label: g,
+            icon: groupIcon[g],
+            href: `#/dashboards/${first.id}`,
+          };
+        }),
+        ...apps,
+      ],
+    },
+  ];
 
   return (
-    <div className="proto app">
+    <div
+      className={['proto app', slim && 'app--slim', rail && 'app--rail'].filter(Boolean).join(' ')}
+    >
       <aside className="app__side">
         <SideNav
           aria-label="Main"
+          collapsed={slim}
           currentItem={current}
           header={
-            <div className="app__brand">
-              <Logo icon={<Sparkles />} name="Panda" href="#/app" />
-              <Button
-                variant="secondary"
-                appearance="outline"
-                size="small"
-                fullWidth
-                iconStart={<Search />}
-                iconEnd={<Kbd>⌘K</Kbd>}
-                onClick={() => setSearch(true)}
-                className="app__search"
-              >
-                Search
-              </Button>
-            </div>
-          }
-          sections={[
-            {
-              title: 'General',
-              items: ['overview', 'analytics', 'projects', 'messages', 'calendar'].map(item),
-            },
-            { title: 'Commerce', items: ['orders', 'customers', 'finance'].map(item) },
-            {
-              title: 'Workspace',
-              items: [
-                item('settings'),
-                { id: 'support', label: 'Support', href: '#/app', icon: <LifeBuoy /> },
-              ],
-            },
-          ]}
-          footer={
-            <div className="app__footer">
-              <div className="app__trial">
-                <Progress
-                  label="Free trial"
-                  value={6}
-                  max={30}
-                  showValue
-                  size="small"
-                  formatValue={(v, m) => `${m - v} days left`}
-                />
+            slim ? (
+              <Logo icon={<Sparkles />} name="Panda" hideName href="#/dashboards/01" />
+            ) : (
+              <div className="app__brand">
+                <Logo icon={<Sparkles />} name="Panda" href="#/dashboards/01" />
                 <Button
                   variant="secondary"
                   appearance="outline"
                   size="small"
                   fullWidth
-                  href="#/app/settings/billing"
+                  iconStart={<Search />}
+                  iconEnd={<Kbd>⌘K</Kbd>}
+                  onClick={() => setSearch(true)}
+                  className="app__search"
                 >
-                  Upgrade now
+                  Search
                 </Button>
               </div>
+            )
+          }
+          sections={slim ? slimSections : sections}
+          footer={
+            slim ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button
                     appearance="text"
                     variant="secondary"
-                    fullWidth
-                    className="app__account"
+                    className="app__avatar-button"
                     aria-label={`Account: ${me.name}`}
                   >
-                    <AvatarLabelGroup
-                      name={me.name}
-                      src={me.src}
-                      supportingText={me.email}
-                      status="online"
-                      size="small"
-                    />
-                    <ChevronsUpDown aria-hidden="true" className="app__account-icon" />
+                    <Avatar name={me.name} src={me.src} status="online" decorative />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" side="top">
-                  <DropdownMenuLabel>{me.name}</DropdownMenuLabel>
-                  <DropdownMenuItem icon={<User />} onSelect={() => go('/app/profile')}>
-                    View profile
-                  </DropdownMenuItem>
-                  <DropdownMenuItem
-                    icon={<CreditCard />}
-                    onSelect={() => go('/app/settings/billing')}
-                  >
-                    Billing
-                  </DropdownMenuItem>
-                  <DropdownMenuItem icon={<Settings />} onSelect={() => go('/app/settings')}>
-                    Settings
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem variant="danger" icon={<LogOut />} onSelect={() => go('/app')}>
-                    Sign out
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
+                <AccountMenu />
               </DropdownMenu>
-            </div>
+            ) : (
+              <div className="app__footer">
+                {showPromo && <PromoCard kind={promo} onClose={() => setShowPromo(false)} />}
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      appearance="text"
+                      variant="secondary"
+                      fullWidth
+                      className="app__account"
+                      aria-label={`Account: ${me.name}`}
+                    >
+                      <AvatarLabelGroup
+                        name={me.name}
+                        src={me.src}
+                        supportingText={me.email}
+                        status="online"
+                        size="small"
+                      />
+                      <ChevronsUpDown aria-hidden="true" className="app__account-icon" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <AccountMenu />
+                </DropdownMenu>
+              </div>
+            )
           }
         />
         <CommandMenu
@@ -166,37 +296,23 @@ export function AppShell({ current, children }: { current: string; children: Rea
           label="Search Panda"
           groups={[
             {
-              label: 'Pages',
-              items: pages.map((p) => ({
-                id: p.id,
-                label: p.label,
-                icon: p.icon,
-                onSelect: () => go(p.path),
+              label: 'Dashboards',
+              items: dashboards.map((d) => ({
+                id: d.id,
+                label: d.title,
+                description: d.group,
+                icon: <LayoutDashboard />,
+                onSelect: () => go(`/dashboards/${d.id}`),
               })),
             },
             {
-              label: 'Actions',
-              items: [
-                {
-                  id: 'project',
-                  label: 'New project',
-                  icon: <Plus />,
-                  shortcut: ['⌘', 'N'],
-                  onSelect: () => go('/app/projects'),
-                },
-                {
-                  id: 'invite',
-                  label: 'Invite team member',
-                  icon: <UserPlus />,
-                  onSelect: () => go('/app/settings/team'),
-                },
-                {
-                  id: 'event',
-                  label: 'Add event',
-                  icon: <Calendar />,
-                  onSelect: () => go('/app/calendar'),
-                },
-              ],
+              label: 'Apps',
+              items: apps.map((a) => ({
+                id: a.id!,
+                label: a.label,
+                icon: a.icon,
+                onSelect: () => go(a.href!.slice(1)),
+              })),
             },
             {
               label: 'People',
@@ -205,13 +321,35 @@ export function AppShell({ current, children }: { current: string; children: Rea
                 label: m.name,
                 description: m.role,
                 icon: <User />,
-                onSelect: () => go('/app/profile'),
+                onSelect: () => go('/dashboards/19'),
               })),
             },
           ]}
         />
       </aside>
       <main className="app__main">{children}</main>
+      {rail && <aside className="app__rail">{rail}</aside>}
     </div>
+  );
+}
+
+function AccountMenu() {
+  return (
+    <DropdownMenuContent align="end" side="top">
+      <DropdownMenuLabel>{members[0].name}</DropdownMenuLabel>
+      <DropdownMenuItem icon={<User />} onSelect={() => go('/dashboards/19')}>
+        View profile
+      </DropdownMenuItem>
+      <DropdownMenuItem icon={<CreditCard />} onSelect={() => go('/app/settings/billing')}>
+        Billing
+      </DropdownMenuItem>
+      <DropdownMenuItem icon={<Settings />} onSelect={() => go('/app/settings')}>
+        Settings
+      </DropdownMenuItem>
+      <DropdownMenuSeparator />
+      <DropdownMenuItem variant="danger" icon={<LogOut />} onSelect={() => go('/dashboards/01')}>
+        Sign out
+      </DropdownMenuItem>
+    </DropdownMenuContent>
   );
 }

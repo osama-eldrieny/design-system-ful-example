@@ -334,19 +334,6 @@ html {
   gap: var(--spacing-md);
 }
 
-.proto-grid-2-1 {
-  display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  gap: var(--spacing-md);
-  align-items: start;
-}
-
-@media (width < 64rem) {
-  .proto-grid-2-1 {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 .proto-card {
   display: flex;
   flex-direction: column;
@@ -356,42 +343,6 @@ html {
   border: var(--border-width-hairline) solid var(--color-border-base);
   border-radius: var(--radius-2xl);
   background-color: var(--color-bg-surface);
-}
-
-.proto-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--spacing-sm);
-  text-align: center;
-}
-
-.proto-metric-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--spacing-3xs);
-}
-
-.proto-metric-tab__value {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-fg-on-surface-primary);
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semi-bold);
-  line-height: var(--font-line-height-2xl);
-}
-
-.proto-company {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.proto-company > span {
-  display: flex;
-  flex-direction: column;
 }
 
 .proto-filters {
@@ -409,62 +360,6 @@ html {
 .proto-filters > .proto-filters__clear {
   flex: none;
   margin-inline-start: auto;
-}
-
-.proto-positive {
-  color: var(--color-fg-on-accent-success-text-default);
-}
-
-.proto-bank-card {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--spacing-lg);
-  padding: var(--spacing-lg);
-  border-radius: var(--radius-xl);
-  background-color: var(--color-fg-on-surface-primary);
-  color: var(--color-bg-surface);
-}
-
-.proto-bank-card > svg {
-  inline-size: var(--sizing-lg);
-  block-size: var(--sizing-lg);
-}
-
-.proto-bank-card__brand {
-  font-weight: var(--font-weight-semi-bold);
-}
-
-.proto-bank-card__number {
-  grid-column: 1 / -1;
-  font-size: var(--font-size-lg);
-  letter-spacing: 0.08em;
-  font-variant-numeric: tabular-nums;
-}
-
-.proto-bank-card__meta {
-  display: flex;
-  grid-column: 1 / -1;
-  justify-content: space-between;
-  font-size: var(--font-size-sm);
-}
-
-.proto-budgets {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.proto-budget {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-}
-
-.proto-budget > :last-child {
-  flex: 1;
 }
 
 /* Settings: label column and control column */
@@ -574,10 +469,4 @@ html {
   display: flex;
   justify-content: space-between;
   align-self: stretch;
-}
-
-/* Segmented groups wider than a phone scroll on their own instead of the page */
-.proto-scroll-x {
-  max-inline-size: 100%;
-  overflow-x: auto;
 }

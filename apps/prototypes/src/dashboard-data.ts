@@ -772,3 +772,222 @@ export const experience = [
     tone: 'blue' as const,
   },
 ];
+
+/* Dashboards demo */
+export const people = [
+  { name: 'Lily-Rose Chedjou', handle: '@lilyrose', email: 'lilyrose@gmail.com', src: avatars[3] },
+  { name: 'Caitlyn King', handle: '@caitlynk', email: 'hi@caitlynking.com', src: avatars[1] },
+  { name: 'Fleur Cook', handle: '@fleur_cook', email: 'fleurcook@icloud.com', src: avatars[2] },
+  { name: 'Marco Kelly', handle: '@marcokelly', email: 'marco@marcokelly.co', src: avatars[0] },
+  { name: 'Lulu Meyers', handle: '@lulu_meyers', email: 'lulu@lulumeyers.com', src: undefined },
+  {
+    name: 'Mikey Lawrence',
+    handle: '@mikeylawrence',
+    email: 'm.lawrence@gmail.com',
+    src: avatars[0],
+  },
+  { name: 'Freya Browning', handle: '@freya_b', email: 'hey@freyabrowning.com', src: avatars[1] },
+];
+
+export const vendors = [
+  {
+    name: 'Ephemeral',
+    domain: 'ephemeral.io',
+    rating: 60,
+    change: 5,
+    assessed: 'Jan 22, 2026',
+    active: true,
+    tags: [
+      ['Customer data', 'blue'],
+      ['Admin', 'indigo'],
+    ],
+    more: 4,
+  },
+  {
+    name: 'Stack3d Lab',
+    domain: 'stack3dlab.com',
+    rating: 72,
+    change: -4,
+    assessed: 'Jan 20, 2026',
+    active: true,
+    tags: [
+      ['Business data', 'purple'],
+      ['Admin', 'indigo'],
+    ],
+    more: 4,
+  },
+  {
+    name: 'Warpspeed',
+    domain: 'getwarpspeed.com',
+    rating: 78,
+    change: 6,
+    assessed: 'Jan 24, 2026',
+    active: true,
+    tags: [
+      ['Customer data', 'blue'],
+      ['Financials', 'pink'],
+    ],
+    more: 0,
+  },
+  {
+    name: 'CloudWatch',
+    domain: 'cloudwatch.app',
+    rating: 38,
+    change: 8,
+    assessed: 'Jan 26, 2026',
+    active: true,
+    tags: [
+      ['Database access', 'gray'],
+      ['Admin', 'indigo'],
+    ],
+    more: 0,
+  },
+  {
+    name: 'ContrastAI',
+    domain: 'contrastai.com',
+    rating: 42,
+    change: -1,
+    assessed: 'Jan 18, 2026',
+    active: true,
+    tags: [
+      ['Salesforce', 'gray'],
+      ['Admin', 'indigo'],
+    ],
+    more: 4,
+  },
+  {
+    name: 'Convergence',
+    domain: 'convergence.io',
+    rating: 66,
+    change: -6,
+    assessed: 'Jan 28, 2026',
+    active: true,
+    tags: [
+      ['Business data', 'purple'],
+      ['Admin', 'indigo'],
+    ],
+    more: 4,
+  },
+  {
+    name: 'Sisyphus',
+    domain: 'sisyphus.com',
+    rating: 91,
+    change: 2,
+    assessed: 'Jan 16, 2026',
+    active: false,
+    tags: [
+      ['Customer data', 'blue'],
+      ['Financials', 'pink'],
+    ],
+    more: 0,
+  },
+] as const;
+
+export const sitePages = [
+  { path: 'panda.io', sessions: 4288, avg: '1m 24s', share: 62.4, folder: 'General' },
+  { path: 'panda.io/free-icons', sessions: 582, avg: '1m 8s', share: 8.2, folder: 'Marketing' },
+  { path: 'panda.io/icons', sessions: 464, avg: '1m 12s', share: 7.6, folder: 'Marketing' },
+  { path: 'panda.io/components', sessions: 446, avg: '2m 22s', share: 7.2, folder: 'Product' },
+  { path: 'panda.io/pricing', sessions: 382, avg: '48s', share: 7.0, folder: 'General' },
+  { path: 'panda.io/faqs', sessions: 326, avg: '56s', share: 6.4, folder: 'Support' },
+  { path: 'panda.io/blog', sessions: 262, avg: '1m 14s', share: 5.4, folder: 'Marketing' },
+];
+
+export const deposits = [
+  { from: 'Visa ending in 1234', detail: 'Expiry 06/2028', amount: 244 },
+  { from: 'Visa ending in 1234', detail: 'Expiry 06/2028', amount: 326 },
+  { from: 'Stripe deposit', detail: 'billing@panda.io', amount: 408 },
+  { from: 'Visa ending in 1234', detail: 'Expiry 06/2028', amount: 628 },
+  { from: 'PayPal deposit', detail: 'alina@panda.io', amount: 166 },
+  { from: 'Apple Pay', detail: 'molly@panda.io', amount: 250 },
+  { from: 'Stripe deposit', detail: 'billing@panda.io', amount: 408 },
+];
+
+export const spending = [
+  { label: 'Subscriptions', value: 148.4, tone: 'blue' as const },
+  { label: 'Groceries', value: 642.48, tone: 'indigo' as const },
+  { label: 'Food and dining', value: 614.16, tone: 'pink' as const },
+  { label: 'Investing', value: 290, tone: 'success' as const },
+  { label: 'Mortgage', value: 824.28, tone: 'warning' as const },
+  { label: 'Other', value: 48.44, tone: 'gray' as const },
+];
+
+export const threeYears = months.map((month, i) => ({
+  month,
+  y2027: Math.round(620 + i * 22 + Math.sin(i / 1.6) * 40),
+  y2026: Math.round(480 + i * 16 + Math.cos(i / 1.4) * 50),
+  y2025: Math.round(330 + i * 20 + Math.sin(i / 2) * 30),
+}));
+
+export const dailyTraffic = Array.from({ length: 60 }, (_, i) => ({
+  day: `${months[Math.floor(i / 5)]} ${(i % 5) * 6 + 1}`,
+  visits: Math.round(420 + Math.abs(Math.sin(i / 2.3)) * 520 + ((i * 37) % 160)),
+}));
+
+export const profileViews = Array.from({ length: 30 }, (_, i) => ({
+  day: `${i + 1} Jul`,
+  views: Math.round(560 + Math.sin(i / 1.7) * 160 + ((i * 53) % 120)),
+  likes: Math.round(380 + Math.cos(i / 1.9) * 120 + ((i * 29) % 90)),
+  follows: Math.round(200 + ((i * 17) % 40)),
+}));
+
+export const fans = [
+  { name: 'Phoenix Baker', handle: '@phoenix.baker', likes: 24 },
+  { name: 'Lana Steiner', handle: '@lanasteiner', likes: 22 },
+  { name: 'Demi Wilkinson', handle: '@demi_wilkinson', likes: 22 },
+  { name: 'Candice Wu', handle: '@candicewu', likes: 20 },
+  { name: 'Natali Craig', handle: '@nat.craig', likes: 18 },
+  { name: 'Drew Cano', handle: '@drewc', likes: 16 },
+];
+export const designers = [
+  { name: 'Andi Lane', handle: '@andilane', likes: 46 },
+  { name: 'Kate Morrison', handle: '@kmorrison', likes: 40 },
+  { name: 'Koray Okumus', handle: '@korayy', likes: 36 },
+  { name: 'Ava Wright', handle: '@avawright', likes: 34 },
+  { name: 'Eve Leroy', handle: '@eve.leroy', likes: 30 },
+  { name: 'Zahir Mays', handle: '@zahir_mays', likes: 28 },
+];
+export const receipts = [
+  {
+    merchant: 'Spotify',
+    size: '200 KB',
+    amount: 18.99,
+    category: 'Subscriptions',
+    card: 'Debit card · 1234',
+  },
+  {
+    merchant: 'A Coffee',
+    size: '220 KB',
+    amount: 4.5,
+    category: 'Dining',
+    card: 'Debit card · 1234',
+  },
+  {
+    merchant: 'Rosso Antico',
+    size: '192 KB',
+    amount: 88,
+    category: 'Uncategorized',
+    card: 'Credit card · 5678',
+  },
+  {
+    merchant: 'Figma',
+    size: '216 KB',
+    amount: 15,
+    category: 'Subscriptions',
+    card: 'Debit card · 1234',
+  },
+  {
+    merchant: 'TBF Bakery',
+    size: '420 KB',
+    amount: 12.5,
+    category: 'Dining',
+    card: 'Debit card · 1234',
+  },
+  {
+    merchant: 'Fresh F&V',
+    size: '512 KB',
+    amount: 40.2,
+    category: 'Groceries',
+    card: 'Debit card · 1234',
+  },
+];

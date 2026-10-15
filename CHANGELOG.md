@@ -37,16 +37,18 @@ VerificationCodeInput.
   **ChooseCard:** icon.
 
 ### Prototypes
-- A brand-new app, **Panda** (`#/app`), designed from scratch on Untitled UI's dashboard,
-  settings and informational page patterns, replacing the old admin:
-  - **Overview:** KPI cards with sparklines, revenue chart, quarterly goal gauge, plan mix,
-    recent transactions, activity, projects in progress, upcoming meetings.
-  - **Analytics, Customers, Finance, Orders** (filters, invoice table, detail drawer, delete
-    confirmation), **Project** (brief, milestones, timeline, team, files, activity),
-    **Messages** (inbox and chat), **Calendar** (week view), **Profile**, **Settings** (details,
-    team, billing, notifications, integrations).
-  - New shell: sidebar with ⌘K search, grouped navigation with badges, trial card, account menu.
-- The playground has a Dashboard section. Old `#/admin…` links redirect to the new pages.
+- **19 dashboards** (`#/dashboards/01`–`19`), each recreating one of Untitled UI's dashboard
+  examples with this library's components and tokens, grouped in the sidebar:
+  Analytics (membership, site traffic, store revenue, recently active, website analytics, ad
+  performance), Customers (growth, health), Vendors (organization overview, monitoring), Sales
+  (ecommerce, sales overview, sales activity), Finance (personal finance, banking, card spending,
+  card receipts, savings goals) and Profile (creator stats).
+- Shared kit: panels, period switchers, bank cards, concentric rings, transaction, company,
+  vendor and people tables.
+- Shell variants: full or slim (icon-only) sidebar, four promo cards (verify device, refer a
+  friend, upgrade, workshop), and an optional end rail for cards or a chat.
+- Apps: Projects, Messages, Calendar, Orders and Settings. Old `#/admin…` and `#/app…` links
+  redirect.
 - InputField shrinks inside narrow flex and grid layouts (it overflowed phones).
 
 ## 1.0.0 — 2026-09-29

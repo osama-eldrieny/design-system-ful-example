@@ -1,15 +1,11 @@
 import { useEffect, useState, type ReactElement } from 'react';
 import { applyTheme, defaultTheme, ThemeProvider, ToastProvider, type Theme } from '@ds/react';
 import { useRoute } from './router';
-import AnalyticsPage from './pages/AnalyticsPage';
 import CalendarPage from './pages/CalendarPage';
-import CustomersPage from './pages/CustomersPage';
 import DemoPage from './pages/DemoPage';
-import FinancePage from './pages/FinancePage';
 import MessagesPage from './pages/MessagesPage';
 import OrdersPage from './pages/OrdersPage';
-import OverviewPage from './pages/OverviewPage';
-import ProfilePage from './pages/ProfilePage';
+import { dashboardPages } from './dashboards';
 import ProjectPage from './pages/ProjectPage';
 import SettingsPage from './pages/SettingsPage';
 import './prototype.css';
@@ -33,23 +29,25 @@ function Page({
   setTheme: (t: Theme) => void;
 }) {
   const app: Record<string, () => ReactElement> = {
-    analytics: () => <AnalyticsPage />,
     projects: () => <ProjectPage />,
     messages: () => <MessagesPage />,
     calendar: () => <CalendarPage />,
     orders: () => <OrdersPage />,
-    customers: () => <CustomersPage />,
-    finance: () => <FinancePage />,
-    profile: () => <ProfilePage />,
     settings: () => <SettingsPage section={route.split('/')[3] ?? 'details'} />,
   };
-  if (route.startsWith('/app/')) return (app[route.split('/')[2]] ?? (() => <OverviewPage />))();
+  if (route.startsWith('/dashboards/')) {
+    const Page = dashboardPages[route.split('/')[2]] ?? dashboardPages['01'];
+    return <Page />;
+  }
+  const appPage = app[route.split('/')[2]];
+  if (route.startsWith('/app/') && appPage) return appPage();
   if (route.startsWith('/demo'))
     return (
       <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
     );
-  // The app overview is the prototypes' home page.
-  return <OverviewPage />;
+  // The first dashboard is the prototypes' home page.
+  const Home = dashboardPages['01'];
+  return <Home />;
 }
 
 /** The prototypes app: the TechHub admin, the theme playground, toasts and the saved theme. */
