@@ -27,7 +27,6 @@ import {
   CreditCard,
   FolderKanban,
   LayoutDashboard,
-  LifeBuoy,
   Link2,
   LogOut,
   MessagesSquare,
@@ -154,10 +153,7 @@ export function AppShell({
   const me = members[0];
   const [search, setSearch] = useState(false);
   const [showPromo, setShowPromo] = useState(true);
-  const sections = [
-    { title: slim ? undefined : 'General', items: pages },
-    { items: [{ id: 'support', label: 'Support', href: '#/dashboard', icon: <LifeBuoy /> }] },
-  ];
+  const sections = [{ title: slim ? undefined : 'General', items: pages }];
 
   return (
     <div

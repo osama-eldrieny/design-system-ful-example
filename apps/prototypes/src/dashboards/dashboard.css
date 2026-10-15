@@ -43,3 +43,17 @@
 .dash-live > .dash-map {
   min-block-size: 12rem;
 }
+
+.dash-subnav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.dash-subnav__tabs {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  overflow-x: auto;
+}

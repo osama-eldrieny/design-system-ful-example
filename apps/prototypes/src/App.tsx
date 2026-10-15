@@ -33,7 +33,13 @@ function Page({
     messages: () => <MessagesPage />,
     calendar: () => <CalendarPage />,
     orders: () => <OrdersPage />,
-    settings: () => <SettingsPage section={route.split('/')[3] ?? 'details'} />,
+    settings: () => (
+      <SettingsPage
+        section={route.split('/')[3] ?? 'details'}
+        theme={theme}
+        onThemeChange={setTheme}
+      />
+    ),
   };
   const appPage = app[route.split('/')[2]];
   if (route.startsWith('/app/') && appPage) return appPage();

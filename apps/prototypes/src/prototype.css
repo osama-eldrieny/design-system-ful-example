@@ -362,44 +362,6 @@ html {
   margin-inline-start: auto;
 }
 
-/* Settings: label column and control column */
-.proto-settings {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-xl);
-  padding-block-start: var(--spacing-lg);
-}
-
-.proto-setting {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: var(--spacing-xl);
-  padding-block-end: var(--spacing-xl);
-  border-block-end: var(--border-width-hairline) solid var(--color-border-base);
-}
-
-@media (width < 48rem) {
-  .proto-setting {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--spacing-sm);
-  }
-}
-
-.proto-setting__label {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3xs);
-  font-size: var(--font-size-sm);
-  line-height: var(--font-line-height-sm);
-}
-
-.proto-setting__control {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  min-inline-size: 0;
-  max-inline-size: calc(var(--sizing-8xl) * 2.6);
-}
 
 .proto-two {
   display: grid;

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   ActivityFeed,
   AreaChart,
-  Avatar,
   AvatarLabelGroup,
   Badge,
   BarChart,
@@ -31,13 +30,15 @@ import {
   Download,
   Filter,
   Plus,
+  Share2,
   ShoppingCart,
   Users,
   Zap,
   Activity,
 } from 'lucide-react';
-import { avatars, mrr, purchases, recentOrders, sitePages, threeYears } from '../dashboard-data';
+import { mrr, purchases, recentOrders, sitePages, threeYears } from '../dashboard-data';
 import { AppShell } from '../shell/AppShell';
+import { TopBar } from '../shell/TopBar';
 import { More, Panel, Periods, Trend } from './kit';
 import './dashboard.css';
 
@@ -114,6 +115,7 @@ type Page = (typeof sitePages)[number];
 export function Dashboard() {
   const toast = useToast();
   const [status, setStatus] = useState('all');
+  const [view, setView] = useState('overview');
   const [page, setPage] = useState(1);
 
   const orderColumns: TableColumn<Order>[] = [
@@ -185,10 +187,12 @@ export function Dashboard() {
   return (
     <AppShell current="dashboard" promo="upgrade">
       <div className="dash">
+        <TopBar trail={[{ label: 'Home', href: '#/dashboard' }, { label: 'Dashboard' }]} />
+
         <PageHeader
-          leading={<Avatar name="Olivia Rhye" src={avatars[1]} size="large" decorative />}
           title="Welcome back, Olivia"
-          description="Track sales, customers and traffic in one place."
+          description="Your sales, customers and traffic at a glance."
+          divider
           actions={
             <>
               <Button
@@ -199,22 +203,46 @@ export function Dashboard() {
               >
                 Export
               </Button>
+              <Button variant="secondary" appearance="outline" iconStart={<Share2 />}>
+                Share
+              </Button>
               <Button iconStart={<Plus />} href="#/app/orders">
                 New order
               </Button>
             </>
           }
-        >
-          <div className="dash-toolbar">
+        />
+
+        <div className="dash-subnav">
+          <Tabs
+            appearance="line"
+            value={view}
+            onValueChange={setView}
+            className="dash-subnav__tabs"
+          >
+            <TabList label="Dashboard views">
+              <Tab value="overview">Overview</Tab>
+              <Tab value="sales">Sales</Tab>
+              <Tab value="customers" count={12}>
+                Customers
+              </Tab>
+              <Tab value="traffic">Traffic</Tab>
+              <Tab value="reports">Reports</Tab>
+            </TabList>
+            {['overview', 'sales', 'customers', 'traffic', 'reports'].map((v) => (
+              <TabPanel key={v} value={v} className="visually-hidden">
+                {`Showing the ${v} view`}
+              </TabPanel>
+            ))}
+          </Tabs>
+          <span className="dash-toolbar__end">
             <Periods />
-            <span className="dash-toolbar__end">
-              <DateRangePicker label="Report period" presets={datePresets()} />
-              <Button variant="secondary" appearance="outline" iconStart={<Filter />}>
-                Filters
-              </Button>
-            </span>
-          </div>
-        </PageHeader>
+            <DateRangePicker label="Report period" presets={datePresets()} size="small" />
+            <Button variant="secondary" appearance="outline" size="small" iconStart={<Filter />}>
+              Filters
+            </Button>
+          </span>
+        </div>
 
         {/* KPIs */}
         <section className="dash-kpis" aria-label="Key figures">
