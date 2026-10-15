@@ -138,6 +138,20 @@
           "meaning": "Neutral or a category hue."
         }
       ]
+    },
+    {
+      "prop": "inline",
+      "title": "Placement",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. Opens over the page with a scrim and a focus trap."
+        },
+        {
+          "value": "true",
+          "meaning": "Drawn in place, for previews, docs and static mockups. Not for real dialogs."
+        }
+      ]
     }
   ],
   "states": [
@@ -273,6 +287,13 @@
   ],
   "changelog": [
     {
+      "version": "1.3.0",
+      "date": "2026-10-15",
+      "changes": [
+        "inline: draws the dialog in place for previews."
+      ]
+    },
+    {
       "version": "0.4.0",
       "date": "2026-09-29",
       "changes": [
@@ -388,6 +409,12 @@
           "required": false,
           "default": "Close",
           "description": "Accessible name of the close button. Default \"Close\"."
+        },
+        "inline": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Draws the dialog in place instead of over the page, with no scrim or focus trap. Use it for\npreviews, docs and static mockups; real dialogs should open as a modal."
         },
         "asChild": {
           "type": "boolean",

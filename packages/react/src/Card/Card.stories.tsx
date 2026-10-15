@@ -147,7 +147,13 @@ export const WithHeader: Story = {
             <Button size="small" variant="secondary" appearance="outline">
               Export
             </Button>
-            <IconButton icon={<MoreVertical />} label="Options" variant="secondary" appearance="ghost" size="small" />
+            <IconButton
+              icon={<MoreVertical />}
+              label="Options"
+              variant="secondary"
+              appearance="ghost"
+              size="small"
+            />
           </>
         }
       />
@@ -172,6 +178,24 @@ export const Padding: Story = {
       </Card>
       <Card appearance="outlined" padding="none">
         <CardHeader title="No padding" description="Content runs to the edge." />
+      </Card>
+    </div>
+  ),
+};
+
+/** A corner ribbon flags a card, e.g. a new or sale item. */
+export const Ribbon: Story = {
+  render: () => (
+    <div style={{ display: 'grid', gap: 16, gridTemplateColumns: 'repeat(2, 260px)' }}>
+      <Card appearance="outlined" ribbon="New">
+        <CardBody>
+          <CardTitle as="h3">New arrival</CardTitle>
+        </CardBody>
+      </Card>
+      <Card appearance="outlined" ribbon="Sale" ribbonTone="danger">
+        <CardBody>
+          <CardTitle as="h3">On sale</CardTitle>
+        </CardBody>
       </Card>
     </div>
   ),

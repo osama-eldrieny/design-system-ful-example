@@ -1,5 +1,50 @@
 # Changelog
 
+## 1.3.0 — 2026-10-15 (the prototypes are built only from the library)
+
+The Orbit prototype and the theme showcase draw their UI from the library. Every card, list,
+thread, composer, calendar and payment card they show is a library component, so a change in
+the library reaches every page that uses it. Illustrations stay in the prototypes, and two
+exceptions are listed in the guard. A check in `npm run lint` keeps other hand-built UI out of
+the prototype stylesheets.
+
+### New components
+- **PromptInput** (Forms): a multi-line prompt with tools, actions, a send button and a busy state.
+- **NotificationCard** (Feedback): one notice with an avatar or icon, time, actions, dismiss and an unread state.
+- **Attachment** (Data display): a file with its icon, name, detail, download link and remove.
+- **DescriptionList** (Data display): label and value pairs, stacked or horizontal, with an emphasised total.
+- **PaymentCard** (Data display): a card illustration showing only the last four digits.
+- **PricingCard** (Patterns): a plan with price, features, a featured state and one action.
+- **IntegrationCard** (Patterns): an app with its connection state, a switch and footer actions.
+- **SettingsList** (Data display): rows of settings with a control at the end.
+- **KanbanBoard** (Data display): columns of task cards, with a compact density.
+- **EventCalendar** (Data display): month, week and day views, multi-day events and event buttons.
+- **Carousel** (Data display): slides with arrows, dots and a polite announcement.
+- **VideoPlayer** (Data display): native video with captions, or a placeholder with a play button.
+- **Countdown** (Data display): a live countdown in days, hours, minutes and seconds.
+
+### Variants
+- **Card**: `CardHeader` (title, description, actions), `CardFooter divided`, `padding="none"`,
+  and a corner `ribbon` with a tone.
+- **Stat**: `size` (small, medium, large), `changeAppearance="badge"`, and a `note`.
+- **List**: a `start` slot for controls, and `unread`, `selected`, `current` and `done` states.
+  The meta area wraps under narrow rows.
+- **Modal**: `inline` draws the dialog in place, for previews and docs.
+- **SideNav**: item `actions`, shown on hover or focus and always on touch.
+- **PromptInput**: `busy` shows a spinner on the send button.
+- **EventCalendar**: `view`, `header`, `onSelectEvent`, and events with an `end` date.
+
+### Prototypes
+- Orbit and the theme showcase use the new components throughout. Their hand-built cards, lists,
+  threads, composers, calendars, carousels, countdowns and payment cards are gone.
+- `scripts/check-prototype-css.mjs` fails the lint if a prototype stylesheet draws a surface
+  (background, full border, radius or shadow) outside a short allowlist of shell, illustration
+  and documented exceptions.
+
+### Tokens
+- Component token files for all 13 new components; ribbon, week and agenda tokens for the
+  variants that gained them. Contrast: 2,574 checked pairs, 0 failures.
+
 ## 1.2.0 — 2026-10-15 (missing components and variants)
 
 A recheck of the library against common design systems found components and variants that

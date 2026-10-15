@@ -1,0 +1,32 @@
+/**
+ * Component tokens: attachment
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --attachment-{size?}-{part?}-{property}
+ *   size: small (base is medium); part: name, detail, actions; focus ring.
+ */
+
+:root,
+[data-theme] {
+  --attachment-gap: var(--spacing-sm);
+  --attachment-small-gap: var(--spacing-xs);
+  --attachment-padding: var(--spacing-sm);
+  --attachment-small-padding: var(--spacing-2xs);
+  --attachment-border-width: var(--border-width-hairline);
+  --attachment-border-color: var(--color-border-base);
+  --attachment-border-radius: var(--radius-lg);
+  --attachment-bg-color: var(--color-bg-base);
+  --attachment-font-family: var(--font-family-body);
+  --attachment-name-color: var(--color-fg-on-surface-primary);
+  --attachment-name-font-size: var(--font-size-md);
+  --attachment-name-font-weight: var(--font-weight-medium);
+  --attachment-name-font-line-height: var(--font-line-height-md);
+  --attachment-detail-color: var(--color-fg-on-surface-secondary);
+  --attachment-detail-font-size: var(--font-size-sm);
+  --attachment-detail-font-line-height: var(--font-line-height-sm);
+  --attachment-actions-gap: var(--spacing-3xs);
+  --attachment-focus-ring-width: var(--focus-ring-width);
+  --attachment-focus-ring-offset: var(--focus-ring-offset);
+  --attachment-focus-ring-color: var(--focus-ring-color);
+}

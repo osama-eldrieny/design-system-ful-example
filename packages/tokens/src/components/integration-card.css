@@ -1,0 +1,16 @@
+/**
+ * Component tokens: integration-card
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --integration-card-{part?}-{property}
+ *   part: state (badge and switch), icon, connected (the border when connected).
+ *   The surface, header and footer come from the card component.
+ */
+
+:root,
+[data-theme] {
+  --integration-card-gap: var(--spacing-md);
+  --integration-card-state-gap: var(--spacing-xs);
+  --integration-card-connected-border-color: var(--color-border-success-medium);
+}

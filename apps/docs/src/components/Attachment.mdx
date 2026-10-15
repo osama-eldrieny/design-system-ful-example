@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Attachment } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Attachment/Attachment.stories';
+import meta from '../../../../packages/react/src/Attachment/Attachment.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Attachment
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Attachment]}
+  optionStories={{ size: 'Sizes' }}
+  extras={[{ title: 'Sources', story: 'Sources' }]}
+  behaviorStory="RightToLeft"
+  matrix={<Attachment name="Guidelines.pdf" detail="2.4 MB" href="#" />}
+/>

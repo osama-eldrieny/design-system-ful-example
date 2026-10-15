@@ -66,6 +66,20 @@
   --card-footer-divider-color: var(--color-border-base);
   --card-footer-divided-padding-top: var(--spacing-md);
 
+  /* Ribbon (Card ribbon): a band across the corner */
+  --card-ribbon-offset: var(--spacing-md);
+  --card-ribbon-overhang: var(--spacing-2xl);
+  --card-ribbon-width: 8rem;
+  --card-ribbon-padding-y: var(--spacing-3xs);
+  --card-ribbon-font-size: var(--font-size-xs);
+  --card-ribbon-font-weight: var(--font-weight-semi-bold);
+  --card-ribbon-primary-bg-color: var(--color-bg-accent-primary-strong-default);
+  --card-ribbon-primary-text-color: var(--color-fg-on-accent-primary-strong-default);
+  --card-ribbon-success-bg-color: var(--color-bg-accent-success-strong-default);
+  --card-ribbon-success-text-color: var(--color-fg-on-accent-success-strong-default);
+  --card-ribbon-danger-bg-color: var(--color-bg-accent-danger-strong-default);
+  --card-ribbon-danger-text-color: var(--color-fg-on-accent-danger-strong-default);
+
   /* Clickable card */
   --card-hover-border-color: var(--color-border-primary-strong);
   --card-focus-ring-width: var(--focus-ring-width);

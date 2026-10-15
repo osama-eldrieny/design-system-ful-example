@@ -40,6 +40,10 @@ import { ModalClose } from '@ds/react';
 - `success | warning | danger`: Outcome or risk, e.g. danger for delete.
 - `secondary | gray … teal`: Neutral or a category hue.
 
+## Placement (`inline`)
+- `false`: Default. Opens over the page with a scrim and a focus trap.
+- `true`: Drawn in place, for previews, docs and static mockups. Not for real dialogs.
+
 ## States
 - **Open**: Shown over a scrim; focus inside. (open)
 - **Closed**: Focus back on the trigger. (—)
@@ -68,6 +72,7 @@ import { ModalClose } from '@ds/react';
 | `align` | `"center" \| "start"` | start | `start` (default) or `center`: centers the icon, text and footer buttons. |
 | `role` | `"dialog" \| "alertdialog"` | dialog | `alertdialog` for urgent confirmations (e.g. delete): clicking outside doesn't close it and there's no close icon, so people choose an action. |
 | `closeLabel` | `string` | Close | Accessible name of the close button. Default "Close". |
+| `inline` | `boolean` | false | Draws the dialog in place instead of over the page, with no scrim or focus trap. Use it for previews, docs and static mockups; real dialogs should open as a modal. |
 | `asChild` | `boolean` |  |  |
 
 ### ModalFooter

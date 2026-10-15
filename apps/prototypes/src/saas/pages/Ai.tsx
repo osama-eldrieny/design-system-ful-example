@@ -1,10 +1,9 @@
 /**
  * Orbit's AI assistant: text, image, code and video generators (one chat layout) and AI settings.
  */
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { Children, useEffect, useRef, useState, type ReactElement, type ReactNode } from 'react';
 import {
   Avatar,
-  Badge,
   Button,
   Code,
   DropdownMenu,
@@ -24,7 +23,6 @@ import {
   Select,
   SelectItem,
   Slider,
-  Spinner,
   Switch,
   Tab,
   TabList,
@@ -34,9 +32,12 @@ import {
   useToast,
   List,
   ListItem,
+  SettingsList,
+  PromptInput,
+  MessageThread,
+  Card,
 } from '@ds/react';
 import {
-  Bot,
   Calendar,
   Clapperboard,
   GitBranch,
@@ -48,7 +49,6 @@ import {
   Pencil,
   Plus,
   Search,
-  Send,
   Share2,
   Sparkles,
   Star,
@@ -191,7 +191,7 @@ function Generator({ kind }: { kind: Kind }) {
     { from: 'me', body: c.first },
     { from: 'ai', body: c.reply(c.first) },
   ]);
-  const end = useRef<HTMLLIElement>(null);
+  const end = useRef<HTMLDivElement>(null);
   useEffect(() => {
     end.current?.scrollIntoView?.({ block: 'nearest' });
   }, [msgs]);
@@ -209,7 +209,12 @@ function Generator({ kind }: { kind: Kind }) {
 
   return (
     <div className="orbit-ai">
-      <aside className="panel orbit-ai__history" aria-label="Chat history">
+      <Card
+        as="aside"
+        appearance="outlined"
+        className="orbit-ai__history"
+        aria-label="Chat history"
+      >
         <Button iconStart={<Plus />} fullWidth onClick={() => setMsgs([])}>
           New chat
         </Button>
@@ -258,9 +263,9 @@ function Generator({ kind }: { kind: Kind }) {
             </List>
           </section>
         ))}
-      </aside>
+      </Card>
 
-      <section className="panel orbit-ai__main" aria-label="Conversation">
+      <Card as="section" appearance="outlined" className="orbit-ai__main" aria-label="Conversation">
         <header className="orbit-toolbar">
           <Select label="Model" hideLabel size="small" value={model} onValueChange={setModel}>
             {c.models.map((m) => (
@@ -295,61 +300,38 @@ function Generator({ kind }: { kind: Kind }) {
           </Modal>
         </header>
 
-        <ol className="orbit-ai__thread" aria-live="polite">
-          {msgs.length === 0 && (
-            <li className="orbit-center orbit-ai__empty">
+        <div className="orbit-ai__thread">
+          {msgs.length === 0 ? (
+            <div className="orbit-center orbit-ai__empty">
               <FeaturedIcon icon={<Sparkles />} size="large" />
               <strong>What shall we make?</strong>
-            </li>
+            </div>
+          ) : (
+            <MessageThread
+              label="Conversation"
+              messages={msgs.map((m, i) => ({
+                id: String(i),
+                author: m.from === 'me' ? { name: me.name, avatar: me.src } : { name: model },
+                own: m.from === 'me',
+                content: m.body,
+              }))}
+              typing={busy ? { name: model } : undefined}
+            />
           )}
-          {msgs.map((m, i) => (
-            <li key={i} className={`orbit-ai__msg orbit-ai__msg--${m.from}`}>
-              {m.from === 'ai' ? (
-                <FeaturedIcon icon={<Bot />} size="small" label={model} />
-              ) : (
-                <Avatar name={me.name} src={me.src} size="small" decorative />
-              )}
-              <div className="orbit-ai__body">
-                {m.from === 'ai' && (
-                  <Badge tone="gray" shape="modern" size="small">
-                    {model}
-                  </Badge>
-                )}
-                {typeof m.body === 'string' ? <p>{m.body}</p> : m.body}
-              </div>
-            </li>
-          ))}
-          {busy && (
-            <li className="orbit-ai__msg">
-              <Spinner label="Generating" size="small" />
-            </li>
-          )}
-          <li ref={end} aria-hidden="true" />
-        </ol>
+          <div ref={end} aria-hidden="true" />
+        </div>
 
-        <form
-          className="orbit-ai__composer"
-          onSubmit={(e) => {
-            e.preventDefault();
-            send();
-          }}
-        >
-          <Textarea
-            label="Prompt"
-            hideLabel
-            rows={2}
-            placeholder={c.placeholder}
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                send();
-              }
-            }}
-          />
-          <div className="orbit-toolbar">
-            <span className="row">
+        <PromptInput
+          label="Prompt"
+          placeholder={c.placeholder}
+          rows={2}
+          value={prompt}
+          onValueChange={setPrompt}
+          onSubmit={() => send()}
+          busy={busy}
+          submitLabel={kind === 'text' || kind === 'code' ? 'Send' : 'Generate'}
+          tools={
+            <>
               <IconButton
                 icon={<Paperclip />}
                 label="Upload a file"
@@ -392,37 +374,31 @@ function Generator({ kind }: { kind: Kind }) {
                   </Select>
                 </>
               )}
-            </span>
-            <Button type="submit" iconStart={<Send />} loading={busy} disabled={!prompt.trim()}>
-              {kind === 'text' || kind === 'code' ? 'Send' : 'Generate'}
-            </Button>
-          </div>
-        </form>
-      </section>
+            </>
+          }
+        />
+      </Card>
     </div>
   );
 }
 
 /* --------------------------------------------------------------- settings */
 
-function Row({
-  title,
-  description,
-  children,
-}: {
-  title: string;
-  description?: string;
-  children: ReactNode;
-}) {
-  return (
-    <li>
-      <span className="stack-text">
-        <strong>{title}</strong>
-        {description && <span className="muted text-sm">{description}</span>}
-      </span>
-      <span className="row">{children}</span>
-    </li>
-  );
+type RowProps = { title: string; description?: string; children: ReactNode };
+
+/** One setting. SettingsBlock reads its props; it renders nothing on its own. */
+function Row(props: RowProps): null {
+  void props;
+  return null;
+}
+
+/** A list of settings: each Row child becomes an item of the library's SettingsList. */
+function SettingsBlock({ children }: { children: ReactNode }) {
+  const items = Children.toArray(children).map((child, i) => {
+    const { title, description, children: control } = (child as ReactElement<RowProps>).props;
+    return { id: `${i}`, title, description, control };
+  });
+  return <SettingsList items={items} />;
 }
 
 function AiSettings() {
@@ -446,7 +422,7 @@ function AiSettings() {
           </div>
         </Panel>
         <Panel title="Security">
-          <ul className="orbit-settings">
+          <SettingsBlock>
             <Row title="Password" description="Last changed 3 months ago.">
               <Button size="small" variant="secondary" appearance="outline">
                 Change
@@ -463,7 +439,7 @@ function AiSettings() {
                 Sign out all
               </Button>
             </Row>
-          </ul>
+          </SettingsBlock>
         </Panel>
       </>,
     ],
@@ -471,7 +447,7 @@ function AiSettings() {
       'general',
       'General',
       <Panel key="g" title="General">
-        <ul className="orbit-settings">
+        <SettingsBlock>
           <Row title="Theme">
             <Segmented
               label="Theme"
@@ -510,7 +486,7 @@ function AiSettings() {
           <Row title="Product updates">
             <Switch aria-label="Notify about product updates" />
           </Row>
-        </ul>
+        </SettingsBlock>
       </Panel>,
     ],
     [
@@ -528,7 +504,7 @@ function AiSettings() {
           showValue
           formatValue={(v, m) => `${v} of ${m}`}
         />
-        <ul className="orbit-settings">
+        <SettingsBlock>
           <Row title="Plan" description="Pro · $20 per month">
             <Button size="small">Upgrade to Team</Button>
           </Row>
@@ -544,7 +520,7 @@ function AiSettings() {
               </Button>
             </Row>
           ))}
-        </ul>
+        </SettingsBlock>
       </Panel>,
     ],
     [
@@ -588,7 +564,7 @@ function AiSettings() {
       'memory',
       'Memory',
       <Panel key="m" title="Memory">
-        <ul className="orbit-settings">
+        <SettingsBlock>
           <Row title="Use memory" description="Let Orbit AI remember details across chats.">
             <Switch aria-label="Use memory" defaultChecked />
           </Row>
@@ -603,7 +579,7 @@ function AiSettings() {
               Clear all
             </Button>
           </Row>
-        </ul>
+        </SettingsBlock>
       </Panel>,
     ],
     [
@@ -638,20 +614,20 @@ function AiSettings() {
       'models',
       'Models',
       <Panel key="mo" title="Models" description="Choose which models appear in the model menu.">
-        <ul className="orbit-settings">
+        <SettingsBlock>
           {[...new Set(Object.values(config).flatMap((c) => c.models.slice(1)))].map((m) => (
             <Row key={m} title={m}>
               <Switch aria-label={`Show ${m}`} defaultChecked />
             </Row>
           ))}
-        </ul>
+        </SettingsBlock>
       </Panel>,
     ],
     [
       'connectors',
       'Connectors',
       <Panel key="co" title="Connectors">
-        <ul className="orbit-settings">
+        <SettingsBlock>
           {[
             ['Google Drive', <HardDrive key="d" />, true],
             ['GitHub', <GitBranch key="g" />, true],
@@ -685,14 +661,14 @@ function AiSettings() {
               Revoke
             </Button>
           </Row>
-        </ul>
+        </SettingsBlock>
       </Panel>,
     ],
     [
       'data',
       'Data controls',
       <Panel key="da" title="Data controls">
-        <ul className="orbit-settings">
+        <SettingsBlock>
           <Row title="Keep chats for">
             <Select label="Retention period" hideLabel size="small" defaultValue="90">
               {['30', '90', '365'].map((d) => (
@@ -721,7 +697,7 @@ function AiSettings() {
               Delete
             </Button>
           </Row>
-        </ul>
+        </SettingsBlock>
       </Panel>,
     ],
   ];

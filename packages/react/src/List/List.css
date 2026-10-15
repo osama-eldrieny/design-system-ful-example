@@ -36,6 +36,7 @@
 
 .ds-list__item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--list-item-gap);
   padding-inline-end: var(--list-item-padding-x);
@@ -43,7 +44,7 @@
 
 .ds-list__row {
   display: flex;
-  flex: 1;
+  flex: 1 1 var(--list-row-min-width);
   align-items: center;
   gap: var(--list-item-gap);
   min-inline-size: 0;
@@ -105,6 +106,7 @@
 .ds-list__meta {
   display: flex;
   flex: none;
+  margin-inline-start: auto;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;

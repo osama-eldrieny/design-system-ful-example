@@ -38,6 +38,9 @@ import {
   TagsEmpty,
   Upload,
   type T,
+  PaymentCards,
+  PricingTile,
+  RatingTile,
 } from './tiles';
 import './showcase.css';
 import { Segmented } from '../Segmented';
@@ -154,6 +157,9 @@ export default function Showcase({
           <AiPrompt t={t} />
           <Selection t={t} />
           <Notification t={t} />
+          <PaymentCards t={t} />
+          <PricingTile t={t} />
+          <RatingTile t={t} />
           <PeoplePicker t={t} />
           <Destructive t={t} />
           <Navigation t={t} />

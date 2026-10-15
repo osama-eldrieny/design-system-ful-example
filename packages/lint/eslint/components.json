@@ -68,6 +68,25 @@
       "orientation": [
         "vertical",
         "horizontal"
+      ],
+      "padding": [
+        "default",
+        "none"
+      ],
+      "ribbonTone": [
+        "primary",
+        "success",
+        "danger"
+      ]
+    }
+  },
+  "Attachment": {
+    "status": "stable",
+    "component": "attachment",
+    "props": {
+      "size": [
+        "small",
+        "medium"
       ]
     }
   },
@@ -269,6 +288,15 @@
       "orientation": [
         "vertical",
         "horizontal"
+      ],
+      "padding": [
+        "default",
+        "none"
+      ],
+      "ribbonTone": [
+        "primary",
+        "success",
+        "danger"
       ]
     }
   },
@@ -281,6 +309,19 @@
     "status": "stable",
     "component": "card",
     "props": {}
+  },
+  "CardHeader": {
+    "status": "stable",
+    "component": "card",
+    "props": {
+      "titleAs": [
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6"
+      ]
+    }
   },
   "CardTitle": {
     "status": "stable",
@@ -303,6 +344,22 @@
   "CardFooter": {
     "status": "stable",
     "component": "card",
+    "props": {}
+  },
+  "Carousel": {
+    "status": "stable",
+    "component": "carousel",
+    "props": {
+      "controls": [
+        "both",
+        "arrows",
+        "dots"
+      ]
+    }
+  },
+  "CarouselControls": {
+    "status": "stable",
+    "component": "carousel",
     "props": {}
   },
   "LineChart": {
@@ -449,6 +506,22 @@
       ]
     }
   },
+  "Countdown": {
+    "status": "stable",
+    "component": "countdown",
+    "props": {
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ]
+    }
+  },
+  "CountdownSize": {
+    "status": "stable",
+    "component": "countdown",
+    "props": {}
+  },
   "DatePicker": {
     "status": "stable",
     "component": "date-picker",
@@ -495,6 +568,16 @@
     "status": "stable",
     "component": "date-picker",
     "props": {}
+  },
+  "DescriptionList": {
+    "status": "stable",
+    "component": "description-list",
+    "props": {
+      "layout": [
+        "horizontal",
+        "stacked"
+      ]
+    }
   },
   "Divider": {
     "status": "stable",
@@ -628,6 +711,26 @@
         "large"
       ]
     }
+  },
+  "EventCalendar": {
+    "status": "stable",
+    "component": "event-calendar",
+    "props": {
+      "view": [
+        "month",
+        "week",
+        "day"
+      ],
+      "weekStartsOn": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "EventCalendarEvent": {
+    "status": "stable",
+    "component": "event-calendar",
+    "props": {}
   },
   "FeaturedIcon": {
     "status": "stable",
@@ -822,6 +925,26 @@
       ]
     }
   },
+  "IntegrationCard": {
+    "status": "stable",
+    "component": "integration-card",
+    "props": {}
+  },
+  "KanbanBoard": {
+    "status": "stable",
+    "component": "kanban-board",
+    "props": {}
+  },
+  "KanbanCardData": {
+    "status": "stable",
+    "component": "kanban-board",
+    "props": {}
+  },
+  "KanbanColumnData": {
+    "status": "stable",
+    "component": "kanban-board",
+    "props": {}
+  },
   "Kbd": {
     "status": "stable",
     "component": "kbd",
@@ -1000,6 +1123,27 @@
     "component": "navbar",
     "props": {}
   },
+  "NotificationCard": {
+    "status": "stable",
+    "component": "notification-card",
+    "props": {
+      "iconTone": [
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "danger",
+        "gray",
+        "blue",
+        "sky",
+        "indigo",
+        "purple",
+        "pink",
+        "orange",
+        "teal"
+      ]
+    }
+  },
   "PageHeader": {
     "status": "stable",
     "component": "page-header",
@@ -1031,6 +1175,21 @@
       ]
     }
   },
+  "PaymentCard": {
+    "status": "stable",
+    "component": "payment-card",
+    "props": {
+      "tone": [
+        "brand",
+        "dark",
+        "light"
+      ],
+      "size": [
+        "small",
+        "medium"
+      ]
+    }
+  },
   "Popover": {
     "status": "stable",
     "component": "popover",
@@ -1051,6 +1210,11 @@
     "component": "popover",
     "props": {}
   },
+  "PricingCard": {
+    "status": "stable",
+    "component": "pricing-card",
+    "props": {}
+  },
   "ProductCard": {
     "status": "stable",
     "component": "product-card",
@@ -1063,6 +1227,15 @@
       "orientation": [
         "vertical",
         "horizontal"
+      ],
+      "padding": [
+        "default",
+        "none"
+      ],
+      "ribbonTone": [
+        "primary",
+        "success",
+        "danger"
       ]
     }
   },
@@ -1105,6 +1278,16 @@
         "success",
         "warning",
         "danger"
+      ]
+    }
+  },
+  "PromptInput": {
+    "status": "stable",
+    "component": "prompt-input",
+    "props": {
+      "size": [
+        "small",
+        "medium"
       ]
     }
   },
@@ -1187,6 +1370,11 @@
     "component": "select",
     "props": {}
   },
+  "SettingsList": {
+    "status": "stable",
+    "component": "settings-list",
+    "props": {}
+  },
   "SideNav": {
     "status": "stable",
     "component": "side-nav",
@@ -1255,6 +1443,15 @@
         "up",
         "down",
         "neutral"
+      ],
+      "size": [
+        "small",
+        "medium",
+        "large"
+      ],
+      "changeAppearance": [
+        "text",
+        "badge"
       ]
     }
   },
@@ -1428,5 +1625,21 @@
         "text"
       ]
     }
+  },
+  "VideoPlayer": {
+    "status": "stable",
+    "component": "video-player",
+    "props": {
+      "aspectRatio": [
+        "16:9",
+        "4:3",
+        "1:1"
+      ]
+    }
+  },
+  "VideoPlayerAspectRatio": {
+    "status": "stable",
+    "component": "video-player",
+    "props": {}
   }
 }

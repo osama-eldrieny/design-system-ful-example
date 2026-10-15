@@ -1,0 +1,36 @@
+/**
+ * Component tokens: prompt-input
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --prompt-input-{size?}-{part?}-{state?}-{property}
+ *   size: small (base is medium); part: bar, tools, end (the bottom row), label (hidden),
+ *   field (the text); state: focus, disabled, placeholder.
+ */
+
+:root,
+[data-theme] {
+  --prompt-input-gap: var(--spacing-xs);
+  --prompt-input-padding: var(--spacing-md);
+  --prompt-input-small-gap: var(--spacing-2xs);
+  --prompt-input-small-padding: var(--spacing-xs);
+  --prompt-input-bar-gap: var(--spacing-xs);
+  --prompt-input-min-height: calc(var(--prompt-input-font-line-height) * 2);
+  --prompt-input-hidden-size: var(--border-width-hairline);
+  --prompt-input-border-radius: var(--radius-lg);
+  --prompt-input-border-width: var(--border-width-hairline);
+  --prompt-input-border-color: var(--color-border-field);
+  --prompt-input-focus-border-color: var(--color-border-primary-strong);
+  --prompt-input-bg-color: var(--color-bg-surface);
+  --prompt-input-shadow-y: var(--shadow-0);
+  --prompt-input-shadow-blur: var(--shadow-0);
+  --prompt-input-shadow-color: var(--color-shadow-surface);
+  --prompt-input-text-color: var(--color-fg-on-surface-primary);
+  --prompt-input-placeholder-color: var(--color-fg-on-surface-secondary);
+  --prompt-input-font-family: var(--font-family-body);
+  --prompt-input-font-size: var(--font-size-md);
+  --prompt-input-font-line-height: var(--font-line-height-md);
+  --prompt-input-duration: var(--duration-fast);
+  --prompt-input-easing: var(--easing-standard);
+  --prompt-input-disabled-opacity: var(--opacity-medium);
+}

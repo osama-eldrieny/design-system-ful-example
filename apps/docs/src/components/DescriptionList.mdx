@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { DescriptionList } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/DescriptionList/DescriptionList.stories';
+import meta from '../../../../packages/react/src/DescriptionList/DescriptionList.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# DescriptionList
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[DescriptionList]}
+  optionStories={{ layout: 'Layouts', divided: 'Dividers' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <DescriptionList
+      divided
+      items={[
+        { term: 'Subtotal', description: '$1,100.00' },
+        { term: 'Total', description: '$1,210.00', emphasis: true },
+      ]}
+    />
+  }
+/>

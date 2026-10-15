@@ -1,0 +1,28 @@
+/**
+ * Component tokens: description-list
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --description-list-{part?}-{state?}-{property}
+ *   part: term, description, row, divider, emphasis (a total row).
+ */
+
+:root,
+[data-theme] {
+  --description-list-gap: var(--spacing-2xs);
+  --description-list-row-gap: var(--spacing-xs);
+  --description-list-row-padding-y: var(--spacing-2xs);
+  --description-list-font-family: var(--font-family-body);
+  --description-list-font-size: var(--font-size-md);
+  --description-list-font-line-height: var(--font-line-height-md);
+  --description-list-term-color: var(--color-fg-on-surface-secondary);
+  --description-list-term-font-weight: var(--font-weight-regular);
+  --description-list-description-color: var(--color-fg-on-surface-primary);
+  --description-list-divider-width: var(--border-width-hairline);
+  --description-list-divider-color: var(--color-border-base);
+  --description-list-emphasis-color: var(--color-fg-on-surface-primary);
+  --description-list-emphasis-font-weight: var(--font-weight-bold);
+  --description-list-emphasis-padding-top: var(--spacing-xs);
+  --description-list-emphasis-border-width: var(--border-width-hairline);
+  --description-list-emphasis-border-color: var(--color-border-base);
+}

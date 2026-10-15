@@ -9,7 +9,6 @@ import {
   Button,
   Checkbox,
   Divider,
-  FeaturedIcon,
   IconButton,
   InputField,
   MetricCard,
@@ -27,6 +26,10 @@ import {
   useToast,
   List,
   ListItem,
+  Attachment,
+  PromptInput,
+  MessageThread,
+  Card,
 } from '@ds/react';
 import {
   Archive,
@@ -125,7 +128,7 @@ function Chat() {
   return (
     <Page path="/support/chat" description="Conversations with your team and customers.">
       <div className="orbit-chat">
-        <aside className="panel orbit-chat__list" aria-label="Chats">
+        <Card as="aside" appearance="outlined" className="orbit-chat__list" aria-label="Chats">
           <InputField
             label="Search chats"
             hideLabel
@@ -174,8 +177,13 @@ function Chat() {
                 );
               })}
           </List>
-        </aside>
-        <section className="panel orbit-chat__thread" aria-label={`Conversation with ${c.name}`}>
+        </Card>
+        <Card
+          as="section"
+          appearance="outlined"
+          className="orbit-chat__thread"
+          aria-label={`Conversation with ${c.name}`}
+        >
           <header className="row row--between">
             <AvatarLabelGroup
               name={c.name}
@@ -195,42 +203,38 @@ function Chat() {
             </span>
           </header>
           <Divider />
-          <ol className="orbit-messages" aria-live="polite">
-            {messages.map((m, i) => (
-              <li key={i} className={`orbit-msg orbit-msg--${m.from}`}>
-                {m.from === 'them' && <Avatar name={c.name} src={c.src} size="small" decorative />}
-                <span className="orbit-msg__body">
-                  <span className="orbit-msg__bubble">{m.text}</span>
-                  <span className="muted text-sm">
-                    {m.from === 'me' ? 'You' : c.name.split(' ')[0]} · {m.time}
-                  </span>
-                </span>
-              </li>
-            ))}
-          </ol>
-          <form
-            className="orbit-composer"
-            onSubmit={(e) => {
-              e.preventDefault();
-              send();
-            }}
-          >
-            <IconButton
-              icon={<Paperclip />}
-              label="Attach a file"
-              variant="secondary"
-              appearance="ghost"
-            />
-            <InputField
-              label={`Message ${c.name}`}
-              hideLabel
-              placeholder="Type a message"
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-            />
-            <IconButton type="submit" icon={<Send />} label="Send" />
-          </form>
-        </section>
+          <MessageThread
+            label={`Conversation with ${c.name}`}
+            messages={messages.map((m, i) => ({
+              id: String(i),
+              author:
+                m.from === 'me'
+                  ? { name: me.name, avatar: me.src }
+                  : { name: c.name, avatar: c.src },
+              own: m.from === 'me',
+              content: m.text,
+              time: m.time,
+            }))}
+          />
+          <PromptInput
+            label={`Message ${c.name}`}
+            size="small"
+            rows={1}
+            placeholder="Type a message"
+            value={draft}
+            onValueChange={setDraft}
+            onSubmit={() => send()}
+            tools={
+              <IconButton
+                icon={<Paperclip />}
+                label="Attach a file"
+                variant="secondary"
+                appearance="ghost"
+                size="small"
+              />
+            }
+          />
+        </Card>
       </div>
     </Page>
   );
@@ -544,7 +548,7 @@ const mails = Array.from({ length: 12 }, (_, i) => ({
 function MailSide({ current }: { current: string }) {
   const toast = useToast();
   return (
-    <aside className="panel orbit-mail__side" aria-label="Mailboxes">
+    <Card as="aside" appearance="outlined" className="orbit-mail__side" aria-label="Mailboxes">
       <Modal>
         <ModalTrigger asChild>
           <Button fullWidth iconStart={<Pencil />}>
@@ -621,7 +625,7 @@ function MailSide({ current }: { current: string }) {
           </Badge>
         ))}
       </span>
-    </aside>
+    </Card>
   );
 }
 
@@ -635,7 +639,13 @@ function Inbox() {
     <Page path="/support/inbox" description="Mail for maya@orbit.app">
       <div className="orbit-mail">
         <MailSide current="inbox" />
-        <section className="panel panel--flush orbit-mail__list" aria-label="Messages">
+        <Card
+          as="section"
+          appearance="outlined"
+          padding="none"
+          className="orbit-mail__list"
+          aria-label="Messages"
+        >
           <div className="orbit-mail__toolbar">
             <span className="row">
               <Checkbox
@@ -705,7 +715,7 @@ function Inbox() {
               />
             ))}
           </List>
-        </section>
+        </Card>
       </div>
     </Page>
   );
@@ -717,7 +727,12 @@ function MessageDetails() {
     <Page path="/support/message" description="Mail for maya@orbit.app">
       <div className="orbit-mail">
         <MailSide current="inbox" />
-        <article className="panel orbit-mail__read" aria-labelledby="mail-subject">
+        <Card
+          as="article"
+          appearance="outlined"
+          className="orbit-mail__read"
+          aria-labelledby="mail-subject"
+        >
           <div className="orbit-toolbar">
             <span className="row">
               <IconButton
@@ -779,20 +794,22 @@ function MessageDetails() {
               { name: 'Guidelines.pdf', size: '2.4 MB', icon: <File /> },
               { name: 'Branding assets', size: 'Google Drive', icon: <HardDrive /> },
             ].map((f) => (
-              <div key={f.name} className="orbit-file">
-                <FeaturedIcon icon={f.icon} appearance="modern" shape="square" size="small" />
-                <span className="stack-text">
-                  <strong className="text-sm">{f.name}</strong>
-                  <span className="muted text-sm">{f.size}</span>
-                </span>
-                <IconButton
-                  icon={<Download />}
-                  label={`Download ${f.name}`}
-                  variant="secondary"
-                  appearance="ghost"
-                  size="small"
-                />
-              </div>
+              <Attachment
+                key={f.name}
+                name={f.name}
+                detail={f.size}
+                icon={f.icon}
+                size="small"
+                actions={
+                  <IconButton
+                    icon={<Download />}
+                    label={`Download ${f.name}`}
+                    variant="secondary"
+                    appearance="ghost"
+                    size="small"
+                  />
+                }
+              />
             ))}
           </div>
           <span className="row">
@@ -804,7 +821,7 @@ function MessageDetails() {
               Forward
             </Button>
           </span>
-        </article>
+        </Card>
       </div>
     </Page>
   );

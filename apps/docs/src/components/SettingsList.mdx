@@ -1,0 +1,24 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { SettingsList, Switch } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/SettingsList/SettingsList.stories';
+import meta from '../../../../packages/react/src/SettingsList/SettingsList.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# SettingsList
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[SettingsList]}
+  optionStories={{ framed: 'Framed' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <SettingsList
+      items={[
+        { id: '2fa', title: 'Two-factor authentication', control: <Switch aria-label="Two-factor authentication" defaultChecked /> },
+      ]}
+    />
+  }
+/>

@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Countdown } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Countdown/Countdown.stories';
+import meta from '../../../../packages/react/src/Countdown/Countdown.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Countdown
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Countdown]}
+  optionStories={{ size: 'Sizes' }}
+  extras={[{ title: 'Finished', story: 'Ended' }]}
+  behaviorStory="RightToLeft"
+  matrix={<Countdown label="Launch in" to={new Date(Date.now() + 2 * 86400000)} />}
+/>

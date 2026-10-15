@@ -4,7 +4,6 @@
 import { useState, type ReactNode } from 'react';
 import {
   Button,
-  FeaturedIcon,
   IconButton,
   InputField,
   Modal,
@@ -19,6 +18,7 @@ import {
   TableCard,
   useToast,
   type TableColumn,
+  IntegrationCard,
 } from '@ds/react';
 import {
   Calendar,
@@ -367,21 +367,14 @@ function Integrations() {
     >
       <div className="orbit-apps">
         {apps.map((a) => (
-          <article key={a.id} className="orbit-app">
-            <div className="row row--between">
-              <FeaturedIcon icon={a.icon} appearance="modern" shape="square" />
-              <span className="orbit-app__state">
-                <Status>{on[a.id] ? 'Connected' : 'Inactive'}</Status>
-                <Switch
-                  aria-label={`Connect ${a.name}`}
-                  checked={on[a.id]}
-                  onCheckedChange={(v) => setOn((s) => ({ ...s, [a.id]: v }))}
-                />
-              </span>
-            </div>
-            <h2 className="orbit-app__name">{a.name}</h2>
-            <p className="muted text-sm orbit-app__text">{a.description}</p>
-            <div className="orbit-app__foot">
+          <IntegrationCard
+            key={a.id}
+            name={a.name}
+            description={a.description}
+            icon={a.icon}
+            connected={!!on[a.id]}
+            onConnectedChange={(v) => setOn((s) => ({ ...s, [a.id]: v }))}
+            actions={
               <span className="row">
                 <Button
                   appearance="text"
@@ -423,8 +416,8 @@ function Integrations() {
                   </ModalContent>
                 </Modal>
               </span>
-            </div>
-          </article>
+            }
+          />
         ))}
       </div>
       <Modal open={remove !== null} onOpenChange={(o) => !o && setRemove(null)}>

@@ -39,6 +39,7 @@
   /* Item states: unread, selected, done; controls before the row */
   --list-start-gap: var(--spacing-3xs);
   --list-meta-gap: var(--spacing-xs);
+  --list-row-min-width: 10rem;
   --list-item-unread-bg-color: var(--color-bg-default);
   --list-item-unread-font-weight: var(--font-weight-semi-bold);
   --list-item-selected-bg-color: var(--color-bg-primary-1);

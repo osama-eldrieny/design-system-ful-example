@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { PaymentCard } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/PaymentCard/PaymentCard.stories';
+import meta from '../../../../packages/react/src/PaymentCard/PaymentCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# PaymentCard
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[PaymentCard]}
+  optionStories={{ tone: 'Tones', size: 'Sizes' }}
+  behaviorStory="RightToLeft"
+  matrix={<PaymentCard holder="Maya Okafor" last4="1234" expiry="06/28" brand="Orbit" />}
+/>

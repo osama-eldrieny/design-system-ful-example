@@ -44,8 +44,14 @@ export default defineMeta({
     { name: 'Title', description: 'Names the subject; becomes the link in a clickable card.' },
     { name: 'Description', description: 'Optional supporting text.', optional: true },
     {
+      name: 'Ribbon',
+      description: 'Optional corner band flagging the card, e.g. "New"; set with ribbon and ribbonTone.',
+      optional: true,
+    },
+    {
       name: 'Footer',
-      description: 'Optional actions or metadata; `divided` adds a line above and aligns actions to the end.',
+      description:
+        'Optional actions or metadata; `divided` adds a line above and aligns actions to the end.',
       optional: true,
     },
   ],

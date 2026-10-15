@@ -1,0 +1,352 @@
+{
+  "id": "description-list",
+  "name": "DescriptionList",
+  "category": "Data display",
+  "status": "stable",
+  "since": "1.3.0",
+  "description": "Pairs of labels and values, such as an invoice summary, order totals or account details. An emphasised row sets a total apart.",
+  "imports": [
+    {
+      "name": "DescriptionList",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "For key–value details: an invoice, an order summary, a profile.",
+    "For totals, with the final row emphasised."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For many records with the same columns.",
+      "alternative": "Table"
+    },
+    {
+      "text": "For a single key figure with a trend.",
+      "alternative": "Stat"
+    },
+    {
+      "text": "For editable settings.",
+      "alternative": "SettingsList"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Term",
+      "description": "The label, e.g. \"Subtotal\"."
+    },
+    {
+      "name": "Description",
+      "description": "The value, e.g. \"$120.00\"."
+    },
+    {
+      "name": "Divider",
+      "description": "A line between rows, when divided.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "layout",
+      "title": "Layout",
+      "values": [
+        {
+          "value": "horizontal",
+          "meaning": "Default. Terms on the start, values on the end."
+        },
+        {
+          "value": "stacked",
+          "meaning": "Values under their terms, for narrow columns."
+        }
+      ]
+    },
+    {
+      "prop": "divided",
+      "title": "Dividers",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. Spaced rows."
+        },
+        {
+          "value": "true",
+          "meaning": "A line between rows."
+        }
+      ]
+    },
+    {
+      "prop": "emphasis",
+      "title": "Emphasis",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. A regular row."
+        },
+        {
+          "value": "true",
+          "meaning": "A total: bold, with a line above it."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Static",
+      "meaning": "Read-only details.",
+      "trigger": "—"
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Semantics",
+      "text": "A description list: each term is paired with its value."
+    },
+    {
+      "topic": "Numbers",
+      "text": "Values use tabular figures so amounts line up."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "Terms sit on the right and values on the left in Arabic."
+    }
+  ],
+  "content": [
+    "Name terms as the reader would: \"Subtotal\", \"VAT (10%)\".",
+    "Format amounts with the currency and the same number of decimals."
+  ],
+  "guidelines": [
+    {
+      "do": "Emphasise only the total.",
+      "dont": "Bold several rows.",
+      "why": "One emphasised row tells the reader where the answer is."
+    },
+    {
+      "do": "Keep terms short and in the same order as the calculation.",
+      "dont": "Mix totals and line items without a divider.",
+      "why": "The order shows how the total was reached."
+    },
+    {
+      "do": "Use stacked layout in narrow columns.",
+      "dont": "Squeeze terms and values side by side in a 240px panel.",
+      "why": "Stacked layout keeps long values readable."
+    }
+  ],
+  "accessibility": {
+    "role": "definition list (dl) with term and description pairs.",
+    "keyboard": [
+      {
+        "keys": "—",
+        "action": "No keyboard interaction; use the controls inside, if any."
+      }
+    ],
+    "aria": [],
+    "focus": "Static content; no focus stops.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Terms and descriptions are real dt and dd elements."
+      },
+      {
+        "criterion": "1.4.3 Contrast",
+        "how": "Secondary terms pass AA on every surface in every theme."
+      }
+    ],
+    "notes": [
+      "Emphasis is shown by weight and a line, not color alone."
+    ]
+  },
+  "examples": [
+    {
+      "id": "totals",
+      "title": "Order totals",
+      "description": "Line items with an emphasised total.",
+      "code": "import { DescriptionList } from '@ds/react';\n\n<DescriptionList\n  divided\n  items={[\n    { term: 'Subtotal', description: '$1,100.00' },\n    { term: 'VAT (10%)', description: '$110.00' },\n    { term: 'Total', description: '$1,210.00', emphasis: true },\n  ]}\n/>"
+    },
+    {
+      "id": "stacked",
+      "title": "Account details",
+      "description": "Stacked for a narrow panel.",
+      "code": "import { DescriptionList } from '@ds/react';\n\n<DescriptionList layout=\"stacked\" items={[{ term: 'Email', description: 'maya@orbit.app' }]} />"
+    },
+    {
+      "id": "profile",
+      "title": "Profile",
+      "description": "Plain key–value pairs.",
+      "code": "import { DescriptionList } from '@ds/react';\n\n<DescriptionList items={[{ term: 'Role', description: 'Designer' }, { term: 'Team', description: 'Design systems' }]} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--description-list-"
+  ],
+  "related": [
+    {
+      "id": "stat",
+      "relation": "For a single key figure."
+    },
+    {
+      "id": "table",
+      "relation": "For many records."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.3.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "DescriptionList",
+      "import": "import { DescriptionList } from '@ds/react';",
+      "description": "Pairs of labels and values, such as an invoice summary, order totals or account details.",
+      "props": {
+        "items": {
+          "type": "DescriptionListItem[]",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "layout": {
+          "type": "DescriptionListLayout",
+          "values": [
+            "horizontal",
+            "stacked"
+          ],
+          "required": false,
+          "default": "horizontal",
+          "description": "`horizontal` (default) puts terms and values side by side; `stacked` puts values under terms."
+        },
+        "divided": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Draws a line between rows."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--description-list-gap": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--description-list-row-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--description-list-row-padding-y": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--description-list-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--description-list-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--description-list-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--description-list-term-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--description-list-term-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-regular",
+      "default": "400"
+    },
+    "--description-list-description-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--description-list-divider-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--description-list-divider-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--description-list-emphasis-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--description-list-emphasis-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-bold",
+      "default": "700"
+    },
+    "--description-list-emphasis-padding-top": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--description-list-emphasis-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--description-list-emphasis-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-descriptionlist--docs"
+}

@@ -1,0 +1,61 @@
+/**
+ * SettingsList. Styled only with --settings-list-* tokens. Each row puts the text at the start
+ * and the control at the end; rows are divided by a hairline.
+ */
+
+.ds-settings-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--settings-list-font-family);
+}
+
+.ds-settings-list--framed {
+  padding-inline: var(--settings-list-framed-padding-x);
+  border: var(--settings-list-border-width) solid var(--settings-list-border-color);
+  border-radius: var(--settings-list-border-radius);
+  background-color: var(--settings-list-bg-color);
+}
+
+.ds-settings-list__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--settings-list-row-gap);
+  padding-block: var(--settings-list-row-padding-y);
+}
+
+.ds-settings-list__row + .ds-settings-list__row {
+  border-block-start: var(--settings-list-divider-width) solid var(--settings-list-divider-color);
+}
+
+.ds-settings-list__text {
+  display: flex;
+  flex: 1 1 var(--settings-list-text-min-width);
+  flex-direction: column;
+  gap: var(--settings-list-text-gap);
+  min-inline-size: 0;
+}
+
+.ds-settings-list__title {
+  color: var(--settings-list-title-color);
+  font-size: var(--settings-list-title-font-size);
+  font-weight: var(--settings-list-title-font-weight);
+  line-height: var(--settings-list-title-font-line-height);
+}
+
+.ds-settings-list__description {
+  color: var(--settings-list-description-color);
+  font-size: var(--settings-list-description-font-size);
+  line-height: var(--settings-list-description-font-line-height);
+}
+
+.ds-settings-list__control {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  margin-inline-start: auto;
+}

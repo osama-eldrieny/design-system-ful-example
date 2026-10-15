@@ -10,7 +10,7 @@
     "dev": "npm run dev -w @ds/prototypes --",
     "build": "npm run ai && npm run build --workspaces --if-present && node scripts/assemble-site.mjs",
     "typecheck": "tsc -b",
-    "lint": "eslint . && stylelint \"**/*.css\" && npm run tokens:contrast",
+    "lint": "eslint . && stylelint \"**/*.css\" && node scripts/check-prototype-css.mjs && npm run tokens:contrast",
     "format": "prettier --write .",
     "test": "vitest run",
     "serve": "npx --yes serve site -l 8096",

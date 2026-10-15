@@ -1,0 +1,31 @@
+/**
+ * Component tokens: settings-list
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --settings-list-{part?}-{property}
+ *   part: title, description, row, divider, text (the start side); framed (the card around it).
+ */
+
+:root,
+[data-theme] {
+  --settings-list-font-family: var(--font-family-body);
+  --settings-list-row-gap: var(--spacing-md);
+  --settings-list-row-padding-y: var(--spacing-md);
+  --settings-list-text-gap: var(--spacing-3xs);
+  --settings-list-text-min-width: 12rem;
+  --settings-list-divider-width: var(--border-width-hairline);
+  --settings-list-divider-color: var(--color-border-base);
+  --settings-list-title-color: var(--color-fg-on-surface-primary);
+  --settings-list-title-font-size: var(--font-size-md);
+  --settings-list-title-font-weight: var(--font-weight-medium);
+  --settings-list-title-font-line-height: var(--font-line-height-md);
+  --settings-list-description-color: var(--color-fg-on-surface-secondary);
+  --settings-list-description-font-size: var(--font-size-sm);
+  --settings-list-description-font-line-height: var(--font-line-height-sm);
+  --settings-list-framed-padding-x: var(--spacing-lg);
+  --settings-list-border-width: var(--border-width-hairline);
+  --settings-list-border-color: var(--color-border-base);
+  --settings-list-border-radius: var(--radius-lg);
+  --settings-list-bg-color: var(--color-bg-base);
+}

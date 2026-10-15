@@ -1,6 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Card, CardBody, CardDescription, CardFooter, CardHeader, CardMedia, CardTitle } from './Card';
+import {
+  Card,
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+} from './Card';
 
 describe('Card', () => {
   it('is an article with a heading', () => {
@@ -42,7 +50,12 @@ describe('Card header and footer', () => {
   it('renders a header with title, description and actions, and a divided footer', () => {
     const { container } = render(
       <Card padding="none">
-        <CardHeader titleAs="h2" title="Panel" description="Details" actions={<button type="button">Go</button>} />
+        <CardHeader
+          titleAs="h2"
+          title="Panel"
+          description="Details"
+          actions={<button type="button">Go</button>}
+        />
         <CardFooter divided>Foot</CardFooter>
       </Card>,
     );
@@ -51,5 +64,18 @@ describe('Card header and footer', () => {
     expect(screen.getByRole('button', { name: 'Go' })).toBeInTheDocument();
     expect(container.querySelector('.ds-card--flush')).toBeInTheDocument();
     expect(container.querySelector('.ds-card__footer--divided')).toHaveTextContent('Foot');
+  });
+});
+
+describe('Card ribbon', () => {
+  it('renders a ribbon with its tone', () => {
+    const { container } = render(
+      <Card ribbon="New" ribbonTone="success">
+        Body
+      </Card>,
+    );
+    const ribbon = container.querySelector('.ds-card__ribbon');
+    expect(ribbon).toHaveTextContent('New');
+    expect(ribbon).toHaveClass('ds-card__ribbon--success');
   });
 });

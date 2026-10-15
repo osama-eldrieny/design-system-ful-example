@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { KanbanBoard } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/KanbanBoard/KanbanBoard.stories';
+import meta from '../../../../packages/react/src/KanbanBoard/KanbanBoard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# KanbanBoard
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[KanbanBoard]}
+  optionStories={{ compact: 'Compact' }}
+  extras={[{ title: 'Empty columns', story: 'Empty' }]}
+  behaviorStory="RightToLeft"
+  matrix={
+    <KanbanBoard
+      label="Task board"
+      columns={[
+        { id: 'todo', title: 'To do', items: [{ id: '1', title: 'Write brief', description: 'Due Friday.' }] },
+        { id: 'done', title: 'Done', items: [{ id: '2', title: 'Design assets' }] },
+      ]}
+    />
+  }
+/>

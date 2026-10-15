@@ -31,6 +31,11 @@
   ],
   "anatomy": [
     {
+      "name": "Start",
+      "description": "Controls before the row, e.g. a Checkbox or a star button (ListItem start).",
+      "optional": true
+    },
+    {
       "name": "Icon",
       "description": "Or an Avatar.",
       "optional": true
@@ -90,6 +95,26 @@
       "name": "Focus",
       "meaning": "Focus ring on the row.",
       "trigger": ":focus-visible"
+    },
+    {
+      "name": "Unread",
+      "meaning": "Bold title on a tinted row, e.g. a new message.",
+      "trigger": "ListItem unread."
+    },
+    {
+      "name": "Selected",
+      "meaning": "Tinted row, e.g. while its checkbox is checked.",
+      "trigger": "ListItem selected."
+    },
+    {
+      "name": "Current",
+      "meaning": "The open item, e.g. the active chat; tinted and announced.",
+      "trigger": "ListItem current (aria-current)."
+    },
+    {
+      "name": "Done",
+      "meaning": "Title struck through, e.g. a completed task.",
+      "trigger": "ListItem done."
     }
   ],
   "behavior": [
@@ -184,6 +209,13 @@
   ],
   "changelog": [
     {
+      "version": "1.3.0",
+      "date": "2026-10-15",
+      "changes": [
+        "ListItem start slot (checkbox, star), unread, selected, current and done states; meta lays out as a row."
+      ]
+    },
+    {
       "version": "0.4.0",
       "date": "2026-09-29",
       "changes": [
@@ -259,6 +291,36 @@
           "required": false,
           "default": null,
           "description": "Makes the item a button (when there is no href)."
+        },
+        "start": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Controls before the row, e.g. a Checkbox to select it or a star button. Kept outside the link."
+        },
+        "unread": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Bold title on a tinted row, e.g. an unread message."
+        },
+        "done": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Strikes the title through, e.g. a completed task."
+        },
+        "selected": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Highlights the row, e.g. while its checkbox is checked."
+        },
+        "current": {
+          "type": "boolean",
+          "required": false,
+          "default": null,
+          "description": "Marks the open item in a list of links or buttons, e.g. the current chat (aria-current)."
         }
       }
     }
@@ -453,6 +515,62 @@
         "brand=amber,mode=dark": "#e5cfb7",
         "brand=opal,mode=light": "#326fd1",
         "brand=opal,mode=dark": "#abc9fb"
+      }
+    },
+    "--list-start-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--list-meta-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--list-row-min-width": {
+      "description": null,
+      "references": null,
+      "default": "10rem"
+    },
+    "--list-item-unread-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--list-item-unread-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--list-item-selected-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--list-item-done-text-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
       }
     }
   },

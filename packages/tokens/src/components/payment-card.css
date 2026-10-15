@@ -1,0 +1,49 @@
+/**
+ * Component tokens: payment-card
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --payment-card-{size?}-{tone?}-{part?}-{property}
+ *   size: small (base is medium); tone: brand | dark | light; part: brand, chip, number, icon.
+ */
+
+:root,
+[data-theme] {
+  --payment-card-aspect-ratio: 1.586;
+  --payment-card-max-width: 20rem;
+  --payment-card-small-max-width: 14rem;
+  --payment-card-padding: var(--spacing-lg);
+  --payment-card-small-padding: var(--spacing-sm);
+  --payment-card-column-gap: var(--spacing-md);
+  --payment-card-border-radius: var(--radius-xl);
+  --payment-card-border-width: var(--border-width-hairline);
+  --payment-card-gradient-angle: 135deg;
+  --payment-card-font-family: var(--font-family-body);
+  --payment-card-font-size: var(--font-size-xs);
+  --payment-card-font-line-height: var(--font-line-height-xs);
+  --payment-card-letter-spacing: 0.06em;
+  --payment-card-text-color: var(--color-fg-on-surface-primary);
+  --payment-card-brand-font-weight: var(--font-weight-semi-bold);
+  --payment-card-number-font-size: var(--font-size-md);
+  --payment-card-number-letter-spacing: 0.12em;
+  --payment-card-icon-size: var(--sizing-xs);
+  --payment-card-chip-width: var(--sizing-md);
+  --payment-card-chip-height: var(--sizing-sm);
+  --payment-card-chip-border-radius: var(--radius-xs);
+  --payment-card-chip-color: var(--color-bg-warning-1);
+
+  /* Brand */
+  --payment-card-brand-from-color: var(--color-bg-accent-primary-default);
+  --payment-card-brand-to-color: var(--color-bg-accent-purple-default);
+  --payment-card-brand-text-color: var(--color-fg-on-accent-primary-default);
+
+  /* Dark */
+  --payment-card-dark-from-color: var(--color-fg-on-surface-primary);
+  --payment-card-dark-to-color: var(--color-fg-on-gray-high);
+  --payment-card-dark-text-color: var(--color-bg-base);
+
+  /* Light */
+  --payment-card-light-bg-color: var(--color-bg-base);
+  --payment-card-light-border-color: var(--color-border-base);
+  --payment-card-light-text-color: var(--color-fg-on-surface-primary);
+}

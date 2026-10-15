@@ -1,0 +1,20 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { IntegrationCard } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/IntegrationCard/IntegrationCard.stories';
+import meta from '../../../../packages/react/src/IntegrationCard/IntegrationCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# IntegrationCard
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[IntegrationCard]}
+  optionStories={{ connected: 'States' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <IntegrationCard name="Slack" description="Post updates to a channel." icon={<span aria-hidden="true">S</span>} connected />
+  }
+/>

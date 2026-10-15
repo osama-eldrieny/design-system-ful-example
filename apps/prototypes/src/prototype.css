@@ -320,22 +320,6 @@ html {
   gap: var(--spacing-xl);
 }
 
-.panel {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-  min-inline-size: 0;
-  padding: var(--spacing-xl);
-  border: var(--border-width-hairline) solid var(--color-border-base);
-  border-radius: var(--radius-2xl);
-  background-color: var(--color-bg-surface);
-}
-
-.panel--flush {
-  padding: 0;
-  overflow: hidden;
-}
-
 .muted {
   color: var(--color-fg-on-surface-secondary);
 }

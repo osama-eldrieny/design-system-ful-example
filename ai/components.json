@@ -46,6 +46,17 @@
       "contract": "ai/components/apps-notifications.json"
     },
     {
+      "id": "attachment",
+      "name": "Attachment",
+      "exports": [
+        "Attachment"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A file attached to a message, task or form: its icon, name and detail, with a download link, other actions, and a remove button before sending..",
+      "contract": "ai/components/attachment.json"
+    },
+    {
       "id": "avatar",
       "name": "Avatar",
       "exports": [
@@ -111,6 +122,7 @@
         "Card",
         "CardMedia",
         "CardBody",
+        "CardHeader",
         "CardTitle",
         "CardDescription",
         "CardFooter"
@@ -119,6 +131,18 @@
       "status": "stable",
       "purpose": "A card groups content and actions about one subject, such as an article, a product or a person, into a single container.",
       "contract": "ai/components/card.json"
+    },
+    {
+      "id": "carousel",
+      "name": "Carousel",
+      "exports": [
+        "Carousel",
+        "CarouselControls"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A set of slides shown one at a time, with previous and next arrows, dots and the arrow keys.",
+      "contract": "ai/components/carousel.json"
     },
     {
       "id": "charts",
@@ -218,6 +242,18 @@
       "contract": "ai/components/container.json"
     },
     {
+      "id": "countdown",
+      "name": "Countdown",
+      "exports": [
+        "Countdown",
+        "CountdownSize"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A live countdown to a moment, shown as days, hours, minutes and seconds.",
+      "contract": "ai/components/countdown.json"
+    },
+    {
       "id": "date-picker",
       "name": "DatePicker",
       "exports": [
@@ -230,6 +266,17 @@
       "status": "stable",
       "purpose": "Pick a date or a date range from a month grid.",
       "contract": "ai/components/date-picker.json"
+    },
+    {
+      "id": "description-list",
+      "name": "DescriptionList",
+      "exports": [
+        "DescriptionList"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "Pairs of labels and values, such as an invoice summary, order totals or account details.",
+      "contract": "ai/components/description-list.json"
     },
     {
       "id": "divider",
@@ -289,6 +336,18 @@
       "status": "stable",
       "purpose": "An empty state fills a space that has nothing to show yet, like an empty list or no search results, and explains why and what to do next..",
       "contract": "ai/components/empty-state.json"
+    },
+    {
+      "id": "event-calendar",
+      "name": "EventCalendar",
+      "exports": [
+        "EventCalendar",
+        "EventCalendarEvent"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A month of days with the events on each day.",
+      "contract": "ai/components/event-calendar.json"
     },
     {
       "id": "featured-icon",
@@ -418,6 +477,30 @@
       "contract": "ai/components/input-field.json"
     },
     {
+      "id": "integration-card",
+      "name": "IntegrationCard",
+      "exports": [
+        "IntegrationCard"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "An app or service that can be connected to the product: its icon, what it does, whether it is connected, and a switch to connect or disconnect..",
+      "contract": "ai/components/integration-card.json"
+    },
+    {
+      "id": "kanban-board",
+      "name": "KanbanBoard",
+      "exports": [
+        "KanbanBoard",
+        "KanbanCardData",
+        "KanbanColumnData"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "Work grouped into columns by stage.",
+      "contract": "ai/components/kanban-board.json"
+    },
+    {
       "id": "kbd",
       "name": "Kbd",
       "exports": [
@@ -523,6 +606,17 @@
       "contract": "ai/components/navbar.json"
     },
     {
+      "id": "notification-card",
+      "name": "NotificationCard",
+      "exports": [
+        "NotificationCard"
+      ],
+      "category": "Feedback",
+      "status": "stable",
+      "purpose": "A single notice about something that happened, such as a reply or a system alert: who it is from or an icon, what it says, when, and the actions to take.",
+      "contract": "ai/components/notification-card.json"
+    },
+    {
       "id": "page-header",
       "name": "PageHeader",
       "exports": [
@@ -545,6 +639,17 @@
       "contract": "ai/components/pagination.json"
     },
     {
+      "id": "payment-card",
+      "name": "PaymentCard",
+      "exports": [
+        "PaymentCard"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "An illustration of a payment card with the holder’s name, expiry and the last four digits.",
+      "contract": "ai/components/payment-card.json"
+    },
+    {
       "id": "popover",
       "name": "Popover",
       "exports": [
@@ -557,6 +662,17 @@
       "status": "stable",
       "purpose": "A popover shows interactive content anchored to a button, such as a small form, filters or details.",
       "contract": "ai/components/popover.json"
+    },
+    {
+      "id": "pricing-card",
+      "name": "PricingCard",
+      "exports": [
+        "PricingCard"
+      ],
+      "category": "Patterns",
+      "status": "stable",
+      "purpose": "A pricing plan: name, price, what it includes and one call to action.",
+      "contract": "ai/components/pricing-card.json"
     },
     {
       "id": "product-card",
@@ -580,6 +696,17 @@
       "status": "stable",
       "purpose": "A progress bar shows how far a task has got, such as an upload or setup steps.",
       "contract": "ai/components/progress.json"
+    },
+    {
+      "id": "prompt-input",
+      "name": "PromptInput",
+      "exports": [
+        "PromptInput"
+      ],
+      "category": "Forms",
+      "status": "stable",
+      "purpose": "A multi-line prompt box for chat and AI tools: text on top, tools such as Attach and voice on the left, a model picker and a send button on the right.",
+      "contract": "ai/components/prompt-input.json"
     },
     {
       "id": "radio-group",
@@ -628,6 +755,17 @@
       "status": "stable",
       "purpose": "A select lets people pick one option from a list that opens below the field.",
       "contract": "ai/components/select.json"
+    },
+    {
+      "id": "settings-list",
+      "name": "SettingsList",
+      "exports": [
+        "SettingsList"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A list of settings, each a title and optional description with a control at the end: a switch, a button or a select.",
+      "contract": "ai/components/settings-list.json"
     },
     {
       "id": "side-nav",
@@ -810,6 +948,18 @@
       "status": "stable",
       "purpose": "One box per character of a one-time code sent by email or SMS.",
       "contract": "ai/components/verification-code-input.json"
+    },
+    {
+      "id": "video-player",
+      "name": "VideoPlayer",
+      "exports": [
+        "VideoPlayer",
+        "VideoPlayerAspectRatio"
+      ],
+      "category": "Data display",
+      "status": "stable",
+      "purpose": "A video with the browser’s native controls: play, pause, seek and volume.",
+      "contract": "ai/components/video-player.json"
     }
   ]
 }

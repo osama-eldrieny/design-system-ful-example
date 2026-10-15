@@ -28,6 +28,10 @@ import { ListItem } from '@ds/react';
 ## States
 - **Hover**: Interactive rows are tinted. (:hover)
 - **Focus**: Focus ring on the row. (:focus-visible)
+- **Unread**: Bold title on a tinted row, e.g. a new message. (ListItem unread.)
+- **Selected**: Tinted row, e.g. while its checkbox is checked. (ListItem selected.)
+- **Current**: The open item, e.g. the active chat; tinted and announced. (ListItem current (aria-current).)
+- **Done**: Title struck through, e.g. a completed task. (ListItem done.)
 
 ## Props
 ### List
@@ -47,6 +51,11 @@ import { ListItem } from '@ds/react';
 | `meta` | `ReactNode` |  | Trailing content, e.g. a date, Badge or Switch. |
 | `href` | `string` |  | Makes the item a link. |
 | `onClick` | `((event: MouseEvent<HTMLElement, MouseEvent>) => void)` |  | Makes the item a button (when there is no href). |
+| `start` | `ReactNode` |  | Controls before the row, e.g. a Checkbox to select it or a star button. Kept outside the link. |
+| `unread` | `boolean` |  | Bold title on a tinted row, e.g. an unread message. |
+| `done` | `boolean` |  | Strikes the title through, e.g. a completed task. |
+| `selected` | `boolean` |  | Highlights the row, e.g. while its checkbox is checked. |
+| `current` | `boolean` |  | Marks the open item in a list of links or buttons, e.g. the current chat (aria-current). |
 
 ## Guidelines
 - Do: Make the whole row the target. Don’t: Add a separate “Open” link per row. Why: One target per row is simpler to use.

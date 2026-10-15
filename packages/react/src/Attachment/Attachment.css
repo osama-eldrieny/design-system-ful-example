@@ -1,0 +1,58 @@
+/** Attachment. Styled only with --attachment-* tokens. */
+
+.ds-attachment {
+  display: flex;
+  align-items: center;
+  gap: var(--attachment-gap);
+  min-inline-size: 0;
+  padding: var(--attachment-padding);
+  border: var(--attachment-border-width) solid var(--attachment-border-color);
+  border-radius: var(--attachment-border-radius);
+  background-color: var(--attachment-bg-color);
+  font-family: var(--attachment-font-family);
+}
+
+.ds-attachment--small {
+  gap: var(--attachment-small-gap);
+  padding: var(--attachment-small-padding);
+}
+
+.ds-attachment__text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.ds-attachment__name {
+  overflow: hidden;
+  color: var(--attachment-name-color);
+  font-size: var(--attachment-name-font-size);
+  font-weight: var(--attachment-name-font-weight);
+  line-height: var(--attachment-name-font-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+a.ds-attachment__name:hover {
+  text-decoration: underline;
+}
+
+a.ds-attachment__name:focus-visible {
+  outline: var(--attachment-focus-ring-width) solid var(--attachment-focus-ring-color);
+  outline-offset: var(--attachment-focus-ring-offset);
+}
+
+.ds-attachment__detail {
+  color: var(--attachment-detail-color);
+  font-size: var(--attachment-detail-font-size);
+  line-height: var(--attachment-detail-font-line-height);
+}
+
+.ds-attachment__actions {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--attachment-actions-gap);
+}

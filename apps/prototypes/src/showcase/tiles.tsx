@@ -41,7 +41,6 @@ import {
   TableCard,
   Tabs,
   Tag,
-  Textarea,
   Tooltip,
   useToast,
   Breadcrumb,
@@ -54,6 +53,13 @@ import {
   Stepper,
   VerificationCodeInput,
   type TableColumn,
+  NotificationCard,
+  PromptInput,
+  ModalContent,
+  ModalFooter,
+  PaymentCard,
+  PricingCard,
+  Rating,
 } from '@ds/react';
 import {
   BarChart3,
@@ -74,7 +80,6 @@ import {
   Sparkles,
   Trash2,
   Users,
-  X,
 } from 'lucide-react';
 import { people } from '../saas/data';
 
@@ -287,15 +292,15 @@ export const Notification = ({ t }: { t: T }) => {
   const p = people[5];
   return (
     <Tile title={t('Notification')}>
-      <div className="sc-notice">
-        <Avatar name={p.name} src={p.src} status="online" />
-        <div className="sc-notice__body">
-          <span className="sc-notice__head">
-            <strong>{p.name}</strong>
-            <span className="sc-muted">{t('2 mins ago')}</span>
-          </span>
-          <span>{t('I’ve finished adding my notes!')}</span>
-          <span className="sc-row sc-row--nowrap">
+      <NotificationCard
+        avatar={{ name: p.name, src: p.src, status: 'online' }}
+        title={p.name}
+        time={t('2 mins ago')}
+        description={t('I’ve finished adding my notes!')}
+        onDismiss={() => toast({ title: t('Dismissed') })}
+        dismissLabel={t('Close')}
+        actions={
+          <>
             <Button size="small" variant="secondary" appearance="text">
               {t('Dismiss')}
             </Button>
@@ -306,16 +311,9 @@ export const Notification = ({ t }: { t: T }) => {
             >
               {t('Reply')}
             </Button>
-          </span>
-        </div>
-        <IconButton
-          icon={<X />}
-          label={t('Close')}
-          variant="secondary"
-          appearance="ghost"
-          size="xsmall"
-        />
-      </div>
+          </>
+        }
+      />
     </Tile>
   );
 };
@@ -335,11 +333,12 @@ export const AiPrompt = ({ t }: { t: T }) => (
         <Tag icon={<ListTodo />}>{t('Make a plan')}</Tag>
         <Tag icon={<FileText />}>{t('Summarize text')}</Tag>
       </div>
-      <div className="sc-ai__box">
-        <Textarea label={t('Prompt')} hideLabel rows={3} placeholder={t('Ask me anything…')} />
-        <span className="sc-row sc-row--between">
-          <AvatarLabelGroup name="Sienna" size="small" />
-          <span className="sc-row">
+      <PromptInput
+        label={t('Prompt')}
+        placeholder={t('Ask me anything…')}
+        rows={3}
+        tools={
+          <>
             <IconButton
               icon={<Mic />}
               label={t('Voice')}
@@ -350,9 +349,9 @@ export const AiPrompt = ({ t }: { t: T }) => (
             <Button size="small" variant="secondary" appearance="outline" iconStart={<Paperclip />}>
               {t('Attach')}
             </Button>
-          </span>
-        </span>
-      </div>
+          </>
+        }
+      />
     </div>
   </Tile>
 );
@@ -546,19 +545,22 @@ export const TableTile = ({ t }: { t: T }) => {
 /** A confirmation dialog drawn inline (not opened), to show its anatomy on the wall. */
 export const DialogTile = ({ t }: { t: T }) => (
   <Tile title={t('Dialog')}>
-    <div className="sc-dialog" role="group" aria-label={t('Delete project?')}>
-      <FeaturedIcon icon={<Trash2 />} tone="danger" />
-      <strong>{t('Delete project?')}</strong>
-      <span className="sc-muted">{t('This removes it for everyone. It can’t be undone.')}</span>
-      <span className="sc-row sc-row--end">
-        <Button size="small" variant="secondary" appearance="outline">
+    <ModalContent
+      inline
+      role="alertdialog"
+      size="small"
+      icon={<Trash2 />}
+      iconTone="danger"
+      title={t('Delete project?')}
+      description={t('This removes it for everyone. It can’t be undone.')}
+    >
+      <ModalFooter>
+        <Button variant="secondary" appearance="outline">
           {t('Cancel')}
         </Button>
-        <Button size="small" variant="danger">
-          {t('Delete')}
-        </Button>
-      </span>
-    </div>
+        <Button variant="danger">{t('Delete')}</Button>
+      </ModalFooter>
+    </ModalContent>
   </Tile>
 );
 
@@ -813,5 +815,40 @@ export const Activity = ({ t }: { t: T }) => (
         <Skeleton lines={2} />
       </div>
     </Row>
+  </Tile>
+);
+
+export const PaymentCards = ({ t }: { t: T }) => (
+  <Tile title={t('Payment card')}>
+    <PaymentCard holder="Maya Okafor" last4="4983" expiry="09/29" brand="Orbit" size="small" />
+    <PaymentCard
+      tone="dark"
+      holder="Maya Okafor"
+      last4="1234"
+      expiry="12/28"
+      brand="Orbit"
+      size="small"
+    />
+  </Tile>
+);
+
+export const PricingTile = ({ t }: { t: T }) => (
+  <Tile title={t('Pricing card')}>
+    <PricingCard
+      name={t('Pro')}
+      price="$29"
+      period={t('per month')}
+      badge={t('Most popular')}
+      featured
+      features={[t('Unlimited projects'), t('Priority support')]}
+      action={<Button size="small">{t('Start free trial')}</Button>}
+    />
+  </Tile>
+);
+
+export const RatingTile = ({ t }: { t: T }) => (
+  <Tile title={t('Rating')}>
+    <Rating label={t('Rate this template')} defaultValue={4} />
+    <Rating label={t('Average rating')} value={4.5} readOnly showValue size="small" />
   </Tile>
 );

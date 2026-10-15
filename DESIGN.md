@@ -55,12 +55,14 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **ActivityFeed** (Data display): A list of recent events, newest first: who did what and when, with an avatar or icon, optional content such as a comment or file, and an unread dot.
 - **Alert** (Feedback): An alert shows a message about the page or the result of an action: information, success, a warning or an error.
 - **AppsNotifications** (Patterns): A settings panel with one switch per app, to turn each app’s notifications on or off.
+- **Attachment** (Data display): A file attached to a message, task or form: its icon, name and detail, with a download link, other actions, and a remove button before sending..
 - **Avatar** (Data display): An avatar represents a person or team with their photo, or their initials when there’s no photo.
 - **Badge** (Feedback): A badge is a small, non-interactive label for a status (“Paid”, “New”) or a count (3 unread).
 - **Breadcrumb** (Navigation): A breadcrumb shows where the current page sits in the site’s hierarchy, with links back up each level.
 - **Button** (Actions): A button triggers an action in place: saving a form, opening a dialog, deleting an item.
 - **ButtonGroup** (Actions): A button group shows related action buttons together, evenly spaced, in a row or a column.
 - **Card** (Data display): A card groups content and actions about one subject, such as an article, a product or a person, into a single container.
+- **Carousel** (Data display): A set of slides shown one at a time, with previous and next arrows, dots and the arrow keys.
 - **Charts** (Data display): Dependency-free SVG charts styled by tokens: LineChart and AreaChart for trends, BarChart for comparing categories (grouped, stacked or horizontal), DonutChart for parts of a whole, RadarChart for several dimensions and Sparkline for a tiny trend next to a figure.
 - **Checkbox** (Forms): A checkbox turns one option on or off, or lets people pick any number of options from a list.
 - **ChooseCard** (Patterns): Choose cards are large radio buttons: each option is a card with a name, a description and an optional price, and people pick exactly one.
@@ -69,11 +71,14 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Combobox** (Forms): A combobox is a text field with a list of suggestions: people type to filter and pick one option, or several shown as removable chips.
 - **CommandMenu** (Overlays): A searchable list of pages and actions in a dialog, opened with ⌘K (Ctrl+K): type to filter, arrow keys to move, Enter to run.
 - **Container** (Layout): Container centers page content with a maximum width and page gutters that follow density, with smaller gutters on phones..
+- **Countdown** (Data display): A live countdown to a moment, shown as days, hours, minutes and seconds.
 - **DatePicker** (Forms): Pick a date or a date range from a month grid.
+- **DescriptionList** (Data display): Pairs of labels and values, such as an invoice summary, order totals or account details.
 - **Divider** (Layout): A divider is a thin line that separates groups of content, horizontally or vertically, optionally with a short label such as “or”..
 - **Drawer** (Overlays): A drawer is a panel that slides in from an edge of the screen for secondary tasks such as filters, settings or item details.
 - **DropdownMenu** (Overlays): A dropdown menu shows a list of actions or options when people press a button.
 - **EmptyState** (Feedback): An empty state fills a space that has nothing to show yet, like an empty list or no search results, and explains why and what to do next..
+- **EventCalendar** (Data display): A month of days with the events on each day.
 - **FeaturedIcon** (Data display): An icon in a colored circle or tile that draws the eye and sets the tone of a block: the top of a modal, an empty state, an alert, a metric card or a feature list.
 - **FileUpload** (Forms): A drop zone to choose or drag files, with FileUploadItem rows that show each file’s progress, completion or error and a delete button.
 - **FilterBar** (Forms): A toolbar for narrowing a list or table: an optional search, one menu per filter with checkable options, and the chosen values as removable chips with Clear all..
@@ -85,6 +90,8 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Inline** (Layout): Inline lays its children out in a row that wraps onto more lines, e.g.
 - **InlineCTA** (Patterns): A call to action placed inside page content, such as between dashboard sections or at the end of an article: a title, a short description and one or two actions..
 - **InputField** (Forms): An input field lets people enter a single line of text: a name, an email address, a search term.
+- **IntegrationCard** (Patterns): An app or service that can be connected to the product: its icon, what it does, whether it is connected, and a switch to connect or disconnect..
+- **KanbanBoard** (Data display): Work grouped into columns by stage.
 - **Kbd** (Data display): Kbd shows a keyboard key or a shortcut, such as Ctrl + K, in text, menus and tooltips..
 - **Link** (Actions): A link takes people to another page or place.
 - **List** (Data display): A list shows related items one per row, with an optional icon or avatar, a second line and trailing meta such as a date.
@@ -94,15 +101,20 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **MetricCard** (Data display): A key figure in a card for dashboards: what is measured, the value, how it changed and against what, with an optional featured icon, a small chart, an actions menu and a footer link..
 - **Modal** (Overlays): A modal is a dialog over the page that people must deal with before going back: a short form, a confirmation or details.
 - **Navbar** (Patterns): The navigation bar at the top of a site or app: the logo, links to the main sections, and optional actions such as search.
+- **NotificationCard** (Feedback): A single notice about something that happened, such as a reply or a system alert: who it is from or an icon, what it says, when, and the actions to take.
 - **PageHeader** (Layout): The top of a page or section: breadcrumbs, a title with supporting text, actions, and a row for tabs, search or filters.
 - **Pagination** (Navigation): Pagination moves between pages of a long list or table.
+- **PaymentCard** (Data display): An illustration of a payment card with the holder’s name, expiry and the last four digits.
 - **Popover** (Overlays): A popover shows interactive content anchored to a button, such as a small form, filters or details.
+- **PricingCard** (Patterns): A pricing plan: name, price, what it includes and one call to action.
 - **ProductCard** (Patterns): A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions.
 - **Progress** (Feedback): A progress bar shows how far a task has got, such as an upload or setup steps.
+- **PromptInput** (Forms): A multi-line prompt box for chat and AI tools: text on top, tools such as Attach and voice on the left, a model picker and a send button on the right.
 - **RadioGroup** (Forms): A radio group lets people pick exactly one option from a short list, with every option visible at once.
 - **Rating** (Forms): Stars for giving a score, such as rating a template, or for showing one, such as an average of 4.5 out of 5.
 - **SearchField** (Forms): A search field has a search icon, a clear button and an optional keyboard shortcut that focuses it from anywhere on the page.
 - **Select** (Forms): A select lets people pick one option from a list that opens below the field.
+- **SettingsList** (Data display): A list of settings, each a title and optional description with a control at the end: a switch, a button or a select.
 - **SideNav** (Navigation): A side navigation lists the pages of an app or docs site in sections, with icons and nested groups that expand and collapse.
 - **Skeleton** (Feedback): A skeleton is a grey placeholder in the shape of content that is loading: lines of text, image blocks and avatar circles.
 - **Slider** (Forms): A slider sets a number, or a range with two thumbs, by dragging along a track or with the arrow keys.
@@ -119,3 +131,4 @@ radius and shadow themes. In code, use the tokens and `@ds/react` components, no
 - **Tooltip** (Overlays): A tooltip shows a short text hint for a control when it’s hovered or focused, such as the name of an icon button.
 - **TreeView** (Navigation): A hierarchy of items, such as files in folders or pages in sections, that people expand, collapse and select.
 - **VerificationCodeInput** (Forms): One box per character of a one-time code sent by email or SMS.
+- **VideoPlayer** (Data display): A video with the browser’s native controls: play, pause, seek and volume.

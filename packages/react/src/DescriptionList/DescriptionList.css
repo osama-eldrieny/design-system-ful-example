@@ -1,0 +1,61 @@
+/**
+ * DescriptionList. Styled only with --description-list-* tokens. Rows are groups so a row can
+ * be emphasised; values align to the end in horizontal layout.
+ */
+
+.ds-description-list {
+  display: grid;
+  gap: var(--description-list-gap);
+  margin: 0;
+  font-family: var(--description-list-font-family);
+  font-size: var(--description-list-font-size);
+  line-height: var(--description-list-font-line-height);
+}
+
+.ds-description-list__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--description-list-row-gap);
+  padding-block: var(--description-list-row-padding-y);
+}
+
+.ds-description-list--stacked .ds-description-list__row {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.ds-description-list--divided .ds-description-list__row + .ds-description-list__row {
+  border-block-start: var(--description-list-divider-width) solid var(--description-list-divider-color);
+}
+
+.ds-description-list__term {
+  margin: 0;
+  color: var(--description-list-term-color);
+  font-weight: var(--description-list-term-font-weight);
+}
+
+.ds-description-list__description {
+  margin: 0;
+  margin-inline-start: auto;
+  color: var(--description-list-description-color);
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+
+.ds-description-list--stacked .ds-description-list__description {
+  margin-inline-start: 0;
+  text-align: start;
+}
+
+.ds-description-list__row--emphasis {
+  padding-block-start: var(--description-list-emphasis-padding-top);
+  border-block-start: var(--description-list-emphasis-border-width) solid var(--description-list-emphasis-border-color);
+}
+
+.ds-description-list__row--emphasis .ds-description-list__term,
+.ds-description-list__row--emphasis .ds-description-list__description {
+  color: var(--description-list-emphasis-color);
+  font-weight: var(--description-list-emphasis-font-weight);
+}

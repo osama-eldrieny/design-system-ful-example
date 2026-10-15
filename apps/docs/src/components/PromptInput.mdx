@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { PromptInput } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/PromptInput/PromptInput.stories';
+import meta from '../../../../packages/react/src/PromptInput/PromptInput.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# PromptInput
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[PromptInput]}
+  optionStories={{ size: 'Sizes' }}
+  extras={[{ title: 'With tools and a model picker', story: 'WithTools' }]}
+  behaviorStory="RightToLeft"
+  matrix={<PromptInput label="Message" placeholder="Ask me anything…" />}
+/>

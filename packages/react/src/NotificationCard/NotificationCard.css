@@ -1,0 +1,82 @@
+/**
+ * NotificationCard. Styled only with --notification-card-* tokens. Layout uses logical
+ * properties so the avatar and dismiss button swap sides in Arabic.
+ */
+
+.ds-notification-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--notification-card-gap);
+  padding-block: var(--notification-card-padding-y);
+  padding-inline: var(--notification-card-padding-x);
+  border-block-end: var(--notification-card-border-width) solid var(--notification-card-border-color);
+  background-color: var(--notification-card-bg-color);
+  color: var(--notification-card-text-color);
+  font-family: var(--notification-card-font-family);
+  font-size: var(--notification-card-font-size);
+  line-height: var(--notification-card-font-line-height);
+}
+
+.ds-notification-card--unread {
+  background-color: var(--notification-card-unread-bg-color);
+}
+
+.ds-notification-card--unread::before {
+  content: '';
+  position: absolute;
+  inset-block-start: var(--notification-card-dot-offset);
+  inset-inline-start: var(--notification-card-dot-offset);
+  inline-size: var(--notification-card-dot-size);
+  block-size: var(--notification-card-dot-size);
+  border-radius: var(--notification-card-dot-border-radius);
+  background-color: var(--notification-card-dot-color);
+}
+
+.ds-notification-card__media {
+  display: inline-flex;
+}
+
+.ds-notification-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--notification-card-body-gap);
+  min-inline-size: 0;
+}
+
+.ds-notification-card__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--notification-card-head-gap);
+}
+
+.ds-notification-card__title {
+  color: var(--notification-card-title-color);
+  font-weight: var(--notification-card-title-font-weight);
+}
+
+.ds-notification-card__time {
+  color: var(--notification-card-time-color);
+  font-size: var(--notification-card-time-font-size);
+  white-space: nowrap;
+}
+
+.ds-notification-card__description {
+  margin: 0;
+  color: var(--notification-card-description-color);
+  overflow-wrap: anywhere;
+}
+
+.ds-notification-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--notification-card-actions-gap);
+  margin-block-start: var(--notification-card-actions-offset);
+}
+
+.ds-notification-card__dismiss {
+  margin-block-start: calc(-1 * var(--notification-card-dismiss-offset));
+}

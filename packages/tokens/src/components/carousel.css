@@ -1,0 +1,28 @@
+/**
+ * Component tokens: carousel
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --carousel-{part?}-{state?}-{property}
+ *   part: slide, controls, dots, dot (state: active); focus ring.
+ */
+
+:root,
+[data-theme] {
+  --carousel-gap: var(--spacing-sm);
+  --carousel-border-radius: var(--radius-lg);
+  --carousel-slide-border-radius: var(--radius-lg);
+  --carousel-controls-gap: var(--spacing-xs);
+  --carousel-dots-gap: var(--spacing-3xs);
+  --carousel-dot-hit-size: var(--sizing-xs);
+  --carousel-dot-size: var(--sizing-4xs);
+  --carousel-dot-active-size: var(--sizing-xs);
+  --carousel-dot-border-radius: var(--radius-full);
+  --carousel-dot-color: var(--color-border-field);
+  --carousel-dot-active-color: var(--color-bg-accent-primary-strong-default);
+  --carousel-duration: var(--duration-fast);
+  --carousel-easing: var(--easing-standard);
+  --carousel-focus-ring-width: var(--focus-ring-width);
+  --carousel-focus-ring-offset: var(--focus-ring-offset);
+  --carousel-focus-ring-color: var(--focus-ring-color);
+}

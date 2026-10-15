@@ -1,6 +1,6 @@
 /**
- * Card building blocks for Orbit: titled panels with an options menu, trend badges and a payment
- * card illustration. Library components only; layout in kit.css.
+ * Card building blocks for Orbit: titled panels with an options menu and trend badges.
+ * Library components only.
  */
 import type { ReactNode } from 'react';
 import {
@@ -14,8 +14,7 @@ import {
   CardHeader,
   IconButton,
 } from '@ds/react';
-import { ArrowDownRight, ArrowUpRight, MoreVertical, Wifi } from 'lucide-react';
-import './kit.css';
+import { ArrowDownRight, ArrowUpRight, MoreVertical } from 'lucide-react';
 
 export const More = ({ label }: { label: string }) => (
   <DropdownMenu>
@@ -99,30 +98,3 @@ export const Trend = ({
   </Badge>
 );
 
-/** A payment card illustration. */
-export const BankCard = ({
-  tone = 'brand',
-  holder = 'Maya Okafor',
-  number = '1234',
-  expiry = '06/28',
-  brand = 'Orbit',
-}: {
-  tone?: 'brand' | 'dark' | 'light';
-  holder?: string;
-  number?: string;
-  expiry?: string;
-  brand?: string;
-}) => (
-  <div
-    className={`kit-card kit-card--${tone}`}
-    role="img"
-    aria-label={`${brand} card ending in ${number}, ${holder}, expires ${expiry}`}
-  >
-    <span className="kit-card__brand">{brand}.</span>
-    <Wifi className="kit-card__contactless" aria-hidden="true" />
-    <span className="kit-card__holder">{holder}</span>
-    <span className="kit-card__expiry">{expiry}</span>
-    <span className="kit-card__number">1234 1234 1234 {number}</span>
-    <span className="kit-card__chip" aria-hidden="true" />
-  </div>
-);

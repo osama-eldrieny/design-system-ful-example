@@ -1,0 +1,219 @@
+/**
+ * EventCalendar. Styled only with --event-calendar-* tokens. Each day is a button; events show
+ * as small chips and are hidden from assistive technology (the day's label gives their count).
+ */
+
+.ds-event-calendar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--event-calendar-gap);
+  min-inline-size: 0;
+  font-family: var(--event-calendar-font-family);
+  color: var(--event-calendar-text-color);
+}
+
+.ds-event-calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--event-calendar-header-gap);
+}
+
+.ds-event-calendar__month {
+  font-size: var(--event-calendar-month-font-size);
+  font-weight: var(--event-calendar-month-font-weight);
+  line-height: var(--event-calendar-month-font-line-height);
+}
+
+.ds-event-calendar__nav {
+  display: inline-flex;
+  gap: var(--event-calendar-nav-gap);
+}
+
+.ds-event-calendar__grid {
+  display: grid;
+  gap: var(--event-calendar-grid-gap);
+}
+
+.ds-event-calendar__row {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: var(--event-calendar-grid-gap);
+}
+
+.ds-event-calendar__weekday {
+  padding-block: var(--event-calendar-weekday-padding-y);
+  color: var(--event-calendar-weekday-color);
+  font-size: var(--event-calendar-weekday-font-size);
+  font-weight: var(--event-calendar-weekday-font-weight);
+  text-align: center;
+}
+
+.ds-event-calendar__cell {
+  display: flex;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--event-calendar-cell-gap);
+  min-block-size: var(--event-calendar-cell-min-height);
+  padding: var(--event-calendar-cell-padding);
+  border: var(--event-calendar-border-width) solid var(--event-calendar-border-color);
+  border-radius: var(--event-calendar-cell-border-radius);
+  background-color: var(--event-calendar-cell-bg-color);
+}
+
+.ds-event-calendar__day {
+  align-self: flex-start;
+  min-inline-size: var(--event-calendar-day-size);
+  block-size: var(--event-calendar-day-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--event-calendar-day-border-radius);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: var(--event-calendar-day-font-size);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.ds-event-calendar__day:hover {
+  background-color: var(--event-calendar-day-hover-bg-color);
+}
+
+.ds-event-calendar__day:focus-visible {
+  outline: var(--event-calendar-focus-ring-width) solid var(--event-calendar-focus-ring-color);
+  outline-offset: var(--event-calendar-focus-ring-offset);
+}
+
+.ds-event-calendar__day--outside {
+  color: var(--event-calendar-outside-color);
+}
+
+.ds-event-calendar__day--today .ds-event-calendar__number {
+  color: var(--event-calendar-today-color);
+  font-weight: var(--event-calendar-today-font-weight);
+}
+
+.ds-event-calendar__day--selected,
+.ds-event-calendar__day--selected:hover {
+  background-color: var(--event-calendar-selected-bg-color);
+  color: var(--event-calendar-selected-text-color);
+}
+
+.ds-event-calendar__events {
+  display: flex;
+  flex-direction: column;
+  gap: var(--event-calendar-event-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-event-calendar__event {
+  overflow: hidden;
+  padding-block: var(--event-calendar-event-padding-y);
+  padding-inline: var(--event-calendar-event-padding-x);
+  border-radius: var(--event-calendar-event-border-radius);
+  font-size: var(--event-calendar-event-font-size);
+  line-height: var(--event-calendar-event-font-line-height);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ds-event-calendar__event--primary {
+  background-color: var(--event-calendar-tone-primary-bg-color);
+  color: var(--event-calendar-tone-primary-text-color);
+}
+
+.ds-event-calendar__event--success {
+  background-color: var(--event-calendar-tone-success-bg-color);
+  color: var(--event-calendar-tone-success-text-color);
+}
+
+.ds-event-calendar__event--warning {
+  background-color: var(--event-calendar-tone-warning-bg-color);
+  color: var(--event-calendar-tone-warning-text-color);
+}
+
+.ds-event-calendar__event--danger {
+  background-color: var(--event-calendar-tone-danger-bg-color);
+  color: var(--event-calendar-tone-danger-text-color);
+}
+
+.ds-event-calendar__event--gray {
+  background-color: var(--event-calendar-tone-gray-bg-color);
+  color: var(--event-calendar-tone-gray-text-color);
+}
+
+.ds-event-calendar__more {
+  color: var(--event-calendar-more-color);
+  font-size: var(--event-calendar-event-font-size);
+}
+
+/* Week view: taller cells, with every event listed in full and its time shown. */
+.ds-event-calendar--week .ds-event-calendar__cell {
+  min-block-size: var(--event-calendar-week-cell-min-height);
+}
+
+.ds-event-calendar__time {
+  color: var(--event-calendar-time-color);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Event chips that open an event are buttons that keep the chip's colours. */
+.ds-event-calendar__event-button {
+  display: block;
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+
+.ds-event-calendar__event-button:focus-visible {
+  outline: var(--event-calendar-focus-ring-width) solid var(--event-calendar-focus-ring-color);
+  outline-offset: var(--event-calendar-focus-ring-offset);
+}
+
+/* Day view: the agenda for one day. */
+.ds-event-calendar__agenda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--event-calendar-agenda-gap);
+}
+
+.ds-event-calendar__agenda-title {
+  margin: 0;
+  color: var(--event-calendar-text-color);
+  font-size: var(--event-calendar-agenda-title-font-size);
+  font-weight: var(--event-calendar-agenda-title-font-weight);
+}
+
+.ds-event-calendar__agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--event-calendar-event-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-event-calendar__agenda-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--event-calendar-agenda-item-gap);
+  padding-block: var(--event-calendar-event-padding-y);
+  padding-inline: var(--event-calendar-event-padding-x);
+  border-radius: var(--event-calendar-event-border-radius);
+  font-size: var(--event-calendar-agenda-font-size);
+}
+
+.ds-event-calendar__empty {
+  margin: 0;
+  color: var(--event-calendar-empty-color);
+}

@@ -1,0 +1,28 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Button, PricingCard } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/PricingCard/PricingCard.stories';
+import meta from '../../../../packages/react/src/PricingCard/PricingCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# PricingCard
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[PricingCard]}
+  optionStories={{ featured: 'Featured' }}
+  behaviorStory="RightToLeft"
+  matrix={
+    <PricingCard
+      name="Pro"
+      price="$29"
+      period="per month"
+      badge="Most popular"
+      featured
+      features={['Unlimited projects', 'Priority support']}
+      action={<Button>Start free trial</Button>}
+    />
+  }
+/>

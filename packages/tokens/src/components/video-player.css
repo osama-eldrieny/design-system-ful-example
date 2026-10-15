@@ -1,0 +1,18 @@
+/**
+ * Component tokens: video-player
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --video-player-{part?}-{property}
+ *   part: media (the video element), placeholder (no source yet). The play button comes from
+ *   the button component.
+ */
+
+:root,
+[data-theme] {
+  --video-player-ratio: 16 / 9;
+  --video-player-border-radius: var(--radius-lg);
+  --video-player-bg-color: var(--color-bg-primary-1);
+  --video-player-media-bg-color: var(--color-bg-primary-1);
+  --video-player-placeholder-bg-color: var(--color-bg-primary-1);
+}

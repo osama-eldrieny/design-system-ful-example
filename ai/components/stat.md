@@ -24,6 +24,15 @@ import { Stat } from '@ds/react';
 - `true`: The change is good news (green).
 - `false`: The change is bad news (red).
 
+## Size (`size`)
+- `small`: Dense rows of figures, e.g. under a chart.
+- `medium`: Default.
+- `large`: A headline figure at the top of a card.
+
+## Change appearance (`changeAppearance`)
+- `text`: Default. Arrow and change under the value, with the context after it.
+- `badge`: A tinted pill beside the value; the context moves under it.
+
 ## States
 - **Static**: Not interactive. (—)
 
@@ -38,6 +47,9 @@ import { Stat } from '@ds/react';
 | `trend` | `"up" \| "down" \| "neutral"` | neutral | Direction of the change: `up` or `down` (colored and announced), `neutral`. Whether up is good depends on the metric: set `positive` accordingly. |
 | `positive` | `boolean` |  | Whether the trend is good news. Default: up is good. Use false for e.g. costs rising. |
 | `help` | `ReactNode` |  | Context for the change, e.g. "vs last month". |
+| `size` | `StatSize` | medium | `small` in dense rows, `medium` (default), `large` for a headline figure. |
+| `changeAppearance` | `StatChangeAppearance` | text | `text` (default) shows the change under the value; `badge` puts it beside the value as a tinted pill. |
+| `note` | `ReactNode` |  | A line under the figure, e.g. "Updated 5 minutes ago". |
 | `trendLabels` | `{ up?: string; down?: string; } \| undefined` |  | Words announced for the trend, for translation. |
 
 ## Guidelines

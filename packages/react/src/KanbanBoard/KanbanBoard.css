@@ -1,0 +1,78 @@
+/**
+ * KanbanBoard. Styled only with --kanban-board-* tokens. Columns sit side by side and scroll
+ * sideways on narrow screens; the cards inside are Cards.
+ */
+
+.ds-kanban-board {
+  display: grid;
+  grid-auto-columns: minmax(var(--kanban-board-column-min-width), 1fr);
+  grid-auto-flow: column;
+  align-items: start;
+  gap: var(--kanban-board-gap);
+  overflow-x: auto;
+  font-family: var(--kanban-board-font-family);
+}
+
+/* Compact: tighter gaps and smaller card titles to fit more tasks on screen. */
+.ds-kanban-board--compact {
+  gap: var(--kanban-board-compact-gap);
+}
+
+.ds-kanban-board--compact .ds-kanban-board__items {
+  gap: var(--kanban-board-compact-card-gap);
+}
+
+.ds-kanban-board--compact .ds-kanban-board__card-title {
+  font-size: var(--kanban-board-compact-card-title-font-size);
+}
+
+.ds-kanban-board__column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kanban-board-column-gap);
+  min-inline-size: 0;
+  padding: var(--kanban-board-column-padding);
+  border-radius: var(--kanban-board-column-border-radius);
+  background-color: var(--kanban-board-column-bg-color);
+}
+
+.ds-kanban-board__title {
+  display: flex;
+  align-items: center;
+  gap: var(--kanban-board-title-gap);
+  margin: 0;
+  color: var(--kanban-board-title-color);
+  font-size: var(--kanban-board-title-font-size);
+  font-weight: var(--kanban-board-title-font-weight);
+  line-height: var(--kanban-board-title-font-line-height);
+}
+
+.ds-kanban-board__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kanban-board-card-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-kanban-board__card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--kanban-board-card-head-gap);
+}
+
+.ds-kanban-board__card-title {
+  font-size: var(--kanban-board-card-title-font-size);
+  line-height: var(--kanban-board-card-title-font-line-height);
+}
+
+.ds-kanban-board__card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--kanban-board-card-meta-gap);
+  color: var(--kanban-board-card-meta-color);
+  font-size: var(--kanban-board-card-meta-font-size);
+}

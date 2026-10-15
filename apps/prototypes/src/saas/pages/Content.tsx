@@ -6,7 +6,6 @@ import {
   Accordion,
   AccordionItem,
   Avatar,
-  Badge,
   Button,
   DonutChart,
   EmptyState,
@@ -26,11 +25,12 @@ import {
   Textarea,
   useToast,
   Card,
+  PricingCard,
+  SettingsList,
 } from '@ds/react';
 import {
   AppWindow,
   AtSign,
-  Check,
   Download,
   FileText,
   Film,
@@ -117,7 +117,7 @@ function Profile() {
   const [first, last] = me.name.split(' ');
   return (
     <Page path="/profile" title="My profile">
-      <section className="panel orbit-profile">
+      <Card as="section" appearance="outlined" className="orbit-profile">
         <Avatar name={me.name} src={me.src} size="xlarge" verified />
         <span className="stack-text orbit-profile__who">
           <strong className="orbit-h2">{me.name}</strong>
@@ -142,7 +142,7 @@ function Profile() {
             />
           ))}
         </span>
-      </section>
+      </Card>
       <Panel
         title="Personal information"
         actions={
@@ -208,82 +208,92 @@ function Profile() {
         />
       </Panel>
       <Panel title="Security">
-        <ul className="orbit-settings">
-          <li>
-            <span className="stack-text">
-              <strong>Password</strong>
-              <span className="muted text-sm">Last changed 3 months ago.</span>
-            </span>
-            <Button variant="secondary" appearance="outline" size="small">
-              Change password
-            </Button>
-          </li>
-          <li>
-            <span className="stack-text">
-              <strong>Two-factor authentication</strong>
-              <span className="muted text-sm">
-                Ask for a code from your phone when you sign in.
-              </span>
-            </span>
-            <Switch
-              aria-label="Two-factor authentication"
-              checked={twoFa}
-              onCheckedChange={setTwoFa}
-            />
-          </li>
-          <li>
-            <span className="stack-text">
-              <strong>Real-time alerts</strong>
-              <span className="muted text-sm">Email me about sign-ins from new devices.</span>
-            </span>
-            <Switch aria-label="Real-time alerts" defaultChecked />
-          </li>
-        </ul>
+        <SettingsList
+          items={[
+            {
+              id: 'password',
+              title: 'Password',
+              description: 'Last changed 3 months ago.',
+              control: (
+                <Button variant="secondary" appearance="outline" size="small">
+                  Change password
+                </Button>
+              ),
+            },
+            {
+              id: '2fa',
+              title: 'Two-factor authentication',
+              description: 'Ask for a code from your phone when you sign in.',
+              control: (
+                <Switch
+                  aria-label="Two-factor authentication"
+                  checked={twoFa}
+                  onCheckedChange={setTwoFa}
+                />
+              ),
+            },
+            {
+              id: 'alerts',
+              title: 'Real-time alerts',
+              description: 'Email me about sign-ins from new devices.',
+              control: <Switch aria-label="Real-time alerts" defaultChecked />,
+            },
+          ]}
+        />
       </Panel>
       <Panel title="Danger zone">
-        <ul className="orbit-settings">
-          <li>
-            <span className="stack-text">
-              <strong>Sign out of every device</strong>
-              <span className="muted text-sm">Ends every active session, including this one.</span>
-            </span>
-            <Button variant="secondary" appearance="outline" size="small" iconStart={<LogOut />}>
-              Sign out everywhere
-            </Button>
-          </li>
-          <li>
-            <span className="stack-text">
-              <strong>Delete account</strong>
-              <span className="muted text-sm">Removes your account and data for good.</span>
-            </span>
-            <Modal>
-              <ModalTrigger asChild>
-                <Button variant="danger" size="small" iconStart={<Trash2 />}>
-                  Delete account
+        <SettingsList
+          items={[
+            {
+              id: 'sign-out',
+              title: 'Sign out of every device',
+              description: 'Ends every active session, including this one.',
+              control: (
+                <Button
+                  variant="secondary"
+                  appearance="outline"
+                  size="small"
+                  iconStart={<LogOut />}
+                >
+                  Sign out everywhere
                 </Button>
-              </ModalTrigger>
-              <ModalContent
-                role="alertdialog"
-                size="small"
-                icon={<Trash2 />}
-                iconTone="danger"
-                title="Delete your account?"
-                description="Your workspaces, files and history are deleted. This can’t be undone."
-              >
-                <ModalFooter>
-                  <ModalClose asChild>
-                    <Button variant="secondary" appearance="outline">
-                      Cancel
+              ),
+            },
+            {
+              id: 'delete',
+              title: 'Delete account',
+              description: 'Removes your account and data for good.',
+              control: (
+                <Modal>
+                  <ModalTrigger asChild>
+                    <Button variant="danger" size="small" iconStart={<Trash2 />}>
+                      Delete account
                     </Button>
-                  </ModalClose>
-                  <ModalClose asChild>
-                    <Button variant="danger">Delete account</Button>
-                  </ModalClose>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          </li>
-        </ul>
+                  </ModalTrigger>
+                  <ModalContent
+                    role="alertdialog"
+                    size="small"
+                    icon={<Trash2 />}
+                    iconTone="danger"
+                    title="Delete your account?"
+                    description="Your workspaces, files and history are deleted. This can’t be undone."
+                  >
+                    <ModalFooter>
+                      <ModalClose asChild>
+                        <Button variant="secondary" appearance="outline">
+                          Cancel
+                        </Button>
+                      </ModalClose>
+                      <ModalClose asChild>
+                        <Button variant="danger">Delete account</Button>
+                      </ModalClose>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
+              ),
+            },
+          ]}
+        />
       </Panel>
     </Page>
   );
@@ -520,30 +530,16 @@ function PlanCard({
   featured?: boolean;
 }) {
   return (
-    <article className={featured ? 'orbit-plan orbit-plan--featured' : 'orbit-plan'}>
-      <div className="row row--between">
-        <h3 className="orbit-plan__name">{name}</h3>
-        {badge && (
-          <Badge tone={featured ? 'primary' : 'gray'} shape="modern" size="small">
-            {badge}
-          </Badge>
-        )}
-      </div>
-      <p className="orbit-plan__price">
-        {price}
-        {period && <span className="muted text-sm"> {period}</span>}
-      </p>
-      <p className="muted text-sm orbit-plan__blurb">{blurb}</p>
-      {cta}
-      <ul className="orbit-checks orbit-checks--column">
-        {features.slice(0, count).map((f) => (
-          <li key={f}>
-            <Check aria-hidden="true" />
-            {f}
-          </li>
-        ))}
-      </ul>
-    </article>
+    <PricingCard
+      name={name}
+      price={price}
+      period={period}
+      description={blurb}
+      features={features.slice(0, count)}
+      action={cta}
+      badge={badge}
+      featured={featured}
+    />
   );
 }
 
@@ -805,7 +801,7 @@ function Faq() {
 function Blank() {
   return (
     <Page path="/pages/blank" title="Blank page" description="A starting point for a new page.">
-      <section className="panel">
+      <Card as="section" appearance="outlined">
         <EmptyState
           size="large"
           icon={<Plus />}
@@ -820,7 +816,7 @@ function Blank() {
             </>
           }
         />
-      </section>
+      </Card>
     </Page>
   );
 }

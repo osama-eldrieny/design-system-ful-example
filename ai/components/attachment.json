@@ -1,0 +1,411 @@
+{
+  "id": "attachment",
+  "name": "Attachment",
+  "category": "Data display",
+  "status": "stable",
+  "since": "1.3.0",
+  "description": "A file attached to a message, task or form: its icon, name and detail, with a download link, other actions, and a remove button before sending.",
+  "imports": [
+    {
+      "name": "Attachment",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To show a file on a message, comment or task, e.g. \"Guidelines.pdf · 2.4 MB\".",
+    "In a composer, to show files that are about to be sent and can be removed."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For uploading files; it does not pick them.",
+      "alternative": "FileUpload"
+    },
+    {
+      "text": "For a list of many files with columns.",
+      "alternative": "Table"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Icon",
+      "description": "A tile showing the file type."
+    },
+    {
+      "name": "Name",
+      "description": "The file name; a download link when href is set."
+    },
+    {
+      "name": "Detail",
+      "description": "Size or source, e.g. \"2.4 MB\" or \"Google Drive\".",
+      "optional": true
+    },
+    {
+      "name": "Actions",
+      "description": "Other controls, e.g. preview.",
+      "optional": true
+    },
+    {
+      "name": "Remove",
+      "description": "Removes the file before it is sent.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "medium",
+          "meaning": "Default. Forms and lists."
+        },
+        {
+          "value": "small",
+          "meaning": "Composers and chat messages."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Shows the file.",
+      "trigger": "—"
+    },
+    {
+      "name": "Hover",
+      "meaning": "The name is underlined when it is a link.",
+      "trigger": ":hover on the link."
+    },
+    {
+      "name": "Focus",
+      "meaning": "Shows keyboard focus on the link or a control.",
+      "trigger": ":focus-visible."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Download",
+      "text": "With href the name downloads the file; the browser decides where it goes."
+    },
+    {
+      "topic": "Removing",
+      "text": "onRemove is called when the close button is pressed; remove the item in your handler."
+    },
+    {
+      "topic": "Long names",
+      "text": "Long names are cut with an ellipsis; the full name stays in the link."
+    }
+  ],
+  "content": [
+    "Show the file name as it is saved, e.g. \"Q3-report.pdf\".",
+    "Show size or source as detail, e.g. \"2.4 MB\" or \"Google Drive\"."
+  ],
+  "guidelines": [
+    {
+      "do": "Use a remove button only before a message is sent.",
+      "dont": "Let people remove files from a message that was already sent.",
+      "why": "Sent attachments are part of the record other people have seen."
+    },
+    {
+      "do": "Show the file type with the icon.",
+      "dont": "Use the same generic icon for every file.",
+      "why": "Icons help people spot the file they need."
+    },
+    {
+      "do": "Make the name a download link when the file can be downloaded.",
+      "dont": "Make the name look like a link when it only opens a menu.",
+      "why": "A link should do what it looks like it does."
+    }
+  ],
+  "accessibility": {
+    "role": "group of content with a link or text for the name.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves to the name link and then the actions and remove button."
+      },
+      {
+        "keys": "Enter",
+        "action": "Downloads the file from the link."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label",
+        "when": "On the remove button, from removeLabel or \"Remove {name}\"."
+      }
+    ],
+    "focus": "The link and each button show a focus ring.",
+    "wcag": [
+      {
+        "criterion": "2.4.4 Link Purpose",
+        "how": "The link text is the file name, which says where it goes."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Link, actions and remove are all keyboard reachable."
+      },
+      {
+        "criterion": "1.4.3 Contrast",
+        "how": "Name and detail pass AA on every background in every theme."
+      }
+    ],
+    "notes": [
+      "The file icon is decorative; the name carries the meaning."
+    ]
+  },
+  "examples": [
+    {
+      "id": "download",
+      "title": "Downloadable file",
+      "description": "A file with a link and its size.",
+      "code": "import { Attachment } from '@ds/react';\n\n<Attachment name=\"Guidelines.pdf\" detail=\"2.4 MB\" href=\"/files/guidelines.pdf\" />"
+    },
+    {
+      "id": "composer",
+      "title": "In a composer",
+      "description": "A small file that can be removed before sending.",
+      "code": "import { Attachment } from '@ds/react';\n\n<Attachment size=\"small\" name=\"Q3-report.xlsx\" detail=\"180 KB\" onRemove={() => remove(file.id)} />"
+    },
+    {
+      "id": "external",
+      "title": "From another app",
+      "description": "The detail names where the file lives.",
+      "code": "import { Attachment } from '@ds/react';\nimport { HardDrive } from 'lucide-react';\n\n<Attachment name=\"Branding assets\" detail=\"Google Drive\" icon={<HardDrive />} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--attachment-"
+  ],
+  "related": [
+    {
+      "id": "file-upload",
+      "relation": "For picking and uploading files."
+    },
+    {
+      "id": "list",
+      "relation": "For a plain list of files."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.3.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "Attachment",
+      "import": "import { Attachment } from '@ds/react';",
+      "description": "A file attached to a message, a task or a form: its icon, name, detail and actions.",
+      "props": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The file name, e.g. \"Guidelines.pdf\"."
+        },
+        "detail": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Size or source shown under the name, e.g. \"2.4 MB\" or \"Google Drive\"."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": "<File />",
+          "description": "Icon for the file type. Default a generic file icon."
+        },
+        "href": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Makes the name a download link to this URL."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Other controls at the end, e.g. a preview button."
+        },
+        "onRemove": {
+          "type": "(() => void)",
+          "required": false,
+          "default": null,
+          "description": "Shows a remove button; called when it is pressed (e.g. before sending)."
+        },
+        "removeLabel": {
+          "type": "string",
+          "required": false,
+          "default": null,
+          "description": "Words for the remove button. Default \"Remove {name}\"."
+        },
+        "size": {
+          "type": "AttachmentSize",
+          "values": [
+            "small",
+            "medium"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` in composers and chat, `medium` (default) in forms and lists."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--attachment-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--attachment-small-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--attachment-padding": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--attachment-small-padding": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--attachment-border-width": {
+      "description": "Stroke widths in px.",
+      "references": "--border-width-hairline",
+      "default": "1px"
+    },
+    "--attachment-border-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--attachment-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-lg",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "12px"
+      }
+    },
+    "--attachment-bg-color": {
+      "description": "Outermost page background.",
+      "references": "--color-bg-base",
+      "default": "#fff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#24202d",
+        "brand=amber,mode=dark": "#1e140d",
+        "brand=opal,mode=dark": "#292d3e"
+      }
+    },
+    "--attachment-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--attachment-name-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--attachment-name-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--attachment-name-font-weight": {
+      "description": "Type scale.",
+      "references": "--font-weight-medium",
+      "default": "500"
+    },
+    "--attachment-name-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--attachment-detail-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--attachment-detail-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--attachment-detail-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-sm",
+      "default": "15px"
+    },
+    "--attachment-actions-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--attachment-focus-ring-width": {
+      "description": "Thickness of the keyboard focus ring.",
+      "references": "--focus-ring-width",
+      "default": "2px"
+    },
+    "--attachment-focus-ring-offset": {
+      "description": "Gap between an element and its focus ring.",
+      "references": "--focus-ring-offset",
+      "default": "2px"
+    },
+    "--attachment-focus-ring-color": {
+      "description": "Focus ring color; follows the brand accent.",
+      "references": "--focus-ring-color",
+      "default": "#6741d9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#c5b2ff",
+        "brand=amber,mode=light": "#a57a4b",
+        "brand=amber,mode=dark": "#e5cfb7",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#abc9fb"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-attachment--docs"
+}

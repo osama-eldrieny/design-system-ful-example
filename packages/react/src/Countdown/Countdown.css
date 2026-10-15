@@ -1,0 +1,64 @@
+/**
+ * Countdown. Styled only with --countdown-* tokens. Each unit is a number over its name; sizes
+ * change the number and the gap between units.
+ */
+
+.ds-countdown {
+  font-family: var(--countdown-font-family);
+  color: var(--countdown-text-color);
+}
+
+.ds-countdown__units {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--countdown-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-inline-size: var(--countdown-unit-min-width);
+}
+
+.ds-countdown__value {
+  color: var(--countdown-value-color);
+  font-size: var(--countdown-value-font-size);
+  font-weight: var(--countdown-value-font-weight);
+  line-height: var(--countdown-value-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-countdown__label {
+  color: var(--countdown-label-color);
+  font-size: var(--countdown-label-font-size);
+  line-height: var(--countdown-label-font-line-height);
+}
+
+.ds-countdown__ended {
+  color: var(--countdown-ended-color);
+  font-size: var(--countdown-value-font-size);
+  font-weight: var(--countdown-value-font-weight);
+}
+
+.ds-countdown--small {
+  --_value-size: var(--countdown-small-value-font-size);
+}
+
+.ds-countdown--large {
+  --_value-size: var(--countdown-large-value-font-size);
+}
+
+.ds-countdown--small .ds-countdown__value,
+.ds-countdown--large .ds-countdown__value {
+  font-size: var(--_value-size);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-countdown {
+    transition: none;
+  }
+}

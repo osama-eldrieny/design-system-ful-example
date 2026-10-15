@@ -12,6 +12,7 @@ export {
   type CardAppearance,
   type CardOrientation,
   type CardPadding,
+  type CardRibbonTone,
   type CardHeaderProps,
   type CardFooterProps,
 } from './Card';

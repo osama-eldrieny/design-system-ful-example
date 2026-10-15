@@ -8,6 +8,7 @@ Status: stable · Category: Data display · Since 0.2.0
 import { Card } from '@ds/react';
 import { CardMedia } from '@ds/react';
 import { CardBody } from '@ds/react';
+import { CardHeader } from '@ds/react';
 import { CardTitle } from '@ds/react';
 import { CardDescription } from '@ds/react';
 import { CardFooter } from '@ds/react';
@@ -31,6 +32,10 @@ import { CardFooter } from '@ds/react';
 - `vertical`: Media above the body. Default for grids.
 - `horizontal`: Media beside the body, for lists.
 
+## Padding (`padding`)
+- `default`: Padding from the density theme. Default.
+- `none`: No padding, for content that runs edge to edge, like a table.
+
 ## States
 - **Default**: At rest. (—)
 - **Hover**: A clickable card highlights its border. (:hover on a card with href.)
@@ -44,6 +49,9 @@ import { CardFooter } from '@ds/react';
 | `appearance` | `CardAppearance` | elevated | `elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for dense layouts, `filled` tints it for grouping inside a surface. |
 | `orientation` | `CardOrientation` | vertical | `vertical` stacks media above the body; `horizontal` puts media beside it. |
 | `href` | `string` |  | Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area covers the card, so there's one clear, accessible target. |
+| `padding` | `CardPadding` | default | `none` removes the padding, e.g. around a table that runs edge to edge. |
+| `ribbon` | `ReactNode` |  | A corner ribbon flagging the card, e.g. "New" or "Sale". |
+| `ribbonTone` | `CardRibbonTone` | primary | Colour of the ribbon. Default primary. |
 | `as` | `ElementType` | h3 | Element to render: `article` (default) for standalone content, `div` or `li` otherwise. |
 
 ### CardMedia
@@ -56,6 +64,15 @@ import { CardFooter } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
+
+### CardHeader
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `ReactNode` |  | The card's heading. |
+| `titleAs` | `"h2" \| "h3" \| "h4" \| "h5" \| "h6"` |  | Heading level that fits the page outline. Default h3. |
+| `description` | `ReactNode` |  | Supporting text under the title. |
+| `actions` | `ReactNode` |  | Buttons or a menu at the end of the header. |
 
 ### CardTitle
 
@@ -72,6 +89,7 @@ import { CardFooter } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
+| `divided` | `boolean` | false | Draws a line above the footer and aligns its content to the end, like a dialog's buttons. |
 
 ## Guidelines
 - Do: Make the whole card clickable with href when it leads to one place. Don’t: Nest several links that all go to the same page. Why: Repeated links add Tab stops and noise for screen readers.

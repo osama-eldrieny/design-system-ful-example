@@ -1,0 +1,30 @@
+/**
+ * VideoPlayer. Styled only with --video-player-* tokens. The frame keeps its aspect ratio (set by
+ * --video-player-ratio) and the video or placeholder fills it.
+ */
+
+.ds-video-player {
+  position: relative;
+  inline-size: 100%;
+  aspect-ratio: var(--video-player-ratio);
+  overflow: hidden;
+  border-radius: var(--video-player-border-radius);
+  background-color: var(--video-player-bg-color);
+}
+
+.ds-video-player__media {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: contain;
+  background-color: var(--video-player-media-bg-color);
+}
+
+.ds-video-player__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: var(--video-player-placeholder-bg-color);
+}

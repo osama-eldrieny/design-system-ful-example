@@ -68,6 +68,8 @@ import {
   VerificationCodeInput,
   useToast,
   type TableColumn,
+  Carousel,
+  VideoPlayer,
 } from '@ds/react';
 import {
   ArrowRight,
@@ -85,7 +87,6 @@ import {
   Lock,
   Mail,
   Pencil,
-  Play,
   Search,
   Settings,
   Share2,
@@ -657,40 +658,17 @@ function Maps({ vector }: { vector?: boolean }) {
 
 const tones = ['primary', 'success', 'warning', 'danger'] as const;
 
-function Carousel() {
+function CarouselDemo() {
   const slides = ['Plan your quarter', 'Ship every week', 'Learn from every user'];
-  const [i, setI] = useState(0);
   return (
-    <section className="orbit-carousel" aria-roledescription="carousel" aria-label="Highlights">
-      <div
-        className={`orbit-carousel__slide orbit-carousel__slide--${i}`}
-        aria-roledescription="slide"
-        aria-label={`${i + 1} of ${slides.length}`}
-      >
-        <strong className="orbit-h2">{slides[i]}</strong>
-      </div>
-      <div className="orbit-carousel__controls">
-        <IconButton
-          icon={<ChevronLeft />}
-          label="Previous slide"
-          variant="secondary"
-          appearance="outline"
-          size="small"
-          onClick={() => setI((i + slides.length - 1) % slides.length)}
-        />
-        <span className="muted text-sm" aria-live="polite">
-          {i + 1} / {slides.length}
-        </span>
-        <IconButton
-          icon={<ChevronRight />}
-          label="Next slide"
-          variant="secondary"
-          appearance="outline"
-          size="small"
-          onClick={() => setI((i + 1) % slides.length)}
-        />
-      </div>
-    </section>
+    <Carousel
+      label="Highlights"
+      slides={slides.map((text, i) => (
+        <div key={text} className={`orbit-carousel__slide orbit-carousel__slide--${i}`}>
+          <strong className="orbit-h2">{text}</strong>
+        </div>
+      ))}
+    />
   );
 }
 
@@ -1091,7 +1069,7 @@ function Ui({ kind }: { kind: string }) {
         </Demo>
       </>
     ),
-    carousel: <Carousel />,
+    carousel: <CarouselDemo />,
     dropdowns: (
       <Row>
         <DropdownMenu>
@@ -1426,12 +1404,18 @@ function Ui({ kind }: { kind: string }) {
     ),
     ribbons: (
       <div className="orbit-grid orbit-grid--3">
-        {['New', 'Popular', 'Sale'].map((r, i) => (
-          <article key={r} className="orbit-plan orbit-ribbon-card">
-            <span className={`orbit-ribbon orbit-ribbon--${i}`}>{r}</span>
-            <strong>Card with a “{r}” ribbon</strong>
-            <span className="muted text-sm">Ribbons flag a card without adding another row.</span>
-          </article>
+        {(['New', 'Popular', 'Sale'] as const).map((r, i) => (
+          <Card
+            key={r}
+            appearance="outlined"
+            ribbon={r}
+            ribbonTone={(['primary', 'success', 'danger'] as const)[i]}
+          >
+            <CardBody>
+              <CardTitle as="h3">Card with a “{r}” ribbon</CardTitle>
+              <CardDescription>Ribbons flag a card without adding another row.</CardDescription>
+            </CardBody>
+          </Card>
         ))}
       </div>
     ),
@@ -1493,17 +1477,10 @@ function Ui({ kind }: { kind: string }) {
     ),
     videos: (
       <div className="orbit-grid">
-        {['16 / 9', '4 / 3', '1 / 1'].map((r) => (
+        {(['16:9', '4:3', '1:1'] as const).map((r) => (
           <figure key={r} className="orbit-figure-img">
-            <div
-              className="orbit-video"
-              style={{ aspectRatio: r }}
-              role="img"
-              aria-label={`Video placeholder, ${r.replace(/ /g, '')}`}
-            >
-              <IconButton icon={<Play />} label="Play video" />
-            </div>
-            <figcaption className="muted text-sm">{r.replace(/ /g, '')}</figcaption>
+            <VideoPlayer label={`Video placeholder, ${r}`} aspectRatio={r} />
+            <figcaption className="muted text-sm">{r}</figcaption>
           </figure>
         ))}
       </div>

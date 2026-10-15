@@ -1,0 +1,390 @@
+{
+  "id": "kanban-board",
+  "name": "KanbanBoard",
+  "category": "Data display",
+  "status": "stable",
+  "since": "1.3.0",
+  "description": "Work grouped into columns by stage. Each column has a title and count; each task is a card with its detail, tags and any actions, such as moving it to another column.",
+  "imports": [
+    {
+      "name": "KanbanBoard",
+      "from": "@ds/react"
+    },
+    {
+      "name": "KanbanCardData",
+      "from": "@ds/react"
+    },
+    {
+      "name": "KanbanColumnData",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "To see work across stages, e.g. To do, In progress, Done.",
+    "When people move items between stages."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a flat list of tasks.",
+      "alternative": "List"
+    },
+    {
+      "text": "For tasks by date.",
+      "alternative": "EventCalendar"
+    },
+    {
+      "text": "For many records with columns of data.",
+      "alternative": "Table"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Column",
+      "description": "One stage, with its title and count."
+    },
+    {
+      "name": "Card",
+      "description": "One task: title, detail, metadata and actions."
+    },
+    {
+      "name": "Metadata",
+      "description": "Tags, dates and counts under the detail.",
+      "optional": true
+    },
+    {
+      "name": "Actions",
+      "description": "Controls on the card, e.g. a move menu.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "compact",
+      "title": "Density",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. Comfortable cards."
+        },
+        {
+          "value": "true",
+          "meaning": "Tighter cards and gaps, to fit more tasks on screen."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Default",
+      "meaning": "Columns and their cards at rest.",
+      "trigger": "—"
+    },
+    {
+      "name": "Empty column",
+      "meaning": "A stage with no tasks shows a count of zero.",
+      "trigger": "No items in the column."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Scrolling",
+      "text": "On narrow screens the columns scroll sideways; each column keeps its width."
+    },
+    {
+      "topic": "Moving",
+      "text": "The board shows stages; moving a card is done through its actions, which update your data."
+    },
+    {
+      "topic": "Right-to-left",
+      "text": "Columns run from the right in Arabic."
+    }
+  ],
+  "content": [
+    "Name stages with verbs or states: \"To do\", \"In progress\", \"Done\".",
+    "Keep card titles short; put details in the description."
+  ],
+  "guidelines": [
+    {
+      "do": "Show the count in each column header.",
+      "dont": "Make people count cards to see how much work is in a stage.",
+      "why": "The count is the quickest way to see where work is piling up."
+    },
+    {
+      "do": "Keep to three to five stages.",
+      "dont": "Create a column for every status in the system.",
+      "why": "Too many columns are hard to scan and scroll."
+    },
+    {
+      "do": "Put the move action on each card.",
+      "dont": "Require drag and drop as the only way to move a card.",
+      "why": "A menu works with the keyboard and on touch screens."
+    }
+  ],
+  "accessibility": {
+    "role": "region named by label; each column is a section with a heading.",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves through the cards’ actions in reading order."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-labelledby",
+        "when": "Each column is named by its title."
+      }
+    ],
+    "focus": "Card actions show their own focus rings.",
+    "wcag": [
+      {
+        "criterion": "1.3.1 Info and Relationships",
+        "how": "Columns are sections with headings; cards are headings within them."
+      },
+      {
+        "criterion": "2.1.1 Keyboard",
+        "how": "Every card action is reachable with the keyboard."
+      }
+    ],
+    "notes": [
+      "Each column reads as a heading followed by its cards, so the stages are easy to navigate."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Three stages",
+      "description": "To do, in progress and done.",
+      "code": "import { KanbanBoard } from '@ds/react';\n\n<KanbanBoard\n  label=\"Task board\"\n  columns={[\n    { id: 'todo', title: 'To do', items: [{ id: '1', title: 'Write brief' }] },\n    { id: 'doing', title: 'In progress', items: [] },\n  ]}\n/>"
+    },
+    {
+      "id": "actions",
+      "title": "With a move menu",
+      "description": "A menu on each card to move it to another stage.",
+      "code": "import { KanbanBoard } from '@ds/react';\n\n<KanbanBoard label=\"Tasks\" columns={columns} renderActions={(item, column) => <MoveMenu item={item} from={column.id} />} />"
+    },
+    {
+      "id": "meta",
+      "title": "Tags and dates",
+      "description": "Each card shows its tag, date and counts.",
+      "code": "import { KanbanBoard } from '@ds/react';\n\n<KanbanBoard label=\"Campaign\" columns={[{ id: 'todo', title: 'To do', items: [{ id: '1', title: 'Launch post', meta: <span>Mon</span> }] }]} />"
+    }
+  ],
+  "tokenPrefixes": [
+    "--kanban-board-"
+  ],
+  "related": [
+    {
+      "id": "list",
+      "relation": "For a flat list of tasks."
+    },
+    {
+      "id": "card",
+      "relation": "The task card this uses."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.3.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "KanbanBoard",
+      "import": "import { KanbanBoard } from '@ds/react';",
+      "description": "Work grouped into columns by stage: each column has a title and count, and each task is a card\nwith its detail and metadata. Use it to see and move work across stages.",
+      "props": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "Names the board, e.g. \"Task board\"."
+        },
+        "columns": {
+          "type": "KanbanColumnData[]",
+          "required": true,
+          "default": null,
+          "description": ""
+        },
+        "compact": {
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "description": "Tighter cards and gaps, to fit more tasks on screen."
+        },
+        "renderActions": {
+          "type": "((item: KanbanCardData, column: KanbanColumnData) => ReactNode)",
+          "required": false,
+          "default": null,
+          "description": "Controls at the end of each card, e.g. a menu to move it to another column."
+        }
+      }
+    },
+    {
+      "name": "KanbanCardData",
+      "import": "import { KanbanCardData } from '@ds/react';",
+      "description": "",
+      "props": {}
+    },
+    {
+      "name": "KanbanColumnData",
+      "import": "import { KanbanColumnData } from '@ds/react';",
+      "description": "",
+      "props": {}
+    }
+  ],
+  "tokens": {
+    "--kanban-board-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--kanban-board-column-min-width": {
+      "description": null,
+      "references": null,
+      "default": "16rem"
+    },
+    "--kanban-board-font-family": {
+      "description": "Body text and most UI text.",
+      "references": "--font-family-body",
+      "default": "'Inter'",
+      "byTheme": {
+        "brand=diamond,mode=light,language=ar": "'Cairo'",
+        "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--kanban-board-column-gap": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--kanban-board-column-padding": {
+      "description": "Gap between related items in a group.",
+      "references": "--spacing-sm",
+      "default": "12px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "8px"
+      }
+    },
+    "--kanban-board-column-border-radius": {
+      "description": "Controls and small surfaces: inputs, buttons, menu items.",
+      "references": "--radius-lg",
+      "default": "8px",
+      "byTheme": {
+        "brand=diamond,mode=light,radius=square": "3px",
+        "brand=diamond,mode=light,radius=pills": "12px"
+      }
+    },
+    "--kanban-board-column-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-primary-1",
+      "default": "#f2edff",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f4ee",
+        "brand=amber,mode=dark": "#574028",
+        "brand=opal,mode=light": "#ebf3fe",
+        "brand=opal,mode=dark": "#1b3a6f"
+      }
+    },
+    "--kanban-board-title-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--kanban-board-title-color": {
+      "description": "Main text on surfaces.",
+      "references": "--color-fg-on-surface-primary",
+      "default": "#24242c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#ececed",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#fdfbf9",
+        "brand=opal,mode=light": "#282b3b",
+        "brand=opal,mode=dark": "#ededf0"
+      }
+    },
+    "--kanban-board-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--kanban-board-title-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--kanban-board-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--kanban-board-card-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--kanban-board-card-head-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--kanban-board-card-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-md",
+      "default": "16px"
+    },
+    "--kanban-board-card-title-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-md",
+      "default": "20px"
+    },
+    "--kanban-board-card-meta-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--kanban-board-card-meta-color": {
+      "description": "Supporting text on surfaces: descriptions, metadata, placeholders.",
+      "references": "--color-fg-on-surface-secondary",
+      "default": "#62626d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#acadb2",
+        "brand=amber,mode=light": "#6a625a",
+        "brand=amber,mode=dark": "#c9b9a9",
+        "brand=opal,mode=light": "#676b83",
+        "brand=opal,mode=dark": "#afb2be"
+      }
+    },
+    "--kanban-board-card-meta-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    },
+    "--kanban-board-compact-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--kanban-board-compact-card-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--kanban-board-compact-card-title-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-sm",
+      "default": "12px"
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/components-data-display-kanbanboard--docs"
+}

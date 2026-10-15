@@ -1,0 +1,18 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { Carousel } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/Carousel/Carousel.stories';
+import meta from '../../../../packages/react/src/Carousel/Carousel.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# Carousel
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[Carousel]}
+  optionStories={{ controls: 'Controls' }}
+  behaviorStory="RightToLeft"
+  matrix={<Carousel label="Highlights" slides={['Ship faster.', 'Invite your team.']} />}
+/>

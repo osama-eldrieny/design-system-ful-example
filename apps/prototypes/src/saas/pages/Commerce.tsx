@@ -30,6 +30,8 @@ import {
   type TableColumn,
   List,
   ListItem,
+  DescriptionList,
+  Card,
 } from '@ds/react';
 import {
   AlarmClock,
@@ -239,14 +241,14 @@ function OrderLines({ lines, onRemove }: { lines: Line[]; onRemove?: (i: number)
           empty="No products yet."
         />
       </div>
-      <dl className="orbit-totals">
-        <dt>Subtotal</dt>
-        <dd>{usd(sub)}</dd>
-        <dt>VAT (10%)</dt>
-        <dd>{usd(sub * 0.1)}</dd>
-        <dt className="orbit-totals__grand">Total</dt>
-        <dd className="orbit-totals__grand">{usd(sub * 1.1)}</dd>
-      </dl>
+      <DescriptionList
+        divided
+        items={[
+          { term: 'Subtotal', description: usd(sub) },
+          { term: 'VAT (10%)', description: usd(sub * 0.1) },
+          { term: 'Total', description: usd(sub * 1.1), emphasis: true },
+        ]}
+      />
     </>
   );
 }
@@ -472,7 +474,7 @@ function Billing() {
             showValue
             formatValue={(v, m) => `${v.toLocaleString('en-US')} of ${m.toLocaleString('en-US')}`}
           />
-          <ul className="orbit-checks">
+          <List>
             {[
               '25,000 orders per month',
               'Unlimited integrations',
@@ -481,12 +483,9 @@ function Billing() {
               'Custom templates',
               'Advanced marketing tools',
             ].map((b) => (
-              <li key={b}>
-                <Check aria-hidden="true" />
-                {b}
-              </li>
+              <ListItem key={b} icon={<Check />} title={b} />
             ))}
-          </ul>
+          </List>
         </Panel>
         <Panel
           title="Payment methods"
@@ -520,30 +519,30 @@ function Billing() {
                 description={c.detail}
                 meta={
                   <>
-                  {primary !== c.id && (
-                    <Button appearance="text" size="small" onClick={() => setPrimary(c.id)}>
-                      Make default
-                    </Button>
-                  )}
-                  <IconButton
-                    icon={<Pencil />}
-                    label={`Edit ${c.brand}`}
-                    variant="secondary"
-                    appearance="ghost"
-                    size="small"
-                  />
-                  <IconButton
-                    icon={<Trash2 />}
-                    label={`Delete ${c.brand}`}
-                    variant="secondary"
-                    appearance="ghost"
-                    size="small"
-                    disabled={primary === c.id}
-                    onClick={() => {
-                      setCards((l) => l.filter((x) => x.id !== c.id));
-                      toast({ title: `${c.brand} removed` });
-                    }}
-                  />
+                    {primary !== c.id && (
+                      <Button appearance="text" size="small" onClick={() => setPrimary(c.id)}>
+                        Make default
+                      </Button>
+                    )}
+                    <IconButton
+                      icon={<Pencil />}
+                      label={`Edit ${c.brand}`}
+                      variant="secondary"
+                      appearance="ghost"
+                      size="small"
+                    />
+                    <IconButton
+                      icon={<Trash2 />}
+                      label={`Delete ${c.brand}`}
+                      variant="secondary"
+                      appearance="ghost"
+                      size="small"
+                      disabled={primary === c.id}
+                      onClick={() => {
+                        setCards((l) => l.filter((x) => x.id !== c.id));
+                        toast({ title: `${c.brand} removed` });
+                      }}
+                    />
                   </>
                 }
               />
@@ -735,7 +734,7 @@ function SingleInvoice() {
         </>
       }
     >
-      <section className="panel orbit-document" aria-label="Invoice">
+      <Card as="section" appearance="outlined" className="orbit-document" aria-label="Invoice">
         <div className="orbit-document__head">
           <Party
             label="From"
@@ -751,7 +750,7 @@ function SingleInvoice() {
         </div>
         <Divider />
         <OrderLines lines={lineItems} />
-      </section>
+      </Card>
     </Page>
   );
 }

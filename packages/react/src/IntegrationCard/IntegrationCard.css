@@ -1,0 +1,23 @@
+/**
+ * IntegrationCard. Styled only with --integration-card-* tokens. It builds on Card; this adds the
+ * app icon tile and the connection state beside the switch.
+ */
+
+.ds-integration-card {
+  gap: var(--integration-card-gap);
+}
+
+.ds-integration-card__state {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--integration-card-state-gap);
+}
+
+.ds-integration-card__icon {
+  display: inline-flex;
+}
+
+.ds-integration-card--connected {
+  border-color: var(--integration-card-connected-border-color);
+}

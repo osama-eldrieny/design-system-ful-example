@@ -63,6 +63,19 @@ import {
   MessageThread,
   Rating,
   TreeView,
+  PromptInput,
+  NotificationCard,
+  Attachment,
+  DescriptionList,
+  PaymentCard,
+  PricingCard,
+  IntegrationCard,
+  SettingsList,
+  KanbanBoard,
+  EventCalendar,
+  Carousel,
+  VideoPlayer,
+  Countdown,
 } from '@ds/react';
 import {
   Bell,
@@ -691,4 +704,49 @@ export const previews: Record<string, ReactNode> = {
       ]}
     />
   ),
+  'prompt-input': (
+    <PromptInput label="Message" placeholder="Ask me anything…" size="small" rows={2} defaultValue="Summarise this report" />
+  ),
+  'notification-card': (
+    <NotificationCard title="Lana replied" description="Ready for review?" time="2m" avatar={{ name: 'Lana Steiner' }} unread />
+  ),
+  attachment: <Attachment name="Guidelines.pdf" detail="2.4 MB" icon={<FileText />} size="small" />,
+  'description-list': (
+    <DescriptionList
+      divided
+      items={[
+        { term: 'Subtotal', description: '$1,100' },
+        { term: 'Total', description: '$1,210', emphasis: true },
+      ]}
+    />
+  ),
+  'payment-card': <PaymentCard holder="Maya Okafor" last4="1234" expiry="06/28" brand="Orbit" size="small" />,
+  'pricing-card': (
+    <PricingCard
+      name="Pro"
+      price="$29"
+      period="/mo"
+      featured
+      features={['Unlimited projects']}
+      action={<Button size="small">Start</Button>}
+    />
+  ),
+  'integration-card': <IntegrationCard name="Slack" description="Post updates." icon={<Zap />} connected />,
+  'settings-list': (
+    <SettingsList items={[{ id: '2fa', title: 'Two-factor', control: <Switch aria-label="Two-factor" defaultChecked /> }]} />
+  ),
+  'kanban-board': (
+    <KanbanBoard label="Board" columns={[{ id: 'todo', title: 'To do', items: [{ id: '1', title: 'Write brief' }] }]} />
+  ),
+  'event-calendar': (
+    <EventCalendar
+      label="Calendar"
+      month={new Date(2026, 9, 1)}
+      defaultSelectedDate={new Date(2026, 9, 14)}
+      events={[{ id: '1', title: 'Launch', date: new Date(2026, 9, 14), tone: 'success' }]}
+    />
+  ),
+  carousel: <Carousel label="Highlights" slides={['Ship faster.', 'Invite your team.']} />,
+  'video-player': <VideoPlayer label="Product tour" />,
+  countdown: <Countdown label="Launch in" to={new Date(Date.now() + 2 * 86400000)} size="small" />,
 };

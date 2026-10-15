@@ -34,6 +34,10 @@ import {
   type BadgeColor,
   List,
   ListItem,
+  KanbanBoard,
+  EventCalendar,
+  EventCalendarView,
+  Card,
 } from '@ds/react';
 import {
   ArrowUpDown,
@@ -406,34 +410,33 @@ function Tasks({ view }: { view: 'list' | 'kanban' }) {
       }
     >
       {view === 'kanban' ? (
-        <div className="orbit-board">
-          {groups.map((s) => (
-            <section key={s} className="orbit-board__col" aria-labelledby={`col-${s}`}>
-              <h2 id={`col-${s}`} className="orbit-board__title">
-                {statusLabel[s]}{' '}
-                <Badge size="small" shape="modern" tone="gray">
-                  {counts[s]}
-                </Badge>
-              </h2>
-              <ul className="orbit-board__cards">
-                {sorted(tasks.filter((t) => t.status === s)).map((t) => (
-                  <li key={t.id} className="orbit-card">
-                    <div className="row row--between orbit-card__head">
-                      <strong>{t.title}</strong>
-                      <MoveMenu t={t} onMove={(to) => move(t.id, to)} />
-                    </div>
-                    {t.note && <p className="muted text-sm orbit-card__note">{t.note}</p>}
-                    <TaskMeta t={t} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
+        <KanbanBoard
+          label="Task board"
+          columns={groups.map((s) => ({
+            id: s,
+            title: statusLabel[s],
+            items: sorted(tasks.filter((t) => t.status === s)).map((t) => ({
+              id: String(t.id),
+              title: t.title,
+              description: t.note,
+              meta: <TaskMeta t={t} />,
+            })),
+          }))}
+          renderActions={(item) => {
+            const t = tasks.find((x) => String(x.id) === item.id)!;
+            return <MoveMenu t={t} onMove={(to) => move(t.id, to)} />;
+          }}
+        />
       ) : (
         groups.map((s) => (
-          <section key={s} className="panel orbit-tasks" aria-labelledby={`group-${s}`}>
-            <h2 id={`group-${s}`} className="orbit-board__title">
+          <Card
+            key={s}
+            as="section"
+            appearance="outlined"
+            className="orbit-tasks"
+            aria-labelledby={`group-${s}`}
+          >
+            <h2 id={`group-${s}`} className="orbit-group__title">
               {statusLabel[s]}{' '}
               <Badge size="small" shape="modern" tone="gray">
                 {counts[s]}
@@ -463,7 +466,7 @@ function Tasks({ view }: { view: 'list' | 'kanban' }) {
                 />
               ))}
             </List>
-          </section>
+          </Card>
         ))
       )}
     </Page>
@@ -504,19 +507,12 @@ function CalendarPage() {
   const toast = useToast();
   const [month, setMonth] = useState(new Date(2026, 9, 1));
   const [view, setView] = useState('month');
+  const [picked, setPicked] = useState(new Date(2026, 9, 15));
   const [events, setEvents] = useState(seedEvents);
   const [edit, setEdit] = useState<Partial<CalEvent> | null>(null);
   const year = month.getFullYear();
-  const first = (month.getDay() + 6) % 7;
-  const days = new Date(year, month.getMonth() + 1, 0).getDate();
-  const cells = Array.from({ length: Math.ceil((first + days) / 7) * 7 }, (_, i) => i - first + 1);
   const label = month.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-  const on = (d: number) => events.filter((e) => d >= e.day && d < e.day + e.length);
   const today = 15;
-  const week = cells.slice(
-    Math.floor((first + today - 1) / 7) * 7,
-    Math.floor((first + today - 1) / 7) * 7 + 7,
-  );
 
   const save = () => {
     if (!edit?.title) return;
@@ -539,20 +535,6 @@ function CalendarPage() {
     toast({ title: edit.id ? 'Event updated' : 'Event added', tone: 'success' });
   };
 
-  const chip = (e: CalEvent) => (
-    <li key={e.id}>
-      <Button
-        appearance="text"
-        variant="secondary"
-        size="small"
-        className={`orbit-event-chip orbit-event-chip--${e.tone}`}
-        onClick={() => setEdit(e)}
-      >
-        {e.title}
-      </Button>
-    </li>
-  );
-
   return (
     <Page
       path="/calendar"
@@ -566,7 +548,7 @@ function CalendarPage() {
         </Button>
       }
     >
-      <section className="panel" aria-label={`Calendar, ${label}`}>
+      <Card as="section" appearance="outlined" aria-label={`Calendar, ${label}`}>
         <div className="orbit-toolbar">
           <span className="row">
             <IconButton
@@ -589,7 +571,10 @@ function CalendarPage() {
               variant="secondary"
               appearance="outline"
               size="small"
-              onClick={() => setMonth(new Date(2026, 9, 1))}
+              onClick={() => {
+                setMonth(new Date(2026, 9, 1));
+                setPicked(new Date(2026, 9, 15));
+              }}
             >
               Today
             </Button>
@@ -608,56 +593,25 @@ function CalendarPage() {
             onChange={setView}
           />
         </div>
-        {view === 'day' ? (
-          <ul className="orbit-agenda">
-            {(on(today).length ? on(today) : []).map((e) => (
-              <li key={e.id}>
-                <span className="muted text-sm">{e.time}</span>
-                {chip(e)}
-              </li>
-            ))}
-            {on(today).length === 0 && <li className="muted">No events on October {today}.</li>}
-          </ul>
-        ) : (
-          <div className="orbit-cal" role="grid" aria-label={label}>
-            <div role="row" className="orbit-cal__row orbit-cal__row--head">
-              {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((d) => (
-                <span key={d} role="columnheader" className="orbit-cal__dow">
-                  {d}
-                </span>
-              ))}
-            </div>
-            {Array.from({ length: (view === 'week' ? week : cells).length / 7 }, (_, r) => (
-              <div
-                role="row"
-                key={r}
-                className={`orbit-cal__row${view === 'week' ? ' orbit-cal__row--tall' : ''}`}
-              >
-                {(view === 'week' ? week : cells).slice(r * 7, r * 7 + 7).map((d, i) => (
-                  <div
-                    role="gridcell"
-                    key={i}
-                    className={[
-                      'orbit-cal__cell',
-                      (d < 1 || d > days) && 'orbit-cal__cell--out',
-                      d === today && 'orbit-cal__cell--today',
-                    ]
-                      .filter(Boolean)
-                      .join(' ')}
-                  >
-                    {d >= 1 && d <= days && (
-                      <>
-                        <span className="orbit-cal__date">{d}</span>
-                        <ul className="orbit-cal__events">{on(d).map(chip)}</ul>
-                      </>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
+        <EventCalendar
+          label={label}
+          header={false}
+          month={month}
+          view={view as EventCalendarView}
+          selectedDate={picked}
+          onSelectDate={setPicked}
+          onMonthChange={setMonth}
+          onSelectEvent={(ev) => setEdit(events.find((e) => String(e.id) === ev.id) ?? null)}
+          events={events.map((e) => ({
+            id: String(e.id),
+            title: e.title,
+            date: new Date(year, month.getMonth(), e.day),
+            end: new Date(year, month.getMonth(), e.day + e.length - 1),
+            time: e.time,
+            tone: e.tone,
+          }))}
+        />
+      </Card>
 
       <Modal open={edit !== null} onOpenChange={(o) => !o && setEdit(null)}>
         {edit && (

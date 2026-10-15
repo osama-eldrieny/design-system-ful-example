@@ -256,6 +256,33 @@
           "required": false,
           "default": null,
           "description": "Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area\ncovers the card, so there's one clear, accessible target."
+        },
+        "padding": {
+          "type": "CardPadding",
+          "values": [
+            "default",
+            "none"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`none` removes the padding, e.g. around a table that runs edge to edge."
+        },
+        "ribbon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A corner ribbon flagging the card, e.g. \"New\" or \"Sale\"."
+        },
+        "ribbonTone": {
+          "type": "CardRibbonTone",
+          "values": [
+            "primary",
+            "success",
+            "danger"
+          ],
+          "required": false,
+          "default": null,
+          "description": "Colour of the ribbon. Default primary."
         }
       }
     }

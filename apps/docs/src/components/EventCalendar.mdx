@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { EventCalendar } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/EventCalendar/EventCalendar.stories';
+import meta from '../../../../packages/react/src/EventCalendar/EventCalendar.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# EventCalendar
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[EventCalendar]}
+  optionStories={{ view: 'Views', weekStartsOn: 'WeekStart' }}
+  extras={[{ title: 'Multi-day events', story: 'MultiDay' }]}
+  behaviorStory="RightToLeft"
+  matrix={<EventCalendar label="Calendar" month={new Date(2026, 9, 1)} events={[{ id: '1', title: 'Launch', date: new Date(2026, 9, 14), tone: 'success' }]} />}
+/>

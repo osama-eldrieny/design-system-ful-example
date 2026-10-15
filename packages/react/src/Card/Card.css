@@ -167,3 +167,39 @@
   padding-inline: var(--card-padding);
   border-block-start: var(--card-border-width) solid var(--card-footer-divider-color);
 }
+
+/* Ribbon: a corner band across the top-end of the card, flipped in Arabic. */
+.ds-card__ribbon {
+  position: absolute;
+  inset-block-start: var(--card-ribbon-offset);
+  inset-inline-end: calc(-1 * var(--card-ribbon-overhang));
+  z-index: 1;
+  inline-size: var(--card-ribbon-width);
+  padding-block: var(--card-ribbon-padding-y);
+  background-color: var(--_ribbon-bg);
+  color: var(--_ribbon-text);
+  font-size: var(--card-ribbon-font-size);
+  font-weight: var(--card-ribbon-font-weight);
+  text-align: center;
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+.ds-card__ribbon:dir(rtl) {
+  transform: rotate(-45deg);
+}
+
+.ds-card__ribbon--primary {
+  --_ribbon-bg: var(--card-ribbon-primary-bg-color);
+  --_ribbon-text: var(--card-ribbon-primary-text-color);
+}
+
+.ds-card__ribbon--success {
+  --_ribbon-bg: var(--card-ribbon-success-bg-color);
+  --_ribbon-text: var(--card-ribbon-success-text-color);
+}
+
+.ds-card__ribbon--danger {
+  --_ribbon-bg: var(--card-ribbon-danger-bg-color);
+  --_ribbon-text: var(--card-ribbon-danger-text-color);
+}

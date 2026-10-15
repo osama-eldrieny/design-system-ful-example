@@ -1,0 +1,35 @@
+/**
+ * Component tokens: kanban-board
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --kanban-board-{part?}-{property}
+ *   part: column, title, card (the task cards), card-title, card-meta.
+ *   Cards are Card components and take their look from the card component.
+ */
+
+:root,
+[data-theme] {
+  --kanban-board-gap: var(--spacing-md);
+  --kanban-board-column-min-width: 16rem;
+  --kanban-board-font-family: var(--font-family-body);
+  --kanban-board-column-gap: var(--spacing-sm);
+  --kanban-board-column-padding: var(--spacing-sm);
+  --kanban-board-column-border-radius: var(--radius-lg);
+  --kanban-board-column-bg-color: var(--color-bg-primary-1);
+  --kanban-board-title-gap: var(--spacing-xs);
+  --kanban-board-title-color: var(--color-fg-on-surface-primary);
+  --kanban-board-title-font-size: var(--font-size-md);
+  --kanban-board-title-font-weight: var(--font-weight-semi-bold);
+  --kanban-board-title-font-line-height: var(--font-line-height-md);
+  --kanban-board-card-gap: var(--spacing-xs);
+  --kanban-board-card-head-gap: var(--spacing-xs);
+  --kanban-board-card-title-font-size: var(--font-size-md);
+  --kanban-board-card-title-font-line-height: var(--font-line-height-md);
+  --kanban-board-card-meta-gap: var(--spacing-xs);
+  --kanban-board-card-meta-color: var(--color-fg-on-surface-secondary);
+  --kanban-board-card-meta-font-size: var(--font-size-sm);
+  --kanban-board-compact-gap: var(--spacing-xs);
+  --kanban-board-compact-card-gap: var(--spacing-3xs);
+  --kanban-board-compact-card-title-font-size: var(--font-size-sm);
+}

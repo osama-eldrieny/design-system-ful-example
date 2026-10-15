@@ -1,0 +1,70 @@
+/**
+ * Component tokens: event-calendar
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --event-calendar-{part?}-{tone?}-{state?}-{property}
+ *   part: header, month, nav, weekday, cell, day, number, event, more; tone: primary | success |
+ *   warning | danger | gray (event chips); state: today, selected, outside, hover.
+ */
+
+:root,
+[data-theme] {
+  --event-calendar-gap: var(--spacing-sm);
+  --event-calendar-font-family: var(--font-family-body);
+  --event-calendar-text-color: var(--color-fg-on-surface-primary);
+  --event-calendar-header-gap: var(--spacing-xs);
+  --event-calendar-month-font-size: var(--font-size-lg);
+  --event-calendar-month-font-weight: var(--font-weight-semi-bold);
+  --event-calendar-month-font-line-height: var(--font-line-height-lg);
+  --event-calendar-nav-gap: var(--spacing-3xs);
+  --event-calendar-grid-gap: var(--spacing-3xs);
+  --event-calendar-weekday-padding-y: var(--spacing-2xs);
+  --event-calendar-weekday-color: var(--color-fg-on-surface-secondary);
+  --event-calendar-weekday-font-size: var(--font-size-sm);
+  --event-calendar-weekday-font-weight: var(--font-weight-medium);
+  --event-calendar-cell-gap: var(--spacing-3xs);
+  --event-calendar-cell-min-height: 6rem;
+  --event-calendar-cell-padding: var(--spacing-3xs);
+  --event-calendar-cell-border-radius: var(--radius-md);
+  --event-calendar-cell-bg-color: var(--color-bg-base);
+  --event-calendar-border-width: var(--border-width-hairline);
+  --event-calendar-border-color: var(--color-border-base);
+  --event-calendar-day-size: var(--sizing-sm);
+  --event-calendar-day-border-radius: var(--radius-full);
+  --event-calendar-day-font-size: var(--font-size-sm);
+  --event-calendar-day-hover-bg-color: var(--color-bg-primary-1);
+  --event-calendar-outside-color: var(--color-fg-on-surface-secondary);
+  --event-calendar-today-color: var(--color-fg-on-accent-primary-strong-default);
+  --event-calendar-today-font-weight: var(--font-weight-bold);
+  --event-calendar-selected-bg-color: var(--color-bg-accent-primary-strong-default);
+  --event-calendar-selected-text-color: var(--color-fg-on-accent-primary-strong-default);
+  --event-calendar-focus-ring-width: var(--focus-ring-width);
+  --event-calendar-focus-ring-offset: var(--focus-ring-offset);
+  --event-calendar-focus-ring-color: var(--focus-ring-color);
+  --event-calendar-event-gap: var(--spacing-4xs);
+  --event-calendar-event-padding-y: var(--spacing-4xs);
+  --event-calendar-event-padding-x: var(--spacing-2xs);
+  --event-calendar-event-border-radius: var(--radius-xs);
+  --event-calendar-event-font-size: var(--font-size-xs);
+  --event-calendar-event-font-line-height: var(--font-line-height-xs);
+  --event-calendar-more-color: var(--color-fg-on-surface-secondary);
+  --event-calendar-time-color: var(--color-fg-on-surface-secondary);
+  --event-calendar-week-cell-min-height: 12rem;
+  --event-calendar-agenda-gap: var(--spacing-sm);
+  --event-calendar-agenda-title-font-size: var(--font-size-lg);
+  --event-calendar-agenda-title-font-weight: var(--font-weight-semi-bold);
+  --event-calendar-agenda-item-gap: var(--spacing-xs);
+  --event-calendar-agenda-font-size: var(--font-size-md);
+  --event-calendar-empty-color: var(--color-fg-on-surface-secondary);
+  --event-calendar-tone-primary-bg-color: var(--color-bg-primary-1);
+  --event-calendar-tone-primary-text-color: var(--color-fg-on-primary-high);
+  --event-calendar-tone-success-bg-color: var(--color-bg-success-1);
+  --event-calendar-tone-success-text-color: var(--color-fg-on-success-high);
+  --event-calendar-tone-warning-bg-color: var(--color-bg-warning-1);
+  --event-calendar-tone-warning-text-color: var(--color-fg-on-warning-high);
+  --event-calendar-tone-danger-bg-color: var(--color-bg-danger-1);
+  --event-calendar-tone-danger-text-color: var(--color-fg-on-danger-high);
+  --event-calendar-tone-gray-bg-color: var(--color-bg-default);
+  --event-calendar-tone-gray-text-color: var(--color-fg-on-surface-primary);
+}

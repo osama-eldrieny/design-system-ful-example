@@ -1,0 +1,267 @@
+{
+  "id": "integration-card",
+  "name": "IntegrationCard",
+  "category": "Patterns",
+  "status": "stable",
+  "since": "1.3.0",
+  "description": "An app or service that can be connected to the product: its icon, what it does, whether it is connected, and a switch to connect or disconnect.",
+  "imports": [
+    {
+      "name": "IntegrationCard",
+      "from": "@ds/react"
+    }
+  ],
+  "whenToUse": [
+    "On an integrations or apps page, one card per app.",
+    "To let people connect a service such as a calendar or chat tool."
+  ],
+  "whenNotToUse": [
+    {
+      "text": "For a single setting inside an account page.",
+      "alternative": "SettingsList"
+    },
+    {
+      "text": "For a plan or price.",
+      "alternative": "PricingCard"
+    }
+  ],
+  "anatomy": [
+    {
+      "name": "Icon",
+      "description": "The app’s logo or an icon."
+    },
+    {
+      "name": "Name",
+      "description": "The app name."
+    },
+    {
+      "name": "Status",
+      "description": "Connected or not connected."
+    },
+    {
+      "name": "Switch",
+      "description": "Connects or disconnects the app."
+    },
+    {
+      "name": "Description",
+      "description": "What connecting it does."
+    },
+    {
+      "name": "Actions",
+      "description": "Further actions, e.g. Configure.",
+      "optional": true
+    }
+  ],
+  "options": [
+    {
+      "prop": "connected",
+      "title": "Connection",
+      "values": [
+        {
+          "value": "false",
+          "meaning": "Default. Not connected; the switch is off."
+        },
+        {
+          "value": "true",
+          "meaning": "Connected; the card gets a success border."
+        }
+      ]
+    }
+  ],
+  "states": [
+    {
+      "name": "Not connected",
+      "meaning": "The app is not linked.",
+      "trigger": "connected is false."
+    },
+    {
+      "name": "Connected",
+      "meaning": "The app is linked and its status shows.",
+      "trigger": "connected is true."
+    },
+    {
+      "name": "Focus",
+      "meaning": "Focus ring on the switch.",
+      "trigger": ":focus-visible on the switch."
+    }
+  ],
+  "behavior": [
+    {
+      "topic": "Connecting",
+      "text": "Turning the switch calls onConnectedChange; your handler should start the connection and update the state."
+    },
+    {
+      "topic": "Controlled",
+      "text": "The state is controlled by connected; the card does not change it on its own."
+    }
+  ],
+  "content": [
+    "Name the app as it is known to people, e.g. \"Slack\".",
+    "Describe what connecting does, e.g. \"Post updates to a channel\"."
+  ],
+  "guidelines": [
+    {
+      "do": "Show the connection state in words and with the switch.",
+      "dont": "Show only the switch.",
+      "why": "The state should not depend on reading the switch position alone."
+    },
+    {
+      "do": "Explain what connecting gives access to.",
+      "dont": "Connect without saying what data is shared.",
+      "why": "People should know what they are allowing before they switch it on."
+    },
+    {
+      "do": "Put disconnect and configure options in the footer.",
+      "dont": "Hide the disconnect option behind a menu only.",
+      "why": "Leaving an integration should be as easy as joining it."
+    }
+  ],
+  "accessibility": {
+    "role": "article, named by the app name; the switch is named \"Connect {name}\".",
+    "keyboard": [
+      {
+        "keys": "Tab",
+        "action": "Moves to the switch and then the actions."
+      },
+      {
+        "keys": "Space",
+        "action": "Turns the switch on or off."
+      }
+    ],
+    "aria": [
+      {
+        "attribute": "aria-label",
+        "when": "On the switch: \"Connect {name}\"."
+      }
+    ],
+    "focus": "The switch and actions show their own focus rings.",
+    "wcag": [
+      {
+        "criterion": "1.4.1 Use of Color",
+        "how": "Status is written out as text, not only shown by colour."
+      },
+      {
+        "criterion": "4.1.2 Name, Role, Value",
+        "how": "The switch states its name and on/off value."
+      }
+    ],
+    "notes": [
+      "The app icon is decorative; the name carries the meaning."
+    ]
+  },
+  "examples": [
+    {
+      "id": "basic",
+      "title": "Connected app",
+      "description": "A connected app with a configure action.",
+      "code": "import { Button, IntegrationCard } from '@ds/react';\n\n<IntegrationCard\n  name=\"Slack\"\n  description=\"Post updates to a channel.\"\n  icon={<SlackLogo />}\n  connected\n  onConnectedChange={setConnected}\n  actions={<Button size=\"small\" variant=\"secondary\" appearance=\"outline\">Configure</Button>}\n/>"
+    },
+    {
+      "id": "available",
+      "title": "Available app",
+      "description": "An app that is not connected yet.",
+      "code": "import { IntegrationCard } from '@ds/react';\n\n<IntegrationCard name=\"Google Calendar\" description=\"Show meetings on your planner.\" icon={<CalendarIcon />} connected={false} onConnectedChange={connect} />"
+    },
+    {
+      "id": "grid",
+      "title": "In a grid",
+      "description": "Cards side by side, each with its own switch.",
+      "code": "import { IntegrationCard } from '@ds/react';\n\n<div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))' }}>\n  {apps.map((app) => <IntegrationCard key={app.name} {...app} />)}\n</div>"
+    }
+  ],
+  "tokenPrefixes": [
+    "--integration-card-"
+  ],
+  "related": [
+    {
+      "id": "card",
+      "relation": "The surface this builds on."
+    },
+    {
+      "id": "settings-list",
+      "relation": "For on/off settings inside an account page."
+    }
+  ],
+  "changelog": [
+    {
+      "version": "1.3.0",
+      "date": "2026-10-15",
+      "changes": [
+        "New component."
+      ]
+    }
+  ],
+  "components": [
+    {
+      "name": "IntegrationCard",
+      "import": "import { IntegrationCard } from '@ds/react';",
+      "description": "An app or service that can be connected to the product: its icon, what it does, whether it is\nconnected, and a switch to connect or disconnect.",
+      "props": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "default": null,
+          "description": "The app or service, e.g. \"Slack\"."
+        },
+        "description": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "What connecting it does, in a sentence."
+        },
+        "icon": {
+          "type": "ReactNode",
+          "required": true,
+          "default": null,
+          "description": "The app's logo or an icon."
+        },
+        "connected": {
+          "type": "boolean",
+          "required": true,
+          "default": null,
+          "description": "Whether it is connected (controlled)."
+        },
+        "onConnectedChange": {
+          "type": "((connected: boolean) => void)",
+          "required": false,
+          "default": null,
+          "description": "Called when the switch is turned on or off."
+        },
+        "actions": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "Further actions in the footer, e.g. \"Configure\"."
+        }
+      }
+    }
+  ],
+  "tokens": {
+    "--integration-card-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--integration-card-state-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--integration-card-connected-border-color": {
+      "description": "Regular tone outline, e.g. alert borders.",
+      "references": "--color-border-success-medium",
+      "default": "#91e8b2",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#008f35",
+        "brand=amber,mode=light": "#afc4c2",
+        "brand=amber,mode=dark": "#3a6360",
+        "brand=opal,mode=light": "#cae99b",
+        "brand=opal,mode=dark": "#5e9110"
+      }
+    }
+  },
+  "docs": "https://osama-eldrieny.github.io/design-system-ful-example/?path=/docs/patterns-integrationcard--docs"
+}

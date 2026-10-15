@@ -1,0 +1,27 @@
+/**
+ * Component tokens: countdown
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --countdown-{size?}-{part?}-{property}
+ *   size: small | large (medium is the base); part: value (the number), label (the unit name),
+ *   ended (the message after the time has passed).
+ */
+
+:root,
+[data-theme] {
+  --countdown-font-family: var(--font-family-headings);
+  --countdown-text-color: var(--color-fg-on-surface-primary);
+  --countdown-gap: var(--spacing-md);
+  --countdown-unit-min-width: 4rem;
+  --countdown-value-color: var(--color-fg-on-surface-primary);
+  --countdown-value-font-size: var(--font-size-2xl);
+  --countdown-value-font-weight: var(--font-weight-bold);
+  --countdown-value-font-line-height: var(--font-line-height-2xl);
+  --countdown-small-value-font-size: var(--font-size-lg);
+  --countdown-large-value-font-size: var(--font-size-3xl);
+  --countdown-label-color: var(--color-fg-on-surface-secondary);
+  --countdown-label-font-size: var(--font-size-sm);
+  --countdown-label-font-line-height: var(--font-line-height-sm);
+  --countdown-ended-color: var(--color-fg-on-surface-secondary);
+}

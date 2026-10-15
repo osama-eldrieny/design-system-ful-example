@@ -12,6 +12,7 @@ import './Card.css';
 export type CardAppearance = 'elevated' | 'outlined' | 'filled';
 export type CardOrientation = 'vertical' | 'horizontal';
 export type CardPadding = 'default' | 'none';
+export type CardRibbonTone = 'primary' | 'success' | 'danger';
 
 const CardLinkContext = createContext<string | undefined>(undefined);
 
@@ -30,6 +31,10 @@ export interface CardProps extends HTMLAttributes<HTMLElement> {
   href?: string;
   /** `none` removes the padding, e.g. around a table that runs edge to edge. */
   padding?: CardPadding;
+  /** A corner ribbon flagging the card, e.g. "New" or "Sale". */
+  ribbon?: ReactNode;
+  /** Colour of the ribbon. Default primary. */
+  ribbonTone?: CardRibbonTone;
   /** Element to render: `article` (default) for standalone content, `div` or `li` otherwise. */
   as?: ElementType;
   children: ReactNode;
@@ -46,6 +51,8 @@ export const Card = forwardRef<HTMLElement, CardProps>(
       orientation = 'vertical',
       href,
       padding = 'default',
+      ribbon,
+      ribbonTone = 'primary',
       as: Component = 'article',
       className,
       children,
@@ -68,6 +75,9 @@ export const Card = forwardRef<HTMLElement, CardProps>(
           .join(' ')}
         {...props}
       >
+        {ribbon && (
+          <span className={`ds-card__ribbon ds-card__ribbon--${ribbonTone}`}>{ribbon}</span>
+        )}
         {children}
       </Component>
     </CardLinkContext.Provider>

@@ -35,7 +35,12 @@
     },
     {
       "name": "Change",
-      "description": "Arrow, change and context.",
+      "description": "Arrow, change and context, as text or a badge.",
+      "optional": true
+    },
+    {
+      "name": "Note",
+      "description": "A line under the figure, e.g. when it was updated.",
       "optional": true
     }
   ],
@@ -69,6 +74,38 @@
         {
           "value": "false",
           "meaning": "The change is bad news (red)."
+        }
+      ]
+    },
+    {
+      "prop": "size",
+      "title": "Size",
+      "values": [
+        {
+          "value": "small",
+          "meaning": "Dense rows of figures, e.g. under a chart."
+        },
+        {
+          "value": "medium",
+          "meaning": "Default."
+        },
+        {
+          "value": "large",
+          "meaning": "A headline figure at the top of a card."
+        }
+      ]
+    },
+    {
+      "prop": "changeAppearance",
+      "title": "Change appearance",
+      "values": [
+        {
+          "value": "text",
+          "meaning": "Default. Arrow and change under the value, with the context after it."
+        },
+        {
+          "value": "badge",
+          "meaning": "A tinted pill beside the value; the context moves under it."
         }
       ]
     }
@@ -168,6 +205,13 @@
   ],
   "changelog": [
     {
+      "version": "1.3.0",
+      "date": "2026-10-15",
+      "changes": [
+        "size, changeAppearance (badge), note."
+      ]
+    },
+    {
       "version": "0.4.0",
       "date": "2026-09-29",
       "changes": [
@@ -221,6 +265,33 @@
           "required": false,
           "default": null,
           "description": "Context for the change, e.g. \"vs last month\"."
+        },
+        "size": {
+          "type": "StatSize",
+          "values": [
+            "small",
+            "medium",
+            "large"
+          ],
+          "required": false,
+          "default": "medium",
+          "description": "`small` in dense rows, `medium` (default), `large` for a headline figure."
+        },
+        "changeAppearance": {
+          "type": "StatChangeAppearance",
+          "values": [
+            "text",
+            "badge"
+          ],
+          "required": false,
+          "default": "text",
+          "description": "`text` (default) shows the change under the value; `badge` puts it beside the value as a tinted pill."
+        },
+        "note": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A line under the figure, e.g. \"Updated 5 minutes ago\"."
         },
         "trendLabels": {
           "type": "{ up?: string; down?: string; } | undefined",
@@ -366,6 +437,116 @@
       "byTheme": {
         "brand=diamond,mode=light,language=ar": "'Cairo'",
         "brand=diamond,mode=light,typeface=serif": "'Domine'"
+      }
+    },
+    "--stat-small-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-lg",
+      "default": "20px"
+    },
+    "--stat-small-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-lg",
+      "default": "25px"
+    },
+    "--stat-large-value-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-2xl",
+      "default": "28px"
+    },
+    "--stat-large-value-font-line-height": {
+      "description": "Type scale.",
+      "references": "--font-line-height-2xl",
+      "default": "35px"
+    },
+    "--stat-row-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--stat-badge-gap": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--stat-badge-padding-x": {
+      "description": "Tightest gap between tightly related items, e.g. icon and label.",
+      "references": "--spacing-2xs",
+      "default": "4px"
+    },
+    "--stat-badge-padding-y": {
+      "description": "Negative space (-4px) for deliberate overlap, e.g. stacked avatars.",
+      "references": "--spacing-4xs",
+      "default": "-4px"
+    },
+    "--stat-badge-border-radius": {
+      "description": "Fully rounded: pills, avatars, toggles.",
+      "references": "--radius-full",
+      "default": "999px"
+    },
+    "--stat-badge-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--stat-badge-up-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-success-1",
+      "default": "#e6faed",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#274340",
+        "brand=opal,mode=light": "#f3fae8",
+        "brand=opal,mode=dark": "#3b5c0a"
+      }
+    },
+    "--stat-badge-up-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-success-high",
+      "default": "#005b22",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#91e8b2",
+        "brand=amber,mode=light": "#3a6360",
+        "brand=amber,mode=dark": "#d2dedd",
+        "brand=opal,mode=light": "#3b5c0a",
+        "brand=opal,mode=dark": "#cae99b"
+      }
+    },
+    "--stat-badge-down-bg-color": {
+      "description": "Subtle tinted background for a tone, e.g. alerts, selected items, badges.",
+      "references": "--color-bg-danger-1",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#542b36",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#6e1c2a"
+      }
+    },
+    "--stat-badge-down-text-color": {
+      "description": "Main tone-colored text on light or tinted backgrounds: titles, active items.",
+      "references": "--color-fg-on-danger-high",
+      "default": "#ad1c1c",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#faa2a2",
+        "brand=amber,mode=light": "#7d4150",
+        "brand=amber,mode=dark": "#e5d4d8",
+        "brand=opal,mode=light": "#8b2436",
+        "brand=opal,mode=dark": "#faacba"
+      }
+    },
+    "--stat-badge-neutral-bg-color": {
+      "description": "App background behind cards and panels.",
+      "references": "--color-bg-default",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
       }
     }
   },

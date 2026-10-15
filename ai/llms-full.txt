@@ -579,6 +579,14 @@ While Storybook runs locally, its own MCP server at `http://localhost:6006/mcp` 
 
 ---
 
+# IntegrationCard
+
+  }
+/>
+
+
+---
+
 # Logo
 
 
@@ -623,6 +631,14 @@ While Storybook runs locally, its own MCP server at `http://localhost:6006/mcp` 
       ]}
       currentItem="Products"
     />
+  }
+/>
+
+
+---
+
+# PricingCard
+
   }
 />
 
@@ -1005,6 +1021,9 @@ import { AppsNotifications } from '@ds/react';
 | `appearance` | `CardAppearance` |  | `elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for dense layouts, `filled` tints it for grouping inside a surface. |
 | `orientation` | `CardOrientation` |  | `vertical` stacks media above the body; `horizontal` puts media beside it. |
 | `href` | `string` |  | Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area covers the card, so there's one clear, accessible target. |
+| `padding` | `CardPadding` |  | `none` removes the padding, e.g. around a table that runs edge to edge. |
+| `ribbon` | `ReactNode` |  | A corner ribbon flagging the card, e.g. "New" or "Sale". |
+| `ribbonTone` | `CardRibbonTone` |  | Colour of the ribbon. Default primary. |
 
 ## Guidelines
 - Do: Apply each change immediately. Don’t: Add a Save button under the switches. Why: Switches promise an instant effect; use checkboxes when changes are saved later.
@@ -1073,6 +1092,101 @@ import { AppsNotifications } from '@ds/react';
 ```
 
 Tokens: `--app-notifications-*` (values per theme in ai/components/apps-notifications.json).
+
+
+---
+
+# Attachment
+
+> A file attached to a message, task or form: its icon, name and detail, with a download link, other actions, and a remove button before sending.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { Attachment } from '@ds/react';
+```
+
+## When to use
+- To show a file on a message, comment or task, e.g. "Guidelines.pdf · 2.4 MB".
+- In a composer, to show files that are about to be sent and can be removed.
+
+## When not to use
+- For uploading files; it does not pick them. Use FileUpload.
+- For a list of many files with columns. Use Table.
+
+## Size (`size`)
+- `medium`: Default. Forms and lists.
+- `small`: Composers and chat messages.
+
+## States
+- **Default**: Shows the file. (—)
+- **Hover**: The name is underlined when it is a link. (:hover on the link.)
+- **Focus**: Shows keyboard focus on the link or a control. (:focus-visible.)
+
+## Props
+### Attachment
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `string` |  | The file name, e.g. "Guidelines.pdf". |
+| `detail` | `ReactNode` |  | Size or source shown under the name, e.g. "2.4 MB" or "Google Drive". |
+| `icon` | `ReactNode` | <File /> | Icon for the file type. Default a generic file icon. |
+| `href` | `string` |  | Makes the name a download link to this URL. |
+| `actions` | `ReactNode` |  | Other controls at the end, e.g. a preview button. |
+| `onRemove` | `(() => void)` |  | Shows a remove button; called when it is pressed (e.g. before sending). |
+| `removeLabel` | `string` |  | Words for the remove button. Default "Remove {name}". |
+| `size` | `AttachmentSize` | medium | `small` in composers and chat, `medium` (default) in forms and lists. |
+
+## Guidelines
+- Do: Use a remove button only before a message is sent. Don’t: Let people remove files from a message that was already sent. Why: Sent attachments are part of the record other people have seen.
+- Do: Show the file type with the icon. Don’t: Use the same generic icon for every file. Why: Icons help people spot the file they need.
+- Do: Make the name a download link when the file can be downloaded. Don’t: Make the name look like a link when it only opens a menu. Why: A link should do what it looks like it does.
+
+## Content
+- Show the file name as it is saved, e.g. "Q3-report.pdf".
+- Show size or source as detail, e.g. "2.4 MB" or "Google Drive".
+
+## Accessibility
+- Role: group of content with a link or text for the name.
+- Tab: Moves to the name link and then the actions and remove button.
+- Enter: Downloads the file from the link.
+- `aria-label`: On the remove button, from removeLabel or "Remove {name}".
+- Focus: The link and each button show a focus ring.
+- WCAG 2.4.4 Link Purpose: The link text is the file name, which says where it goes.
+- WCAG 2.1.1 Keyboard: Link, actions and remove are all keyboard reachable.
+- WCAG 1.4.3 Contrast: Name and detail pass AA on every background in every theme.
+- The file icon is decorative; the name carries the meaning.
+
+## Examples
+### Downloadable file
+A file with a link and its size.
+
+```tsx
+import { Attachment } from '@ds/react';
+
+<Attachment name="Guidelines.pdf" detail="2.4 MB" href="/files/guidelines.pdf" />
+```
+
+### In a composer
+A small file that can be removed before sending.
+
+```tsx
+import { Attachment } from '@ds/react';
+
+<Attachment size="small" name="Q3-report.xlsx" detail="180 KB" onRemove={() => remove(file.id)} />
+```
+
+### From another app
+The detail names where the file lives.
+
+```tsx
+import { Attachment } from '@ds/react';
+import { HardDrive } from 'lucide-react';
+
+<Attachment name="Branding assets" detail="Google Drive" icon={<HardDrive />} />
+```
+
+Tokens: `--attachment-*` (values per theme in ai/components/attachment.json).
 
 
 ---
@@ -1773,6 +1887,7 @@ Status: stable · Category: Data display · Since 0.2.0
 import { Card } from '@ds/react';
 import { CardMedia } from '@ds/react';
 import { CardBody } from '@ds/react';
+import { CardHeader } from '@ds/react';
 import { CardTitle } from '@ds/react';
 import { CardDescription } from '@ds/react';
 import { CardFooter } from '@ds/react';
@@ -1796,6 +1911,10 @@ import { CardFooter } from '@ds/react';
 - `vertical`: Media above the body. Default for grids.
 - `horizontal`: Media beside the body, for lists.
 
+## Padding (`padding`)
+- `default`: Padding from the density theme. Default.
+- `none`: No padding, for content that runs edge to edge, like a table.
+
 ## States
 - **Default**: At rest. (—)
 - **Hover**: A clickable card highlights its border. (:hover on a card with href.)
@@ -1809,6 +1928,9 @@ import { CardFooter } from '@ds/react';
 | `appearance` | `CardAppearance` | elevated | `elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for dense layouts, `filled` tints it for grouping inside a surface. |
 | `orientation` | `CardOrientation` | vertical | `vertical` stacks media above the body; `horizontal` puts media beside it. |
 | `href` | `string` |  | Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area covers the card, so there's one clear, accessible target. |
+| `padding` | `CardPadding` | default | `none` removes the padding, e.g. around a table that runs edge to edge. |
+| `ribbon` | `ReactNode` |  | A corner ribbon flagging the card, e.g. "New" or "Sale". |
+| `ribbonTone` | `CardRibbonTone` | primary | Colour of the ribbon. Default primary. |
 | `as` | `ElementType` | h3 | Element to render: `article` (default) for standalone content, `div` or `li` otherwise. |
 
 ### CardMedia
@@ -1821,6 +1943,15 @@ import { CardFooter } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
+
+### CardHeader
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `ReactNode` |  | The card's heading. |
+| `titleAs` | `"h2" \| "h3" \| "h4" \| "h5" \| "h6"` |  | Heading level that fits the page outline. Default h3. |
+| `description` | `ReactNode` |  | Supporting text under the title. |
+| `actions` | `ReactNode` |  | Buttons or a menu at the end of the header. |
 
 ### CardTitle
 
@@ -1837,6 +1968,7 @@ import { CardFooter } from '@ds/react';
 
 | Prop | Type | Default | Description |
 | --- | --- | --- | --- |
+| `divided` | `boolean` | false | Draws a line above the footer and aligns its content to the end, like a dialog's buttons. |
 
 ## Guidelines
 - Do: Make the whole card clickable with href when it leads to one place. Don’t: Nest several links that all go to the same page. Why: Repeated links add Tab stops and noise for screen readers.
@@ -1905,6 +2037,107 @@ import { Card, CardBody, CardTitle, CardFooter, Button } from '@ds/react';
 ```
 
 Tokens: `--card-*` (values per theme in ai/components/card.json).
+
+
+---
+
+# Carousel
+
+> A set of slides shown one at a time, with previous and next arrows, dots and the arrow keys. Use it for a short set of highlights or featured content.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { Carousel } from '@ds/react';
+import { CarouselControls } from '@ds/react';
+```
+
+## When to use
+- For two to five highlights or featured items on a page.
+- When each slide is a self-contained message or picture.
+
+## When not to use
+- For a long list of items to browse. Use Card grid.
+- For slides that must play without interaction. Use VideoPlayer.
+- For switching between views of the same content. Use Tabs.
+
+## Controls (`controls`)
+- `both`: Default. Arrows and dots.
+- `arrows`: Arrows only, for many slides.
+- `dots`: Dots only, for a compact row.
+
+## States
+- **Current**: The slide on show; its dot is filled. (index.)
+- **Focus**: A focus ring on the carousel or a control. (:focus-visible.)
+
+## Props
+### Carousel
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the carousel, e.g. "Highlights". |
+| `slides` | `ReactNode[]` |  | One item per slide. |
+| `index` | `number` |  | Slide shown (controlled), 0-based. |
+| `defaultIndex` | `number` | 0 |  |
+| `onIndexChange` | `((index: number) => void)` |  |  |
+| `controls` | `CarouselControls` | both | Which controls show: arrows and dots (default), arrows only, or dots only. |
+| `slideLabel` | `((index: number, total: number) => string)` | (i, total) => `${i + 1} of ${total}` | Words for a slide’s name. Default "{n} of {total}". |
+
+### CarouselControls
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Keep to a few slides, two to five. Don’t: Put twenty slides in one carousel. Why: People rarely go past the first few slides.
+- Do: Give every slide a visible control or a way to reach it. Don’t: Hide the controls and rely on swiping. Why: Not every device swipes, and keyboard users need the arrows.
+- Do: Put the most important message on the first slide. Don’t: Hide the key message on the fourth slide. Why: Most people only see the first slide.
+
+## Content
+- Keep each slide’s message to one idea.
+- Name the carousel by what it shows, e.g. "Highlights".
+
+## Accessibility
+- Role: region with roledescription "carousel"; each slide is a group with roledescription "slide".
+- Tab: Moves to the previous arrow, the dots, then the next arrow.
+- Enter / Space: Activates an arrow or dot to show that slide.
+- `aria-roledescription`: Carousel and slide.
+- `aria-live`: Polite, on the slide, so the new slide is announced.
+- `aria-current`: On the dot for the current slide.
+- Focus: The carousel and each control show a focus ring.
+- WCAG 2.1.1 Keyboard: Slides move with the arrow keys and every control is reachable by Tab.
+- WCAG 4.1.3 Status Messages: Slide changes are announced politely without moving focus.
+- Only the current slide is shown, so non-current slides are not read out.
+
+## Examples
+### Highlights
+Three highlights with arrows and dots.
+
+```tsx
+import { Carousel } from '@ds/react';
+
+<Carousel label="Highlights" slides={[<Highlight key="a" />, <Highlight key="b" />, <Highlight key="c" />]} />
+```
+
+### Controlled
+The current slide lives in your state.
+
+```tsx
+import { Carousel } from '@ds/react';
+
+<Carousel label="Offers" slides={offers} index={index} onIndexChange={setIndex} />
+```
+
+### Arrows only
+For a large set of slides.
+
+```tsx
+import { Carousel } from '@ds/react';
+
+<Carousel label="Gallery" slides={images} controls="arrows" />
+```
+
+Tokens: `--carousel-*` (values per theme in ai/components/carousel.json).
 
 
 ---
@@ -2954,6 +3187,102 @@ Tokens: `--container-*` (values per theme in ai/components/container.json).
 
 ---
 
+# Countdown
+
+> A live countdown to a moment, shown as days, hours, minutes and seconds. It ticks every second and shows a finished message when the time has passed.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { Countdown } from '@ds/react';
+import { CountdownSize } from '@ds/react';
+```
+
+## When to use
+- To count down to a launch, a deadline or the end of a sale.
+- On a page where the date is the main message.
+
+## When not to use
+- To show how long something took. Use Stat.
+- For a short timeout in a form. Use Spinner.
+
+## Size (`size`)
+- `small`: Inside a card or a banner.
+- `medium`: Default.
+- `large`: The main message of a launch page.
+
+## States
+- **Counting**: Time remains; the units tick. (to is in the future.)
+- **Ended**: The time has passed; the ended message shows. (to is in the past.)
+
+## Props
+### Countdown
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names what is counted down to, e.g. "Launch in". Read before the time. |
+| `to` | `Date` |  | The moment to count down to. |
+| `now` | `Date` |  | The current time, for tests and static previews. Default: the live clock. |
+| `units` | `{ days: string; hours: string; minutes: string; seconds: string; }` | { days: 'days', hours: 'hours', minutes: 'minutes', seconds: 'seconds' } | Words for the units. Default English. |
+| `endedLabel` | `string` | Done | Words shown when the time has passed. Default "Done". |
+| `size` | `CountdownSize` | medium | `small` in cards, `medium` (default), `large` for a launch page. |
+
+### CountdownSize
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Show the date as well as the countdown. Don’t: Show only a countdown with no date. Why: The date lets people plan and confirms what the countdown means.
+- Do: Replace the countdown with a clear message when it ends. Don’t: Leave a counter stuck at zero. Why: A finished message tells people the moment has passed.
+- Do: Use one countdown per page. Don’t: Stack several countdowns to different dates. Why: Several moving numbers compete for attention.
+
+## Content
+- Name what is counted, e.g. "Launch in".
+- Give the units in the language of the page through the units prop.
+
+## Accessibility
+- Role: section named with the full sentence, e.g. "Launch in 12 days, 8 hours, 45 minutes, 20 seconds".
+- —: No keyboard interaction; use the controls inside, if any.
+- `aria-label`: On the section: the whole countdown as one sentence.
+- Focus: Not focusable; static display.
+- WCAG 1.3.1 Info and Relationships: Units are a list with their names beside the numbers.
+- WCAG 2.2.1 Timing Adjustable: The countdown is informational and does not end content or require a response.
+- The visible units are hidden from assistive technology; the section label reads them once.
+
+## Examples
+### Launch
+A large countdown on a launch page.
+
+```tsx
+import { Countdown } from '@ds/react';
+
+<Countdown label="Launch in" to={new Date('2026-11-01T09:00:00Z')} size="large" />
+```
+
+### In a card
+A small countdown inside a promotion card.
+
+```tsx
+import { Countdown } from '@ds/react';
+
+<Countdown label="Sale ends in" to={saleEnds} size="small" endedLabel="Sale over" />
+```
+
+### Translated
+Units in another language.
+
+```tsx
+import { Countdown } from '@ds/react';
+
+<Countdown label="يبدأ خلال" to={launch} units={{ days: 'يوم', hours: 'ساعة', minutes: 'دقيقة', seconds: 'ثانية' }} />
+```
+
+Tokens: `--countdown-*` (values per theme in ai/components/countdown.json).
+
+
+---
+
 # DatePicker
 
 > Pick a date or a date range from a month grid. DatePicker opens a Calendar from a button; DateRangePicker shows two months and presets such as "Last 30 days" and applies with Apply; Calendar is the grid on its own. Month and weekday names, and the first day of the week, follow the locale.
@@ -3118,6 +3447,106 @@ import { Calendar } from '@ds/react';
 ```
 
 Tokens: `--date-picker-*` (values per theme in ai/components/date-picker.json).
+
+
+---
+
+# DescriptionList
+
+> Pairs of labels and values, such as an invoice summary, order totals or account details. An emphasised row sets a total apart.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { DescriptionList } from '@ds/react';
+```
+
+## When to use
+- For key–value details: an invoice, an order summary, a profile.
+- For totals, with the final row emphasised.
+
+## When not to use
+- For many records with the same columns. Use Table.
+- For a single key figure with a trend. Use Stat.
+- For editable settings. Use SettingsList.
+
+## Layout (`layout`)
+- `horizontal`: Default. Terms on the start, values on the end.
+- `stacked`: Values under their terms, for narrow columns.
+
+## Dividers (`divided`)
+- `false`: Default. Spaced rows.
+- `true`: A line between rows.
+
+## Emphasis (`emphasis`)
+- `false`: Default. A regular row.
+- `true`: A total: bold, with a line above it.
+
+## States
+- **Static**: Read-only details. (—)
+
+## Props
+### DescriptionList
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `items` | `DescriptionListItem[]` |  |  |
+| `layout` | `DescriptionListLayout` | horizontal | `horizontal` (default) puts terms and values side by side; `stacked` puts values under terms. |
+| `divided` | `boolean` | false | Draws a line between rows. |
+
+## Guidelines
+- Do: Emphasise only the total. Don’t: Bold several rows. Why: One emphasised row tells the reader where the answer is.
+- Do: Keep terms short and in the same order as the calculation. Don’t: Mix totals and line items without a divider. Why: The order shows how the total was reached.
+- Do: Use stacked layout in narrow columns. Don’t: Squeeze terms and values side by side in a 240px panel. Why: Stacked layout keeps long values readable.
+
+## Content
+- Name terms as the reader would: "Subtotal", "VAT (10%)".
+- Format amounts with the currency and the same number of decimals.
+
+## Accessibility
+- Role: definition list (dl) with term and description pairs.
+- —: No keyboard interaction; use the controls inside, if any.
+- Focus: Static content; no focus stops.
+- WCAG 1.3.1 Info and Relationships: Terms and descriptions are real dt and dd elements.
+- WCAG 1.4.3 Contrast: Secondary terms pass AA on every surface in every theme.
+- Emphasis is shown by weight and a line, not color alone.
+
+## Examples
+### Order totals
+Line items with an emphasised total.
+
+```tsx
+import { DescriptionList } from '@ds/react';
+
+<DescriptionList
+  divided
+  items={[
+    { term: 'Subtotal', description: '$1,100.00' },
+    { term: 'VAT (10%)', description: '$110.00' },
+    { term: 'Total', description: '$1,210.00', emphasis: true },
+  ]}
+/>
+```
+
+### Account details
+Stacked for a narrow panel.
+
+```tsx
+import { DescriptionList } from '@ds/react';
+
+<DescriptionList layout="stacked" items={[{ term: 'Email', description: 'maya@orbit.app' }]} />
+```
+
+### Profile
+Plain key–value pairs.
+
+```tsx
+import { DescriptionList } from '@ds/react';
+
+<DescriptionList items={[{ term: 'Role', description: 'Designer' }, { term: 'Team', description: 'Design systems' }]} />
+```
+
+Tokens: `--description-list-*` (values per theme in ai/components/description-list.json).
 
 
 ---
@@ -3645,6 +4074,127 @@ import { EmptyState } from '@ds/react';
 ```
 
 Tokens: `--empty-state-*` (values per theme in ai/components/empty-state.json).
+
+
+---
+
+# EventCalendar
+
+> A month of days with the events on each day. Choose a day to select it; move between months with the arrows. Days are buttons, so the calendar works with the keyboard.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { EventCalendar } from '@ds/react';
+import { EventCalendarEvent } from '@ds/react';
+```
+
+## When to use
+- To show meetings, deadlines or launches across a month.
+- To let people pick a date and see what is on it.
+
+## When not to use
+- To pick a date for a form field. Use DatePicker.
+- For a range of dates in a form. Use DateRangePicker.
+- For tasks grouped by stage. Use KanbanBoard.
+
+## View (`view`)
+- `month`: Default. The whole month, with up to two events per day.
+- `week`: The seven days of the week that holds the selected day, with every event and its time.
+- `day`: An agenda of the selected day.
+
+## Header (`header`)
+- `true`: Default. Shows the month name and previous / next buttons.
+- `false`: Hidden, when the page has its own toolbar.
+
+## Week starts on (`weekStartsOn`)
+- `1`: Monday. Default.
+- `0`: Sunday.
+
+## States
+- **Default**: A day with no selection. (—)
+- **Today**: Today’s date in bold. (The current date.)
+- **Selected**: The chosen day, filled. (Pressing a day.)
+- **Outside**: Days from the previous or next month. (Days outside the shown month.)
+- **Focus**: A ring on the focused day. (:focus-visible.)
+
+## Props
+### EventCalendar
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the calendar, e.g. "Team calendar". |
+| `month` | `Date` |  | Any date in the month to show. |
+| `events` | `EventCalendarEvent[]` | [] |  |
+| `view` | `EventCalendarView` | month | `month` (default) shows the whole month; `week` the week of the selected day; `day` its agenda. |
+| `header` | `boolean` | true | Shows the month name and previous / next buttons. Turn off when the page has its own. |
+| `selectedDate` | `Date` |  | The selected day (controlled). |
+| `defaultSelectedDate` | `Date` |  |  |
+| `onSelectDate` | `((date: Date) => void)` |  |  |
+| `onSelectEvent` | `((event: EventCalendarEvent) => void)` |  | Called with an event when its chip is pressed. Makes the chips buttons. |
+| `onMonthChange` | `((month: Date) => void)` |  | Called with the first day of the month when the arrows are pressed. |
+| `weekStartsOn` | `0 \| 1` | 1 | Day the week starts on: 0 = Sunday, 1 = Monday (default). |
+| `locale` | `string` | en-US | Locale for month and weekday names. Default "en-US". |
+
+### EventCalendarEvent
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Show the event title on the day. Don’t: Show only colour dots. Why: Titles say what is happening; dots need a legend.
+- Do: Keep event colours to a few tones with clear meanings. Don’t: Give every event its own colour. Why: Too many colours make the calendar hard to read.
+- Do: Choose the week start your audience expects. Don’t: Start every week on Sunday everywhere. Why: Calendars should match how people count weeks.
+
+## Content
+- Name each event in a few words, e.g. "Design review".
+- Use the locale prop for month and weekday names in other languages.
+
+## Accessibility
+- Role: group named by label, containing a grid of weekday headers and day cells.
+- Tab: Moves between the month buttons and the days.
+- Enter / Space: Selects the focused day.
+- `aria-pressed`: On each day, true for the selected day.
+- `aria-label`: On each day: its full date and how many events it has.
+- Focus: The focused day shows a focus ring.
+- WCAG 1.3.1 Info and Relationships: Weekdays are column headers; days are grid cells.
+- WCAG 2.4.7 Focus Visible: Focus is shown on every day and button.
+- WCAG 4.1.2 Name, Role, Value: Each day is named by its date and event count.
+- Event chips are hidden from assistive technology; the day’s label gives their count.
+
+## Examples
+### Team calendar
+A month with a few events.
+
+```tsx
+import { EventCalendar } from '@ds/react';
+
+<EventCalendar
+  label="Team calendar"
+  month={new Date(2026, 9, 1)}
+  events={[{ id: '1', title: 'Design review', date: new Date(2026, 9, 14), tone: 'primary' }]}
+/>
+```
+
+### Controlled month
+The month and selection live in your state.
+
+```tsx
+import { EventCalendar } from '@ds/react';
+
+<EventCalendar label="Launches" month={month} onMonthChange={setMonth} selectedDate={day} onSelectDate={setDay} events={events} />
+```
+
+### Week starts on Sunday
+For audiences that count weeks from Sunday.
+
+```tsx
+import { EventCalendar } from '@ds/react';
+
+<EventCalendar label="Schedule" month={new Date()} weekStartsOn={0} />
+```
+
+Tokens: `--event-calendar-*` (values per theme in ai/components/event-calendar.json).
 
 
 ---
@@ -4837,6 +5387,212 @@ Tokens: `--input-field-*` (values per theme in ai/components/input-field.json).
 
 ---
 
+# IntegrationCard
+
+> An app or service that can be connected to the product: its icon, what it does, whether it is connected, and a switch to connect or disconnect.
+
+Status: stable · Category: Patterns · Since 1.3.0
+
+```tsx
+import { IntegrationCard } from '@ds/react';
+```
+
+## When to use
+- On an integrations or apps page, one card per app.
+- To let people connect a service such as a calendar or chat tool.
+
+## When not to use
+- For a single setting inside an account page. Use SettingsList.
+- For a plan or price. Use PricingCard.
+
+## Connection (`connected`)
+- `false`: Default. Not connected; the switch is off.
+- `true`: Connected; the card gets a success border.
+
+## States
+- **Not connected**: The app is not linked. (connected is false.)
+- **Connected**: The app is linked and its status shows. (connected is true.)
+- **Focus**: Focus ring on the switch. (:focus-visible on the switch.)
+
+## Props
+### IntegrationCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `string` |  | The app or service, e.g. "Slack". |
+| `description` | `ReactNode` |  | What connecting it does, in a sentence. |
+| `icon` | `ReactNode` |  | The app's logo or an icon. |
+| `connected` | `boolean` |  | Whether it is connected (controlled). |
+| `onConnectedChange` | `((connected: boolean) => void)` |  | Called when the switch is turned on or off. |
+| `actions` | `ReactNode` |  | Further actions in the footer, e.g. "Configure". |
+
+## Guidelines
+- Do: Show the connection state in words and with the switch. Don’t: Show only the switch. Why: The state should not depend on reading the switch position alone.
+- Do: Explain what connecting gives access to. Don’t: Connect without saying what data is shared. Why: People should know what they are allowing before they switch it on.
+- Do: Put disconnect and configure options in the footer. Don’t: Hide the disconnect option behind a menu only. Why: Leaving an integration should be as easy as joining it.
+
+## Content
+- Name the app as it is known to people, e.g. "Slack".
+- Describe what connecting does, e.g. "Post updates to a channel".
+
+## Accessibility
+- Role: article, named by the app name; the switch is named "Connect {name}".
+- Tab: Moves to the switch and then the actions.
+- Space: Turns the switch on or off.
+- `aria-label`: On the switch: "Connect {name}".
+- Focus: The switch and actions show their own focus rings.
+- WCAG 1.4.1 Use of Color: Status is written out as text, not only shown by colour.
+- WCAG 4.1.2 Name, Role, Value: The switch states its name and on/off value.
+- The app icon is decorative; the name carries the meaning.
+
+## Examples
+### Connected app
+A connected app with a configure action.
+
+```tsx
+import { Button, IntegrationCard } from '@ds/react';
+
+<IntegrationCard
+  name="Slack"
+  description="Post updates to a channel."
+  icon={<SlackLogo />}
+  connected
+  onConnectedChange={setConnected}
+  actions={<Button size="small" variant="secondary" appearance="outline">Configure</Button>}
+/>
+```
+
+### Available app
+An app that is not connected yet.
+
+```tsx
+import { IntegrationCard } from '@ds/react';
+
+<IntegrationCard name="Google Calendar" description="Show meetings on your planner." icon={<CalendarIcon />} connected={false} onConnectedChange={connect} />
+```
+
+### In a grid
+Cards side by side, each with its own switch.
+
+```tsx
+import { IntegrationCard } from '@ds/react';
+
+<div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))' }}>
+  {apps.map((app) => <IntegrationCard key={app.name} {...app} />)}
+</div>
+```
+
+Tokens: `--integration-card-*` (values per theme in ai/components/integration-card.json).
+
+
+---
+
+# KanbanBoard
+
+> Work grouped into columns by stage. Each column has a title and count; each task is a card with its detail, tags and any actions, such as moving it to another column.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { KanbanBoard } from '@ds/react';
+import { KanbanCardData } from '@ds/react';
+import { KanbanColumnData } from '@ds/react';
+```
+
+## When to use
+- To see work across stages, e.g. To do, In progress, Done.
+- When people move items between stages.
+
+## When not to use
+- For a flat list of tasks. Use List.
+- For tasks by date. Use EventCalendar.
+- For many records with columns of data. Use Table.
+
+## Density (`compact`)
+- `false`: Default. Comfortable cards.
+- `true`: Tighter cards and gaps, to fit more tasks on screen.
+
+## States
+- **Default**: Columns and their cards at rest. (—)
+- **Empty column**: A stage with no tasks shows a count of zero. (No items in the column.)
+
+## Props
+### KanbanBoard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the board, e.g. "Task board". |
+| `columns` | `KanbanColumnData[]` |  |  |
+| `compact` | `boolean` | false | Tighter cards and gaps, to fit more tasks on screen. |
+| `renderActions` | `((item: KanbanCardData, column: KanbanColumnData) => ReactNode)` |  | Controls at the end of each card, e.g. a menu to move it to another column. |
+
+### KanbanCardData
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+### KanbanColumnData
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Show the count in each column header. Don’t: Make people count cards to see how much work is in a stage. Why: The count is the quickest way to see where work is piling up.
+- Do: Keep to three to five stages. Don’t: Create a column for every status in the system. Why: Too many columns are hard to scan and scroll.
+- Do: Put the move action on each card. Don’t: Require drag and drop as the only way to move a card. Why: A menu works with the keyboard and on touch screens.
+
+## Content
+- Name stages with verbs or states: "To do", "In progress", "Done".
+- Keep card titles short; put details in the description.
+
+## Accessibility
+- Role: region named by label; each column is a section with a heading.
+- Tab: Moves through the cards’ actions in reading order.
+- `aria-labelledby`: Each column is named by its title.
+- Focus: Card actions show their own focus rings.
+- WCAG 1.3.1 Info and Relationships: Columns are sections with headings; cards are headings within them.
+- WCAG 2.1.1 Keyboard: Every card action is reachable with the keyboard.
+- Each column reads as a heading followed by its cards, so the stages are easy to navigate.
+
+## Examples
+### Three stages
+To do, in progress and done.
+
+```tsx
+import { KanbanBoard } from '@ds/react';
+
+<KanbanBoard
+  label="Task board"
+  columns={[
+    { id: 'todo', title: 'To do', items: [{ id: '1', title: 'Write brief' }] },
+    { id: 'doing', title: 'In progress', items: [] },
+  ]}
+/>
+```
+
+### With a move menu
+A menu on each card to move it to another stage.
+
+```tsx
+import { KanbanBoard } from '@ds/react';
+
+<KanbanBoard label="Tasks" columns={columns} renderActions={(item, column) => <MoveMenu item={item} from={column.id} />} />
+```
+
+### Tags and dates
+Each card shows its tag, date and counts.
+
+```tsx
+import { KanbanBoard } from '@ds/react';
+
+<KanbanBoard label="Campaign" columns={[{ id: 'todo', title: 'To do', items: [{ id: '1', title: 'Launch post', meta: <span>Mon</span> }] }]} />
+```
+
+Tokens: `--kanban-board-*` (values per theme in ai/components/kanban-board.json).
+
+
+---
+
 # Kbd
 
 > Kbd shows a keyboard key or a shortcut, such as Ctrl + K, in text, menus and tooltips.
@@ -5061,6 +5817,10 @@ import { ListItem } from '@ds/react';
 ## States
 - **Hover**: Interactive rows are tinted. (:hover)
 - **Focus**: Focus ring on the row. (:focus-visible)
+- **Unread**: Bold title on a tinted row, e.g. a new message. (ListItem unread.)
+- **Selected**: Tinted row, e.g. while its checkbox is checked. (ListItem selected.)
+- **Current**: The open item, e.g. the active chat; tinted and announced. (ListItem current (aria-current).)
+- **Done**: Title struck through, e.g. a completed task. (ListItem done.)
 
 ## Props
 ### List
@@ -5080,6 +5840,11 @@ import { ListItem } from '@ds/react';
 | `meta` | `ReactNode` |  | Trailing content, e.g. a date, Badge or Switch. |
 | `href` | `string` |  | Makes the item a link. |
 | `onClick` | `((event: MouseEvent<HTMLElement, MouseEvent>) => void)` |  | Makes the item a button (when there is no href). |
+| `start` | `ReactNode` |  | Controls before the row, e.g. a Checkbox to select it or a star button. Kept outside the link. |
+| `unread` | `boolean` |  | Bold title on a tinted row, e.g. an unread message. |
+| `done` | `boolean` |  | Strikes the title through, e.g. a completed task. |
+| `selected` | `boolean` |  | Highlights the row, e.g. while its checkbox is checked. |
+| `current` | `boolean` |  | Marks the open item in a list of links or buttons, e.g. the current chat (aria-current). |
 
 ## Guidelines
 - Do: Make the whole row the target. Don’t: Add a separate “Open” link per row. Why: One target per row is simpler to use.
@@ -5613,6 +6378,10 @@ import { ModalClose } from '@ds/react';
 - `success | warning | danger`: Outcome or risk, e.g. danger for delete.
 - `secondary | gray … teal`: Neutral or a category hue.
 
+## Placement (`inline`)
+- `false`: Default. Opens over the page with a scrim and a focus trap.
+- `true`: Drawn in place, for previews, docs and static mockups. Not for real dialogs.
+
 ## States
 - **Open**: Shown over a scrim; focus inside. (open)
 - **Closed**: Focus back on the trigger. (—)
@@ -5641,6 +6410,7 @@ import { ModalClose } from '@ds/react';
 | `align` | `"center" \| "start"` | start | `start` (default) or `center`: centers the icon, text and footer buttons. |
 | `role` | `"dialog" \| "alertdialog"` | dialog | `alertdialog` for urgent confirmations (e.g. delete): clicking outside doesn't close it and there's no close icon, so people choose an action. |
 | `closeLabel` | `string` | Close | Accessible name of the close button. Default "Close". |
+| `inline` | `boolean` | false | Draws the dialog in place instead of over the page, with no scrim or focus trap. Use it for previews, docs and static mockups; real dialogs should open as a modal. |
 | `asChild` | `boolean` |  |  |
 
 ### ModalFooter
@@ -5841,6 +6611,113 @@ const items = [
 ```
 
 Tokens: `--navbar-*` (values per theme in ai/components/navbar.json).
+
+
+---
+
+# NotificationCard
+
+> A single notice about something that happened, such as a reply or a system alert: who it is from or an icon, what it says, when, and the actions to take. Unread notices are tinted and marked with a dot.
+
+Status: stable · Category: Feedback · Since 1.3.0
+
+```tsx
+import { NotificationCard } from '@ds/react';
+```
+
+## When to use
+- In a notification list or feed, one card per event.
+- For a notice with a clear next step, e.g. "Reply" or "View".
+
+## When not to use
+- For a short confirmation after an action. Use Toast.
+- For a message in an ongoing conversation. Use MessageThread.
+- For a warning that stays on the page. Use Alert.
+
+## Read state (`unread`)
+- `false`: Default. Already seen.
+- `true`: New: tinted, with a dot at the start.
+
+## States
+- **Read**: Seen; plain background. (unread is false.)
+- **Unread**: New; tinted with a dot. (unread is true.)
+- **Focus**: Focus rings on its actions. (:focus-visible on a control.)
+
+## Props
+### NotificationCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `ReactNode` |  | The notice in a few words, e.g. "Lana replied to your comment". |
+| `description` | `ReactNode` |  | Optional second line with the detail. |
+| `time` | `ReactNode` |  | When it happened, e.g. "2 mins ago". |
+| `avatar` | `{ name: string; src?: string; status?: "online" \| "offline"; } \| undefined` |  | Who it is from; shows their avatar. |
+| `icon` | `ReactNode` |  | An icon instead of an avatar, e.g. for system notices. |
+| `iconTone` | `BadgeColor` | primary | Colour of the icon tile. Default primary. |
+| `actions` | `ReactNode` |  | Buttons such as Reply and Dismiss, shown under the text. |
+| `onDismiss` | `(() => void)` |  | Shows a close button; called when it is pressed. |
+| `dismissLabel` | `string` | Dismiss notification | Words for the close button. Default "Dismiss notification". |
+| `unread` | `boolean` | false | Marks the notice as new: tinted and with a dot. |
+
+## Guidelines
+- Do: Put the most important action first, as the primary button. Don’t: Offer more than two actions. Why: One clear next step is easier to act on than a row of choices.
+- Do: Mark notices as unread until they are seen. Don’t: Tint every notice the same. Why: The mark tells people what is new since their last visit.
+- Do: Use the avatar when a person is involved. Don’t: Use the same generic icon for every notice. Why: A face makes a notice from a person easy to recognise.
+
+## Content
+- Write the title as what happened: "Lana replied to your comment".
+- Show the time in a short form, e.g. "2 min ago".
+
+## Accessibility
+- Role: article, named by its title.
+- Tab: Moves through the actions and the close button.
+- `aria-labelledby`: Names the card by its title.
+- `aria-label`: On the close button, from dismissLabel.
+- Focus: Actions and the close button show their own focus rings.
+- WCAG 1.1.1 Non-text Content: Avatars are decorative beside a named title; icons are decorative.
+- WCAG 1.4.3 Contrast: Text passes AA on both the read and unread backgrounds.
+- WCAG 1.4.1 Use of Color: Unread state is also shown by the dot, not only by tint.
+- The unread dot is decorative; screen readers hear the title and time.
+
+## Examples
+### Reply
+A person’s reply with two actions.
+
+```tsx
+import { Button, NotificationCard } from '@ds/react';
+
+<NotificationCard
+  unread
+  avatar={{ name: 'Lana Steiner', status: 'online' }}
+  title="Lana replied to your comment"
+  description="I’ve finished adding my notes!"
+  time="2 mins ago"
+  actions={<><Button size="small" variant="secondary" appearance="outline">Dismiss</Button><Button size="small">Reply</Button></>}
+/>
+```
+
+### System notice
+An icon instead of an avatar, with a dismiss button.
+
+```tsx
+import { NotificationCard } from '@ds/react';
+import { ShieldCheck } from 'lucide-react';
+
+<NotificationCard icon={<ShieldCheck />} iconTone="success" title="Two-factor enabled" onDismiss={dismiss} />
+```
+
+### In a list
+Cards stacked in a feed; the list is a plain list of articles.
+
+```tsx
+import { NotificationCard } from '@ds/react';
+
+<div role="feed" aria-label="Notifications">
+  {items.map((n) => <NotificationCard key={n.id} {...n} />)}
+</div>
+```
+
+Tokens: `--notification-card-*` (values per theme in ai/components/notification-card.json).
 
 
 ---
@@ -6056,6 +6933,99 @@ Tokens: `--pagination-*` (values per theme in ai/components/pagination.json).
 
 ---
 
+# PaymentCard
+
+> An illustration of a payment card with the holder’s name, expiry and the last four digits. It never shows the full card number.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { PaymentCard } from '@ds/react';
+```
+
+## When to use
+- To show a saved payment method in billing or checkout, e.g. "Visa ending in 1234".
+- To preview the card a person is about to add.
+
+## When not to use
+- To list many payment methods in rows. Use ChooseCard.
+- To collect card details. Use InputField.
+
+## Colour (`tone`)
+- `brand`: Default. Brand gradient, for the primary card.
+- `dark`: Dark, for a second card or a premium look.
+- `light`: Light with a border, for dense or light layouts.
+
+## Size (`size`)
+- `medium`: Default. Billing and checkout.
+- `small`: Lists and side panels.
+
+## States
+- **Static**: A picture of a card; it is not interactive. (—)
+
+## Props
+### PaymentCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `holder` | `string` |  | Name on the card, e.g. "Maya Okafor". |
+| `last4` | `string` |  | The last four digits, e.g. "1234". The rest is never shown. |
+| `expiry` | `string` |  | Expiry as shown on the card, e.g. "06/28". |
+| `brand` | `string` | Orbit | Card network or issuer name, e.g. "Orbit". |
+| `tone` | `PaymentCardTone` | brand | Colour of the card. Default brand. |
+| `size` | `PaymentCardSize` | medium | `medium` (default) in settings and checkout, `small` in lists. |
+
+## Guidelines
+- Do: Show only the last four digits. Don’t: Show or store the full card number on a page. Why: Full card numbers are sensitive; showing the last four is enough to identify a card.
+- Do: Pair the card with actions such as "Make default" or "Remove" nearby. Don’t: Use the card as a button. Why: The card is a picture; the actions around it do the work.
+- Do: Use the small size in lists. Don’t: Shrink the medium card until its text is unreadable. Why: Small cards keep their text readable at narrow widths.
+
+## Content
+- Show the card network and the last four digits, e.g. "Visa ending in 1234".
+- Show the expiry as MM/YY.
+
+## Accessibility
+- Role: img with a label describing the card.
+- —: No keyboard interaction; use the controls inside, if any.
+- `aria-label`: Names the card: brand, last four digits, holder and expiry.
+- Focus: Not focusable; the actions beside it take focus.
+- WCAG 1.1.1 Non-text Content: The card is an image with a full text label.
+- WCAG 1.4.3 Contrast: Card text passes AA on every colour in every theme.
+- The visible text inside the card is hidden from assistive technology to avoid repeating the label.
+
+## Examples
+### Saved card
+The default card in billing.
+
+```tsx
+import { PaymentCard } from '@ds/react';
+
+<PaymentCard holder="Maya Okafor" last4="1234" expiry="06/28" brand="Orbit" />
+```
+
+### Dark card
+A dark card for a second payment method.
+
+```tsx
+import { PaymentCard } from '@ds/react';
+
+<PaymentCard tone="dark" holder="Maya Okafor" last4="9911" expiry="11/27" brand="Visa" />
+```
+
+### Small in a list
+The small size beside its actions.
+
+```tsx
+import { PaymentCard } from '@ds/react';
+
+<PaymentCard size="small" tone="light" holder="Maya Okafor" last4="4242" expiry="02/29" brand="Mastercard" />
+```
+
+Tokens: `--payment-card-*` (values per theme in ai/components/payment-card.json).
+
+
+---
+
 # Popover
 
 > A popover shows interactive content anchored to a button, such as a small form, filters or details. It doesn’t block the page: clicking outside or Escape closes it and focus returns to the trigger.
@@ -6177,6 +7147,108 @@ Tokens: `--popover-*` (values per theme in ai/components/popover.json).
 
 ---
 
+# PricingCard
+
+> A pricing plan: name, price, what it includes and one call to action. A featured plan gets a brand border and a label such as "Most popular".
+
+Status: stable · Category: Patterns · Since 1.3.0
+
+```tsx
+import { PricingCard } from '@ds/react';
+```
+
+## When to use
+- On a pricing page, one card per plan, side by side.
+- To compare plans where the price and included features matter most.
+
+## When not to use
+- For a single upgrade offer inside a page. Use InlineCTA.
+- For choosing a payment method. Use PaymentCard.
+
+## Featured (`featured`)
+- `false`: Default. A regular plan.
+- `true`: Highlighted with a brand border; use for one plan.
+
+## States
+- **Default**: A regular plan. (—)
+- **Featured**: The highlighted plan with a brand border. (featured is true.)
+
+## Props
+### PricingCard
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `name` | `ReactNode` |  | The plan name, e.g. "Pro". |
+| `price` | `ReactNode` |  | The price, e.g. "$29". |
+| `period` | `ReactNode` |  | The billing period, e.g. "per month". |
+| `description` | `ReactNode` |  | One or two lines on who the plan is for. |
+| `features` | `ReactNode[]` |  | What is included, one item per line. |
+| `action` | `ReactNode` |  | The call to action, usually a Button. |
+| `badge` | `ReactNode` |  | A label such as "Most popular". |
+| `featured` | `boolean` | false | Highlights the plan with a brand border. |
+
+## Guidelines
+- Do: Feature one plan, the one most people should choose. Don’t: Feature several plans at once. Why: A single highlight tells people which plan to start with.
+- Do: Keep feature lists in the same order across plans. Don’t: Reorder or rename features between plans. Why: Matching rows let people compare the plans at a glance.
+- Do: Use one clear action per plan. Don’t: Put two primary buttons on one plan. Why: Each plan should lead to one next step.
+
+## Content
+- Name plans by who they are for: "Starter", "Pro", "Team".
+- Write features as short phrases, one per line.
+
+## Accessibility
+- Role: article, named by the plan name.
+- Tab: Moves to the action button.
+- `aria-hidden`: On the check marks, which are decorative.
+- Focus: The action button shows its own focus ring.
+- WCAG 1.3.1 Info and Relationships: The plan name is a heading; features are a list.
+- WCAG 1.4.1 Use of Color: The featured plan is also marked by its label, not only by its border.
+- Price and period are read together so the amount is never separated from its billing period.
+
+## Examples
+### Three plans
+A regular plan, a featured plan and an enterprise plan.
+
+```tsx
+import { Button, PricingCard } from '@ds/react';
+
+<PricingCard
+  name="Pro"
+  price="$29"
+  period="per month"
+  description="For growing teams."
+  badge="Most popular"
+  featured
+  features={['Unlimited projects', 'Priority support']}
+  action={<Button>Start free trial</Button>}
+/>
+```
+
+### Free plan
+A regular plan with an outlined action.
+
+```tsx
+import { Button, PricingCard } from '@ds/react';
+
+<PricingCard name="Free" price="$0" features={['3 projects']} action={<Button variant="secondary" appearance="outline">Get started</Button>} />
+```
+
+### In a grid
+Plans side by side on a wide screen and stacked on a narrow one.
+
+```tsx
+import { PricingCard } from '@ds/react';
+
+<div style={{ display: 'grid', gap: 24, gridTemplateColumns: 'repeat(auto-fit, minmax(16rem, 1fr))' }}>
+  {plans.map((plan) => <PricingCard key={plan.name} {...plan} />)}
+</div>
+```
+
+Tokens: `--pricing-card-*` (values per theme in ai/components/pricing-card.json).
+
+
+---
+
 # ProductCard
 
 > A product card shows one product in a grid or list: photo, name, short description, rating and price, with an optional sale price and actions. It is built from Card.
@@ -6225,6 +7297,9 @@ import { ProductCard } from '@ds/react';
 | `appearance` | `CardAppearance` |  | `elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for dense layouts, `filled` tints it for grouping inside a surface. |
 | `orientation` | `CardOrientation` |  | `vertical` stacks media above the body; `horizontal` puts media beside it. |
 | `href` | `string` |  | Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area covers the card, so there's one clear, accessible target. |
+| `padding` | `CardPadding` |  | `none` removes the padding, e.g. around a table that runs edge to edge. |
+| `ribbon` | `ReactNode` |  | A corner ribbon flagging the card, e.g. "New" or "Sale". |
+| `ribbonTone` | `CardRibbonTone` |  | Colour of the ribbon. Default primary. |
 | `as` | `ElementType` |  | Element to render: `article` (default) for standalone content, `div` or `li` otherwise. |
 
 ## Guidelines
@@ -6430,6 +7505,114 @@ import { Progress } from '@ds/react';
 ```
 
 Tokens: `--progress-*` (values per theme in ai/components/progress.json).
+
+
+---
+
+# PromptInput
+
+> A multi-line prompt box for chat and AI tools: text on top, tools such as Attach and voice on the left, a model picker and a send button on the right. Enter sends.
+
+Status: stable · Category: Forms · Since 1.3.0
+
+```tsx
+import { PromptInput } from '@ds/react';
+```
+
+## When to use
+- For an AI assistant or chat composer where people write a message or prompt.
+- For any free-text input that is sent with a button, such as a comment box with attachments.
+
+## When not to use
+- For a single line, such as a search. Use SearchField.
+- For a long document or form field with a label above. Use Textarea.
+
+## Size (`size`)
+- `medium`: Default. The main composer.
+- `small`: Side panels and compact layouts.
+
+## States
+- **Empty**: No text; the send button is disabled. (Empty or only spaces.)
+- **Ready**: Text present; the send button is enabled. (Text entered.)
+- **Focus**: The border shows focus around the whole box. (:focus-within.)
+- **Busy**: A reply is being produced; the send button shows a spinner and sending waits. (busy prop.)
+- **Disabled**: Nothing can be typed or sent. (disabled prop.)
+
+## Props
+### PromptInput
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the prompt box for screen readers, e.g. "Message the assistant". |
+| `placeholder` | `string` |  |  |
+| `value` | `string` |  | The text (controlled). |
+| `defaultValue` | `string` |  |  |
+| `onValueChange` | `((value: string) => void)` |  |  |
+| `onSubmit` | `((value: string) => void)` |  | Called with the text when the prompt is sent (Enter, or the send button). |
+| `tools` | `ReactNode` |  | Controls at the start of the bottom row, e.g. Attach and voice input. |
+| `actions` | `ReactNode` |  | Controls at the end, before the send button, e.g. a model picker. |
+| `submitLabel` | `string` | Send | Words for the send button. Default "Send". |
+| `busy` | `boolean` | false | Shows a busy state on the send button and stops sending, e.g. while a reply is generated. |
+| `size` | `PromptInputSize` | medium | `small` for side panels, `medium` (default) for the main composer. |
+| `rows` | `number` | 3 | Visible lines before the box scrolls. Default 3. |
+| `disabled` | `boolean` | false |  |
+
+## Guidelines
+- Do: Keep tools and the send button on one bottom row. Don’t: Scatter controls around the text. Why: One row keeps the composer predictable, as people expect in chat tools.
+- Do: Disable send while the field is empty. Don’t: Let people send empty messages and show an error. Why: Disabling prevents the mistake before it happens.
+- Do: Let Enter send and Shift+Enter add a line. Don’t: Make Enter add a line and require a click to send. Why: Keyboard users expect Enter to send in chat composers.
+
+## Content
+- Use a placeholder that shows what to type, e.g. "Ask me anything…".
+- Name the box with label so screen readers announce its purpose.
+
+## Accessibility
+- Role: form with a labelled multi-line text field.
+- Enter: Sends the prompt when it has text.
+- Shift+Enter: Starts a new line.
+- Tab: Moves through the tools, actions and the send button.
+- `label (for)`: The text field is named by label.
+- `aria-label`: Set on the send button from submitLabel.
+- Focus: The composer border shows focus; controls show their own focus rings.
+- WCAG 1.3.1 Info and Relationships: The field is labelled by a real label element.
+- WCAG 2.1.1 Keyboard: Sending works with Enter, and every control is reachable with Tab.
+- WCAG 3.3.2 Labels or Instructions: The placeholder supplements the label; it does not replace it.
+- Disabled sending is announced by the button’s disabled state.
+
+## Examples
+### Assistant prompt
+The composer with Attach and a send button.
+
+```tsx
+import { PromptInput, Button } from '@ds/react';
+
+<PromptInput
+  label="Message the assistant"
+  placeholder="Ask me anything…"
+  tools={<Button size="small" variant="secondary" appearance="outline">Attach</Button>}
+  onSubmit={(text) => send(text)}
+/>
+```
+
+### With a model picker
+A model picker in the actions row.
+
+```tsx
+import { PromptInput } from '@ds/react';
+
+<PromptInput label="Message" actions={<ModelPicker value={model} onValueChange={setModel} />} />
+```
+
+### In a side panel
+The small size for narrow panels.
+
+```tsx
+import { PromptInput } from '@ds/react';
+
+<PromptInput label="Reply" size="small" rows={2} onSubmit={reply} />
+```
+
+Tokens: `--prompt-input-*` (values per theme in ai/components/prompt-input.json).
 
 
 ---
@@ -6960,6 +8143,96 @@ Tokens: `--select-*` (values per theme in ai/components/select.json).
 
 ---
 
+# SettingsList
+
+> A list of settings, each a title and optional description with a control at the end: a switch, a button or a select. Use it for account and security settings.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { SettingsList } from '@ds/react';
+```
+
+## When to use
+- For account, security and preference pages with several settings.
+- When each setting has one control: on/off, or one action such as "Change".
+
+## When not to use
+- For key–value details that are not editable. Use DescriptionList.
+- For a single on/off setting on its own. Use Switch.
+- For connecting apps. Use IntegrationCard.
+
+## Frame (`framed`)
+- `false`: Default. Rows on the page, divided by lines.
+- `true`: Rows in a bordered card.
+
+## States
+- **Static**: Rows with their controls; each control has its own states. (—)
+
+## Props
+### SettingsList
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `items` | `SettingsListItem[]` |  |  |
+| `framed` | `boolean` | false | Draws a border around the list, for a settings card. |
+
+## Guidelines
+- Do: Give every row one control. Don’t: Put several controls in one row. Why: One control per row keeps the outcome of each setting clear.
+- Do: Use a switch for settings that apply at once. Don’t: Use a switch for settings that need a Save button. Why: A switch implies the change is already saved.
+- Do: Describe the current state under the title. Don’t: Hide the state until the control is opened. Why: People should see what is set before they change it.
+
+## Content
+- Title each setting with the thing it controls, e.g. "Two-factor authentication".
+- Show the current state in the description, e.g. "Last changed 3 months ago".
+
+## Accessibility
+- Role: list of rows; each control keeps its own role and name.
+- Tab: Moves through the controls in order.
+- `aria-label`: On switches without a visible name in the row.
+- Focus: Each control shows its own focus ring.
+- WCAG 1.3.1 Info and Relationships: Rows are list items; the title is read before its control.
+- WCAG 2.4.6 Headings and Labels: Titles name each setting clearly.
+- Give each switch a name that matches its row title.
+
+## Examples
+### Security settings
+A switch, a button and a description.
+
+```tsx
+import { Button, SettingsList, Switch } from '@ds/react';
+
+<SettingsList
+  items={[
+    { id: 'password', title: 'Password', description: 'Last changed 3 months ago.', control: <Button size="small" variant="secondary" appearance="outline">Change</Button> },
+    { id: '2fa', title: 'Two-factor authentication', control: <Switch aria-label="Two-factor authentication" defaultChecked /> },
+  ]}
+/>
+```
+
+### In a card
+Framed as a settings card.
+
+```tsx
+import { SettingsList } from '@ds/react';
+
+<SettingsList framed items={preferences} />
+```
+
+### Notification preferences
+A list of switches.
+
+```tsx
+import { SettingsList, Switch } from '@ds/react';
+
+<SettingsList items={channels.map((c) => ({ id: c.id, title: c.title, control: <Switch aria-label={c.title} checked={c.on} onCheckedChange={(v) => set(c.id, v)} /> }))} />
+```
+
+Tokens: `--settings-list-*` (values per theme in ai/components/settings-list.json).
+
+
+---
+
 # SideNav
 
 > A side navigation lists the pages of an app or docs site in sections, with icons and nested groups that expand and collapse. The current page is highlighted and announced.
@@ -7476,6 +8749,15 @@ import { Stat } from '@ds/react';
 - `true`: The change is good news (green).
 - `false`: The change is bad news (red).
 
+## Size (`size`)
+- `small`: Dense rows of figures, e.g. under a chart.
+- `medium`: Default.
+- `large`: A headline figure at the top of a card.
+
+## Change appearance (`changeAppearance`)
+- `text`: Default. Arrow and change under the value, with the context after it.
+- `badge`: A tinted pill beside the value; the context moves under it.
+
 ## States
 - **Static**: Not interactive. (—)
 
@@ -7490,6 +8772,9 @@ import { Stat } from '@ds/react';
 | `trend` | `"up" \| "down" \| "neutral"` | neutral | Direction of the change: `up` or `down` (colored and announced), `neutral`. Whether up is good depends on the metric: set `positive` accordingly. |
 | `positive` | `boolean` |  | Whether the trend is good news. Default: up is good. Use false for e.g. costs rising. |
 | `help` | `ReactNode` |  | Context for the change, e.g. "vs last month". |
+| `size` | `StatSize` | medium | `small` in dense rows, `medium` (default), `large` for a headline figure. |
+| `changeAppearance` | `StatChangeAppearance` | text | `text` (default) shows the change under the value; `badge` puts it beside the value as a tinted pill. |
+| `note` | `ReactNode` |  | A line under the figure, e.g. "Updated 5 minutes ago". |
 | `trendLabels` | `{ up?: string; down?: string; } \| undefined` |  | Words announced for the trend, for translation. |
 
 ## Guidelines
@@ -8741,3 +10026,101 @@ import { VerificationCodeInput } from '@ds/react';
 ```
 
 Tokens: `--verification-code-input-*` (values per theme in ai/components/verification-code-input.json).
+
+
+---
+
+# VideoPlayer
+
+> A video with the browser’s native controls: play, pause, seek and volume. Without a source it shows a placeholder frame with a play button.
+
+Status: stable · Category: Data display · Since 1.3.0
+
+```tsx
+import { VideoPlayer } from '@ds/react';
+import { VideoPlayerAspectRatio } from '@ds/react';
+```
+
+## When to use
+- For a product tour, a tutorial or a recording on a page.
+- As a placeholder frame while a video is prepared.
+
+## When not to use
+- For several videos to browse. Use Carousel.
+- For a background loop with no controls. Use Image.
+
+## Aspect ratio (`aspectRatio`)
+- `16:9`: Default. Widescreen video.
+- `4:3`: Older or square-ish recordings.
+- `1:1`: Square social clips.
+
+## States
+- **Placeholder**: No source; a play button shows. (No src.)
+- **Ready**: The video shows with its controls. (src set.)
+
+## Props
+### VideoPlayer
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+| `label` | `string` |  | Names the video, e.g. "Product tour". |
+| `src` | `string` |  | The video file or stream. Without it, a placeholder with a play button shows. |
+| `poster` | `string` |  | A still image shown before the video plays. |
+| `captions` | `string` |  | A WebVTT file with captions for the speech. |
+| `aspectRatio` | `VideoPlayerAspectRatio` | 16:9 | Shape of the frame. Default 16:9. |
+| `onPlay` | `(() => void)` |  | Called when the placeholder’s play button is pressed (only without src). |
+
+### VideoPlayerAspectRatio
+
+| Prop | Type | Default | Description |
+| --- | --- | --- | --- |
+
+## Guidelines
+- Do: Give every video a poster image. Don’t: Show a black frame before the video starts. Why: A poster tells people what the video is about before they play it.
+- Do: Keep the native controls. Don’t: Hide the controls and autoplay with sound. Why: People need to pause, seek and mute; autoplay with sound is disruptive.
+- Do: Provide captions for speech. Don’t: Rely on sound alone for information. Why: Captions help people who are deaf or hard of hearing, and people watching without sound.
+
+## Content
+- Name the video by what it shows, e.g. "Product tour".
+- Add captions for spoken content when the video is published.
+
+## Accessibility
+- Role: video with native controls, named by label; the placeholder is an image with a label.
+- Tab: Moves to the native controls.
+- Space / K: Plays or pauses the video.
+- Left / Right: Seeks back or forward.
+- `aria-label`: On the video, from label; on the placeholder, "{label}, video placeholder".
+- Focus: The native controls and the play button show focus.
+- WCAG 1.2.2 Captions (Prerecorded): Provide captions when the video has speech.
+- WCAG 2.2.2 Pause, Stop, Hide: Native controls let people pause; autoplay is not used.
+- Captions and audio description are the publisher’s responsibility; the component passes them through as tracks.
+
+## Examples
+### Product tour
+A video with a poster and controls.
+
+```tsx
+import { VideoPlayer } from '@ds/react';
+
+<VideoPlayer label="Product tour" src="/videos/tour.mp4" poster="/images/tour.jpg" />
+```
+
+### Placeholder
+A square frame before the video is ready.
+
+```tsx
+import { VideoPlayer } from '@ds/react';
+
+<VideoPlayer label="Launch recap" aspectRatio="1:1" onPlay={openVideo} />
+```
+
+### Four by three
+A 4:3 frame for an older recording.
+
+```tsx
+import { VideoPlayer } from '@ds/react';
+
+<VideoPlayer label="Demo" aspectRatio="4:3" src="/videos/demo.mp4" />
+```
+
+Tokens: `--video-player-*` (values per theme in ai/components/video-player.json).

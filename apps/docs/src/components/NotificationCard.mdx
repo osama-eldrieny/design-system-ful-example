@@ -1,0 +1,19 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import { NotificationCard } from '@ds/react';
+import * as Stories from '../../../../packages/react/src/NotificationCard/NotificationCard.stories';
+import meta from '../../../../packages/react/src/NotificationCard/NotificationCard.meta';
+import { ComponentPage } from '../blocks';
+
+<Meta of={Stories} name="Docs" />
+
+# NotificationCard
+
+<ComponentPage
+  meta={meta}
+  stories={Stories}
+  components={[NotificationCard]}
+  optionStories={{ unread: 'ReadAndUnread' }}
+  extras={[{ title: 'System notice', story: 'SystemNotice' }]}
+  behaviorStory="RightToLeft"
+  matrix={<NotificationCard title="Lana replied to your comment" time="2 mins ago" unread />}
+/>

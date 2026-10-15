@@ -1,0 +1,37 @@
+/**
+ * Component tokens: notification-card
+ *
+ * Style this component only with these tokens.
+ *
+ * Grammar: --notification-card-{part?}-{state?}-{property}
+ *   part: title | time | description | actions | dot | dismiss; state: unread.
+ */
+
+:root,
+[data-theme] {
+  --notification-card-gap: var(--spacing-sm);
+  --notification-card-padding-x: var(--spacing-lg);
+  --notification-card-padding-y: var(--spacing-md);
+  --notification-card-border-width: var(--border-width-hairline);
+  --notification-card-border-color: var(--color-border-base);
+  --notification-card-bg-color: var(--color-bg-base);
+  --notification-card-unread-bg-color: var(--color-bg-default);
+  --notification-card-text-color: var(--color-fg-on-surface-primary);
+  --notification-card-font-family: var(--font-family-body);
+  --notification-card-font-size: var(--font-size-md);
+  --notification-card-font-line-height: var(--font-line-height-md);
+  --notification-card-body-gap: var(--spacing-3xs);
+  --notification-card-head-gap: var(--spacing-xs);
+  --notification-card-title-color: var(--color-fg-on-surface-primary);
+  --notification-card-title-font-weight: var(--font-weight-medium);
+  --notification-card-time-color: var(--color-fg-on-surface-secondary);
+  --notification-card-time-font-size: var(--font-size-sm);
+  --notification-card-description-color: var(--color-fg-on-surface-secondary);
+  --notification-card-actions-gap: var(--spacing-xs);
+  --notification-card-actions-offset: var(--spacing-2xs);
+  --notification-card-dismiss-offset: var(--spacing-3xs);
+  --notification-card-dot-size: var(--sizing-4xs);
+  --notification-card-dot-offset: var(--spacing-sm);
+  --notification-card-dot-border-radius: var(--radius-full);
+  --notification-card-dot-color: var(--color-bg-accent-primary-strong-default);
+}

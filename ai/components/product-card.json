@@ -302,6 +302,33 @@
           "default": null,
           "description": "Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area\ncovers the card, so there's one clear, accessible target."
         },
+        "padding": {
+          "type": "CardPadding",
+          "values": [
+            "default",
+            "none"
+          ],
+          "required": false,
+          "default": null,
+          "description": "`none` removes the padding, e.g. around a table that runs edge to edge."
+        },
+        "ribbon": {
+          "type": "ReactNode",
+          "required": false,
+          "default": null,
+          "description": "A corner ribbon flagging the card, e.g. \"New\" or \"Sale\"."
+        },
+        "ribbonTone": {
+          "type": "CardRibbonTone",
+          "values": [
+            "primary",
+            "success",
+            "danger"
+          ],
+          "required": false,
+          "default": null,
+          "description": "Colour of the ribbon. Default primary."
+        },
         "as": {
           "type": "ElementType",
           "required": false,
@@ -679,6 +706,146 @@
       "description": "Fixed element sizes in px.",
       "references": "--sizing-8xl",
       "default": "calc(220px * 0.7)"
+    },
+    "--card-header-gap": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--card-header-title-min-width": {
+      "description": null,
+      "references": null,
+      "default": "12rem"
+    },
+    "--card-header-actions-gap": {
+      "description": "Small gap inside compact controls.",
+      "references": "--spacing-xs",
+      "default": "8px"
+    },
+    "--card-footer-divider-color": {
+      "description": "Default dividers and outlines.",
+      "references": "--color-border-base",
+      "default": "#f8f7fb",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#332e3c",
+        "brand=amber,mode=light": "#f9f5f1",
+        "brand=amber,mode=dark": "#2a1f16",
+        "brand=opal,mode=light": "#f4f6fc",
+        "brand=opal,mode=dark": "#3d4460"
+      }
+    },
+    "--card-footer-divided-padding-top": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--card-ribbon-offset": {
+      "description": "Default gap and control padding.",
+      "references": "--spacing-md",
+      "default": "16px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "12px"
+      }
+    },
+    "--card-ribbon-overhang": {
+      "description": "Large section padding.",
+      "references": "--spacing-2xl",
+      "default": "28px",
+      "byTheme": {
+        "brand=diamond,mode=light,density=compact": "24px"
+      }
+    },
+    "--card-ribbon-width": {
+      "description": null,
+      "references": null,
+      "default": "8rem"
+    },
+    "--card-ribbon-padding-y": {
+      "description": "Hairline gap (2px), e.g. between rating stars.",
+      "references": "--spacing-3xs",
+      "default": "2px"
+    },
+    "--card-ribbon-font-size": {
+      "description": "Type scale.",
+      "references": "--font-size-xs",
+      "default": "10px"
+    },
+    "--card-ribbon-font-weight": {
+      "description": null,
+      "references": "--font-weight-semi-bold",
+      "default": "600"
+    },
+    "--card-ribbon-primary-bg-color": {
+      "description": "Fill of filled buttons; the accent in light mode, a darker step in dark mode.",
+      "references": "--color-bg-accent-primary-strong-default",
+      "default": "#794dff",
+      "byTheme": {
+        "brand=amber,mode=light": "#cda376",
+        "brand=amber,mode=dark": "#8a663e",
+        "brand=opal,mode=light": "#326fd1",
+        "brand=opal,mode=dark": "#326fd1"
+      }
+    },
+    "--card-ribbon-primary-text-color": {
+      "description": "Text and icons on the matching strong fill (light text in dark mode).",
+      "references": "--color-fg-on-accent-primary-strong-default",
+      "default": "#fff",
+      "byTheme": {
+        "brand=amber,mode=light": "#1e140d"
+      }
+    },
+    "--card-ribbon-success-bg-color": {
+      "description": "Fill of filled buttons; the accent in light mode, a darker step in dark mode.",
+      "references": "--color-bg-accent-success-strong-default",
+      "default": "#2ed46b",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#00732b",
+        "brand=amber,mode=light": "#447571",
+        "brand=amber,mode=dark": "#447571",
+        "brand=opal,mode=light": "#9ad541",
+        "brand=opal,mode=dark": "#4b740d"
+      }
+    },
+    "--card-ribbon-success-text-color": {
+      "description": "Text and icons on the matching strong fill (light text in dark mode).",
+      "references": "--color-fg-on-accent-success-strong-default",
+      "default": "#24202d",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fff",
+        "brand=amber,mode=light": "#ecf1f1",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#292d3e",
+        "brand=opal,mode=dark": "#fff"
+      }
+    },
+    "--card-ribbon-danger-bg-color": {
+      "description": "Fill of filled buttons; the accent in light mode, a darker step in dark mode.",
+      "references": "--color-bg-accent-danger-strong-default",
+      "default": "#cf2121",
+      "byTheme": {
+        "brand=amber,mode=light": "#934c5e",
+        "brand=amber,mode=dark": "#934c5e",
+        "brand=opal,mode=light": "#ad2d43",
+        "brand=opal,mode=dark": "#cf3650"
+      }
+    },
+    "--card-ribbon-danger-text-color": {
+      "description": "Text and icons on the matching strong fill (light text in dark mode).",
+      "references": "--color-fg-on-accent-danger-strong-default",
+      "default": "#fee9e9",
+      "byTheme": {
+        "brand=diamond,mode=dark": "#fff",
+        "brand=amber,mode=light": "#f4edef",
+        "brand=amber,mode=dark": "#fff",
+        "brand=opal,mode=light": "#feecef",
+        "brand=opal,mode=dark": "#fff"
+      }
     },
     "--card-hover-border-color": {
       "description": "Emphasized tone outline, e.g. a selected card.",

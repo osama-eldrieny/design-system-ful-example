@@ -1,0 +1,76 @@
+/**
+ * Carousel. Styled only with --carousel-* tokens. One slide shows at a time; the dots are small
+ * buttons with a larger hit area than their dot.
+ */
+
+.ds-carousel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--carousel-gap);
+  min-inline-size: 0;
+  border-radius: var(--carousel-border-radius);
+  outline: none;
+}
+
+.ds-carousel__viewport {
+  overflow: hidden;
+  border-radius: var(--carousel-slide-border-radius);
+}
+
+.ds-carousel__slide {
+  min-inline-size: 0;
+}
+
+.ds-carousel__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--carousel-controls-gap);
+}
+
+.ds-carousel__dots {
+  display: flex;
+  align-items: center;
+  gap: var(--carousel-dots-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-carousel__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--carousel-dot-hit-size);
+  block-size: var(--carousel-dot-hit-size);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.ds-carousel__dot::before {
+  content: '';
+  inline-size: var(--carousel-dot-size);
+  block-size: var(--carousel-dot-size);
+  border-radius: var(--carousel-dot-border-radius);
+  background-color: var(--carousel-dot-color);
+  transition: background-color var(--carousel-duration) var(--carousel-easing), inline-size var(--carousel-duration) var(--carousel-easing);
+}
+
+.ds-carousel__dot--active::before {
+  inline-size: var(--carousel-dot-active-size);
+  background-color: var(--carousel-dot-active-color);
+}
+
+.ds-carousel__dot:focus-visible {
+  outline: var(--carousel-focus-ring-width) solid var(--carousel-focus-ring-color);
+  outline-offset: var(--carousel-focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-carousel__dot::before {
+    transition: none;
+  }
+}

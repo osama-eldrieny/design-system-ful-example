@@ -25,6 +25,7 @@ import {
   Sparkline,
   Stepper,
   Card,
+  PaymentCard,
 } from '@ds/react';
 import {
   Box,
@@ -41,7 +42,6 @@ import {
   Users,
   Wallet,
 } from 'lucide-react';
-import { BankCard } from '../kit';
 import { countries, months, people, topPages, traffic, weekdayTraffic } from '../data';
 import { Page, to } from '../Shell';
 import { DataTable, Figure, More, Panel, RowMenu, Status, Toggle, Trend } from '../ui';
@@ -1474,8 +1474,8 @@ function Finance() {
             </Button>
           }
         >
-          <BankCard holder="Maya Okafor" number="4983" expiry="09/29" brand="Orbit" />
-          <BankCard tone="dark" holder="Maya Okafor" number="1234" expiry="12/28" brand="Orbit" />
+          <PaymentCard holder="Maya Okafor" last4="4983" expiry="09/29" brand="Orbit" />
+          <PaymentCard tone="dark" holder="Maya Okafor" last4="1234" expiry="12/28" brand="Orbit" />
         </Panel>
         <div className="orbit-stack">
           <Panel

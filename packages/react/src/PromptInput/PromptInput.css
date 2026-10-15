@@ -1,0 +1,87 @@
+/**
+ * PromptInput. Styled only with --prompt-input-* tokens. The text area is borderless; the box
+ * draws the border, so focus shows on the whole composer.
+ */
+
+.ds-prompt-input {
+  display: flex;
+  flex-direction: column;
+  gap: var(--prompt-input-gap);
+  padding: var(--prompt-input-padding);
+  border: var(--prompt-input-border-width) solid var(--prompt-input-border-color);
+  border-radius: var(--prompt-input-border-radius);
+  background-color: var(--prompt-input-bg-color);
+  box-shadow: var(--prompt-input-shadow-y) var(--prompt-input-shadow-blur) var(--prompt-input-shadow-color);
+  font-family: var(--prompt-input-font-family);
+  transition: border-color var(--prompt-input-duration) var(--prompt-input-easing);
+}
+
+.ds-prompt-input:focus-within {
+  border-color: var(--prompt-input-focus-border-color);
+}
+
+.ds-prompt-input--small {
+  gap: var(--prompt-input-small-gap);
+  padding: var(--prompt-input-small-padding);
+}
+
+.ds-prompt-input--disabled {
+  opacity: var(--prompt-input-disabled-opacity);
+}
+
+/* Visible to everyone through the placeholder and the send button's name; the label is for
+   screen readers only. */
+.ds-prompt-input__label {
+  position: absolute;
+  inline-size: var(--prompt-input-hidden-size);
+  block-size: var(--prompt-input-hidden-size);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.ds-prompt-input__field {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: var(--prompt-input-min-height);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--prompt-input-text-color);
+  font: inherit;
+  font-size: var(--prompt-input-font-size);
+  line-height: var(--prompt-input-font-line-height);
+  resize: vertical;
+  outline: none;
+}
+
+.ds-prompt-input__field::placeholder {
+  color: var(--prompt-input-placeholder-color);
+}
+
+.ds-prompt-input__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--prompt-input-bar-gap);
+}
+
+.ds-prompt-input__tools,
+.ds-prompt-input__end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--prompt-input-bar-gap);
+}
+
+.ds-prompt-input__end {
+  margin-inline-start: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds-prompt-input {
+    transition: none;
+  }
+}

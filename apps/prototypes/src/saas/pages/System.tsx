@@ -14,6 +14,8 @@ import {
   Progress,
   VerificationCodeInput,
   useToast,
+  Countdown,
+  Card,
 } from '@ds/react';
 import {
   ArrowLeft,
@@ -299,10 +301,10 @@ function SystemPage({
   /** Inside the app frame (sidebar and top bar), like any other page. */
   framed?: boolean;
 }) {
-  const Root = framed ? 'section' : 'main';
+  const Root = framed ? Card : 'main';
   return (
     <Root
-      className={framed ? 'panel orbit-system orbit-system--framed' : 'orbit-system'}
+      {...(framed ? { as: 'section', appearance: 'outlined', className: 'orbit-system orbit-system--framed' } : { className: 'orbit-system' })}
       aria-label={framed ? title : undefined}
     >
       {!framed && <Logo icon={<Orbit />} name="Orbit" href={to('')} />}
@@ -327,24 +329,6 @@ function SystemPage({
       </div>
       {!framed && <p className="muted text-sm">© 2026 Orbit Labs</p>}
     </Root>
-  );
-}
-
-function Countdown() {
-  return (
-    <ul className="orbit-countdown" aria-label="Launch in 12 days, 8 hours, 45 minutes">
-      {[
-        ['12', 'days'],
-        ['08', 'hours'],
-        ['45', 'minutes'],
-        ['20', 'seconds'],
-      ].map(([n, l]) => (
-        <li key={l}>
-          <strong>{n}</strong>
-          <span className="muted text-sm">{l}</span>
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -390,7 +374,7 @@ const pages: Record<string, () => ReactNode> = {
       title="Something new is coming"
       text="Orbit Forecasts launches soon. Be the first to try it."
     >
-      <Countdown />
+      <Countdown label="Launch in" to={new Date(Date.now() + ((12 * 24 + 8) * 60 + 45) * 60_000 + 20_000)} />
       <Subscribe />
     </SystemPage>
   ),

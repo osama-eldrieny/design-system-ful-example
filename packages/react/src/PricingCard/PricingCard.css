@@ -1,0 +1,61 @@
+/**
+ * PricingCard. Styled only with --pricing-card-* tokens. It builds on Card; this adds the price,
+ * the feature list and the featured border.
+ */
+
+.ds-pricing-card {
+  gap: var(--pricing-card-gap);
+}
+
+.ds-pricing-card--featured {
+  border-color: var(--pricing-card-featured-border-color);
+  border-width: var(--pricing-card-featured-border-width);
+}
+
+.ds-pricing-card__price {
+  margin: 0;
+  color: var(--pricing-card-price-color);
+  font-family: var(--pricing-card-price-font-family);
+  font-size: var(--pricing-card-price-font-size);
+  font-weight: var(--pricing-card-price-font-weight);
+  line-height: var(--pricing-card-price-font-line-height);
+  font-variant-numeric: tabular-nums;
+}
+
+.ds-pricing-card__period {
+  color: var(--pricing-card-period-color);
+  font-size: var(--pricing-card-period-font-size);
+  font-weight: var(--pricing-card-period-font-weight);
+}
+
+.ds-pricing-card__description {
+  margin: 0;
+  color: var(--pricing-card-description-color);
+  font-size: var(--pricing-card-description-font-size);
+  line-height: var(--pricing-card-description-font-line-height);
+}
+
+.ds-pricing-card__features {
+  display: grid;
+  gap: var(--pricing-card-features-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ds-pricing-card__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pricing-card-feature-gap);
+  color: var(--pricing-card-feature-color);
+  font-size: var(--pricing-card-feature-font-size);
+  line-height: var(--pricing-card-feature-font-line-height);
+}
+
+.ds-pricing-card__check {
+  flex: none;
+  inline-size: var(--pricing-card-check-size);
+  block-size: var(--pricing-card-check-size);
+  margin-block-start: var(--pricing-card-check-offset);
+  color: var(--pricing-card-check-color);
+}

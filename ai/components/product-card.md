@@ -46,6 +46,9 @@ import { ProductCard } from '@ds/react';
 | `appearance` | `CardAppearance` |  | `elevated` (default) lifts the card with the shadow theme, `outlined` draws a border for dense layouts, `filled` tints it for grouping inside a surface. |
 | `orientation` | `CardOrientation` |  | `vertical` stacks media above the body; `horizontal` puts media beside it. |
 | `href` | `string` |  | Makes the whole card a link to this URL. The CardTitle becomes the link, and its hit area covers the card, so there's one clear, accessible target. |
+| `padding` | `CardPadding` |  | `none` removes the padding, e.g. around a table that runs edge to edge. |
+| `ribbon` | `ReactNode` |  | A corner ribbon flagging the card, e.g. "New" or "Sale". |
+| `ribbonTone` | `CardRibbonTone` |  | Colour of the ribbon. Default primary. |
 | `as` | `ElementType` |  | Element to render: `article` (default) for standalone content, `div` or `li` otherwise. |
 
 ## Guidelines
