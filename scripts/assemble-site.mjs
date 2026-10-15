@@ -100,4 +100,7 @@ const foundationPages = {
 for (const [page, id] of Object.entries(foundationPages)) redirectFile(`pages/${page}.html`, docs(id));
 
 writeFileSync(join(site, '.nojekyll'), '');
+// Local preview (`npm run serve`): keep /iframe.html?id=… as is. Clean URLs would redirect it to
+// /iframe and drop the query, so Storybook pages would render empty.
+writeFileSync(join(site, 'serve.json'), JSON.stringify({ cleanUrls: false }, null, 2) + '\n');
 console.log('Site assembled in site/');
