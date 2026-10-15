@@ -247,22 +247,7 @@
   gap: var(--spacing-xl);
 }
 
-.orbit-figure {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-3xs);
-}
 
-.orbit-figure__value {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  color: var(--color-fg-on-surface-primary);
-  font-family: var(--font-family-headings);
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-semi-bold);
-  line-height: var(--font-line-height-2xl);
-}
 
 .orbit-funnel {
   display: flex;

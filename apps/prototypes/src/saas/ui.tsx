@@ -10,13 +10,13 @@ import {
   DropdownMenuTrigger,
   IconButton,
   Pagination,
+  Stat,
   Table,
   TableCard,
   type BadgeColor,
   type TableColumn,
 } from '@ds/react';
 import { Eye, MoreHorizontal, Trash2 } from 'lucide-react';
-import { Trend } from './kit';
 import { Segmented } from '../Segmented';
 
 export { More, Panel, Trend } from './kit';
@@ -86,7 +86,7 @@ export const RowMenu = ({
   </DropdownMenu>
 );
 
-/** A labelled figure with an optional trend, e.g. "Avg. yearly profit $212,142 ↗ 23.2%". */
+/** A labelled figure with an optional trend badge: the library's Stat. */
 export const Figure = ({
   label,
   value,
@@ -102,14 +102,16 @@ export const Figure = ({
   good?: boolean;
   note?: ReactNode;
 }) => (
-  <div className="orbit-figure">
-    <span className="muted text-sm">{label}</span>
-    <span className="orbit-figure__value">
-      {value}
-      {change && <Trend value={change} up={up} good={good} />}
-    </span>
-    {note && <span className="muted text-sm">{note}</span>}
-  </div>
+  <Stat
+    label={label}
+    value={value}
+    change={change}
+    trend={change ? (up ? 'up' : 'down') : 'neutral'}
+    positive={good ?? up}
+    changeAppearance="badge"
+    size="large"
+    note={note}
+  />
 );
 
 /** A single-choice set of small outline buttons, e.g. Monthly / Quarterly / Annually. */

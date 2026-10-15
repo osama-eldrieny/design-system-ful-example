@@ -8,6 +8,23 @@
   font-family: var(--stat-font-family);
 }
 
+.ds-stat--small .ds-stat__value {
+  font-size: var(--stat-small-value-font-size);
+  line-height: var(--stat-small-value-font-line-height);
+}
+
+.ds-stat--large .ds-stat__value {
+  font-size: var(--stat-large-value-font-size);
+  line-height: var(--stat-large-value-font-line-height);
+}
+
+.ds-stat__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--stat-row-gap);
+}
+
 .ds-stat__label {
   color: var(--stat-label-text-color);
   font-size: var(--stat-label-font-size);
@@ -65,4 +82,37 @@
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+/* Badge: the change as a tinted pill beside the value. */
+.ds-stat__change--badge {
+  display: inline-flex;
+  font-weight: var(--stat-change-font-weight);
+  line-height: var(--stat-change-font-line-height);
+  gap: var(--stat-badge-gap);
+  padding-block: var(--stat-badge-padding-y);
+  padding-inline: var(--stat-badge-padding-x);
+  border-radius: var(--stat-badge-border-radius);
+  font-size: var(--stat-badge-font-size);
+}
+
+.ds-stat__change--badge.ds-stat__change--up {
+  background: var(--stat-badge-up-bg-color);
+  color: var(--stat-badge-up-text-color);
+}
+
+.ds-stat__change--badge.ds-stat__change--down {
+  background: var(--stat-badge-down-bg-color);
+  color: var(--stat-badge-down-text-color);
+}
+
+.ds-stat__change--badge.ds-stat__change--neutral {
+  background: var(--stat-badge-neutral-bg-color);
+}
+
+.ds-stat__note {
+  margin: 0;
+  color: var(--stat-help-text-color);
+  font-size: var(--stat-change-font-size);
+  line-height: var(--stat-change-font-line-height);
 }

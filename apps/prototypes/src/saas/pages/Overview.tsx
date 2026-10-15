@@ -20,6 +20,7 @@ import {
 } from '@ds/react';
 import { DollarSign, Filter, HeartHandshake, Megaphone, Users } from 'lucide-react';
 import { More, Panel, Trend } from '../kit';
+import { Figure } from '../ui';
 import {
   activities,
   churn,
@@ -115,12 +116,7 @@ export default function Overview() {
           menu
           footer={<Link href={to('/pages/pricing')}>Downgrade options: Free plan</Link>}
         >
-          <div className="orbit-figure">
-            <span className="orbit-figure__value">
-              4.26% <Trend value="0.31%" up={false} good />
-            </span>
-            <span className="muted text-sm">vs last week</span>
-          </div>
+          <Figure label="This week" value="4.26%" change="0.31%" up={false} good note="vs last week" />
           <LineChart
             title="Monthly churn rate"
             hideTitle
@@ -138,10 +134,7 @@ export default function Overview() {
           menu
           actions={<Trend value="3.85%" />}
         >
-          <div className="orbit-figure">
-            <span className="orbit-figure__value">3,768</span>
-            <span className="muted text-sm">new users this week</span>
-          </div>
+          <Figure label="New users this week" value="3,768" />
           <AreaChart
             title="New signups by month and source"
             hideTitle
@@ -218,17 +211,9 @@ export default function Overview() {
               <TabPanel key={key} value={key}>
                 <div className="orbit-figures">
                   {v.figures.map((f) => (
-                    <div key={f.label} className="orbit-figure">
-                      <span className="muted text-sm">{f.label}</span>
-                      <span className="orbit-figure__value">{f.value}</span>
-                    </div>
+                    <Figure key={f.label} label={f.label} value={f.value} />
                   ))}
-                  <div className="orbit-figure">
-                    <span className="muted text-sm">{v.total.label}</span>
-                    <span className="orbit-figure__value">
-                      {v.total.value} <Trend value={v.total.change} />
-                    </span>
-                  </div>
+                  <Figure label={v.total.label} value={v.total.value} change={v.total.change} />
                 </div>
                 <BarChart
                   title={`${v.label} by day`}

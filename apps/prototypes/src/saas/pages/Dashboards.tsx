@@ -827,9 +827,7 @@ function Ticker({ t, actions }: { t: (typeof tickers)[number]; actions?: boolean
         </span>
         <Sparkline data={spark(t.sym.charCodeAt(0)).map((v, i) => (t.up ? v : 50 - v + i / 2))} />
       </div>
-      <span className="orbit-figure__value">
-        {t.price} <Trend value={t.change} up={t.up} />
-      </span>
+      <Figure label="Price" value={t.price} change={t.change} up={t.up} />
       {actions && (
         <span className="row">
           <Button variant="secondary" appearance="outline" size="small">

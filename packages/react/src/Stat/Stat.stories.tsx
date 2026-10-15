@@ -78,3 +78,23 @@ export const Semantics: Story = {
     await expect(canvas.getByText('increased')).toBeInTheDocument();
   },
 };
+
+export const Sizes: Story = {
+  render: (args) => (
+    <div style={{ display: 'flex', gap: 40, flexWrap: 'wrap', alignItems: 'end' }}>
+      <Stat {...args} size="small" label="Small" />
+      <Stat {...args} size="medium" label="Medium" />
+      <Stat {...args} size="large" label="Large" />
+    </div>
+  ),
+};
+
+export const ChangeAppearance: Story = {
+  render: (args) => (
+    <div style={{ display: 'flex', gap: 40, flexWrap: 'wrap' }}>
+      <Stat {...args} label="Text" changeAppearance="text" />
+      <Stat {...args} label="Badge" changeAppearance="badge" note="Updated 5 minutes ago" />
+      <Stat label="Badge, down" value="$8,210" change="4%" trend="down" changeAppearance="badge" />
+    </div>
+  ),
+};

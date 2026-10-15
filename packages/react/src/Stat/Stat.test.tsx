@@ -17,3 +17,14 @@ describe('Stat', () => {
     expect(container.querySelector('.ds-stat__change--down')).toBeInTheDocument();
   });
 });
+
+describe('Stat variants', () => {
+  it('shows the change as a badge beside the value, with a note', () => {
+    const { container } = render(
+      <Stat label="Profit" value="$212K" change="23%" trend="up" changeAppearance="badge" size="large" note="Updated today" />,
+    );
+    expect(container.querySelector('.ds-stat--large')).toBeInTheDocument();
+    expect(container.querySelector('.ds-stat__row .ds-stat__change--badge')).toHaveTextContent('increased 23%');
+    expect(screen.getByText('Updated today')).toBeInTheDocument();
+  });
+});

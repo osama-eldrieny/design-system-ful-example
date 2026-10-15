@@ -17,7 +17,8 @@ export default defineMeta({
   anatomy: [
     { name: 'Label', description: 'What is measured.' },
     { name: 'Value', description: 'The figure.' },
-    { name: 'Change', description: 'Arrow, change and context.', optional: true },
+    { name: 'Change', description: 'Arrow, change and context, as text or a badge.', optional: true },
+    { name: 'Note', description: 'A line under the figure, e.g. when it was updated.', optional: true },
   ],
   options: [
     {
@@ -35,6 +36,23 @@ export default defineMeta({
       values: [
         { value: 'true', meaning: 'The change is good news (green).' },
         { value: 'false', meaning: 'The change is bad news (red).' },
+      ],
+    },
+    {
+      prop: 'size',
+      title: 'Size',
+      values: [
+        { value: 'small', meaning: 'Dense rows of figures, e.g. under a chart.' },
+        { value: 'medium', meaning: 'Default.' },
+        { value: 'large', meaning: 'A headline figure at the top of a card.' },
+      ],
+    },
+    {
+      prop: 'changeAppearance',
+      title: 'Change appearance',
+      values: [
+        { value: 'text', meaning: 'Default. Arrow and change under the value, with the context after it.' },
+        { value: 'badge', meaning: 'A tinted pill beside the value; the context moves under it.' },
       ],
     },
   ],
@@ -94,5 +112,7 @@ export default defineMeta({
   ],
   tokenPrefixes: ['--stat-'],
   related: [{ id: 'card', relation: 'Put stats in cards for dashboards.' }],
-  changelog: [{ version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
+  changelog: [
+    { version: '1.3.0', date: '2026-10-15', changes: ['size, changeAppearance (badge), note.'] },
+    { version: '0.4.0', date: '2026-09-29', changes: ['New component.'] }],
 });

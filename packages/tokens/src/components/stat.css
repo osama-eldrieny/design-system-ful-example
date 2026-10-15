@@ -4,7 +4,8 @@
  * Style this component only with these tokens.
  *
  * Grammar: --stat-{part}-{trend?}-{property}
- *   part: label | value | change | help; trend: up | down.
+ *   part: label | value | change | help | badge (change as a pill) | row; trend: up | down;
+ *   size: small | large (medium is the base).
  */
 
 :root,
@@ -27,4 +28,23 @@
   --stat-help-text-color: var(--color-fg-on-surface-secondary);
   --stat-gap: var(--spacing-2xs);
   --stat-font-family: var(--font-family-body);
+
+  /* Sizes */
+  --stat-small-value-font-size: var(--font-size-lg);
+  --stat-small-value-font-line-height: var(--font-line-height-lg);
+  --stat-large-value-font-size: var(--font-size-2xl);
+  --stat-large-value-font-line-height: var(--font-line-height-2xl);
+
+  /* Change as a badge beside the value */
+  --stat-row-gap: var(--spacing-xs);
+  --stat-badge-gap: var(--spacing-3xs);
+  --stat-badge-padding-x: var(--spacing-2xs);
+  --stat-badge-padding-y: var(--spacing-4xs);
+  --stat-badge-border-radius: var(--radius-full);
+  --stat-badge-font-size: var(--font-size-xs);
+  --stat-badge-up-bg-color: var(--color-bg-success-1);
+  --stat-badge-up-text-color: var(--color-fg-on-success-high);
+  --stat-badge-down-bg-color: var(--color-bg-danger-1);
+  --stat-badge-down-text-color: var(--color-fg-on-danger-high);
+  --stat-badge-neutral-bg-color: var(--color-bg-default);
 }
