@@ -87,7 +87,13 @@ const presets: Record<string, Partial<Theme>> = {
     radius: 'round',
     shadow: 'default',
   },
-  'Opal · dark, raised': { brand: 'opal', mode: 'dark', radius: 'round', shadow: 'raised' },
+  'Opal · dark, compact': {
+    brand: 'opal',
+    mode: 'dark',
+    radius: 'round',
+    density: 'compact',
+    shadow: 'raised',
+  },
 };
 
 function ThemeBar({

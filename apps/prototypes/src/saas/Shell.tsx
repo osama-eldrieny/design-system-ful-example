@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import {
   ActivityFeed,
-  AvatarLabelGroup,
+  Avatar,
   Badge,
   Breadcrumb,
   Button,
@@ -27,7 +27,6 @@ import {
 } from '@ds/react';
 import {
   Bell,
-  ChevronDown,
   Headset,
   Languages,
   LogOut,
@@ -229,8 +228,7 @@ export function Shell({
                 className="orbit__account"
                 aria-label={`Account: ${me.name}`}
               >
-                <AvatarLabelGroup name={me.name} src={me.src} status="online" size="small" />
-                <ChevronDown aria-hidden="true" className="orbit__account-icon" />
+                <Avatar name={me.name} src={me.src} status="online" size="small" decorative />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
