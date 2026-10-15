@@ -485,3 +485,290 @@ export const integrations = [
   { id: 'storage', name: 'Cloud storage', description: 'Attach files from your drive.', on: false },
   { id: 'crm', name: 'CRM', description: 'Keep customers in sync both ways.', on: false },
 ];
+
+/* Overview */
+export const revenueByMonth = months.map((month, i) => ({
+  month,
+  revenue: Math.round(38000 + i * 2900 + Math.sin(i / 1.3) * 5200),
+  expenses: Math.round(24000 + i * 1300 + Math.cos(i / 1.6) * 3100),
+}));
+export const planMix = [
+  { label: 'Business', value: 46 },
+  { label: 'Starter', value: 31 },
+  { label: 'Enterprise', value: 23 },
+];
+
+export const projects = [
+  {
+    id: 'marketing',
+    name: 'Marketing site redesign',
+    client: 'Ephemeral',
+    progress: 72,
+    due: 'Oct 28',
+    status: 'On track' as const,
+    tone: 'success' as const,
+    team: [0, 1, 2, 3],
+  },
+  {
+    id: 'mobile',
+    name: 'Mobile app v2',
+    client: 'Warpspeed',
+    progress: 45,
+    due: 'Nov 12',
+    status: 'At risk' as const,
+    tone: 'warning' as const,
+    team: [1, 3, 4],
+  },
+  {
+    id: 'billing',
+    name: 'Billing migration',
+    client: 'Convergence',
+    progress: 91,
+    due: 'Oct 19',
+    status: 'On track' as const,
+    tone: 'success' as const,
+    team: [2, 5],
+  },
+  {
+    id: 'design-system',
+    name: 'Design system 2.0',
+    client: 'Internal',
+    progress: 28,
+    due: 'Dec 3',
+    status: 'Delayed' as const,
+    tone: 'danger' as const,
+    team: [0, 4, 5, 6, 7],
+  },
+];
+
+export const meetings = [
+  {
+    id: 1,
+    title: 'Weekly sync',
+    time: '09:30 – 10:00',
+    who: 'Product team',
+    tone: 'primary' as const,
+    day: 'Today',
+  },
+  {
+    id: 2,
+    title: 'Lunch with Olivia',
+    time: '12:00 – 13:00',
+    who: 'Olivia Rhye',
+    tone: 'success' as const,
+    day: 'Today',
+  },
+  {
+    id: 3,
+    title: 'Product demo',
+    time: '13:30 – 14:30',
+    who: 'Warpspeed',
+    tone: 'blue' as const,
+    day: 'Tomorrow',
+  },
+  {
+    id: 4,
+    title: 'Design review',
+    time: '15:00 – 16:00',
+    who: 'Design team',
+    tone: 'purple' as const,
+    day: 'Fri',
+  },
+];
+
+/* Messages */
+export const conversations = [
+  {
+    id: 'katherine',
+    name: 'Katherine Moss',
+    handle: '@kathy',
+    src: avatars[1],
+    time: '20 mins ago',
+    preview: 'You: Sure thing, I’ll have a look today.',
+    unread: false,
+    online: true,
+  },
+  {
+    id: 'phoenix',
+    name: 'Phoenix Baker',
+    handle: '@phoenix',
+    src: avatars[0],
+    time: '5 mins ago',
+    preview: 'Hey Olivia, Katherine sent me the latest doc. Quick question…',
+    unread: true,
+    online: true,
+  },
+  {
+    id: 'mollie',
+    name: 'Mollie Hall',
+    handle: '@mollie',
+    src: avatars[2],
+    time: '1 hour ago',
+    preview: 'I’ve just published the site again. Looks like it fixed it.',
+    unread: true,
+    online: false,
+  },
+  {
+    id: 'rosalee',
+    name: 'Rosalee Melvin',
+    handle: '@rosalee',
+    src: undefined,
+    time: '2 hours ago',
+    preview: 'Thanks for chasing up the release for me.',
+    unread: false,
+    online: false,
+  },
+  {
+    id: 'koray',
+    name: 'Koray Okumus',
+    handle: '@koray',
+    src: avatars[3],
+    time: '4 hours ago',
+    preview: 'Thanks! Looks great!',
+    unread: true,
+    online: true,
+  },
+];
+export const thread = [
+  {
+    id: 1,
+    from: 'them',
+    text: 'Thanks Olivia! Almost there. I’ll work on the changes you suggested and send them over.',
+    time: 'Mon 2:20 pm',
+  },
+  {
+    id: 2,
+    from: 'them',
+    text: 'I’ve finished the requirements doc and left notes for Phoenix.',
+    time: 'Mon 2:21 pm',
+  },
+  {
+    id: 3,
+    from: 'them',
+    file: { name: 'Tech requirements.pdf', size: '1.2 MB' },
+    time: 'Mon 2:21 pm',
+  },
+  { id: 4, from: 'me', text: 'Awesome! Thanks. I’ll look at this today.', time: 'Mon 3:02 pm' },
+  {
+    id: 5,
+    from: 'them',
+    text: 'No rush though — we still have to wait for Lana’s designs.',
+    time: 'Mon 3:05 pm',
+  },
+  {
+    id: 6,
+    from: 'them',
+    text: 'Hey Olivia, can you please review the latest design when you can?',
+    time: 'Today 9:41 am',
+    divider: 'Today',
+  },
+  {
+    id: 7,
+    from: 'me',
+    text: 'Sure thing, I’ll have a look today. They’re looking great!',
+    time: 'Just now',
+  },
+];
+
+/* Calendar (week of Oct 11–17, 2026; hours from 9:00) */
+export const weekDays = ['Sun 11', 'Mon 12', 'Tue 13', 'Wed 14', 'Thu 15', 'Fri 16', 'Sat 17'];
+export const events = [
+  { id: 1, day: 1, start: 9.5, end: 10, title: 'Weekly sync', tone: 'primary' as const },
+  { id: 2, day: 1, start: 11.5, end: 12.5, title: 'Coffee with Ali', tone: 'gray' as const },
+  { id: 3, day: 1, start: 14.5, end: 16, title: 'Marketing site kickoff', tone: 'purple' as const },
+  { id: 4, day: 3, start: 10, end: 11, title: 'Hiring panel', tone: 'orange' as const },
+  { id: 5, day: 4, start: 12, end: 13, title: 'Lunch with Olivia', tone: 'success' as const },
+  { id: 6, day: 5, start: 13.5, end: 15.5, title: 'Product demo', tone: 'blue' as const },
+  { id: 7, day: 6, start: 11, end: 12.5, title: 'House inspection', tone: 'warning' as const },
+  { id: 8, day: 2, start: 15, end: 16, title: 'Design review', tone: 'pink' as const },
+];
+
+/* Orders (invoices) */
+export const invoiceOrders = [
+  {
+    id: 'INV-3066',
+    date: 'Oct 6, 2026',
+    status: 'Paid',
+    customer: members[0],
+    purchase: 'Monthly',
+    amount: 120,
+  },
+  {
+    id: 'INV-3065',
+    date: 'Oct 6, 2026',
+    status: 'Paid',
+    customer: members[1],
+    purchase: 'Monthly',
+    amount: 120,
+  },
+  {
+    id: 'INV-3064',
+    date: 'Oct 6, 2026',
+    status: 'Paid',
+    customer: members[2],
+    purchase: 'Yearly',
+    amount: 1200,
+  },
+  {
+    id: 'INV-3063',
+    date: 'Oct 5, 2026',
+    status: 'Paid',
+    customer: members[3],
+    purchase: 'Monthly',
+    amount: 120,
+  },
+  {
+    id: 'INV-3062',
+    date: 'Oct 5, 2026',
+    status: 'Refunded',
+    customer: members[4],
+    purchase: 'Monthly',
+    amount: 120,
+  },
+  {
+    id: 'INV-3061',
+    date: 'Oct 5, 2026',
+    status: 'Paid',
+    customer: members[5],
+    purchase: 'Yearly',
+    amount: 1200,
+  },
+  {
+    id: 'INV-3060',
+    date: 'Oct 4, 2026',
+    status: 'Cancelled',
+    customer: members[6],
+    purchase: 'Monthly',
+    amount: 120,
+  },
+  {
+    id: 'INV-3059',
+    date: 'Oct 4, 2026',
+    status: 'Pending',
+    customer: members[7],
+    purchase: 'Monthly',
+    amount: 120,
+  },
+] as const;
+
+/* Profile */
+export const experience = [
+  {
+    role: 'Lead Product Designer',
+    company: 'ContrastAI',
+    period: 'May 2020 – Present',
+    tone: 'purple' as const,
+  },
+  {
+    role: 'Product Designer',
+    company: 'Sisyphus',
+    period: 'Jan 2018 – May 2020',
+    tone: 'success' as const,
+  },
+  {
+    role: 'UX Designer',
+    company: 'Ephemeral',
+    period: 'Mar 2017 – Jan 2018',
+    tone: 'blue' as const,
+  },
+];

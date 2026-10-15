@@ -1,12 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import { applyTheme, defaultTheme, ThemeProvider, ToastProvider, type Theme } from '@ds/react';
 import { useRoute } from './router';
-import AdminOrdersPage from './pages/AdminOrdersPage';
-import AdminOverviewPage from './pages/AdminOverviewPage';
 import AnalyticsPage from './pages/AnalyticsPage';
+import CalendarPage from './pages/CalendarPage';
 import CustomersPage from './pages/CustomersPage';
-import FinancePage from './pages/FinancePage';
 import DemoPage from './pages/DemoPage';
+import FinancePage from './pages/FinancePage';
+import MessagesPage from './pages/MessagesPage';
+import OrdersPage from './pages/OrdersPage';
+import OverviewPage from './pages/OverviewPage';
+import ProfilePage from './pages/ProfilePage';
+import ProjectPage from './pages/ProjectPage';
 import SettingsPage from './pages/SettingsPage';
 import './prototype.css';
 
@@ -28,20 +32,24 @@ function Page({
   theme: Theme;
   setTheme: (t: Theme) => void;
 }) {
-  if (route.startsWith('/admin/orders')) return <AdminOrdersPage />;
-  if (route.startsWith('/admin/team')) return <SettingsPage section="team" />;
-  if (route.startsWith('/admin/analytics')) return <AnalyticsPage />;
-  if (route.startsWith('/admin/customers')) return <CustomersPage />;
-  if (route.startsWith('/admin/finance')) return <FinancePage />;
-  if (route.startsWith('/admin')) return <AdminOverviewPage />;
-  if (route.startsWith('/settings'))
-    return <SettingsPage section={route.split('/')[2] ?? 'details'} />;
+  const app: Record<string, () => ReactElement> = {
+    analytics: () => <AnalyticsPage />,
+    projects: () => <ProjectPage />,
+    messages: () => <MessagesPage />,
+    calendar: () => <CalendarPage />,
+    orders: () => <OrdersPage />,
+    customers: () => <CustomersPage />,
+    finance: () => <FinancePage />,
+    profile: () => <ProfilePage />,
+    settings: () => <SettingsPage section={route.split('/')[3] ?? 'details'} />,
+  };
+  if (route.startsWith('/app/')) return (app[route.split('/')[2]] ?? (() => <OverviewPage />))();
   if (route.startsWith('/demo'))
     return (
       <DemoPage theme={theme} onThemeChange={setTheme} onReset={() => setTheme(defaultTheme)} />
     );
-  // The admin overview is the prototypes' home page.
-  return <AdminOverviewPage />;
+  // The app overview is the prototypes' home page.
+  return <OverviewPage />;
 }
 
 /** The prototypes app: the TechHub admin, the theme playground, toasts and the saved theme. */

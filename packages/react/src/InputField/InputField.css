@@ -14,6 +14,10 @@
 
   display: grid;
 
+  /* Shrinks inside flex and grid parents instead of overflowing narrow screens. */
+  grid-template-columns: minmax(0, 1fr);
+  min-inline-size: 0;
+
   /* Keep label, control and messages at their own height when a grid row makes the
      field taller (e.g. beside a field with help text), so inputs line up. */
   align-content: start;

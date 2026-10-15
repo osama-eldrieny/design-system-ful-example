@@ -1,0 +1,224 @@
+/**
+ * The Panda app frame and page layouts. Tokens only: components style themselves; this file
+ * lays out pages and paints the frame.
+ */
+
+.app {
+  display: grid;
+  grid-template-columns: calc(var(--sizing-8xl) * 1.25) minmax(0, 1fr);
+  min-block-size: 100dvh;
+  background-color: var(--color-bg-default);
+}
+
+.app__side {
+  position: sticky;
+  inset-block-start: 0;
+  block-size: 100dvh;
+  overflow-y: auto;
+  border-inline-end: var(--border-width-hairline) solid var(--color-border-base);
+  background-color: var(--color-bg-surface);
+}
+
+.app__side > .ds-side-nav {
+  box-sizing: border-box;
+  min-block-size: 100%;
+  background-color: transparent;
+}
+
+.app__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.app__search {
+  justify-content: flex-start;
+}
+
+.app__search > :last-child {
+  margin-inline-start: auto;
+}
+
+.app__footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.app__trial {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-default);
+}
+
+.app__account {
+  justify-content: space-between;
+  padding: var(--spacing-xs);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-xl);
+  text-decoration: none;
+}
+
+.app__account-icon {
+  flex: none;
+  inline-size: var(--sizing-sm);
+  block-size: var(--sizing-sm);
+  color: var(--color-fg-on-surface-secondary);
+}
+
+.app__main {
+  min-inline-size: 0;
+  padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-4xl);
+}
+
+.app__main > * {
+  max-inline-size: calc(var(--sizing-8xl) * 6.5);
+  margin-inline: auto;
+}
+
+@media (width < 64rem) {
+  .app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app__side {
+    position: static;
+    block-size: auto;
+    border-inline-end: 0;
+    border-block-end: var(--border-width-hairline) solid var(--color-border-base);
+  }
+
+  .app__main {
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-3xl);
+  }
+}
+
+/* Page building blocks */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  min-inline-size: 0;
+  padding: var(--spacing-xl);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-bg-surface);
+}
+
+.panel--flush {
+  padding: 0;
+  overflow: hidden;
+}
+
+.muted {
+  color: var(--color-fg-on-surface-secondary);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+  line-height: var(--font-line-height-sm);
+}
+
+.stack-text {
+  display: flex;
+  flex-direction: column;
+  min-inline-size: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.row--between {
+  justify-content: space-between;
+}
+
+.scroll-x {
+  max-inline-size: 100%;
+  overflow-x: auto;
+}
+
+.list-reset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  inline-size: var(--border-width-hairline);
+  block-size: var(--border-width-hairline);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Grids */
+.grid-kpi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--spacing-md);
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--spacing-md);
+  align-items: start;
+}
+
+.span-8 {
+  grid-column: span 8;
+}
+
+.span-4 {
+  grid-column: span 4;
+}
+
+.span-6 {
+  grid-column: span 6;
+}
+
+.span-12 {
+  grid-column: span 12;
+}
+
+@media (width < 72rem) {
+  .span-8,
+  .span-4,
+  .span-6 {
+    grid-column: span 12;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  min-inline-size: 0;
+}
+
+.app__account > .ds-button__label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-xs);
+  min-inline-size: 0;
+}

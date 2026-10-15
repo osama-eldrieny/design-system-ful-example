@@ -27,7 +27,7 @@ import {
   weekdayTraffic,
   type Period,
 } from '../dashboard-data';
-import { AdminShell } from '../shell/AdminShell';
+import { AppShell } from '../shell/AppShell';
 
 const overview = [
   { key: 'users', label: 'Users', value: '8.8k', change: '7.4%', trend: 'up' as const },
@@ -82,10 +82,7 @@ export default function AnalyticsPage() {
   const [metric, setMetric] = useState('users');
 
   return (
-    <AdminShell
-      current="analytics"
-      trail={[{ label: 'Home', href: '#/admin' }, { label: 'Analytics' }]}
-    >
+    <AppShell current="analytics">
       <div className="proto-page">
         <PageHeader
           title="Website analytics"
@@ -255,6 +252,6 @@ export default function AnalyticsPage() {
           </section>
         </div>
       </div>
-    </AdminShell>
+    </AppShell>
   );
 }

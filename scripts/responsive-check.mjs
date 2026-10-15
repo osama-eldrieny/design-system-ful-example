@@ -25,14 +25,18 @@ const pages = [
   ...Object.values(index)
     .filter((e) => e.type === 'docs')
     .map((e) => ({ name: e.id, url: `${base}/iframe.html?id=${e.id}&viewMode=docs` })),
-  { name: 'prototype admin', url: `${base}/prototypes/#/admin` },
-  { name: 'prototype admin/orders', url: `${base}/prototypes/#/admin/orders` },
-  { name: 'prototype analytics', url: `${base}/prototypes/#/admin/analytics` },
-  { name: 'prototype customers', url: `${base}/prototypes/#/admin/customers` },
-  { name: 'prototype finance', url: `${base}/prototypes/#/admin/finance` },
-  { name: 'prototype settings/team', url: `${base}/prototypes/#/settings/team` },
-  { name: 'prototype settings/billing', url: `${base}/prototypes/#/settings/billing` },
-  { name: 'prototype settings', url: `${base}/prototypes/#/settings` },
+  { name: 'app overview', url: `${base}/prototypes/#/app` },
+  { name: 'app analytics', url: `${base}/prototypes/#/app/analytics` },
+  { name: 'app projects', url: `${base}/prototypes/#/app/projects` },
+  { name: 'app messages', url: `${base}/prototypes/#/app/messages` },
+  { name: 'app calendar', url: `${base}/prototypes/#/app/calendar` },
+  { name: 'app orders', url: `${base}/prototypes/#/app/orders` },
+  { name: 'app customers', url: `${base}/prototypes/#/app/customers` },
+  { name: 'app finance', url: `${base}/prototypes/#/app/finance` },
+  { name: 'app profile', url: `${base}/prototypes/#/app/profile` },
+  { name: 'app settings', url: `${base}/prototypes/#/app/settings` },
+  { name: 'app settings/team', url: `${base}/prototypes/#/app/settings/team` },
+  { name: 'app settings/billing', url: `${base}/prototypes/#/app/settings/billing` },
   { name: 'prototype demo', url: `${base}/prototypes/#/demo` },
 ];
 
@@ -41,7 +45,15 @@ const problems = [];
 for (const width of widths) {
   const page = await browser.newPage({ viewport: { width, height: 900 } });
   for (const p of pages) {
-    await page.goto(p.url, { waitUntil: 'networkidle' });
+    // A page that never settles is reported, not waited on forever.
+    const loaded = await page
+      .goto(p.url, { waitUntil: 'networkidle', timeout: 20000 })
+      .then(() => true)
+      .catch(() => false);
+    if (!loaded) {
+      problems.push({ width, page: `${p.name} (did not finish loading)`, scrollWidth: 0, worst: null });
+      continue;
+    }
     await page.waitForTimeout(150);
     const overflow = await page.evaluate(() => {
       const doc = document.documentElement;

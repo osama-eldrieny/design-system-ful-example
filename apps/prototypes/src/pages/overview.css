@@ -1,0 +1,53 @@
+/** Overview page. Tokens only. */
+
+.overview__title {
+  margin: 0;
+  color: var(--color-fg-on-surface-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--font-line-height-lg);
+}
+
+.overview__big {
+  color: var(--color-fg-on-surface-primary);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: var(--font-line-height-4xl);
+  font-variant-numeric: tabular-nums;
+}
+
+.overview__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  text-align: center;
+}
+
+.overview__projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: var(--spacing-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.overview__project {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border: var(--border-width-hairline) solid var(--color-border-base);
+  border-radius: var(--radius-xl);
+}
+
+.overview__project-name {
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.overview__meeting {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}

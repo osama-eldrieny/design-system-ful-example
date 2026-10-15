@@ -28,7 +28,7 @@ import {
   Wallet,
 } from 'lucide-react';
 import { balance, budgets, categoryTone, transactions } from '../dashboard-data';
-import { AdminShell } from '../shell/AdminShell';
+import { AppShell } from '../shell/AppShell';
 
 type Transaction = (typeof transactions)[number];
 const money = (v: number) =>
@@ -94,10 +94,7 @@ export default function FinancePage() {
     }).format(v);
 
   return (
-    <AdminShell
-      current="finance"
-      trail={[{ label: 'Home', href: '#/admin' }, { label: 'Finance' }]}
-    >
+    <AppShell current="finance">
       <div className="proto-page">
         <PageHeader
           title="Finance"
@@ -274,6 +271,6 @@ export default function FinancePage() {
           </div>
         </div>
       </div>
-    </AdminShell>
+    </AppShell>
   );
 }

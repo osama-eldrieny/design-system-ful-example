@@ -23,7 +23,7 @@ import {
 } from '@ds/react';
 import { Download, Monitor, MoreVertical, Search, SearchX, UserCheck, Users } from 'lucide-react';
 import { avatars, companies, members, type CustomerStatus } from '../dashboard-data';
-import { AdminShell } from '../shell/AdminShell';
+import { AppShell } from '../shell/AppShell';
 
 type Company = (typeof companies)[number];
 const statusTone: Record<CustomerStatus, 'success' | 'gray' | 'blue'> = {
@@ -146,10 +146,7 @@ export default function CustomersPage() {
   };
 
   return (
-    <AdminShell
-      current="customers"
-      trail={[{ label: 'Home', href: '#/admin' }, { label: 'Customers' }]}
-    >
+    <AppShell current="customers">
       <div className="proto-page">
         <PageHeader
           title="Customers"
@@ -274,6 +271,6 @@ export default function CustomersPage() {
           />
         </TableCard>
       </div>
-    </AdminShell>
+    </AppShell>
   );
 }

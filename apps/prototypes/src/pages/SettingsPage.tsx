@@ -42,7 +42,7 @@ import {
 } from 'lucide-react';
 import { integrations, invoices, members } from '../dashboard-data';
 import { go } from '../router';
-import { AdminShell } from '../shell/AdminShell';
+import { AppShell } from '../shell/AppShell';
 
 const tabs = [
   { id: 'details', label: 'My details' },
@@ -174,16 +174,13 @@ export default function SettingsPage({ section = 'details' }: { section?: string
   );
 
   return (
-    <AdminShell
-      current="settings"
-      trail={[{ label: 'Home', href: '#/admin' }, { label: 'Settings' }]}
-    >
+    <AppShell current="settings">
       <div className="proto-page">
         <PageHeader title="Settings" description="Manage your account, team and plan." />
         <Tabs
           appearance="segmented"
           value={current}
-          onValueChange={(v) => go(v === 'details' ? '/settings' : `/settings/${v}`)}
+          onValueChange={(v) => go(v === 'details' ? '/app/settings' : `/app/settings/${v}`)}
         >
           <TabList label="Settings sections">
             {tabs.map((t) => (
@@ -522,6 +519,6 @@ export default function SettingsPage({ section = 'details' }: { section?: string
           </TabPanel>
         </Tabs>
       </div>
-    </AdminShell>
+    </AppShell>
   );
 }

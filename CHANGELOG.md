@@ -37,10 +37,17 @@ VerificationCodeInput.
   **ChooseCard:** icon.
 
 ### Prototypes
-- Admin overview rebuilt: metric cards with sparklines, revenue area chart, channel donut,
-  weekday bars, goal gauge, orders TableCard and an activity feed; ⌘K command menu and
-  notification feed in the shell.
-- The playground has a Dashboard section.
+- A brand-new app, **Panda** (`#/app`), designed from scratch on Untitled UI's dashboard,
+  settings and informational page patterns, replacing the old admin:
+  - **Overview:** KPI cards with sparklines, revenue chart, quarterly goal gauge, plan mix,
+    recent transactions, activity, projects in progress, upcoming meetings.
+  - **Analytics, Customers, Finance, Orders** (filters, invoice table, detail drawer, delete
+    confirmation), **Project** (brief, milestones, timeline, team, files, activity),
+    **Messages** (inbox and chat), **Calendar** (week view), **Profile**, **Settings** (details,
+    team, billing, notifications, integrations).
+  - New shell: sidebar with ⌘K search, grouped navigation with badges, trial card, account menu.
+- The playground has a Dashboard section. Old `#/admin…` links redirect to the new pages.
+- InputField shrinks inside narrow flex and grid layouts (it overflowed phones).
 
 ## 1.0.0 — 2026-09-29
 

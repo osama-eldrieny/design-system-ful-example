@@ -1,7 +1,6 @@
 // Assembles the deployable site/ folder from the workspace builds:
 //   /                Storybook docs
-//   /prototypes/     prototypes (#/admin, #/admin/analytics, #/admin/customers, #/admin/orders,
-//                    #/admin/finance, #/settings[/team|billing|notifications|integrations], #/demo)
+//   /prototypes/     prototypes: the Panda app (#/app/…) and the theme playground (#/demo)
 //   /ai/, /llms.txt  AI-readable files
 // plus redirect stubs so links to the retired static docs keep working.
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
