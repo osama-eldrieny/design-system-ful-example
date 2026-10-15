@@ -25,6 +25,7 @@ import {
   ListItem,
   MetricCard,
   Progress,
+  ProductCard,
   ProgressCircle,
   Radio,
   RadioGroup,
@@ -57,6 +58,7 @@ import {
   Mic,
   Paperclip,
   Search,
+  ShoppingCart,
   Sparkles,
   Trash2,
   Users,
@@ -605,3 +607,19 @@ export const Overlays = ({ t }: { t: T }) => {
     </Tile>
   );
 };
+
+export const Product = ({ t }: { t: T }) => (
+  <Tile title={t('Product card')}>
+    <ProductCard
+      title={t('AirPods Max 2, Experience Sound Differently')}
+      rating={4.5}
+      reviews={t('420 reviews')}
+      price="$500"
+      actions={
+        <Button size="small" iconStart={<ShoppingCart />}>
+          {t('Add to cart')}
+        </Button>
+      }
+    />
+  </Tile>
+);

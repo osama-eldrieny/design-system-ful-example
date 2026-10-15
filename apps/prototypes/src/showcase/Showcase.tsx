@@ -29,6 +29,7 @@ import {
   Notification,
   Overlays,
   PeoplePicker,
+  Product,
   ProgressTile,
   Selection,
   TableTile,
@@ -170,7 +171,7 @@ export default function Showcase({
 
   return (
     <div className="proto sc">
-      <header className="sc-bar">
+      <aside className="sc-bar" aria-label={t('Theme')}>
         <div className="sc-bar__head">
           <Logo icon={<Orbit />} name="Orbit" href="#/saas" />
           <div className="sc-bar__title">
@@ -183,12 +184,13 @@ export default function Showcase({
           </div>
         </div>
         <ThemeBar theme={theme} onChange={onThemeChange} onReset={onReset} t={t} />
-      </header>
+      </aside>
 
       <main className="sc-main">
         <div className="sc-wall">
           <Buttons t={t} />
           <Metrics t={t} />
+          <Product t={t} />
           <Inputs t={t} />
           <Badges t={t} />
           <AiPrompt t={t} />
@@ -235,6 +237,7 @@ export default function Showcase({
                   className="sc-compare__frame"
                 >
                   <div className="sc-compare__stack">
+                    <Product t={t} />
                     <Buttons t={t} />
                     <Metrics t={t} />
                     <Selection t={t} />
