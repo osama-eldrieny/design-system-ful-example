@@ -50,7 +50,7 @@ export function Catalog() {
                 return (
                   <a
                     key={m.id}
-                    className={`docs-catalog__item docs-catalog__item--${cat.hue}`}
+                    className="docs-catalog__item"
                     href={`?path=/docs/${docsId(m)}`}
                     target="_top"
                   >
