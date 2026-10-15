@@ -681,12 +681,12 @@
       "default": "1px"
     },
     "--tabs-segmented-border-radius": {
-      "description": "Controls and small surfaces: inputs, buttons, menu items.",
-      "references": "--radius-lg",
-      "default": "8px",
+      "description": "Stroke widths in px.",
+      "references": "--tabs-segmented-border-width",
+      "default": "calc(\n    4px + 2px +\n      1px\n  )",
       "byTheme": {
-        "brand=diamond,mode=light,radius=square": "3px",
-        "brand=diamond,mode=light,radius=pills": "12px"
+        "brand=diamond,mode=light,radius=square": "calc(\n    3px + 2px +\n      1px\n  )",
+        "brand=diamond,mode=light,radius=pills": "calc(\n    999px + 2px +\n      1px\n  )"
       }
     },
     "--tabs-segmented-padding": {

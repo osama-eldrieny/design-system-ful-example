@@ -338,7 +338,7 @@
       "default": "16px",
       "byTheme": {
         "brand=diamond,mode=light,radius=square": "4px",
-        "brand=diamond,mode=light,radius=pills": "20px"
+        "brand=diamond,mode=light,radius=pills": "24px"
       }
     },
     "--command-menu-width": {

@@ -40,7 +40,12 @@
   --tabs-segmented-bg-color: var(--color-bg-default);
   --tabs-segmented-border-color: var(--color-border-base);
   --tabs-segmented-border-width: var(--border-width-hairline);
-  --tabs-segmented-border-radius: var(--radius-lg);
+
+  /* Concentric with the selected tab: its corner plus the bar's padding and border. */
+  --tabs-segmented-border-radius: calc(
+    var(--tabs-item-border-radius) + var(--tabs-segmented-padding) +
+      var(--tabs-segmented-border-width)
+  );
   --tabs-segmented-padding: var(--spacing-3xs);
   --tabs-segmented-item-default-font-color: var(--color-fg-on-surface-secondary);
   --tabs-segmented-item-hover-bg-color: var(--color-bg-raised);

@@ -5,6 +5,7 @@
  * gives sharp corners, round the default soft corners, pills fully rounded controls. The named
  * scale (--radius-2xs … --radius-4xl) changes with the style too, so every component built on it
  * follows; --radius-full stays fully round in all three (avatars, dots, switches).
+ * Section surfaces (cards, sections, containers, choose cards) are 16px in round and 24px in pills.
  *
  * Token reference:
  *   --radius-none: Sharp corners.
@@ -28,10 +29,10 @@
   --radius-3xl: var(--radius-20);
   --radius-4xl: var(--radius-40);
   --radius-full: var(--radius-999);
-  --section-border-radius: var(--radius-20);
-  --card-border-radius: var(--radius-20);
-  --choose-card-border-radius: var(--radius-20);
-  --container-border-radius: var(--radius-20);
+  --section-border-radius: var(--radius-16);
+  --card-border-radius: var(--radius-16);
+  --choose-card-border-radius: var(--radius-16);
+  --container-border-radius: var(--radius-16);
   --avatar-xsmall-border-radius: var(--radius-4);
   --avatar-small-border-radius: var(--radius-8);
   --avatar-medium-border-radius: var(--radius-8);
@@ -156,14 +157,14 @@
   --radius-md: var(--radius-8);
   --radius-lg: var(--radius-12);
   --radius-xl: var(--radius-16);
-  --radius-2xl: var(--radius-20);
+  --radius-2xl: var(--radius-24);
   --radius-3xl: var(--radius-40);
   --radius-4xl: var(--radius-40);
   --radius-full: var(--radius-999);
-  --section-border-radius: var(--radius-40);
-  --card-border-radius: var(--radius-40);
-  --choose-card-border-radius: var(--radius-40);
-  --container-border-radius: var(--radius-40);
+  --section-border-radius: var(--radius-24);
+  --card-border-radius: var(--radius-24);
+  --choose-card-border-radius: var(--radius-24);
+  --container-border-radius: var(--radius-24);
   --avatar-xsmall-border-radius: var(--radius-999);
   --avatar-small-border-radius: var(--radius-999);
   --avatar-medium-border-radius: var(--radius-999);

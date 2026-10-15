@@ -42,6 +42,9 @@ VerificationCodeInput.
   `<Tabs appearance="segmented" panels={false}>`. Every usage in the docs and prototypes is migrated.
 
 ### Fixes (from review comments)
+- **Radius:** section surfaces (cards, sections, containers, choose cards, `--radius-2xl`) are
+  16px in round and 24px in pills (new primitive `--radius-24`). The segmented tab bar's corner is
+  concentric with its selected tab (tab radius + padding + border) in every radius style.
 - **Theme coverage:** the named spacing and radius scales now change with density and radius, so
   every component built on them follows (before, only components with explicit overrides did).
   Compact makes `--spacing-sm` … `--spacing-5xl` one step smaller; square and pills reshape

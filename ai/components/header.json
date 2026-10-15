@@ -382,10 +382,10 @@
     "--header-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
       "references": "--section-border-radius",
-      "default": "20px",
+      "default": "16px",
       "byTheme": {
         "brand=diamond,mode=light,radius=square": "4px",
-        "brand=diamond,mode=light,radius=pills": "40px"
+        "brand=diamond,mode=light,radius=pills": "24px"
       }
     },
     "--header-shadow-x": {

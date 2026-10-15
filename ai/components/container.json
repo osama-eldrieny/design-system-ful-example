@@ -225,11 +225,11 @@
     },
     "--container-border-radius": {
       "description": "Corner radius steps in px (see --radius-* in themes/radius.css).",
-      "references": "--radius-20",
-      "default": "20px",
+      "references": "--radius-16",
+      "default": "16px",
       "byTheme": {
         "brand=diamond,mode=light,radius=square": "8px",
-        "brand=diamond,mode=light,radius=pills": "40px"
+        "brand=diamond,mode=light,radius=pills": "24px"
       }
     },
     "--container-direction": {
