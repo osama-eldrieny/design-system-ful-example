@@ -3,7 +3,7 @@
 //   /prototypes/     prototypes: Orbit, the SaaS app (#/saas/…), and the theme playground (#/demo)
 //   /ai/, /llms.txt  AI-readable files
 // plus redirect stubs so links to the retired static docs keep working.
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -102,5 +102,26 @@ for (const [page, id] of Object.entries(foundationPages)) redirectFile(`pages/${
 writeFileSync(join(site, '.nojekyll'), '');
 // Local preview (`npm run serve`): keep /iframe.html?id=… as is. Clean URLs would redirect it to
 // /iframe and drop the query, so Storybook pages would render empty.
-writeFileSync(join(site, 'serve.json'), JSON.stringify({ cleanUrls: false }, null, 2) + '\n');
+// Without clean URLs, each folder needs an explicit rewrite to its index.html.
+const folders = readdirSync(site, { withFileTypes: true })
+  .filter((d) => d.isDirectory() && existsSync(join(site, d.name, 'index.html')))
+  .map((d) => d.name);
+writeFileSync(
+  join(site, 'serve.json'),
+  JSON.stringify(
+    {
+      cleanUrls: false,
+      directoryListing: false,
+      rewrites: [
+        { source: '/', destination: '/index.html' },
+        ...folders.flatMap((f) => [
+          { source: `/${f}`, destination: `/${f}/index.html` },
+          { source: `/${f}/`, destination: `/${f}/index.html` },
+        ]),
+      ],
+    },
+    null,
+    2,
+  ) + '\n',
+);
 console.log('Site assembled in site/');
