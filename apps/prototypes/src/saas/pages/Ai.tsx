@@ -36,6 +36,8 @@ import {
   PromptInput,
   MessageThread,
   Card,
+  themeOptions,
+  type ThemeAxis,
 } from '@ds/react';
 import {
   Calendar,
@@ -57,7 +59,6 @@ import {
 import { me } from '../data';
 import { Page, useOrbitTheme } from '../Shell';
 import { Panel } from '../ui';
-import { Segmented } from '../../Segmented';
 
 type Kind = 'text' | 'image' | 'code' | 'video';
 
@@ -401,6 +402,16 @@ function SettingsBlock({ children }: { children: ReactNode }) {
   return <SettingsList items={items} />;
 }
 
+const axisTitles: Record<ThemeAxis, string> = {
+  brand: 'Brand',
+  mode: 'Theme',
+  language: 'Language',
+  typeface: 'Typeface',
+  density: 'Density',
+  radius: 'Corner radius',
+  shadow: 'Shadows',
+};
+
 function AiSettings() {
   const toast = useToast();
   const { theme, setTheme } = useOrbitTheme();
@@ -448,29 +459,27 @@ function AiSettings() {
       'General',
       <Panel key="g" title="General">
         <SettingsBlock>
-          <Row title="Theme">
-            <Segmented
-              label="Theme"
-              options={[
-                ['light', 'Light'],
-                ['dark', 'Dark'],
-              ]}
-              value={theme.mode}
-              onChange={(mode) => setTheme({ ...theme, mode })}
-            />
-          </Row>
-          <Row title="Language">
-            <Select
-              label="Language"
-              hideLabel
-              size="small"
-              value={theme.language}
-              onValueChange={(v) => setTheme({ ...theme, language: v as typeof theme.language })}
-            >
-              <SelectItem value="en">English</SelectItem>
-              <SelectItem value="ar">العربية</SelectItem>
-            </Select>
-          </Row>
+          {(Object.keys(themeOptions) as ThemeAxis[]).map((axis) => (
+            <Row key={axis} title={axisTitles[axis]}>
+              <Select
+                label={axisTitles[axis]}
+                hideLabel
+                size="small"
+                value={theme[axis]}
+                onValueChange={(v) => setTheme({ ...theme, [axis]: v })}
+              >
+                {themeOptions[axis].map((v) => (
+                  <SelectItem key={v} value={v}>
+                    {v === 'en'
+                      ? 'English'
+                      : v === 'ar'
+                        ? 'العربية'
+                        : v[0].toUpperCase() + v.slice(1)}
+                  </SelectItem>
+                ))}
+              </Select>
+            </Row>
+          ))}
           <Row title="Time format">
             <Select label="Time format" hideLabel size="small" defaultValue="24">
               <SelectItem value="24">24-hour</SelectItem>
